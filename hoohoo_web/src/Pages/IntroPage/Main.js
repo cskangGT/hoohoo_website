@@ -61,7 +61,7 @@ function Main() {
             <Nav></Nav>
             <StoresLinkSections >
             <StoresLinkBox>
-            <StoresLink style={{marginTop:'80px', marginLeft:'15%'}} appName='DropB' appDesc="Record your day with Tags" textColor='#f1f1f1' bg='transparent' ></StoresLink>
+            <StoresLink style={{marginTop:'80px', marginLeft:'15%'}} logo='Images/icon.png' appName='DropB' appDesc="Record your day with Tags" textColor='#f1f1f1' bg='transparent' ></StoresLink>
             </StoresLinkBox>
             <PreviewContainer ><MobileImg src='Images/preview.png'></MobileImg></PreviewContainer>
             </StoresLinkSections>

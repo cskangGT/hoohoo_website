@@ -139,7 +139,7 @@ class StoresLink extends Component {
         return (
             <Back bg={this.props.bgColor} textColor= {this.props.textColor}>
             <BoxLogo>
-                <Logo src="Images/icon.png" alt="Hoohoo icon" />
+                <Logo src={this.props.logo} alt="Hoohoo icon" />
             </BoxLogo>
             <LogoText>
                 <Name data-l10n-id="header_Hoohoo" textColor= {this.props.textColor}> {this.props.appName} </Name>
