@@ -1,6 +1,10 @@
 import styled from 'styled-components';
 // import Nav from 'react-bootstrap/Nav';
-
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faPinterestP } from '@fortawesome/free-brands-svg-icons';
+const Logo = styled.div`
+  
+`;
 const Bar = styled.nav`
   background-color: transparent;
   border-color: transparent;
@@ -23,7 +27,7 @@ const Listcontainer = styled.ul`
 `;
 const NavListlink = styled.li`
   position: relative;
-  display:block;
+  display: block;
 
 `;
 const NavLink = styled.a`
@@ -37,41 +41,24 @@ const NavLink = styled.a`
   background-color: transparent;
   color:rgba(255, 255, 255, 0.7);
 `;
-// class NavLink extends Component {
-//   render() {
-//     var list = []
-    
-//   }
-// }
-
-// function Navbar() {
-//   return (
-//     <Bar>
-//     <Nav defaultActiveKey="/home" as="ul">
-//       <Nav.Item as="li">
-//         <Nav.Link href="/home">Active</Nav.Link>
-//       </Nav.Item>
-//       <Nav.Item as="li">
-//         <Nav.Link eventKey="link-1">Link</Nav.Link>
-//       </Nav.Item>
-//       <Nav.Item as="li">
-//         <Nav.Link eventKey="link-2">Link</Nav.Link>
-//       </Nav.Item>
-//     </Nav>
-//     </Bar>
-//   );
-// }
-// export default Navbar;
+const LogoIcon = styled.i`
+  
+`;
 const Nav = () => {
   const links = [{}];
-    return (
-        <Bar>
-            <Navcontainer>
-              <Listcontainer>
-                <NavListlink><NavLink id='home' href='#home'> Home</NavLink></NavListlink>
-              </Listcontainer>
-            </Navcontainer>
-        </Bar>
-    )
+  return (
+    <header>
+      <Logo>
+        <FontAwesomeIcon icon={faPinterestP} size='xl' style={{ color: "#f1f1f1" }} />
+        Logo</Logo>
+      <Bar>
+        <Navcontainer>
+          <Listcontainer>
+            <NavListlink><NavLink id='home' href='#home'> Home</NavLink></NavListlink>
+          </Listcontainer>
+        </Navcontainer>
+      </Bar>
+    </header>
+  )
 }
 export default Nav;

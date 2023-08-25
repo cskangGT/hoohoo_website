@@ -19,7 +19,7 @@ const Header = styled.div`
     height: 100%;
     padding:0;
     display: block;
-    margin:-8px;
+    margin:-5px;
 `;
 const BgImage = styled.div`
     background: url("Images/option1.jpg") no-repeat center;
@@ -58,14 +58,14 @@ const MobileImg = styled.img`
 function Main() {
 
     return (<Header><BgImage>
-            <Nav></Nav>
-            <StoresLinkSections >
+        <Nav></Nav>
+        <StoresLinkSections >
             <StoresLinkBox>
-            <StoresLink style={{marginTop:'80px', marginLeft:'15%'}} logo='Images/icon.png' appName='DropB' appDesc="Record your day with Tags" textColor='#f1f1f1' bg='transparent' ></StoresLink>
+                <StoresLink style={{ marginTop: '80px', marginLeft: '15%' }} logo='Images/icon.png' appName='DropB' appDesc="Record your day with Tags" textColor='#f1f1f1' bg='transparent' ></StoresLink>
             </StoresLinkBox>
             <PreviewContainer ><MobileImg src='Images/preview.png'></MobileImg></PreviewContainer>
-            </StoresLinkSections>
-        </BgImage></Header>);
+        </StoresLinkSections>
+    </BgImage></Header>);
 
 }
 export default Main; 
