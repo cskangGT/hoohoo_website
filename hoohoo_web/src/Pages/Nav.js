@@ -1,64 +1,242 @@
+import React, { useState, useEffect } from 'react'
 import styled from 'styled-components';
-// import Nav from 'react-bootstrap/Nav';
+import { theme } from '../style';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faPinterestP } from '@fortawesome/free-brands-svg-icons';
+import { faPinterestP, faInstagram } from '@fortawesome/free-brands-svg-icons';
+import { faBars } from '@fortawesome/free-solid-svg-icons';
 const Logo = styled.div`
-  
+  padding: 15px;
+  font-size: 24px;
+`;
+const LogoText = styled.a`
+  text-decoration: none;
+  padding: 10px;
+  color: ${theme.white};
+  &:hover {
+    color: ${theme.white};
+  }
 `;
 const Bar = styled.nav`
-  background-color: transparent;
-  border-color: transparent;
-  border-radius: 4px;
-  position: relative;
-  min-height: 50px;
-  margin-bottom: 25px;
-  border: 1px solid transparent;
+  margin: 0 auto;
+  // backdrop-filter: saturate(180%) blur(20px);
+  background: rgba(30, 30, 30, .8);
+  box-sizing: border-box;
+  width: 100%;
+  // max-width: 1024px; apple 느낌
+  max-width: 1830px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px 22px;
+  // background-color: transparent;
+  @media screen and (max-width: 850px) {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 8px 24px;
+  }
 `;
-const Navcontainer = styled.div`
-  margin-right: auto;
-  margin-left: auto;
-  padding-left: 15px;
-  padding-right: 15px;
-`;
-const Listcontainer = styled.ul`
-    float: left;
-    margin:0;
-    margin-left: -15px;
-`;
-const NavListlink = styled.li`
-  position: relative;
-  display: block;
+const NavbarMenu = styled.ul`
+  display: flex;
+  list-style: none;
+  height: 44px;
+  margin: 0 -8px;
+  width:auto;
+  padding-left: 0;
+  align-items: center;
+  justify-content: center;
+  @media screen and (max-width: 850px) {
+    height: auto;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    transition: all 0.3s ease;
+    display: ${props => (props.isOpen ? 'flex' : 'none')};  
+  }
 
 `;
-const NavLink = styled.a`
-  padding-bottom: 12.5px;
-  padding-left: 15px;
-  padding-right: 15px;
-  padding-top: 12.5px;
-  font-size: 18px;
-  text-align: center;
-  line-height: 25px;
-  background-color: transparent;
-  color:rgba(255, 255, 255, 0.7);
+const NavMenuList = styled.li`
+  // padding: 8px 12px;
+  text-decoration : none;
+  color: ${theme.white};
+  padding : 12.5px 15px;
+  &:hover {
+    background-color: #313131;
+    border-radius: 5Px;
+    & .hidden-icon {
+      opacity: 1;
+      transform: rotate(180deg);
+  }
+  }
+  @media screen and (max-width: 850px) {
+    text-align: center;
+    width: 100%;
+  }
 `;
-const LogoIcon = styled.i`
+const NavLink = styled.a`
+  text-decoration : none;
+  color: ${theme.white};
+  padding-left: 10px;
+  &:hover {
+    border-radius: 4px;
+    color: ${theme.mainNeon};
+  }
+`;
+const NavRight = styled.div`
+  display: flex;
+  list-style: none;
+  height: 44px;
+  margin: 0 -8px;
+  width:auto;
+  padding-left: 0;
+  align-items: center;
+  justify-content: center;
   
 `;
-const Nav = () => {
-  const links = [{}];
+// const NavIcons = styled.ul`
+// margin: 0;
+//   list-style: none;
+//   color: ${theme.white};
+//   display: flex;
+//   padding-left: 0;
+//   @media screen and (max-width: 768px) {
+//     justify-content: center;
+//     display: ${props => (props.isOpen ? 'flex' : 'none')};  
+//     width: 100%;
+//   }
+// `;
+// const IconList = styled.a`
+//   padding: 8px 12px;
+
+// `;
+const MenuToogleButton = styled.button`
+background: none;
+  border: none;
+  cursor: pointer;  
+position: absolute;
+  right: 32px;
+  top: 22px;
+  font-size: 24px;
+  color: ${theme.mainNeon};
+  display: none;
+  @media screen and (max-width: 850px) {
+    display: block;
+  }
+  &:hover {
+    transition: all 0.3s ease;
+    color: ${theme.mainNeon};
+  }
+`;
+const HiddenIcon = styled(FontAwesomeIcon)`
+    opacity: 0;
+    transition: all 0.5s ease;
+`;
+const LanguageBox = styled.div`
+  margin: 0 30px;
+  display: block;
+  @media screen and (max-width: 850px) {
+    display: none;
+    position: absolute;
+    right: 45px;
+    top: 27px;
+  }
+`;
+const LanguageBoxSecond = styled.div`
+  margin: 0 30px;
+  display: none;
+  @media screen and (max-width: 850px) {
+    display: block;
+    position:absolute;
+    right: 45px;
+    top: 27px;
+  }
+`;
+const LanguageButton = styled.button`
+  font-size: 12px;
+  color: ${theme.white};
+  background: none;
+  border: none;
+  cursor: pointer;
+  position: relative;
+  opacity: ${props => (props.isKorean ? 1 : 0.5)};
+  &:hover {
+    transition: all 0.3s ease;
+    opacity: 1;
+    color: ${theme.mainNeon};
+  }
+  &::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    right: 0;  // 이 값을 조절하여 선의 위치를 조정하세요.
+    width: 1px;  // 선의 너비
+    height: 20px;  // 선의 높이
+    background-color: gray;  // 선의 색상
+    transform: translateY(-50%);
+  }
+  &:last-child::after {
+    display: none;  // 마지막 버튼에는 선을 표시하지 않습니다.
+  }
+`;
+
+function Nav({ isKorean, setIsKorean }) {
+  const links = ["Home", "About", "Advertising", "Contact"];
+  const hrefs = ['#home', '#about', '#advertising', '#contact'];
+  const icons = [];
+  const [isOpen, setIsOpen] = useState(false);
+  const [windowWidth, setWindowWidth] = useState(window.innerWidth);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setWindowWidth(window.innerWidth);
+    };
+
+    window.addEventListener('resize', handleResize);
+
+    // 컴포넌트 언마운트 시 이벤트 리스너 제거
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  }, []);
   return (
-    <header>
+    <Bar>
       <Logo>
-        <FontAwesomeIcon icon={faPinterestP} size='xl' style={{ color: "#f1f1f1" }} />
-        Logo</Logo>
-      <Bar>
-        <Navcontainer>
-          <Listcontainer>
-            <NavListlink><NavLink id='home' href='#home'> Home</NavLink></NavListlink>
-          </Listcontainer>
-        </Navcontainer>
-      </Bar>
-    </header>
+        <FontAwesomeIcon icon={faPinterestP} size='xl' style={{ color: theme.mainNeon }} />
+        <LogoText href="#home">EarthMera</LogoText>
+      </Logo>
+
+      <NavbarMenu isOpen={isOpen}>
+        {
+          links.map((item, i) => {
+            return (
+              <NavMenuList><HiddenIcon className="hidden-icon" icon={faInstagram} size='lg' />
+                <NavLink id={i} href={hrefs[i]}>{item}</NavLink>
+              </NavMenuList>
+
+            );
+          })
+        }
+        {
+          !isOpen && <LanguageBox>
+            <LanguageButton isKorean={isKorean}
+              onClick={() => setIsKorean(true)}>KO</LanguageButton>
+            <LanguageButton isKorean={!isKorean}
+              onClick={() => setIsKorean(false)}>EN</LanguageButton>
+          </LanguageBox>
+        }
+      </NavbarMenu>
+      {windowWidth < 850 && <NavRight>
+        <LanguageBoxSecond>
+          <LanguageButton isKorean={isKorean}
+            onClick={() => setIsKorean(true)}>KO</LanguageButton>
+          <LanguageButton isKorean={!isKorean}
+            onClick={() => setIsKorean(false)}>EN</LanguageButton>
+        </LanguageBoxSecond>
+      </NavRight>}
+
+      <MenuToogleButton onClick={() => setIsOpen(!isOpen)}>
+        <FontAwesomeIcon icon={faBars} />
+      </MenuToogleButton>
+    </Bar >
   )
 }
 export default Nav;

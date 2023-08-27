@@ -3,25 +3,27 @@ import styled from 'styled-components';
 import { theme } from '../../style';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faInstagram, faPinterestP } from '@fortawesome/free-brands-svg-icons';
+import { faInstagram, faPinterestP, faTiktok, faLinkedinIn } from '@fortawesome/free-brands-svg-icons';
 const Background = styled.footer`
-    background-color: #1e1e1e;
+    background-color: ${theme.darkGray};
+    display: block
+    min-width: 1024px;
     padding: 40px 0;
-    margin: 0 -15px;
 `;
 const Container = styled.div`
-    max-width: 100%;
+    max-width: 980px;
+    padding-left: 22px;
+    padding-right: 22px;
     margin: 0 auto;
-    padding: 0 20%;
     
 `;
 const Box = styled.div`
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    position: relative;
-    @media (max-width: 800px) {
-      flex-direction: column;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  position: relative;
+  @media (max-width: 800px) {
+    flex-direction: column;
   }
 `;
 const Column = styled.div`
@@ -31,15 +33,23 @@ const Column = styled.div`
 `;
 const FooterBottom = styled.div`
   padding: 10px 0;
+  display: flex;
   position: relative;
   max-width: 1200px;
+  width: 100%;
+  justify-content: space-between;
+  @media (max-width: 800px) {
+    flex-direction : column;
+    justify-content: center;
+    align-items: center;
+  }
 `;
 const FooterTitle = styled.h3`
   color: #f1f1f1;
 `;
 const BusinessDetail = styled.p`
   font-size: 14px;
-  line-height: 22.4px;
+  line-height: 24px;
   color: #f1f1f1;
 `;
 const RowBox = styled.div`
@@ -47,7 +57,11 @@ const RowBox = styled.div`
   flex-direction: row;
   align-content: center;
   justify-content: space-between;
+  // margin-top: -10px;
   padding: 10px;
+  padding-top: 25px;
+  padding-bottom:0;
+  padding-right: 0px;
   @media (max-width: 800px) {
     flex-direction: column;
     justify-content: center;
@@ -56,67 +70,68 @@ const RowBox = styled.div`
 }
 `;
 
-const LinktoEmail = styled.a`
-  text-decoration: none;
-  color: #9d9d9d;
-  padding: 0 15px;
-`;
+
 const FooterButton = styled.a`
-    padding: 5px 25px;
+    font-size: 14px;
+    padding: 2px 10px;
     background-color: transparent;
     border: none;
     border-radius: 5px;
     cursor: pointer;
     text-decoration: none;
     color: ${theme.white};
-    margin: 5px 0;
+    // margin-bottom: 3px;
+    // margin-top: 4px;
+    // margin: 2px 0;
     &:hover {
       background-color: #313131;
-        color: ${theme.mainNeon};
+      color: ${theme.white};
+        // color: ${theme.mainNeon};
     }
 `;
 const IconBox = styled.div`
     display: flex;
     flex-direction: row;
+
     justify-content: space-between;
     margin-top: -5px;
     @media (max-width: 800px) {
-      position: absolute;
-      right: 0;
-      top: 0;
+      justify-content: center;
+      
     }
 `;
 const IconButton = styled.a`
-  padding-left: 5px;
-  padding-top: 5px;
+  text-align: center;
   width: 40px;
   height: 40px;
+  &:hover {
+    opacity: 0.7;
+  }
 `;
 
 function Buttons({ text1, action1, text2, action2 }) {
   return (
     <Column>
-      <FooterButton onClick={action1}>{text1}</FooterButton>
-      <FooterButton onClick={action2}>{text2}</FooterButton>
+      <FooterButton onClick={action1} style={{ marginTop: 11 }}>{text1}</FooterButton>
+      <FooterButton onClick={action2} style={{ marginTop: 2 }}>{text2}</FooterButton>
     </Column>
   );
 }
-function Ibutton({ icon, action }) {
+function Ibutton({ icon, action, style }) {
   return (
-    <IconButton onClick={action}>
-      <FontAwesomeIcon icon={icon} size='xl' style={{ color: "#f1f1f1" }} />
+    <IconButton onClick={action} style={style}>
+      <FontAwesomeIcon icon={icon} size='xl' style={{ color: "#f1f1f1", paddingTop: 7 }} />
     </IconButton>
   )
 }
 
-function Footer() {
-  var language = 'EN';
+function Footer({ isKorean }) {
   return (
     <Background>
       <Container>
         <Box>
           {
-            language === 'KR' ? <Column>
+            isKorean ? <Column>
               <FooterTitle>어스메라(Earthmera)</FooterTitle>
               <BusinessDetail> 대표이사 : 강성훈
                 <br /> 이메일 : devceohoony@gmail.com
@@ -130,39 +145,33 @@ function Footer() {
           }
 
           {
-            language === 'KR' ? <RowBox>
+            isKorean ? <RowBox>
               <Buttons text1="소개글" action1={() => alert('About Us clicked!')}
-                text2="이용약관" action2={() => alert('Terms of Use clicked!')} />
-              <Buttons text1="광고" action1={() => alert('Advertising clicked!')}
+                text2="광고" action2={() => alert('광고 clicked!')} />
+              <Buttons text1="이용약관" action1={() => alert('이용약관 clicked!')}
                 text2="개인정보처리방침" action2={() => alert('Privacy Policy clicked!')} />
             </RowBox> : <RowBox>
               <Buttons text1="About Us" action1={() => alert('About Us clicked!')}
-                text2="Terms of Use" action2={() => alert('Terms of Use clicked!')} />
-              <Buttons text1="Advertising" action1={() => alert('Advertising clicked!')}
+                text2="Advertising" action2={() => alert('Advertising clicked!')} />
+              <Buttons text1="Terms of Use" action1={() => alert('Terms of Use clicked!')}
                 text2="Privacy Policy" action2={() => alert('Privacy Policy clicked!')} />
 
             </RowBox>
           }
-          <IconBox>
-            <Ibutton icon={faInstagram} action={() => alert('Instagram clicked!')} />
-            <Ibutton icon={faPinterestP} action={() => alert('Pinterest clicked!')} />
-          </IconBox>
         </Box>
         <FooterBottom>
           {/* <hr style={{ color: '#f1f1f1' }} /> */}
-          {
-            language === 'EN' ?
-              <Box style={{ justifyContent: 'normal' }}>
-                <LinktoEmail href="mailto:devceohoony@gmail.com" data-l10n-id="footer_contactus">
-                  Contact Us</LinktoEmail>
-                <BusinessDetail style={{ marginLeft: 20 }}>Copyright&copy; 2023 by Hoohoo, All rights reserved.</BusinessDetail>
-              </Box> :
-              <Box style={{ justifyContent: 'normal' }}>
-                <LinktoEmail href="mailto:devceohoony@gmail.com" data-l10n-id="footer_contactus">
-                  문의하기</LinktoEmail>
-                <BusinessDetail style={{ marginLeft: 20 }}>Copyright&copy; 2023 by Hoohoo, All rights reserved.</BusinessDetail>
-              </Box>
-          }
+
+          {/* <Box style={{ justifyContent: 'space-between' }}> */}
+          <BusinessDetail style={{ paddingLeft: 15 }}>Copyright&copy; 2023 by Hoohoo, All rights reserved.</BusinessDetail>
+          <IconBox>
+            <Ibutton icon={faInstagram} action={() => alert('Instagram clicked!')} />
+            <Ibutton icon={faPinterestP} action={() => alert('Pinterest clicked!')} />
+            <Ibutton icon={faLinkedinIn} action={() => alert('Pinterest clicked!')} />
+            <Ibutton icon={faTiktok} action={() => alert('Pinterest clicked!')} style={{ marginRight: 15 }} />
+          </IconBox>
+          {/* </Box> */}
+
         </FooterBottom>
       </Container>
 
