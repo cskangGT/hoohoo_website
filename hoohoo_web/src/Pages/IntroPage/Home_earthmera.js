@@ -6,24 +6,28 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import { theme } from '../../style.js';
 import Carousel from 'react-bootstrap/Carousel';
 import Footer from '../../Component/Footer/Footer.js';
+import IntroSection from './IntroSection.js';
 var h = window.outerHeight;
 var w = window.outerWidth;
 const Header = styled.div`
     width: 100%;
     height: 100%;
+    min-height:100vh;
+    max-width:100vw;
     padding:0;
     display: block;
     margin: -8px;
+    align-items:center;
+
     background-color: ${theme.darkGray};
 `;
 const BgImage = styled.div`
-    // background: url("Images/image2.jpg") no-repeat center;
-    background-color: ${theme.darkGray};
-    // background-size: cover;
-    max-height: 100rem;
-    width:100vw;
-    // max-width: 100%;
-    height: 100vh;
+    background: url("Images/background.png") no-repeat center;
+    background-size: cover;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    overflow-x: hidden;
 `;
 const StoresLinkSections = styled.div`
     width: 100rem;
@@ -51,6 +55,13 @@ const MobileImg = styled.img`
     position: relative;
     height: 30rem;
 `;
+const Sections = styled.div`
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  width: 100%;
+  overflow-x: hidden;
+`;
 const SecondPage = styled.div`
     height:50rem;
     max-height: 50rem;
@@ -61,9 +72,9 @@ const SecondPage = styled.div`
     background-color: #203810;
 `;
 const Box = styled.div`
-padding-top:1vh;
-  margin-left: 5vw;
-    margin-right: 5vw;
+// padding-top:1vh;
+//   margin-left: 5vw;
+//     margin-right: 5vw;
     
 `;
 const ItemTitle = styled.h3`
@@ -83,13 +94,13 @@ const ItemTitle = styled.h3`
 //     justify-content: center; 
 // `;
 const ItemBox = styled.div`
-  width:70vw;
-  height: 40vh;
+  width:70%;
+  height: 40%;
 `;
 const Image = styled.img`
   display: block;
   justify-content: center;
-  height: 40vh;
+  height: 20%;
   margin-left: 31vw;
 `;
 const ItemText = styled.p`
@@ -133,11 +144,9 @@ const ContactText = styled.h3`
   color: ${theme.white};
 `;
 function Steps() {
-    const slides = [['Images/preview_earthmera.png', "Take action to save the planet"],
-    ['Images/preview_earthmera.png', "Capture green actions with our app"],
-    ['Images/preview_earthmera.png', "Our AI-powered detection identifies your green moments"],
-    ['Images/preview_earthmera.png', "Earn points by collecting captured eco-actions"],
-    ['Images/preview_earthmera.png', "Exchange rewards with your points"]]
+    const slides = [['Images/2_.svg', "Take action to save the planet"],
+    ['Images/2.svg', "Capture green actions with our app"],
+    ['Images/3_.svg', "Our AI-powered detection identifies your green moments"]]
     return (
         <Carousel interval={3000}>
             {slides.map((str, index) => (
@@ -161,14 +170,16 @@ function Home_earthmera() {
     const [isKorean, setIsKorean] = useState(false);
     return (<Header><BgImage>
         <Nav setIsKorean={setIsKorean} isKorean={isKorean} />
-        <StoresLinkSections >
+
+        <IntroSection></IntroSection>
+        {/* <StoresLinkSections >
             <StoresLinkBox>
                 <StoresLink style={{ marginTop: '10rem', marginLeft: '15%' }} logo='Images/Icon_1.png' appName='EARTHMERA' appDesc="Capture your green moment" textColor='#f1f1f1' bg='transparent' ></StoresLink>
             </StoresLinkBox>
             <PreviewContainer>
                 <MobileImg src='Images/preview_earthmera.png'></MobileImg>
             </PreviewContainer>
-        </StoresLinkSections>
+        </StoresLinkSections> */}
     </BgImage>
         <SecondPage>
             <Box>
@@ -176,6 +187,7 @@ function Home_earthmera() {
                 <Steps />
             </Box>
         </SecondPage>
+
         <ContactBox>
             {isKorean ? <ContactColumnBox><ContactText>비즈니스 파트너십 또는 기타 문의사항을 원하시면 아래의 버튼을 클릭하세요.</ContactText>
                 <LinktoEmail href="mailto:devceohoony@gmail.com" data-l10n-id="footer_contactus">
@@ -186,6 +198,6 @@ function Home_earthmera() {
         </ContactBox>
         <hr style={{ color: '#f1f1f1', margin: 0 }} />
         <Footer isKorean={isKorean} />
-    </Header>);
+    </Header >);
 }
 export default Home_earthmera; 

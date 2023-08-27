@@ -18,8 +18,8 @@ const LogoText = styled.a`
 `;
 const Bar = styled.nav`
   margin: 0 auto;
-  // backdrop-filter: saturate(180%) blur(20px);
-  background: rgba(30, 30, 30, .8);
+  backdrop-filter: saturate(180%) blur(20px);
+  background: rgba(0, 0, 0, .8);
   box-sizing: border-box;
   width: 100%;
   // max-width: 1024px; apple 느낌
@@ -28,7 +28,6 @@ const Bar = styled.nav`
   justify-content: space-between;
   align-items: center;
   padding: 8px 22px;
-  // background-color: transparent;
   @media screen and (max-width: 850px) {
     flex-direction: column;
     align-items: flex-start;

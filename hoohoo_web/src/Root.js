@@ -4,7 +4,7 @@ import { theme } from "./style";
 // import Router from "./Router"
 function Root() {
   return (
-    <div style={{ backgroundColor: theme.darkGray }}>
+    <div style={{ backgroundColor: '#ffffff' }}>
 
       <Outlet />
     </div>
