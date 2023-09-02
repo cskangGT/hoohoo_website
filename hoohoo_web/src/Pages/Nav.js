@@ -18,18 +18,19 @@ const LogoText = styled.a`
   }
 `;
 const Bar = styled.nav`
-position: absolute;
+position: fixed;
 top: 0;
     right: 0;
     left: 0;
+    // bottom: 0;
 z-index: 9999;
-  margin: 0 auto;
-  backdrop-filter: saturate(180%) blur(20px);
-  background: rgba(0, 0, 0, .6);
+  // margin: 0;
+  backdrop-filter: blur(15px);
+    background-color: rgba(29, 21, 40, 0.09);
   box-sizing: border-box;
   width: 100%;
   // max-width: 1024px; apple 느낌
-  max-width: 1830px;
+  // max-width: 1830px;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -37,7 +38,7 @@ z-index: 9999;
   @media screen and (max-width: 850px) {
     flex-direction: column;
     align-items: flex-start;
-    padding: 8px 24px;
+    padding: 8px 22px;
   }
 `;
 const NavbarMenu = styled.ul`
@@ -65,7 +66,7 @@ const NavMenuList = styled.li`
   color: ${theme.white};
   padding : 12.5px 15px;
   &:hover {
-    background-color: #313131;
+    // background-color: #313131;
     border-radius: 5Px;
     & .hidden-icon {
       opacity: 1;
@@ -90,7 +91,7 @@ const NavLink = styled.a`
 const NavRight = styled.div`
   display: flex;
   list-style: none;
-  height: 44px;
+  // height: 44px;
   margin: 0 -8px;
   width:auto;
   padding-left: 0;
@@ -173,14 +174,14 @@ const LanguageButton = styled.button`
     content: "";
     position: absolute;
     top: 50%;
-    right: 0;  // 이 값을 조절하여 선의 위치를 조정하세요.
+    right: 0;  
     width: 1px;  // 선의 너비
     height: 20px;  // 선의 높이
     background-color: gray;  // 선의 색상
     transform: translateY(-50%);
   }
   &:last-child::after {
-    display: none;  // 마지막 버튼에는 선을 표시하지 않습니다.
+    display: none;
   }
 `;
 
@@ -220,7 +221,6 @@ function Nav({ isKorean, setIsKorean }) {
                   href={hrefs[i]}
                 >{item}</NavLink>
               </NavMenuList>
-
             );
           })
         }

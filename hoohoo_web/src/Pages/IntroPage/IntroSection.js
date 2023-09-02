@@ -8,9 +8,10 @@ const SectionContainer = styled.section`
     box-sizing: border-box;
     justify-content: center;
     align-items: center;
+    margin-top: 82px;
     @media screen and (max-width: 1100px) {
         height: auto;
-        box-sizing: border-box;
+        
     }
 `;
 const Inside = styled.div`
@@ -24,7 +25,7 @@ const Inside = styled.div`
     flex-direction: column-reverse;
     align-items: center;
     padding-bottom: 50px;
-    padding-left: 15px;
+    margin-left: 15px;
 }
 `;
 const IntroText = styled.div`
@@ -39,13 +40,13 @@ const IntroText = styled.div`
 
 const IntroTitle = styled.h2`
   margin-bottom: 20px;
-  font-size: 3.5rem;
+  font-size: 3.3rem;
   color: ${theme.white};
   font-weight:bold;
   text-align: center;
   font-family: 'Myfont';
   @media screen and (max-width: 1100px) {
-    font-size: 50px;
+    font-size: 46px;
 }
     @media screen and (max-width: 500px) {
         font-size: 34px;
@@ -55,13 +56,13 @@ const IntroTitle = styled.h2`
 
 const FirstDesc = styled.h1`
 text-align: center;
-  font-size: 5.2rem;
+  font-size: 5.0rem;
   font-weight:bold;
   line-height: 1.1;
   margin-bottom: 5rem;
   color: ${theme.white};
   @media screen and (max-width: 1100px) {
-    font-size: 60px;
+    font-size: 54px;
     margin-bottom: 2rem;
 }
 @media screen and (max-width: 500px) {
@@ -76,7 +77,7 @@ const SecondDesc = styled.h3`
   color: ${theme.white};
   text-align: center;
   @media screen and (max-width: 1100px) {
-    font-size: 24px;
+    font-size: 22px;
     margin-bottom: 2.5rem;
 }
 @media screen and (max-width: 500px) {
@@ -85,7 +86,7 @@ const SecondDesc = styled.h3`
 }
 `;
 const LeftImage = styled.img`
-padding-top: 200px;
+    padding-top: 200px;
   max-width: 150px;
   min-width: 100px;
   height: auto;
@@ -97,7 +98,7 @@ const RightImage = styled.img`
   height: auto;
   width: 45%;
   @media screen and (max-width: 1100px) {
-      width: 70%;
+      width: 60%;
   }
 `;
 const SlideContainer = styled.div`
@@ -183,15 +184,15 @@ const IntroSection = () => {
     });
     // const [currentSlide, setCurrentSlide] = useState(0);
 
-    // useEffect(() => {
-    //     const slideInterval = setInterval(() => {
-    //         setCurrentSlide((prevSlide) => (prevSlide + 1) % images.length);
-    //     }, 3000);
+    useEffect(() => {
+        const slideInterval = setInterval(() => {
+            setCurrentSlide((prevSlide) => (prevSlide + 1) % images.length);
+        }, 5000);
 
-    //     return () => {
-    //         clearInterval(slideInterval);
-    //     };
-    // }, [images.length]);
+        return () => {
+            clearInterval(slideInterval);
+        };
+    }, [images.length]);
     console.log('currentSlide', currentSlide)
     const imagePath = images[currentSlide];
 

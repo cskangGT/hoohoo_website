@@ -21,16 +21,19 @@ const Header = styled.div`
     max-width:100vw;
     padding:0;
     display: block;
-    margin: -5px;
+    margin: 0px;
     align-items:center;
     background-color: ${theme.darkGray};
 `;
 const BgImage = styled.div`
-    background: url("Images/bg.svg") no-repeat center;
-    background-size: cover;
+    background: url("Images/bg.svg") center top / cover no-repeat;
+    
+    // background-size: cover;
     display: flex;
     flex-direction: column;
     width: 100%;
+    height: 100%;
+    max-height: 100%;
     overflow-x: hidden;
 `;
 const StoresLinkSections = styled.div`

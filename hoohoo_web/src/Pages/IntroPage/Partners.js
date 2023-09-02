@@ -38,14 +38,13 @@ const SecondHeader = styled.h2`
 `;
 const SlickBar = styled.div`
   overflow: visible;
-  
   margin: 0;
   padding: 0;
 `;
 const LongBar = styled.div`
   margin-bottom: 20px;
   display: flex;
-  @media screen and (max-width: 950px){
+  @media screen and (max-width: 1100px){
     justify-content: center;
     margin-bottom: 0;
 }
@@ -72,9 +71,6 @@ const DescBox = styled.div`
     flex-direction: column;  
     margin: 0 5px;     
 }
-//   @media screen and (min-width: 1024px){
-//     margin: 60px auto 120px;
-//   }
 `;
 const LeftBox = styled.div`
     align-items: center;

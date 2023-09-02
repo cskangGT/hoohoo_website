@@ -12,7 +12,7 @@ const Container = styled.section`
     align-items: center;
 `;
 const ContentBox = styled.div`
-    max-width: 1140px;
+    max-width: 1200px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -23,7 +23,7 @@ const HeaderBox = styled.div`
     margin-top: 15px;
     align-items: center;
     width: 70%;
-    max-width: 1140px;
+    max-width: 1200px;
 `;
 
 const Header = styled.h1`
@@ -33,33 +33,60 @@ const Header = styled.h1`
     color: ${theme.white};
     line-height: 1;
 `;
-const ImageBox = styled.div`
-    max-width: 1140px;
-    display: flex;
-    justify-content: space-between;
+const SecondImageBox = styled.div`
+    max-width: 1200px;
+    width: 100%;
+    grid-column-gap: 1rem;
+    grid-row-gap: 1rem;
+    grid-template-rows: auto;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-auto-columns: 1fr;
+    align-items: stretch;
+    justify-items: stretch;
+    display: grid;
+    margin-top: 50px;
+    justify-content: center;
+    @media screen and (max-width: 1100px) {
+        height: auto;
+        grid-template-columns: auto;
+        grid-column-gap: 30px;
+    grid-template-rows: 1fr 1fr 1fr;
+    }
+`;
+const FirstImageBox = styled.div`
+    max-width: 1200px;
     align-items: center;
+    justify-content: center;
     margin-top: 20px;
     width: 100%;
     grid-row-gap: 1rem;
-    grid-column-gap: 25px;
+    
     grid-template-rows: auto;
     grid-template-columns: 1fr 1fr 1fr;
-    // grid-auto-columns: 1fr;
     display: grid;
+    height: 940px;
+    @media screen and (max-width: 1100px) {
+        height: auto;
+        grid-template-columns: auto;
+        grid-column-gap: 30px;
+    grid-template-rows: 1fr 1fr 1fr;
+    }
 `;
 const EachBox = styled.div`
     width: 375px;
-    height: 600px;
+    height: 800px;
     position: relative;
     background: linear-gradient(170deg, rgba(255, 255, 255, 0.14) 0%, rgba(255, 255, 255, 0.05) 100%);
     border-color: ${theme.white};
     border-width: 2px;
     border-radius: 20px;
+    
 `;
 const Image = styled.img`
     // padding-bottom: 100px;
     position: absolute;
-    bottom: 100px; 
+    margin-left: 5px;
+    bottom: 70px; 
     width: 100%;
     height: auto;
 `;
@@ -70,20 +97,24 @@ const Bottom = styled.img`
 `;
 function ListSection({ data, header, isBot }) {
     var isHeader = header === '' ? false : true;
-    console.log('index', isBot)
     return (
         <Container bg={isBot}>
             <ContentBox>
                 {isHeader && <HeaderBox>
                     <Header>{header}</Header>
                 </HeaderBox>}
+                {
+                    isBot ? <SecondImageBox>
+                        {data.map((item, index) => (<EachBox style={{ height: 600 }}>
+                            <Image src={item.imagePath}></Image></EachBox>
+                        ))}
+                    </SecondImageBox> : <FirstImageBox>
+                        {data.map((item, index) => (<EachBox >
+                            <Image src={item.imagePath}></Image></EachBox>
+                        ))}
+                    </FirstImageBox>
+                }
 
-                <ImageBox>
-                    {data.map((item, index) => (<EachBox>
-                        <Image src={item.imagePath}></Image></EachBox>
-                    ))}
-
-                </ImageBox>
             </ContentBox>
 
         </Container>
