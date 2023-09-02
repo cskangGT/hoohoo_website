@@ -133,17 +133,17 @@ const BannerBtn = styled.a`
     color: ${theme.white};
     margin-right:14px;
     display: flex;
-    width: 262px;
-    padding: 25px 14px 25px 20px;
+    width: 242px;
+    // padding: 25px 14px 25px 20px;
     border-radius: 20px;
     flex: 0 0 auto;
-    border: 1px solid rgba(255, 255, 255, 0.3);
+    // border: 1px solid rgba(255, 255, 255, 0.3);
     position: relative;
     transition: all 0.3s ease 0s;
-    &:hover{
-        color: ${theme.white};
-        border-color: ${theme.mainNeon} ;
-    }
+    // &:hover{
+    //     color: ${theme.white};
+    //     border-color: ${theme.mainNeon} ;
+    // }
     @media screen and (max-width: 730px) {
     margin-top: 7px;
     }
