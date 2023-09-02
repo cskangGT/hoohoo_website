@@ -1,4 +1,5 @@
-
+import { createGlobalStyle } from 'styled-components';
+import myFontURL from './fonts/IntroHeadR-Base.otf';
 export const theme = {
     mainNeon: '#93FF3F',
     subNeon: '#9EFFA9',
@@ -18,3 +19,13 @@ export const theme = {
     lineHeightRegular: 27,
     lineHeightMicro: 18,
 };
+
+const FontFaces = createGlobalStyle`
+@font-face {
+  font-family: 'Myfont';
+  src: url(${myFontURL}) format('otf');
+  font-weight: 300;
+  font-style: normal;
+}
+`;
+export default FontFaces;

@@ -3,7 +3,8 @@ import styled from 'styled-components';
 import { theme } from '../style';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPinterestP, faInstagram } from '@fortawesome/free-brands-svg-icons';
-import { faBars } from '@fortawesome/free-solid-svg-icons';
+import { faBars, faRefresh } from '@fortawesome/free-solid-svg-icons';
+import { Link, animateScroll as scroll } from 'react-scroll';
 const Logo = styled.div`
   padding: 15px;
   font-size: 24px;
@@ -17,9 +18,14 @@ const LogoText = styled.a`
   }
 `;
 const Bar = styled.nav`
+position: absolute;
+top: 0;
+    right: 0;
+    left: 0;
+z-index: 9999;
   margin: 0 auto;
   backdrop-filter: saturate(180%) blur(20px);
-  background: rgba(0, 0, 0, .8);
+  background: rgba(0, 0, 0, .6);
   box-sizing: border-box;
   width: 100%;
   // max-width: 1024px; apple 느낌
@@ -75,6 +81,7 @@ const NavLink = styled.a`
   text-decoration : none;
   color: ${theme.white};
   padding-left: 10px;
+  cursor: pointer;
   &:hover {
     border-radius: 4px;
     color: ${theme.mainNeon};
@@ -136,7 +143,7 @@ const LanguageBox = styled.div`
     display: none;
     position: absolute;
     right: 45px;
-    top: 27px;
+    top: 25px;
   }
 `;
 const LanguageBoxSecond = styled.div`
@@ -178,8 +185,8 @@ const LanguageButton = styled.button`
 `;
 
 function Nav({ isKorean, setIsKorean }) {
-  const links = ["Home", "About", "Advertising", "Contact"];
-  const hrefs = ['#home', '#about', '#advertising', '#contact'];
+  const links = ["Home", "About", "Advertising", "Download", "Contact"];
+  const hrefs = ['#home', '#about', '#sketch', "#download", '#contact'];
   const icons = [];
   const [isOpen, setIsOpen] = useState(false);
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
@@ -208,7 +215,10 @@ function Nav({ isKorean, setIsKorean }) {
           links.map((item, i) => {
             return (
               <NavMenuList><HiddenIcon className="hidden-icon" icon={faInstagram} size='lg' />
-                <NavLink id={i} href={hrefs[i]}>{item}</NavLink>
+                <NavLink
+                  id={i}
+                  href={hrefs[i]}
+                >{item}</NavLink>
               </NavMenuList>
 
             );
