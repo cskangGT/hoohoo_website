@@ -1,9 +1,9 @@
-import { createBrowserRouter} from "react-router-dom";
+import { createBrowserRouter } from "react-router-dom";
 import Root from "./Root"
 import NotFound from "./Component/ErrorComponent/ErrorComponent"
 import ErrorComponent from "./Component/ErrorComponent/ErrorComponent";
 import Main from "./Pages/IntroPage/Main";
-import Home_earthmera from "./Pages/IntroPage/Home_earthmera";
+import HomeEarthmera from "./Pages/IntroPage/HomeEarthmera";
 
 const Router = createBrowserRouter([
     {
@@ -17,7 +17,7 @@ const Router = createBrowserRouter([
             },
             {
                 path: "",
-                element: <Home_earthmera />,
+                element: <HomeEarthmera />,
                 errorElement: <ErrorComponent />
             }
         ],
