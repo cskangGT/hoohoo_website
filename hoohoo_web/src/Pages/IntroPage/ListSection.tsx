@@ -14,6 +14,7 @@ const Container = styled.section<Props>`
     flex-direction: column;
     justify-content: flex-start;
     align-items: center;
+    transition: opacity 0.5s;
 `;
 const ContentBox = styled.div`
     max-width: 1200px;

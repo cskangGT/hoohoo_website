@@ -1,7 +1,7 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 import { theme } from '../style';
-const BubbleBox = styled.div`
+const BubbleBox = styled.div<any>`
     cursor: pointer;
     color: ${theme.darkgrey};
     padding-left: 20px;
@@ -14,7 +14,9 @@ const BubbleBox = styled.div`
     right: 20px;
     bottom: 20px;
     text-align: left;
-    background-color: rgba(77, 163, 138, 0.8);
+    opacity: ${({ isFadingOut }: any) => (isFadingOut ? 0 : 1)};
+    background-color: rgba(30, 30, 30, 0.7);
+    transition: opacity 0.5s;
 `;
 const Inside = styled.div`
   left: 30px;
@@ -43,22 +45,30 @@ const Close = styled.img`
 `;
 
 type BubbleProps = {
-    setIsBubble: React.Dispatch<React.SetStateAction<boolean>>;
+  setIsBubble: React.Dispatch<React.SetStateAction<boolean>>;
 };
 
 const Bubble: React.FC<BubbleProps> = ({ setIsBubble }) => {
-    return (
-        <BubbleBox>
-            <Inside>
-                <Image src='Images/icon_128_round.png' />
-                <TextBox>
-                    <Text>We are the creator of DropB <br />Do you want to tag your day? Try DropB!</Text>
-                </TextBox>
-            </Inside>
-            <CloseBox onClick={() => setIsBubble(false)}>
-                <Close src='Images/close_btn.png' />
-            </CloseBox>
-        </BubbleBox>
-    )
+  const [isFadingOut, setIsFadingOut] = useState<boolean>(false);
+  const handleClose = () => {
+    setIsFadingOut(true);
+    setTimeout(() => {
+      setIsBubble(false);
+    }, 500);
+  };
+
+  return (
+    <BubbleBox isFadingOut={isFadingOut}>
+      <Inside>
+        <Image src='Images/icon_128_round.png' />
+        <TextBox>
+          <Text>We are the creator of DropB <br />Do you want to tag your day? Try DropB!</Text>
+        </TextBox>
+      </Inside>
+      <CloseBox onClick={handleClose}>
+        <Close src='Images/close_btn.png' />
+      </CloseBox>
+    </BubbleBox>
+  )
 }
 export default Bubble;
