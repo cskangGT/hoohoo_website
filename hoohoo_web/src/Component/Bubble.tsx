@@ -60,7 +60,7 @@ const Bubble: React.FC<BubbleProps> = ({ setIsBubble }) => {
   return (
     <BubbleBox isFadingOut={isFadingOut}>
       <Inside>
-        <Image src='Images/icon_128_round.png' />
+        <Image src='Images/icon128.png' />
         <TextBox>
           <Text>We are the creator of DropB <br />Do you want to tag your day? Try DropB!</Text>
         </TextBox>
