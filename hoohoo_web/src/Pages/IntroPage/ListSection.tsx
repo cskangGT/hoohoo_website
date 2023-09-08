@@ -1,7 +1,11 @@
 import React from 'react';
 import styled from 'styled-components';
 import { theme } from '../../style';
-const Container = styled.section`
+
+type Props = {
+    bg: boolean;
+}
+const Container = styled.section<Props>`
     // background: ${props => props.bg ? 'url(\'Images/3rd_background.svg\')' : 'url(\'Images/basic_background.png\')'} no-repeat center;
     // background-size: cover;
     width: 100%;
@@ -98,7 +102,15 @@ const Bottom = styled.img`
     position: absolute;
     width: 100%;
 `;
-function ListSection({ data, header, isBot }) {
+type DataProps = {
+    imagePath: string;
+}
+type TotalProps = {
+    data: DataProps[];
+    header: string;
+    isBot: boolean;
+}
+function ListSection({ data, header, isBot }: TotalProps) {
     var isHeader = header === '' ? false : true;
     return (
         <Container bg={isBot}>

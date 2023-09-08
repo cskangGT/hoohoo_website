@@ -108,8 +108,21 @@ const IconButton = styled.a`
     opacity: 0.7;
   }
 `;
-
-function Buttons({ text1, action1, text2, action2 }) {
+type Button = {
+  text1: string;
+  action1: () => void;
+  text2: string;
+  action2: () => void;
+}
+type Ibutton = {
+  icon: any;
+  action: () => void;
+  style?: {};
+}
+type FooterProps = {
+  isKorean: boolean;
+}
+function Buttons({ text1, action1, text2, action2 }: Button) {
   return (
     <Column>
       <FooterButton onClick={action1} style={{ marginTop: 11 }}>{text1}</FooterButton>
@@ -117,7 +130,7 @@ function Buttons({ text1, action1, text2, action2 }) {
     </Column>
   );
 }
-function Ibutton({ icon, action, style }) {
+function Ibutton({ icon, action, style }: Ibutton) {
   return (
     <IconButton onClick={action} style={style}>
       <FontAwesomeIcon icon={icon} size='xl' style={{ color: "#f1f1f1", paddingTop: 7 }} />
@@ -125,7 +138,7 @@ function Ibutton({ icon, action, style }) {
   )
 }
 
-function Footer({ isKorean }) {
+function Footer({ isKorean }: FooterProps) {
   return (
     <Background>
       <Container>
@@ -143,7 +156,6 @@ function Footer({ isKorean }) {
               </BusinessDetail>
             </Column>
           }
-
           {
             isKorean ? <RowBox>
               <Buttons text1="소개글" action1={() => alert('About Us clicked!')}
@@ -155,7 +167,6 @@ function Footer({ isKorean }) {
                 text2="Partnership" action2={() => alert('Partnership clicked!')} />
               <Buttons text1="Terms of Use" action1={() => alert('Terms of Use clicked!')}
                 text2="Privacy Policy" action2={() => alert('Privacy Policy clicked!')} />
-
             </RowBox>
           }
         </Box>

@@ -56,8 +56,12 @@ const BoxContent = styled.p`
         text-align:center;
     }
 `;
+type DataType = {
+    head: string;
+    content: string;
+};
 function PartnersWays() {
-    const data = [
+    const data: DataType[] = [
         {
             head: "Events",
             content: "We work with entertainment, educational, and active events. We can create exclusive marketplaces filled with deep discounts and event partner products, accessible only to participants of your event. We also run friendly competitions with live leaderboard step counts and set targets for the participants to complete as"

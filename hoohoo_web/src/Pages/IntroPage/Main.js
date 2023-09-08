@@ -3,7 +3,7 @@
 import React from 'react';
 import StoresLink from '../../Component/LinkToStore/LinkToStore.js'
 import styled from 'styled-components';
-import Nav from '../Nav.js'
+import Nav from '../Nav.tsx'
 var w = window.innerWidth;
 var h = window.innerHeight;
 // const Header = styled.header`

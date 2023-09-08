@@ -134,7 +134,11 @@ const ReCap = styled.div`
     height: 60px;
     box-shadow: gray 0px 0px 5px;
 `;
-function PartnerModal({ isOpen, setIsOpen }) {
+type Props = {
+    isOpen: boolean;
+    setIsOpen: React.Dispatch<React.SetStateAction<boolean>>;
+};
+function PartnerModal({ isOpen, setIsOpen }: Props) {
     const [formData, setFormData] = useState({
         name: '',
         company: '',
@@ -142,12 +146,12 @@ function PartnerModal({ isOpen, setIsOpen }) {
         message: ''
     });
 
-    const handleChange = (e) => {
+    const handleChange = (e: any) => {
         const { name, value } = e.target;
         setFormData(prevData => ({ ...prevData, [name]: value }));
     };
 
-    const handleSubmit = async (e) => {
+    const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
 
         try {
@@ -177,7 +181,7 @@ function PartnerModal({ isOpen, setIsOpen }) {
     };
     // "
     return (
-        <div>
+        <React.Fragment>
             {isOpen && (
                 <ModalBackground>
                     <Wrapper>
@@ -211,7 +215,7 @@ function PartnerModal({ isOpen, setIsOpen }) {
                                     placeholder="Company Name"
                                     required />
                                 <Label>Message</Label>
-                                <Textarea rows="5" name="message"
+                                <Textarea rows={5} name="message"
                                     value={formData.message}
                                     onChange={handleChange}
                                     placeholder="Your Message"
@@ -220,7 +224,7 @@ function PartnerModal({ isOpen, setIsOpen }) {
                                     <RichText>EarthMera is committed to protecting and respecting your privacy, and we’ll only use your personal information to administer your account and to provide the products and services you requested from us. From time to time, we would like to contact you about our products and services, as well as other content that may be of interest to you. If you consent to us contacting you for this purpose, please tick below to say how you would like us to contact you:</RichText>
                                     <AgreeBox>
                                         <legend />
-                                        <div>
+                                        <React.Fragment>
                                             <InputList>
                                                 <CheckList>
                                                     <Label style={{ fontSize: 14 }}>
@@ -229,7 +233,7 @@ function PartnerModal({ isOpen, setIsOpen }) {
                                                     </Label>
                                                 </CheckList>
                                             </InputList>
-                                        </div>
+                                        </React.Fragment>
                                     </AgreeBox>
                                     <RichTextP>You may unsubscribe from these communications at any time. For more information on how to unsubscribe, our privacy practices, and how we are committed to protecting and respecting your privacy, please review our <a href={'/privacy'}>Privacy Policy</a>.</RichTextP>
                                     <RichTextP>By clicking submit below, you consent to allow Mistplay to store and process the personal information submitted above to provide you the content requested.</RichTextP>
@@ -239,14 +243,14 @@ function PartnerModal({ isOpen, setIsOpen }) {
                                         </ReCap>
                                     </ReCaptchaBox>
                                 </ConsentContainer>
-                                <SubmitBtn href="mailto:devceohoony@gmail.com" data-l10n-id="partnership-submit">
+                                <SubmitBtn data-l10n-id="partnership-submit">
                                     Submit</SubmitBtn>
                             </Form>
                         </ModalContent>
                     </Wrapper>
                 </ModalBackground>
             )}
-        </div>
+        </React.Fragment>
     );
 }
 

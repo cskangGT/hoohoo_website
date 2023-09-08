@@ -63,28 +63,34 @@ color: #5a5c81;
     font-size: .875rem;
     line-height: 1.85;
 `;
-function SketchContents() {
-    const data = {
-        'Images/Test1.svg': {
-            headerText: "User-centric goal",
-            content: "Providing players with a continuously rewarding experience while discovering new digital worlds at the tap of a button."
-        },
-        'Images/Test2.svg': {
-            headerText: "Partner focus goal",
-            content: "Building the leading play-and-earn solution that drives high user engagement for game publishers and advertisers on a global scale."
-        }
-    };
+interface DataItem {
+    headerText: string;
+    content: string;
+}
+
+// data 객체에 대한 타입 정의
+const data: Record<string, DataItem> = {
+    'Images/Test1.svg': {
+        headerText: "User-centric goal",
+        content: "Providing players with a continuously rewarding experience while discovering new digital worlds at the tap of a button."
+    },
+    'Images/Test2.svg': {
+        headerText: "Partner focus goal",
+        content: "Building the leading play-and-earn solution that drives high user engagement for game publishers and advertisers on a global scale."
+    }
+};
+const SketchContents: React.FC = () => {
+
     const images = Object.keys(data);
     return (
-
         <Container>
             <Grid>
                 {
                     images.map((imagePath, index) => (
-                        <Box>
-                            <Image src={imagePath}></Image>
-                            <FirstText>{data[imagePath].headerText}</FirstText>
-                            <SecondText>{data[imagePath].content}</SecondText>
+                        <Box key={index} >
+                            <Image src={imagePath} />
+                            <FirstText> {data[imagePath].headerText} </FirstText>
+                            <SecondText > {data[imagePath].content} </SecondText>
                         </Box>
                     ))
                 }

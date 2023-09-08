@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import styled from 'styled-components';
 import { theme } from '../../style';
 import PartnersWays from './PartnersWays';
@@ -59,9 +59,9 @@ const CardBox = styled.div`
 `;
 const Card = styled.div`
     width: 290px;
-    margin: 25px auto;
+    margin: 20px auto;
     box-sizing: border-box;
-    padding: 0px 12px;
+    padding: 20px 12px;
     text-align: center;
     align-items: center;
     background: linear-gradient(258deg, rgba(255, 255, 255, 0.07) 0%, rgba(255, 255, 255, 0.01) 100%);
@@ -78,16 +78,18 @@ const Card = styled.div`
 `;
 const CardImage = styled.img`
   height: 64px;
-  margin: 0 0 25px;
+  margin: 0 0 10px;
 `;
 const CardHead = styled.h4`
     font-size: 18px;
     line-height: 140%;
     margin-bottom: 8px;
-    font-weight: 600;
+    font-weight: 400;
     color: ${theme.subNeon};
 `;
 const CardContent = styled.p`
+    ffont-family: 'Poppins', sans-serif;
+    font-weight: 200;
     font-size: 16px;
     line-height: 140%;
     color: rgba(252, 240, 240, 0.7);
@@ -104,8 +106,18 @@ const PartnersCardBox = styled.div`
         flex-direction: column;
     }
 `;
+type DataType = {
+    image: string;
+    head: string;
+    content: string;
+};
+type CardType = {
+    image: string;
+    msg: string;
+    button: string;
+};
 function Fundraising() {
-    const data = [{
+    const data: DataType[] = [{
         image: "Images/connect.png",
         head: "Connect",
         content: "We find a corporate investor to sponsor your festival."
@@ -122,7 +134,7 @@ function Fundraising() {
         head: "Release",
         content: "When the sweatcoin target is hit, the donor releases the funds."
     }];
-    const cardData = [
+    const cardData: CardType[] = [
         {
             image: "Images/c1.jpg",
             msg: "Are you opening festival?",
@@ -164,16 +176,13 @@ function Fundraising() {
                 <PartnersCardBox>
                     {
                         cardData.map((item, index) => (
-                            <PartnersCardComponent key={index} item={item}>
+                            <PartnersCardComponent key={index} item={item} />
 
-                            </PartnersCardComponent>
                         ))
                     }
-                    <PartnersCardComponent ></PartnersCardComponent>
+
                 </PartnersCardBox>
                 <PartnersWays />
-
-
             </ContentBox>
         </Container >
     )

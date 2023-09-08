@@ -22,15 +22,12 @@ const Bar = styled.nav`
   top: 0;
   right: 0;
   left: 0;
-    // bottom: 0;
   z-index: 9999;
-  // margin: 0;
   backdrop-filter: blur(15px);
   background-color: rgba(29, 21, 40, 0.09);
   box-sizing: border-box;
   width: 100%;
-  // max-width: 1024px; apple 느낌
-  // max-width: 1830px;
+
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -41,7 +38,10 @@ const Bar = styled.nav`
     padding: 8px 22px;
   }
 `;
-const NavbarMenu = styled.ul`
+type NavBarProps = {
+  isOpen: boolean;
+}
+const NavbarMenu = styled.ul<NavBarProps>`
   display: flex;
   list-style: none;
   height: 44px;
@@ -157,7 +157,11 @@ const LanguageBoxSecond = styled.div`
     top: 27px;
   }
 `;
-const LanguageButton = styled.button`
+type LanguageProps =
+  {
+    isKorean: boolean;
+  }
+const LanguageButton = styled.button<LanguageProps>`
   font-size: 12px;
   color: ${theme.white};
   background: none;
@@ -184,13 +188,17 @@ const LanguageButton = styled.button`
     display: none;
   }
 `;
+type NavProps = {
+  isKorean: boolean;
+  setIsKorean: React.Dispatch<React.SetStateAction<boolean>>;
+}
 
-function Nav({ isKorean, setIsKorean }) {
-  const links = ["Home", "About", "Partnership", "Download", "Contact"];
-  const hrefs = ['#home', '#about', '#Partnership', "#download", '#contact'];
-  const icons = [];
-  const [isOpen, setIsOpen] = useState(false);
-  const [windowWidth, setWindowWidth] = useState(window.innerWidth);
+function Nav({ isKorean, setIsKorean }: NavProps) {
+  const links: string[] = ["Home", "About", "Partnership", "Download", "Contact"];
+  const hrefs: string[] = ['#home', '#about', '#Partnership', "#download", '#contact'];
+  // const icons = [];
+  const [isOpen, setIsOpen] = useState<boolean>(false);
+  const [windowWidth, setWindowWidth] = useState<number>(window.innerWidth);
 
   useEffect(() => {
     const handleResize = () => {
@@ -217,7 +225,7 @@ function Nav({ isKorean, setIsKorean }) {
             return (
               <NavMenuList><HiddenIcon className="hidden-icon" icon={faInstagram} size='lg' />
                 <NavLink
-                  id={i}
+                  id={links[i]}
                   href={hrefs[i]}
                 >{item}</NavLink>
               </NavMenuList>

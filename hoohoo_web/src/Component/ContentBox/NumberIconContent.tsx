@@ -56,11 +56,11 @@ const ItemBox = styled.div`
 
 const FirstText = styled.div`
   font-size: 34px;
-  font-weight: bold;
-  grid-column-end: span 1;
-  grid-column-start :span 1;
-  grid-row-end: span 1;
-  grid-row-start: span 1;
+  font-weight: 300;
+//   grid-column-end: span 1;
+//   grid-column-start :span 1;
+//   grid-row-end: span 1;
+//   grid-row-start: span 1;
 `;
 const SecondText = styled.div`
 font-size: 25px;
@@ -94,12 +94,15 @@ left: 33%;
     height: 1px;
 }
 `;
-const LottieBox = styled.div`
+type Props = {
+    i: number;
+}
+const LottieBox = styled.div<Props>`
 width: 90px;
 position: absolute;
 top: -2rem;
 @media screen and (max-width: 850px) {
-    top: ${props => props.i * 13 - 2}rem;
+    top: ${props => props.i * 13.8 - 2}rem;
 }
 `;
 const TextBox = styled.div`
@@ -114,7 +117,13 @@ display: flex;
     margin-top: 20px;
 }
 `;
-const data = [{
+type DataItem = {
+    [key: number]: {
+        firstText: string;
+        secondText: string;
+    }
+};
+const data: DataItem[] = [{
     0: {
         firstText: "30M+",
         secondText: "lifetime Installs",

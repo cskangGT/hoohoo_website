@@ -1,10 +1,9 @@
-import React, { useState } from 'react';
+import React from 'react';
 import styled from 'styled-components';
 import { theme } from '../../style';
 
 const Card = styled.div`
     box-shadow: rgba(0, 0, 0, 0.08) 0px 40px 80px 0px;
-    // background-color:
     background: linear-gradient(253deg, rgba(200, 200, 200, 0.1) 10%, rgba(252, 230, 187, 0.3) 30%);
     backdrop-filter: blur(20px);
     border-radius: 10px;
@@ -44,7 +43,16 @@ const Btn = styled.button`
         box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.7);
     }
 `;
-function PartnersCardComponent(props) {
+type Item = {
+    image: string;
+    msg: string;
+    button: string;
+};
+type Props = {
+    item: Item;
+};
+
+function PartnersCardComponent(props: Props) {
     if (!props.item || !props.item.image) {
         return null;
     }
