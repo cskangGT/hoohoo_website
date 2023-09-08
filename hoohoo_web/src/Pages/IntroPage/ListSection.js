@@ -27,11 +27,14 @@ const HeaderBox = styled.div`
 `;
 
 const Header = styled.h1`
-    font-size: 5rem;
+    font-size: 4rem;
     font-weight: bold;
     text-align:center;
     color: ${theme.white};
     line-height: 1;
+    @media screen and (max-width: 1100px) {
+        font-size: 2.3rem;
+    }
 `;
 const SecondImageBox = styled.div`
     max-width: 1200px;

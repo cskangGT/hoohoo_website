@@ -4,7 +4,7 @@ import { theme } from '../style';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPinterestP, faInstagram } from '@fortawesome/free-brands-svg-icons';
 import { faBars, faRefresh } from '@fortawesome/free-solid-svg-icons';
-import { Link, animateScroll as scroll } from 'react-scroll';
+
 const Logo = styled.div`
   padding: 15px;
   font-size: 24px;
@@ -18,15 +18,15 @@ const LogoText = styled.a`
   }
 `;
 const Bar = styled.nav`
-position: fixed;
-top: 0;
-    right: 0;
-    left: 0;
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
     // bottom: 0;
-z-index: 9999;
+  z-index: 9999;
   // margin: 0;
   backdrop-filter: blur(15px);
-    background-color: rgba(29, 21, 40, 0.09);
+  background-color: rgba(29, 21, 40, 0.09);
   box-sizing: border-box;
   width: 100%;
   // max-width: 1024px; apple 느낌
@@ -186,8 +186,8 @@ const LanguageButton = styled.button`
 `;
 
 function Nav({ isKorean, setIsKorean }) {
-  const links = ["Home", "About", "Advertising", "Download", "Contact"];
-  const hrefs = ['#home', '#about', '#sketch', "#download", '#contact'];
+  const links = ["Home", "About", "Partnership", "Download", "Contact"];
+  const hrefs = ['#home', '#about', '#Partnership', "#download", '#contact'];
   const icons = [];
   const [isOpen, setIsOpen] = useState(false);
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);

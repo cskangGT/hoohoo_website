@@ -98,9 +98,7 @@ const RightBox = styled.div`
     height: 352px;
     display: flex;
     flex-direction: column;
-    -webkit-box-pack: center;
     justify-content: center;
-    -webkit-box-align: center;
     align-items: center;
     padding: 20px;
     background: linear-gradient(170deg, rgba(255, 255, 255, 0.14) 0%, rgba(255, 255, 255, 0.05) 100%);

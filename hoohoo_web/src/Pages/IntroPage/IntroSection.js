@@ -24,7 +24,7 @@ const Inside = styled.div`
   @media screen and (max-width: 1100px) {
     flex-direction: column-reverse;
     align-items: center;
-    padding-bottom: 50px;
+    // padding-bottom: 50px;
     margin-left: 15px;
 }
 `;

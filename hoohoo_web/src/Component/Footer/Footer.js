@@ -147,12 +147,12 @@ function Footer({ isKorean }) {
           {
             isKorean ? <RowBox>
               <Buttons text1="소개글" action1={() => alert('About Us clicked!')}
-                text2="광고" action2={() => alert('광고 clicked!')} />
+                text2="제휴" action2={() => alert('제휴 clicked!')} />
               <Buttons text1="이용약관" action1={() => alert('이용약관 clicked!')}
                 text2="개인정보처리방침" action2={() => alert('Privacy Policy clicked!')} />
             </RowBox> : <RowBox>
               <Buttons text1="About Us" action1={() => alert('About Us clicked!')}
-                text2="Advertising" action2={() => alert('Advertising clicked!')} />
+                text2="Partnership" action2={() => alert('Partnership clicked!')} />
               <Buttons text1="Terms of Use" action1={() => alert('Terms of Use clicked!')}
                 text2="Privacy Policy" action2={() => alert('Privacy Policy clicked!')} />
 

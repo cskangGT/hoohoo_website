@@ -12,6 +12,7 @@ import SketchContents from '../../Component/ContentBox/SketchContents.js';
 import ListSection from './ListSection.js';
 import Download from './Download.js';
 import Partners from './Partners.js';
+import Fundraising from '../Fund/Fundraising.js';
 // var h = window.outerHeight;
 // var w = window.outerWidth;
 const Header = styled.div`
@@ -228,9 +229,13 @@ function HomeEarthmera() {
             <ContentBox id="partners">
                 <Partners />
             </ContentBox>
+            <ContentBox>
+                <Fundraising></Fundraising>
+            </ContentBox>
             <ContentBox id="download">
                 <Download />
             </ContentBox>
+
             <ContactBox>
                 {isKorean ? <ContactColumnBox><ContactText>비즈니스 파트너십 또는 기타 문의사항을 원하시면 아래의 버튼을 클릭하세요.</ContactText>
                     <LinktoEmail href="mailto:devceohoony@gmail.com" data-l10n-id="footer_contactus">
