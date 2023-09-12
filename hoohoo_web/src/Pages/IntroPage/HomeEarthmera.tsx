@@ -1,20 +1,21 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
-import Nav from '../Nav.js'
-import 'bootstrap/dist/css/bootstrap.min.css';
-import { theme } from '../../style.js';
+import Nav from '../Nav'
+// import 'bootstrap/dist/css/bootstrap.min.css';
+import { theme } from '../../style';
 import Carousel from 'react-bootstrap/Carousel';
-import Footer from '../../Component/Footer/Footer.js';
-import IntroSection from './IntroSection.js';
-import AboutUs from './AboutUs.js';
-import NumberIconContent from '../../Component/ContentBox/NumberIconContent.js';
-import SketchContents from '../../Component/ContentBox/SketchContents.js';
-import ListSection from './ListSection.js';
-import Download from './Download.js';
-import Partners from './Partners.js';
+import Footer from '../../Component/Footer/Footer';
+import IntroSection from './IntroSection';
+import AboutUs from './AboutUs';
+import NumberIconContent from '../../Component/ContentBox/NumberIconContent';
+import SketchContents from '../../Component/ContentBox/SketchContents';
+import ListSection from './ListSection';
+import Download from './Download';
+import Partners from './Partners';
+import Fundraising from '../Fund/Fundraising';
 // var h = window.outerHeight;
 // var w = window.outerWidth;
-const Header = styled.div`
+const Container = styled.div`
     width: 100%;
     height: 100%;
     min-height:100vh;
@@ -27,7 +28,6 @@ const Header = styled.div`
 `;
 const BgImage = styled.div`
     background: url("Images/bg.svg") center top / cover no-repeat;
-    
     // background-size: cover;
     display: flex;
     flex-direction: column;
@@ -178,16 +178,19 @@ function Steps() {
         </Carousel>
     );
 };
+type ImageProps = {
+    imagePath: string;
+}
 
 function HomeEarthmera() {
-    const secondImages = [{
+    const secondImages: ImageProps[] = [{
         imagePath: 'Images/2-1.webp'
     }, {
         imagePath: 'Images/2-2.webp'
     }, {
         imagePath: 'Images/2-3.webp'
     }];
-    const thirdImages = [{
+    const thirdImages: ImageProps[] = [{
         imagePath: 'Images/3-1.webp'
     }, {
         imagePath: 'Images/3-2.webp'
@@ -195,7 +198,7 @@ function HomeEarthmera() {
         imagePath: 'Images/3-3.webp'
     }];
     const [isKorean, setIsKorean] = useState(false);
-    return (<Header>
+    return (<Container>
         <BgImage>
             <Nav setIsKorean={setIsKorean} isKorean={isKorean} />
             <IntroSection></IntroSection>
@@ -208,8 +211,8 @@ function HomeEarthmera() {
             </PreviewContainer>
         </StoresLinkSections> */}
 
-            <ListSection data={secondImages} header='' isBot={false}></ListSection>
-            <ListSection data={thirdImages} header='REDEEM REWARDS WITH POINTS.' isBot={true}></ListSection>
+            <ListSection data={secondImages} header='' isBot={false} />
+            <ListSection data={thirdImages} header='REDEEM REWARDS WITH POINTS.' isBot={true} />
             {/* <SecondPage>
                 <Box>
                     <ItemTitle>EarthMera empowers you to make a difference and create a greener future.</ItemTitle>
@@ -228,20 +231,24 @@ function HomeEarthmera() {
             <ContentBox id="partners">
                 <Partners />
             </ContentBox>
+            <ContentBox>
+                <Fundraising></Fundraising>
+            </ContentBox>
             <ContentBox id="download">
                 <Download />
             </ContentBox>
+
             <ContactBox>
                 {isKorean ? <ContactColumnBox><ContactText>비즈니스 파트너십 또는 기타 문의사항을 원하시면 아래의 버튼을 클릭하세요.</ContactText>
-                    <LinktoEmail href="mailto:devceohoony@gmail.com" data-l10n-id="footer_contactus">
+                    <LinktoEmail form="mailto:devceohoony@gmail.com" data-l10n-id="footer_contactus">
                         문의하기</LinktoEmail></ContactColumnBox> : <ContactColumnBox><ContactText>Interested in partnering with us or have any questions? </ContactText>
-                    <LinktoEmail href="mailto:devceohoony@gmail.com" data-l10n-id="footer_contactus">
+                    <LinktoEmail form="mailto:devceohoony@gmail.com" data-l10n-id="footer_contactus">
                         Contact Us</LinktoEmail></ContactColumnBox>}
 
             </ContactBox>
             <hr style={{ color: '#f1f1f1', margin: 0 }} />
             <Footer isKorean={isKorean} />
         </BgImage>
-    </Header >);
+    </Container>);
 }
 export default HomeEarthmera; 

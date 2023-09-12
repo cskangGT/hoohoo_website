@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import styled, { keyframes } from 'styled-components';
+import styled from 'styled-components';
 import { theme } from '../../style';
 
 const Container = styled.div`
@@ -49,7 +49,12 @@ const LongBar = styled.div`
     margin-bottom: 0;
 }
 `;
-const Outline = styled.button`
+
+interface OutlineProps {
+    op: number;
+    slideIndex: number;
+}
+const Outline = styled.button<OutlineProps>`
     opacity: ${props => props.op === props.slideIndex ? 1 : 0.3};
     background : none;
     border: none;
@@ -59,7 +64,6 @@ const Outline = styled.button`
   float: left;
   height: 100%;
   min-height: 1px;
-
 `;
 const OutlineText = styled.h3`
     color: ${theme.white};
@@ -98,9 +102,7 @@ const RightBox = styled.div`
     height: 352px;
     display: flex;
     flex-direction: column;
-    -webkit-box-pack: center;
     justify-content: center;
-    -webkit-box-align: center;
     align-items: center;
     padding: 20px;
     background: linear-gradient(170deg, rgba(255, 255, 255, 0.14) 0%, rgba(255, 255, 255, 0.05) 100%);
@@ -141,11 +143,10 @@ text-align: center;
 }
 `;
 function Partners() {
+    const [slideIndex, setSlideIndex] = useState<number>(0);
+    const list: string[] = ["Partners", "NHS", "Government"];
 
-    const [slideIndex, setSlideIndex] = useState(0);
-    const list = ["Partners", "NHS", "Government"];
-
-    const desc = ["The value of a sweatcoin is derived from our wide-reaching partnerships. From brands that want to connect with health conscious audiences, insurers wishing to encourage healthier lifestyle choices and governments looking to reduce healthcare costs.",
+    const desc: string[] = ["The value of a sweatcoin is derived from our wide-reaching partnerships. From brands that want to connect with health conscious audiences, insurers wishing to encourage healthier lifestyle choices and governments looking to reduce healthcare costs.",
         "Sweatcoin work with the NHS to deliver Healthy Incentive programmes across the country, using personalised data-driven approaches to deliver sustained behaviour change.",
         "Sweatcoin helps users become +20% more active each day, even after 6 months — this has the potential to transform public health, by using Sweatcoin as a prevention tool for sustained behaviour change."]
     return (
@@ -178,8 +179,6 @@ function Partners() {
                         }
                     </RightBox>
                 </DescBox>
-
-
             </ContentBox>
         </Container >
     )

@@ -1,7 +1,11 @@
 import React from 'react';
 import styled from 'styled-components';
 import { theme } from '../../style';
-const Container = styled.section`
+
+type Props = {
+    bg: boolean;
+}
+const Container = styled.section<Props>`
     // background: ${props => props.bg ? 'url(\'Images/3rd_background.svg\')' : 'url(\'Images/basic_background.png\')'} no-repeat center;
     // background-size: cover;
     width: 100%;
@@ -10,6 +14,7 @@ const Container = styled.section`
     flex-direction: column;
     justify-content: flex-start;
     align-items: center;
+    transition: opacity 0.5s;
 `;
 const ContentBox = styled.div`
     max-width: 1200px;
@@ -27,11 +32,14 @@ const HeaderBox = styled.div`
 `;
 
 const Header = styled.h1`
-    font-size: 5rem;
+    font-size: 4rem;
     font-weight: bold;
     text-align:center;
     color: ${theme.white};
     line-height: 1;
+    @media screen and (max-width: 1100px) {
+        font-size: 2.3rem;
+    }
 `;
 const SecondImageBox = styled.div`
     max-width: 1200px;
@@ -95,7 +103,15 @@ const Bottom = styled.img`
     position: absolute;
     width: 100%;
 `;
-function ListSection({ data, header, isBot }) {
+type DataProps = {
+    imagePath: string;
+}
+type TotalProps = {
+    data: DataProps[];
+    header: string;
+    isBot: boolean;
+}
+function ListSection({ data, header, isBot }: TotalProps) {
     var isHeader = header === '' ? false : true;
     return (
         <Container bg={isBot}>

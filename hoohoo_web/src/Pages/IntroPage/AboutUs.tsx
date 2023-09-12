@@ -89,7 +89,7 @@ background-color: ${theme.mainNeon};
   max-width:60%;
   padding: 10px 15px;
 `;
-const style = {
+const style: any = {
     position: 'absolute',
     top: '50%',
     left: '50%',

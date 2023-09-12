@@ -1,7 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
-import FontFaces, { theme } from '../../style';
+import { theme } from '../../style';
 import { useSwipeable } from 'react-swipeable';
+import Lottie from "lottie-react";
+import arrow from './arrow-ani.json';
+import Bubble from '../../Component/Bubble';
 const SectionContainer = styled.section`
     display: flex;
     height:940px;
@@ -24,7 +27,7 @@ const Inside = styled.div`
   @media screen and (max-width: 1100px) {
     flex-direction: column-reverse;
     align-items: center;
-    padding-bottom: 50px;
+    // padding-bottom: 50px;
     margin-left: 15px;
 }
 `;
@@ -44,7 +47,6 @@ const IntroTitle = styled.h2`
   color: ${theme.white};
   font-weight:bold;
   text-align: center;
-  font-family: 'Myfont';
   @media screen and (max-width: 1100px) {
     font-size: 46px;
 }
@@ -101,7 +103,10 @@ const RightImage = styled.img`
       width: 60%;
   }
 `;
-const SlideContainer = styled.div`
+interface SlideContainerProps {
+    currentSlide: number;
+}
+const SlideContainer = styled.div<SlideContainerProps>`
   display: flex;
   transition: transform 0.3s ease;
   transform: translateX(-${props => props.currentSlide * 100}%);
@@ -112,7 +117,20 @@ const Slide = styled.div`
   box-sizing: border-box;
   display: flex;
 `;
-const data = {
+const LottieBox = styled.a`
+    width: 70px;
+    height:70px;
+    bottom: 3px;
+    position: absolute;
+`;
+
+interface DataStructure {
+    [key: string]: {
+        firstDesc: string;
+        secondDesc: string;
+    };
+}
+const data: DataStructure = {
     "Images/1__.svg": {
         firstDesc: "CAPTURE AND BE REWARDED",
         secondDesc: "CLICK YOUR SHUTTER,<br />BUILD EARTH'S SHELTER, <br />GET POINTS AND BECOME WEALTHIER."
@@ -145,9 +163,10 @@ const LeftArrow = styled(ArrowButton)`
 const RightArrow = styled(ArrowButton)`
   right: 10px;
 `;
-const IntroSection = () => {
-    const [windowWidth, setWindowWidth] = useState(window.innerWidth);
-    const [currentSlide, setCurrentSlide] = useState(0);
+const IntroSection: React.FC = () => {
+    const [windowWidth, setWindowWidth] = useState<number>(window.innerWidth);
+    const [currentSlide, setCurrentSlide] = useState<number>(0);
+    const [isBubble, setIsBubble] = useState<boolean>(true);
     const images = Object.keys(data);
     const handleLeftClick = () => {
         if (currentSlide === 1) {
@@ -161,17 +180,6 @@ const IntroSection = () => {
             setCurrentSlide(1);
         }
     };
-    // useEffect(() => {
-    //     const slideInterval = setInterval(() => {
-    //         setCurrentSlide((prevSlide) => (prevSlide + 1) % images.length);
-    //     }, 3000);
-
-    //     return () => {
-    //         clearInterval(slideInterval);
-    //     };
-    // }, [images.length]);
-    // onSwipedLeft: () => setCurrentSlide((prevSlide) => (prevSlide + 1) % images.length),
-    // onSwipedRight: () => setCurrentSlide((prevSlide) => (prevSlide - 1 + images.length) % images.length),
     const handlers = useSwipeable({
         onSwipedLeft: () => {
             handleRightClick();
@@ -179,7 +187,7 @@ const IntroSection = () => {
         onSwipedRight: () => {
             handleLeftClick();
         },
-        preventDefaultTouchmoveEvent: true,
+        preventScrollOnSwipe: true,
         trackMouse: true
     });
     // const [currentSlide, setCurrentSlide] = useState(0);
@@ -193,8 +201,6 @@ const IntroSection = () => {
             clearInterval(slideInterval);
         };
     }, [images.length]);
-    console.log('currentSlide', currentSlide)
-    const imagePath = images[currentSlide];
 
     useEffect(() => {
         const handleResize = () => {
@@ -209,26 +215,32 @@ const IntroSection = () => {
         };
     }, []);
     return (<SectionContainer>
-        <Inside {...handlers}>
-            <LeftArrow onClick={handleLeftClick}>&lt;</LeftArrow>
-            <SlideContainer currentSlide={currentSlide}>
-                {images.map((imagePath, index) => (<Slide key={index}>
-                    {windowWidth >= 1100 && imagePath === "Images/1__.svg" &&
-                        <LeftImage src="Images/1.svg" alt="앱 소개 이미지" draggable="false" />
-                    }
-                    <IntroText>
-                        <FontFaces />
-                        <IntroTitle>EARTHMERA</IntroTitle>
-                        <FirstDesc>
-                            {data[imagePath].firstDesc}
-                        </FirstDesc>
-                        <SecondDesc dangerouslySetInnerHTML={{ __html: data[imagePath].secondDesc }} />
-                    </IntroText >
-                    <RightImage src={imagePath} alt="앱 소개 이미지" draggable="false" />
-                </Slide>))}
+        <Inside {...handlers} >
+            <LeftArrow onClick={handleLeftClick} >&lt; </LeftArrow>
+            <SlideContainer currentSlide={currentSlide} >
+                {
+                    images.map((imagePath, index) => (<Slide key={index} >
+                        {windowWidth >= 1100 && imagePath === "Images/1__.svg" &&
+                            <LeftImage src="Images/1.svg" alt="앱 소개 이미지" draggable="false" />
+                        }
+                        < IntroText >
+                            <IntroTitle>EARTHMERA</IntroTitle>
+                            < FirstDesc >
+                                {data[imagePath].firstDesc}
+                            </FirstDesc>
+                            < SecondDesc dangerouslySetInnerHTML={{ __html: data[imagePath].secondDesc }
+                            } />
+                        </IntroText >
+                        < RightImage src={imagePath} alt="앱 소개 이미지" draggable="false" />
+                    </Slide>))}
             </SlideContainer>
-            <RightArrow onClick={handleRightClick}>&gt;</RightArrow>
+            < RightArrow onClick={handleRightClick} >&gt; </RightArrow>
         </Inside>
+        <LottieBox href='#about'>
+            <Lottie animationData={arrow} loop={true} />
+        </LottieBox>
+        {isBubble ? <Bubble setIsBubble={setIsBubble} /> : <React.Fragment />}
+
         {/* : <Inside>
                 <IntroText>
                     <IntroTitle>EARTHMERA</IntroTitle>
