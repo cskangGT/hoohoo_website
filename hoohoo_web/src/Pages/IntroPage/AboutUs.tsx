@@ -78,14 +78,16 @@ const AboutContent = styled.p`
     margin-bottom: 0.5rem;
     font-family: Poppins,sans-serif;
 `;
-const PartnerButton = styled.button`
+const PartnerButton = styled.a`
 // margin : 20px 5px;
-font-size: 16px;
-font-weight: 700;
-text-decoration: none;
-border-radius: 10px;
-margin-top: 0.75rem;
-background-color: ${theme.mainNeon};
+    font-size: 16px;
+    font-weight: 700;
+    cursor: pointer;
+    text-decoration: none;
+    border-radius: 10px;
+    box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.5);
+    margin-top: 0.75rem;
+    background-color: ${theme.mainNeon};
   max-width:60%;
   padding: 10px 15px;
 `;

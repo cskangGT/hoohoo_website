@@ -1,0 +1,45 @@
+{
+    "Component": {
+        "data": {
+
+        },
+        "data2": {
+
+        }
+    },
+    "Nav" : {
+        "navlist" : [{ "label": "홈", "link": "#" },
+        {
+          "label": "어바웃",
+          "subItems": [
+            { "label": "EarthMera란", "link": "#about" },
+            { "label": "Our Team", "link": "#about" }
+          ]
+        },
+        {
+          "label": "파트너십",
+          "link": "#partners"
+        },
+        {
+          "label": "다운로드",
+          "subItems": [
+            { "label": "EarthMera", "link": "#download" },
+            { "label": "Other Apps", "link": "#download" }
+          ]
+        },
+        {
+          "label": "Contact",
+          "link": "/contact"
+        }]
+    },
+    "IntroPage": {
+        "Images/1__.svg": {
+            "firstDesc": "CAPTURE AND BE REWARDED",
+            "secondDesc": "CLICK YOUR SHUTTER,<br />BUILD EARTH'S SHELTER, <br />GET POINTS AND BECOME WEALTHIER."
+        },
+        "Images/preview.png": {
+            "firstDesc": "CAPTURE AND BE REWARDED",
+            "secondDesc": "CLICK YOUR SHUTTER,<br />BUILD EARTH'S SHELTER, <br />GET POINTS AND BECOME WEALTHIER."
+        }
+    }
+}

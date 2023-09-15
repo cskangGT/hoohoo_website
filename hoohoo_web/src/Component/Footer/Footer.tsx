@@ -4,6 +4,8 @@ import { theme } from '../../style';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faInstagram, faPinterestP, faTiktok, faLinkedinIn } from '@fortawesome/free-brands-svg-icons';
+import { useTranslation } from 'react-i18next';
+import i18next from 'i18next';
 const Background = styled.footer`
     background-color: ${theme.darkGray};
     display: block
@@ -114,9 +116,9 @@ type Button = {
   text2: string;
   action2: () => void;
 }
-type Ibutton = {
+type IbuttonProps = {
   icon: any;
-  action: () => void;
+  url: string;
   style?: {};
 }
 type FooterProps = {
@@ -130,15 +132,16 @@ function Buttons({ text1, action1, text2, action2 }: Button) {
     </Column>
   );
 }
-function Ibutton({ icon, action, style }: Ibutton) {
+function Ibutton({ icon, url, style }: IbuttonProps) {
   return (
-    <IconButton onClick={action} style={style}>
+    <IconButton href={url} style={style} target="_blank">
       <FontAwesomeIcon icon={icon} size='xl' style={{ color: "#f1f1f1", paddingTop: 7 }} />
     </IconButton>
   )
 }
 
 function Footer({ isKorean }: FooterProps) {
+  const { t } = useTranslation()
   return (
     <Background>
       <Container>
@@ -174,18 +177,15 @@ function Footer({ isKorean }: FooterProps) {
           {/* <hr style={{ color: '#f1f1f1' }} /> */}
 
           {/* <Box style={{ justifyContent: 'space-between' }}> */}
-          <BusinessDetail style={{ paddingLeft: 15 }}>Copyright&copy; 2023 by Hoohoo, All rights reserved.</BusinessDetail>
+          <BusinessDetail style={{ paddingLeft: 15 }}>Copyright&copy; 2023 by EarthMera, All rights reserved.</BusinessDetail>
           <IconBox>
-            <Ibutton icon={faInstagram} action={() => alert('Instagram clicked!')} />
-            <Ibutton icon={faPinterestP} action={() => alert('Pinterest clicked!')} />
-            <Ibutton icon={faLinkedinIn} action={() => alert('Pinterest clicked!')} />
-            <Ibutton icon={faTiktok} action={() => alert('Pinterest clicked!')} style={{ marginRight: 15 }} />
+            <Ibutton icon={faInstagram} url={'https://instagram.com/earthmera_?igshid=MzRlODBiNWFlZA=='} />
+            <Ibutton icon={faLinkedinIn} url={'#'} />
+            <Ibutton icon={faPinterestP} url={'#'} />
+            <Ibutton icon={faTiktok} url={'#'} />
           </IconBox>
-          {/* </Box> */}
-
         </FooterBottom>
       </Container>
-
     </Background>
   );
 }

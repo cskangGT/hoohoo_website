@@ -27,8 +27,9 @@ const Content = styled.h3`
   margin-top: 40px;
   color: ${theme.white};
 `;
-const Btn = styled.button`
+const Btn = styled.a`
     text-decoration: none;
+    display: flex;
     background-color: ${theme.subNeon};
     height: 50px;
     border-radius: 20px;
@@ -37,6 +38,9 @@ const Btn = styled.button`
     width:288px;
     margin: 40px auto 0px;
     font-weight: 600;
+    justify-content: center;
+    align-items:center;
+    text-align: center;
     color: ${theme.darkGray};
     &:hover {
         background-color: ${theme.mainNeon};
@@ -60,7 +64,7 @@ function PartnersCardComponent(props: Props) {
         <Card>
             <Image src={props.item.image} />
             <Content>{props.item.msg}</Content>
-            <Btn onClick={() => { }}>{props.item.button}</Btn>
+            <Btn onClick={(event) => { event.preventDefault(); }} href='#'> {props.item.button}</Btn>
         </Card>
     );
 }
