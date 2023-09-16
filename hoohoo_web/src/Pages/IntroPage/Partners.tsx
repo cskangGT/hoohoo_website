@@ -58,6 +58,7 @@ const Outline = styled.button<OutlineProps>`
     opacity: ${props => props.op === props.slideIndex ? 1 : 0.3};
     background : none;
     border: none;
+    cursor: pointer;
     margin-right: 10px;
   outline: none;
   display: block;

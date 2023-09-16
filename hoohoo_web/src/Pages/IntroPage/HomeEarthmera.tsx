@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
-import Nav from '../Nav'
+import Nav from '../../Component/Nav/Nav'
 // import 'bootstrap/dist/css/bootstrap.min.css';
 import { theme } from '../../style';
 import Carousel from 'react-bootstrap/Carousel';
@@ -13,6 +13,8 @@ import ListSection from './ListSection';
 import Download from './Download';
 import Partners from './Partners';
 import Fundraising from '../Fund/Fundraising';
+import VideoSection from './Video'
+import { useTranslation } from 'react-i18next';
 // var h = window.outerHeight;
 // var w = window.outerWidth;
 const Container = styled.div`
@@ -118,6 +120,7 @@ const ItemText = styled.p`
 const LinktoEmail = styled.button`
   text-decoration: none;
   background-color: ${theme.mainNeon};
+  cursor: pointer;
   height: 50px;
   border-radius: 20px;
   border-color: ${theme.darkGray};
@@ -150,7 +153,8 @@ const ContactText = styled.h3`
   color: ${theme.white};
 `;
 const ContentBox = styled.section`
-  justify-content: center;
+    padding-top: 20px;
+    justify-content: center;
   width: 100%;
   display: flex;
 `;
@@ -183,6 +187,7 @@ type ImageProps = {
 }
 
 function HomeEarthmera() {
+    const { t, i18n } = useTranslation();
     const secondImages: ImageProps[] = [{
         imagePath: 'Images/2-1.webp'
     }, {
@@ -211,8 +216,8 @@ function HomeEarthmera() {
             </PreviewContainer>
         </StoresLinkSections> */}
 
-            <ListSection data={secondImages} header='' isBot={false} />
-            <ListSection data={thirdImages} header='REDEEM REWARDS WITH POINTS.' isBot={true} />
+            <ListSection id={"next"} data={secondImages} header='' isBot={false} />
+            <ListSection id={"rewards"} data={thirdImages} header='REDEEM REWARDS WITH POINTS.' isBot={true} />
             {/* <SecondPage>
                 <Box>
                     <ItemTitle>EarthMera empowers you to make a difference and create a greener future.</ItemTitle>
@@ -234,9 +239,13 @@ function HomeEarthmera() {
             <ContentBox>
                 <Fundraising></Fundraising>
             </ContentBox>
+            <ContentBox>
+                <VideoSection />
+            </ContentBox>
             <ContentBox id="download">
                 <Download />
             </ContentBox>
+
 
             <ContactBox>
                 {isKorean ? <ContactColumnBox><ContactText>비즈니스 파트너십 또는 기타 문의사항을 원하시면 아래의 버튼을 클릭하세요.</ContactText>

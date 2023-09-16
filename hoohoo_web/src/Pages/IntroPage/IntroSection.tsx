@@ -5,6 +5,8 @@ import { useSwipeable } from 'react-swipeable';
 import Lottie from "lottie-react";
 import arrow from './arrow-ani.json';
 import Bubble from '../../Component/Bubble';
+import { useTranslation } from 'react-i18next';
+import i18next from 'i18next';
 const SectionContainer = styled.section`
     display: flex;
     height:940px;
@@ -14,7 +16,6 @@ const SectionContainer = styled.section`
     margin-top: 82px;
     @media screen and (max-width: 1100px) {
         height: auto;
-        
     }
 `;
 const Inside = styled.div`
@@ -42,7 +43,7 @@ const IntroText = styled.div`
   `;
 
 const IntroTitle = styled.h2`
-  margin-bottom: 20px;
+  margin-bottom: 10px;
   font-size: 3.3rem;
   color: ${theme.white};
   font-weight:bold;
@@ -59,9 +60,9 @@ const IntroTitle = styled.h2`
 const FirstDesc = styled.h1`
 text-align: center;
   font-size: 5.0rem;
-  font-weight:bold;
+  font-weight:400;
   line-height: 1.1;
-  margin-bottom: 5rem;
+  margin-bottom: 3rem;
   color: ${theme.white};
   @media screen and (max-width: 1100px) {
     font-size: 54px;
@@ -130,16 +131,6 @@ interface DataStructure {
         secondDesc: string;
     };
 }
-const data: DataStructure = {
-    "Images/1__.svg": {
-        firstDesc: "CAPTURE AND BE REWARDED",
-        secondDesc: "CLICK YOUR SHUTTER,<br />BUILD EARTH'S SHELTER, <br />GET POINTS AND BECOME WEALTHIER."
-    },
-    "Images/preview.png": {
-        firstDesc: "CAPTURE AND BE REWARDED",
-        secondDesc: "CLICK YOUR SHUTTER,<br />BUILD EARTH'S SHELTER, <br />GET POINTS AND BECOME WEALTHIER."
-    }
-}
 const ArrowButton = styled.button`
   background: none;
   border: none;
@@ -167,6 +158,7 @@ const IntroSection: React.FC = () => {
     const [windowWidth, setWindowWidth] = useState<number>(window.innerWidth);
     const [currentSlide, setCurrentSlide] = useState<number>(0);
     const [isBubble, setIsBubble] = useState<boolean>(true);
+    const data: DataStructure = i18next.t('IntroPage', { returnObjects: true });
     const images = Object.keys(data);
     const handleLeftClick = () => {
         if (currentSlide === 1) {
@@ -195,7 +187,7 @@ const IntroSection: React.FC = () => {
     useEffect(() => {
         const slideInterval = setInterval(() => {
             setCurrentSlide((prevSlide) => (prevSlide + 1) % images.length);
-        }, 5000);
+        }, 10000);
 
         return () => {
             clearInterval(slideInterval);
@@ -216,27 +208,31 @@ const IntroSection: React.FC = () => {
     }, []);
     return (<SectionContainer>
         <Inside {...handlers} >
-            <LeftArrow onClick={handleLeftClick} >&lt; </LeftArrow>
+            {currentSlide === 1 && <LeftArrow onClick={handleLeftClick} >&lt; </LeftArrow>}
+
             <SlideContainer currentSlide={currentSlide} >
                 {
-                    images.map((imagePath, index) => (<Slide key={index} >
+                    images.map((imagePath, index) => (<Slide key={index}>
                         {windowWidth >= 1100 && imagePath === "Images/1__.svg" &&
-                            <LeftImage src="Images/1.svg" alt="앱 소개 이미지" draggable="false" />
-                        }
-                        < IntroText >
+                            <LeftImage src="Images/1.svg" alt="앱 소개 이미지" draggable="false" />}
+                        <IntroText >
                             <IntroTitle>EARTHMERA</IntroTitle>
-                            < FirstDesc >
+                            <FirstDesc >
                                 {data[imagePath].firstDesc}
                             </FirstDesc>
-                            < SecondDesc dangerouslySetInnerHTML={{ __html: data[imagePath].secondDesc }
-                            } />
-                        </IntroText >
-                        < RightImage src={imagePath} alt="앱 소개 이미지" draggable="false" />
+                            <SecondDesc dangerouslySetInnerHTML={{ __html: data[imagePath].secondDesc }} />
+                        </IntroText>
+                        {
+                            imagePath === "Images/1__.svg" ? <RightImage src={imagePath} alt="앱 소개 이미지" draggable="false" />
+                                : <RightImage src={imagePath} alt="앱 소개 이미지" draggable="false" style={{ maxHeight: 800 }} />
+                        }
+
                     </Slide>))}
             </SlideContainer>
-            < RightArrow onClick={handleRightClick} >&gt; </RightArrow>
+            {currentSlide === 0 && <RightArrow onClick={handleRightClick} >&gt; </RightArrow>}
+
         </Inside>
-        <LottieBox href='#about'>
+        <LottieBox href='#next'>
             <Lottie animationData={arrow} loop={true} />
         </LottieBox>
         {isBubble ? <Bubble setIsBubble={setIsBubble} /> : <React.Fragment />}

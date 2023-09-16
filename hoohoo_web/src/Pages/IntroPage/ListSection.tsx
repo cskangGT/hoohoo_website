@@ -110,11 +110,13 @@ type TotalProps = {
     data: DataProps[];
     header: string;
     isBot: boolean;
+    id?: string;
 }
-function ListSection({ data, header, isBot }: TotalProps) {
+function ListSection({ data, header, isBot, id }: TotalProps) {
     var isHeader = header === '' ? false : true;
+    console.log('id', id)
     return (
-        <Container bg={isBot}>
+        <Container bg={isBot} id={id}>
             <ContentBox>
                 {isHeader && <HeaderBox>
                     <Header>{header}</Header>
@@ -130,7 +132,6 @@ function ListSection({ data, header, isBot }: TotalProps) {
                         ))}
                     </FirstImageBox>
                 }
-
             </ContentBox>
 
         </Container>

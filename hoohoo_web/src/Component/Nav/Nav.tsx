@@ -1,21 +1,21 @@
 import React, { useState, useEffect } from 'react'
 import styled from 'styled-components';
-import { theme } from '../style';
+import { theme } from '../../style';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faPinterestP, faInstagram } from '@fortawesome/free-brands-svg-icons';
-import { faBars, faRefresh } from '@fortawesome/free-solid-svg-icons';
-
-const Logo = styled.div`
+import { faBars } from '@fortawesome/free-solid-svg-icons';
+import { useTranslation } from 'react-i18next';
+import i18next from 'i18next';
+// const icon = require('./icon_image.png')
+const Logo = styled.a`
   padding: 15px;
-  font-size: 24px;
+  font-size: 25px;
+  display: flex;
+  align-items: center;
+  text-decoration: none;
 `;
 const LogoText = styled.a`
-  text-decoration: none;
-  padding: 10px;
+  padding-left: 10px;
   color: ${theme.white};
-  &:hover {
-    color: ${theme.white};
-  }
 `;
 const Bar = styled.nav`
   position: fixed;
@@ -24,7 +24,7 @@ const Bar = styled.nav`
   left: 0;
   z-index: 9999;
   backdrop-filter: blur(15px);
-  background-color: rgba(29, 21, 40, 0.09);
+  background-color: rgba(0, 0, 0, 0.29);
   box-sizing: border-box;
   width: 100%;
 
@@ -32,7 +32,7 @@ const Bar = styled.nav`
   justify-content: space-between;
   align-items: center;
   padding: 8px 22px;
-  @media screen and (max-width: 850px) {
+  @media screen and (max-width: 1000px) {
     flex-direction: column;
     align-items: flex-start;
     padding: 8px 22px;
@@ -50,7 +50,7 @@ const NavbarMenu = styled.ul<NavBarProps>`
   padding-left: 0;
   align-items: center;
   justify-content: center;
-  @media screen and (max-width: 850px) {
+  @media screen and (max-width: 1000px) {
     height: auto;
     flex-direction: column;
     align-items: center;
@@ -58,22 +58,35 @@ const NavbarMenu = styled.ul<NavBarProps>`
     transition: all 0.3s ease;
     display: ${props => (props.isOpen ? 'flex' : 'none')};  
   }
-
+`;
+const LogoIcon = styled.img`
+  width: 24px;
+`;
+const HeaderLogo = styled.img`
+  width: 36px;
+  height: 36px;
 `;
 const NavMenuList = styled.li`
-  // padding: 8px 12px;
   text-decoration : none;
   color: ${theme.white};
+  display: flex;
   padding : 12.5px 15px;
+  justify-content: center;
+  align-items: center;
+  .hidden-icon {
+    opacity: 0;
+    transition: all 0.5s ease; 
+  }
   &:hover {
     // background-color: #313131;
     border-radius: 5Px;
     & .hidden-icon {
       opacity: 1;
-      transform: rotate(180deg);
+      transition: all 0.5s ease;
+      transform: rotate(360deg);
+    }
   }
-  }
-  @media screen and (max-width: 850px) {
+  @media screen and (max-width: 1000px) {
     text-align: center;
     width: 100%;
   }
@@ -91,7 +104,6 @@ const NavLink = styled.a`
 const NavRight = styled.div`
   display: flex;
   list-style: none;
-  // height: 44px;
   margin: 0 -8px;
   width:auto;
   padding-left: 0;
@@ -116,16 +128,16 @@ const NavRight = styled.div`
 
 // `;
 const MenuToogleButton = styled.button`
-background: none;
+  background: none;
   border: none;
   cursor: pointer;  
-position: absolute;
+  position: absolute;
   right: 32px;
-  top: 22px;
+  top: 25px;
   font-size: 24px;
   color: ${theme.mainNeon};
   display: none;
-  @media screen and (max-width: 850px) {
+  @media screen and (max-width: 1000px) {
     display: block;
   }
   &:hover {
@@ -133,14 +145,11 @@ position: absolute;
     color: ${theme.mainNeon};
   }
 `;
-const HiddenIcon = styled(FontAwesomeIcon)`
-    opacity: 0;
-    transition: all 0.5s ease;
-`;
+
 const LanguageBox = styled.div`
   margin: 0 30px;
   display: block;
-  @media screen and (max-width: 850px) {
+  @media screen and (max-width: 1000px) {
     display: none;
     position: absolute;
     right: 45px;
@@ -150,7 +159,7 @@ const LanguageBox = styled.div`
 const LanguageBoxSecond = styled.div`
   margin: 0 30px;
   display: none;
-  @media screen and (max-width: 850px) {
+  @media screen and (max-width: 1000px) {
     display: block;
     position:absolute;
     right: 45px;
@@ -161,6 +170,7 @@ type LanguageProps =
   {
     isKorean: boolean;
   }
+
 const LanguageButton = styled.button<LanguageProps>`
   font-size: 12px;
   color: ${theme.white};
@@ -188,18 +198,73 @@ const LanguageButton = styled.button<LanguageProps>`
     display: none;
   }
 `;
+const HoverContainer = styled.div`
+cursor: pointer;
+color: ${theme.white};
+&:hover {
+  border-radius: 4px;
+  color: ${theme.mainNeon};
+  & .hidden-subItems {
+    display: block;
+    transition: all 0.5s ease;
+  }
+}
+`;
+
+const NavHover = styled.span`
+  text-decoration : none;
+  
+  padding-left: 10px;
+  
+  
+`;
+
+const ContainerSubItems = styled.div`
+  position: absolute;
+  display: none;
+`;
+
+const HoverLinks = styled.ul`
+  // display: ;
+  // position: absolute;
+  padding: 0;
+  padding-top: 30px;
+  margin-left: -10px;
+  text-decoration : none;
+`;
+const NavSubList = styled.li`
+  text-decoration : none;
+  color: ${theme.white};
+  display: flex;
+  padding : 12.5px 5px;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding-right: 15px;
+  &: hover {
+    backdrop-filter: blur(15px);
+    background-color: rgba(250, 250, 250, 0.09);
+    border-radius: 10px;
+  }
+`;
+
 type NavProps = {
   isKorean: boolean;
   setIsKorean: React.Dispatch<React.SetStateAction<boolean>>;
 }
-
+type NavItem = {
+  label: string;
+  link?: string;
+  subItems?: NavItem[];
+};
 function Nav({ isKorean, setIsKorean }: NavProps) {
-  const links: string[] = ["Home", "About", "Partnership", "Download", "Contact"];
-  const hrefs: string[] = ['#home', '#about', '#Partnership', "#download", '#contact'];
-  // const icons = [];
+  const { t, i18n } = useTranslation();
+
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const [windowWidth, setWindowWidth] = useState<number>(window.innerWidth);
-
+  const changelanguageToKo = () => i18n.changeLanguage('ko')
+  const changelanguageToEn = () => i18n.changeLanguage('en')
+  const navItems: NavItem[] = i18next.t('Nav', { returnObjects: true })["navlist"]
   useEffect(() => {
     const handleResize = () => {
       setWindowWidth(window.innerWidth);
@@ -214,20 +279,28 @@ function Nav({ isKorean, setIsKorean }: NavProps) {
   }, []);
   return (
     <Bar>
-      <Logo>
-        <FontAwesomeIcon icon={faPinterestP} size='xl' style={{ color: theme.mainNeon }} />
-        <LogoText href="#home">EarthMera</LogoText>
+      <Logo href="#home">
+        <HeaderLogo src='Images/icon_image.png' />
+        <LogoText>EarthMera</LogoText>
       </Logo>
 
       <NavbarMenu isOpen={isOpen}>
         {
-          links.map((item, i) => {
+          navItems.map((item, i) => {
             return (
-              <NavMenuList><HiddenIcon className="hidden-icon" icon={faInstagram} size='lg' />
-                <NavLink
-                  id={links[i]}
-                  href={hrefs[i]}
-                >{item}</NavLink>
+              <NavMenuList><LogoIcon className="hidden-icon" src='Images/icon_image.png' />
+                {item.subItems ?
+                  <HoverContainer style={{ overflow: 'visible' }}>
+                    <NavHover id={item.link}>{item.label}</NavHover>
+                    <ContainerSubItems className="hidden-subItems">
+                      <HoverLinks >{item.subItems.map((subItem, subIndex) => (
+                        <NavSubList key={subIndex}><NavLink href={subItem.link}>{subItem.label}</NavLink></NavSubList>))}
+                      </HoverLinks></ContainerSubItems>
+                  </HoverContainer> : <NavLink
+                    id={item.link}
+                    href={item.link}
+                  >{item.label}</NavLink>}
+
               </NavMenuList>
             );
           })
@@ -235,13 +308,19 @@ function Nav({ isKorean, setIsKorean }: NavProps) {
         {
           !isOpen && <LanguageBox>
             <LanguageButton isKorean={isKorean}
-              onClick={() => setIsKorean(true)}>KO</LanguageButton>
+              onClick={() => {
+                setIsKorean(true)
+                changelanguageToKo()
+              }}>KO</LanguageButton>
             <LanguageButton isKorean={!isKorean}
-              onClick={() => setIsKorean(false)}>EN</LanguageButton>
+              onClick={() => {
+                setIsKorean(false)
+                changelanguageToEn()
+              }}>EN</LanguageButton>
           </LanguageBox>
         }
       </NavbarMenu>
-      {windowWidth < 850 && <NavRight>
+      {windowWidth < 1000 && <NavRight>
         <LanguageBoxSecond>
           <LanguageButton isKorean={isKorean}
             onClick={() => setIsKorean(true)}>KO</LanguageButton>
