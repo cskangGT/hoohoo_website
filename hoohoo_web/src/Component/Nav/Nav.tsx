@@ -3,8 +3,6 @@ import styled from 'styled-components';
 import { theme } from '../../style';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBars } from '@fortawesome/free-solid-svg-icons';
-import { useTranslation } from 'react-i18next';
-import i18next from 'i18next';
 // const icon = require('./icon_image.png')
 const Logo = styled.a`
   padding: 15px;
@@ -27,7 +25,6 @@ const Bar = styled.nav`
   background-color: rgba(0, 0, 0, 0.29);
   box-sizing: border-box;
   width: 100%;
-
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -61,6 +58,7 @@ const NavbarMenu = styled.ul<NavBarProps>`
 `;
 const LogoIcon = styled.img`
   width: 24px;
+  
 `;
 const HeaderLogo = styled.img`
   width: 36px;
@@ -87,6 +85,7 @@ const NavMenuList = styled.li`
     }
   }
   @media screen and (max-width: 1000px) {
+    align-items: start;
     text-align: center;
     width: 100%;
   }
@@ -201,6 +200,13 @@ const LanguageButton = styled.button<LanguageProps>`
 const HoverContainer = styled.div`
 cursor: pointer;
 color: ${theme.white};
+
+@media screen and (max-width: 1000px) {
+  margin-left: 10px;
+  align-items: center;
+  justify-content: center;
+  
+}
 &:hover {
   border-radius: 4px;
   color: ${theme.mainNeon};
@@ -215,39 +221,65 @@ const NavHover = styled.span`
   text-decoration : none;
   
   padding-left: 10px;
+  @media screen and (max-width: 1000px) {
   
+    padding-left: 0px;
+  }
   
 `;
 
 const ContainerSubItems = styled.div`
   position: absolute;
   display: none;
+  @media screen and (max-width: 1000px) {
+    position: relative;
+    align-items: center;
+    justify-content: center;
+    // margin-left: 15px;
+  }
 `;
 
 const HoverLinks = styled.ul`
-  // display: ;
-  // position: absolute;
   padding: 0;
   padding-top: 30px;
-  margin-left: -10px;
   text-decoration : none;
+  @media screen and (max-width: 1000px) {
+    padding-top: 7px; 
+  }
 `;
 const NavSubList = styled.li`
   text-decoration : none;
   color: ${theme.white};
   display: flex;
-  padding : 12.5px 5px;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
+  padding : 12.5px 0px;
+  
   padding-right: 15px;
+  @media screen and (max-width: 1000px) {
+    align-items: center;
+    justify-content: center;
+    padding : 7px 7px;
+  }
   &: hover {
     backdrop-filter: blur(15px);
     background-color: rgba(250, 250, 250, 0.09);
     border-radius: 10px;
   }
 `;
-
+const SubNavLink = styled.a`
+text-decoration : none;
+color: ${theme.white};
+padding-left: 10px;
+cursor: pointer;
+@media screen and (max-width: 1000px) {
+  font-size: 12px;  
+  text-align: center; 
+  padding-left: 0px;
+}
+&:hover {
+  border-radius: 4px;
+  color: ${theme.mainNeon};
+}
+`;
 type NavProps = {
   isKorean: boolean;
   setIsKorean: React.Dispatch<React.SetStateAction<boolean>>;
@@ -258,13 +290,34 @@ type NavItem = {
   subItems?: NavItem[];
 };
 function Nav({ isKorean, setIsKorean }: NavProps) {
-  const { t, i18n } = useTranslation();
 
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const [windowWidth, setWindowWidth] = useState<number>(window.innerWidth);
-  const changelanguageToKo = () => i18n.changeLanguage('ko')
-  const changelanguageToEn = () => i18n.changeLanguage('en')
-  const navItems: NavItem[] = i18next.t('Nav', { returnObjects: true })["navlist"]
+
+  const navItems: NavItem[] = [{ "label": "Home", "link": "#" },
+  {
+    "label": "About",
+    "subItems": [
+      { "label": "Our Team", "link": "#about" },
+      { "label": "EarthMera", "link": "#about" }
+    ]
+  },
+  {
+    "label": "Partnership",
+    "link": "#partners"
+  },
+  {
+    "label": "Download",
+    "subItems": [
+      { "label": "EarthMera", "link": "#download" },
+      { "label": "Other Apps", "link": "#download" }
+    ]
+  },
+  {
+    "label": "Contact",
+    "link": "/contact"
+  }]
+
   useEffect(() => {
     const handleResize = () => {
       setWindowWidth(window.innerWidth);
@@ -294,7 +347,7 @@ function Nav({ isKorean, setIsKorean }: NavProps) {
                     <NavHover id={item.link}>{item.label}</NavHover>
                     <ContainerSubItems className="hidden-subItems">
                       <HoverLinks >{item.subItems.map((subItem, subIndex) => (
-                        <NavSubList key={subIndex}><NavLink href={subItem.link}>{subItem.label}</NavLink></NavSubList>))}
+                        <NavSubList key={subIndex}><SubNavLink href={subItem.link}>{subItem.label}</SubNavLink></NavSubList>))}
                       </HoverLinks></ContainerSubItems>
                   </HoverContainer> : <NavLink
                     id={item.link}
@@ -310,12 +363,11 @@ function Nav({ isKorean, setIsKorean }: NavProps) {
             <LanguageButton isKorean={isKorean}
               onClick={() => {
                 setIsKorean(true)
-                changelanguageToKo()
+
               }}>KO</LanguageButton>
             <LanguageButton isKorean={!isKorean}
               onClick={() => {
                 setIsKorean(false)
-                changelanguageToEn()
               }}>EN</LanguageButton>
           </LanguageBox>
         }

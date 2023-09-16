@@ -4,8 +4,7 @@ import { theme } from '../../style';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faInstagram, faPinterestP, faTiktok, faLinkedinIn } from '@fortawesome/free-brands-svg-icons';
-import { useTranslation } from 'react-i18next';
-import i18next from 'i18next';
+
 const Background = styled.footer`
     background-color: ${theme.darkGray};
     display: block
@@ -141,7 +140,7 @@ function Ibutton({ icon, url, style }: IbuttonProps) {
 }
 
 function Footer({ isKorean }: FooterProps) {
-  const { t } = useTranslation()
+
   return (
     <Background>
       <Container>
