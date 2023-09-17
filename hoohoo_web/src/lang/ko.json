@@ -1,0 +1,45 @@
+{
+    "Component": {
+        "data": {
+
+        },
+        "data2": {
+
+        }
+    },
+    "Nav" : {
+        "navlist" : [{ "label": "홈", "link": "#" },
+        {
+          "label": "어바웃",
+          "subItems": [
+            { "label": "EarthMera란", "link": "#about" },
+            { "label": "Our Team", "link": "#about" }
+          ]
+        },
+        {
+          "label": "파트너십",
+          "link": "#partners"
+        },
+        {
+          "label": "다운로드",
+          "subItems": [
+            { "label": "EarthMera", "link": "#download" },
+            { "label": "Other Apps", "link": "#download" }
+          ]
+        },
+        {
+          "label": "Contact",
+          "link": "/contact"
+        }]
+    },
+    "IntroPage": {
+        "Images/1__.svg": {
+            "firstDesc": "사진을 찍고 보상받으세요!",
+            "secondDesc": "셔터를 누르고,<br />지구에 안식처를 만들고, <br />포인트를 얻고 자본을 얻으세요!"
+        },
+        "Images/preview.png": {
+            "firstDesc": "사진을 찍고 보상받으세요!",
+            "secondDesc": "셔터를 누르고,<br />지구에 안식처를 만들고, <br />포인트를 얻고 자본을 얻으세요!"
+        }
+    }
+}
