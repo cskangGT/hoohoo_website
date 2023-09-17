@@ -14,7 +14,6 @@ import Download from './Download';
 import Partners from './Partners';
 import Fundraising from '../Fund/Fundraising';
 import VideoSection from './Video'
-import { useTranslation } from 'react-i18next';
 // var h = window.outerHeight;
 // var w = window.outerWidth;
 const Container = styled.div`
@@ -187,7 +186,6 @@ type ImageProps = {
 }
 
 function HomeEarthmera() {
-    const { t, i18n } = useTranslation();
     const secondImages: ImageProps[] = [{
         imagePath: 'Images/2-1.webp'
     }, {

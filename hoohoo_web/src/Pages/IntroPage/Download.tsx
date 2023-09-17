@@ -4,7 +4,7 @@ import { theme } from '../../style';
 // import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 // import { faGooglePlay, faAppStore } from '@fortawesome/free-brands-svg-icons';
 const Container = styled.div`
-    margin-top: 70px;
+    margin-top: 0px;
     display: flex;
     justify-content: flex-start;
     width: 1100px;

@@ -5,8 +5,7 @@ import { useSwipeable } from 'react-swipeable';
 import Lottie from "lottie-react";
 import arrow from './arrow-ani.json';
 import Bubble from '../../Component/Bubble';
-import { useTranslation } from 'react-i18next';
-import i18next from 'i18next';
+
 const SectionContainer = styled.section`
     display: flex;
     height:940px;
@@ -146,7 +145,16 @@ const ArrowButton = styled.button`
     outline: none;
   }
 `;
-
+const data: DataStructure = {
+    "Images/1__.svg": {
+        "firstDesc": "CAPTURE AND BE REWARDED",
+        "secondDesc": "CLICK YOUR SHUTTER,<br />BUILD EARTH'S SHELTER, <br />GET POINTS AND BECOME WEALTHIER."
+    },
+    "Images/preview.png": {
+        "firstDesc": "CAPTURE AND BE REWARDED",
+        "secondDesc": "CLICK YOUR SHUTTER,<br />BUILD EARTH'S SHELTER, <br />GET POINTS AND BECOME WEALTHIER."
+    }
+}
 const LeftArrow = styled(ArrowButton)`
   left: 10px;
 `;
@@ -158,7 +166,6 @@ const IntroSection: React.FC = () => {
     const [windowWidth, setWindowWidth] = useState<number>(window.innerWidth);
     const [currentSlide, setCurrentSlide] = useState<number>(0);
     const [isBubble, setIsBubble] = useState<boolean>(true);
-    const data: DataStructure = i18next.t('IntroPage', { returnObjects: true });
     const images = Object.keys(data);
     const handleLeftClick = () => {
         if (currentSlide === 1) {
