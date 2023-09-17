@@ -227,7 +227,7 @@ const NavHover = styled.span`
 
 const ContainerSubItems = styled.div`
   position: absolute;
-  // display: none;
+  display: none;
   // margin-top: 30px;
   // padding-top: 12px;
   // background-color: rgba(250, 250, 250, 0.09);
