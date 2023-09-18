@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
 import Nav from '../../Component/Nav/Nav'
-// import 'bootstrap/dist/css/bootstrap.min.css';
 import { theme } from '../../style';
 import Carousel from 'react-bootstrap/Carousel';
 import Footer from '../../Component/Footer/Footer';
@@ -14,6 +13,7 @@ import Download from './Download';
 import Partners from './Partners';
 import Fundraising from '../Fund/Fundraising';
 import VideoSection from './Video'
+import TeamIntro from '../About/TeamIntro';
 // var h = window.outerHeight;
 // var w = window.outerWidth;
 const Container = styled.div`
@@ -158,29 +158,6 @@ const ContentBox = styled.section`
   display: flex;
 `;
 
-function Steps() {
-    const slides = [['Images/2_.svg', "Take action to save the planet"],
-    ['Images/2.svg', "Capture green actions with our app"],
-    ['Images/3_.svg', "Our AI-powered detection identifies your green moments"]]
-    return (
-        <Carousel interval={3000}>
-            {slides.map((str, index) => (
-                <Carousel.Item>
-                    <ItemBox>
-                        <Image
-                            src={str[0]}
-                            alt="First slide"
-                        />
-                    </ItemBox>
-                    <Carousel.Caption>
-                        <ItemText>{str[1]}</ItemText>
-                    </Carousel.Caption>
-                </Carousel.Item>
-            ))}
-
-        </Carousel>
-    );
-};
 type ImageProps = {
     imagePath: string;
 }
@@ -224,6 +201,9 @@ function HomeEarthmera() {
             </SecondPage> */}
             <ContentBox id="about">
                 <AboutUs />
+            </ContentBox>
+            <ContentBox>
+                <TeamIntro />
             </ContentBox>
             <ContentBox id="section">
                 <NumberIconContent />

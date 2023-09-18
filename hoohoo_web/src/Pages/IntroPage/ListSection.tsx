@@ -27,12 +27,12 @@ const ContentBox = styled.div`
 const HeaderBox = styled.div`
     margin-top: 15px;
     align-items: center;
-    width: 70%;
+    width: 80%;
     max-width: 1200px;
 `;
 
 const Header = styled.h1`
-    font-size: 4rem;
+    font-size: 3.5rem;
     font-weight: bold;
     text-align:center;
     color: ${theme.white};

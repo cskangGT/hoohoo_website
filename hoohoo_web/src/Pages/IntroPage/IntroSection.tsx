@@ -5,6 +5,7 @@ import { useSwipeable } from 'react-swipeable';
 import Lottie from "lottie-react";
 import arrow from './arrow-ani.json';
 import Bubble from '../../Component/Bubble';
+import Slider from '../../Component/ContentBox/Slider';
 
 const SectionContainer = styled.section`
     display: flex;
@@ -155,13 +156,29 @@ const data: DataStructure = {
         "secondDesc": "CLICK YOUR SHUTTER,<br />BUILD EARTH'S SHELTER, <br />GET POINTS AND BECOME WEALTHIER."
     }
 }
-const LeftArrow = styled(ArrowButton)`
-  left: 10px;
-`;
 
-const RightArrow = styled(ArrowButton)`
-  right: 10px;
-`;
+
+const SlideContent: React.FC<{ imagePath: string, data: any, windowWidth: number }> = ({ imagePath, data, windowWidth }) => {
+    // 여기에 슬라이드의 내용을 적용하세요.
+    return (
+        <Slide key={imagePath}>
+            {windowWidth >= 1100 && imagePath === "Images/1__.svg" &&
+                <LeftImage src="Images/1.svg" alt="앱 소개 이미지" draggable="false" />}
+            <IntroText >
+                <IntroTitle>EARTHMERA</IntroTitle>
+                <FirstDesc >
+                    {data[imagePath].firstDesc}
+                </FirstDesc>
+                <SecondDesc dangerouslySetInnerHTML={{ __html: data[imagePath].secondDesc }} />
+            </IntroText>
+            {
+                imagePath === "Images/1__.svg" ? <RightImage src={imagePath} alt="앱 소개 이미지" draggable="false" />
+                    : <RightImage src={imagePath} alt="앱 소개 이미지" draggable="false" style={{ maxHeight: 800 }} />
+            }
+        </Slide>
+
+    );
+};
 const IntroSection: React.FC = () => {
     const [windowWidth, setWindowWidth] = useState<number>(window.innerWidth);
     const [currentSlide, setCurrentSlide] = useState<number>(0);
@@ -207,36 +224,21 @@ const IntroSection: React.FC = () => {
         };
 
         window.addEventListener('resize', handleResize);
-
-        // 컴포넌트 언마운트 시 이벤트 리스너 제거
         return () => {
             window.removeEventListener('resize', handleResize);
         };
     }, []);
     return (<SectionContainer>
         <Inside {...handlers} >
-            {currentSlide === 1 && <LeftArrow onClick={handleLeftClick} >&lt; </LeftArrow>}
+            <Slider currentSlide={currentSlide}
+                handleLeftClick={handleLeftClick}
+                handleRightClick={handleRightClick}
+                pageNumber={images.length} >
+                {images.map((imagePath, index) => (
+                    <SlideContent key={index} imagePath={imagePath} data={data} windowWidth={windowWidth} />
+                ))}
+            </Slider>
 
-            <SlideContainer currentSlide={currentSlide} >
-                {
-                    images.map((imagePath, index) => (<Slide key={index}>
-                        {windowWidth >= 1100 && imagePath === "Images/1__.svg" &&
-                            <LeftImage src="Images/1.svg" alt="앱 소개 이미지" draggable="false" />}
-                        <IntroText >
-                            <IntroTitle>EARTHMERA</IntroTitle>
-                            <FirstDesc >
-                                {data[imagePath].firstDesc}
-                            </FirstDesc>
-                            <SecondDesc dangerouslySetInnerHTML={{ __html: data[imagePath].secondDesc }} />
-                        </IntroText>
-                        {
-                            imagePath === "Images/1__.svg" ? <RightImage src={imagePath} alt="앱 소개 이미지" draggable="false" />
-                                : <RightImage src={imagePath} alt="앱 소개 이미지" draggable="false" style={{ maxHeight: 800 }} />
-                        }
-
-                    </Slide>))}
-            </SlideContainer>
-            {currentSlide === 0 && <RightArrow onClick={handleRightClick} >&gt; </RightArrow>}
 
         </Inside>
         <LottieBox href='#next'>
@@ -261,3 +263,26 @@ const IntroSection: React.FC = () => {
 }
 
 export default IntroSection;
+
+// {currentSlide === 1 && <LeftArrow onClick={handleLeftClick} >&lt; </LeftArrow>}
+
+//             <SlideContainer currentSlide={currentSlide} >
+//                 {
+//                     images.map((imagePath, index) => (<Slide key={index}>
+//                         {windowWidth >= 1100 && imagePath === "Images/1__.svg" &&
+//                             <LeftImage src="Images/1.svg" alt="앱 소개 이미지" draggable="false" />}
+//                         <IntroText >
+//                             <IntroTitle>EARTHMERA</IntroTitle>
+//                             <FirstDesc >
+//                                 {data[imagePath].firstDesc}
+//                             </FirstDesc>
+//                             <SecondDesc dangerouslySetInnerHTML={{ __html: data[imagePath].secondDesc }} />
+//                         </IntroText>
+//                         {
+//                             imagePath === "Images/1__.svg" ? <RightImage src={imagePath} alt="앱 소개 이미지" draggable="false" />
+//                                 : <RightImage src={imagePath} alt="앱 소개 이미지" draggable="false" style={{ maxHeight: 800 }} />
+//                         }
+
+//                     </Slide>))}
+//             </SlideContainer>
+//             {currentSlide === 0 && <RightArrow onClick={handleRightClick} >&gt; </RightArrow>}
