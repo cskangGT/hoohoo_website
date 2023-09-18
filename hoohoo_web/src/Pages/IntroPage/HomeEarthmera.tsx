@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import styled from 'styled-components';
 import Nav from '../../Component/Nav/Nav'
 import { theme } from '../../style';
-import Carousel from 'react-bootstrap/Carousel';
 import Footer from '../../Component/Footer/Footer';
 import IntroSection from './IntroSection';
 import AboutUs from './AboutUs';
