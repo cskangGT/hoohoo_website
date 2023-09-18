@@ -198,31 +198,28 @@ const LanguageButton = styled.button<LanguageProps>`
   }
 `;
 const HoverContainer = styled.div`
-cursor: pointer;
-color: ${theme.white};
-
-@media screen and (max-width: 1000px) {
-  margin-left: 10px;
-  align-items: center;
-  justify-content: center;
-  
-}
-&:hover {
-  border-radius: 4px;
-  color: ${theme.mainNeon};
-  & .hidden-subItems {
-    display: block;
-    transition: all 0.5s ease;
+  cursor: pointer;
+  color: ${theme.white};
+  @media screen and (max-width: 1000px) {
+    margin-left: 10px;
+    align-items: center;
+    justify-content: center;
+    
   }
-}
+  &:hover {
+    border-radius: 4px;
+    color: ${theme.mainNeon};
+    & .hidden-subItems {
+      display: block;
+      transition: all 0.5s ease;
+    }
+  }
 `;
 
 const NavHover = styled.span`
   text-decoration : none;
-  
   padding-left: 10px;
   @media screen and (max-width: 1000px) {
-  
     padding-left: 0px;
   }
   
@@ -231,6 +228,9 @@ const NavHover = styled.span`
 const ContainerSubItems = styled.div`
   position: absolute;
   display: none;
+  // margin-top: 30px;
+  // padding-top: 12px;
+  // background-color: rgba(250, 250, 250, 0.09);
   @media screen and (max-width: 1000px) {
     position: relative;
     align-items: center;
@@ -241,7 +241,7 @@ const ContainerSubItems = styled.div`
 
 const HoverLinks = styled.ul`
   padding: 0;
-  padding-top: 30px;
+  
   text-decoration : none;
   @media screen and (max-width: 1000px) {
     padding-top: 7px; 
@@ -251,7 +251,7 @@ const NavSubList = styled.li`
   text-decoration : none;
   color: ${theme.white};
   display: flex;
-  padding : 12.5px 0px;
+  padding : 5px 0px;
   
   padding-right: 15px;
   @media screen and (max-width: 1000px) {
@@ -259,11 +259,11 @@ const NavSubList = styled.li`
     justify-content: center;
     padding : 7px 7px;
   }
-  &: hover {
-    backdrop-filter: blur(15px);
-    background-color: rgba(250, 250, 250, 0.09);
-    border-radius: 10px;
-  }
+  // &: hover {
+  //   backdrop-filter: blur(15px);
+  //   background-color: rgba(250, 250, 250, 0.09);
+  //   border-radius: 10px;
+  // }
 `;
 const SubNavLink = styled.a`
 text-decoration : none;
