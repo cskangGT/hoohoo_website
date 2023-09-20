@@ -11,7 +11,7 @@ const Logo = styled.a`
   align-items: center;
   text-decoration: none;
 `;
-const LogoText = styled.a`
+const LogoText = styled.span`
   padding-left: 10px;
   color: ${theme.white};
 `;
@@ -266,19 +266,19 @@ const NavSubList = styled.li`
   // }
 `;
 const SubNavLink = styled.a`
-text-decoration : none;
-color: ${theme.white};
-padding-left: 10px;
-cursor: pointer;
-@media screen and (max-width: 1000px) {
-  font-size: 12px;  
-  text-align: center; 
-  padding-left: 0px;
-}
-&:hover {
-  border-radius: 4px;
-  color: ${theme.mainNeon};
-}
+  text-decoration : none;
+  color: ${theme.white};
+  padding-left: 10px;
+  cursor: pointer;
+  @media screen and (max-width: 1000px) {
+    font-size: 12px;  
+    text-align: center; 
+    padding-left: 0px;
+  }
+  &:hover {
+    border-radius: 4px;
+    color: ${theme.mainNeon};
+  }
 `;
 type NavProps = {
   isKorean: boolean;
@@ -293,29 +293,28 @@ function Nav({ isKorean, setIsKorean }: NavProps) {
 
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const [windowWidth, setWindowWidth] = useState<number>(window.innerWidth);
-
-  const navItems: NavItem[] = [{ "label": "Home", "link": "#" },
+  const navItems: NavItem[] = [{ "label": "Home", "link": "/home" },
   {
     "label": "About",
     "subItems": [
-      { "label": "Our Team", "link": "#about" },
-      { "label": "EarthMera", "link": "#about" }
+      { "label": "Our Team", "link": "/about_team" },
+      { "label": "EarthMera", "link": "/about_earthmera" }
     ]
   },
   {
     "label": "Partnership",
-    "link": "#partners"
+    "link": "/partnership"
   },
   {
     "label": "Download",
     "subItems": [
-      { "label": "EarthMera", "link": "#download" },
-      { "label": "Other Apps", "link": "#download" }
+      { "label": "EarthMera", "link": "/home#download" },
+      { "label": "DropB", "link": "/dropb" }
     ]
   },
   {
     "label": "Contact",
-    "link": "/contact"
+    "link": "#contact"
   }]
 
   useEffect(() => {
@@ -332,28 +331,28 @@ function Nav({ isKorean, setIsKorean }: NavProps) {
   }, []);
   return (
     <Bar>
-      <Logo href="#home">
-        <HeaderLogo src='Images/icon_image.png' />
-        <LogoText>EarthMera</LogoText>
+      <Logo key="logo_link" href="/home">
+        <HeaderLogo key="logo" src='Images/icon_image.png' />
+        <LogoText key="earthmera">EarthMera</LogoText>
       </Logo>
 
       <NavbarMenu isOpen={isOpen}>
         {
           navItems.map((item, i) => {
             return (
-              <NavMenuList><LogoIcon className="hidden-icon" src='Images/icon_image.png' />
+              <NavMenuList key={i} ><LogoIcon key={i + "hd_icon"} className="hidden-icon" src='Images/icon_image.png' />
                 {item.subItems ?
-                  <HoverContainer style={{ overflow: 'visible' }}>
-                    <NavHover id={item.link}>{item.label}</NavHover>
-                    <ContainerSubItems className="hidden-subItems">
-                      <HoverLinks >{item.subItems.map((subItem, subIndex) => (
-                        <NavSubList key={subIndex}><SubNavLink href={subItem.link}>{subItem.label}</SubNavLink></NavSubList>))}
+                  <HoverContainer key={i + "hoverContainer"} style={{ overflow: 'visible' }}>
+                    <NavHover id={item.link} key={i + "navh"}>{item.label}</NavHover>
+                    <ContainerSubItems className="hidden-subItems" key={i + "hd_subItems"}>
+                      <HoverLinks key={i + "hvLinks"} >{item.subItems.map((subItem, subIndex) => (
+                        <NavSubList key={subIndex}><SubNavLink key={subIndex + "subLink"} href={subItem.link}>{subItem.label}</SubNavLink></NavSubList>))}
                       </HoverLinks></ContainerSubItems>
                   </HoverContainer> : <NavLink
                     id={item.link}
+                    key={i}
                     href={item.link}
                   >{item.label}</NavLink>}
-
               </NavMenuList>
             );
           })

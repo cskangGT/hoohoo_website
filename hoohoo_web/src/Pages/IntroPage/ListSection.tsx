@@ -15,6 +15,7 @@ const Container = styled.section<Props>`
     justify-content: flex-start;
     align-items: center;
     transition: opacity 0.5s;
+    
 `;
 const ContentBox = styled.div`
     max-width: 1200px;
@@ -32,7 +33,7 @@ const HeaderBox = styled.div`
 `;
 
 const Header = styled.h1`
-    font-size: 3.5rem;
+    font-size: 3rem;
     font-weight: bold;
     text-align:center;
     color: ${theme.white};
@@ -53,6 +54,7 @@ const SecondImageBox = styled.div`
     justify-items: stretch;
     display: grid;
     margin-top: 50px;
+    margin-bottom: 100px;
     justify-content: center;
     @media screen and (max-width: 1100px) {
         height: auto;
@@ -123,12 +125,12 @@ function ListSection({ data, header, isBot, id }: TotalProps) {
                 </HeaderBox>}
                 {
                     isBot ? <SecondImageBox>
-                        {data.map((item, index) => (<EachBox style={{ height: 600 }}>
-                            <Image src={item.imagePath}></Image></EachBox>
+                        {data.map((item, index) => (<EachBox key={index} style={{ height: 600 }}>
+                            <Image src={item.imagePath} key={index + "img"} /></EachBox>
                         ))}
                     </SecondImageBox> : <FirstImageBox>
-                        {data.map((item, index) => (<EachBox >
-                            <Image src={item.imagePath}></Image></EachBox>
+                        {data.map((item, index) => (<EachBox key={index} >
+                            <Image src={item.imagePath} key={index + "img"} /></EachBox>
                         ))}
                     </FirstImageBox>
                 }
