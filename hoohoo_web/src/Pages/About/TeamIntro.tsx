@@ -12,6 +12,7 @@ const SectionBox = styled.section`
     padding-top: 5rem;
     max-width: 1260px;
     justify-content: center;
+    margin-top: 100px;
 `;
 const ContainerBox = styled.div`
   width: 100%;

@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
-import { theme } from '../../style';
 import Frame from '../../Component/Frame';
 import DropBIntro from './DropBIntro';
 import Download from '../IntroPage/Download';
@@ -11,13 +10,11 @@ const ContentBox = styled.section`
   display: flex;
 `;
 function MainDropB() {
-
     return (
         <Frame dropb={true} >
             <ContentBox id="sketch">
                 <DropBIntro />
             </ContentBox>
-
             <ContentBox >
                 <Download dropb={true} />
             </ContentBox>

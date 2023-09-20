@@ -11,7 +11,7 @@ const Logo = styled.a`
   align-items: center;
   text-decoration: none;
 `;
-const LogoText = styled.a`
+const LogoText = styled.span`
   padding-left: 10px;
   color: ${theme.white};
 `;
@@ -331,28 +331,28 @@ function Nav({ isKorean, setIsKorean }: NavProps) {
   }, []);
   return (
     <Bar>
-      <Logo href="/home">
-        <HeaderLogo src='Images/icon_image.png' />
-        <LogoText>EarthMera</LogoText>
+      <Logo key="logo_link" href="/home">
+        <HeaderLogo key="logo" src='Images/icon_image.png' />
+        <LogoText key="earthmera">EarthMera</LogoText>
       </Logo>
 
       <NavbarMenu isOpen={isOpen}>
         {
           navItems.map((item, i) => {
             return (
-              <NavMenuList><LogoIcon className="hidden-icon" src='Images/icon_image.png' />
+              <NavMenuList key={i} ><LogoIcon key={i + "hd_icon"} className="hidden-icon" src='Images/icon_image.png' />
                 {item.subItems ?
-                  <HoverContainer style={{ overflow: 'visible' }}>
-                    <NavHover id={item.link}>{item.label}</NavHover>
-                    <ContainerSubItems className="hidden-subItems">
-                      <HoverLinks >{item.subItems.map((subItem, subIndex) => (
-                        <NavSubList key={subIndex}><SubNavLink href={subItem.link}>{subItem.label}</SubNavLink></NavSubList>))}
+                  <HoverContainer key={i + "hoverContainer"} style={{ overflow: 'visible' }}>
+                    <NavHover id={item.link} key={i + "navh"}>{item.label}</NavHover>
+                    <ContainerSubItems className="hidden-subItems" key={i + "hd_subItems"}>
+                      <HoverLinks key={i + "hvLinks"} >{item.subItems.map((subItem, subIndex) => (
+                        <NavSubList key={subIndex}><SubNavLink key={subIndex + "subLink"} href={subItem.link}>{subItem.label}</SubNavLink></NavSubList>))}
                       </HoverLinks></ContainerSubItems>
                   </HoverContainer> : <NavLink
                     id={item.link}
+                    key={i}
                     href={item.link}
                   >{item.label}</NavLink>}
-
               </NavMenuList>
             );
           })

@@ -125,12 +125,12 @@ function ListSection({ data, header, isBot, id }: TotalProps) {
                 </HeaderBox>}
                 {
                     isBot ? <SecondImageBox>
-                        {data.map((item, index) => (<EachBox style={{ height: 600 }}>
-                            <Image src={item.imagePath}></Image></EachBox>
+                        {data.map((item, index) => (<EachBox key={index} style={{ height: 600 }}>
+                            <Image src={item.imagePath} key={index + "img"} /></EachBox>
                         ))}
                     </SecondImageBox> : <FirstImageBox>
-                        {data.map((item, index) => (<EachBox >
-                            <Image src={item.imagePath}></Image></EachBox>
+                        {data.map((item, index) => (<EachBox key={index} >
+                            <Image src={item.imagePath} key={index + "img"} /></EachBox>
                         ))}
                     </FirstImageBox>
                 }

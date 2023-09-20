@@ -75,7 +75,7 @@ function Frame({ children, dropb }: FrameProps) {
             <BgImage>
                 <Nav setIsKorean={setIsKorean} isKorean={isKorean} />
                 {children}
-                <ContactBox id="contact">
+                <ContactBox id="contact" key="contact">
                     {isKorean ? <ContactColumnBox><ContactText>비즈니스 파트너십 또는 기타 문의사항을 원하시면 아래의 버튼을 클릭하세요.</ContactText>
                         <LinktoEmail form="mailto:devceohoony@gmail.com" data-l10n-id="footer_contactus">
                             문의하기</LinktoEmail></ContactColumnBox> : <ContactColumnBox><ContactText>Interested in partnering with us or have any questions? </ContactText>

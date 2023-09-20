@@ -8,7 +8,7 @@ const SectionBox = styled.section`
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding-top: 12rem;
+    padding-top: 15rem;
 `;
 const ContainerBox = styled.div`
   width: 100%;
@@ -34,14 +34,17 @@ const LeftCell = styled.div`
     display: flex;
     flex-direction: column;
     align-items: flex-start;
+    width: 30%;
+    margin-bottom: 120px;
     @media screen and (max-width: 1100px) {
+        width: 100%;
         margin-top: 40px;
         align-items: center;
     }
     
 `;
 const AboutHeader = styled.h4`
-etter-spacing: .1rem;
+letter-spacing: .1rem;
 text-transform: uppercase;
 margin-top: 0.3rem;
 margin-bottom: 0.3rem;
@@ -52,34 +55,36 @@ line-height: 1.5;
 color: ${theme.white};
 `;
 const RightCell = styled.div`
-justify-content: flex-end;
-align-items: center;
-display: flex;
+// justify-content: flex-end;
+// align-items: center;
+// display: flex;
+position: absolute;
+top: -100px;
 `;
 const AboutUsImage = styled.img`
-  border: 0;
+  width: 100%;
 `;
 const AboutTitle = styled.h1`
     color: ${theme.white};
     letter-spacing: .4px;
     margin-top: 0.4rem;
     margin-bottom: 0.8rem;
-    font-size: 2.375rem;
+    font-size: 2.4rem;
     font-weight: 600;
     line-height: 1.5;
 `;
 const AboutContent = styled.p`
-    font-size: 1.1rem;
+    font-size: 1.4rem;
     font-weight: 200;
     line-height: 1.6;
     color: rgba(180, 255, 250, 1);
     margin-top: 0.5rem;
-    margin-bottom: 0.5rem;
+    margin-bottom: 1rem;
     
 `;
 const PartnerButton = styled.a`
 // margin : 20px 5px;
-    font-size: 16px;
+    font-size: 20px;
     font-weight: 700;
     cursor: pointer;
     text-decoration: none;
@@ -116,7 +121,7 @@ function AboutUs() {
                         {isOpen && <PartnerModal isOpen={isOpen} setIsOpen={setIsOpen} />}
                     </LeftCell>
                     <RightCell>
-                        <AboutUsImage src="Images/1__.svg" />
+                        <AboutUsImage src="Images/partnership.webp" />
                     </RightCell>
                 </Grid>
             </ContainerBox>

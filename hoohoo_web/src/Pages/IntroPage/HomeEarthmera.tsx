@@ -39,14 +39,14 @@ function HomeEarthmera() {
             <IntroSection />
             <ListSection id={"next"} data={secondImages} header='' isBot={false} />
             <ListSection id={"rewards"} data={thirdImages} header='REDEEM REWARDS WITH POINTS.' isBot={true} />
-            <ContentBox id="section">
+            <ContentBox key="table" id="table">
                 <NumberIconContent />
             </ContentBox>
 
-            <ContentBox>
+            <ContentBox key="video" id="video">
                 <VideoSection />
             </ContentBox>
-            <ContentBox id="download">
+            <ContentBox id="download" key="download">
                 <Download dropb={false} />
             </ContentBox>
         </Frame>);
