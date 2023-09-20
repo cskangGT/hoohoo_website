@@ -3,12 +3,12 @@ import styled from 'styled-components';
 import { theme } from '../../style';
 import PartnerModal from './PartnerModal';
 const SectionBox = styled.section`
-    padding-bottom: 5rem;
+    padding-bottom: 13rem;
     width: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding-top: 5rem;
+    padding-top: 12rem;
 `;
 const ContainerBox = styled.div`
   width: 100%;
@@ -64,7 +64,6 @@ const AboutTitle = styled.h1`
     letter-spacing: .4px;
     margin-top: 0.4rem;
     margin-bottom: 0.8rem;
-    font-family: Poppins,sans-serif;
     font-size: 2.375rem;
     font-weight: 600;
     line-height: 1.5;
@@ -73,10 +72,10 @@ const AboutContent = styled.p`
     font-size: 1.1rem;
     font-weight: 200;
     line-height: 1.6;
-    color: gray;
+    color: rgba(180, 255, 250, 1);
     margin-top: 0.5rem;
     margin-bottom: 0.5rem;
-    font-family: Poppins,sans-serif;
+    
 `;
 const PartnerButton = styled.a`
 // margin : 20px 5px;

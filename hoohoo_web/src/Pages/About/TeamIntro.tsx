@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useDebugValue } from 'react';
+import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import { theme } from '../../style';
 import { useSwipeable } from 'react-swipeable';
@@ -11,6 +11,7 @@ const SectionBox = styled.section`
     align-items: center;
     padding-top: 5rem;
     max-width: 1260px;
+    justify-content: center;
 `;
 const ContainerBox = styled.div`
   width: 100%;
@@ -129,7 +130,7 @@ function TeamIntro() {
                         currentSlide={currentSlide}
                         handleLeftClick={handleLeftClick}
                         handleRightClick={handleRightClick}
-                        pageNumber={2}>
+                        pageNumber={groupedData.length}>
                         {groupedData.map((value, index) => (
                             <SlideContent array={value} />
                         ))}
