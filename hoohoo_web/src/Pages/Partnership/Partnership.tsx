@@ -1,9 +1,9 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import styled from 'styled-components';
-import { theme } from '../../style';
 import Frame from '../../Component/Frame';
 import SketchContents from './SketchContents';
 import Fundraising from './Fundraising';
+import AboutUs from './AboutUs';
 const ContentBox = styled.section`
     padding-top: 20px;
     justify-content: center;
@@ -14,6 +14,9 @@ function Partnership() {
 
     return (
         <Frame>
+            <ContentBox>
+                <AboutUs />
+            </ContentBox>
             <ContentBox id="sketch">
                 <SketchContents />
             </ContentBox>

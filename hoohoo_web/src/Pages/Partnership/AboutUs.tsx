@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 import { theme } from '../../style';
 import PartnerModal from './PartnerModal';
@@ -9,6 +9,11 @@ const SectionBox = styled.section`
     flex-direction: column;
     align-items: center;
     padding-top: 15rem;
+    margin-bottom: 100px;
+    @media screen and (max-width: 1100px) {
+        padding-top: 5rem;
+        padding-bottom: 0rem;
+    }
 `;
 const ContainerBox = styled.div`
   width: 100%;
@@ -38,8 +43,8 @@ const LeftCell = styled.div`
     margin-bottom: 120px;
     @media screen and (max-width: 1100px) {
         width: 100%;
-        margin-top: 40px;
         align-items: center;
+        margin-bottom: 30px;
     }
     
 `;
@@ -58,11 +63,25 @@ const RightCell = styled.div`
 // justify-content: flex-end;
 // align-items: center;
 // display: flex;
-position: absolute;
-top: -100px;
+/* position: absolute; */
+    top: -350px;
+    position: absolute;
+    left: -250px;
+    /* width: 100%; */
+    @media screen and (max-width: 1100px) {
+        position: relative;
+        top:0;
+        left: -200px;
+    }
 `;
 const AboutUsImage = styled.img`
-  width: 100%;
+  /* width: 200%; */
+    width: 135%;
+    height: auto;
+    object-fit: cover;
+    @media screen and (max-width: 1100px) {
+            object-fit: scale-down;
+        }
 `;
 const AboutTitle = styled.h1`
     color: ${theme.white};
@@ -80,7 +99,10 @@ const AboutContent = styled.p`
     color: rgba(180, 255, 250, 1);
     margin-top: 0.5rem;
     margin-bottom: 1rem;
-    
+    @media screen and (max-width: 1100px) {
+    text-align: center;
+    }
+
 `;
 const PartnerButton = styled.a`
 // margin : 20px 5px;
@@ -121,7 +143,7 @@ function AboutUs() {
                         {isOpen && <PartnerModal isOpen={isOpen} setIsOpen={setIsOpen} />}
                     </LeftCell>
                     <RightCell>
-                        <AboutUsImage src="Images/partnership.webp" />
+                        <AboutUsImage src="Images/long_about.webp" />
                     </RightCell>
                 </Grid>
             </ContainerBox>

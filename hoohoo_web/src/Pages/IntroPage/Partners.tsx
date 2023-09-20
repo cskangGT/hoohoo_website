@@ -11,7 +11,7 @@ const Container = styled.div`
     align-items: center;
     position: relative;
     transition: all 0.2s ease 0s;
-    padding: 0px 15px;
+    padding: 5rem 15px;
 `;
 const ContentBox = styled.div`
 

@@ -246,7 +246,7 @@ const IntroSection: React.FC = () => {
                 ))}
             </Slider>
         </Inside>
-        <LottieBox href='#next'>
+        <LottieBox href='#partners'>
             <Lottie animationData={arrow} loop={true} />
         </LottieBox>
         {isBubble ? <Bubble setIsBubble={setIsBubble} /> : <React.Fragment />}
