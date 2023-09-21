@@ -74,7 +74,7 @@ const RightCell = styled.div`
     @media screen and (max-width: 1100px) {
         position: relative;
         top:0;
-        left: -200px;
+        left: 40px;
     }
     
 `;
