@@ -96,10 +96,9 @@ const LeftImage = styled.img`
 
 `;
 const RightImage = styled.img`
-
   padding: 0 20px;
   height: auto;
-  width: 45%;
+  width: 40%;
   @media screen and (max-width: 1100px) {
       width: 60%;
   }
@@ -180,7 +179,7 @@ const SlideContent: React.FC<{ imagePath: string, data: any, windowWidth: number
                     </IntroText>
                     {
                         imagePath === "Images/1__.svg" ? <RightImage src={imagePath} alt="앱 소개 이미지" draggable="false" />
-                            : <RightImage src={imagePath} alt="앱 소개 이미지" draggable="false" style={{ maxHeight: 800 }} />
+                            : <RightImage src={imagePath} alt="앱 소개 이미지" draggable="false" style={{ maxWidth: 350 }} />
                     }</>
             }
         </Slide>

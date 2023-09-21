@@ -124,7 +124,7 @@ interface DataStructure {
 }
 
 const data: DataStructure = {
-    "Images/preview.png": {
+    "Images/preview1.png": {
         "firstDesc": "CAPTURE AND BE REWARDED",
         "secondDesc": "CLICK YOUR SHUTTER,<br />BUILD EARTH'S SHELTER, <br />GET POINTS AND BECOME WEALTHIER."
     }
@@ -144,7 +144,7 @@ const SlideContent: React.FC<{ imagePath: string, data: any, windowWidth: number
             </IntroText>
             {
                 imagePath === "Images/1__.svg" ? <RightImage src={imagePath} alt="앱 소개 이미지" draggable="false" />
-                    : <RightImage src={imagePath} alt="앱 소개 이미지" draggable="false" style={{ maxHeight: 800 }} />
+                    : <RightImage src={imagePath} alt="앱 소개 이미지" draggable="false" style={{ maxWidth: 450 }} />
             }
         </Slide>
 

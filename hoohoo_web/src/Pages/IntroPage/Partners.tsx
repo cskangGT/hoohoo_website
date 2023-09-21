@@ -82,7 +82,7 @@ const LeftBox = styled.div`
     justify-content: start;
     display: flex;
     height: 353px;
-    flex-direction row;
+    flex-direction :row;
     @media screen and (max-width: 1100px){
         justify-content: center;
     }
@@ -130,7 +130,6 @@ const FText = styled.span`
     line-height: 1.2;
     text-transform: uppercase;
     text-align: center;
-}
 `;
 const SText = styled.span`
 font-weight: 500;

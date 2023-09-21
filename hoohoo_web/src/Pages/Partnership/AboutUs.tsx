@@ -61,24 +61,33 @@ color: ${theme.white};
 `;
 const RightCell = styled.div`
 // justify-content: flex-end;
-// align-items: center;
-// display: flex;
+ align-items: center;
+ display: flex;
+ width: 900px;
+ height: 600px;
 /* position: absolute; */
-    top: -350px;
+/* top: -500px;
     position: absolute;
-    left: -250px;
+    left: -500px; */
     /* width: 100%; */
+    overflow: visible;
     @media screen and (max-width: 1100px) {
         position: relative;
         top:0;
         left: -200px;
     }
+    
 `;
+
 const AboutUsImage = styled.img`
   /* width: 200%; */
-    width: 135%;
+    /* width: 160%; */
+    position: absolute;
+    left: -650px;
+    width: 250%;
     height: auto;
-    object-fit: cover;
+    object-position: 50% 50%;
+    object-fit: scale-down;
     @media screen and (max-width: 1100px) {
             object-fit: scale-down;
         }
@@ -143,7 +152,7 @@ function AboutUs() {
                         {isOpen && <PartnerModal isOpen={isOpen} setIsOpen={setIsOpen} />}
                     </LeftCell>
                     <RightCell>
-                        <AboutUsImage src="Images/long_about.webp" />
+                        <AboutUsImage src="Images/ll_image.webp" />
                     </RightCell>
                 </Grid>
             </ContainerBox>
