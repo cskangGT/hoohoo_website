@@ -8,6 +8,7 @@ import VideoSection from './Video'
 import Frame from '../../Component/Frame';
 import Download from './Download';
 import Partners from './Partners';
+import Blog from '../Blog/Blog';
 const ContentBox = styled.section`
     padding-top: 20px;
     justify-content: center;
@@ -45,7 +46,6 @@ function HomeEarthmera() {
             <ContentBox key="table" id="table">
                 <NumberIconContent />
             </ContentBox>
-
             <ContentBox key="video" id="video">
                 <VideoSection />
             </ContentBox>

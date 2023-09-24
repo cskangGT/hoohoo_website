@@ -1,33 +1,32 @@
 import React from 'react';
 import styled from 'styled-components';
 import { theme } from '../../style';
+
 const Container = styled.section`
-justify-content: center;
-width: 100%;
-max-width: 1140px;
-display: flex;
+    justify-content: center;
+    width: 100%;
+    max-width: 1140px;
+    display: flex;
     @media screen and (max-width: 1100px) {
-    
-      width: 60%;
-}
+        width: 60%;
+    }
 `;
 const Grid = styled.div`
-width: 100%;
-grid-column-gap: 1rem;
-grid-row-gap: 1rem;
-grid-template-rows: auto;
-grid-template-columns: .75fr 1fr;
-grid-auto-columns: 1fr;
-display: grid;
-margin-top: 6rem;
-margin-bottom: 10rem;
-}
-@media screen and (max-width: 1100px) {
+    width: 100%;
+    grid-column-gap: 1rem;
     grid-row-gap: 1rem;
-    grid-template-columns: 1fr;
-    justify-items: center;
-    margin-bottom: 5rem;
-}
+    grid-template-rows: auto;
+    grid-template-columns: .75fr 1fr;
+    grid-auto-columns: 1fr;
+    display: grid;
+    margin-top: 6rem;
+    margin-bottom: 10rem;
+    @media screen and (max-width: 1100px) {
+        grid-row-gap: 1rem;
+        grid-template-columns: 1fr;
+        justify-items: center;
+        margin-bottom: 5rem;
+    }
 `;
 const Box = styled.div`
   border-radius: 10px;
@@ -45,19 +44,19 @@ const Image = styled.img`
     padding: 1.5rem;
 `;
 const FirstText = styled.h3`
-color: #111425;
-margin-top: 0.2rem;
-margin-bottom: 0.5rem;
-font-family: Poppins,sans-serif;
-font-size: 1.55rem;
-font-weight: 600;
-line-height: 1.5;
+    color: #111425;
+    margin-top: 0.2rem;
+    margin-bottom: 0.5rem;
+    font-family: Poppins,sans-serif;
+    font-size: 1.55rem;
+    font-weight: 600;
+    line-height: 1.5;
 `;
 const SecondText = styled.p`
-max-width: 55%;
-margin-bottom: 2rem;
-text-align:center;
-color: #5a5c81;
+    max-width: 55%;
+    margin-bottom: 2rem;
+    text-align:center;
+    color: #5a5c81;
     margin-top: 0.3rem;
     font-family: Poppins,sans-serif;
     font-size: .875rem;

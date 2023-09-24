@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import { theme } from '../../style';
 import Frame from '../../Component/Frame';
-// import Partners from '../IntroPage/Partners';
+
 const ContentBox = styled.section`
     padding-top: 20px;
     justify-content: center;
@@ -27,7 +27,7 @@ const IntroTitle = styled.h2`
   text-align: center;
   @media screen and (max-width: 1100px) {
     font-size: 46px;
-}
+    }
     @media screen and (max-width: 500px) {
         font-size: 34px;
         margin-bottom: 1rem;
@@ -131,7 +131,7 @@ function AboutEarthmera() {
                         <LeftImage src="Images/1.svg" alt="앱 소개 이미지" draggable="false" />}
                     <IntroText >
                         <IntroTitle>{data[imagePath]["header"]}</IntroTitle>
-                        <FirstDesc >
+                        <FirstDesc>
                             {data[imagePath].firstDesc}
                         </FirstDesc>
                         <SecondDesc dangerouslySetInnerHTML={{ __html: data[imagePath].secondDesc }} />

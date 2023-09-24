@@ -7,6 +7,7 @@ import OurTeam from "./Pages/About/OurTeam";
 import AboutEarthmera from "./Pages/About/AboutEarthmera";
 import Partnership from "./Pages/Partnership/Partnership";
 import MainDropB from "./Pages/DropB/MainDropB";
+import Blog from "./Pages/Blog/Blog";
 const Router = createBrowserRouter([
     {
         path: "/",
@@ -45,6 +46,11 @@ const Router = createBrowserRouter([
             {
                 path: "/dropb",
                 element: <MainDropB />,
+                errorElement: <ErrorComponent />
+            },
+            {
+                path: "/blog",
+                element: <Blog />,
                 errorElement: <ErrorComponent />
             }
         ],

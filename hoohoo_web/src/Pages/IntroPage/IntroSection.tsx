@@ -9,7 +9,7 @@ import Slider from '../../Component/ContentBox/Slider';
 
 const SectionContainer = styled.section`
     display: flex;
-    height:940px;
+    height: 1100px;
     box-sizing: border-box;
     justify-content: center;
     align-items: center;
