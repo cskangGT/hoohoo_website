@@ -7,7 +7,8 @@ import ListSection from './ListSection';
 import VideoSection from './Video'
 import Frame from '../../Component/Frame';
 import Download from './Download';
-
+import Partners from './Partners';
+import Blog from '../Blog/Blog';
 const ContentBox = styled.section`
     padding-top: 20px;
     justify-content: center;
@@ -37,12 +38,14 @@ function HomeEarthmera() {
     return (
         <Frame>
             <IntroSection />
+            <ContentBox id="partners">
+                <Partners />
+            </ContentBox>
             <ListSection id={"next"} data={secondImages} header='' isBot={false} />
             <ListSection id={"rewards"} data={thirdImages} header='REDEEM REWARDS WITH POINTS.' isBot={true} />
             <ContentBox key="table" id="table">
                 <NumberIconContent />
             </ContentBox>
-
             <ContentBox key="video" id="video">
                 <VideoSection />
             </ContentBox>

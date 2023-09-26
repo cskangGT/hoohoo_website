@@ -293,29 +293,34 @@ function Nav({ isKorean, setIsKorean }: NavProps) {
 
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const [windowWidth, setWindowWidth] = useState<number>(window.innerWidth);
-  const navItems: NavItem[] = [{ "label": "Home", "link": "/home" },
-  {
-    "label": "About",
-    "subItems": [
-      { "label": "Our Team", "link": "/about_team" },
-      { "label": "EarthMera", "link": "/about_earthmera" }
-    ]
-  },
-  {
-    "label": "Partnership",
-    "link": "/partnership"
-  },
-  {
-    "label": "Download",
-    "subItems": [
-      { "label": "EarthMera", "link": "/home#download" },
-      { "label": "DropB", "link": "/dropb" }
-    ]
-  },
-  {
-    "label": "Contact",
-    "link": "#contact"
-  }]
+  const navItems: NavItem[] = [
+    { "label": "Home", "link": "/home" },
+    {
+      "label": "About",
+      "subItems": [
+        { "label": "Our Team", "link": "/about_team" },
+        { "label": "EarthMera", "link": "/about_earthmera" }
+      ]
+    },
+    {
+      "label": "Partnership",
+      "link": "/partnership"
+    },
+    {
+      "label": "Download",
+      "subItems": [
+        { "label": "EarthMera", "link": "/home#download" },
+        { "label": "DropB", "link": "/dropb" }
+      ]
+    },
+    {
+      "label": "Blog",
+      "link": "/blog"
+    },
+    {
+      "label": "Contact",
+      "link": "#contact"
+    }]
 
   useEffect(() => {
     const handleResize = () => {

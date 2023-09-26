@@ -17,7 +17,7 @@ const LeftHeader = styled.h1`
   text-align: left;
   width: 100%;
   font-weight: 400;
-  font-space: 1.1px;
+  letter-spacing: 1.1px;
   color: ${theme.white};
   font-size: 26px;
   @media screen and (max-width: 1100px){

@@ -59,10 +59,10 @@ const ImageBox = styled.div`
 //     left: 44%;
 //     bottom: -200px;
 // }`;
-const Image = styled.img`
-  width: 300px;
+const Image = styled.img<DownloadProps>`
+  width: ${props => (props.dropb ? '280px' : '220px')};
   position: absolute;
-  left: 20px;
+  left: ${props => (props.dropb ? '50px' : '70px')};
   // transform: rotate(-15deg);
   @media screen and (max-width: 1100px) {
     width: 250px;
@@ -70,9 +70,10 @@ const Image = styled.img`
     left: 30%;
 }
 `;
-const SecondImage = styled.img`
-width: 280px;
+const SecondImage = styled.img<DownloadProps>`
+width: ${props => (props.dropb ? '270px' : '215px')};
 position: absolute;
+height: auto;
 left:200px;
   transform: rotate(15deg);
   @media screen and (max-width: 1100px) {
@@ -176,7 +177,7 @@ const RateRight = styled.span`
   color: rgba(255, 255, 255, 0.5);
   text-transform: uppercase;
   letter-spacing: 1.2px;
-  fonr-weight: 400;
+  font-weight: 400;
 padding-left : 5px;
   font-size: 13px;
 `;
@@ -187,17 +188,17 @@ interface DownloadProps {
   dropb: boolean | undefined;
 }
 function Download({ dropb }: DownloadProps) {
+  const image = dropb ? "Images/preview1.png" : "Images/preview.png";
   return (
     <Container dropb={dropb}>
       <ContentBox>
         <ImageBox>
-          <SecondImage src={'Images/preview.png'} />
-          <Image src={'Images/preview.png'} />
+          <SecondImage src={image} dropb={dropb} />
+          <Image src={image} dropb={dropb} />
         </ImageBox>
         <RightBox>
           <Header>
             {dropb ? "Download DropB App" : "Download the EarthMera App"}
-
           </Header>
           <SubHeader>
             {dropb ? "Record tags for your day!" : "Make a change with one tap in EarthMera!"}

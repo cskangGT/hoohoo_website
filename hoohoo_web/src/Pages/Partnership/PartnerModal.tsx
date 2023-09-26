@@ -16,13 +16,12 @@ const ModalBackground = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  
 `;
 const Wrapper = styled.div`
-width: 100%;
-max-height: 100%;
-padding: 6rem 2rem 3rem;
-overflow: auto;
+    width: 100%;
+    max-height: 100%;
+    padding: 6rem 2rem 3rem;
+    overflow: auto;
 `;
 const ModalContent = styled.div`
     z-index: 10;
@@ -95,7 +94,7 @@ const RichText = styled.div`
   word-break: break-word;
 `;
 const AgreeBox = styled.div`
-margin-bottom: 8px;
+    margin-bottom: 8px;
 `;
 const InputList = styled.ul`
   padding-top: 6px;
@@ -109,7 +108,7 @@ const CheckList = styled.li`
   width:100%;
 `;
 const Check = styled.input`
-font-family: arial, helvetica, sans-serif;
+    font-family: arial, helvetica, sans-serif;
   float:left;
   max-width:100%;
   cursor: pointer;

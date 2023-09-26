@@ -15,7 +15,6 @@ const Container = styled.section<Props>`
     justify-content: flex-start;
     align-items: center;
     transition: opacity 0.5s;
-    
 `;
 const ContentBox = styled.div`
     max-width: 1200px;
@@ -60,7 +59,7 @@ const SecondImageBox = styled.div`
         height: auto;
         grid-template-columns: auto;
         grid-column-gap: 30px;
-    grid-template-rows: 1fr 1fr 1fr;
+        grid-template-rows: 1fr 1fr 1fr;
     }
 `;
 const FirstImageBox = styled.div`
