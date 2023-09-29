@@ -36,7 +36,7 @@ function HomeEarthmera() {
         imagePath: 'Images/3-3.webp'
     }];
     return (
-        <Frame>
+        <React.Fragment>
             <IntroSection />
             <ContentBox id="partners">
                 <Partners />
@@ -52,6 +52,6 @@ function HomeEarthmera() {
             <ContentBox id="download" key="download">
                 <Download dropb={false} />
             </ContentBox>
-        </Frame>);
+        </React.Fragment>);
 }
 export default HomeEarthmera; 

@@ -13,7 +13,7 @@ const ContentBox = styled.section`
 function Partnership() {
 
     return (
-        <Frame>
+        <React.Fragment>
             <ContentBox>
                 <AboutUs />
             </ContentBox>
@@ -23,7 +23,7 @@ function Partnership() {
             <ContentBox>
                 <Fundraising></Fundraising>
             </ContentBox>
-        </Frame>
+        </React.Fragment>
     )
 }
 export default Partnership
