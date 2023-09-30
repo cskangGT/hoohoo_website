@@ -1,6 +1,5 @@
 import React from 'react';
 import styled from 'styled-components';
-import Frame from '../../Component/Frame';
 import SketchContents from './SketchContents';
 import Fundraising from './Fundraising';
 import AboutUs from './AboutUs';

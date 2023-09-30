@@ -141,7 +141,6 @@ function AdminLogin() {
         <HeaderBox>
           {logIn ? <><HeaderText>Hello {username},</HeaderText>
           </> : <HeaderText>LOGIN</HeaderText>}
-
         </HeaderBox>
         {!logIn &&
           <Form onSubmit={handleSubmit}>

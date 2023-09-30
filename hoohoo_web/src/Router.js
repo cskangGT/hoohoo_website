@@ -8,7 +8,11 @@ import AboutEarthmera from "./Pages/About/AboutEarthmera";
 import Partnership from "./Pages/Partnership/Partnership";
 import MainDropB from "./Pages/DropB/MainDropB";
 import Blog from "./Pages/Blog/Blog";
-import AdminLogin from "./Pages/Admin/AdminLogin"
+import AdminLogin from "./Pages/Admin/AdminLogin";
+import BlogDetail from "./Pages/Blog/BlogDetail";
+import ComingSoon from "./Component/ErrorComponent/ComingSoon";
+import Privacy from "./Pages/Legal/Privacy";
+import TandC from "./Pages/Legal/T&C";
 const Router = createBrowserRouter([
     {
         path: "/",
@@ -57,6 +61,22 @@ const Router = createBrowserRouter([
             {
                 path: "/admin",
                 element: <AdminLogin />,
+                errorElement: <ErrorComponent />
+            }, {
+                path: "/blog/:id",
+                element: <BlogDetail />,
+                errorElement: <ErrorComponent />
+            }, {
+                path: "/privacy",
+                element: <Privacy />,
+                errorElement: <ErrorComponent />
+            }, {
+                path: "/term_of_use",
+                element: <TandC />,
+                errorElement: <ErrorComponent />
+            }, {
+                path: "/coming_soon",
+                element: <ComingSoon />,
                 errorElement: <ErrorComponent />
             }
         ],

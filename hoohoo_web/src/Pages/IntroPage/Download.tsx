@@ -204,10 +204,10 @@ function Download({ dropb }: DownloadProps) {
             {dropb ? "Record tags for your day!" : "Make a change with one tap in EarthMera!"}
           </SubHeader>
           <BannerBtnContainer>
-            <BannerBtn href='#'>
+            <BannerBtn href='/coming_soon'>
               <Img src={'Images/appstore.svg'}></Img>
             </BannerBtn>
-            <BannerBtn href='#'>
+            <BannerBtn href='/coming_soon'>
               <Img src={'Images/googleplay.svg'}></Img>
             </BannerBtn>
             {/* <BannerBtn href='#'>

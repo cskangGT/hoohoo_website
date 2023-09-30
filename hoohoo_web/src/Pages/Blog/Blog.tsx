@@ -8,7 +8,6 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlus } from '@fortawesome/free-solid-svg-icons';
 import blogdata from './data.json';
 import { useCookies } from 'react-cookie';
-
 const Container = styled.div`
     width: 100%;
     max-width: 1140px;
@@ -138,7 +137,6 @@ const NewBlogBtn = styled.button`
 `;
 
 function Blog() {
-
     const [currentPage, setCurrentPage] = useState<number>(1);
     const [selectedCategory, setSelectedCategory] = useState<number>(0);
     const [fetchedList, setFetchedList] = useState<BlogData[]>([]);
@@ -180,6 +178,9 @@ function Blog() {
         setSelectedCategory(index)
         setCurrentPage(1);
         fetchData(list[index], 1);
+    }
+    const enterBlogCard = (item: BlogData) => {
+
     }
     useEffect(() => {
         handleSelectCategory(selectedCategory);

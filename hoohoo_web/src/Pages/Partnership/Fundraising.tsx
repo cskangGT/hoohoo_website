@@ -161,8 +161,8 @@ function Fundraising() {
                 <CardBoxContainer>
                     {
                         data.map((item, index) => (
-                            <Card>
-                                <CardImage src={item.image} />
+                            <Card key={index}>
+                                <CardImage src={item.image} key={'image' + index} />
                                 <CardHead>
                                     {item.head}
                                 </CardHead>

@@ -6,8 +6,10 @@ import Frame from '../../Component/Frame';
 const ContentBox = styled.section`
     padding-top: 20px;
     justify-content: center;
+    align-items: center;
   width: 100%;
   display: flex;
+  
 `;
 const IntroText = styled.div`
   display:flex;
@@ -36,8 +38,8 @@ const IntroTitle = styled.h2`
 
 const FirstDesc = styled.h1`
 text-align: center;
-  font-size: 5.0rem;
-  font-weight:400;
+  font-size: 4.7rem;
+  font-weight:600;
   line-height: 1.1;
   margin-bottom: 3rem;
   color: ${theme.white};
@@ -91,9 +93,11 @@ const SlideContainer = styled.div<SlideContainerProps>`
 `;
 
 const WallPage = styled.div`
-  min-width: 100%;
+  
   box-sizing: border-box;
+  max-width: 1200px;
   display: flex;
+  align-items: center;
   margin: 180px 0;
 `;
 interface DataStructure {

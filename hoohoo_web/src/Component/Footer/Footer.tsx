@@ -4,7 +4,7 @@ import { theme } from '../../style';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faInstagram, faPinterestP, faTiktok, faLinkedinIn } from '@fortawesome/free-brands-svg-icons';
-
+import { useNavigate } from 'react-router-dom';
 const Background = styled.footer`
     background-color: ${theme.darkGray};
     display: block;
@@ -140,6 +140,7 @@ function Ibutton({ icon, url, style }: IbuttonProps) {
 }
 
 function Footer({ isKorean }: FooterProps) {
+  const navigate = useNavigate();
   return (
     <Background>
       <Container>
@@ -159,15 +160,15 @@ function Footer({ isKorean }: FooterProps) {
           }
           {
             isKorean ? <RowBox>
-              <Buttons text1="소개글" action1={() => alert('About Us clicked!')}
-                text2="제휴" action2={() => alert('제휴 clicked!')} />
-              <Buttons text1="이용약관" action1={() => alert('이용약관 clicked!')}
-                text2="개인정보처리방침" action2={() => alert('Privacy Policy clicked!')} />
+              <Buttons text1="소개글" action1={() => navigate(`/about_team`)}
+                text2="제휴" action2={() => navigate(`/partnership`)} />
+              <Buttons text1="이용약관" action1={() => navigate('/term_of_use')}
+                text2="개인정보처리방침" action2={() => navigate(`/privacy`)} />
             </RowBox> : <RowBox>
-              <Buttons text1="About Us" action1={() => alert('About Us clicked!')}
-                text2="Partnership" action2={() => alert('Partnership clicked!')} />
-              <Buttons text1="Terms of Use" action1={() => alert('Terms of Use clicked!')}
-                text2="Privacy Policy" action2={() => alert('Privacy Policy clicked!')} />
+              <Buttons text1="About Us" action1={() => navigate(`/about_team`)}
+                text2="Partnership" action2={() => navigate(`/partnership`)} />
+              <Buttons text1="Terms of Use" action1={() => navigate('/term_of_use')}
+                text2="Privacy Policy" action2={() => navigate(`/privacy`)} />
             </RowBox>
           }
         </Box>

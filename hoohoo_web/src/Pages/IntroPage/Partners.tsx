@@ -161,7 +161,7 @@ function Partners() {
                 <SlickBar>
                     <LongBar>
                         {list.map((item, index) => (
-                            <Outline op={index} slideIndex={slideIndex} onClick={() => { setSlideIndex(index) }}>
+                            <Outline key={index} op={index} slideIndex={slideIndex} onClick={() => { setSlideIndex(index) }}>
                                 <OutlineText>{item}</OutlineText>
                             </Outline>
                         ))}

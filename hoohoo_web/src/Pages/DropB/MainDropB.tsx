@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
-import Frame from '../../Component/Frame';
 import DropBIntro from './DropBIntro';
 import Download from '../IntroPage/Download';
 const ContentBox = styled.section`

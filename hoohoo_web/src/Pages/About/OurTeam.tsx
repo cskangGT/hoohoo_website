@@ -1,7 +1,5 @@
 import React from 'react';
 import styled from 'styled-components';
-import { theme } from '../../style';
-import Frame from '../../Component/Frame';
 import TeamIntro from './TeamIntro';
 import Gallary from './Gallary';
 const ContentBox = styled.section`
@@ -13,14 +11,14 @@ const ContentBox = styled.section`
 function OurTeam() {
 
     return (
-        <Frame>
+        <React.Fragment>
             <ContentBox>
                 <TeamIntro />
             </ContentBox>
             <ContentBox>
                 <Gallary />
             </ContentBox>
-        </Frame>
+        </React.Fragment>
     )
 }
 export default OurTeam

@@ -60,7 +60,7 @@ const IntroTitle = styled.h2`
 const FirstDesc = styled.h1`
 text-align: center;
   font-size: 5.0rem;
-  font-weight:400;
+  font-weight:700;
   line-height: 1.1;
   margin-bottom: 3rem;
   color: ${theme.white};
@@ -78,6 +78,7 @@ const SecondDesc = styled.h3`
   margin-bottom: 4.5rem;
   line-height: 1.3;
   color: ${theme.white};
+  font-weight: 600;
   text-align: center;
   @media screen and (max-width: 1100px) {
     font-size: 22px;

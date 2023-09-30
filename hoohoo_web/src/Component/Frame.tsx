@@ -31,7 +31,7 @@ const ContactBox = styled.div`
    background-color: ${theme.darkGray};
    display: flex;
    justify-content: center;
-   margin-top: 82px;
+   /* margin-top: 82px; */
 `;
 const ContactColumnBox = styled.div`
   display:flex;
