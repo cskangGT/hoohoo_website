@@ -7,7 +7,7 @@ import { faInstagram, faPinterestP, faTiktok, faLinkedinIn } from '@fortawesome/
 
 const Background = styled.footer`
     background-color: ${theme.darkGray};
-    display: block
+    display: block;
     min-width: 1024px;
     padding: 40px 0;
 `;
@@ -140,7 +140,6 @@ function Ibutton({ icon, url, style }: IbuttonProps) {
 }
 
 function Footer({ isKorean }: FooterProps) {
-
   return (
     <Background>
       <Container>
@@ -174,7 +173,6 @@ function Footer({ isKorean }: FooterProps) {
         </Box>
         <FooterBottom>
           {/* <hr style={{ color: '#f1f1f1' }} /> */}
-
           {/* <Box style={{ justifyContent: 'space-between' }}> */}
           <BusinessDetail style={{ paddingLeft: 15 }}>Copyright&copy; 2023 by EarthMera, All rights reserved.</BusinessDetail>
           <IconBox>

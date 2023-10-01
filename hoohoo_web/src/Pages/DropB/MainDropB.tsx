@@ -11,14 +11,14 @@ const ContentBox = styled.section`
 `;
 function MainDropB() {
     return (
-        <Frame dropb={true} >
+        <React.Fragment >
             <ContentBox id="sketch">
                 <DropBIntro />
             </ContentBox>
             <ContentBox >
                 <Download dropb={true} />
             </ContentBox>
-        </Frame>
+        </React.Fragment>
     )
 }
 export default MainDropB

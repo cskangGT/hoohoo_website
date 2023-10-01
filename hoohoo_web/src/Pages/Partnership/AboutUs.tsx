@@ -83,11 +83,12 @@ const AboutUsImage = styled.img`
   /* width: 200%; */
     /* width: 160%; */
     position: absolute;
-    left: -650px;
-    width: 250%;
+    top: -970px;
+    left: -1200px;
+    width: 350%;
     height: auto;
-    object-position: 50% 50%;
-    object-fit: scale-down;
+    /* object-position: 50% 50%; */
+    /* object-fit: scale-down; */
     @media screen and (max-width: 1100px) {
             object-fit: scale-down;
         }

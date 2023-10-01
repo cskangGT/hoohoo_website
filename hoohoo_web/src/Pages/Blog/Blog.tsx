@@ -6,8 +6,8 @@ import PageNav from '../../Component/Blog/PageNav';
 import BlogModal from './BlogModal';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlus } from '@fortawesome/free-solid-svg-icons';
-import Frame from '../../Component/Frame';
 import blogdata from './data.json';
+import { useCookies } from 'react-cookie';
 
 const Container = styled.div`
     width: 100%;
@@ -111,61 +111,8 @@ const Text = styled.span`
   align-items: center;
 
 `;
-// function changeData(date: string) {
-//     let months = ['Jan', 'Feb', 'Mar', '']
-//     let text = date.split('-')
-
-//     return;
-// }
 
 const OFFSET: number = 6;
-
-const data: BlogData[] = [{
-    'id': 0,
-    'image': 'Images/image2.jpg',
-    'category': 'Trash-Picking',
-    'date': "09-22-2023",
-    'title': 'Industry tips and insights to scale your mobile app growth',
-    'desc': 'Explore our library of expert advice and insights so you can act with confidence on your strategies - big or small.'
-},
-{
-    'id': 1,
-    'image': 'Images/image2.jpg',
-    'category': 'Trash-Picking',
-    'date': "09-22-2023",
-    'title': 'Industry tips and insights to scale your mobile app growth',
-    'desc': 'Explore our library of expert advice and insights so you can act with confidence on your strategies - big or small.'
-}, {
-    'id': 2,
-    'image': 'Images/image2.jpg',
-    'category': 'Trash-Picking',
-    'date': "09-22-2023",
-    'title': 'Industry tips and insights to scale your mobile app growth',
-    'desc': 'Explore our library of expert advice and insights so you can act with confidence on your strategies - big or small.'
-},
-{
-    'id': 3,
-    'image': 'Images/image2.jpg',
-    'category': 'Trash-Picking',
-    'date': "09-22-2023",
-    'title': 'Industry tips and insights to scale your mobile app growth',
-    'desc': 'Explore our library of expert advice and insights so you can act with confidence on your strategies - big or small.'
-},
-{
-    'id': 4,
-    'image': 'Images/image2.jpg',
-    'category': 'Trash-Picking',
-    'date': "09-22-2023",
-    'title': 'Industry tips and insights to scale your mobile app growth',
-    'desc': 'Explore our library of expert advice and insights so you can act with confidence on your strategies - big or small.'
-}, {
-    'id': 5,
-    'image': 'Images/image2.jpg',
-    'category': 'Trash-Picking',
-    'date': "09-22-2023",
-    'title': 'Industry tips and insights to scale your mobile app growth',
-    'desc': 'Explore our library of expert advice and insights so you can act with confidence on your strategies - big or small.'
-}];
 
 const NewBlogBtn = styled.button`
 // margin : 20px 5px;
@@ -186,7 +133,6 @@ const NewBlogBtn = styled.button`
     border-radius: 10px;
     padding: 10px;
     &:hover{
-        /* background-color: ${theme.mainNeon}; */
         color: ${theme.mainNeon};
     }
 `;
@@ -200,7 +146,13 @@ function Blog() {
     const [isOpen, setIsOpen] = useState<boolean>(false);
     const [numTotalData, setNumTotalData] = useState<number>(blogdata.length);
     const handleOpen = () => setIsOpen(true);
-    blogdata.reverse()
+    const [cookies] = useCookies(['token', 'username']);
+    const [logIn, setLogIn] = useState<boolean>(!!cookies.username);
+    blogdata.reverse();
+
+    useEffect(() => {
+        setLogIn(!!cookies.username);
+    }, [cookies.username]);
     const fetchData = (category: string, page: number) => {
         let filteredData: BlogData[];
         if (category === list[0]) {
@@ -233,7 +185,7 @@ function Blog() {
         handleSelectCategory(selectedCategory);
     }, [])
     return (
-        <Frame>
+        <React.Fragment>
             <Container>
                 <ContentBox>
                     <SlickBar>
@@ -244,8 +196,11 @@ function Blog() {
                                         <OutlineText key={index + "text"}>{item}</OutlineText>
                                     </Outline>
                                 ))}</LeftBar>
-                            <NewBlogBtn onClick={handleOpen}><FontAwesomeIcon icon={faPlus} style={{ paddingRight: 10 }} />New Blog</NewBlogBtn>
-                            {isOpen && <BlogModal isOpen={isOpen} setIsOpen={setIsOpen} />}
+                            {logIn &&
+                                <NewBlogBtn onClick={handleOpen} ><FontAwesomeIcon icon={faPlus} style={{ paddingRight: 10 }} />New Blog</NewBlogBtn>}
+
+                            {isOpen &&
+                                <BlogModal isOpen={isOpen} setIsOpen={setIsOpen} />}
                         </LongBar>
                     </SlickBar>
                     {
@@ -260,7 +215,7 @@ function Blog() {
 
                 </ContentBox>
             </Container>
-        </Frame>
-    );
+        </React.Fragment>
+    )
 }
 export default Blog;

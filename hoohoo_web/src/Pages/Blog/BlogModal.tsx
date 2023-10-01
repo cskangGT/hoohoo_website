@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faX } from '@fortawesome/free-solid-svg-icons';
 import { theme } from '../../style';
+import { useCookies } from 'react-cookie';
 const ModalBackground = styled.div`
   position: fixed;
   z-index: 9999;
@@ -93,7 +94,7 @@ const PreviewImage = styled.img`
   object-fit: contain;
 `;
 type BlogData = {
-    'image': string;
+    'image': File | null;
     'category': string;
     'date': string;
     'title': string;
@@ -102,6 +103,7 @@ type BlogData = {
 type Props = {
     isOpen: boolean;
     setIsOpen: React.Dispatch<React.SetStateAction<boolean>>;
+
 };
 function BlogModal({ isOpen, setIsOpen }: Props) {
     function formatDate(date: Date): string {
@@ -119,11 +121,11 @@ function BlogModal({ isOpen, setIsOpen }: Props) {
     const [previewImage, setPreviewImage] = useState<string | null>(null);
 
     const currentDate: string = formatDate(new Date());
-
+    const [cookies] = useCookies(['token', 'username']);
 
 
     const [formData, setFormData] = useState<BlogData>({
-        image: '',
+        image: null,
         category: '',
         date: '',
         title: '',
@@ -137,8 +139,8 @@ function BlogModal({ isOpen, setIsOpen }: Props) {
             const imageUrl = URL.createObjectURL(file);
             console.log('imageUrl', imageUrl)
             setPreviewImage(imageUrl);
-            const { name, value } = e.target;
-            setFormData(prevData => ({ ...prevData, [name]: imageUrl }));
+            const { name } = e.target;
+            setFormData(prevData => ({ ...prevData, [name]: file }));
         }
     };
     const handleChange = (e: any) => {
@@ -153,7 +155,9 @@ function BlogModal({ isOpen, setIsOpen }: Props) {
             const response = await fetch('YOUR_SERVER_ENDPOINT_HERE', {
                 method: 'POST',
                 headers: {
-                    'Content-Type': 'application/json'
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${cookies.token}`, // 토큰을 헤더에 추가
+                    'Username': cookies.username // 필요하면 사용자 이름도 헤더에 추가할 수 있습니다.
                 },
                 body: JSON.stringify(formData)
             });
@@ -161,7 +165,7 @@ function BlogModal({ isOpen, setIsOpen }: Props) {
             if (response.status === 200) {
                 console.log("Data sent successfully.");
                 setFormData({
-                    image: '',
+                    image: null,
                     category: '',
                     date: '',
                     title: '',
@@ -183,7 +187,7 @@ function BlogModal({ isOpen, setIsOpen }: Props) {
                         <ModalContent>
                             <CloseButton onClick={() => setIsOpen(false)}><FontAwesomeIcon icon={faX} /></CloseButton>
 
-                            <Form onSubmit={handleSubmit}>
+                            <Form onSubmit={handleSubmit} id="form">
                                 <HeaderCotainer>
                                     <HeaderText>Add New Blog</HeaderText>
                                 </HeaderCotainer>
@@ -214,14 +218,16 @@ function BlogModal({ isOpen, setIsOpen }: Props) {
                                     placeholder="Title"
                                     required />
                                 <Label>Description</Label>
-                                <textarea rows={5} name="description"
+                                <textarea cols={30} rows={5} name="desc"
                                     value={formData.desc}
                                     onChange={handleChange}
                                     placeholder="Your description"
+                                    form='form'
                                 />
                                 <SubmitBtn data-l10n-id="partnership-submit">
                                     Submit</SubmitBtn>
                             </Form>
+
                         </ModalContent>
                     </Wrapper>
                 </ModalBackground>

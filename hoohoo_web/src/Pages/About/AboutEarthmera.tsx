@@ -124,7 +124,7 @@ function AboutEarthmera() {
     }
     const imagePath = Object.keys(data)[0];
     return (
-        <Frame>
+        <React.Fragment>
             <ContentBox id="about">
                 <WallPage>
                     {windowWidth >= 1100 && imagePath === "Images/1__.svg" &&
@@ -139,10 +139,10 @@ function AboutEarthmera() {
                     {
                         imagePath === "Images/1__.svg" ? <RightImage src={imagePath} alt="앱 소개 이미지" draggable="false" />
                             : <RightImage src={imagePath} alt="앱 소개 이미지" draggable="false" style={{ maxHeight: 800 }} />
-                    }</WallPage>
+                    }
+                </WallPage>
             </ContentBox>
-
-        </Frame >
+        </React.Fragment>
     )
 }
 export default AboutEarthmera

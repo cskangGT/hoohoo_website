@@ -1,0 +1,169 @@
+import React, { useState, useEffect } from 'react';
+import styled from 'styled-components';
+import { theme } from '../../style';
+import { useCookies } from 'react-cookie';
+const SectionContainer = styled.section`
+    display: flex;
+    box-sizing: border-box;
+    justify-content: center;
+    width: 100%;
+    align-items: center;
+    margin-top: 82px;
+    @media screen and (max-width: 1100px) {
+        height: auto;
+    }
+`;
+const LoginContainer = styled.div`
+height: 800px;
+    min-width: 1120px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+`;
+const Inside = styled.div`
+    position: relative;
+    overflow: hidden;
+  max-width: 1140px;
+  width: 100%;
+  box-sizing: border-box;
+  display: flex;
+  @media screen and (max-width: 1100px) {
+    flex-direction: column-reverse;
+    align-items: center;
+    // padding-bottom: 50px;
+    margin-left: 15px;
+}
+`;
+const Form = styled.form`
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  width: 310px;
+`;
+
+const Input = styled.input`
+  padding: 5px;
+  font-size: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  width: 100%;
+    height: 2.75rem;
+  /* color: ${theme.white}; */
+`;
+const HeaderBox = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
+const HeaderText = styled.h1`
+  font-size: 28px;
+`;
+const Label = styled.label`
+  /* color: ${theme.white}; */
+`;
+// const Button = styled.a`
+//     font-size: 20px;
+//     font-weight: 700;
+//     cursor: pointer;
+//     text-decoration: none;
+//     border-radius: 10px;
+//     box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.5);
+//     margin-top: 0.75rem;
+//     background-color: ${theme.mainNeon};
+//     text-align: center;
+//     max-width:100%;
+//     padding: 10px 20px;
+// `;
+const Button = styled.button`
+    font-size: 20px;
+    cursor: pointer;
+    text-decoration: none;
+    border-radius: 10px;
+    box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.5);
+    margin-top: 0.75rem;
+    background-color: ${theme.mainNeon};
+    text-align: center;
+    max-width:100%;
+    padding: 10px 20px;
+    border: none;
+    outline: none;
+    transition: background-color 0.3s;
+    &:hover {
+        background-color: darken(${theme.mainNeon}, 10%);
+    }
+`;
+
+function AdminLogin() {
+  const [username, setUsername] = useState<string>('');
+  const [password, setPassword] = useState<string>('');
+  const [error, setError] = useState('');
+  const [cookies, setCookie] = useCookies(['token', 'username']);
+  const token: string = "jisanpark";
+  const [logIn, setLogIn] = useState<boolean>(false);
+  const handleSubmit = async (e: any) => {
+    e.preventDefault();
+    // try {
+    //   const response = await axios.post('/api/login', { username, password });
+    console.log('logIn', logIn)
+    //   if (response.data && response.data.token) { // 만약 토큰이 응답에 있다면
+    setCookie('token', token, {
+      path: '/', maxAge: 3600, httpOnly: true,
+      secure: true,
+    });  // 60분 유지
+    setCookie('username', username, {
+      path: '/', maxAge: 3600
+    });
+    setLogIn(true);
+    //   }
+
+    // } catch (error) {
+    //   setError('Login failed. Please check your credentials and try again.');
+    // }
+    // try {
+    //     const response = await axios.post('YOUR_SERVER_ENDPOINT_HERE', {
+    //         username: username,
+    //         password: password,
+    //     });
+    //     const token = response.data.token;
+    //     localStorage.setItem('token', token); // 토큰을 로컬스토리지에 저장
+    //     // 로그인 성공 후 다른 페이지로 이동 또는 상태 업데이트
+    // } catch (err) {
+    //     setError('Login failed. Please check your credentials and try again.');
+    // }
+  };
+  useEffect(() => {
+
+  }, [logIn])
+  return (
+    <SectionContainer>
+      <LoginContainer>
+        <HeaderBox>
+          {logIn ? <><HeaderText>Hello {username},</HeaderText>
+          </> : <HeaderText>LOGIN</HeaderText>}
+
+        </HeaderBox>
+        {!logIn &&
+          <Form onSubmit={handleSubmit}>
+            <Label>ID</Label>
+            <Input
+              type="text"
+              value={username}
+              onChange={(e) => setUsername(e.target.value)}
+            />
+            <Label>Password</Label>
+            <Input
+              type="password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+            />
+            {error && <p>{error}</p>}
+            <Button type="submit">Login</Button>
+          </Form>
+        }
+      </LoginContainer>
+    </SectionContainer>
+
+  )
+}
+export default AdminLogin;
