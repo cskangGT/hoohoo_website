@@ -1,0 +1,50 @@
+{
+    "Component": {
+        "data": {
+
+        },
+        "data2": {
+
+        }
+    },
+    "Nav" : {
+        "navlist" : [
+          { "label": "Home", "link": "/home" },
+          {
+            "label": "About",
+            "subItems": [
+              { "label": "Our Team", "link": "/about_team" },
+              { "label": "EarthMera", "link": "/about_earthmera" }
+            ]
+          },
+          {
+            "label": "Partnership",
+            "link": "/partnership"
+          },
+          {
+            "label": "Download",
+            "subItems": [
+              { "label": "EarthMera", "link": "/home#download" },
+              { "label": "DropB", "link": "/dropb" }
+            ]
+          },
+          {
+            "label": "Blog",
+            "link": "/blog"
+          },
+          {
+            "label": "Contact",
+            "link": "#contact"
+          }]
+    },
+    "IntroPage": {
+        "Images/1__.svg": {
+            "firstDesc": "CAPTURE AND BE REWARDED",
+            "secondDesc": "CLICK YOUR SHUTTER,<br />BUILD EARTH'S SHELTER, <br />GET POINTS AND BECOME WEALTHIER."
+        },
+        "Images/preview.png": {
+            "firstDesc": "CAPTURE AND BE REWARDED",
+            "secondDesc": "CLICK YOUR SHUTTER,<br />BUILD EARTH'S SHELTER, <br />GET POINTS AND BECOME WEALTHIER."
+        }
+    }
+}

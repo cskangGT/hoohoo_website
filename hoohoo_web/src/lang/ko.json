@@ -1,0 +1,50 @@
+{
+    "Component": {
+        "data": {
+
+        },
+        "data2": {
+
+        }
+    },
+    "Nav" : {
+        "navlist" : [
+          { "label": "홈", "link": "/home" },
+          {
+            "label": "About",
+            "subItems": [
+              { "label": "Our Team", "link": "/about_team" },
+              { "label": "EarthMera", "link": "/about_earthmera" }
+            ]
+          },
+          {
+            "label": "파트너쉽",
+            "link": "/partnership"
+          },
+          {
+            "label": "Download",
+            "subItems": [
+              { "label": "EarthMera", "link": "/home#download" },
+              { "label": "DropB", "link": "/dropb" }
+            ]
+          },
+          {
+            "label": "Blog",
+            "link": "/blog"
+          },
+          {
+            "label": "Contact",
+            "link": "#contact"
+          }]
+    },
+    "IntroPage": {
+        "Images/1__.svg": {
+            "firstDesc": "사진을 찍고 보상받으세요!",
+            "secondDesc": "셔터를 누르고,<br />지구에 안식처를 만들고, <br />포인트를 얻고 자본을 얻으세요!"
+        },
+        "Images/preview.png": {
+            "firstDesc": "사진을 찍고 보상받으세요!",
+            "secondDesc": "셔터를 누르고,<br />지구에 안식처를 만들고, <br />포인트를 얻고 자본을 얻으세요!"
+        }
+    }
+}

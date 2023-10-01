@@ -4,6 +4,9 @@ import { theme } from '../../style';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBars } from '@fortawesome/free-solid-svg-icons';
 // const icon = require('./icon_image.png')
+import { useTranslation } from 'react-i18next';
+import i18next from 'i18next';
+
 const Logo = styled.a`
   padding: 15px;
   font-size: 25px;
@@ -293,34 +296,12 @@ function Nav({ isKorean, setIsKorean }: NavProps) {
 
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const [windowWidth, setWindowWidth] = useState<number>(window.innerWidth);
-  const navItems: NavItem[] = [
-    { "label": "Home", "link": "/home" },
-    {
-      "label": "About",
-      "subItems": [
-        { "label": "Our Team", "link": "/about_team" },
-        { "label": "EarthMera", "link": "/about_earthmera" }
-      ]
-    },
-    {
-      "label": "Partnership",
-      "link": "/partnership"
-    },
-    {
-      "label": "Download",
-      "subItems": [
-        { "label": "EarthMera", "link": "/home#download" },
-        { "label": "DropB", "link": "/dropb" }
-      ]
-    },
-    {
-      "label": "Blog",
-      "link": "/blog"
-    },
-    {
-      "label": "Contact",
-      "link": "#contact"
-    }]
+  const { t, i18n } = useTranslation();
+  const navItems: NavItem[] = i18next.t('Nav', { returnObjects: true })["navlist"]
+  console.log('navItems', navItems)
+  const changelanguageToKo = () => i18n.changeLanguage('ko')
+  const changelanguageToEn = () => i18n.changeLanguage('en')
+
 
   useEffect(() => {
     const handleResize = () => {
@@ -367,11 +348,12 @@ function Nav({ isKorean, setIsKorean }: NavProps) {
             <LanguageButton isKorean={isKorean}
               onClick={() => {
                 setIsKorean(true)
-
+                changelanguageToKo()
               }}>KO</LanguageButton>
             <LanguageButton isKorean={!isKorean}
               onClick={() => {
                 setIsKorean(false)
+                changelanguageToEn()
               }}>EN</LanguageButton>
           </LanguageBox>
         }
@@ -379,9 +361,15 @@ function Nav({ isKorean, setIsKorean }: NavProps) {
       {windowWidth < 1000 && <NavRight>
         <LanguageBoxSecond>
           <LanguageButton isKorean={isKorean}
-            onClick={() => setIsKorean(true)}>KO</LanguageButton>
+            onClick={() => {
+              setIsKorean(true)
+              changelanguageToKo()
+            }}>KO</LanguageButton>
           <LanguageButton isKorean={!isKorean}
-            onClick={() => setIsKorean(false)}>EN</LanguageButton>
+            onClick={() => {
+              setIsKorean(false)
+              changelanguageToEn()
+            }}>EN</LanguageButton>
         </LanguageBoxSecond>
       </NavRight>}
 
