@@ -1,14 +1,19 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 import { theme } from '../../style';
 import PartnerModal from './PartnerModal';
 const SectionBox = styled.section`
-    padding-bottom: 5rem;
+    padding-bottom: 13rem;
     width: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding-top: 5rem;
+    padding-top: 15rem;
+    margin-bottom: 100px;
+    @media screen and (max-width: 1100px) {
+        padding-top: 5rem;
+        padding-bottom: 0rem;
+    }
 `;
 const ContainerBox = styled.div`
   width: 100%;
@@ -34,14 +39,17 @@ const LeftCell = styled.div`
     display: flex;
     flex-direction: column;
     align-items: flex-start;
+    width: 30%;
+    margin-bottom: 120px;
     @media screen and (max-width: 1100px) {
-        margin-top: 40px;
+        width: 100%;
         align-items: center;
+        margin-bottom: 30px;
     }
     
 `;
 const AboutHeader = styled.h4`
-etter-spacing: .1rem;
+letter-spacing: .1rem;
 text-transform: uppercase;
 margin-top: 0.3rem;
 margin-bottom: 0.3rem;
@@ -52,35 +60,63 @@ line-height: 1.5;
 color: ${theme.white};
 `;
 const RightCell = styled.div`
-justify-content: flex-end;
-align-items: center;
-display: flex;
+// justify-content: flex-end;
+ align-items: center;
+ display: flex;
+ width: 900px;
+ height: 600px;
+/* position: absolute; */
+/* top: -500px;
+    position: absolute;
+    left: -500px; */
+    /* width: 100%; */
+    overflow: visible;
+    @media screen and (max-width: 1100px) {
+        position: relative;
+        top:0;
+        left: 40px;
+    }
+    
 `;
+
 const AboutUsImage = styled.img`
-  border: 0;
+  /* width: 200%; */
+    /* width: 160%; */
+    position: absolute;
+    top: -970px;
+    left: -1200px;
+    width: 350%;
+    height: auto;
+    /* object-position: 50% 50%; */
+    /* object-fit: scale-down; */
+    @media screen and (max-width: 1100px) {
+            object-fit: scale-down;
+        }
 `;
 const AboutTitle = styled.h1`
     color: ${theme.white};
     letter-spacing: .4px;
     margin-top: 0.4rem;
     margin-bottom: 0.8rem;
-    font-family: Poppins,sans-serif;
-    font-size: 2.375rem;
+    font-size: 2.4rem;
     font-weight: 600;
     line-height: 1.5;
 `;
 const AboutContent = styled.p`
-    font-size: 1.1rem;
+    font-size: 1.4rem;
     font-weight: 200;
     line-height: 1.6;
-    color: gray;
+    color: rgba(180, 255, 250, 1);
     margin-top: 0.5rem;
-    margin-bottom: 0.5rem;
-    font-family: Poppins,sans-serif;
+    margin-bottom: 1rem;
+    @media screen and (max-width: 1100px) {
+    text-align: center;
+    }
+
 `;
 const PartnerButton = styled.a`
 // margin : 20px 5px;
-    font-size: 16px;
+    font-size: 20px;
     font-weight: 700;
     cursor: pointer;
     text-decoration: none;
@@ -117,7 +153,7 @@ function AboutUs() {
                         {isOpen && <PartnerModal isOpen={isOpen} setIsOpen={setIsOpen} />}
                     </LeftCell>
                     <RightCell>
-                        <AboutUsImage src="Images/1__.svg" />
+                        <AboutUsImage src="Images/ll_image.webp" />
                     </RightCell>
                 </Grid>
             </ContainerBox>

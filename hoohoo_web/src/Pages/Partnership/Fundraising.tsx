@@ -33,7 +33,7 @@ const HeaderBox = styled.div`
 
 const FirstHeader = styled.h2`
   font-size: 36px;
-  font_weight: 300;
+  font-weight: 300;
 `;
 const SecondHeader = styled.span`
     width: 60%;
@@ -88,7 +88,7 @@ const CardHead = styled.h4`
     color: ${theme.subNeon};
 `;
 const CardContent = styled.p`
-    ffont-family: 'Poppins', sans-serif;
+    font-family: 'Poppins', sans-serif;
     font-weight: 200;
     font-size: 16px;
     line-height: 140%;
@@ -177,10 +177,8 @@ function Fundraising() {
                     {
                         cardData.map((item, index) => (
                             <PartnersCardComponent key={index} item={item} />
-
                         ))
                     }
-
                 </PartnersCardBox>
                 <PartnersWays />
             </ContentBox>

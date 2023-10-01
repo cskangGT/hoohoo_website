@@ -14,7 +14,7 @@ const Logo = styled.a`
   align-items: center;
   text-decoration: none;
 `;
-const LogoText = styled.a`
+const LogoText = styled.span`
   padding-left: 10px;
   color: ${theme.white};
 `;
@@ -201,31 +201,28 @@ const LanguageButton = styled.button<LanguageProps>`
   }
 `;
 const HoverContainer = styled.div`
-cursor: pointer;
-color: ${theme.white};
-
-@media screen and (max-width: 1000px) {
-  margin-left: 10px;
-  align-items: center;
-  justify-content: center;
-  
-}
-&:hover {
-  border-radius: 4px;
-  color: ${theme.mainNeon};
-  & .hidden-subItems {
-    display: block;
-    transition: all 0.5s ease;
+  cursor: pointer;
+  color: ${theme.white};
+  @media screen and (max-width: 1000px) {
+    margin-left: 10px;
+    align-items: center;
+    justify-content: center;
+    
   }
-}
+  &:hover {
+    border-radius: 4px;
+    color: ${theme.mainNeon};
+    & .hidden-subItems {
+      display: block;
+      transition: all 0.5s ease;
+    }
+  }
 `;
 
 const NavHover = styled.span`
   text-decoration : none;
-  
   padding-left: 10px;
   @media screen and (max-width: 1000px) {
-  
     padding-left: 0px;
   }
   
@@ -234,6 +231,9 @@ const NavHover = styled.span`
 const ContainerSubItems = styled.div`
   position: absolute;
   display: none;
+  // margin-top: 30px;
+  // padding-top: 12px;
+  // background-color: rgba(250, 250, 250, 0.09);
   @media screen and (max-width: 1000px) {
     position: relative;
     align-items: center;
@@ -244,7 +244,7 @@ const ContainerSubItems = styled.div`
 
 const HoverLinks = styled.ul`
   padding: 0;
-  padding-top: 30px;
+  
   text-decoration : none;
   @media screen and (max-width: 1000px) {
     padding-top: 7px; 
@@ -254,7 +254,7 @@ const NavSubList = styled.li`
   text-decoration : none;
   color: ${theme.white};
   display: flex;
-  padding : 12.5px 0px;
+  padding : 5px 0px;
   
   padding-right: 15px;
   @media screen and (max-width: 1000px) {
@@ -262,26 +262,26 @@ const NavSubList = styled.li`
     justify-content: center;
     padding : 7px 7px;
   }
-  &: hover {
-    backdrop-filter: blur(15px);
-    background-color: rgba(250, 250, 250, 0.09);
-    border-radius: 10px;
-  }
+  // &: hover {
+  //   backdrop-filter: blur(15px);
+  //   background-color: rgba(250, 250, 250, 0.09);
+  //   border-radius: 10px;
+  // }
 `;
 const SubNavLink = styled.a`
-text-decoration : none;
-color: ${theme.white};
-padding-left: 10px;
-cursor: pointer;
-@media screen and (max-width: 1000px) {
-  font-size: 12px;  
-  text-align: center; 
-  padding-left: 0px;
-}
-&:hover {
-  border-radius: 4px;
-  color: ${theme.mainNeon};
-}
+  text-decoration : none;
+  color: ${theme.white};
+  padding-left: 10px;
+  cursor: pointer;
+  @media screen and (max-width: 1000px) {
+    font-size: 12px;  
+    text-align: center; 
+    padding-left: 0px;
+  }
+  &:hover {
+    border-radius: 4px;
+    color: ${theme.mainNeon};
+  }
 `;
 type NavProps = {
   isKorean: boolean;
@@ -301,6 +301,35 @@ function Nav({ isKorean, setIsKorean }: NavProps) {
   console.log('navItems', navItems)
   const changelanguageToKo = () => i18n.changeLanguage('ko')
   const changelanguageToEn = () => i18n.changeLanguage('en')
+  // const navItems: NavItem[] = [
+  //   { "label": "Home", "link": "/home" },
+  //   {
+  //     "label": "About",
+  //     "subItems": [
+  //       { "label": "Our Team", "link": "/about_team" },
+  //       { "label": "EarthMera", "link": "/about_earthmera" }
+  //     ]
+  //   },
+  //   {
+  //     "label": "Partnership",
+  //     "link": "/partnership"
+  //   },
+  //   {
+  //     "label": "Download",
+  //     "subItems": [
+  //       { "label": "EarthMera", "link": "/home#download" },
+  //       { "label": "DropB", "link": "/dropb" }
+  //     ]
+  //   },
+  //   {
+  //     "label": "Blog",
+  //     "link": "/blog"
+  //   },
+  //   {
+  //     "label": "Contact",
+  //     "link": "#contact"
+  //   }]
+
   useEffect(() => {
     const handleResize = () => {
       setWindowWidth(window.innerWidth);
@@ -315,28 +344,28 @@ function Nav({ isKorean, setIsKorean }: NavProps) {
   }, []);
   return (
     <Bar>
-      <Logo href="#home">
-        <HeaderLogo src='Images/icon_image.png' />
-        <LogoText>EarthMera</LogoText>
+      <Logo key="logo_link" href="/home">
+        <HeaderLogo key="logo" src='Images/icon_image.png' />
+        <LogoText key="earthmera">EarthMera</LogoText>
       </Logo>
 
       <NavbarMenu isOpen={isOpen}>
         {
           navItems.map((item, i) => {
             return (
-              <NavMenuList><LogoIcon className="hidden-icon" src='Images/icon_image.png' />
+              <NavMenuList key={i} ><LogoIcon key={i + "hd_icon"} className="hidden-icon" src='Images/icon_image.png' />
                 {item.subItems ?
-                  <HoverContainer style={{ overflow: 'visible' }}>
-                    <NavHover id={item.link}>{item.label}</NavHover>
-                    <ContainerSubItems className="hidden-subItems">
-                      <HoverLinks >{item.subItems.map((subItem, subIndex) => (
-                        <NavSubList key={subIndex}><SubNavLink href={subItem.link}>{subItem.label}</SubNavLink></NavSubList>))}
+                  <HoverContainer key={i + "hoverContainer"} style={{ overflow: 'visible' }}>
+                    <NavHover id={item.link} key={i + "navh"}>{item.label}</NavHover>
+                    <ContainerSubItems className="hidden-subItems" key={i + "hd_subItems"}>
+                      <HoverLinks key={i + "hvLinks"} >{item.subItems.map((subItem, subIndex) => (
+                        <NavSubList key={subIndex}><SubNavLink key={subIndex + "subLink"} href={subItem.link}>{subItem.label}</SubNavLink></NavSubList>))}
                       </HoverLinks></ContainerSubItems>
                   </HoverContainer> : <NavLink
                     id={item.link}
+                    key={i}
                     href={item.link}
                   >{item.label}</NavLink>}
-
               </NavMenuList>
             );
           })

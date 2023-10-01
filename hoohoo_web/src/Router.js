@@ -2,22 +2,61 @@ import { createBrowserRouter } from "react-router-dom";
 import Root from "./Root"
 import NotFound from "./Component/ErrorComponent/ErrorComponent"
 import ErrorComponent from "./Component/ErrorComponent/ErrorComponent";
-import Main from "./Pages/IntroPage/Main";
 import HomeEarthmera from "./Pages/IntroPage/HomeEarthmera";
-
+import OurTeam from "./Pages/About/OurTeam";
+import AboutEarthmera from "./Pages/About/AboutEarthmera";
+import Partnership from "./Pages/Partnership/Partnership";
+import MainDropB from "./Pages/DropB/MainDropB";
+import Blog from "./Pages/Blog/Blog";
+import AdminLogin from "./Pages/Admin/AdminLogin"
 const Router = createBrowserRouter([
     {
         path: "/",
         element: <Root />,
         children: [
+            // {
+            //     path: "/home",
+            //     element: <Main />,
+            //     errorElement: <ErrorComponent />
+            // },
             {
-                path: "/home",
-                element: <Main />,
+                path: "/",
+                element: <HomeEarthmera />,
                 errorElement: <ErrorComponent />
             },
             {
-                path: "",
+                path: "/home",
                 element: <HomeEarthmera />,
+                errorElement: <ErrorComponent />
+            },
+            {
+                path: "/about_earthmera",
+                element: <AboutEarthmera />,
+                errorElement: <ErrorComponent />
+            },
+            {
+                path: "/about_team",
+                element: <OurTeam />,
+                errorElement: <ErrorComponent />
+            },
+            {
+                path: "/partnership",
+                element: <Partnership />,
+                errorElement: <ErrorComponent />
+            },
+            {
+                path: "/dropb",
+                element: <MainDropB />,
+                errorElement: <ErrorComponent />
+            },
+            {
+                path: "/blog",
+                element: <Blog />,
+                errorElement: <ErrorComponent />
+            },
+            {
+                path: "/admin",
+                element: <AdminLogin />,
                 errorElement: <ErrorComponent />
             }
         ],

@@ -150,15 +150,15 @@ function NumberIconContent() {
                 <DividerRight />
                 {
                     data.map((item, index) => (
-                        <ItemBox>
-                            <LottieBox i={index}>
-                                <Lottie animationData={firstIcon} loop={true} />
+                        <ItemBox key={index + "itembox"}>
+                            <LottieBox i={index} key={index + "Lottiebox"}>
+                                <Lottie animationData={firstIcon} loop={true} key={index + "Lottie"} />
                             </LottieBox>
-                            <TextBox>
-                                <FirstText>
+                            <TextBox key={index + "Textbox"}>
+                                <FirstText key={index + "text"}>
                                     {item[index].firstText}
                                 </FirstText>
-                                <SecondText>{item[index].secondText}</SecondText>
+                                <SecondText key={index + "secondtext"}>{item[index].secondText}</SecondText>
                             </TextBox>
                         </ItemBox>
                     ))
