@@ -5,6 +5,8 @@ import { useSwipeable } from 'react-swipeable';
 import Lottie from "lottie-react";
 import arrow from './arrow-ani.json';
 import Bubble from '../../Component/Bubble';
+import { useTranslation } from 'react-i18next';
+import i18next from 'i18next';
 import Slider from '../../Component/ContentBox/Slider';
 
 const SectionContainer = styled.section`
@@ -140,6 +142,12 @@ const BannerContainer = styled.div`
 const Banner = styled.img`
 width: 80%;
 `;
+<<<<<<< HEAD
+
+const LeftArrow = styled(ArrowButton)`
+  left: 10px;
+`;
+=======
 const data: DataStructure = {
     "Images/1__.svg": {
         "header": 'EarthMera',
@@ -156,6 +164,7 @@ const data: DataStructure = {
         "firstDesc": "CAPTURE AND BE REWARDED",
         "secondDesc": "CLICK YOUR SHUTTER,<br />BUILD EARTH'S SHELTER, <br />GET POINTS AND BECOME WEALTHIER."
     }
+>>>>>>> main
 
 }
 
@@ -190,6 +199,7 @@ const IntroSection: React.FC = () => {
     const [windowWidth, setWindowWidth] = useState<number>(window.innerWidth);
     const [currentSlide, setCurrentSlide] = useState<number>(0);
     const [isBubble, setIsBubble] = useState<boolean>(true);
+    const data: DataStructure = i18next.t('IntroPage', { returnObjects: true });
     const images = Object.keys(data);
     const handleLeftClick = () => {
         if (currentSlide > 0) {
