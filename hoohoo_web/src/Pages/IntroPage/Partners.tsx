@@ -3,8 +3,8 @@ import styled from 'styled-components';
 import { theme } from '../../style';
 
 const Container = styled.div`
+    max-width: 1040px;
     width: 100%;
-    max-width: 1070px;
     display: flex;
     margin: 0px auto;
     justify-content: flex-start;
@@ -12,10 +12,11 @@ const Container = styled.div`
     position: relative;
     transition: all 0.2s ease 0s;
     padding: 5rem 15px;
+    @media screen and (max-width: 500px){
+        margin-top: 50px;
+    }
 `;
 const ContentBox = styled.div`
-
-    max-width: 1140px;
     display: flex;
     flex-direction: column;
     position: relative;
@@ -30,11 +31,13 @@ const HeaderBox = styled.div`
 `;
 
 const FirstHeader = styled.span`
-  font-size: 18px;
+  font-size: 1.3rem;
+  
 `;
 const SecondHeader = styled.h2`
-    font-size: 36px;
+    font-size: 2rem;
     line-height: 0.8;
+    
 `;
 const SlickBar = styled.div`
   overflow: visible;
@@ -47,7 +50,7 @@ const LongBar = styled.div`
   @media screen and (max-width: 1100px){
     justify-content: center;
     margin-bottom: 0;
-}
+  }
 `;
 
 interface OutlineProps {
@@ -60,41 +63,59 @@ const Outline = styled.button<OutlineProps>`
     border: none;
     cursor: pointer;
     margin-right: 10px;
+    font-size: 20px;
   outline: none;
   display: block;
   float: left;
   height: 100%;
   min-height: 1px;
+  border-radius: 20px;
 `;
 const OutlineText = styled.h3`
     color: ${theme.white};
+    @media screen and (max-width: 500px){
+        font-size: 1.3rem;
+    }
 `;
 const DescBox = styled.div`
   margin : 20px 5px;
   display: flex;
-  @media screen and (max-width: 950px){
+  @media screen and (max-width: 1000px){
     flex-direction: column;  
     margin: 0 5px;     
-}
+  }
+    @media screen and (max-width: 500px){
+        flex-direction: column;  
+        margin: 40px 3px;
+        /* justify-content: flex-start; */
+    }
 `;
 const LeftBox = styled.div`
-    align-items: center;
+    /* align-items: center; */
     justify-content: start;
     display: flex;
     height: 353px;
     flex-direction :row;
     @media screen and (max-width: 1100px){
-        justify-content: center;
+        text-align: center;
+    }
+    @media screen and (max-width: 500px){
+        padding: 0 10px;
     }
 `;
 const Desc = styled.p`
-    font-size: 24px;
+    font-size: 1.4rem;
     line-height: 1.6;
-    width: 500px;
+    width: 430px;
     color: ${theme.white};
     opacity: 0.8;
     @media screen and (max-width: 1100px){
-    text-align:center;
+      text-align:center;
+      margin: 20px 0;
+    }
+    @media screen and (max-width: 500px){
+        width: 360px;
+        font-size: 1.2rem;
     }
 `;
 const RightBox = styled.div`
@@ -109,8 +130,13 @@ const RightBox = styled.div`
     background: linear-gradient(170deg, rgba(255, 255, 255, 0.14) 0%, rgba(255, 255, 255, 0.05) 100%);
     border-radius: 50%;
     border: 2px solid rgba(255, 255, 255, 0.05);
-    margin:  auto;
+    margin: auto;
     margin-bottom: 50px;
+    @media screen and (max-width: 500px){
+        margin-top: 50px;
+        width: 300px;
+        height: 300px;
+    }
     // @media screen and (min-width: 1140px){
     //     width: 382px;
     //     height: 382px;
@@ -124,7 +150,6 @@ const FText = styled.span`
     margin-bottom: 8px;
     font-size: 86px;
     font-weight: 900;
-    font-family: Inter, sans-serif;
     color: ${theme.white};
     letter-spacing: 1px;
     line-height: 1.2;
@@ -132,15 +157,14 @@ const FText = styled.span`
     text-align: center;
 `;
 const SText = styled.span`
-font-weight: 500;
-font-family: Inter, sans-serif;
-color: rgb(255, 255, 255);
-font-size: 18px;
-line-height: 1.2;
-text-align: center;
-@media screen and (min-width: 1140px){
-    font-size: 24px;
-}
+    font-weight: 500;
+    color: rgb(255, 255, 255);
+    font-size: 18px;
+    line-height: 1.2;
+    text-align: center;
+    @media screen and (min-width: 1140px){
+        font-size: 24px;
+    }
 `;
 function Partners() {
     const [slideIndex, setSlideIndex] = useState<number>(0);

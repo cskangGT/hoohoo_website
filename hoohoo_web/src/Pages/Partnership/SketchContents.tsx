@@ -5,10 +5,12 @@ import { theme } from '../../style';
 const Container = styled.section`
     justify-content: center;
     width: 100%;
-    max-width: 1140px;
     display: flex;
     @media screen and (max-width: 1100px) {
         width: 60%;
+    }
+    @media screen and (max-width: 1100px) {
+        width: 75%;
     }
 `;
 const Grid = styled.div`

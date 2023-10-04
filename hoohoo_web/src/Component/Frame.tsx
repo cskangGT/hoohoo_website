@@ -32,6 +32,7 @@ const ContactBox = styled.div`
    display: flex;
    justify-content: center;
    /* margin-top: 82px; */
+   padding: 0 10px;
 `;
 const ContactColumnBox = styled.div`
   display:flex;
@@ -39,16 +40,12 @@ const ContactColumnBox = styled.div`
   align-items:center;
 `;
 const ContactText = styled.h3`
-    margin: 26px 0 ;
-    font-size: 22px;
+    margin: 26px 10px ;
+    font-size: 1.3rem;
+    text-align: center;
   color: ${theme.white};
 `;
-const ContentBox = styled.section`
-    padding-top: 20px;
-    justify-content: center;
-  width: 100%;
-  display: flex;
-`;
+
 const LinktoEmail = styled.button`
   text-decoration: none;
   background-color: ${theme.mainNeon};
@@ -60,7 +57,6 @@ const LinktoEmail = styled.button`
   font-weight: bold;
   margin-bottom: 26px;
   &:hover {
-    // background-color: #313131;
     box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2);
   }
 `;

@@ -9,7 +9,7 @@ type Props = {
     changePage: (num: number) => void;
 };
 const Container = styled.div`
-    grid-column-gap: 2.5rem;
+    grid-column-gap: 1.5rem;
     align-items: center;
     margin-top: 2rem;
     flex-wrap: wrap;
@@ -18,8 +18,8 @@ const Container = styled.div`
 `;
 const Arrow = styled.a`
     display: flex !important;
-    width: 2rem;
-    height: 2rem;
+    width: 1.5rem;
+    height: 1.5rem;
     background-color: transparent;
     border-style: none;
     border-radius: 0.25rem;
@@ -31,7 +31,7 @@ const Arrow = styled.a`
 `;
 
 const PageNumbers = styled.div`
-    grid-column-gap: 0.75rem;
+    grid-column-gap: 0.5rem;
     justify-content: center;
     align-items: center;
     display: flex;
@@ -41,8 +41,8 @@ interface PageProps {
     curr: number;
 }
 const Page = styled.a<PageProps>`
-    width: 2rem;
-    height: 2rem;
+    width: 1.3rem;
+    height: 1.3rem;
     border-radius: 0.25rem;
     justify-content: center;
     align-items: center;
@@ -50,7 +50,7 @@ const Page = styled.a<PageProps>`
     color: ${props => props.page === props.curr ? theme.darkGray : theme.white};
     text-decoration: none;
     cursor: pointer;
-    border-radius: 10px;
+    border-radius: 7px;
     background-color: ${props => props.page === props.curr ? theme.mainNeon : 'transparent'};
 `;
 function PageNav(props: Props) {

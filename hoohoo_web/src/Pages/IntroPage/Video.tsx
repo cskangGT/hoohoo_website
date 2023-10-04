@@ -7,12 +7,16 @@ const Container = styled.div`
     height: 29vw;
     max-height: 390px;
     background: transparent;
-    max-width: 1120px;
     display: flex !important;
     margin: 11% 0;
     width: 100%;
     @media screen and (max-width: 1100px) {
       margin: 15% 0;
+    }
+    @media screen and (max-width: 500px) {
+      height: auto;
+      max-height: auto;
+      margin: 15vh 0;
     }
 `;
 const ContentBox = styled.div`
@@ -21,6 +25,9 @@ const ContentBox = styled.div`
     padding: 0;
     display: flex;
     justify-content: space-between;
+    @media screen and (max-width: 500px) {
+      flex-direction: column;
+    }
     // @media screen and (max-width: 1100px) {
     //     flex-direction: column;
     //     justify-content: center;
@@ -29,17 +36,54 @@ const ContentBox = styled.div`
 `;
 const IndexBox = styled.div`
   width: 45%;
+  max-height: 390px;
+  height: 390px;
   @media screen and (max-width: 1100px) {
     margin-top: 20px;
 }
+    @media screen and (max-width: 500px) {
+        display: flex;
+        flex-direction: column;
+        margin-top: 50px;
+        width: 100%;
+        height: auto;
+        }
 `;
 
+type VideoListProps = {
+    num: number;
+}
+const HisBox = styled.a<VideoListProps>`
+    border-top: 1px solid rgba(255,255,255,.2);
+    border-bottom: 1px solid rgba(255,255,255,.2);
+    display: flex;
+    margin-left: 10px;
+    padding: 5px 30px;
+    flex-direction: flex-start;
+    height: calc(90%/ ${props => props.num});
+    align-items: center;
+    text-decoration: none;
+    color: ${theme.white};
+    background : transparent;
+    opacity: 0.5;
+    font-size: 18px;
+    font-weight: 500;
+    &:hover {
+        opacity: 1;
+      }
+      @media screen and (max-width: 500px) {
+        padding: 10px 20px;
+        margin: 0 20px;
+    }
+`;
 const VideoBox = styled.div`
   width: 55%;
-  
+  @media screen and (max-width: 500px) {
+      width: 100%;
+    }
 `;
 const Video = styled.div`
-  width: 100%:
+  width: 100%;
   transition: .9s;
     opacity: 1;
     transition-delay: 0s;
@@ -49,25 +93,11 @@ const VideoContent = styled.iframe`
   max-height: 390px;
   height: 27vw;
   width: 100%;
+  @media screen and (max-width: 500px) {
+        height: 212px;
+    }
 `;
-const HisBox = styled.a`
-    border-top: 1px solid rgba(255,255,255,.2);
-    border-bottom: 1px solid rgba(255,255,255,.2);
-    display: flex;
-    margin-left: 10px;
-    padding: 5px 30px;
-    flex-direction: flex-start;
-    height: 20%;
-    align-items: center;
-    text-decoration: none;
-    color: ${theme.white};
-    background : transparent;
-    opacity: 0.5;
-    font-size: 22px;
-    &:hover {
-        opacity: 1;
-      }
-`;
+
 
 
 interface DataProps {
@@ -113,6 +143,7 @@ function VideoSection() {
                         <HisBox
                             key={index}
                             href='#'
+                            num={data.length}
                             onClick={(event) => {
                                 event.preventDefault();
                                 setSelectedVideo(dict)

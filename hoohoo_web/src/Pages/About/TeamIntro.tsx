@@ -10,13 +10,14 @@ const SectionBox = styled.section`
     display: flex;
     align-items: center;
     padding-top: 5rem;
-    max-width: 1260px;
     justify-content: center;
     margin-top: 100px;
+    @media screen and (max-width: 700px) {
+        margin-top: 40px;
+    }
 `;
 const ContainerBox = styled.div`
   width: 100%;
-  max-width: 1260px;
   display:flex;
   margin: 0 auto;
   flex-direction: column;
@@ -34,7 +35,10 @@ const HeaderBox = styled.div`
 const HeaderText = styled.h2`
   font-size: 3rem;
   text-align: center;
-color: ${theme.white};
+    color: ${theme.white};
+    @media screen and (max-width: 700px) {
+        font-size: 2rem;
+    }
 `;
 const Slide = styled.div`
   min-width: 100%;

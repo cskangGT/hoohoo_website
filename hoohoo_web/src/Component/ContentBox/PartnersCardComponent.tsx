@@ -7,7 +7,7 @@ const Card = styled.div`
     background: linear-gradient(253deg, rgba(200, 200, 200, 0.1) 10%, rgba(252, 230, 187, 0.3) 30%);
     backdrop-filter: blur(20px);
     border-radius: 10px;
-    width: 448px;
+    width: 45%;
     padding: 10px 10px 30px;
     margin: 0px 12px 30px;
     display: flex;
@@ -16,6 +16,9 @@ const Card = styled.div`
     justify-content: center;
     @media screen and (max-width: 1100px) {
         padding: 10px 12px 35px;
+    }
+    @media screen and (max-width: 700px) {
+        width: 100%;
     }
 `;
 const Image = styled.img`
@@ -26,6 +29,7 @@ const Image = styled.img`
 const Content = styled.h3`
   margin-top: 40px;
   color: ${theme.white};
+  font-weight: 600;
 `;
 const Btn = styled.a`
     text-decoration: none;

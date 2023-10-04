@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import TeamIntro from './TeamIntro';
 import Gallary from './Gallary';
+import Wrapper from '../../Component/Wrapper/Wrapper';
 const ContentBox = styled.section`
     padding-top: 20px;
     justify-content: center;
@@ -11,14 +12,14 @@ const ContentBox = styled.section`
 function OurTeam() {
 
     return (
-        <React.Fragment>
+        <Wrapper>
             <ContentBox>
                 <TeamIntro />
             </ContentBox>
             <ContentBox>
                 <Gallary />
             </ContentBox>
-        </React.Fragment>
+        </Wrapper>
     )
 }
 export default OurTeam

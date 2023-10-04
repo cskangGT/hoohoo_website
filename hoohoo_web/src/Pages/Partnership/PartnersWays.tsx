@@ -12,6 +12,9 @@ const Container = styled.div`
     margin: 0px auto;
     background-color: transparent;
     margin-bottom: 50px;
+    @media screen and (max-width: 1000px) {
+        width: 90%;
+    }
 `;
 const LeftHeader = styled.h1`
   text-align: left;
@@ -37,6 +40,9 @@ const Boxes = styled.div`
 const Box = styled.div`
   color: ${theme.white};
   width: 45%;
+  @media screen and (max-width: 1100px){
+        width: 100%;
+    }
 `;
 const Header = styled.h4`
   font-size: 18px;
@@ -46,6 +52,9 @@ const Header = styled.h4`
     align-items: center;
     text-align:center;
   }
+  @media screen and (max-width: 800px){
+        text-align: start;
+    }
 `;
 const BoxContent = styled.p`
     font-size: 16px;
@@ -54,6 +63,10 @@ const BoxContent = styled.p`
     @media screen and (max-width: 1100px){
         align-items: center;
         text-align:center;
+        width: 100%;
+    }
+    @media screen and (max-width: 800px){
+        text-align: start;
     }
 `;
 type DataType = {
@@ -64,7 +77,7 @@ function PartnersWays() {
     const data: DataType[] = [
         {
             head: "Events",
-            content: "We work with entertainment, educational, and active events. We can create exclusive marketplaces filled with deep discounts and event partner products, accessible only to participants of your event. We also run friendly competitions with live leaderboard step counts and set targets for the participants to complete as"
+            content: "We work with entertainment, educational, and active events. We can create exclusive marketplaces filled with deep discounts and event partner products, accessible only to participants of your event. We also run friendly competitions with live leaderboard step counts and set targets for the participants to complete as."
         },
         {
             head: "Customer partnerships",

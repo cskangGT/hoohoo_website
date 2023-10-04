@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import { theme } from '../../style';
 import { useCookies } from 'react-cookie';
+import Wrapper from '../../Component/Wrapper/Wrapper';
 const SectionContainer = styled.section`
     display: flex;
     box-sizing: border-box;
@@ -14,27 +15,13 @@ const SectionContainer = styled.section`
     }
 `;
 const LoginContainer = styled.div`
-height: 800px;
-    min-width: 1120px;
+  height: 800px;
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
 `;
-const Inside = styled.div`
-    position: relative;
-    overflow: hidden;
-  max-width: 1140px;
-  width: 100%;
-  box-sizing: border-box;
-  display: flex;
-  @media screen and (max-width: 1100px) {
-    flex-direction: column-reverse;
-    align-items: center;
-    // padding-bottom: 50px;
-    margin-left: 15px;
-}
-`;
+
 const Form = styled.form`
   display: flex;
   flex-direction: column;
@@ -62,19 +49,7 @@ const HeaderText = styled.h1`
 const Label = styled.label`
   /* color: ${theme.white}; */
 `;
-// const Button = styled.a`
-//     font-size: 20px;
-//     font-weight: 700;
-//     cursor: pointer;
-//     text-decoration: none;
-//     border-radius: 10px;
-//     box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.5);
-//     margin-top: 0.75rem;
-//     background-color: ${theme.mainNeon};
-//     text-align: center;
-//     max-width:100%;
-//     padding: 10px 20px;
-// `;
+
 const Button = styled.button`
     font-size: 20px;
     cursor: pointer;
@@ -136,33 +111,34 @@ function AdminLogin() {
 
   }, [logIn])
   return (
-    <SectionContainer>
-      <LoginContainer>
-        <HeaderBox>
-          {logIn ? <><HeaderText>Hello {username},</HeaderText>
-          </> : <HeaderText>LOGIN</HeaderText>}
-        </HeaderBox>
-        {!logIn &&
-          <Form onSubmit={handleSubmit}>
-            <Label>ID</Label>
-            <Input
-              type="text"
-              value={username}
-              onChange={(e) => setUsername(e.target.value)}
-            />
-            <Label>Password</Label>
-            <Input
-              type="password"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-            />
-            {error && <p>{error}</p>}
-            <Button type="submit">Login</Button>
-          </Form>
-        }
-      </LoginContainer>
-    </SectionContainer>
-
+    <Wrapper>
+      <SectionContainer>
+        <LoginContainer>
+          <HeaderBox>
+            {logIn ? <><HeaderText>Hello {username},</HeaderText>
+            </> : <HeaderText>LOGIN</HeaderText>}
+          </HeaderBox>
+          {!logIn &&
+            <Form onSubmit={handleSubmit}>
+              <Label>ID</Label>
+              <Input
+                type="text"
+                value={username}
+                onChange={(e) => setUsername(e.target.value)}
+              />
+              <Label>Password</Label>
+              <Input
+                type="password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+              />
+              {error && <p>{error}</p>}
+              <Button type="submit">Login</Button>
+            </Form>
+          }
+        </LoginContainer>
+      </SectionContainer>
+    </Wrapper>
   )
 }
 export default AdminLogin;

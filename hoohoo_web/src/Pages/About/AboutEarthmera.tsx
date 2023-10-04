@@ -2,14 +2,29 @@ import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import { theme } from '../../style';
 import Frame from '../../Component/Frame';
+import Wrapper from '../../Component/Wrapper/Wrapper';
 
 const ContentBox = styled.section`
     padding-top: 20px;
     justify-content: center;
     align-items: center;
-  width: 100%;
+    width: 100%;
+    display: flex;
+    @media screen and (max-width: 600px) {
+        height: 850px;
+    }
+`;
+const WallPage = styled.div`
+  box-sizing: border-box;
+  max-width: 1200px;
   display: flex;
-  
+  align-items: center;
+  margin: 180px 0;
+  @media screen and (max-width: 500px) {
+        justify-content: center;
+        flex-direction: column-reverse;
+        margin-left: 0;
+    }
 `;
 const IntroText = styled.div`
   display:flex;
@@ -19,6 +34,12 @@ const IntroText = styled.div`
   width: 55%;
   margin-top: 20px;
   padding-left: 20px;
+  @media screen and (max-width: 500px) {
+    width: 100%;
+    padding: 0;
+        flex-direction: column;
+        /* margin-bottom: 20rem; */
+    }
   `;
 
 const IntroTitle = styled.h2`
@@ -75,12 +96,16 @@ const LeftImage = styled.img`
 
 `;
 const RightImage = styled.img`
-
   padding: 0 20px;
   height: auto;
   width: 45%;
   @media screen and (max-width: 1100px) {
       width: 60%;
+  }
+  @media screen and (max-width: 500px) {
+    padding: 0;
+      width: 85%;
+      align-self: center;
   }
 `;
 interface SlideContainerProps {
@@ -92,14 +117,7 @@ const SlideContainer = styled.div<SlideContainerProps>`
   transform: translateX(-${props => props.currentSlide * 100}%);
 `;
 
-const WallPage = styled.div`
-  
-  box-sizing: border-box;
-  max-width: 1200px;
-  display: flex;
-  align-items: center;
-  margin: 180px 0;
-`;
+
 interface DataStructure {
     [key: string]: {
         "header": string;
@@ -128,7 +146,7 @@ function AboutEarthmera() {
     }
     const imagePath = Object.keys(data)[0];
     return (
-        <React.Fragment>
+        <Wrapper>
             <ContentBox id="about">
                 <WallPage>
                     {windowWidth >= 1100 && imagePath === "Images/1__.svg" &&
@@ -146,7 +164,7 @@ function AboutEarthmera() {
                     }
                 </WallPage>
             </ContentBox>
-        </React.Fragment>
+        </Wrapper>
     )
 }
 export default AboutEarthmera

@@ -14,11 +14,13 @@ const SectionContainer = styled.section`
     @media screen and (max-width: 1100px) {
         height: auto;
     }
+    @media screen and (max-width: 600px) {
+        height: 800px;
+    }
 `;
 const Inside = styled.div`
     position: relative;
     overflow: hidden;
-  max-width: 1320px;
   width: 100%;
   box-sizing: border-box;
   display: flex;
@@ -27,7 +29,12 @@ const Inside = styled.div`
     align-items: center;
     // padding-bottom: 50px;
     margin-left: 15px;
-}
+  }
+    @media screen and (max-width: 500px) {
+        justify-content: center;
+        flex-direction: column;
+        margin-left: 0;
+    }
 `;
 const IntroText = styled.div`
   display:flex;
@@ -37,7 +44,13 @@ const IntroText = styled.div`
   width: 55%;
   margin-top: 20px;
   padding-left: 20px;
-  `;
+  @media screen and (max-width: 500px) {
+    width: 100%;
+    padding: 0;
+        flex-direction: column;
+        /* margin-bottom: 20rem; */
+    }
+`;
 
 const IntroTitle = styled.h2`
   margin-bottom: 10px;
@@ -50,14 +63,13 @@ const IntroTitle = styled.h2`
 }
     @media screen and (max-width: 500px) {
         font-size: 34px;
-        margin-bottom: 1rem;
     }
 `;
 
 const FirstDesc = styled.h1`
 text-align: center;
   font-size: 5.0rem;
-  font-weight:400;
+  font-weight: 600;
   line-height: 1.1;
   margin-bottom: 3rem;
   color: ${theme.white};
@@ -67,7 +79,8 @@ text-align: center;
 }
 @media screen and (max-width: 500px) {
     font-size: 35px;
-    margin-bottom: 1.5rem;
+    margin-bottom: 0.5rem;
+    margin-top: 0.5rem;
 }
 `;
 const SecondDesc = styled.h3`
@@ -75,6 +88,7 @@ const SecondDesc = styled.h3`
   margin-bottom: 4.5rem;
   line-height: 1.3;
   color: ${theme.white};
+  font-weight: 500;
   text-align: center;
   @media screen and (max-width: 1100px) {
     font-size: 22px;
@@ -94,28 +108,21 @@ const RightImage = styled.img`
   @media screen and (max-width: 1100px) {
       width: 60%;
   }
-`;
-interface SlideContainerProps {
-    currentSlide: number;
-}
-const SlideContainer = styled.div<SlideContainerProps>`
-  display: flex;
-  transition: transform 0.3s ease;
-  transform: translateX(-${props => props.currentSlide * 100}%);
+  @media screen and (max-width: 500px) {
+    padding: 0;
+      width: 65%;
+      align-self: center;
+  }
 `;
 
 const Slide = styled.div`
   min-width: 100%;
   box-sizing: border-box;
   display: flex;
+  @media screen and (max-width: 500px) {
+    flex-direction: column-reverse;
+  }
 `;
-const LottieBox = styled.a`
-    width: 70px;
-    height:70px;
-    bottom: 3px;
-    position: absolute;
-`;
-
 interface DataStructure {
     [key: string]: {
         firstDesc: string;

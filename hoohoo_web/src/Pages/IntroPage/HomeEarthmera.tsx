@@ -1,14 +1,12 @@
-import React, { useState } from 'react';
+import React from 'react';
 import styled from 'styled-components';
-import { theme } from '../../style';
 import IntroSection from './IntroSection';
 import NumberIconContent from '../../Component/ContentBox/NumberIconContent';
 import ListSection from './ListSection';
-import VideoSection from './Video'
-import Frame from '../../Component/Frame';
+import VideoSection from './Video';
 import Download from './Download';
 import Partners from './Partners';
-import Blog from '../Blog/Blog';
+import Wrapper from '../../Component/Wrapper/Wrapper';
 const ContentBox = styled.section`
     padding-top: 20px;
     justify-content: center;
@@ -36,7 +34,7 @@ function HomeEarthmera() {
         imagePath: 'Images/3-3.webp'
     }];
     return (
-        <React.Fragment>
+        <Wrapper>
             <IntroSection />
             <ContentBox id="partners">
                 <Partners />
@@ -52,6 +50,7 @@ function HomeEarthmera() {
             <ContentBox id="download" key="download">
                 <Download dropb={false} />
             </ContentBox>
-        </React.Fragment>);
+        </Wrapper>
+    );
 }
 export default HomeEarthmera; 

@@ -14,10 +14,12 @@ const Logo = styled.a`
   align-items: center;
   text-decoration: none;
 `;
+
 const LogoText = styled.span`
   padding-left: 10px;
   color: ${theme.white};
 `;
+
 const Bar = styled.nav`
   position: fixed;
   top: 0;
@@ -32,7 +34,7 @@ const Bar = styled.nav`
   justify-content: space-between;
   align-items: center;
   padding: 8px 22px;
-  @media screen and (max-width: 1000px) {
+  @media screen and (max-width: 1100px) {
     flex-direction: column;
     align-items: flex-start;
     padding: 8px 22px;
@@ -50,7 +52,7 @@ const NavbarMenu = styled.ul<NavBarProps>`
   padding-left: 0;
   align-items: center;
   justify-content: center;
-  @media screen and (max-width: 1000px) {
+  @media screen and (max-width: 1100px) {
     height: auto;
     flex-direction: column;
     align-items: center;
@@ -87,7 +89,7 @@ const NavMenuList = styled.li`
       transform: rotate(360deg);
     }
   }
-  @media screen and (max-width: 1000px) {
+  @media screen and (max-width: 1100px) {
     align-items: start;
     text-align: center;
     width: 100%;
@@ -139,7 +141,7 @@ const MenuToogleButton = styled.button`
   font-size: 24px;
   color: ${theme.mainNeon};
   display: none;
-  @media screen and (max-width: 1000px) {
+  @media screen and (max-width: 1100px) {
     display: block;
   }
   &:hover {
@@ -151,7 +153,7 @@ const MenuToogleButton = styled.button`
 const LanguageBox = styled.div`
   margin: 0 30px;
   display: block;
-  @media screen and (max-width: 1000px) {
+  @media screen and (max-width: 1100px) {
     display: none;
     position: absolute;
     right: 45px;
@@ -161,7 +163,7 @@ const LanguageBox = styled.div`
 const LanguageBoxSecond = styled.div`
   margin: 0 30px;
   display: none;
-  @media screen and (max-width: 1000px) {
+  @media screen and (max-width: 1100px) {
     display: block;
     position:absolute;
     right: 45px;
@@ -203,7 +205,7 @@ const LanguageButton = styled.button<LanguageProps>`
 const HoverContainer = styled.div`
   cursor: pointer;
   color: ${theme.white};
-  @media screen and (max-width: 1000px) {
+  @media screen and (max-width: 1100px) {
     margin-left: 10px;
     align-items: center;
     justify-content: center;
@@ -222,7 +224,7 @@ const HoverContainer = styled.div`
 const NavHover = styled.span`
   text-decoration : none;
   padding-left: 10px;
-  @media screen and (max-width: 1000px) {
+  @media screen and (max-width: 1100px) {
     padding-left: 0px;
   }
   
@@ -234,7 +236,7 @@ const ContainerSubItems = styled.div`
   // margin-top: 30px;
   // padding-top: 12px;
   // background-color: rgba(250, 250, 250, 0.09);
-  @media screen and (max-width: 1000px) {
+  @media screen and (max-width: 1100px) {
     position: relative;
     align-items: center;
     justify-content: center;
@@ -246,7 +248,7 @@ const HoverLinks = styled.ul`
   padding: 0;
   
   text-decoration : none;
-  @media screen and (max-width: 1000px) {
+  @media screen and (max-width: 1100px) {
     padding-top: 7px; 
   }
 `;
@@ -257,7 +259,7 @@ const NavSubList = styled.li`
   padding : 5px 0px;
   
   padding-right: 15px;
-  @media screen and (max-width: 1000px) {
+  @media screen and (max-width: 1100px) {
     align-items: center;
     justify-content: center;
     padding : 7px 7px;
@@ -273,7 +275,7 @@ const SubNavLink = styled.a`
   color: ${theme.white};
   padding-left: 10px;
   cursor: pointer;
-  @media screen and (max-width: 1000px) {
+  @media screen and (max-width: 1100px) {
     font-size: 12px;  
     text-align: center; 
     padding-left: 0px;
@@ -287,22 +289,22 @@ type NavProps = {
   isKorean: boolean;
   setIsKorean: React.Dispatch<React.SetStateAction<boolean>>;
 }
+
 type NavItem = {
   label: string;
   link?: string;
   subItems?: NavItem[];
 };
+
 function Nav({ isKorean, setIsKorean }: NavProps) {
 
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const [windowWidth, setWindowWidth] = useState<number>(window.innerWidth);
-  const { t, i18n } = useTranslation();
+  const { i18n } = useTranslation();
   const navItems: NavItem[] = i18next.t('Nav', { returnObjects: true })["navlist"]
   console.log('navItems', navItems)
   const changelanguageToKo = () => i18n.changeLanguage('ko')
   const changelanguageToEn = () => i18n.changeLanguage('en')
-
-
   useEffect(() => {
     const handleResize = () => {
       setWindowWidth(window.innerWidth);
@@ -358,7 +360,7 @@ function Nav({ isKorean, setIsKorean }: NavProps) {
           </LanguageBox>
         }
       </NavbarMenu>
-      {windowWidth < 1000 && <NavRight>
+      {windowWidth < 1100 && <NavRight>
         <LanguageBoxSecond>
           <LanguageButton isKorean={isKorean}
             onClick={() => {

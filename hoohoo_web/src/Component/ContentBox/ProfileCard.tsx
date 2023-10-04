@@ -12,6 +12,9 @@ const CardContainer = styled.div`
     color: ${theme.white};
     place-items: center;
     margin-bottom: 50px;
+    @media screen and (max-width: 700px) {
+        margin-bottom: 1.5rem;
+    }
 `;
 const PhotoBox = styled.div`
   overflow: hidden;
@@ -20,6 +23,10 @@ const PhotoBox = styled.div`
   width: 220px;
   display: flex; 
   justify-content: center;
+  @media screen and (max-width: 700px) {
+        padding-bottom: 1.2rem;
+        padding-top: 1.5rem;
+    }
 `;
 const Image = styled.img`
   width: 220px;
@@ -34,12 +41,20 @@ padding-bottom: 30px;
   font-size: 22px;
   width: 100%;
   text-align:center;
+  @media screen and (max-width: 700px) {
+        padding-bottom: 1.2rem;
+        font-size: 1.3rem;
+    }
 `;
 const Role = styled.span`
   font-size: 16px;
   padding-bottom: 30px;
   width: 100%;
   text-align:center;
+  @media screen and (max-width: 700px) {
+        padding-bottom: 1.2rem;
+        font-size: 1rem;
+    }
 `;
 const ButtonBox = styled.div`
   width: 100%;

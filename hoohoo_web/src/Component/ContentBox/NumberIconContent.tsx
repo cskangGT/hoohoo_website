@@ -6,13 +6,17 @@ import firstIcon from './firstIcon.json';
 
 const IconContentBox = styled.div`
     height: 210px;
-  justify-content: center;
   width: 100%;
-  max-width: 1140px;
   display: flex;
+  align-items: center;
+  justify-content: center;
       @media screen and (max-width: 850px) {
         height: 700px;
         width: 40%;
+}
+@media screen and (max-width: 600px) {
+        height: 650px;
+        width: 70%;
 }
 `;
 const Container = styled.div`
@@ -24,12 +28,11 @@ const Container = styled.div`
     grid-template-rows: auto;
     grid-template-columns: 1fr 1fr 1fr;
     grid-auto-columns: 1fr;
-    align-items: stretch;
-    justify-items: stretch;
+    align-items: center;
+    justify-items: center;
     display: grid;
     background-image: linear-gradient(#343557,#1c2038);
     border-radius: 16px;
-    max-width: 1140px;
     @media screen and (max-width: 850px) {
         flex-direction: column;
         height: 90%;
@@ -56,14 +59,15 @@ const ItemBox = styled.div`
 
 const FirstText = styled.div`
   font-size: 34px;
-  font-weight: 300;
+  font-weight: 600;
 //   grid-column-end: span 1;
 //   grid-column-start :span 1;
 //   grid-row-end: span 1;
 //   grid-row-start: span 1;
 `;
 const SecondText = styled.div`
-font-size: 25px;
+    font-size: 25px;
+    font-weight: 500;
 `;
 const DividerRight = styled.div`
 width: 1px;
@@ -98,24 +102,24 @@ type Props = {
     i: number;
 }
 const LottieBox = styled.div<Props>`
-width: 90px;
-position: absolute;
-top: -2rem;
-@media screen and (max-width: 850px) {
-    top: ${props => props.i * 13.8 - 2}rem;
-}
+    width: 90px;
+    position: absolute;
+    top: -2rem;
+    @media screen and (max-width: 850px) {
+        top: ${props => props.i * 12.7 - 2}rem;
+    }
 `;
 const TextBox = styled.div`
 
-color: ${theme.white};
-background - color: transparent;
-flex-direction: column;
-justify-content: flex-start;
-align-items: center;
-display: flex;
-@media screen and(max - width: 1100px) {
-    margin-top: 20px;
-}
+    color: ${theme.white};
+    background-color: transparent;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    display: flex;
+    @media screen and (max-width: 1100px) {
+        margin-top: 20px;
+    }
 `;
 type DataItem = {
     [key: number]: {

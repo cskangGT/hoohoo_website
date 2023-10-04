@@ -40,9 +40,12 @@ const Header = styled.h1`
     @media screen and (max-width: 1100px) {
         font-size: 2.3rem;
     }
+    @media screen and (max-width: 500px) {
+        font-size: 2rem;
+    }
 `;
 const SecondImageBox = styled.div`
-    max-width: 1200px;
+
     width: 100%;
     grid-column-gap: 1rem;
     grid-row-gap: 1rem;
@@ -63,33 +66,41 @@ const SecondImageBox = styled.div`
     }
 `;
 const FirstImageBox = styled.div`
-    max-width: 1200px;
     align-items: center;
     justify-content: center;
     margin-top: 20px;
     width: 100%;
     grid-row-gap: 1rem;
-    
     grid-template-rows: auto;
     grid-template-columns: 1fr 1fr 1fr;
     display: grid;
-    height: 940px;
+    height: 840px;
     @media screen and (max-width: 1100px) {
         height: auto;
         grid-template-columns: auto;
-        grid-column-gap: 30px;
+        grid-column-gap: 20px;
     grid-template-rows: 1fr 1fr 1fr;
     }
+    @media screen and (max-width: 500px) {
+        width: 70%;
+        padding: 0 20px;
+    }
 `;
-const EachBox = styled.div`
-    width: 375px;
-    height: 800px;
+type BoxProps = {
+    isBot: boolean;
+}
+const EachBox = styled.div<BoxProps>`
+    width: 340px;
+    height: ${props => props.isBot ? 600 : 800}px;
     position: relative;
     background: linear-gradient(170deg, rgba(255, 255, 255, 0.14) 0%, rgba(255, 255, 255, 0.05) 100%);
     border-color: ${theme.white};
     border-width: 2px;
     border-radius: 20px;
-    
+    @media screen and (max-width: 500px) {
+        height: ${props => props.isBot ? 300 : 450}px;
+        width: 300px;
+    }
 `;
 const Image = styled.img`
     // padding-bottom: 100px;
@@ -98,12 +109,16 @@ const Image = styled.img`
     bottom: 70px; 
     width: 100%;
     height: auto;
+    object-fit: contain;
+    @media screen and (max-width: 500px) {
+        bottom: 30px; 
+        width: 70%;
+        left: 50%;
+        transform: translateX( -50%);
+    }
+  /* transform: translate(-50%, -50%); */
 `;
-const Bottom = styled.img`
-    bottom: 0;
-    position: absolute;
-    width: 100%;
-`;
+
 type DataProps = {
     imagePath: string;
 }
@@ -124,11 +139,11 @@ function ListSection({ data, header, isBot, id }: TotalProps) {
                 </HeaderBox>}
                 {
                     isBot ? <SecondImageBox>
-                        {data.map((item, index) => (<EachBox key={index} style={{ height: 600 }}>
+                        {data.map((item, index) => (<EachBox key={index} isBot={isBot}>
                             <Image src={item.imagePath} key={index + "img"} /></EachBox>
                         ))}
                     </SecondImageBox> : <FirstImageBox>
-                        {data.map((item, index) => (<EachBox key={index} >
+                        {data.map((item, index) => (<EachBox key={index} isBot={isBot}>
                             <Image src={item.imagePath} key={index + "img"} /></EachBox>
                         ))}
                     </FirstImageBox>
