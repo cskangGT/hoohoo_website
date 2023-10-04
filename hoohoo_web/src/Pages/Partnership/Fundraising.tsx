@@ -3,18 +3,16 @@ import styled from 'styled-components';
 import { theme } from '../../style';
 import PartnersWays from './PartnersWays';
 import PartnersCardComponent from '../../Component/ContentBox/PartnersCardComponent';
-const Container = styled.div`
-    width: 100%;
-    max-width: 1140px;
+const Container = styled.section`
+    width: calc(100% - 30px);
     display: flex;
     margin: 0px auto;
     justify-content: flex-start;
     align-items: center;
     transition: all 0.2s ease 0s;
-    padding: 0px 15px;
+    padding: 0 15px;
 `;
 const ContentBox = styled.div`
-    max-width: 1140px;
     display: flex;
     flex-direction: column;
     position: relative;
@@ -34,20 +32,24 @@ const HeaderBox = styled.div`
 const FirstHeader = styled.h2`
   font-size: 36px;
   font-weight: 300;
+  @media screen and (max-width: 700px) {
+    font-size: 1.7rem;
+  }
 `;
 const SecondHeader = styled.span`
     width: 60%;
     font-size: 25px;
     line-height: 1.3;
     opacity: 0.7;
+    @media screen and (max-width: 700px) {
+    font-size: 1.2rem;
+  }
 `;
 const CardBoxContainer = styled.div`
   display: flex;
   flex-direction: row;
-  
   @media screen and (max-width: 1100px){
     flex-direction: column;
-
   }
 `;
 const CardBox = styled.div`
@@ -75,6 +77,7 @@ const Card = styled.div`
         box-shadow: rgba(30, 68, 108, 0.08) 0px 30px 60px 0px;
         text-align: left;
     }
+    
 `;
 const CardImage = styled.img`
   height: 64px;
@@ -96,6 +99,7 @@ const CardContent = styled.p`
 `;
 const PartnersCardBox = styled.div`
     // background: linear-gradient(253deg, rgba(255, 255, 255, 0.14) 0%, rgba(255, 255, 255, 0.05) 100%);
+    width: calc(100% - 30px);
     border-radius: 20px;
     display: flex;
     align-items: center;
@@ -104,6 +108,10 @@ const PartnersCardBox = styled.div`
     justify-content: center;
     @media screen and (max-width: 1100px){
         flex-direction: column;
+    }
+    @media screen and (max-width: 700px) {
+        padding-left: 15px;
+        padding-right: 15px;
     }
 `;
 type DataType = {
@@ -161,8 +169,8 @@ function Fundraising() {
                 <CardBoxContainer>
                     {
                         data.map((item, index) => (
-                            <Card>
-                                <CardImage src={item.image} />
+                            <Card key={index}>
+                                <CardImage src={item.image} key={'image' + index} />
                                 <CardHead>
                                     {item.head}
                                 </CardHead>

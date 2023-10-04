@@ -8,29 +8,34 @@
         }
     },
     "Nav" : {
-        "navlist" : [{ "label": "홈", "link": "#" },
-        {
-          "label": "어바웃",
-          "subItems": [
-            { "label": "EarthMera란", "link": "#about" },
-            { "label": "Our Team", "link": "#about" }
-          ]
-        },
-        {
-          "label": "파트너십",
-          "link": "#partners"
-        },
-        {
-          "label": "다운로드",
-          "subItems": [
-            { "label": "EarthMera", "link": "#download" },
-            { "label": "Other Apps", "link": "#download" }
-          ]
-        },
-        {
-          "label": "Contact",
-          "link": "/contact"
-        }]
+        "navlist" : [
+          { "label": "홈", "link": "/home" },
+          {
+            "label": "About",
+            "subItems": [
+              { "label": "Our Team", "link": "/about_team" },
+              { "label": "EarthMera", "link": "/about_earthmera" }
+            ]
+          },
+          {
+            "label": "파트너쉽",
+            "link": "/partnership"
+          },
+          {
+            "label": "Download",
+            "subItems": [
+              { "label": "EarthMera", "link": "/home#download" },
+              { "label": "DropB", "link": "/dropb" }
+            ]
+          },
+          {
+            "label": "Blog",
+            "link": "/blog"
+          },
+          {
+            "label": "Contact",
+            "link": "#contact"
+          }]
     },
     "IntroPage": {
         "Images/1__.svg": {

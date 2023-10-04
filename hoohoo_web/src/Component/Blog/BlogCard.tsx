@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { theme } from '../../style';
+import { useNavigate } from "react-router-dom";
 
 const Card = styled.div`
     box-shadow: rgba(0, 0, 0, 0.08) 0px 40px 80px 0px;
@@ -40,6 +41,7 @@ const Content = styled.h3`
   margin-top: 0px;
   color: ${theme.white};
   font-size: 12px;
+  font-weight: 500;
 `;
 const ContainerCD = styled.div`
     justify-content: center;
@@ -53,6 +55,7 @@ interface CategoryProps {
 const CategoryBox = styled.div<CategoryProps>`
     letter-spacing: .3px;
     font-size: .725rem;
+    font-weight: 600;
     line-height: 1.7;
     border-radius: 20px;
     margin-right: 0.5rem;
@@ -85,6 +88,7 @@ const Btn = styled.a`
     }
 `;
 type BlogData = {
+    'id': number;
     'image': string;
     'category': string;
     'date': string;
@@ -94,35 +98,48 @@ type BlogData = {
 type Props = {
     data: BlogData;
 };
-
+type CateProps = {
+    category: string;
+    style?: {};
+};
+export function Category(props: CateProps) {
+    let color: string;
+    if (props.category === "Trash-Picking") {
+        color = '#FFADAD'
+    } else if (props.category === "Reuse") {
+        color = '#FFD6A5'
+    } else if (props.category === "Recycle") {
+        color = '#aae0d4'
+    } else if (props.category === "Transportation") {
+        color = '#FDFFB6'
+    } else {
+        color = '#D9EDF8';
+    }
+    return (<CategoryBox color={color} style={props.style}>
+        {props.category}
+    </CategoryBox>)
+}
 function BlogCard(props: Props) {
+
+    const navigate = useNavigate();
     if (!props.data || !props.data.image) {
         return null;
     }
-    let color: string;
-    if (props.data.category === "Trash-Picking") {
-        color = '#FFADAD'
-    } else if (props.data.category === "Reuse") {
-        color = '#FFD6A5'
-    } else if (props.data.category === "Recycle") {
-        color = '#aae0d4'
-    } else if (props.data.category === "Transportation") {
-        color = '#FDFFB6'
-    } else {
-        color = '#D9EDF8'
-    }
+
+
+
     return (
-        <Card onClick={() => console.log('blog')} >
+        // <Link to={{ pathname: `/blog/${props.data.id}`, state: { blogData: props.data } }}>
+        <Card onClick={() => { navigate(`/blog/${props.data.id}`, { state: { blogData: props.data } }) }}>
             <Image src={props.data.image} />
             <Title>{props.data.title}</Title>
             <ContainerCD>
-                <CategoryBox color={color}>
-                    {props.data.category}
-                </CategoryBox>
+                <Category category={props.data.category}></Category>
                 <DateBox>{props.data.date}</DateBox>
             </ContainerCD>
             <Content>{props.data.desc}</Content>
         </Card>
+        // </Link>
     );
 }
 export default BlogCard;

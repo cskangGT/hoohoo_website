@@ -14,9 +14,13 @@ const SectionBox = styled.section`
         padding-top: 5rem;
         padding-bottom: 0rem;
     }
+    @media screen and (max-width: 800px) {
+        padding-top: 4.5rem;
+        padding-bottom: 0rem;
+    }
 `;
 const ContainerBox = styled.div`
-  width: 100%;
+  width: calc(100% - 30px);
   max-width: 1140px;
   display:flex;
   margin: 0 auto;
@@ -49,15 +53,17 @@ const LeftCell = styled.div`
     
 `;
 const AboutHeader = styled.h4`
-letter-spacing: .1rem;
-text-transform: uppercase;
-margin-top: 0.3rem;
-margin-bottom: 0.3rem;
-font-family: Poppins,sans-serif;
-font-size: .85rem;
-font-weight: 500;
-line-height: 1.5;
-color: ${theme.white};
+    letter-spacing: .1rem;
+    text-transform: uppercase;
+    margin-top: 0.3rem;
+    margin-bottom: 0.3rem;
+    font-size: .85rem;
+    font-weight: 500;
+    line-height: 1.5;
+    color: ${theme.white};
+    @media screen and (max-width: 700px) {
+        font-size: 1rem;
+    }
 `;
 const RightCell = styled.div`
 // justify-content: flex-end;
@@ -76,7 +82,10 @@ const RightCell = styled.div`
         top:0;
         left: 40px;
     }
-    
+    @media screen and (max-width: 1100px) {
+        left: -180px;
+        top: 250px;
+    }
 `;
 
 const AboutUsImage = styled.img`
@@ -101,6 +110,10 @@ const AboutTitle = styled.h1`
     font-size: 2.4rem;
     font-weight: 600;
     line-height: 1.5;
+    @media screen and (max-width: 800px) {
+        text-align: center;
+        font-size: 2rem;
+    }
 `;
 const AboutContent = styled.p`
     font-size: 1.4rem;

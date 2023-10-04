@@ -1,9 +1,9 @@
 import React from 'react';
 import styled from 'styled-components';
-import Frame from '../../Component/Frame';
 import SketchContents from './SketchContents';
 import Fundraising from './Fundraising';
 import AboutUs from './AboutUs';
+import Wrapper from '../../Component/Wrapper/Wrapper';
 const ContentBox = styled.section`
     padding-top: 20px;
     justify-content: center;
@@ -13,7 +13,7 @@ const ContentBox = styled.section`
 function Partnership() {
 
     return (
-        <React.Fragment>
+        <Wrapper>
             <ContentBox>
                 <AboutUs />
             </ContentBox>
@@ -21,9 +21,9 @@ function Partnership() {
                 <SketchContents />
             </ContentBox>
             <ContentBox>
-                <Fundraising></Fundraising>
+                <Fundraising />
             </ContentBox>
-        </React.Fragment>
+        </Wrapper>
     )
 }
 export default Partnership

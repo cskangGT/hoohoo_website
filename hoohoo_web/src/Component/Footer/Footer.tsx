@@ -3,20 +3,31 @@ import styled from 'styled-components';
 import { theme } from '../../style';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faInstagram, faPinterestP, faTiktok, faLinkedinIn } from '@fortawesome/free-brands-svg-icons';
+import { faInstagram, faPinterestP, faTiktok, faLinkedinIn, faYoutube } from '@fortawesome/free-brands-svg-icons';
+import { useNavigate } from 'react-router-dom';
 
 const Background = styled.footer`
     background-color: ${theme.darkGray};
     display: block;
-    min-width: 1024px;
     padding: 40px 0;
+    @media (max-width: 1000px) {
+      min-width: 600px;
+    }
+    @media screen and (max-width: 700px){
+         min-width: 450px;
+        }
+        @media screen and (max-width: 500px){
+         min-width: 380px;
+        }
 `;
 const Container = styled.div`
     max-width: 980px;
     padding-left: 22px;
     padding-right: 22px;
     margin: 0 auto;
-    
+    @media screen and (max-width: 700px){
+         
+      }
 `;
 const Box = styled.div`
   display: flex;
@@ -49,7 +60,7 @@ const FooterTitle = styled.h3`
   color: #f1f1f1;
 `;
 const BusinessDetail = styled.p`
-  font-size: 14px;
+  font-size: 0.7rem;
   line-height: 24px;
   color: #f1f1f1;
 `;
@@ -140,6 +151,7 @@ function Ibutton({ icon, url, style }: IbuttonProps) {
 }
 
 function Footer({ isKorean }: FooterProps) {
+  const navigate = useNavigate();
   return (
     <Background>
       <Container>
@@ -159,15 +171,15 @@ function Footer({ isKorean }: FooterProps) {
           }
           {
             isKorean ? <RowBox>
-              <Buttons text1="소개글" action1={() => alert('About Us clicked!')}
-                text2="제휴" action2={() => alert('제휴 clicked!')} />
-              <Buttons text1="이용약관" action1={() => alert('이용약관 clicked!')}
-                text2="개인정보처리방침" action2={() => alert('Privacy Policy clicked!')} />
+              <Buttons text1="소개글" action1={() => navigate(`/about_team`)}
+                text2="제휴" action2={() => navigate(`/partnership`)} />
+              <Buttons text1="이용약관" action1={() => navigate('/term_of_use')}
+                text2="개인정보처리방침" action2={() => navigate(`/privacy`)} />
             </RowBox> : <RowBox>
-              <Buttons text1="About Us" action1={() => alert('About Us clicked!')}
-                text2="Partnership" action2={() => alert('Partnership clicked!')} />
-              <Buttons text1="Terms of Use" action1={() => alert('Terms of Use clicked!')}
-                text2="Privacy Policy" action2={() => alert('Privacy Policy clicked!')} />
+              <Buttons text1="About Us" action1={() => navigate(`/about_team`)}
+                text2="Partnership" action2={() => navigate(`/partnership`)} />
+              <Buttons text1="Terms of Use" action1={() => navigate('/term_of_use')}
+                text2="Privacy Policy" action2={() => navigate(`/privacy`)} />
             </RowBox>
           }
         </Box>
@@ -177,9 +189,10 @@ function Footer({ isKorean }: FooterProps) {
           <BusinessDetail style={{ paddingLeft: 15 }}>Copyright&copy; 2023 by EarthMera, All rights reserved.</BusinessDetail>
           <IconBox>
             <Ibutton icon={faInstagram} url={'https://instagram.com/earthmera_?igshid=MzRlODBiNWFlZA=='} />
-            <Ibutton icon={faLinkedinIn} url={'#'} />
+            <Ibutton icon={faLinkedinIn} url={'https://www.linkedin.com/company/earthmera/'} />
             <Ibutton icon={faPinterestP} url={'#'} />
             <Ibutton icon={faTiktok} url={'#'} />
+            <Ibutton icon={faYoutube} url={'https://www.youtube.com/@Earthmera'} />
           </IconBox>
         </FooterBottom>
       </Container>

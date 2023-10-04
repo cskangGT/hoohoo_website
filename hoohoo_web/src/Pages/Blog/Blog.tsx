@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import styled from 'styled-components';
 import { theme } from '../../style';
 import BlogCard from '../../Component/Blog/BlogCard';
@@ -8,10 +8,11 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlus } from '@fortawesome/free-solid-svg-icons';
 import blogdata from './data.json';
 import { useCookies } from 'react-cookie';
+import Wrapper from '../../Component/Wrapper/Wrapper';
+import { useSwipeable } from 'react-swipeable';
 
 const Container = styled.div`
-    width: 100%;
-    max-width: 1140px;
+    width: calc(100% - 30px);
     display: flex;
     margin: 0px auto;
     justify-content: flex-start;
@@ -21,7 +22,6 @@ const Container = styled.div`
     padding: 5rem 15px;
 `;
 const ContentBox = styled.div`
-    max-width: 1140px;
     display: flex;
     flex-direction: column;
     position: relative;
@@ -34,14 +34,25 @@ const SlickBar = styled.div`
   padding: 0;
   margin-top: 20px;
 `;
+// 아래가 LeftBar
+const ScrollContainer = styled.div`
+    /* @media screen and (max-width: 700px) {
+        overflow-x: scroll;
+        white-space: nowrap;
+        user-select: none;
+        -webkit-overflow-scrolling: touch; // for smooth scrolling on iOS
+    } */
+`;
 
 const LongBar = styled.div`
   margin-bottom: 20px;
   display: flex;
   justify-content: space-between;
   @media screen and (max-width: 1100px){
-    justify-content: center;
-    margin-bottom: 0;
+        justify-content: center;
+    }
+    @media screen and (max-width: 700px){
+        margin-bottom: 0;
     }
 `;
 
@@ -53,7 +64,6 @@ const Outline = styled.button<OutlineProps>`
     opacity: ${props => props.op === props.selectedCategory ? 1 : 0.3};
     background : none;
     border: none;
-    cursor: pointer;
     margin-right: 10px;
     outline: none;
     display: block;
@@ -66,11 +76,17 @@ const Outline = styled.button<OutlineProps>`
         background-color: ${theme.darkGray};
         color: ${theme.mainNeon};
     }
+    @media screen and (max-width: 800px) {
+        height: 70%;
+    /* display: inline-block;  // Modified this line to keep all items in a single line */
+  }
 `;
 const OutlineText = styled.h3`
     color: ${theme.white};
     padding: 5px;
+    /* padding: 10px 5px; */
     margin : 0;
+    
 `;
 const LeftBar = styled.div`
   display: flex;
@@ -79,6 +95,7 @@ const LeftBar = styled.div`
     justify-content: center;
     margin-bottom: 0;
     }
+    
 `;
 const Grid = styled.div`
     grid-column-gap: 0.5rem;
@@ -90,6 +107,11 @@ const Grid = styled.div`
     @media screen and (max-width: 1100px){
         grid-template-rows: auto;
     grid-template-columns: 1fr 1fr;
+    grid-auto-columns: 1fr;
+    margin-top: 50px;
+    }
+    @media screen and (max-width: 700px){
+    grid-template-columns: 1fr;
     grid-auto-columns: 1fr;
     margin-top: 50px;
     }
@@ -138,7 +160,6 @@ const NewBlogBtn = styled.button`
 `;
 
 function Blog() {
-
     const [currentPage, setCurrentPage] = useState<number>(1);
     const [selectedCategory, setSelectedCategory] = useState<number>(0);
     const [fetchedList, setFetchedList] = useState<BlogData[]>([]);
@@ -148,6 +169,10 @@ function Blog() {
     const handleOpen = () => setIsOpen(true);
     const [cookies] = useCookies(['token', 'username']);
     const [logIn, setLogIn] = useState<boolean>(!!cookies.username);
+    const [isSwiping, setIsSwiping] = useState(false);
+    const [startX, setStartX] = useState<number>(0);
+    const [scrollLeft, setScrollLeft] = useState<number>(0);
+    const scrollContainerRef = useRef<HTMLDivElement>(null);
     blogdata.reverse();
 
     useEffect(() => {
@@ -176,6 +201,7 @@ function Blog() {
     }
 
     const handleSelectCategory = (index: number) => { // index는 category index 0 = All
+        // e.stopPropagation();
         // category에 대한 데이터 요청
         setSelectedCategory(index)
         setCurrentPage(1);
@@ -184,18 +210,35 @@ function Blog() {
     useEffect(() => {
         handleSelectCategory(selectedCategory);
     }, [])
+
+
+    const handlers = useSwipeable({
+        onSwiping: (eventData) => {
+            if (scrollContainerRef.current) {
+                scrollContainerRef.current.scrollLeft -= eventData.deltaX;
+            }
+        },
+        preventScrollOnSwipe: false,
+
+        trackMouse: true
+    });
+
+
+
+
+
     return (
-        <React.Fragment>
+        <Wrapper>
             <Container>
                 <ContentBox>
                     <SlickBar>
                         <LongBar>
-                            <LeftBar>
+                            <ScrollContainer {...handlers}>
                                 {list.map((item, index) => (
-                                    <Outline key={index} op={index} selectedCategory={selectedCategory} onClick={() => { handleSelectCategory(index) }}>
+                                    <Outline key={index} op={index} selectedCategory={selectedCategory} onClick={() => handleSelectCategory(index)} >
                                         <OutlineText key={index + "text"}>{item}</OutlineText>
                                     </Outline>
-                                ))}</LeftBar>
+                                ))}</ScrollContainer>
                             {logIn &&
                                 <NewBlogBtn onClick={handleOpen} ><FontAwesomeIcon icon={faPlus} style={{ paddingRight: 10 }} />New Blog</NewBlogBtn>}
 
@@ -215,7 +258,7 @@ function Blog() {
 
                 </ContentBox>
             </Container>
-        </React.Fragment>
+        </Wrapper >
     )
 }
 export default Blog;

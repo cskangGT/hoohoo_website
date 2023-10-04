@@ -4,13 +4,14 @@ import styled from 'styled-components';
 import { theme } from '../../style';
 
 interface SlidersProps {
-    currentSlide: number;
-    handleLeftClick: () => void;
-    handleRightClick: () => void;
-    pageNumber: number;
-    children: any;
+  currentSlide: number;
+  handleLeftClick: () => void;
+  handleRightClick: () => void;
+  pageNumber: number;
+  children: any;
 }
 const SlideContainer = styled.div<{ currentSlide: number }>`
+width: 100%;
   display: flex;
   transition: transform 0.3s ease;
   transform: translateX(-${props => props.currentSlide * 100}%);
@@ -37,70 +38,73 @@ const ArrowButton = styled.button`
   }
 `;
 const LeftArrow = styled(ArrowButton)`
-  left: 10px;
+  left: 0px;
 `;
 
 const RightArrow = styled(ArrowButton)`
-  right: 10px;
+right: 0;
+`;
+const Container = styled.div`
+  width: 100%;
 `;
 const Slider: React.FC<SlidersProps> = ({ currentSlide, handleLeftClick, handleRightClick, children, pageNumber }) => {
-    // const [currentSlide, setCurrentSlide] = useState<number>(0);
+  // const [currentSlide, setCurrentSlide] = useState<number>(0);
 
-    const handlers = useSwipeable({
-        onSwipedLeft: () => {
-            handleRightClick();
-        },
-        onSwipedRight: () => {
-            handleLeftClick();
-        },
-        preventScrollOnSwipe: true,
-        trackMouse: true,
-    });
+  const handlers = useSwipeable({
+    onSwipedLeft: () => {
+      handleRightClick();
+    },
+    onSwipedRight: () => {
+      handleLeftClick();
+    },
+    preventScrollOnSwipe: true,
+    trackMouse: true,
+  });
 
-    // const handleLeftClick = () => {
-    //     if (currentSlide === 1) {
-    //         setCurrentSlide(0);
-    //     }
-    // };
+  // const handleLeftClick = () => {
+  //     if (currentSlide === 1) {
+  //         setCurrentSlide(0);
+  //     }
+  // };
 
-    // const handleRightClick = () => {
-    //     if (currentSlide === 0) {
-    //         setCurrentSlide(1);
-    //     }
-    // };
+  // const handleRightClick = () => {
+  //     if (currentSlide === 0) {
+  //         setCurrentSlide(1);
+  //     }
+  // };
 
-    // const handlers = useSwipeable({
-    //     onSwipedLeft: () => {
-    //         handleRightClick();
-    //     },
-    //     onSwipedRight: () => {
-    //         handleLeftClick();
-    //     },
-    //     preventScrollOnSwipe: true,
-    //     trackMouse: true,
-    // });
+  // const handlers = useSwipeable({
+  //     onSwipedLeft: () => {
+  //         handleRightClick();
+  //     },
+  //     onSwipedRight: () => {
+  //         handleLeftClick();
+  //     },
+  //     preventScrollOnSwipe: true,
+  //     trackMouse: true,
+  // });
 
-    // useEffect(() => {
-    //     const slideInterval = setInterval(() => {
-    //         setCurrentSlide((prevSlide) => (prevSlide + 1) % images.length);
-    //     }, 10000);
+  // useEffect(() => {
+  //     const slideInterval = setInterval(() => {
+  //         setCurrentSlide((prevSlide) => (prevSlide + 1) % images.length);
+  //     }, 10000);
 
-    //     return () => {
-    //         clearInterval(slideInterval);
-    //     };
-    // }, [images.length]);
+  //     return () => {
+  //         clearInterval(slideInterval);
+  //     };
+  // }, [images.length]);
 
-    return (
-        <div {...handlers}>
-            {currentSlide === 0 ? <></> : <LeftArrow onClick={handleLeftClick}>&lt;</LeftArrow>}
+  return (
+    <Container {...handlers} >
+      {currentSlide === 0 ? <></> : <LeftArrow onClick={handleLeftClick}>&lt;</LeftArrow>}
 
-            <SlideContainer currentSlide={currentSlide}>
-                {children}
-            </SlideContainer>
+      <SlideContainer currentSlide={currentSlide}>
+        {children}
+      </SlideContainer>
 
-            {currentSlide !== pageNumber - 1 ? <RightArrow onClick={handleRightClick}>&gt;</RightArrow> : <></>}
-        </div>
-    );
+      {currentSlide !== pageNumber - 1 ? <RightArrow onClick={handleRightClick}>&gt;</RightArrow> : <></>}
+    </Container>
+  );
 };
 
 export default Slider;

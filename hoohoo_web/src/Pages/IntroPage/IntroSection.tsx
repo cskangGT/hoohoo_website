@@ -5,25 +5,25 @@ import { useSwipeable } from 'react-swipeable';
 import Lottie from "lottie-react";
 import arrow from './arrow-ani.json';
 import Bubble from '../../Component/Bubble';
-import { useTranslation } from 'react-i18next';
 import i18next from 'i18next';
 import Slider from '../../Component/ContentBox/Slider';
-
 const SectionContainer = styled.section`
     display: flex;
-    height: 1100px;
+    height: 900px;
     box-sizing: border-box;
     justify-content: center;
     align-items: center;
     margin-top: 82px;
     @media screen and (max-width: 1100px) {
-        height: auto;
+        height: 900px;
+    }
+    @media screen and (max-width: 700px) {
+        height: 700px;
     }
 `;
 const Inside = styled.div`
     position: relative;
     overflow: hidden;
-  max-width: 1320px;
   width: 100%;
   box-sizing: border-box;
   display: flex;
@@ -32,7 +32,12 @@ const Inside = styled.div`
     align-items: center;
     // padding-bottom: 50px;
     margin-left: 15px;
-}
+    }
+    @media screen and (max-width: 700px) {
+        justify-content: center;
+        flex-direction: column;
+        margin-left: 0;
+    }
 `;
 const IntroText = styled.div`
   display:flex;
@@ -42,6 +47,12 @@ const IntroText = styled.div`
   width: 55%;
   margin-top: 20px;
   padding-left: 20px;
+  @media screen and (max-width: 700px) {
+    width: 100%;
+    padding: 0;
+        flex-direction: column;
+        /* margin-bottom: 20rem; */
+    }
   `;
 
 const IntroTitle = styled.h2`
@@ -53,7 +64,7 @@ const IntroTitle = styled.h2`
   @media screen and (max-width: 1100px) {
     font-size: 46px;
 }
-    @media screen and (max-width: 500px) {
+    @media screen and (max-width: 700px) {
         font-size: 34px;
         margin-bottom: 1rem;
     }
@@ -62,7 +73,7 @@ const IntroTitle = styled.h2`
 const FirstDesc = styled.h1`
 text-align: center;
   font-size: 5.0rem;
-  font-weight:400;
+  font-weight:700;
   line-height: 1.1;
   margin-bottom: 3rem;
   color: ${theme.white};
@@ -70,7 +81,7 @@ text-align: center;
     font-size: 54px;
     margin-bottom: 2rem;
 }
-@media screen and (max-width: 500px) {
+@media screen and (max-width: 700px) {
     font-size: 35px;
     margin-bottom: 1.5rem;
 }
@@ -80,22 +91,22 @@ const SecondDesc = styled.h3`
   margin-bottom: 4.5rem;
   line-height: 1.3;
   color: ${theme.white};
+  font-weight: 600;
   text-align: center;
   @media screen and (max-width: 1100px) {
     font-size: 22px;
     margin-bottom: 2.5rem;
-}
-@media screen and (max-width: 500px) {
-    font-size: 16px;
-    margin-bottom: 1.2rem;
-}
+    }
+    @media screen and (max-width: 700px) {
+        font-size: 16px;
+        margin-bottom: 1.2rem;
+    }
 `;
 const LeftImage = styled.img`
     padding-top: 200px;
   max-width: 150px;
   min-width: 100px;
   height: auto;
-
 `;
 const RightImage = styled.img`
   padding: 0 20px;
@@ -104,20 +115,31 @@ const RightImage = styled.img`
   @media screen and (max-width: 1100px) {
       width: 60%;
   }
+  @media screen and (max-width: 700px) {
+    padding: 0;
+      width: 85%;
+      align-self: center;
+  }
 `;
-interface SlideContainerProps {
-    currentSlide: number;
-}
-const SlideContainer = styled.div<SlideContainerProps>`
-  display: flex;
-  transition: transform 0.3s ease;
-  transform: translateX(-${props => props.currentSlide * 100}%);
+const Screen = styled.img`
+    padding: 0 20px;
+  height: auto;
+  width: 40%;
+  @media screen and (max-width: 1100px) {
+      width: 60%;
+  }
+  @media screen and (max-width: 700px) {
+    padding: 0;
+    width: 45%;
+      align-self: center;
+  }
 `;
 
 const Slide = styled.div`
   min-width: 100%;
   box-sizing: border-box;
   display: flex;
+
 `;
 const LottieBox = styled.a`
     width: 70px;
@@ -140,35 +162,15 @@ const BannerContainer = styled.div`
   align-items: center;
 `;
 const Banner = styled.img`
-width: 80%;
+    width: 80%;
 `;
-<<<<<<< HEAD
 
-const LeftArrow = styled(ArrowButton)`
-  left: 10px;
-`;
-=======
-const data: DataStructure = {
-    "Images/1__.svg": {
-        "header": 'EarthMera',
-        "firstDesc": "CAPTURE AND BE REWARDED",
-        "secondDesc": "CLICK YOUR SHUTTER,<br />BUILD EARTH'S SHELTER, <br />GET POINTS AND BECOME WEALTHIER."
-    },
-    "Images/Banner.png": {
-        "header": '',
-        "firstDesc": "",
-        "secondDesc": ""
-    },
-    "Images/preview.png": {
-        "header": 'EarthMera',
-        "firstDesc": "CAPTURE AND BE REWARDED",
-        "secondDesc": "CLICK YOUR SHUTTER,<br />BUILD EARTH'S SHELTER, <br />GET POINTS AND BECOME WEALTHIER."
+const Col = styled.div`
+  display: flex;
+  @media screen and (max-width: 700px) {
+        flex-direction: column-reverse;
     }
->>>>>>> main
-
-}
-
-
+`;
 const SlideContent: React.FC<{ imagePath: string, data: any, windowWidth: number }> = ({ imagePath, data, windowWidth }) => {
     // 여기에 슬라이드의 내용을 적용하세요.
     return (
@@ -176,10 +178,10 @@ const SlideContent: React.FC<{ imagePath: string, data: any, windowWidth: number
             {imagePath === "Images/Banner.png" ?
                 <BannerContainer>
                     <Banner src={imagePath} />
-                </BannerContainer> : <>
+                </BannerContainer> : <Col>
                     {windowWidth >= 1100 && imagePath === "Images/1__.svg" &&
                         <LeftImage src="Images/1.svg" alt="앱 소개 이미지" draggable="false" />}
-                    <IntroText >
+                    <IntroText>
                         <IntroTitle>{data[imagePath]["header"]}</IntroTitle>
                         <FirstDesc >
                             {data[imagePath].firstDesc}
@@ -188,11 +190,10 @@ const SlideContent: React.FC<{ imagePath: string, data: any, windowWidth: number
                     </IntroText>
                     {
                         imagePath === "Images/1__.svg" ? <RightImage src={imagePath} alt="앱 소개 이미지" draggable="false" />
-                            : <RightImage src={imagePath} alt="앱 소개 이미지" draggable="false" style={{ maxWidth: 350 }} />
-                    }</>
+                            : <Screen src={imagePath} alt="앱 소개 이미지" draggable="false" style={{ maxWidth: windowWidth < 700 ? 'auto' : 350 }} />
+                    }</Col>
             }
         </Slide>
-
     );
 };
 const IntroSection: React.FC = () => {
@@ -227,7 +228,7 @@ const IntroSection: React.FC = () => {
     useEffect(() => {
         const slideInterval = setInterval(() => {
             setCurrentSlide((prevSlide) => (prevSlide + 1) % images.length);
-        }, 10000);
+        }, 1000000);
 
         return () => {
             clearInterval(slideInterval);
@@ -244,35 +245,24 @@ const IntroSection: React.FC = () => {
             window.removeEventListener('resize', handleResize);
         };
     }, []);
-    return (<SectionContainer>
-        <Inside {...handlers} >
-            <Slider currentSlide={currentSlide}
-                handleLeftClick={handleLeftClick}
-                handleRightClick={handleRightClick}
-                pageNumber={images.length} >
-                {images.map((imagePath, index) => (
-                    <SlideContent key={index} imagePath={imagePath} data={data} windowWidth={windowWidth} />
-                ))}
-            </Slider>
-        </Inside>
-        <LottieBox href='#partners'>
-            <Lottie animationData={arrow} loop={true} />
-        </LottieBox>
-        {isBubble ? <Bubble setIsBubble={setIsBubble} /> : <React.Fragment />}
+    return (
+        <SectionContainer>
+            <Inside {...handlers} >
+                <Slider currentSlide={currentSlide}
+                    handleLeftClick={handleLeftClick}
+                    handleRightClick={handleRightClick}
+                    pageNumber={images.length} >
+                    {images.map((imagePath, index) => (
+                        <SlideContent key={index} imagePath={imagePath} data={data} windowWidth={windowWidth} />
+                    ))}
+                </Slider>
+            </Inside>
+            <LottieBox href='#partners'>
+                <Lottie animationData={arrow} loop={true} />
+            </LottieBox>
+            {isBubble ? <Bubble setIsBubble={setIsBubble} /> : <React.Fragment />}
 
-        {/* : <Inside>
-                <IntroText>
-                    <IntroTitle>EARTHMERA</IntroTitle>
-                    <FirstDesc>
-                        CAPTURE AND BE REWARDED
-                    </FirstDesc>
-                    <SecondDesc>
-                        CLICK YOUR SHUTTER,<br />BUILD EARTH'S SHELTER, <br />GET POINTS AND BECOME WEALTHIER.
-                    </SecondDesc>
-                </IntroText >
-                <RightImage src="Images/1__.svg" alt="앱 소개 이미지" />
-            </Inside> */}
-    </SectionContainer >
+        </SectionContainer >
     );
 }
 

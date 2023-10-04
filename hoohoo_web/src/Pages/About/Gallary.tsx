@@ -16,11 +16,14 @@ const SectionContainer = styled.section`
     @media screen and (max-width: 1100px) {
         height: auto;
     }
+    @media screen and (max-width: 700px) {
+        width: 100%;
+        height: 800px;
+    }
 `;
 const Inside = styled.div`
     position: relative;
     max-height: 600px;
-  max-width: 1320px;
   width: 100%;
   box-sizing: border-box;
   display: flex;
@@ -30,6 +33,10 @@ const Inside = styled.div`
     // padding-bottom: 50px;
     margin-left: 15px;
 }
+@media screen and (max-width: 700px) {
+        margin: 0;
+        
+    }
 `;
 const Slide = styled.div`
   min-width: 100%;
@@ -54,21 +61,28 @@ justify-content: center;
 align-items: center;
 `;
 const Border = styled.div`
-display: flex;
-justify-content: center;
-align-items: center;
-width: 80%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 80%;
+    @media screen and (max-width: 700px) {
+        flex-direction : column;
+    }
 `;
 const Banner = styled.img`
-object-position: 50% 50%;
-width: 33%;
-height: 250px;
-background-color: rgba(30,30,30, 0.29);
-object-fit: contain;
+    object-position: 50% 50%;
+    width: 33%;
+    height: 250px;
+    background-color: rgba(30,30,30, 0.29);
+    object-fit: contain;
     padding: 15px;
     margin: 10px;
-border-radius: 10px;
-backdrop-filter: blur(15px);
+    border-radius: 10px;
+    backdrop-filter: blur(15px);
+    @media screen and (max-width: 700px) {
+        width: 80%;
+        height: 180px;
+    }
 `;
 
 const SlideContent: React.FC<{ imagePaths: string[] }> = ({ imagePaths }) => {

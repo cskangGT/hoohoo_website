@@ -1,13 +1,13 @@
 import React from 'react';
 import styled from 'styled-components';
 import { theme } from '../../style';
-
+import { useNavigate } from "react-router-dom";
 const Card = styled.div`
     box-shadow: rgba(0, 0, 0, 0.08) 0px 40px 80px 0px;
     background: linear-gradient(253deg, rgba(200, 200, 200, 0.1) 10%, rgba(252, 230, 187, 0.3) 30%);
     backdrop-filter: blur(20px);
     border-radius: 10px;
-    width: 448px;
+    width: 45%;
     padding: 10px 10px 30px;
     margin: 0px 12px 30px;
     display: flex;
@@ -16,6 +16,9 @@ const Card = styled.div`
     justify-content: center;
     @media screen and (max-width: 1100px) {
         padding: 10px 12px 35px;
+    }
+    @media screen and (max-width: 700px) {
+        width: 100%;
     }
 `;
 const Image = styled.img`
@@ -26,6 +29,7 @@ const Image = styled.img`
 const Content = styled.h3`
   margin-top: 40px;
   color: ${theme.white};
+  font-weight: 600;
 `;
 const Btn = styled.a`
     text-decoration: none;
@@ -41,6 +45,7 @@ const Btn = styled.a`
     justify-content: center;
     align-items:center;
     text-align: center;
+    cursor: pointer;
     color: ${theme.darkGray};
     &:hover {
         background-color: ${theme.mainNeon};
@@ -57,14 +62,22 @@ type Props = {
 };
 
 function PartnersCardComponent(props: Props) {
+    const navigate = useNavigate();
     if (!props.item || !props.item.image) {
         return null;
+    }
+
+    function handleClick() {
+        navigate(`/coming_soon`);
     }
     return (
         <Card>
             <Image src={props.item.image} />
             <Content>{props.item.msg}</Content>
-            <Btn onClick={(event) => { event.preventDefault(); }} href='#'> {props.item.button}</Btn>
+            <Btn onClick={(event) => {
+                event.preventDefault()
+                handleClick()
+            }}> {props.item.button}</Btn>
         </Card>
     );
 }

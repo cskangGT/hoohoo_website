@@ -186,7 +186,6 @@ function BlogModal({ isOpen, setIsOpen }: Props) {
                     <Wrapper>
                         <ModalContent>
                             <CloseButton onClick={() => setIsOpen(false)}><FontAwesomeIcon icon={faX} /></CloseButton>
-
                             <Form onSubmit={handleSubmit} id="form">
                                 <HeaderCotainer>
                                     <HeaderText>Add New Blog</HeaderText>
