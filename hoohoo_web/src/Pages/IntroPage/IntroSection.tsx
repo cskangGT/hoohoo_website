@@ -9,15 +9,15 @@ import i18next from 'i18next';
 import Slider from '../../Component/ContentBox/Slider';
 const SectionContainer = styled.section`
     display: flex;
-    height: 1100px;
+    height: 900px;
     box-sizing: border-box;
     justify-content: center;
     align-items: center;
     margin-top: 82px;
     @media screen and (max-width: 1100px) {
-        height: auto;
+        height: 900px;
     }
-    @media screen and (max-width: 600px) {
+    @media screen and (max-width: 700px) {
         height: 700px;
     }
 `;
@@ -33,7 +33,7 @@ const Inside = styled.div`
     // padding-bottom: 50px;
     margin-left: 15px;
     }
-    @media screen and (max-width: 500px) {
+    @media screen and (max-width: 700px) {
         justify-content: center;
         flex-direction: column;
         margin-left: 0;
@@ -47,7 +47,7 @@ const IntroText = styled.div`
   width: 55%;
   margin-top: 20px;
   padding-left: 20px;
-  @media screen and (max-width: 500px) {
+  @media screen and (max-width: 700px) {
     width: 100%;
     padding: 0;
         flex-direction: column;
@@ -64,7 +64,7 @@ const IntroTitle = styled.h2`
   @media screen and (max-width: 1100px) {
     font-size: 46px;
 }
-    @media screen and (max-width: 500px) {
+    @media screen and (max-width: 700px) {
         font-size: 34px;
         margin-bottom: 1rem;
     }
@@ -81,7 +81,7 @@ text-align: center;
     font-size: 54px;
     margin-bottom: 2rem;
 }
-@media screen and (max-width: 500px) {
+@media screen and (max-width: 700px) {
     font-size: 35px;
     margin-bottom: 1.5rem;
 }
@@ -97,7 +97,7 @@ const SecondDesc = styled.h3`
     font-size: 22px;
     margin-bottom: 2.5rem;
     }
-    @media screen and (max-width: 500px) {
+    @media screen and (max-width: 700px) {
         font-size: 16px;
         margin-bottom: 1.2rem;
     }
@@ -115,7 +115,7 @@ const RightImage = styled.img`
   @media screen and (max-width: 1100px) {
       width: 60%;
   }
-  @media screen and (max-width: 500px) {
+  @media screen and (max-width: 700px) {
     padding: 0;
       width: 85%;
       align-self: center;
@@ -128,7 +128,7 @@ const Screen = styled.img`
   @media screen and (max-width: 1100px) {
       width: 60%;
   }
-  @media screen and (max-width: 500px) {
+  @media screen and (max-width: 700px) {
     padding: 0;
     width: 45%;
       align-self: center;
@@ -167,7 +167,7 @@ const Banner = styled.img`
 
 const Col = styled.div`
   display: flex;
-  @media screen and (max-width: 500px) {
+  @media screen and (max-width: 700px) {
         flex-direction: column-reverse;
     }
 `;
