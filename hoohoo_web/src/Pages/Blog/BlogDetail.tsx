@@ -103,27 +103,25 @@ function BlogDetail() {
     const data: BlogData = location.state.blogData;
     console.log('data', data)
     return (
-        <Wrapper>
-            <Background>
-                <React.Fragment>
-                    <Container>
-                        <ContentBox>
-                            <CategoryBox>
-                                <Back href='/blog'>
-                                    <FontAwesomeIcon icon={faChevronLeft} color='white' fontSize={30} />
-                                </Back>
-                                <Category category={data.category} style={{ fontSize: 20 }}></Category>
-                            </CategoryBox>
-                            <Title>{data.title}</Title>
-                            <ImageBox>
-                                <Image src={'../' + data.image} alt="Blog Image" />
-                            </ImageBox>
-                            <Date>{data.date}</Date>
-                            <Content text={data.long ? data.long : data.desc}></Content>
-                        </ContentBox>
-                    </Container>
-                </React.Fragment></Background>
-        </Wrapper>
+        <Background>
+            <Wrapper>
+                <Container>
+                    <ContentBox>
+                        <CategoryBox>
+                            <Back href='/blog'>
+                                <FontAwesomeIcon icon={faChevronLeft} color='white' fontSize={30} />
+                            </Back>
+                            <Category category={data.category} style={{ fontSize: 20 }}></Category>
+                        </CategoryBox>
+                        <Title>{data.title}</Title>
+                        <ImageBox>
+                            <Image src={'../' + data.image} alt="Blog Image" />
+                        </ImageBox>
+                        <Date>{data.date}</Date>
+                        <Content text={data.long ? data.long : data.desc}></Content>
+                    </ContentBox>
+                </Container>
+            </Wrapper></Background>
     )
 }
 export default BlogDetail;

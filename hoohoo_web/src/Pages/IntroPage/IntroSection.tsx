@@ -13,7 +13,7 @@ const SectionContainer = styled.section`
     box-sizing: border-box;
     justify-content: center;
     align-items: center;
-    margin-top: 82px;
+    /* margin-top: 82px; */
     @media screen and (max-width: 1100px) {
         height: 900px;
     }
@@ -151,8 +151,8 @@ const LottieBox = styled.a`
 interface DataStructure {
     [key: string]: {
         "header": string;
-        firstDesc: string;
-        secondDesc: string;
+        "firstDesc": string;
+        "secondDesc": string;
     };
 }
 const BannerContainer = styled.div`
@@ -172,7 +172,6 @@ const Col = styled.div`
     }
 `;
 const SlideContent: React.FC<{ imagePath: string, data: any, windowWidth: number }> = ({ imagePath, data, windowWidth }) => {
-    // 여기에 슬라이드의 내용을 적용하세요.
     return (
         <Slide key={imagePath}>
             {imagePath === "Images/Banner.png" ?
@@ -202,6 +201,13 @@ const IntroSection: React.FC = () => {
     const [isBubble, setIsBubble] = useState<boolean>(true);
     const data: DataStructure = i18next.t('IntroPage', { returnObjects: true });
     const images = Object.keys(data);
+    const [isAutoSliding, setIsAutoSliding] = useState<boolean>(true);
+    const handleSwipe = () => {
+        setIsAutoSliding(false); // 사용자가 스와이프를 하면 자동 슬라이드 변경 로직 중지
+        setTimeout(() => {
+            setIsAutoSliding(true); // 일정 시간 후에 자동 슬라이드 변경 로직 재시작
+        }, 5000); // 원하는 지연 시간을 설정합니다 (여기서는 5초)
+    };
     const handleLeftClick = () => {
         if (currentSlide > 0) {
             setCurrentSlide(currentSlide - 1);
@@ -215,25 +221,34 @@ const IntroSection: React.FC = () => {
     };
     const handlers = useSwipeable({
         onSwipedLeft: () => {
+            console.log("Swiped Left");
             handleRightClick();
+            handleSwipe();
         },
         onSwipedRight: () => {
-            handleLeftClick();
+            // console.log("Swiped Right");
+            // handleLeftClick();
+            handleSwipe();
         },
         preventScrollOnSwipe: true,
-        trackMouse: true
+        trackMouse: true,
+        swipeDuration: 300,
+        delta: { left: 50, right: 50 }
     });
     // const [currentSlide, setCurrentSlide] = useState(0);
-
+    console.log('currentSlide', currentSlide)
     useEffect(() => {
-        const slideInterval = setInterval(() => {
-            setCurrentSlide((prevSlide) => (prevSlide + 1) % images.length);
-        }, 1000000);
+        let slideInterval: NodeJS.Timeout;
+        if (isAutoSliding) { // 자동 슬라이드 변경 로직이 활성화된 경우에만 setInterval 실행
+            slideInterval = setInterval(() => {
+                setCurrentSlide((prevSlide) => (prevSlide + 1) % images.length);
+            }, 5000);
+        }
 
         return () => {
-            clearInterval(slideInterval);
+            clearInterval(slideInterval); // 컴포넌트가 언마운트되거나 useEffect가 다시 실행되기 전에 setInterval을 클리어합니다.
         };
-    }, [images.length]);
+    }, [images.length, isAutoSliding]);
 
     useEffect(() => {
         const handleResize = () => {
@@ -247,7 +262,7 @@ const IntroSection: React.FC = () => {
     }, []);
     return (
         <SectionContainer>
-            <Inside {...handlers} >
+            <Inside >
                 <Slider currentSlide={currentSlide}
                     handleLeftClick={handleLeftClick}
                     handleRightClick={handleRightClick}
@@ -267,26 +282,3 @@ const IntroSection: React.FC = () => {
 }
 
 export default IntroSection;
-
-// {currentSlide === 1 && <LeftArrow onClick={handleLeftClick} >&lt; </LeftArrow>}
-
-//             <SlideContainer currentSlide={currentSlide} >
-//                 {
-//                     images.map((imagePath, index) => (<Slide key={index}>
-//                         {windowWidth >= 1100 && imagePath === "Images/1__.svg" &&
-//                             <LeftImage src="Images/1.svg" alt="앱 소개 이미지" draggable="false" />}
-//                         <IntroText >
-//                             <IntroTitle>EARTHMERA</IntroTitle>
-//                             <FirstDesc >
-//                                 {data[imagePath].firstDesc}
-//                             </FirstDesc>
-//                             <SecondDesc dangerouslySetInnerHTML={{ __html: data[imagePath].secondDesc }} />
-//                         </IntroText>
-//                         {
-//                             imagePath === "Images/1__.svg" ? <RightImage src={imagePath} alt="앱 소개 이미지" draggable="false" />
-//                                 : <RightImage src={imagePath} alt="앱 소개 이미지" draggable="false" style={{ maxHeight: 800 }} />
-//                         }
-
-//                     </Slide>))}
-//             </SlideContainer>
-//             {currentSlide === 0 && <RightArrow onClick={handleRightClick} >&gt; </RightArrow>}

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { useSwipeable } from 'react-swipeable';
 import styled from 'styled-components';
 import { theme } from '../../style';
