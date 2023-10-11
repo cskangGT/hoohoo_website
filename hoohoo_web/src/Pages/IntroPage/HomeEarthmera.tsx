@@ -7,6 +7,7 @@ import VideoSection from './Video';
 import Download from './Download';
 import Partners from './Partners';
 import Wrapper from '../../Component/Wrapper/Wrapper';
+import { BgImage } from '../../style';
 const ContentBox = styled.section`
     padding-top: 20px;
     justify-content: center;
@@ -34,23 +35,25 @@ function HomeEarthmera() {
         imagePath: 'Images/3-3.webp'
     }];
     return (
-        <Wrapper>
-            <IntroSection />
-            <ContentBox id="partners">
-                <Partners />
-            </ContentBox>
-            <ListSection id={"next"} data={secondImages} header='' isBot={false} />
-            <ListSection id={"rewards"} data={thirdImages} header='REDEEM REWARDS WITH POINTS.' isBot={true} />
-            <ContentBox key="table" id="table">
-                <NumberIconContent />
-            </ContentBox>
-            <ContentBox key="video" id="video">
-                <VideoSection />
-            </ContentBox>
-            <ContentBox id="download" key="download">
-                <Download dropb={false} />
-            </ContentBox>
-        </Wrapper>
+        <BgImage>
+            <Wrapper>
+                <IntroSection />
+                <ContentBox id="partners">
+                    <Partners />
+                </ContentBox>
+                <ListSection id={"next"} data={secondImages} header='' isBot={false} />
+                <ListSection id={"rewards"} data={thirdImages} header='REDEEM REWARDS WITH POINTS.' isBot={true} />
+                <ContentBox key="table" id="table">
+                    <NumberIconContent />
+                </ContentBox>
+                <ContentBox key="video" id="video">
+                    <VideoSection />
+                </ContentBox>
+                <ContentBox id="download" key="download">
+                    <Download dropb={false} />
+                </ContentBox>
+            </Wrapper>
+        </BgImage>
     );
 }
 export default HomeEarthmera; 

@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import TeamIntro from './TeamIntro';
 import Gallary from './Gallary';
 import Wrapper from '../../Component/Wrapper/Wrapper';
+import { BgImage } from '../../style';
 const ContentBox = styled.section`
     padding-top: 20px;
     justify-content: center;
@@ -12,14 +13,16 @@ const ContentBox = styled.section`
 function OurTeam() {
 
     return (
-        <Wrapper>
-            <ContentBox>
-                <TeamIntro />
-            </ContentBox>
-            <ContentBox>
-                <Gallary />
-            </ContentBox>
-        </Wrapper>
+        <BgImage>
+            <Wrapper>
+                <ContentBox>
+                    <TeamIntro />
+                </ContentBox>
+                <ContentBox>
+                    <Gallary />
+                </ContentBox>
+            </Wrapper>
+        </BgImage>
     )
 }
 export default OurTeam

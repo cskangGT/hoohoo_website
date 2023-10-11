@@ -4,6 +4,7 @@ import SketchContents from './SketchContents';
 import Fundraising from './Fundraising';
 import AboutUs from './AboutUs';
 import Wrapper from '../../Component/Wrapper/Wrapper';
+import { BgImage } from '../../style';
 const ContentBox = styled.section`
     padding-top: 20px;
     justify-content: center;
@@ -13,17 +14,19 @@ const ContentBox = styled.section`
 function Partnership() {
 
     return (
-        <Wrapper>
-            <ContentBox>
-                <AboutUs />
-            </ContentBox>
-            <ContentBox id="sketch">
-                <SketchContents />
-            </ContentBox>
-            <ContentBox>
-                <Fundraising />
-            </ContentBox>
-        </Wrapper>
+        <BgImage>
+            <Wrapper>
+                <ContentBox>
+                    <AboutUs />
+                </ContentBox>
+                <ContentBox id="sketch">
+                    <SketchContents />
+                </ContentBox>
+                <ContentBox>
+                    <Fundraising />
+                </ContentBox>
+            </Wrapper>
+        </BgImage>
     )
 }
 export default Partnership
