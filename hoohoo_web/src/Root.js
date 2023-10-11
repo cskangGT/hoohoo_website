@@ -9,9 +9,7 @@ import { CookiesProvider } from 'react-cookie';
 function Root() {
   return (
     <CookiesProvider>
-
       <div style={{ backgroundColor: 'transparent' }}>
-
         <Frame>
           <Outlet />
         </Frame>

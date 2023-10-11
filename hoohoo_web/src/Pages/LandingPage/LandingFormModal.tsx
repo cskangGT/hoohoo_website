@@ -92,61 +92,12 @@ const HeaderText = styled.h1`
     font-size: 24px;
 `;
 const ConsentContainer = styled.div`
-  
-`;
-const RichText = styled.div`
-  font-size: 14px;
-  color: ${theme.white};
-  word-break: break-word;
-`;
-const AgreeBox = styled.div`
-    margin-bottom: 8px;
-`;
-const InputList = styled.ul`
-  padding-top: 6px;
-  margin: 0 0 5px;
-  width: 100%;
-  padding-left: 5px;
-`;
-const CheckList = styled.li`
-  display:block;
-  padding:0;
-  width:100%;
-`;
-const Check = styled.input`
-    font-family: arial, helvetica, sans-serif;
-  float:left;
-  max-width:100%;
-  cursor: pointer;
-  padding:0;
-  margin: 5px 5px 3px 0;
-  border: none;
-`;
-const RichTextP = styled.p`
-display: block;
-margin-block-start: 1em;
-margin-block-end: 1em;
-margin-inline-start: 0px;
-margin-inline-end: 0px;
-font-size: 14px;
-  color: ${theme.white};
-`;
-const ReCaptchaBox = styled.div`
-  margin: 18px 0;
-`;
-const ReCap = styled.div`
-    width: 256px;
-    height: 60px;
-    
-    box-shadow: gray 0px 0px 5px;
-`;
-const Iframe = styled.iframe`
-  border: none;
 `;
 type Props = {
     isOpen: boolean;
     setIsOpen: React.Dispatch<React.SetStateAction<boolean>>;
 };
+
 function LandingFormModal({ isOpen, setIsOpen }: Props) {
 
     const [formData, setFormData] = useState({
