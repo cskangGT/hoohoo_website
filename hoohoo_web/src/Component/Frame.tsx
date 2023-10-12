@@ -68,7 +68,6 @@ function Frame({ children }: FrameProps) {
   const [isKorean, setIsKorean] = useState(false);
   return (
     <Container>
-      {/* <BgImage> */}
       <Nav setIsKorean={setIsKorean} isKorean={isKorean} />
       {children}
       <ContactBox id="contact" key="contact">
@@ -80,7 +79,6 @@ function Frame({ children }: FrameProps) {
       </ContactBox>
       <hr style={{ color: '#f1f1f1', margin: 0 }} />
       <Footer isKorean={isKorean} />
-      {/* </BgImage> */}
     </Container>)
 }
 export default Frame;

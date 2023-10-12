@@ -144,7 +144,7 @@ function LandingOrganizer() {
         image: "Images/4p_picture_and_shape.svg",
         decoImage: "Images/orgLeft.svg",
         firstDesc: "Save up to 10% in the festival budget for free",
-        secDesc: "Even with over 2,000 cleaners, the festival always needed extra assistance. However, we encourage over 400,000 festival attendees to help maintain cleanliness.",
+        secDesc: "Even with over 2,000 cleaners, the festival always needed extra assistance. However, we enlighten over 400,000 festival attendees to help maintain cleanliness.",
         button: "Try it Free"
     }
     const [isOpen, setIsOpen] = useState<boolean>(false);
