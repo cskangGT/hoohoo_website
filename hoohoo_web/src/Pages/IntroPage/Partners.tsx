@@ -1,9 +1,8 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
 import { theme } from '../../style';
-
+import i18next from 'i18next';
 const Container = styled.div`
-    max-width: 1040px;
     width: 100%;
     display: flex;
     margin: 0px auto;
@@ -12,8 +11,8 @@ const Container = styled.div`
     position: relative;
     transition: all 0.2s ease 0s;
     padding: 5rem 15px;
-    @media screen and (max-width: 500px){
-        margin-top: 50px;
+    @media screen and (max-width: 600px){
+        margin-top: 70px;
     }
 `;
 const ContentBox = styled.div`
@@ -26,33 +25,55 @@ const ContentBox = styled.div`
 const HeaderBox = styled.div`
   color: ${theme.white};
   text-align: center;
-  margin-bottom: 60px;
+  margin-bottom: 30px;
   line-height: 1.2;
 `;
 
 const FirstHeader = styled.span`
   font-size: 1.3rem;
-  
 `;
 const SecondHeader = styled.h2`
     font-size: 2rem;
     line-height: 0.8;
-    
 `;
 const SlickBar = styled.div`
-  overflow: visible;
   margin: 0;
   padding: 0;
+  width: 30%;
+  @media screen and (max-width: 600px){
+        width: 100%;
+        
+    }
 `;
 const LongBar = styled.div`
   margin-bottom: 20px;
+  margin: 30px 0;
   display: flex;
+  flex-direction: column;
   @media screen and (max-width: 1100px){
     justify-content: center;
     margin-bottom: 0;
   }
+  @media screen and (max-width: 600px){
+    margin: 10px 0;
+        flex-direction: row;  
+        
+    }
 `;
-
+const DescBox = styled.div`
+  margin : 20px 5px;
+  display: flex;
+  width: auto;
+  @media screen and (max-width: 1000px){
+    /* flex-direction: column;   */
+    margin: 0 5px;     
+  }
+    @media screen and (max-width: 500px){
+        /* flex-direction: column;   */
+        margin: 40px 3px;
+        /* justify-content: flex-start; */
+    }
+`;
 interface OutlineProps {
     op: number;
     slideIndex: number;
@@ -70,24 +91,28 @@ const Outline = styled.button<OutlineProps>`
   height: 100%;
   min-height: 1px;
   border-radius: 20px;
+  margin : 20px 0;
+  @media screen and (max-width: 600px){
+        margin: 5px 0;
+        flex-direction: row;
+    }
 `;
 const OutlineText = styled.h3`
     color: ${theme.white};
-    @media screen and (max-width: 500px){
-        font-size: 1.3rem;
+    @media screen and (max-width: 600px){
+        font-size: 1.1rem;
+        margin: 0 0.5rem;
     }
 `;
-const DescBox = styled.div`
-  margin : 20px 5px;
+
+const HorizonContainer = styled.div`
   display: flex;
-  @media screen and (max-width: 1000px){
-    flex-direction: column;  
-    margin: 0 5px;     
-  }
-    @media screen and (max-width: 500px){
-        flex-direction: column;  
-        margin: 40px 3px;
-        /* justify-content: flex-start; */
+  flex-direction: row;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+  @media screen and (max-width: 500px){
+        flex-direction: column;
     }
 `;
 const LeftBox = styled.div`
@@ -99,42 +124,44 @@ const LeftBox = styled.div`
     @media screen and (max-width: 1100px){
         text-align: center;
     }
-    @media screen and (max-width: 500px){
+    @media screen and (max-width: 700px){
         padding: 0 10px;
     }
 `;
 const Desc = styled.p`
     font-size: 1.4rem;
     line-height: 1.6;
-    width: 430px;
+    width: 100%;
     color: ${theme.white};
     opacity: 0.8;
+    margin: 0 5px;
     @media screen and (max-width: 1100px){
       text-align:center;
       margin: 20px 0;
     }
-    @media screen and (max-width: 500px){
-        width: 360px;
-        font-size: 1.2rem;
+    @media screen and (max-width: 700px){
+        width: 100%;
+        font-size: 1rem;
+        
     }
 `;
 const RightBox = styled.div`
     box-sizing: border-box;
-    width: 352px;
-    height: 352px;
+    width: 500px;
+    height: 350px;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     padding: 20px;
     background: linear-gradient(170deg, rgba(255, 255, 255, 0.14) 0%, rgba(255, 255, 255, 0.05) 100%);
-    border-radius: 50%;
+    border-radius: 20%;
     border: 2px solid rgba(255, 255, 255, 0.05);
     margin: auto;
-    margin-bottom: 50px;
+    /* margin-bottom: 50px; */
     @media screen and (max-width: 500px){
-        margin-top: 50px;
-        width: 300px;
+        margin-top: 10px;
+        width: 360px;
         height: 300px;
     }
     // @media screen and (min-width: 1140px){
@@ -146,63 +173,120 @@ const RightBox = styled.div`
     //     transform: translateY(-50%);
     // }
 `;
-const FText = styled.span`
-    margin-bottom: 8px;
-    font-size: 86px;
-    font-weight: 900;
-    color: ${theme.white};
-    letter-spacing: 1px;
-    line-height: 1.2;
-    text-transform: uppercase;
-    text-align: center;
+const ImageWrapper = styled.div`
+  width: 100%;
+  height: 100%;
+  border-radius: 30px; 
+  overflow: hidden; 
 `;
-const SText = styled.span`
-    font-weight: 500;
-    color: rgb(255, 255, 255);
-    font-size: 18px;
-    line-height: 1.2;
-    text-align: center;
-    @media screen and (min-width: 1140px){
-        font-size: 24px;
+const Image = styled.img`
+  width: 100%;  // RightBox의 너비에 맞춤
+  height: 100%;
+  object-fit: contain;
+  overflow: hidden;
+  border-radius: 30px;
+`;
+// const FText = styled.span`
+//     margin-bottom: 8px;
+//     font-size: 86px;
+//     font-weight: 900;
+//     color: ${theme.white};
+//     letter-spacing: 1px;
+//     line-height: 1.2;
+//     text-transform: uppercase;
+//     text-align: center;
+// `;
+// const SText = styled.span`
+//     font-weight: 500;
+//     color: rgb(255, 255, 255);
+//     font-size: 18px;
+//     line-height: 1.2;
+//     text-align: center;
+//     @media screen and (min-width: 1140px){
+//         font-size: 24px;
+//     }
+// `;
+const ImageButton = styled.button`
+  text-decoration: none;
+  background-color: transparent;
+  border: 0;
+`;
+type Data = {
+    "header": string;
+    "subHeader": string;
+    "list": string[];
+    "content": SubDataType;
+}
+type SubDataType = {
+    [key: string]: {
+        "header": string;
+        "imagePath": string;
+        "description": string;
     }
-`;
+}
 function Partners() {
     const [slideIndex, setSlideIndex] = useState<number>(0);
-    const list: string[] = ["Partners", "NHS", "Government"];
-
-    const desc: string[] = ["The value of a sweatcoin is derived from our wide-reaching partnerships. From brands that want to connect with health conscious audiences, insurers wishing to encourage healthier lifestyle choices and governments looking to reduce healthcare costs.",
-        "Sweatcoin work with the NHS to deliver Healthy Incentive programmes across the country, using personalised data-driven approaches to deliver sustained behaviour change.",
-        "Sweatcoin helps users become +20% more active each day, even after 6 months — this has the potential to transform public health, by using Sweatcoin as a prevention tool for sustained behaviour change."]
+    const [isText, setIsText] = useState<boolean>(false);
+    const data: Data = {
+        header: "How do EarthMera",
+        subHeader: "get their value?",
+        list: ["Partners", "NHS", "Government"],
+        content: {
+            "Partners": {
+                "header": "Partners",
+                "imagePath": "Images/c1.jpg",
+                "description": "The value of a sweatcoin is derived from our wide-reaching partnerships. From brands that want to connect with health conscious audiences, insurers wishing to encourage healthier lifestyle choices and governments looking to reduce healthcare costs."
+            },
+            "NHS": {
+                "header": "NHS",
+                "imagePath": "Images/background_home.png",
+                "description": "GoverSweatcoin work with the NHS to deliver Healthy Incentive programmes across the country, using personalised data-driven approaches to deliver sustained behaviour change.nment"
+            },
+            "Government": {
+                "header": "Government",
+                "imagePath": "Images/p1.jpg",
+                "description": "Sweatcoin helps users become +20% more active each day, even after 6 months — this has the potential to transform public health, by using Sweatcoin as a prevention tool for sustained behaviour change."
+            }
+        }
+    }
+    const imagePaths = Object.values(data.content).map(item => item.imagePath);
+    const desc: string[] = Object.values(data.content).map(item => item.description);
+    const handleButtonClick = () => {
+        setIsText(!isText); // 버튼 클릭 시 isText 상태를 반전
+    };
+    const handleOutline = (index: number) => {
+        setSlideIndex(index);
+        setIsText(false);
+    }
     return (
         <Container>
             <ContentBox>
                 <HeaderBox>
                     <FirstHeader>
-                        How do EarthMera
-                        <SecondHeader><br />get their value?</SecondHeader>
+                        {data.header}
+                        <SecondHeader><br />{data.subHeader}</SecondHeader>
                     </FirstHeader>
                 </HeaderBox>
-                <SlickBar>
-                    <LongBar>
-                        {list.map((item, index) => (
-                            <Outline key={index} op={index} slideIndex={slideIndex} onClick={() => { setSlideIndex(index) }}>
-                                <OutlineText>{item}</OutlineText>
-                            </Outline>
-                        ))}
-                    </LongBar>
-                </SlickBar>
-                <DescBox>
-                    <LeftBox>
-                        <Desc>{desc[slideIndex]}</Desc>
-                    </LeftBox>
-                    <RightBox>
-                        {
-                            slideIndex === 0 ? <React.Fragment>
-                                <FText>600+</FText><SText>partners</SText>
-                            </React.Fragment> : slideIndex === 1 ? <SText>SecondImage</SText> : <SText>ThirdImage</SText>
-                        }
-                    </RightBox>
-                </DescBox>
+                <HorizonContainer>
+                    <SlickBar>
+                        <LongBar>
+                            {data.list.map((item, index) => (
+                                <Outline key={index} op={index} slideIndex={slideIndex} onClick={() => { handleOutline(index) }}>
+                                    <OutlineText>{item}</OutlineText>
+                                </Outline>
+                            ))}
+                        </LongBar>
+                    </SlickBar>
+
+                    <DescBox>
+                        <RightBox>
+                            <ImageButton onClick={handleButtonClick}>
+                                {!isText ? <ImageWrapper><Image src={imagePaths[slideIndex]} /></ImageWrapper>
+                                    : <Desc>{desc[slideIndex]}</Desc>}
+                            </ImageButton>
+                        </RightBox>
+                    </DescBox>
+                </HorizonContainer>
             </ContentBox>
         </Container >
     )

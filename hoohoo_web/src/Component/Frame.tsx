@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 import { theme } from '../../src/style';
 import Nav from './Nav/Nav';
@@ -15,16 +15,16 @@ const Container = styled.div`
     align-items:center;
     background-color: ${theme.darkGray};
 `;
-const BgImage = styled.div`
-    background: url("Images/bg.svg") center top / cover no-repeat;
-    // background-size: cover;
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-    height: 100%;
-    max-height: 100%;
-    overflow-x: hidden;
-`;
+// const BgImage = styled.div`
+//     background: url("Images/bg.svg") center top / cover no-repeat;
+//     // background-size: cover;
+//     display: flex;
+//     flex-direction: column;
+//     width: 100%;
+//     height: 100%;
+//     max-height: 100%;
+//     overflow-x: hidden;
+// `;
 
 const ContactBox = styled.div`
 // height: 200px;
@@ -68,19 +68,19 @@ function Frame({ children }: FrameProps) {
   const [isKorean, setIsKorean] = useState(false);
   return (
     <Container>
-      <BgImage>
-        <Nav setIsKorean={setIsKorean} isKorean={isKorean} />
-        {children}
-        <ContactBox id="contact" key="contact">
-          {isKorean ? <ContactColumnBox><ContactText>비즈니스 파트너십 또는 기타 문의사항을 원하시면 아래의 버튼을 클릭하세요.</ContactText>
-            <LinktoEmail form="mailto:devceohoony@gmail.com" data-l10n-id="footer_contactus">
-              문의하기</LinktoEmail></ContactColumnBox> : <ContactColumnBox><ContactText>Interested in partnering with us or have any questions? </ContactText>
-            <LinktoEmail form="mailto:devceohoony@gmail.com" data-l10n-id="footer_contactus">
-              Contact Us</LinktoEmail></ContactColumnBox>}
-        </ContactBox>
-        <hr style={{ color: '#f1f1f1', margin: 0 }} />
-        <Footer isKorean={isKorean} />
-      </BgImage>
+      {/* <BgImage> */}
+      <Nav setIsKorean={setIsKorean} isKorean={isKorean} />
+      {children}
+      <ContactBox id="contact" key="contact">
+        {isKorean ? <ContactColumnBox><ContactText>비즈니스 파트너십 또는 기타 문의사항을 원하시면 아래의 버튼을 클릭하세요.</ContactText>
+          <LinktoEmail form="mailto:devceohoony@gmail.com" data-l10n-id="footer_contactus">
+            문의하기</LinktoEmail></ContactColumnBox> : <ContactColumnBox><ContactText>Interested in partnering with us or have any questions? </ContactText>
+          <LinktoEmail form="mailto:devceohoony@gmail.com" data-l10n-id="footer_contactus">
+            Contact Us</LinktoEmail></ContactColumnBox>}
+      </ContactBox>
+      <hr style={{ color: '#f1f1f1', margin: 0 }} />
+      <Footer isKorean={isKorean} />
+      {/* </BgImage> */}
     </Container>)
 }
 export default Frame;

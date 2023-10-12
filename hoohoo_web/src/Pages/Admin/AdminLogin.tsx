@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
-import { theme } from '../../style';
+import { BgImage, theme } from '../../style';
 import { useCookies } from 'react-cookie';
 import Wrapper from '../../Component/Wrapper/Wrapper';
 const SectionContainer = styled.section`
@@ -111,34 +111,36 @@ function AdminLogin() {
 
   }, [logIn])
   return (
-    <Wrapper>
-      <SectionContainer>
-        <LoginContainer>
-          <HeaderBox>
-            {logIn ? <><HeaderText>Hello {username},</HeaderText>
-            </> : <HeaderText>LOGIN</HeaderText>}
-          </HeaderBox>
-          {!logIn &&
-            <Form onSubmit={handleSubmit}>
-              <Label>ID</Label>
-              <Input
-                type="text"
-                value={username}
-                onChange={(e) => setUsername(e.target.value)}
-              />
-              <Label>Password</Label>
-              <Input
-                type="password"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-              />
-              {error && <p>{error}</p>}
-              <Button type="submit">Login</Button>
-            </Form>
-          }
-        </LoginContainer>
-      </SectionContainer>
-    </Wrapper>
+    <BgImage>
+      <Wrapper>
+        <SectionContainer>
+          <LoginContainer>
+            <HeaderBox>
+              {logIn ? <><HeaderText>Hello {username},</HeaderText>
+              </> : <HeaderText>LOGIN</HeaderText>}
+            </HeaderBox>
+            {!logIn &&
+              <Form onSubmit={handleSubmit}>
+                <Label>ID</Label>
+                <Input
+                  type="text"
+                  value={username}
+                  onChange={(e) => setUsername(e.target.value)}
+                />
+                <Label>Password</Label>
+                <Input
+                  type="password"
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
+                />
+                {error && <p>{error}</p>}
+                <Button type="submit">Login</Button>
+              </Form>
+            }
+          </LoginContainer>
+        </SectionContainer>
+      </Wrapper>
+    </BgImage>
   )
 }
 export default AdminLogin;

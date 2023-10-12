@@ -130,7 +130,7 @@ function TeamIntro() {
                     </HeaderText>
                 </HeaderBox>
 
-                <div {...handlers}>
+                <React.Fragment >
                     <Slider
                         currentSlide={currentSlide}
                         handleLeftClick={handleLeftClick}
@@ -141,7 +141,7 @@ function TeamIntro() {
                         ))}
 
                     </Slider>
-                </div>
+                </React.Fragment>
             </ContainerBox>
         </SectionBox >)
 }

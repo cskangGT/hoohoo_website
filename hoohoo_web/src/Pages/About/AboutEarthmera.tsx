@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
-import { theme } from '../../style';
+import { BgImage, theme } from '../../style';
 import Frame from '../../Component/Frame';
 import Wrapper from '../../Component/Wrapper/Wrapper';
 
@@ -146,25 +146,27 @@ function AboutEarthmera() {
     }
     const imagePath = Object.keys(data)[0];
     return (
-        <Wrapper>
-            <ContentBox id="about">
-                <WallPage>
-                    {windowWidth >= 1100 && imagePath === "Images/1__.svg" &&
-                        <LeftImage src="Images/1.svg" alt="앱 소개 이미지" draggable="false" />}
-                    <IntroText >
-                        <IntroTitle>{data[imagePath]["header"]}</IntroTitle>
-                        <FirstDesc>
-                            {data[imagePath].firstDesc}
-                        </FirstDesc>
-                        <SecondDesc dangerouslySetInnerHTML={{ __html: data[imagePath].secondDesc }} />
-                    </IntroText>
-                    {
-                        imagePath === "Images/1__.svg" ? <RightImage src={imagePath} alt="앱 소개 이미지" draggable="false" />
-                            : <RightImage src={imagePath} alt="앱 소개 이미지" draggable="false" style={{ maxHeight: 800 }} />
-                    }
-                </WallPage>
-            </ContentBox>
-        </Wrapper>
+        <BgImage>
+            <Wrapper>
+                <ContentBox id="about">
+                    <WallPage>
+                        {windowWidth >= 1100 && imagePath === "Images/1__.svg" &&
+                            <LeftImage src="Images/1.svg" alt="앱 소개 이미지" draggable="false" />}
+                        <IntroText >
+                            <IntroTitle>{data[imagePath]["header"]}</IntroTitle>
+                            <FirstDesc>
+                                {data[imagePath].firstDesc}
+                            </FirstDesc>
+                            <SecondDesc dangerouslySetInnerHTML={{ __html: data[imagePath].secondDesc }} />
+                        </IntroText>
+                        {
+                            imagePath === "Images/1__.svg" ? <RightImage src={imagePath} alt="앱 소개 이미지" draggable="false" />
+                                : <RightImage src={imagePath} alt="앱 소개 이미지" draggable="false" style={{ maxHeight: 800 }} />
+                        }
+                    </WallPage>
+                </ContentBox>
+            </Wrapper>
+        </BgImage>
     )
 }
 export default AboutEarthmera

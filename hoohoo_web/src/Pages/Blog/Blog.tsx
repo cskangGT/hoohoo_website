@@ -1,6 +1,6 @@
 import React, { useEffect, useState, useRef } from 'react';
 import styled from 'styled-components';
-import { theme } from '../../style';
+import { BgImage, theme } from '../../style';
 import BlogCard from '../../Component/Blog/BlogCard';
 import PageNav from '../../Component/Blog/PageNav';
 import BlogModal from './BlogModal';
@@ -228,37 +228,39 @@ function Blog() {
 
 
     return (
-        <Wrapper>
-            <Container>
-                <ContentBox>
-                    <SlickBar>
-                        <LongBar>
-                            <ScrollContainer {...handlers}>
-                                {list.map((item, index) => (
-                                    <Outline key={index} op={index} selectedCategory={selectedCategory} onClick={() => handleSelectCategory(index)} >
-                                        <OutlineText key={index + "text"}>{item}</OutlineText>
-                                    </Outline>
-                                ))}</ScrollContainer>
-                            {logIn &&
-                                <NewBlogBtn onClick={handleOpen} ><FontAwesomeIcon icon={faPlus} style={{ paddingRight: 10 }} />New Blog</NewBlogBtn>}
+        <BgImage>
+            <Wrapper>
+                <Container>
+                    <ContentBox>
+                        <SlickBar>
+                            <LongBar>
+                                <ScrollContainer {...handlers}>
+                                    {list.map((item, index) => (
+                                        <Outline key={index} op={index} selectedCategory={selectedCategory} onClick={() => handleSelectCategory(index)} >
+                                            <OutlineText key={index + "text"}>{item}</OutlineText>
+                                        </Outline>
+                                    ))}</ScrollContainer>
+                                {logIn &&
+                                    <NewBlogBtn onClick={handleOpen} ><FontAwesomeIcon icon={faPlus} style={{ paddingRight: 10 }} />New Blog</NewBlogBtn>}
 
-                            {isOpen &&
-                                <BlogModal isOpen={isOpen} setIsOpen={setIsOpen} />}
-                        </LongBar>
-                    </SlickBar>
-                    {
-                        fetchedList.length === 0 ? <Text>No Posts to show</Text>
-                            : <Grid> {
-                                fetchedList.map((item, index) => (
-                                    <BlogCard key={index} data={item}></BlogCard>
-                                ))
-                            }</Grid>
-                    }
-                    <PageNav pages={Math.ceil(numTotalData / OFFSET)} currentPage={currentPage} changePage={changePage} />
+                                {isOpen &&
+                                    <BlogModal isOpen={isOpen} setIsOpen={setIsOpen} />}
+                            </LongBar>
+                        </SlickBar>
+                        {
+                            fetchedList.length === 0 ? <Text>No Posts to show</Text>
+                                : <Grid> {
+                                    fetchedList.map((item, index) => (
+                                        <BlogCard key={index} data={item}></BlogCard>
+                                    ))
+                                }</Grid>
+                        }
+                        <PageNav pages={Math.ceil(numTotalData / OFFSET)} currentPage={currentPage} changePage={changePage} />
 
-                </ContentBox>
-            </Container>
-        </Wrapper >
+                    </ContentBox>
+                </Container>
+            </Wrapper >
+        </BgImage>
     )
 }
 export default Blog;

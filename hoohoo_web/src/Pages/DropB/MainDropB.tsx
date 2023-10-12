@@ -1,7 +1,9 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import styled from 'styled-components';
 import DropBIntro from './DropBIntro';
 import Download from '../IntroPage/Download';
+import Wrapper from '../../Component/Wrapper/Wrapper';
+import { BgImage } from '../../style';
 const ContentBox = styled.section`
     padding-top: 20px;
     justify-content: center;
@@ -10,14 +12,18 @@ const ContentBox = styled.section`
 `;
 function MainDropB() {
     return (
-        <React.Fragment >
-            <ContentBox id="sketch">
-                <DropBIntro />
-            </ContentBox>
-            <ContentBox >
-                <Download dropb={true} />
-            </ContentBox>
-        </React.Fragment>
+        <BgImage>
+            <Wrapper>
+                <React.Fragment >
+                    <ContentBox id="sketch">
+                        <DropBIntro />
+                    </ContentBox>
+                    <ContentBox >
+                        <Download dropb={true} />
+                    </ContentBox>
+                </React.Fragment>
+            </Wrapper>
+        </BgImage>
     )
 }
 export default MainDropB

@@ -148,17 +148,15 @@ function TandC() {
         These terms of use were created using Termly's <a style="color: rgb(48, 48, 241) !important;" href="https://termly.io/products/terms-and-conditions-generator/">Terms and Conditions Generator</a>.
         </div>`);
   return (
-    <Wrapper>
-      <Background>
-        <React.Fragment>
-          <Container>
-            <ContentBox>
-              <div dangerouslySetInnerHTML={{ __html: privacyPolicyHTML }} />
-            </ContentBox>
-          </Container>
-        </React.Fragment>
-      </Background>
-    </Wrapper>
+    <Background>
+      <Wrapper>
+        <Container>
+          <ContentBox>
+            <div dangerouslySetInnerHTML={{ __html: privacyPolicyHTML }} />
+          </ContentBox>
+        </Container>
+      </Wrapper>
+    </Background>
   )
 }
 export default TandC;

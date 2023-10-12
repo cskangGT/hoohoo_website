@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { useLocation } from "react-router-dom";
-import { theme } from '../../style';
+import { BgImage, theme } from '../../style';
 import { Category } from '../../Component/Blog/BlogCard';
 import Wrapper from '../../Component/Wrapper/Wrapper';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -41,13 +41,13 @@ const CategoryBox = styled.div`
   text-align: center;
 `;
 type BlogData = {
-    'id': number;
-    'image': string;
-    'category': string;
-    'date': string;
-    'title': string;
-    'desc': string;
-    'long': string;
+  'id': number;
+  'image': string;
+  'category': string;
+  'date': string;
+  'title': string;
+  'desc': string;
+  'long': string;
 };
 const Title = styled.h1`
   text-align: center;
@@ -76,7 +76,7 @@ const Line = styled.p`
   font-weight: 300;
 `;
 type ContentProps = {
-    text: string
+  text: string
 }
 const ContentBlock = styled.div`
     display: flex;
@@ -88,42 +88,41 @@ const Back = styled.a`
 `;
 
 function Content({ text }: ContentProps) {
-    if (text) {
-        const lines = text.split('\n').map((line, index) => (
-            <Line key={index}>{line}</Line>
-        ));
+  if (text) {
+    const lines = text.split('\n').map((line, index) => (
+      <Line key={index}>{line}</Line>
+    ));
 
-        return <ContentBlock>{lines}</ContentBlock>;
-    } else {
-        return <ContentBlock>{text}</ContentBlock>;
-    }
+    return <ContentBlock>{lines}</ContentBlock>;
+  } else {
+    return <ContentBlock>{text}</ContentBlock>;
+  }
 }
 function BlogDetail() {
-    const location = useLocation();
-    const data: BlogData = location.state.blogData;
-    console.log('data', data)
-    return (
-        <Wrapper>
-            <Background>
-                <React.Fragment>
-                    <Container>
-                        <ContentBox>
-                            <CategoryBox>
-                                <Back href='/blog'>
-                                    <FontAwesomeIcon icon={faChevronLeft} color='white' fontSize={30} />
-                                </Back>
-                                <Category category={data.category} style={{ fontSize: 20 }}></Category>
-                            </CategoryBox>
-                            <Title>{data.title}</Title>
-                            <ImageBox>
-                                <Image src={'../' + data.image} alt="Blog Image" />
-                            </ImageBox>
-                            <Date>{data.date}</Date>
-                            <Content text={data.long ? data.long : data.desc}></Content>
-                        </ContentBox>
-                    </Container>
-                </React.Fragment></Background>
-        </Wrapper>
-    )
+  const location = useLocation();
+  const data: BlogData = location.state.blogData;
+  console.log('data', data)
+  return (
+    <Background>
+      <Wrapper>
+        <Container>
+          <ContentBox>
+            <CategoryBox>
+              <Back href='/blog'>
+                <FontAwesomeIcon icon={faChevronLeft} color='white' fontSize={30} />
+              </Back>
+              <Category category={data.category} style={{ fontSize: 20 }}></Category>
+            </CategoryBox>
+            <Title>{data.title}</Title>
+            <ImageBox>
+              <Image src={'../' + data.image} alt="Blog Image" />
+            </ImageBox>
+            <Date>{data.date}</Date>
+            <Content text={data.long ? data.long : data.desc}></Content>
+          </ContentBox>
+        </Container>
+      </Wrapper>
+    </Background >
+  )
 }
 export default BlogDetail;
