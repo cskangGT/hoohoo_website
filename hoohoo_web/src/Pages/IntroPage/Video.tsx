@@ -37,9 +37,9 @@ const ContentBox = styled.div`
 const IndexBox = styled.div`
   width: 45%;
   max-height: 390px;
-  height: 390px;
+  height: 100%;
   @media screen and (max-width: 1100px) {
-    margin-top: 20px;
+    /* margin-top: 20px; */
 }
     @media screen and (max-width: 500px) {
         display: flex;
@@ -78,6 +78,9 @@ const HisBox = styled.a<VideoListProps>`
 `;
 const VideoBox = styled.div`
   width: 55%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   @media screen and (max-width: 500px) {
       width: 100%;
     }

@@ -42,7 +42,6 @@ const ModalContent = styled.div`
     position: relative;
     box-shadow: 0 16px 32px rgba(220, 220, 200, 0.25);
     overflow-y: auto;
-    font-family: arial, helvetica, sans-serif;
 `;
 
 const CloseButton = styled.a`
@@ -61,13 +60,11 @@ const Form = styled.form`
 
 const Input = styled.input`
   padding: 10px;
-  /* border: 1px solid #ccc; */
   border-radius: 5px;
 `;
 
 const Textarea = styled.textarea`
   padding: 10px;
-  /* border: 1px solid #ccc; */
   border-radius: 5px;
 `;
 
