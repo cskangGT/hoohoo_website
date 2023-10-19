@@ -6,10 +6,9 @@ module.exports = {
     mode: 'development',
     entry: './src/index.js',
     output: {
-        path: path.resolve(__dirname, './dist'),
-        filename: 'bundle.js',
-        publicPath: '/'
-    },
+        path: path.resolve(__dirname, 'dist'),
+        filename: '[name].bundle.js',
+      },
     devServer: {
         compress: true,
         port: 9000,
@@ -57,9 +56,7 @@ module.exports = {
     },
     plugins: [new HtmlWebpackPlugin({
         template: './public/index.html',
-        filename: './index.html',
-        hash: true,
-        showErrors: true,
+        filename: 'index.html',
     }),
     new Dotenv({
         path: './.env', // Path to .env file (this is the default)
