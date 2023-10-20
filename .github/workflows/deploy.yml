@@ -16,8 +16,8 @@ jobs:
     - name: Cache node modules
       uses: actions/cache@v2
       with:
-        path: ~/.npm
-        key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+        path: hoohoo_web/node_modules
+        key: ${{ runner.os }}-node-${{ hashFiles('hoohoo_web/package-lock.json') }}
         restore-keys: |
           ${{ runner.os }}-node-
 
@@ -25,6 +25,7 @@ jobs:
       run: |
         npm ci
         npm run build
+      working-directory: hoohoo_web
 
   deploy:
     needs: build
@@ -35,9 +36,15 @@ jobs:
       uses: jakejarvis/s3-sync-action@master
       with:
         args: --acl public-read --follow-symlinks --delete 
-        src:  ./dist/ 
+        src:  hoohoo_web/dist/*
       env:
         AWS_S3_BUCKET: www.earthmera.com
         AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
-        AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}  
+        AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
         AWS_REGION: 'us-east-2'
+
+
+#         Checks out your code from the repository.
+# Caches the node_modules for faster subsequent builds.
+# Installs dependencies and runs the build command inside the hoohoo_web directory.
+# Deploys the contents of the hoohoo_web/dist/ directory to your S3 bucket.
