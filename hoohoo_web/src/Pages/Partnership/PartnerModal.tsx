@@ -152,7 +152,6 @@ function PartnerModal({ isOpen, setIsOpen }: Props) {
 
     const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
-
         try {
             const response = await fetch('http://localhost:3001/send-email', {
                 method: 'POST',
@@ -161,7 +160,6 @@ function PartnerModal({ isOpen, setIsOpen }: Props) {
                 },
                 body: JSON.stringify(formData)
             });
-
             if (response.status === 200) {
                 console.log("Email sent successfully.");
                 // Optionally, clear the form after successful submission

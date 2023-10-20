@@ -7,13 +7,15 @@ import arrow from './arrow-ani.json';
 import Bubble from '../../Component/Bubble';
 import i18next from 'i18next';
 import Slider from '../../Component/ContentBox/Slider';
+import LandingOrganizer from '../LandingPage/LandingOrganizer';
+import LandingFestival from '../LandingPage/LandingFestival';
 const SectionContainer = styled.section`
     display: flex;
     height: 900px;
     box-sizing: border-box;
     justify-content: center;
     align-items: center;
-    /* margin-top: 82px; */
+    margin-top: 82px;
     @media screen and (max-width: 1100px) {
         height: 900px;
     }
@@ -39,115 +41,6 @@ const Inside = styled.div`
         margin-left: 0;
     }
 `;
-const IntroText = styled.div`
-  display:flex;
-  justify-content: center;
-  text-align: center;
-  flex-direction: column;
-  width: 55%;
-  margin-top: 20px;
-  padding-left: 20px;
-  @media screen and (max-width: 700px) {
-    width: 100%;
-    padding: 0;
-        flex-direction: column;
-        /* margin-bottom: 20rem; */
-    }
-  `;
-
-const IntroTitle = styled.h2`
-  margin-bottom: 10px;
-  font-size: 3.3rem;
-  color: ${theme.white};
-  font-weight:bold;
-  text-align: center;
-  @media screen and (max-width: 1100px) {
-    font-size: 46px;
-}
-    @media screen and (max-width: 700px) {
-        font-size: 34px;
-        margin-bottom: 1rem;
-    }
-`;
-
-const FirstDesc = styled.h1`
-text-align: center;
-  font-size: 5.0rem;
-  font-weight:700;
-  line-height: 1.1;
-  margin-bottom: 3rem;
-  color: ${theme.white};
-  @media screen and (max-width: 1100px) {
-    font-size: 54px;
-    margin-bottom: 2rem;
-}
-@media screen and (max-width: 700px) {
-    font-size: 35px;
-    margin-bottom: 1.5rem;
-}
-`;
-const SecondDesc = styled.h3`
-  font-size: 1.6rem;
-  margin-bottom: 4.5rem;
-  line-height: 1.3;
-  color: ${theme.white};
-  font-weight: 600;
-  text-align: center;
-  @media screen and (max-width: 1100px) {
-    font-size: 22px;
-    margin-bottom: 2.5rem;
-    }
-    @media screen and (max-width: 700px) {
-        font-size: 16px;
-        margin-bottom: 1.2rem;
-    }
-`;
-const LeftImage = styled.img`
-    padding-top: 200px;
-  max-width: 150px;
-  min-width: 100px;
-  height: auto;
-`;
-const RightImage = styled.img`
-  padding: 0 20px;
-  height: auto;
-  width: 40%;
-  @media screen and (max-width: 1100px) {
-      width: 60%;
-  }
-  @media screen and (max-width: 700px) {
-    padding: 0;
-      width: 85%;
-      align-self: center;
-  }
-`;
-const Screen = styled.img`
-    padding: 0 20px;
-  height: auto;
-  width: 40%;
-  @media screen and (max-width: 1100px) {
-      width: 60%;
-  }
-  @media screen and (max-width: 700px) {
-    padding: 0;
-    width: 45%;
-      align-self: center;
-  }
-`;
-
-const Slide = styled.div`
-  min-width: 100%;
-  box-sizing: border-box;
-  display: flex;
-
-`;
-const LottieBox = styled.a`
-    width: 70px;
-    height:70px;
-    bottom: 3px;
-    position: absolute;
-`;
-
 interface DataStructure {
     [key: string]: {
         "header": string;
@@ -155,46 +48,28 @@ interface DataStructure {
         "secondDesc": string;
     };
 }
-const BannerContainer = styled.div`
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+const LottieBox = styled.a`
+    width: 70px;
+    height:70px;
+    bottom: 3px;
+    position: absolute;
 `;
-const Banner = styled.img`
-    width: 80%;
+const Slide = styled.div`
+  min-width: 100%;
+  box-sizing: border-box;
+  display: flex;
 `;
 
-const Col = styled.div`
-  display: flex;
-  @media screen and (max-width: 700px) {
-        flex-direction: column-reverse;
-    }
-`;
-const SlideContent: React.FC<{ imagePath: string, data: any, windowWidth: number }> = ({ imagePath, data, windowWidth }) => {
+const SlideContent: React.FC<{ data: any, windowWidth: number, slide: number }> = ({ data, windowWidth, slide }) => {
+    console.log('slide', slide)
     return (
-        <Slide key={imagePath}>
-            {imagePath === "Images/Banner.png" ?
-                <BannerContainer>
-                    <Banner src={imagePath} />
-                </BannerContainer> : <Col>
-                    {windowWidth >= 1100 && imagePath === "Images/1__.svg" &&
-                        <LeftImage src="Images/1.svg" alt="앱 소개 이미지" draggable="false" />}
-                    <IntroText>
-                        <IntroTitle>{data[imagePath]["header"]}</IntroTitle>
-                        <FirstDesc >
-                            {data[imagePath].firstDesc}
-                        </FirstDesc>
-                        <SecondDesc dangerouslySetInnerHTML={{ __html: data[imagePath].secondDesc }} />
-                    </IntroText>
-                    {
-                        imagePath === "Images/1__.svg" ? <RightImage src={imagePath} alt="앱 소개 이미지" draggable="false" />
-                            : <Screen src={imagePath} alt="앱 소개 이미지" draggable="false" style={{ maxWidth: windowWidth < 700 ? 'auto' : 350 }} />
-                    }</Col>
-            }
+        <Slide>
+            {slide === 0 && <LandingFestival></LandingFestival>}
+            {slide === 1 && <LandingOrganizer></LandingOrganizer>}
         </Slide>
     );
 };
+
 const IntroSection: React.FC = () => {
     const [windowWidth, setWindowWidth] = useState<number>(window.innerWidth);
     const [currentSlide, setCurrentSlide] = useState<number>(0);
@@ -202,6 +77,7 @@ const IntroSection: React.FC = () => {
     const data: DataStructure = i18next.t('IntroPage', { returnObjects: true });
     const images = Object.keys(data);
     const [isAutoSliding, setIsAutoSliding] = useState<boolean>(true);
+    const numImage = 2;
     const handleSwipe = () => {
         setIsAutoSliding(false); // 사용자가 스와이프를 하면 자동 슬라이드 변경 로직 중지
         setTimeout(() => {
@@ -215,7 +91,7 @@ const IntroSection: React.FC = () => {
     };
 
     const handleRightClick = () => {
-        if (currentSlide < images.length - 1) {
+        if (currentSlide < numImage - 1) {
             setCurrentSlide(currentSlide + 1);
         }
     };
@@ -235,13 +111,14 @@ const IntroSection: React.FC = () => {
         swipeDuration: 300,
         delta: { left: 50, right: 50 }
     });
-    // const [currentSlide, setCurrentSlide] = useState(0);
-    console.log('currentSlide', currentSlide)
+
+
+
     useEffect(() => {
         let slideInterval: NodeJS.Timeout;
         if (isAutoSliding) { // 자동 슬라이드 변경 로직이 활성화된 경우에만 setInterval 실행
             slideInterval = setInterval(() => {
-                setCurrentSlide((prevSlide) => (prevSlide + 1) % images.length);
+                setCurrentSlide((prevSlide) => (prevSlide + 1) % numImage);
             }, 5000);
         }
 
@@ -249,12 +126,11 @@ const IntroSection: React.FC = () => {
             clearInterval(slideInterval); // 컴포넌트가 언마운트되거나 useEffect가 다시 실행되기 전에 setInterval을 클리어합니다.
         };
     }, [images.length, isAutoSliding]);
-
+    const arr = [0, 1];
     useEffect(() => {
         const handleResize = () => {
             setWindowWidth(window.innerWidth);
         };
-
         window.addEventListener('resize', handleResize);
         return () => {
             window.removeEventListener('resize', handleResize);
@@ -262,14 +138,18 @@ const IntroSection: React.FC = () => {
     }, []);
     return (
         <SectionContainer>
-            <Inside >
+            <Inside>
                 <Slider currentSlide={currentSlide}
                     handleLeftClick={handleLeftClick}
                     handleRightClick={handleRightClick}
-                    pageNumber={images.length} >
-                    {images.map((imagePath, index) => (
-                        <SlideContent key={index} imagePath={imagePath} data={data} windowWidth={windowWidth} />
-                    ))}
+                    pageNumber={numImage} >
+                    {arr.map((slide, index) => (<SlideContent data={data} windowWidth={windowWidth} slide={slide} />))}
+
+                    {/* {currentSlide === 0 && <LandingFestival />}
+                    {currentSlide === 1 && <LandingOrganizer />} */}
+
+                    {/* {images.map((imagePath, index) => (
+                    ))} */}
                 </Slider>
             </Inside>
             <LottieBox href='#partners'>

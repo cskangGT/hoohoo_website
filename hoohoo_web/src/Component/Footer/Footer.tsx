@@ -128,7 +128,7 @@ type Button = {
 }
 type IbuttonProps = {
   icon: any;
-  url: string;
+  url?: string;
   style?: {};
 }
 type FooterProps = {
@@ -164,7 +164,7 @@ function Footer({ isKorean }: FooterProps) {
               </BusinessDetail>
             </Column> : <Column>
               <FooterTitle>Earthmera</FooterTitle>
-              <BusinessDetail> CEO : Seonghoon Kang
+              <BusinessDetail> CEO : Sung Kang
                 <br /> Email : devceohoony@gmail.com
               </BusinessDetail>
             </Column>
@@ -190,8 +190,8 @@ function Footer({ isKorean }: FooterProps) {
           <IconBox>
             <Ibutton icon={faInstagram} url={'https://instagram.com/earthmera_?igshid=MzRlODBiNWFlZA=='} />
             <Ibutton icon={faLinkedinIn} url={'https://www.linkedin.com/company/earthmera/'} />
-            <Ibutton icon={faPinterestP} url={'#'} />
-            <Ibutton icon={faTiktok} url={'#'} />
+            <Ibutton icon={faPinterestP} style={{ opacity: 1 }} />
+            <Ibutton icon={faTiktok} style={{ opacity: 1 }} />
             <Ibutton icon={faYoutube} url={'https://www.youtube.com/@Earthmera'} />
           </IconBox>
         </FooterBottom>

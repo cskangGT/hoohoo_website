@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import styled from 'styled-components';
 import { theme } from '../../style';
 import DOMPurify from 'dompurify';
@@ -95,12 +95,15 @@ function Privacy() {
         <div style="color: #595959;font-size: 14px;font-family: Arial;padding-top:16px;">
         This privacy policy was created using Termly's <a style="color: rgb(48, 48, 241) !important;" href="https://termly.io/products/privacy-policy-generator/">Privacy Policy Generator</a>.
         </div>`);
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
   return (
     <Background>
       <Wrapper>
         <Container>
           <ContentBox>
-            <Title>Privacy Policy</Title>
+            <Title id="pp">Privacy Policy</Title>
             <div dangerouslySetInnerHTML={{ __html: privacyPolicyHTML }} />
           </ContentBox>
         </Container></Wrapper></Background>
