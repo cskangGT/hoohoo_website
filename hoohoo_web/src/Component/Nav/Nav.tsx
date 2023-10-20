@@ -6,7 +6,7 @@ import { faBars } from '@fortawesome/free-solid-svg-icons';
 // const icon = require('./icon_image.png')
 import { useTranslation } from 'react-i18next';
 import i18next from 'i18next';
-
+import { useNavigate } from 'react-router-dom';
 const Logo = styled.a`
   padding: 15px;
   font-size: 25px;
@@ -297,7 +297,7 @@ type NavItem = {
 };
 
 function Nav({ isKorean, setIsKorean }: NavProps) {
-
+  const navigate = useNavigate();
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const [windowWidth, setWindowWidth] = useState<number>(window.innerWidth);
   const { i18n } = useTranslation();
@@ -328,18 +328,23 @@ function Nav({ isKorean, setIsKorean }: NavProps) {
         {
           navItems.map((item, i) => {
             return (
-              <NavMenuList key={i} ><LogoIcon key={i + "hd_icon"} className="hidden-icon" src='Images/icon_image.png' />
+              <NavMenuList key={i} >
+                <LogoIcon key={i + "hd_icon"} className="hidden-icon" src='Images/icon_image.png' />
                 {item.subItems ?
                   <HoverContainer key={i + "hoverContainer"} style={{ overflow: 'visible' }}>
                     <NavHover id={item.link} key={i + "navh"}>{item.label}</NavHover>
                     <ContainerSubItems className="hidden-subItems" key={i + "hd_subItems"}>
-                      <HoverLinks key={i + "hvLinks"} >{item.subItems.map((subItem, subIndex) => (
-                        <NavSubList key={subIndex}><SubNavLink key={subIndex + "subLink"} href={subItem.link}>{subItem.label}</SubNavLink></NavSubList>))}
+                      <HoverLinks key={i + "hvLinks"} >
+                        {item.subItems.map((subItem, subIndex) => (
+                          <NavSubList key={subIndex}>
+                            <SubNavLink key={subIndex + "subLink"} onClick={() => { navigate(subItem.link ? subItem.link : "") }} >{subItem.label}</SubNavLink>
+                          </NavSubList>))
+                        }
                       </HoverLinks></ContainerSubItems>
                   </HoverContainer> : <NavLink
                     id={item.link}
                     key={i}
-                    href={item.link}
+                    onClick={() => { navigate(item.link ? item.link : "") }}
                   >{item.label}</NavLink>}
               </NavMenuList>
             );

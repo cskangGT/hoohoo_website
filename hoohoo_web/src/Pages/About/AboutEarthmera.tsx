@@ -13,6 +13,8 @@ const ContentBox = styled.section`
     align-items: center;
     width: 100%;
     display: flex;
+    height: 900px;
+    overflow: hidden;
     @media screen and (max-width: 600px) {
         height: 850px;
     }
@@ -164,7 +166,8 @@ const SlideContent: React.FC<{ imagePath: string, data: any, windowWidth: number
             {imagePath === "Images/Banner.png" ?
                 <BannerContainer>
                     <Banner src={imagePath} />
-                </BannerContainer> : <Col>
+                </BannerContainer> :
+                <Col>
                     {windowWidth >= 1100 && imagePath === "Images/1__.svg" &&
                         <LeftImage src="Images/1.svg" alt="앱 소개 이미지" draggable="false" />}
                     <IntroText>
@@ -177,7 +180,8 @@ const SlideContent: React.FC<{ imagePath: string, data: any, windowWidth: number
                     {
                         imagePath === "Images/1__.svg" ? <RightImage src={imagePath} alt="앱 소개 이미지" draggable="false" />
                             : <Screen src={imagePath} alt="앱 소개 이미지" draggable="false" style={{ maxWidth: windowWidth < 700 ? 'auto' : 350 }} />
-                    }</Col>
+                    }
+                </Col>
             }
         </Slide>
     );
