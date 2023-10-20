@@ -110,18 +110,19 @@ interface DataProps {
 
 function VideoSection() {
     const data: DataProps[] = [{
-        video: "https://www.youtube.com/embed/ZSTsfkG7SaE?si=SNW42Wb57LB3bobF",
-        title: "Iphone 15 Pro!"
+        video: "https://www.youtube.com/embed/yzk18ZvRW0E?si=H_37XpQejN9CmF34",
+        title: "Protecting the Environment with EarthMera"
     }, {
-        video: "https://www.youtube.com/embed/-7PaaFTotzk?si=vO7XwXFbKbxm5PKe",
-        title: "Hello ~~"
+        video: "https://www.youtube.com/embed/_iar-vWcimE?si=yAVI4Ls07kt0TVuQ",
+        title: "Keep claen the Music festival with EarthMera"
     }, {
-        video: "https://www.youtube.com/embed/9BbDdhkEeeE?si=3cGJT-WIJIq79iwY",
-        title: "Song Playlist"
+        video: "https://www.youtube.com/embed/0xmXdZHHuwI?si=DeOc5FIszCL_ndmA",
+        title: "Save Earth Make points!"
     }, {
-        video: "https://www.youtube.com/embed/0crz-UkonGA?si=g5eud5lmGQ9NyuL9",
-        title: "IU concert"
+        video: "https://www.youtube.com/embed/xehU5GHS3I4?si=zp7KSx0gIIxQ_1t_",
+        title: "EarthMera with school challenge"
     }]
+
     const [selectedVideo, setSelectedVideo] = useState<DataProps>(data[0]);
 
     return (

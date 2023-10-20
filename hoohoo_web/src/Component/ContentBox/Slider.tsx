@@ -10,11 +10,12 @@ interface SlidersProps {
   pageNumber: number;
   children: any;
 }
+
 const SlideContainer = styled.div<{ currentSlide: number }>`
 width: 100%;
   display: flex;
-  transition: transform 0.3s ease;
-  transform: translateX(-${props => props.currentSlide * 100}%);
+  transition: transform 0.5s ease-in-out;
+    transform: translateX(-${props => props.currentSlide * 100}%);
 `;
 
 const Slide = styled.div`
@@ -99,7 +100,10 @@ const Slider: React.FC<SlidersProps> = ({ currentSlide, handleLeftClick, handleR
       {currentSlide === 0 ? <></> : <LeftArrow onClick={handleLeftClick}>&lt;</LeftArrow>}
 
       <SlideContainer currentSlide={currentSlide}>
-        {children}
+        {/* {children} */}
+        {React.Children.map(children, child => (
+          <Slide>{child}</Slide>
+        ))}
       </SlideContainer>
 
       {currentSlide !== pageNumber - 1 ? <RightArrow onClick={handleRightClick}>&gt;</RightArrow> : <></>}

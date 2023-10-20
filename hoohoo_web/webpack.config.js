@@ -8,7 +8,7 @@ module.exports = {
     output: {
         path: path.resolve(__dirname, 'dist'),
         filename: '[name].bundle.js',
-      },
+    },
     devServer: {
         compress: true,
         port: 9000,
@@ -26,7 +26,7 @@ module.exports = {
                 {
                     loader: 'url-loader',
                     options: {
-                        limit: 8192,  // 8KB 이하의 이미지는 Base64로 인코딩
+                        limit: 4000,
                         fallback: 'file-loader',
                         name: 'Images/[name].[hash:8].[ext]'
                     },
@@ -41,7 +41,6 @@ module.exports = {
             test: /\.tsx|ts?$/,
             use: 'ts-loader',
             exclude: /node_modules/,
-
         },
         {
             test: /\.(js|jsx)$/,
