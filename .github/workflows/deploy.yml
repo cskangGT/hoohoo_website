@@ -27,7 +27,7 @@ jobs:
         npm ci
         npm run build
 
-    - name: List contents of dist directory  # <--- This is the new step
+    - name: List contents of dist directory
       run: ls -la hoohoo_web/dist/
 
   deploy:
@@ -35,11 +35,18 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+    - name: Configure AWS credentials  # <-- Added from the provided snippet
+      uses: aws-actions/configure-aws-credentials@v1
+      with:
+        aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+        aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+        aws-region: us-east-2  # <-- Matched with your AWS_REGION
+
     - name: Deploy to S3
       uses: jakejarvis/s3-sync-action@master
       with:
-        args: --acl public-read --follow-symlinks --delete 
-        src: hoohoo_web/dist/ 
+        args: --acl public-read --follow-symlinks --delete
+        src: hoohoo_web/dist/
       env:
         AWS_S3_BUCKET: www.earthmera.com
         AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
