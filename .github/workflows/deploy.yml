@@ -43,7 +43,7 @@ jobs:
         aws-region: us-east-2  # <-- Matched with your AWS_REGION
 
     - name: Deploy to S3
-      uses: jakejarvis/s3-sync-action@master
+      uses: cskangGT/s3-sync-action@master
       with:
         args: --acl public-read --follow-symlinks --delete
         src: hoohoo_web/dist/
