@@ -62,6 +62,10 @@ const ButtonBox = styled.div`
   align-items: center;
   justify-content: center;
   padding: 15px 0;
+  @media screen and (max-width: 700px) {
+        /* padding-bottom: 1.2rem; */
+        font-size: 0.8rem;
+    }
 `;
 const Btn = styled.a`
   text-decoration: none;
@@ -93,7 +97,8 @@ function ProfileCard({ item }: Item) {
         {item.role}
       </Role>
       <ButtonBox>
-        <Btn href='#'>Get in Touch</Btn></ButtonBox>
+        <Btn href='#'>Get in Touch</Btn>
+      </ButtonBox>
     </CardContainer>
   )
 }
