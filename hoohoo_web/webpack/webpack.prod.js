@@ -14,7 +14,16 @@ module.exports = merge(common, {
     module: {
         rules: [
             {
-                test: /\.(js|jsx|ts|tsx)$/i,
+                test: /\.tsx|ts?$/,
+                use: 'ts-loader',
+                exclude: /node_modules/,
+            },
+            {
+                test: /\.css$/,
+                use: ['style-loader', 'css-loader'],
+            },
+            {
+                test: /\.(js|jsx)$/i,
                 exclude: /node_modules/,
                 loader: 'babel-loader',
                 options: {
@@ -53,9 +62,5 @@ module.exports = merge(common, {
     },
     plugins: [
         new ForkTsCheckerWebpackPlugin(),
-        new webpack.DefinePlugin({
-            'process.env.BASE_URL': JSON.stringify(process.env.PROD_BASE_URL),
-            'process.env.IS_LOCAL': false,
-        }),
     ],
 });

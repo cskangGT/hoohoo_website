@@ -1,13 +1,13 @@
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const ProgressPlugin = require('progress-webpack-plugin');
+const Dotenv = require('dotenv-webpack');
 const path = require('path');
-
 module.exports = {
     entry: './src/index.js',
     output: {
         publicPath: '/',
-        path: path.resolve(__dirname, 'dist'),
+        path: path.join(__dirname, '../dist'),
         filename: '[name].bundle.js',
         clean: true,
     },
@@ -27,7 +27,7 @@ module.exports = {
     module: {
         rules: [
             {
-                test: /\.(png|webp)$/,
+                test: /\.(png|webp|jpe?g|svg)$/,
                 type: 'asset',
                 generator: {
                     filename: 'Images/[name][hash][ext]',
@@ -49,6 +49,9 @@ module.exports = {
             ],
         }),
         new ProgressPlugin(true),
+        new Dotenv({
+            path: './.env', // Path to .env file (this is the default)
+        }),
     ],
     performance: {
         hints: false,
