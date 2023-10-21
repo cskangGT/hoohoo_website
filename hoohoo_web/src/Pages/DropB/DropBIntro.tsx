@@ -55,7 +55,7 @@ const IntroText = styled.div`
 const IntroTitle = styled.h2`
   margin-bottom: 10px;
   font-size: 3.3rem;
-  color: ${theme.white};
+  color: ${theme.darkGray};
   font-weight:bold;
   text-align: center;
   @media screen and (max-width: 1100px) {
@@ -72,7 +72,7 @@ text-align: center;
   font-weight: 600;
   line-height: 1.1;
   margin-bottom: 3rem;
-  color: ${theme.white};
+  color: ${theme.darkGray};
   @media screen and (max-width: 1100px) {
     font-size: 54px;
     margin-bottom: 2rem;
@@ -87,7 +87,7 @@ const SecondDesc = styled.h3`
   font-size: 1.6rem;
   margin-bottom: 4.5rem;
   line-height: 1.3;
-  color: ${theme.white};
+  color: ${theme.darkGray};
   font-weight: 500;
   text-align: center;
   @media screen and (max-width: 1100px) {
@@ -132,8 +132,8 @@ interface DataStructure {
 
 const data: DataStructure = {
     "Images/preview1.png": {
-        "firstDesc": "CAPTURE AND BE REWARDED",
-        "secondDesc": "CLICK YOUR SHUTTER,<br />BUILD EARTH'S SHELTER, <br />GET POINTS AND BECOME WEALTHIER."
+        "firstDesc": "SPEAK, WRITE, AND DIVE-IN",
+        "secondDesc": "Click to create your own diary with Drop B"
     }
 }
 

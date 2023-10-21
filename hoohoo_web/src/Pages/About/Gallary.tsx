@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
-import { theme } from '../../style';
 import { useSwipeable } from 'react-swipeable';
 import Slider from '../../Component/ContentBox/Slider';
 
@@ -50,7 +49,7 @@ interface DataStructure {
 }
 
 const data: DataStructure = {
-    "images": ['Images/1.jpeg', 'Images/2.jpeg', 'Images/3.jpeg', 'Images/4.jpeg', 'Images/5.jpeg', 'Images/6.jpeg', 'Images/7.jpeg']
+    "images": ['Images/1.jpeg', 'Images/2.jpeg', 'Images/4.jpeg', 'Images/5.jpeg', 'Images/6.jpeg']
 }
 const BannerContainer = styled.div`
   width: 100%;

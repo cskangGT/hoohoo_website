@@ -12,6 +12,9 @@ const GlobalStyle = createGlobalStyle`
       font-family: 'Poppins', sans-serif;
       font-weight: 500;
     }
+    html {
+      scroll-behavior: smooth;
+    }
 `;
 const root = ReactDOM.createRoot(
   document.getElementById('root')

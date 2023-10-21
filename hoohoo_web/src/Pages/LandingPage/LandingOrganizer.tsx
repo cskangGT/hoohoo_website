@@ -7,13 +7,15 @@ import LandingFormModal from './LandingFormModal';
 const Background = styled.div`
     /* background: url("Images/bg.svg") center top / cover no-repeat; */
     // background-size: cover;
-    background-color: #FFFEF2;
+    background-color: transparent;
     display: flex;
     flex-direction: column;
     width: 100%;
     height: 100%;
-    max-height: 100%;
+    /* max-height: 100%; */
+    border-radius: 40px;
     overflow-x: hidden;
+    
 `;
 const Grid = styled.div`
     width: 100%;
@@ -40,8 +42,8 @@ const LeftCell = styled.div`
     flex-direction: column;
     align-items: flex-start;
     width: 55%;
-    padding: 70px 20px;
-    margin-bottom: 120px;
+    padding: 20px 20px;
+    padding-top: 0px;
     position: relative;
     @media screen and (max-width: 1100px) {
         width: calc(100% - 30px);
@@ -83,7 +85,7 @@ const Title = styled.h1`
     }
 `;
 const Content = styled.p`
-    font-size: 1.2rem;
+    font-size: 1.1rem;
     font-weight: 200;
     width: 90%;
     line-height: 1.5;
@@ -119,7 +121,7 @@ const LeftEclipse = styled.img`
   width: 13rem;
 `;
 const EclipseBox = styled.div`
-    top: -1rem;
+    top: -5rem;
     left: -10rem;
   position: absolute;
   transform: rotate(180deg);
@@ -127,7 +129,7 @@ const EclipseBox = styled.div`
 const RightImage = styled.img`
   object-fit: cover;
   position: absolute;
-  top: 80px;
+  top: 20px;
   left: -50px;
   width: 100%;
   @media screen and (max-width: 1100px) {

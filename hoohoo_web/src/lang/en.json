@@ -8,6 +8,8 @@
         }
     },
     "Nav" : {
+      "logo" : { "text":"EarthMera",
+    "image": "Images/icon_image.png"},
         "navlist" : [
           { "label": "Home", "link": "/home" },
           {
@@ -24,7 +26,7 @@
           {
             "label": "Download",
             "subItems": [
-              { "label": "EarthMera", "link": "/home#download" },
+              { "label": "EarthMera", "link": "/about_earthmera#download_earthmera" },
               { "label": "DropB", "link": "/dropb" }
             ]
           },
@@ -42,10 +44,10 @@
             "firstDesc": "CAPTURE AND BE REWARDED",
             "secondDesc": "CLICK YOUR SHUTTER,<br />BUILD EARTH'S SHELTER, <br />GET POINTS AND BECOME WEALTHIER."
         },
-        "Images/Banner.png": {},
+        "Images/banner2.png": {},
         "Images/preview.png": {
-            "firstDesc": "CAPTURE AND BE REWARDED",
-            "secondDesc": "CLICK YOUR SHUTTER,<br />BUILD EARTH'S SHELTER, <br />GET POINTS AND BECOME WEALTHIER."
+            "firstDesc": "Empower Your Green Journey",
+            "secondDesc": "Take steps for a greener future,<br /> Celebrate eco-milestones with us,<br /> Earn rewards for helping the Earth."
         }
     }
 }

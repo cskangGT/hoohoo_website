@@ -35,7 +35,7 @@ const HeaderBox = styled.div`
 const HeaderText = styled.h2`
   font-size: 3rem;
   text-align: center;
-    color: ${theme.white};
+    color: ${theme.darkGray};
     @media screen and (max-width: 700px) {
         font-size: 2rem;
     }
@@ -89,12 +89,12 @@ function TeamIntro() {
     },
     {
         "photoPath": 'Images/jimmy.jpeg',
-        "name": "Jimmy Shim",
+        "name": "Jimmy Sim",
         "role": "Business Manager"
     }]
     const groupedData = [];
-    for (let i = 0; i < data.length; i += 3) {
-        groupedData.push(data.slice(i, i + 3));
+    for (let i = 0; i < data.length; i += 4) {
+        groupedData.push(data.slice(i, i + 4));
     }
     const [currentSlide, setCurrentSlide] = useState<number>(0);
     const handleLeftClick = () => {
@@ -103,7 +103,6 @@ function TeamIntro() {
         }
     };
 
-    // 오른쪽 화살표 버튼 클릭 핸들러
     const handleRightClick = () => {
         if (currentSlide < data.length - 1) {
             setCurrentSlide(currentSlide + 1);
@@ -118,9 +117,9 @@ function TeamIntro() {
                         Team EarthMera
                     </HeaderText>
                 </HeaderBox>
-
-                <React.Fragment >
+                <React.Fragment>
                     <Slider
+
                         currentSlide={currentSlide}
                         handleLeftClick={handleLeftClick}
                         handleRightClick={handleRightClick}
@@ -128,7 +127,6 @@ function TeamIntro() {
                         {groupedData.map((value, index) => (
                             <SlideContent array={value} />
                         ))}
-
                     </Slider>
                 </React.Fragment>
             </ContainerBox>

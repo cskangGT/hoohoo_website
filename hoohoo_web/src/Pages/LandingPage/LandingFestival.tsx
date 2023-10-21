@@ -5,20 +5,21 @@ import { theme } from '../../style';
 import Wrapper from '../../Component/Wrapper/Wrapper';
 import LandingFormModal from './LandingFormModal';
 const Background = styled.div`
-    background: url("Images/1pBg.svg") center top / cover no-repeat;
-    // background-size: cover;
+    /* background: url("Images/1pBg.svg") center top / cover no-repeat; */
+    background-color: transparent;
     display: flex;
     flex-direction: column;
     width: 100%;
     height: 100%;
     overflow: hidden;
+    border-radius: 40px;
 `;
 const Grid = styled.div`
     width: 100%;
     display: flex;
     justify-content: space-between;
     position: relative;
-    margin: 80px 0;
+    margin: 20px 0;
     margin-bottom: 100px;
     @media screen and (max-width:1100px) {
         flex-direction: column;
@@ -58,13 +59,13 @@ const Header = styled.h4`
     font-size: 1.5rem;
     font-weight: 300;
     line-height: 1.5;
-    color: ${theme.white};
+    color: ${theme.darkGray};
     @media screen and (max-width: 1100px) {
         margin-top: 2rem;
     }
 `;
 const Title = styled.h1`
-    color: ${theme.white};
+    color: ${theme.darkGray};
     letter-spacing: .4px;
     margin-top: 0.4rem;
     margin-bottom: 0.8rem;
@@ -80,7 +81,7 @@ const Content = styled.p`
     font-size: 1.2rem;
     font-weight: 200;
     line-height: 1.5;
-    color: rgba(180, 255, 250, 1);
+    color: #5f5555;
     margin-top: 0.5rem;
     margin-bottom: 1rem;
     @media screen and (max-width: 1100px) {
@@ -112,8 +113,9 @@ const LeftImage = styled.img`
   object-fit: cover;
   position: absolute;
   left: -30px;
+  top: 50px;
   width: 100%;
-  height: 100%;
+  height: 110%;
   @media screen and (max-width: 1100px) {
         position: relative;
         top: 0;
@@ -125,7 +127,7 @@ const LeftImage = styled.img`
 const LeftDown = styled.img`
   position: absolute;
     width: 40%;
-    bottom: -25%;
+    bottom: -30%;
     left: -10%;
     @media screen and (max-width: 1100px) {
         width: auto;

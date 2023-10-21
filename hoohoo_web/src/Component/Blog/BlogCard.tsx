@@ -34,12 +34,12 @@ const Image = styled.img`
 const Title = styled.h3`
   margin-top: 10px;
   font-size: 22px;
-  color: ${theme.white};
+  color: ${theme.darkGray};
   margin-bottom: 5px;
 `;
 const Content = styled.h3`
   margin-top: 0px;
-  color: ${theme.white};
+  color: ${theme.darkGray};
   font-size: 12px;
   font-weight: 500;
 `;

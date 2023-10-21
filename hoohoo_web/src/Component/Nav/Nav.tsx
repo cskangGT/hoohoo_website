@@ -272,7 +272,7 @@ const NavSubList = styled.li`
 `;
 const SubNavLink = styled.a`
   text-decoration : none;
-  color: ${theme.white};
+  color: ${theme.darkGray};
   padding-left: 10px;
   cursor: pointer;
   @media screen and (max-width: 1100px) {
@@ -302,6 +302,7 @@ function Nav({ isKorean, setIsKorean }: NavProps) {
   const [windowWidth, setWindowWidth] = useState<number>(window.innerWidth);
   const { i18n } = useTranslation();
   const navItems: NavItem[] = i18next.t('Nav', { returnObjects: true })["navlist"]
+  const logo = i18next.t('Nav', { returnObjects: true })["logo"]
   console.log('navItems', navItems)
   const changelanguageToKo = () => i18n.changeLanguage('ko')
   const changelanguageToEn = () => i18n.changeLanguage('en')
@@ -320,8 +321,8 @@ function Nav({ isKorean, setIsKorean }: NavProps) {
   return (
     <Bar>
       <Logo key="logo_link" href="/home">
-        <HeaderLogo key="logo" src='Images/icon_image.png' />
-        <LogoText key="earthmera">EarthMera</LogoText>
+        <HeaderLogo key="logo" src={logo.image} />
+        <LogoText key="earthmera">{logo.text}</LogoText>
       </Logo>
 
       <NavbarMenu isOpen={isOpen}>

@@ -47,7 +47,7 @@ const Page = styled.a<PageProps>`
     justify-content: center;
     align-items: center;
     display: flex;
-    color: ${props => props.page === props.curr ? theme.darkGray : theme.white};
+    color: ${props => props.page === props.curr ? theme.darkGray : theme.darkGray};
     text-decoration: none;
     cursor: pointer;
     border-radius: 7px;

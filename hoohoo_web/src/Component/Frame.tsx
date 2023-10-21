@@ -15,23 +15,10 @@ const Container = styled.div`
     align-items:center;
     background-color: ${theme.darkGray};
 `;
-// const BgImage = styled.div`
-//     background: url("Images/bg.svg") center top / cover no-repeat;
-//     // background-size: cover;
-//     display: flex;
-//     flex-direction: column;
-//     width: 100%;
-//     height: 100%;
-//     max-height: 100%;
-//     overflow-x: hidden;
-// `;
-
 const ContactBox = styled.div`
-// height: 200px;
    background-color: ${theme.darkGray};
    display: flex;
    justify-content: center;
-   /* margin-top: 82px; */
    padding: 0 10px;
 `;
 const ContactColumnBox = styled.div`
@@ -46,15 +33,18 @@ const ContactText = styled.h3`
   color: ${theme.white};
 `;
 
-const LinktoEmail = styled.button`
+const LinktoEmail = styled.a`
   text-decoration: none;
+  color: ${theme.darkGray};
   background-color: ${theme.mainNeon};
-  cursor: pointer;
   height: 50px;
   border-radius: 20px;
   border-color: ${theme.darkGray};
   width:200px;
   font-weight: bold;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   margin-bottom: 26px;
   &:hover {
     box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2);
@@ -72,9 +62,9 @@ function Frame({ children }: FrameProps) {
       {children}
       <ContactBox id="contact" key="contact">
         {isKorean ? <ContactColumnBox><ContactText>비즈니스 파트너십 또는 기타 문의사항을 원하시면 아래의 버튼을 클릭하세요.</ContactText>
-          <LinktoEmail form="mailto:devceohoony@gmail.com" data-l10n-id="footer_contactus">
+          <LinktoEmail href="mailto:devceohoony@gmail.com" data-l10n-id="footer_contactus">
             문의하기</LinktoEmail></ContactColumnBox> : <ContactColumnBox><ContactText>Interested in partnering with us or have any questions? </ContactText>
-          <LinktoEmail form="mailto:devceohoony@gmail.com" data-l10n-id="footer_contactus">
+          <LinktoEmail href="mailto:devceohoony@gmail.com" data-l10n-id="footer_contactus">
             Contact Us</LinktoEmail></ContactColumnBox>}
       </ContactBox>
       <hr style={{ color: '#f1f1f1', margin: 0 }} />

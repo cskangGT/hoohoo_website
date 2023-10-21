@@ -4,7 +4,7 @@ import { theme } from '../../style';
 import { useNavigate } from "react-router-dom";
 const Card = styled.div`
     box-shadow: rgba(0, 0, 0, 0.08) 0px 40px 80px 0px;
-    background: linear-gradient(253deg, rgba(200, 200, 200, 0.1) 10%, rgba(252, 230, 187, 0.3) 30%);
+    background: linear-gradient(253deg, rgba(11, 21, 68, 0.1) 10%, rgba(31, 36, 108, 0.2) 30%);
     backdrop-filter: blur(20px);
     border-radius: 10px;
     width: 45%;
@@ -26,9 +26,10 @@ const Image = styled.img`
     height: auto;
     border-radius: 5px;
 `;
-const Content = styled.h3`
+const Content = styled.h2`
   margin-top: 40px;
-  color: ${theme.white};
+  color: ${theme.darkGray};
+  text-align: center;
   font-weight: 600;
 `;
 const Btn = styled.a`

@@ -2,8 +2,7 @@ import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import { theme } from '../../style';
 import { useSwipeable } from 'react-swipeable';
-import Lottie from "lottie-react";
-import arrow from './arrow-ani.json';
+
 import Bubble from '../../Component/Bubble';
 import i18next from 'i18next';
 import Slider from '../../Component/ContentBox/Slider';
@@ -11,24 +10,25 @@ import LandingOrganizer from '../LandingPage/LandingOrganizer';
 import LandingFestival from '../LandingPage/LandingFestival';
 const SectionContainer = styled.section`
     display: flex;
-    height: 900px;
+    /* height: 900px; */
     box-sizing: border-box;
     justify-content: center;
     align-items: center;
-    margin-top: 82px;
-    @media screen and (max-width: 1100px) {
+    margin-top: 42px;
+    border-radius: 20px;
+    /* @media screen and (max-width: 1100px) {
         height: 900px;
     }
     @media screen and (max-width: 700px) {
         height: 700px;
-    }
+    } */
 `;
 const Inside = styled.div`
-    position: relative;
     overflow: hidden;
   width: 100%;
   box-sizing: border-box;
   display: flex;
+  margin-bottom: 30px;
   @media screen and (max-width: 1100px) {
     flex-direction: column-reverse;
     align-items: center;
@@ -48,12 +48,7 @@ interface DataStructure {
         "secondDesc": string;
     };
 }
-const LottieBox = styled.a`
-    width: 70px;
-    height:70px;
-    bottom: 3px;
-    position: absolute;
-`;
+
 const Slide = styled.div`
   min-width: 100%;
   box-sizing: border-box;
@@ -78,12 +73,7 @@ const IntroSection: React.FC = () => {
     const images = Object.keys(data);
     const [isAutoSliding, setIsAutoSliding] = useState<boolean>(true);
     const numImage = 2;
-    const handleSwipe = () => {
-        setIsAutoSliding(false); // 사용자가 스와이프를 하면 자동 슬라이드 변경 로직 중지
-        setTimeout(() => {
-            setIsAutoSliding(true); // 일정 시간 후에 자동 슬라이드 변경 로직 재시작
-        }, 5000); // 원하는 지연 시간을 설정합니다 (여기서는 5초)
-    };
+
     const handleLeftClick = () => {
         if (currentSlide > 0) {
             setCurrentSlide(currentSlide - 1);
@@ -95,33 +85,13 @@ const IntroSection: React.FC = () => {
             setCurrentSlide(currentSlide + 1);
         }
     };
-    const handlers = useSwipeable({
-        onSwipedLeft: () => {
-            console.log("Swiped Left");
-            handleRightClick();
-            handleSwipe();
-        },
-        onSwipedRight: () => {
-            // console.log("Swiped Right");
-            // handleLeftClick();
-            handleSwipe();
-        },
-        preventScrollOnSwipe: true,
-        trackMouse: true,
-        swipeDuration: 300,
-        delta: { left: 50, right: 50 }
-    });
-
-
-
     useEffect(() => {
         let slideInterval: NodeJS.Timeout;
         if (isAutoSliding) { // 자동 슬라이드 변경 로직이 활성화된 경우에만 setInterval 실행
             slideInterval = setInterval(() => {
                 setCurrentSlide((prevSlide) => (prevSlide + 1) % numImage);
-            }, 5000);
+            }, 100000);
         }
-
         return () => {
             clearInterval(slideInterval); // 컴포넌트가 언마운트되거나 useEffect가 다시 실행되기 전에 setInterval을 클리어합니다.
         };
@@ -144,17 +114,8 @@ const IntroSection: React.FC = () => {
                     handleRightClick={handleRightClick}
                     pageNumber={numImage} >
                     {arr.map((slide, index) => (<SlideContent data={data} windowWidth={windowWidth} slide={slide} />))}
-
-                    {/* {currentSlide === 0 && <LandingFestival />}
-                    {currentSlide === 1 && <LandingOrganizer />} */}
-
-                    {/* {images.map((imagePath, index) => (
-                    ))} */}
                 </Slider>
             </Inside>
-            <LottieBox href='#partners'>
-                <Lottie animationData={arrow} loop={true} />
-            </LottieBox>
             {isBubble ? <Bubble setIsBubble={setIsBubble} /> : <React.Fragment />}
 
         </SectionContainer >

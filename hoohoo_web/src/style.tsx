@@ -3,7 +3,7 @@ import styled from 'styled-components';
 
 
 export const BgImage = styled.div`
-    background: url("Images/bg.svg") center top / cover no-repeat;
+    background: url("Images/bg2.webp") center top / cover no-repeat;
     // background-size: cover;
     display: flex;
     flex-direction: column;

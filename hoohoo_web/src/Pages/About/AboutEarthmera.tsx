@@ -1,13 +1,19 @@
 import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import { BgImage, theme } from '../../style';
-import Frame from '../../Component/Frame';
+import Lottie from "lottie-react";
+import arrow from './arrow-ani.json';
 import Wrapper from '../../Component/Wrapper/Wrapper';
 import Slider from '../../Component/ContentBox/Slider';
 import i18next from 'i18next';
-import { useSwipeable } from 'react-swipeable';
-
-const ContentBox = styled.section`
+import NumberIconContent from '../../Component/ContentBox/NumberIconContent';
+import ListSection from './ListSection';
+import VideoSection from './Video';
+import Download from './Download';
+import Partners from './Partners';
+import Rewards from './Rewards';
+import Realtime from './Realtime';
+const SlideSection = styled.section`
     padding-top: 20px;
     justify-content: center;
     align-items: center;
@@ -15,22 +21,18 @@ const ContentBox = styled.section`
     display: flex;
     height: 900px;
     overflow: hidden;
+
     @media screen and (max-width: 600px) {
         height: 850px;
     }
 `;
-const WallPage = styled.div`
-  box-sizing: border-box;
-  max-width: 1200px;
+const ContentBox = styled.section`
+    padding-top: 20px;
+    justify-content: center;
+  width: 100%;
   display: flex;
-  align-items: center;
-  margin: 180px 0;
-  @media screen and (max-width: 500px) {
-        justify-content: center;
-        flex-direction: column-reverse;
-        margin-left: 0;
-    }
 `;
+
 
 interface SlideContainerProps {
     currentSlide: number;
@@ -77,7 +79,7 @@ const IntroText = styled.div`
 const IntroTitle = styled.h2`
   margin-bottom: 10px;
   font-size: 3.3rem;
-  color: ${theme.white};
+  color: ${theme.darkGray};
   font-weight:bold;
   text-align: center;
   @media screen and (max-width: 1100px) {
@@ -90,26 +92,26 @@ const IntroTitle = styled.h2`
 `;
 
 const FirstDesc = styled.h1`
-text-align: center;
+    text-align: center;
   font-size: 5.0rem;
   font-weight:700;
   line-height: 1.1;
   margin-bottom: 3rem;
-  color: ${theme.white};
+  color: ${theme.darkGray};
   @media screen and (max-width: 1100px) {
     font-size: 54px;
     margin-bottom: 2rem;
-}
-@media screen and (max-width: 700px) {
-    font-size: 35px;
-    margin-bottom: 1.5rem;
-}
+    }
+    @media screen and (max-width: 700px) {
+        font-size: 35px;
+        margin-bottom: 1.5rem;
+    }
 `;
 const SecondDesc = styled.h3`
   font-size: 1.6rem;
   margin-bottom: 4.5rem;
   line-height: 1.3;
-  color: ${theme.white};
+  color: ${theme.darkGray};
   font-weight: 600;
   text-align: center;
   @media screen and (max-width: 1100px) {
@@ -150,7 +152,7 @@ const Screen = styled.img`
   @media screen and (max-width: 700px) {
     padding: 0;
     width: 45%;
-      align-self: center;
+    align-self: center;
   }
 `;
 
@@ -163,9 +165,9 @@ const Slide = styled.div`
 const SlideContent: React.FC<{ imagePath: string, data: any, windowWidth: number }> = ({ imagePath, data, windowWidth }) => {
     return (
         <Slide key={imagePath}>
-            {imagePath === "Images/Banner.png" ?
+            {imagePath === "Images/banner2.png" ?
                 <BannerContainer>
-                    <Banner src={imagePath} />
+                    <Banner src={imagePath} draggable="false" />
                 </BannerContainer> :
                 <Col>
                     {windowWidth >= 1100 && imagePath === "Images/1__.svg" &&
@@ -186,12 +188,22 @@ const SlideContent: React.FC<{ imagePath: string, data: any, windowWidth: number
         </Slide>
     );
 };
+const LottieBox = styled.a`
+    width: 70px;
+    height:70px;
+    bottom: 3px;
+    position: absolute;
+`;
+
 interface DataStructure {
     [key: string]: {
         "header": string;
         firstDesc: string;
         secondDesc: string;
     };
+}
+type ImageProps = {
+    imagePath: string;
 }
 function AboutEarthmera() {
     const [windowWidth, setWindowWidth] = useState<number>(window.innerWidth);
@@ -210,12 +222,7 @@ function AboutEarthmera() {
     const data: DataStructure = i18next.t('IntroPage', { returnObjects: true });
     const images = Object.keys(data);
     const [isAutoSliding, setIsAutoSliding] = useState<boolean>(true);
-    const handleSwipe = () => {
-        setIsAutoSliding(false); // 사용자가 스와이프를 하면 자동 슬라이드 변경 로직 중지
-        setTimeout(() => {
-            setIsAutoSliding(true); // 일정 시간 후에 자동 슬라이드 변경 로직 재시작
-        }, 5000); // 원하는 지연 시간을 설정합니다 (여기서는 5초)
-    };
+
     const handleLeftClick = () => {
         if (currentSlide > 0) {
             setCurrentSlide(currentSlide - 1);
@@ -227,23 +234,20 @@ function AboutEarthmera() {
             setCurrentSlide(currentSlide + 1);
         }
     };
-    const handlers = useSwipeable({
-        onSwipedLeft: () => {
-            console.log("Swiped Left");
-            handleRightClick();
-            handleSwipe();
-        },
-        onSwipedRight: () => {
-            // console.log("Swiped Right");
-            // handleLeftClick();
-            handleSwipe();
-        },
-        preventScrollOnSwipe: true,
-        trackMouse: true,
-        swipeDuration: 300,
-        delta: { left: 50, right: 50 }
-    });
-    // const [currentSlide, setCurrentSlide] = useState(0);
+    const secondImages: ImageProps[] = [{
+        imagePath: 'Images/2-1.png'
+    }, {
+        imagePath: 'Images/2-2.png'
+    }, {
+        imagePath: 'Images/2-3.png'
+    }];
+    const thirdImages: ImageProps[] = [{
+        imagePath: 'Images/3-1.webp'
+    }, {
+        imagePath: 'Images/3-2.webp'
+    }, {
+        imagePath: 'Images/3-3.webp'
+    }];
 
     useEffect(() => {
         let slideInterval: NodeJS.Timeout;
@@ -252,7 +256,6 @@ function AboutEarthmera() {
                 setCurrentSlide((prevSlide) => (prevSlide + 1) % images.length);
             }, 5000);
         }
-
         return () => {
             clearInterval(slideInterval); // 컴포넌트가 언마운트되거나 useEffect가 다시 실행되기 전에 setInterval을 클리어합니다.
         };
@@ -268,38 +271,47 @@ function AboutEarthmera() {
             window.removeEventListener('resize', handleResize);
         };
     }, []);
-    const imagePath = Object.keys(data)[0];
+    useEffect(() => {
+        window.scrollTo(0, 0);
+    }, []);
     return (
         <BgImage>
             <Wrapper>
-                <ContentBox id="about">
+                <SlideSection id="about">
                     <Slider currentSlide={currentSlide}
                         handleLeftClick={handleLeftClick}
                         handleRightClick={handleRightClick}
-                        pageNumber={images.length} >
+                        pageNumber={images.length}>
                         {images.map((imagePath, index) => (
                             <SlideContent key={index} imagePath={imagePath} data={data} windowWidth={windowWidth} />
                         ))}
                     </Slider>
+                    <LottieBox href='#partners'>
+                        <Lottie animationData={arrow} loop={true} />
+                    </LottieBox>
+                </SlideSection>
+                <ContentBox id="partners">
+                    <Partners />
+                </ContentBox>
+                <ContentBox>
+                    <Realtime></Realtime>
+                </ContentBox>
+                <ListSection id={"next"} data={secondImages} header='' isBot={false} />
+                <ContentBox>
+                    <Rewards></Rewards>
+                </ContentBox>
+                {/* <ListSection id={"rewards"} data={thirdImages} header='REDEEM REWARDS WITH POINTS.' isBot={true} /> */}
+                <ContentBox key="table" id="table">
+                    <NumberIconContent />
+                </ContentBox>
+                <ContentBox key="video" id="video">
+                    <VideoSection />
+                </ContentBox>
+                <ContentBox id="download_earthmera" key="download">
+                    <Download dropb={false} />
                 </ContentBox>
             </Wrapper>
         </BgImage>
     )
 }
 export default AboutEarthmera
-
-{/* <WallPage>
-                        {windowWidth >= 1100 && imagePath === "Images/1__.svg" &&
-                            <LeftImage src="Images/1.svg" alt="앱 소개 이미지" draggable="false" />}
-                        <IntroText >
-                            <IntroTitle>{data[imagePath]["header"]}</IntroTitle>
-                            <FirstDesc>
-                                {data[imagePath].firstDesc}
-                            </FirstDesc>
-                            <SecondDesc dangerouslySetInnerHTML={{ __html: data[imagePath].secondDesc }} />
-                        </IntroText>
-                        {
-                            imagePath === "Images/1__.svg" ? <RightImage src={imagePath} alt="앱 소개 이미지" draggable="false" />
-                                : <RightImage src={imagePath} alt="앱 소개 이미지" draggable="false" style={{ maxHeight: 800 }} />
-                        }
-                    </WallPage> */}

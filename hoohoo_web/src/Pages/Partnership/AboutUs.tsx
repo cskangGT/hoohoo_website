@@ -60,7 +60,7 @@ const AboutHeader = styled.h4`
     font-size: .85rem;
     font-weight: 500;
     line-height: 1.5;
-    color: ${theme.white};
+    color: ${theme.darkGray};
     @media screen and (max-width: 700px) {
         font-size: 1rem;
     }
@@ -103,7 +103,7 @@ const AboutUsImage = styled.img`
         }
 `;
 const AboutTitle = styled.h1`
-    color: ${theme.white};
+    color: ${theme.darkGray};
     letter-spacing: .4px;
     margin-top: 0.4rem;
     margin-bottom: 0.8rem;
@@ -119,7 +119,7 @@ const AboutContent = styled.p`
     font-size: 1.4rem;
     font-weight: 200;
     line-height: 1.6;
-    color: rgba(180, 255, 250, 1);
+    color: #1b4442;
     margin-top: 0.5rem;
     margin-bottom: 1rem;
     @media screen and (max-width: 1100px) {

@@ -9,7 +9,7 @@ const CardContainer = styled.div`
     min-height: auto;
     grid-template-rows: repeat(3, min-content) 1fr;
     grid-template-columns: 100%;
-    color: ${theme.white};
+    color: ${theme.darkGray};
     place-items: center;
     margin-bottom: 50px;
     @media screen and (max-width: 700px) {
@@ -71,10 +71,10 @@ const Btn = styled.a`
   text-decoration: none;
   padding: 10px 12px;
   background-color: transparent;
-    border: solid ${theme.mainNeon} 1px;
+    border: solid ${theme.darkGray} 1px;
     border-radius: 20px;
     cursor: pointer!important;
-  color: ${theme.mainNeon};
+  color: ${theme.darkGray};
 `;
 interface Profile {
   photoPath: string;

@@ -8,32 +8,34 @@
         }
     },
     "Nav" : {
+      "logo" : { "text":"어스메라",
+    "image": "Images/icon_image.png"},
         "navlist" : [
           { "label": "홈", "link": "/home" },
           {
-            "label": "About",
+            "label": "소개",
             "subItems": [
-              { "label": "Our Team", "link": "/about_team" },
-              { "label": "EarthMera", "link": "/about_earthmera" }
+              { "label": "팀 소개", "link": "/about_team" },
+              { "label": "어스메라", "link": "/about_earthmera" }
             ]
           },
           {
-            "label": "파트너쉽",
+            "label": "파트너십",
             "link": "/partnership"
           },
           {
-            "label": "Download",
+            "label": "다운로드",
             "subItems": [
               { "label": "EarthMera", "link": "/home#download" },
               { "label": "DropB", "link": "/dropb" }
             ]
           },
           {
-            "label": "Blog",
+            "label": "블로그",
             "link": "/blog"
           },
           {
-            "label": "Contact",
+            "label": "연락처",
             "link": "#contact"
           }]
     },

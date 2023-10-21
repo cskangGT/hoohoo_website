@@ -30,7 +30,7 @@ const ArrowButton = styled.button`
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
-  color: ${theme.white};
+  color: ${theme.darkGray};
   font-size: 2rem;
   z-index: 10;
 
@@ -39,11 +39,23 @@ const ArrowButton = styled.button`
   }
 `;
 const LeftArrow = styled(ArrowButton)`
-  left: 0px;
+  left:70px;
+  @media screen and (max-width:1400px) {
+    left: 0px;
+  }
+  @media screen and (max-width:550px) {
+    left: 10px;
+  }
 `;
 
 const RightArrow = styled(ArrowButton)`
-right: 0;
+  right: 70px;
+  @media screen and (max-width:1400px) {
+    right: 0px;
+  }
+  @media screen and (max-width:550px) {
+    right: 10px;
+  }
 `;
 const Container = styled.div`
   width: 100%;
@@ -62,48 +74,15 @@ const Slider: React.FC<SlidersProps> = ({ currentSlide, handleLeftClick, handleR
     trackMouse: true,
   });
 
-  // const handleLeftClick = () => {
-  //     if (currentSlide === 1) {
-  //         setCurrentSlide(0);
-  //     }
-  // };
-
-  // const handleRightClick = () => {
-  //     if (currentSlide === 0) {
-  //         setCurrentSlide(1);
-  //     }
-  // };
-
-  // const handlers = useSwipeable({
-  //     onSwipedLeft: () => {
-  //         handleRightClick();
-  //     },
-  //     onSwipedRight: () => {
-  //         handleLeftClick();
-  //     },
-  //     preventScrollOnSwipe: true,
-  //     trackMouse: true,
-  // });
-
-  // useEffect(() => {
-  //     const slideInterval = setInterval(() => {
-  //         setCurrentSlide((prevSlide) => (prevSlide + 1) % images.length);
-  //     }, 10000);
-
-  //     return () => {
-  //         clearInterval(slideInterval);
-  //     };
-  // }, [images.length]);
-
   return (
     <Container {...handlers} >
       {currentSlide === 0 ? <></> : <LeftArrow onClick={handleLeftClick}>&lt;</LeftArrow>}
 
       <SlideContainer currentSlide={currentSlide}>
-        {/* {children} */}
-        {React.Children.map(children, child => (
+        {children}
+        {/* {React.Children.map(children, child => (
           <Slide>{child}</Slide>
-        ))}
+        ))} */}
       </SlideContainer>
 
       {currentSlide !== pageNumber - 1 ? <RightArrow onClick={handleRightClick}>&gt;</RightArrow> : <></>}
