@@ -42,12 +42,20 @@ jobs:
         aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
         aws-region: us-east-2
 
-    - name: List Workspace Directory  # Debugging step
-      run: ls -la
+    - name: Check AWS CLI Version
+      run: aws --version
+
+    - name: Check AWS CLI Installation
+      run: which aws
+
+    - name: Debugging Info
+      run: |
+        echo "Current directory: $(pwd)"
+        ls -la
 
     - name: Deploy to S3
       run: |
-        aws s3 sync hoohoo_web/dist/ s3://www.earthmera.com/ --delete --acl public-read
+        aws s3 sync $(pwd)/hoohoo_web/dist/ s3://www.earthmera.com/ --delete --acl public-read
       env:
         AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
         AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
