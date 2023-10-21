@@ -70,6 +70,7 @@
     "@babel/preset-env": "^7.23.2",
     "@babel/preset-react": "^7.22.15",
     "@babel/preset-typescript": "^7.23.2",
+    "@svgr/webpack": "^8.1.0",
     "@types/dompurify": "^3.0.3",
     "@types/styled-components": "^5.1.26",
     "copy-webpack-plugin": "^11.0.0",

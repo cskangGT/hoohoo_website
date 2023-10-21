@@ -72,7 +72,7 @@ function SlideContent({ array }: SlideContentProps) {
 
 function TeamIntro() {
     const data = [{
-        "photoPath": 'Images/profile_photo1.jpeg',
+        "photoPath": 'Images/sung.jpeg',
         "name": "Sung Kang",
         "role": "Founder"
     },
@@ -82,12 +82,12 @@ function TeamIntro() {
         "role": "FE Engineer"
     },
     {
-        "photoPath": 'Images/profile_photo1.jpeg',
+        "photoPath": 'Images/moung.jpeg',
         "name": "Moungsung Im",
         "role": "FE Engineer"
     },
     {
-        "photoPath": 'Images/profile_photo1.jpeg',
+        "photoPath": 'Images/jimmy.jpeg',
         "name": "Jimmy Shim",
         "role": "Business Manager"
     }]
@@ -108,8 +108,6 @@ function TeamIntro() {
             setCurrentSlide(currentSlide + 1);
         }
     };
-
-
     return (
         <SectionBox>
             <ContainerBox>

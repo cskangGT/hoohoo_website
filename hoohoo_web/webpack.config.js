@@ -20,38 +20,59 @@ module.exports = {
         extensions: ['.tsx', '.ts', '.js', '.jsx']
     },
     module: {
-        rules: [{
-            test: /\.(svg|png|jpg|gif|mp4)$/,
-            use: [
-                {
-                    loader: 'url-loader',
-                    options: {
-                        limit: 4000,
-                        fallback: 'file-loader',
-                        name: 'Images/[name].[hash:8].[ext]'
-                    },
-                },
-            ]
-        },
-        {
-            test: /\.css$/,
-            use: ['style-loader', 'css-loader'],
-        },
-        {
-            test: /\.tsx|ts?$/,
-            use: 'ts-loader',
-            exclude: /node_modules/,
-        },
-        {
-            test: /\.(js|jsx)$/,
-            use: {
-                loader: 'babel-loader',
+        rules: [
+            //     {
+            //     test: /\.(svg|png|jpg|gif|mp4)$/,
+            //     use: [
+            //         {
+            //             loader: 'asset/inline',
+            //             options: {
+            //                 limit: 4000,
+            //                 fallback: 'asset/resource',
+            //                 name: 'Images/[name].[hash:8].[ext]'
+            //             },
+            //         },
+            //     ]
+            // },
+            {
+                test: /\.(jpg|png|gif|svg)$/,
+                loader: 'image-webpack-loader',
+                enforce: 'pre'  // Apply the loader before url-loader/svg-url-loader
+            },
+            {
+                test: /\.(jpe?g|png|gif)$/,
+                loader: 'url-loader',
                 options: {
-                    presets: ['@babel/preset-env', '@babel/preset-react']
+                    limit: 10 * 1024  // Images larger than 10 KB won’t be inlined
                 }
             },
-            exclude: /node_modules/,
-        }]
+            {
+                test: /\.svg$/,
+                loader: 'svg-url-loader',
+                options: {
+                    limit: 10 * 1024,  // Images larger than 10 KB won’t be inlined
+                    noquotes: true,
+                }
+            },
+            {
+                test: /\.css$/,
+                use: ['style-loader', 'css-loader'],
+            },
+            {
+                test: /\.tsx|ts?$/,
+                use: 'ts-loader',
+                exclude: /node_modules/,
+            },
+            {
+                test: /\.(js|jsx)$/,
+                use: {
+                    loader: 'babel-loader',
+                    options: {
+                        presets: ['@babel/preset-env', '@babel/preset-react']
+                    }
+                },
+                exclude: /node_modules/,
+            }]
     },
     plugins: [new HtmlWebpackPlugin({
         template: './public/index.html',
