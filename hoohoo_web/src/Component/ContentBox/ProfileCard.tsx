@@ -84,6 +84,7 @@ interface Profile {
 interface Item {
   item: Profile
 }
+
 function ProfileCard({ item }: Item) {
   return (
     <CardContainer>

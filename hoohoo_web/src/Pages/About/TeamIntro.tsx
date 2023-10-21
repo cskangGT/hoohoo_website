@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
 import { theme } from '../../style';
-import { useSwipeable } from 'react-swipeable';
 import Slider from '../../Component/ContentBox/Slider';
 import ProfileCard from '../../Component/ContentBox/ProfileCard';
 const SectionBox = styled.section`
@@ -109,7 +108,6 @@ function TeamIntro() {
             setCurrentSlide(currentSlide + 1);
         }
     };
-
     return (
         <SectionBox>
             <ContainerBox>
