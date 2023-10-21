@@ -42,6 +42,9 @@ jobs:
         aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
         aws-region: us-east-2
 
+    - name: List Workspace Directory  # Debugging step
+      run: ls -la
+
     - name: Deploy to S3
       run: |
         aws s3 sync hoohoo_web/dist/ s3://www.earthmera.com/ --delete --acl public-read
