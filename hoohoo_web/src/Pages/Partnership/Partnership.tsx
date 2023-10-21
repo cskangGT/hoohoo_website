@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import styled from 'styled-components';
 import SketchContents from './SketchContents';
 import Fundraising from './Fundraising';
@@ -12,7 +12,9 @@ const ContentBox = styled.section`
   display: flex;
 `;
 function Partnership() {
-
+    useEffect(() => {
+        window.scrollTo(0, 0);
+    }, []);
     return (
         <BgImage>
             <Wrapper>

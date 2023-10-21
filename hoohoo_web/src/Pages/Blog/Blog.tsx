@@ -201,7 +201,9 @@ function Blog() {
         handleSelectCategory(selectedCategory);
     }, [])
 
-
+    useEffect(() => {
+        window.scrollTo(0, 0);
+    }, []);
     const handlers = useSwipeable({
         onSwiping: (eventData) => {
             if (scrollContainerRef.current) {

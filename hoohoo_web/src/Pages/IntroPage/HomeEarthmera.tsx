@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import styled from 'styled-components';
 import IntroSection from './IntroSection';
 
@@ -40,12 +40,15 @@ const Wrap = styled.div`
 
 
 function HomeEarthmera() {
-    return (
-        <BgImage>
-            <Wrap>
-                <IntroSection />
-            </Wrap>
-        </BgImage>
-    );
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+  return (
+    <BgImage>
+      <Wrap>
+        <IntroSection />
+      </Wrap>
+    </BgImage>
+  );
 }
 export default HomeEarthmera; 

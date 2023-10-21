@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import { theme } from '../../style';
 import Slider from '../../Component/ContentBox/Slider';
@@ -107,7 +107,9 @@ function TeamIntro() {
             setCurrentSlide(currentSlide + 1);
         }
     };
-
+    useEffect(() => {
+        window.scrollTo(0, 0);
+    }, []);
     return (
         <SectionBox>
             <ContainerBox>

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import styled from 'styled-components';
 
 const Container = styled.div`
@@ -13,16 +13,19 @@ const Container = styled.div`
 
 const Heading = styled.h1`
     font-size: 2.5rem;
-    color: #333;
+    color: white;
     margin-bottom: 1rem;
 `;
 
 const SubHeading = styled.h2`
     font-size: 1.5rem;
-    color: #777;
+    color: #777777;
 `;
 
 function ComingSoon() {
+    useEffect(() => {
+        window.scrollTo(0, 0);
+    }, []);
     return (
         <Container>
             <Heading>Our team is preparing the connecting page.</Heading>

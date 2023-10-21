@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import styled from 'styled-components';
 import { useLocation } from "react-router-dom";
 import { theme } from '../../style';
@@ -99,9 +99,11 @@ function Content({ text }: ContentProps) {
   }
 }
 function BlogDetail() {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
   const location = useLocation();
   const data: BlogData = location.state.blogData;
-  console.log('data', data)
   return (
     <Background>
       <Wrapper>
