@@ -176,7 +176,6 @@ function PartnerModal({ isOpen, setIsOpen }: Props) {
             console.log("Error:", error);
         }
     };
-    // "
     return (
         <React.Fragment>
             {isOpen && (

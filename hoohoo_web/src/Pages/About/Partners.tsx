@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
 import { theme } from '../../style';
-import i18next from 'i18next';
 const Container = styled.div`
     width: 100%;
     display: flex;
@@ -65,13 +64,10 @@ const DescBox = styled.div`
   display: flex;
   width: auto;
   @media screen and (max-width: 1000px){
-    /* flex-direction: column;   */
     margin: 0 5px;     
   }
     @media screen and (max-width: 500px){
-        /* flex-direction: column;   */
         margin: 40px 3px;
-        /* justify-content: flex-start; */
     }
 `;
 interface OutlineProps {
@@ -115,19 +111,6 @@ const HorizonContainer = styled.div`
         flex-direction: column;
     }
 `;
-const LeftBox = styled.div`
-    /* align-items: center; */
-    justify-content: start;
-    display: flex;
-    height: 353px;
-    flex-direction :row;
-    @media screen and (max-width: 1100px){
-        text-align: center;
-    }
-    @media screen and (max-width: 700px){
-        padding: 0 10px;
-    }
-`;
 const Desc = styled.p`
     font-size: 1.4rem;
     line-height: 1.6;
@@ -158,20 +141,11 @@ const RightBox = styled.div`
     border-radius: 20%;
     border: 2px solid rgba(255, 255, 255, 0.05);
     margin: auto;
-    /* margin-bottom: 50px; */
     @media screen and (max-width: 500px){
         margin-top: 10px;
         width: 360px;
         height: 300px;
     }
-    // @media screen and (min-width: 1140px){
-    //     width: 382px;
-    //     height: 382px;
-    //     position: absolute;
-    //     right: 0px;
-        // top: 50%;
-    //     transform: translateY(-50%);
-    // }
 `;
 const ImageWrapper = styled.div`
   width: 100%;
@@ -180,32 +154,12 @@ const ImageWrapper = styled.div`
   overflow: hidden; 
 `;
 const Image = styled.img`
-  width: 100%;  // RightBox의 너비에 맞춤
+  width: 100%;  
   height: 100%;
   object-fit: contain;
   overflow: hidden;
   border-radius: 30px;
 `;
-// const FText = styled.span`
-//     margin-bottom: 8px;
-//     font-size: 86px;
-//     font-weight: 900;
-//     color: ${theme.white};
-//     letter-spacing: 1px;
-//     line-height: 1.2;
-//     text-transform: uppercase;
-//     text-align: center;
-// `;
-// const SText = styled.span`
-//     font-weight: 500;
-//     color: rgb(255, 255, 255);
-//     font-size: 18px;
-//     line-height: 1.2;
-//     text-align: center;
-//     @media screen and (min-width: 1140px){
-//         font-size: 24px;
-//     }
-// `;
 const ImageButton = styled.button`
   text-decoration: none;
   background-color: transparent;

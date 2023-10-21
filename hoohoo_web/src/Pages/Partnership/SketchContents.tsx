@@ -69,7 +69,6 @@ interface DataItem {
     content: string;
 }
 
-// data 객체에 대한 타입 정의
 const data: Record<string, DataItem> = {
     'Images/Asset_44x-8.png': {
         headerText: "User-centric goal",

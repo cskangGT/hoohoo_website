@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import { theme } from '../../style';
-import i18next from 'i18next';
 const Container = styled.div`
     width: 100%;
     display: flex;
@@ -22,12 +21,6 @@ const ContentBox = styled.div`
     width: 100%;
     justify-content: center;
 `;
-const HeaderBox = styled.div`
-  color: ${theme.darkGray};
-  text-align: center;
-  margin-bottom: 30px;
-  line-height: 1.2;
-`;
 
 const HorizonContainer = styled.div`
   display: flex;
@@ -44,23 +37,7 @@ const Header = styled.h2`
   width: 100%;
   color: ${theme.darkGray};
 `;
-const Desc = styled.p`
-    font-size: 1.4rem;
-    line-height: 1.6;
-    width: 100%;
-    color: ${theme.darkGray};
-    opacity: 0.8;
-    margin: 0 5px;
-    @media screen and (max-width: 1100px){
-      text-align:center;
-      margin: 20px 0;
-    }
-    @media screen and (max-width: 700px){
-        width: 100%;
-        font-size: 1rem;
-        
-    }
-`;
+
 const GrowingNumber = styled.span`
   font-size: 2rem;
 `;

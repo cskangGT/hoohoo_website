@@ -29,7 +29,6 @@ const Inside = styled.div`
   @media screen and (max-width: 1100px) {
     flex-direction: column-reverse;
     align-items: center;
-    // padding-bottom: 50px;
     margin-left: 15px;
 }
 @media screen and (max-width: 700px) {
@@ -54,8 +53,6 @@ const data: DataStructure = {
 const BannerContainer = styled.div`
   width: 100%;
   display: flex;
-  
-//   margin-bottom: 100px;
 justify-content: center;
 align-items: center;
 `;
@@ -109,8 +106,6 @@ const Gallary: React.FC = () => {
             setCurrentSlide(currentSlide - 1);
         }
     };
-
-    // 오른쪽 화살표 버튼 클릭 핸들러
     const handleRightClick = () => {
         if (currentSlide < groupedImages.length - 1) {
             setCurrentSlide(currentSlide + 1);

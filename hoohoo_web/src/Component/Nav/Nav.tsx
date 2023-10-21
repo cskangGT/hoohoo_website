@@ -3,7 +3,6 @@ import styled from 'styled-components';
 import { theme } from '../../style';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBars } from '@fortawesome/free-solid-svg-icons';
-// const icon = require('./icon_image.png')
 import { useTranslation } from 'react-i18next';
 import i18next from 'i18next';
 import { useNavigate } from 'react-router-dom';
@@ -81,7 +80,6 @@ const NavMenuList = styled.li`
     transition: all 0.5s ease; 
   }
   &:hover {
-    // background-color: #313131;
     border-radius: 5Px;
     & .hidden-icon {
       opacity: 1;
@@ -115,22 +113,6 @@ const NavRight = styled.div`
   justify-content: center;
   
 `;
-// const NavIcons = styled.ul`
-// margin: 0;
-//   list-style: none;
-//   color: ${theme.white};
-//   display: flex;
-//   padding-left: 0;
-//   @media screen and (max-width: 768px) {
-//     justify-content: center;
-//     display: ${props => (props.isOpen ? 'flex' : 'none')};  
-//     width: 100%;
-//   }
-// `;
-// const IconList = styled.a`
-//   padding: 8px 12px;
-
-// `;
 const MenuToogleButton = styled.button`
   background: none;
   border: none;
@@ -264,11 +246,6 @@ const NavSubList = styled.li`
     justify-content: center;
     padding : 7px 7px;
   }
-  // &: hover {
-  //   backdrop-filter: blur(15px);
-  //   background-color: rgba(250, 250, 250, 0.09);
-  //   border-radius: 10px;
-  // }
 `;
 const SubNavLink = styled.a`
   text-decoration : none;

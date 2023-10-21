@@ -66,16 +66,10 @@ const AboutHeader = styled.h4`
     }
 `;
 const RightCell = styled.div`
-// justify-content: flex-end;
  align-items: center;
  display: flex;
  width: 900px;
  height: 600px;
-/* position: absolute; */
-/* top: -500px;
-    position: absolute;
-    left: -500px; */
-    /* width: 100%; */
     overflow: visible;
     @media screen and (max-width: 1100px) {
         position: relative;
@@ -89,15 +83,11 @@ const RightCell = styled.div`
 `;
 
 const AboutUsImage = styled.img`
-  /* width: 200%; */
-    /* width: 160%; */
     position: absolute;
     top: -970px;
     left: -1200px;
     width: 350%;
     height: auto;
-    /* object-position: 50% 50%; */
-    /* object-fit: scale-down; */
     @media screen and (max-width: 1100px) {
             object-fit: scale-down;
         }
@@ -128,7 +118,6 @@ const AboutContent = styled.p`
 
 `;
 const PartnerButton = styled.a`
-// margin : 20px 5px;
     font-size: 20px;
     font-weight: 700;
     cursor: pointer;
@@ -140,16 +129,7 @@ const PartnerButton = styled.a`
   max-width:60%;
   padding: 10px 15px;
 `;
-const style: any = {
-    position: 'absolute',
-    top: '50%',
-    left: '50%',
-    transform: 'translate(-50%, -50%)',
-    width: 400,
-    border: '2px solid #000',
-    boxShadow: 24,
-    p: 4,
-};
+
 function AboutUs() {
     const [isOpen, setIsOpen] = useState(false);
     const handleOpen = () => setIsOpen(true);

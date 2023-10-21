@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { useLocation } from "react-router-dom";
-import { BgImage, theme } from '../../style';
+import { theme } from '../../style';
 import { Category } from '../../Component/Blog/BlogCard';
 import Wrapper from '../../Component/Wrapper/Wrapper';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';

@@ -78,26 +78,15 @@ const Outline = styled.button<OutlineProps>`
     }
     @media screen and (max-width: 800px) {
         height: 70%;
-    /* display: inline-block;  // Modified this line to keep all items in a single line */
   }
 `;
 const OutlineText = styled.h3`
     color: ${theme.darkGray};
     padding: 5px;
-    /* padding: 10px 5px; */
     margin : 0;
     &:hover {
         color: ${theme.white};
     }
-`;
-const LeftBar = styled.div`
-  display: flex;
-  
-  @media screen and (max-width: 1100px){
-    justify-content: center;
-    margin-bottom: 0;
-    }
-    
 `;
 const Grid = styled.div`
     

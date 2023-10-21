@@ -6,8 +6,6 @@ type Props = {
     bg: boolean;
 }
 const Container = styled.section<Props>`
-    // background: ${props => props.bg ? 'url(\'Images/3rd_background.svg\')' : 'url(\'Images/basic_background.png\')'} no-repeat center;
-    // background-size: cover;
     width: 100%;
     display: flex;
     padding: 5rem 0;
@@ -101,7 +99,6 @@ const EachBox = styled.div<BoxProps>`
     }
 `;
 const Image = styled.img`
-    // padding-bottom: 100px;
     position: absolute;
     margin-left: 5px;
     bottom: 70px; 
@@ -114,7 +111,6 @@ const Image = styled.img`
         left: 50%;
         transform: translateX( -50%);
     }
-  /* transform: translate(-50%, -50%); */
 `;
 
 type DataProps = {

@@ -1,8 +1,6 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
 import { theme } from '../../style';
-// import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-// import { faGooglePlay, faAppStore } from '@fortawesome/free-brands-svg-icons';
 const Container = styled.div`
     height: 29vw;
     max-height: 390px;
@@ -28,18 +26,12 @@ const ContentBox = styled.div`
     @media screen and (max-width: 500px) {
       flex-direction: column;
     }
-    // @media screen and (max-width: 1100px) {
-    //     flex-direction: column;
-    //     justify-content: center;
-    //     align-items: center;
-    // }
 `;
 const IndexBox = styled.div`
   width: 45%;
   max-height: 390px;
   height: 100%;
   @media screen and (max-width: 1100px) {
-    /* margin-top: 20px; */
 }
     @media screen and (max-width: 500px) {
         display: flex;

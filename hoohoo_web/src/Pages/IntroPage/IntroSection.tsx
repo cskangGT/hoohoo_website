@@ -10,18 +10,11 @@ import LandingOrganizer from '../LandingPage/LandingOrganizer';
 import LandingFestival from '../LandingPage/LandingFestival';
 const SectionContainer = styled.section`
     display: flex;
-    /* height: 900px; */
     box-sizing: border-box;
     justify-content: center;
     align-items: center;
     margin-top: 42px;
     border-radius: 20px;
-    /* @media screen and (max-width: 1100px) {
-        height: 900px;
-    }
-    @media screen and (max-width: 700px) {
-        height: 700px;
-    } */
 `;
 const Inside = styled.div`
     overflow: hidden;
@@ -32,7 +25,6 @@ const Inside = styled.div`
   @media screen and (max-width: 1100px) {
     flex-direction: column-reverse;
     align-items: center;
-    // padding-bottom: 50px;
     margin-left: 15px;
     }
     @media screen and (max-width: 700px) {
@@ -87,13 +79,13 @@ const IntroSection: React.FC = () => {
     };
     useEffect(() => {
         let slideInterval: NodeJS.Timeout;
-        if (isAutoSliding) { // 자동 슬라이드 변경 로직이 활성화된 경우에만 setInterval 실행
+        if (isAutoSliding) {
             slideInterval = setInterval(() => {
                 setCurrentSlide((prevSlide) => (prevSlide + 1) % numImage);
             }, 100000);
         }
         return () => {
-            clearInterval(slideInterval); // 컴포넌트가 언마운트되거나 useEffect가 다시 실행되기 전에 setInterval을 클리어합니다.
+            clearInterval(slideInterval);
         };
     }, [images.length, isAutoSliding]);
     const arr = [0, 1];

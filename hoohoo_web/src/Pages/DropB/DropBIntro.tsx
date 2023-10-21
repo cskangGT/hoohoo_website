@@ -48,7 +48,6 @@ const IntroText = styled.div`
     width: 100%;
     padding: 0;
         flex-direction: column;
-        /* margin-bottom: 20rem; */
     }
 `;
 

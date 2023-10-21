@@ -61,11 +61,6 @@ const Input = styled.input`
   /* color: ${theme.white}; */
 `;
 
-const Textarea = styled.textarea`
-  padding: 10px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-`;
 
 const SubmitBtn = styled.button`
   text-decoration: none;
@@ -119,8 +114,6 @@ function BlogModal({ isOpen, setIsOpen }: Props) {
         return `${month} ${day} ${year}`;
     }
     const [previewImage, setPreviewImage] = useState<string | null>(null);
-
-    const currentDate: string = formatDate(new Date());
     const [cookies] = useCookies(['token', 'username']);
 
 
@@ -178,7 +171,6 @@ function BlogModal({ isOpen, setIsOpen }: Props) {
             console.log("Error:", error);
         }
     };
-    // "
     return (
         <React.Fragment>
             {isOpen && (

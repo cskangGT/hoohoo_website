@@ -67,26 +67,7 @@ const DateBox = styled.div`
     font-size: .725rem;
     line-height: 1.7;
 `;
-const Btn = styled.a`
-    text-decoration: none;
-    display: flex;
-    background-color: ${theme.subNeon};
-    height: 50px;
-    border-radius: 20px;
-    border : none;
-    box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.5);
-    width:288px;
-    margin: 40px auto 0px;
-    font-weight: 600;
-    justify-content: center;
-    align-items:center;
-    text-align: center;
-    color: ${theme.darkGray};
-    &:hover {
-        background-color: ${theme.mainNeon};
-        box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.7);
-    }
-`;
+
 type BlogData = {
     'id': number;
     'image': string;
@@ -129,7 +110,6 @@ function BlogCard(props: Props) {
 
 
     return (
-        // <Link to={{ pathname: `/blog/${props.data.id}`, state: { blogData: props.data } }}>
         <Card onClick={() => { navigate(`/blog/${props.data.id}`, { state: { blogData: props.data } }) }}>
             <Image src={props.data.image} />
             <Title>{props.data.title}</Title>
@@ -139,7 +119,6 @@ function BlogCard(props: Props) {
             </ContainerCD>
             <Content>{props.data.desc}</Content>
         </Card>
-        // </Link>
     );
 }
 export default BlogCard;

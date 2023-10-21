@@ -43,19 +43,6 @@ const Header = styled.h1`
         font-size: 2rem;
     }
 `;
-const Content = styled.p`
-    font-size: 1.2rem;
-    font-weight: 200;
-    width: 90%;
-    line-height: 1.5;
-    color: rgba(180, 255, 250, 1);
-    margin-top: 0.5rem;
-    margin-bottom: 3rem;
-    color: #216C53;
-    @media screen and (max-width: 1100px) {
-        text-align: center;
-    }
-`;
 const Button = styled.a`
     position: absolute;
     font-size: 1.5rem;

@@ -32,18 +32,6 @@ const ContentBox = styled.section`
   width: 100%;
   display: flex;
 `;
-
-
-interface SlideContainerProps {
-    currentSlide: number;
-}
-const SlideContainer = styled.div<SlideContainerProps>`
-  display: flex;
-  transition: transform 0.3s ease;
-  transform: translateX(-${props => props.currentSlide * 100}%);
-`;
-
-
 const BannerContainer = styled.div`
   width: 100%;
   display: flex;
@@ -241,23 +229,16 @@ function AboutEarthmera() {
     }, {
         imagePath: 'Images/2-3.png'
     }];
-    const thirdImages: ImageProps[] = [{
-        imagePath: 'Images/3-1.webp'
-    }, {
-        imagePath: 'Images/3-2.webp'
-    }, {
-        imagePath: 'Images/3-3.webp'
-    }];
 
     useEffect(() => {
         let slideInterval: NodeJS.Timeout;
-        if (isAutoSliding) { // 자동 슬라이드 변경 로직이 활성화된 경우에만 setInterval 실행
+        if (isAutoSliding) {
             slideInterval = setInterval(() => {
                 setCurrentSlide((prevSlide) => (prevSlide + 1) % images.length);
             }, 5000);
         }
         return () => {
-            clearInterval(slideInterval); // 컴포넌트가 언마운트되거나 useEffect가 다시 실행되기 전에 setInterval을 클리어합니다.
+            clearInterval(slideInterval);
         };
     }, [images.length, isAutoSliding]);
 
@@ -300,7 +281,6 @@ function AboutEarthmera() {
                 <ContentBox>
                     <Rewards></Rewards>
                 </ContentBox>
-                {/* <ListSection id={"rewards"} data={thirdImages} header='REDEEM REWARDS WITH POINTS.' isBot={true} /> */}
                 <ContentBox key="table" id="table">
                     <NumberIconContent />
                 </ContentBox>

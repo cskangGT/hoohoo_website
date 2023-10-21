@@ -5,7 +5,6 @@ import PartnersWays from './PartnersWays';
 import PartnersCardComponent from '../../Component/ContentBox/PartnersCardComponent';
 import { useNavigate } from 'react-router-dom';
 import ImpactCard from '../../Component/ContentBox/ImpactCard';
-import { mode } from '../../../webpack.config';
 const Container = styled.section`
     width: calc(100% - 30px);
     display: flex;
@@ -313,9 +312,6 @@ interface ImpactCardProps {
 }
 function Fundraising() {
     const navigate = useNavigate();
-    function handleClick() {
-        navigate(`/coming_soon`);
-    }
     useEffect(() => {
         window.scrollTo(0, 0);
     }, []);

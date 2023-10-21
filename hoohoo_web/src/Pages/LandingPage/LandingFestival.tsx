@@ -5,7 +5,6 @@ import { theme } from '../../style';
 import Wrapper from '../../Component/Wrapper/Wrapper';
 import LandingFormModal from './LandingFormModal';
 const Background = styled.div`
-    /* background: url("Images/1pBg.svg") center top / cover no-repeat; */
     background-color: transparent;
     display: flex;
     flex-direction: column;

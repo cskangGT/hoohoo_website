@@ -17,12 +17,6 @@ width: 100%;
   transition: transform 0.5s ease-in-out;
     transform: translateX(-${props => props.currentSlide * 100}%);
 `;
-
-const Slide = styled.div`
-  min-width: 100%;
-  box-sizing: border-box;
-  display: flex;
-`;
 const ArrowButton = styled.button`
   background: none;
   border: none;
@@ -61,8 +55,6 @@ const Container = styled.div`
   width: 100%;
 `;
 const Slider: React.FC<SlidersProps> = ({ currentSlide, handleLeftClick, handleRightClick, children, pageNumber }) => {
-  // const [currentSlide, setCurrentSlide] = useState<number>(0);
-
   const handlers = useSwipeable({
     onSwipedLeft: () => {
       handleRightClick();
@@ -80,9 +72,6 @@ const Slider: React.FC<SlidersProps> = ({ currentSlide, handleLeftClick, handleR
 
       <SlideContainer currentSlide={currentSlide}>
         {children}
-        {/* {React.Children.map(children, child => (
-          <Slide>{child}</Slide>
-        ))} */}
       </SlideContainer>
 
       {currentSlide !== pageNumber - 1 ? <RightArrow onClick={handleRightClick}>&gt;</RightArrow> : <></>}

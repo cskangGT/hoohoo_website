@@ -1,18 +1,15 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
 import { Container } from './style'
-import { theme } from '../../style';
+
 import Wrapper from '../../Component/Wrapper/Wrapper';
 import LandingFormModal from './LandingFormModal';
 const Background = styled.div`
-    /* background: url("Images/bg.svg") center top / cover no-repeat; */
-    // background-size: cover;
     background-color: transparent;
     display: flex;
     flex-direction: column;
     width: 100%;
     height: 100%;
-    /* max-height: 100%; */
     border-radius: 40px;
     overflow-x: hidden;
     
