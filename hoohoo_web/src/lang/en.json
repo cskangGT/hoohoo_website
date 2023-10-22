@@ -114,7 +114,7 @@
   "realtime" : {
     "header": "ECO-ACTION HEROES IN REAL-TIME"
   },
-  "fundraising" : {
+  "IntroEarthMera" : {
     "fundsData" : [{
           "image": "Images/connect.png",
           "head": "Connect",

@@ -88,7 +88,7 @@ function PartnersWays() {
             <Boxes>
                 {
                     data.map((item, index) => (
-                        <Box>
+                        <Box key={index}>
                             <Header>
                                 {item.head}
                             </Header>

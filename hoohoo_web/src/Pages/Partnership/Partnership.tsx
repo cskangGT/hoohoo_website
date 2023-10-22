@@ -5,11 +5,13 @@ import Fundraising from './Fundraising';
 import AboutUs from './AboutUs';
 import Wrapper from '../../Component/Wrapper/Wrapper';
 import { BgImage } from '../../style';
+import IntroEarthMera from './IntroEarthMera';
 const ContentBox = styled.section`
     padding-top: 20px;
     justify-content: center;
   width: 100%;
   display: flex;
+  margin-top: 82px;
 `;
 function Partnership() {
     useEffect(() => {
@@ -25,7 +27,7 @@ function Partnership() {
                     <SketchContents />
                 </ContentBox>
                 <ContentBox>
-                    <Fundraising />
+                    <IntroEarthMera />
                 </ContentBox>
             </Wrapper>
         </BgImage>

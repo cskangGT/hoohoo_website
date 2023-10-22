@@ -65,14 +65,16 @@ const SecondText = styled.p`
     font-size: .875rem;
     line-height: 1.85;
 `;
+
 interface DataItem {
-    headerText: string;
-    content: string;
+    [key: string]: {
+        headerText: string;
+        content: string;
+    };
 }
 
-const data: Record<string, DataItem> = i18next.t('sketch', { returnObjects: true });
 const SketchContents: React.FC = () => {
-
+    const data: DataItem = i18next.t('sketch', { returnObjects: true });
     const images = Object.keys(data);
     return (
         <Container>
