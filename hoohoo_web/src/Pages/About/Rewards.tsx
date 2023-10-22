@@ -40,7 +40,7 @@ const HorizonContainer = styled.div`
     }
 `;
 const LeftBox = styled.div`
-    /* align-items: center; */
+    align-items: center;
     justify-content: start;
     display: flex;
     width: 45%;
@@ -48,8 +48,9 @@ const LeftBox = styled.div`
     @media screen and (max-width: 1100px){
         text-align: center;
     }
-    @media screen and (max-width: 700px){
+    @media screen and (max-width: 500px){
         padding: 0 10px;
+        width: 80%;
     }
 `;
 const Header = styled.h2`

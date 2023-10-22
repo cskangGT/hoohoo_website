@@ -4,6 +4,7 @@ import { Container } from './style'
 
 import Wrapper from '../../Component/Wrapper/Wrapper';
 import LandingFormModal from './LandingFormModal';
+import i18next from 'i18next';
 const Background = styled.div`
     background-color: transparent;
     display: flex;
@@ -135,17 +136,16 @@ const RightImage = styled.img`
         left: 0;
     }
 `;
-
+interface DataProps {
+    image: string;
+    header: string;
+    decoImage: string;
+    firstDesc: string;
+    secDesc: string;
+    button: string;
+}
 function LandingOrganizer() {
-    const data =
-    {
-        header: "Earthmera",
-        image: "Images/4p_picture_and_shape.svg",
-        decoImage: "Images/orgLeft.svg",
-        firstDesc: "Save up to 10% in the festival budget for free",
-        secDesc: "Even with over 2,000 cleaners, the festival always needed extra assistance. However, we enlighten over 400,000 festival attendees to help maintain cleanliness.",
-        button: "Try it Free"
-    }
+    const data: DataProps = i18next.t('landingOrganizer', { returnObjects: true });
     const [isOpen, setIsOpen] = useState<boolean>(false);
     const handleOpen = () => setIsOpen(true);
     return (

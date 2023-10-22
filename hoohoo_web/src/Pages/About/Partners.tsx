@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
 import { theme } from '../../style';
+import i18next from 'i18next';
 const Container = styled.div`
     width: 100%;
     display: flex;
@@ -181,28 +182,8 @@ type SubDataType = {
 function Partners() {
     const [slideIndex, setSlideIndex] = useState<number>(0);
     const [isText, setIsText] = useState<boolean>(false);
-    const data: Data = {
-        header: "How do EarthMera",
-        subHeader: "get their value?",
-        list: ["Partners", "NHS", "Government"],
-        content: {
-            "Partners": {
-                "header": "Partners",
-                "imagePath": "Images/partner1.jpg",
-                "description": "The value of a sweatcoin is derived from our wide-reaching partnerships. From brands that want to connect with health conscious audiences, insurers wishing to encourage healthier lifestyle choices and governments looking to reduce healthcare costs."
-            },
-            "NHS": {
-                "header": "NHS",
-                "imagePath": "Images/nhs.jpg",
-                "description": "GoverSweatcoin work with the NHS to deliver Healthy Incentive programmes across the country, using personalised data-driven approaches to deliver sustained behaviour change.nment"
-            },
-            "Government": {
-                "header": "Government",
-                "imagePath": "Images/government.jpg",
-                "description": "Sweatcoin helps users become +20% more active each day, even after 6 months — this has the potential to transform public health, by using Sweatcoin as a prevention tool for sustained behaviour change."
-            }
-        }
-    }
+    const data: Data = i18next.t('partners', { returnObjects: true });
+
     const imagePaths = Object.values(data.content).map(item => item.imagePath);
     const desc: string[] = Object.values(data.content).map(item => item.description);
     const handleButtonClick = () => {

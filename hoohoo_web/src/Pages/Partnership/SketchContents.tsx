@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { theme } from '../../style';
+import i18next from 'i18next';
 
 const Container = styled.section`
     justify-content: center;
@@ -69,16 +70,7 @@ interface DataItem {
     content: string;
 }
 
-const data: Record<string, DataItem> = {
-    'Images/Asset_44x-8.png': {
-        headerText: "User-centric goal",
-        content: "Providing players with a continuously rewarding experience while discovering new digital worlds at the tap of a button."
-    },
-    'Images/Asset_54x-8.png': {
-        headerText: "Partner focus goal",
-        content: "Building the leading play-and-earn solution that drives high user engagement for game publishers and advertisers on a global scale."
-    }
-};
+const data: Record<string, DataItem> = i18next.t('sketch', { returnObjects: true });
 const SketchContents: React.FC = () => {
 
     const images = Object.keys(data);

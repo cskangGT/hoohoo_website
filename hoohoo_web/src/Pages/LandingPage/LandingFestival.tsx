@@ -4,6 +4,7 @@ import { Container } from './style'
 import { theme } from '../../style';
 import Wrapper from '../../Component/Wrapper/Wrapper';
 import LandingFormModal from './LandingFormModal';
+import i18next from 'i18next';
 const Background = styled.div`
     background-color: transparent;
     display: flex;
@@ -123,17 +124,6 @@ const LeftImage = styled.img`
     }
 `;
 
-const LeftDown = styled.img`
-  position: absolute;
-    width: 40%;
-    bottom: -30%;
-    left: -10%;
-    @media screen and (max-width: 1100px) {
-        width: auto;
-        height: 20%;
-        bottom:-18%;
-    }
-`;
 const RightUpper = styled.img`
   position: absolute;
   height: 40%;
@@ -141,17 +131,17 @@ const RightUpper = styled.img`
   top: -10%;
   
 `;
+interface DataProps {
+    image: string;
+    header: string;
+    firstDesc: string;
+    secDesc: string;
+    button: string;
+    rightUp: string;
+}
 function LandingFestival() {
-    const data =
-    {
-        header: "Earthmera",
-        image: "Images/1p_trash_pic.svg",
-        firstDesc: "Save up to $324,400 in festival cleaning costs for free",
-        secDesc: "At major festivals, approximately 600 individuals are paid $15 per hour for cleaning during a span of three days. However, we encourage over 400,000 festival attendees to help maintain cleanliness.",
-        button: "Try it Free",
-        leftDown: "Images/1p_left_under_side_half_circle.svg",
-        rightUp: "Images/1p_right_side_half_circle.svg"
-    }
+    const data: DataProps = i18next.t('landingFestival', { returnObjects: true });
+
     const [isOpen, setIsOpen] = useState<boolean>(false);
     const handleOpen = () => setIsOpen(true);
     return (
@@ -169,7 +159,6 @@ function LandingFestival() {
                             <PartnerButton onClick={handleOpen}>{data.button}</PartnerButton>
                             {isOpen && <LandingFormModal isOpen={isOpen} setIsOpen={setIsOpen} />}
                         </RightCell>
-                        <LeftDown src={data.leftDown} />
                         <RightUpper src={data.rightUp} />
 
                     </Grid>

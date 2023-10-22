@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import styled from 'styled-components';
 import { theme } from '../../style';
 import ImpactCard from '../../Component/ContentBox/ImpactCard';
@@ -34,12 +34,6 @@ interface ImpactCardProps {
     contents: string;
 }
 function Impact() {
-
-    const data = {
-        header: "YOUR GREEN IMPACT IN NUMBERS",
-        content: ""
-
-    }
 
     const impactData: ImpactCardProps[] = [
         {

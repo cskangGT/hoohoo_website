@@ -41,36 +41,16 @@ const Header = styled.h1`
         font-size: 2rem;
     }
 `;
-const SecondImageBox = styled.div`
-    width: 100%;
-    grid-column-gap: 1rem;
-    grid-row-gap: 1rem;
-    grid-template-rows: auto;
-    grid-template-columns: 1fr 1fr 1fr;
-    grid-auto-columns: 1fr;
-    align-items: stretch;
-    justify-items: stretch;
-    display: grid;
-    margin-top: 50px;
-    margin-bottom: 100px;
-    justify-content: center;
-    @media screen and (max-width: 1100px) {
-        height: auto;
-        grid-template-columns: auto;
-        grid-column-gap: 30px;
-        grid-template-rows: 1fr 1fr 1fr;
-    }
-`;
-const FirstImageBox = styled.div`
+
+const ImageBox = styled.div`
     align-items: center;
     justify-content: center;
     margin-top: 20px;
     width: 100%;
-    grid-row-gap: 1rem;
+    
     grid-template-rows: auto;
     grid-template-columns: 1fr 1fr 1fr;
     display: grid;
-    height: 840px;
     @media screen and (max-width: 1100px) {
         height: auto;
         grid-template-columns: auto;
@@ -86,64 +66,65 @@ type BoxProps = {
     isBot: boolean;
 }
 const EachBox = styled.div<BoxProps>`
-    width: 340px;
-    height: ${props => props.isBot ? 600 : 800}px;
-    position: relative;
+    padding: 0 35px;
+    height: 550px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
     background: linear-gradient(170deg, rgba(255, 255, 255, 0.14) 0%, rgba(255, 255, 255, 0.05) 100%);
     border-color: ${theme.white};
     border-width: 2px;
     border-radius: 20px;
     @media screen and (max-width: 500px) {
-        height: ${props => props.isBot ? 300 : 450}px;
+        height: 450px;
         width: 300px;
     }
 `;
+const ActName = styled.h3`
+text-align: center;
+    font-size: 1.5rem;
+    font-weight: 600;
+    line-height: 1;
+`;
+const ActDesc = styled.span`
+  text-align: center;
+`;
 const Image = styled.img`
-    position: absolute;
-    margin-left: 5px;
-    bottom: 70px; 
     width: 100%;
     height: auto;
     object-fit: contain;
+    
     @media screen and (max-width: 500px) {
-        bottom: 30px; 
-        width: 70%;
-        left: 50%;
-        transform: translateX( -50%);
+        width: 80%;
     }
 `;
 
 type DataProps = {
     imagePath: string;
+    head: string;
+    desc: string;
 }
 type TotalProps = {
     data: DataProps[];
-    header: string;
     isBot: boolean;
     id?: string;
 }
-function ListSection({ data, header, isBot, id }: TotalProps) {
-    var isHeader = header === '' ? false : true;
-    console.log('id', id)
+function ListSection({ data, isBot, id }: TotalProps) {
+
     return (
         <Container bg={isBot} id={id}>
             <ContentBox>
-                {isHeader && <HeaderBox>
-                    <Header>{header}</Header>
-                </HeaderBox>}
-                {
-                    isBot ? <SecondImageBox>
-                        {data.map((item, index) => (<EachBox key={index} isBot={isBot}>
-                            <Image src={item.imagePath} key={index + "img"} /></EachBox>
-                        ))}
-                    </SecondImageBox> : <FirstImageBox>
-                        {data.map((item, index) => (<EachBox key={index} isBot={isBot}>
-                            <Image src={item.imagePath} key={index + "img"} /></EachBox>
-                        ))}
-                    </FirstImageBox>
-                }
+                <ImageBox>
+                    {data.map((item, index) => (
+                        <EachBox key={index} isBot={isBot}>
+                            <Image src={item.imagePath} key={index + "img"} />
+                            <ActName>{item.head}</ActName>
+                            <ActDesc>{item.desc}</ActDesc>
+                        </EachBox>
+                    ))}
+                </ImageBox>
             </ContentBox>
-
         </Container>
     )
 }

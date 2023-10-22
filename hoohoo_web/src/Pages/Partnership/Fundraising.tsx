@@ -4,7 +4,7 @@ import { theme } from '../../style';
 import PartnersWays from './PartnersWays';
 import PartnersCardComponent from '../../Component/ContentBox/PartnersCardComponent';
 import { useNavigate } from 'react-router-dom';
-import ImpactCard from '../../Component/ContentBox/ImpactCard';
+import i18next from 'i18next';
 const Container = styled.section`
     width: calc(100% - 30px);
     display: flex;
@@ -53,13 +53,6 @@ const CardBoxContainer = styled.div`
   @media screen and (max-width: 1100px){
     flex-direction: column;
   }
-`;
-const CardBox = styled.div`
-    display: flex;
-    flex-direction: row;
-    @media screen and (max-width: 780px){
-    flex-direction: column;
-    }
 `;
 const Card = styled.div`
     width: 290px;
@@ -136,20 +129,6 @@ const CardContentBox = styled.div`
     border-radius: 40px;
     position: relative;
     overflow: hidden;
-`;
-const ImpactHeader = styled.h2`
-    color: ${theme.darkGray};
-    display: flex;
-    justify-content: center;
-`;
-const FlexBox = styled.div`
-    width: 100%;
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  @media screen and (max-width: 700px) {
-     flex-direction: column;
-    }
 `;
 const SolutionHeader = styled.h1`
   text-align: left;
@@ -305,83 +284,17 @@ const SmallHeader = styled.span`
   padding-left: 50px;
   font-weight: 500;
 `;
-interface ImpactCardProps {
-    photoPath: string;
-    header: string;
-    contents: string;
-}
+
 function Fundraising() {
-    const navigate = useNavigate();
     useEffect(() => {
         window.scrollTo(0, 0);
     }, []);
-    const data: DataType[] = [{
-        image: "Images/connect.png",
-        head: "Connect",
-        content: "We find a corporate investor to sponsor your festival."
-    }, {
-        image: "Images/golive.png",
-        head: "Go live",
-        content: "Your campaign goes live with Eco-Action through our EarthMera."
-    }, {
-        image: "Images/donate.png",
-        head: "Action",
-        content: "Users donate their sweatcoins to hit your fundraising goal."
-    }, {
-        image: "Images/release.png",
-        head: "Release",
-        content: "When the sweatcoin target is hit, the donor releases the funds."
-    }];
-    const cardData: CardType[] = [
-        {
-            image: "Images/c1.jpg",
-            msg: "Are you a festival organizer?",
-            button: "CONNECT TO EARTHMERA"
-        },
-        {
-            image: "Images/p1.jpg",
-            msg: "Are you a sponsor?",
-            button: "SUPPORT EARTHMERA"
-        }
-    ]
-    const modelData = {
-        first_header: 'Future',
-        second_header: 'model',
-        content: 'Earthmera offers eco-friendly biobased plastic bags to participants. Our AI, using computer vision object detection, verifies if the bags are filled as per the assigned missions, promoting environmental responsibility.',
-        image: 'Images/trash_bag.png',
-        compImage: 'Images/model_comp.png'
-    }
-
-    const impactData: ImpactCardProps[] = [
-        {
-            photoPath: 'Images/card1.jpg',
-            header: '51,762,170lb',
-            contents: 'Annual music festival waste in the US.'
-        },
-        {
-            photoPath: 'Images/card2.jpg',
-            header: '5.00lb',
-            contents: 'Avergae Daily Waste Generated per Music festival Attendee.'
-        },
-        {
-            photoPath: 'Images/card3.jpg',
-            header: '8%',
-            contents: 'Recycling Rate of Plastic Waste generatedat the Festival.'
-        }
-    ]
-
-    const solutionData: SubTitleProps[] = [
-        {
-            index: '01',
-            header: 'Background',
-            contents: 'We, EarthMera, have established a partnership with music festivals. Through this partnership, festival organizers define missions and EarthMera encourages participants to complete missions.'
-        },
-        {
-            index: '02',
-            header: 'Solution',
-            contents: 'Through these missions, we minimize the environmental pollution caused by festival participants, leading to significant cost savings on cleanup expenses.'
-        }
-    ]
+    const totalData: any = i18next.t('fundraising', { returnObjects: true });
+    const data: DataType[] = totalData.fundsData;
+    const cardData: CardType[] = totalData["cardData"]
+    const modelData = totalData["modelData"]
+    const sd: any = totalData["solutionData"]
+    const solutionData: SubTitleProps[] = sd["list"]
     return (
         <Container>
             <ContentBox>
@@ -410,15 +323,6 @@ function Fundraising() {
                 </CardBoxContainer>
 
                 <CardContentBox>
-                    <ImpactHeader>Environmental Impact of the Music Festival</ImpactHeader>
-                    <FlexBox>
-                        {impactData.map((item, index) => (
-                            <ImpactCard item={item} />
-                        ))}
-                    </FlexBox>
-                </CardContentBox>
-
-                <CardContentBox>
                     <SolutionHeader>EarthMera's Solution</SolutionHeader>
                     <RowSpace>
                         <LeftSpace>
@@ -429,8 +333,8 @@ function Fundraising() {
                             }
                         </LeftSpace>
                         <RightSpace>
-                            <ImageL src='Images/solution1.png' />
-                            <ImageR src='Images/solution2.png' />
+                            <ImageL src={sd["Imagef"]} />
+                            <ImageR src={sd["Imageb"]} />
                         </RightSpace>
                     </RowSpace>
                 </CardContentBox>

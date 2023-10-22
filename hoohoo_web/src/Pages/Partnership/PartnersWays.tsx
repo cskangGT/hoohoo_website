@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { theme } from '../../style';
+import i18next from 'i18next';
 
 const Container = styled.div`
     width: 920px;
@@ -77,16 +78,7 @@ type DataType = {
     content: string;
 };
 function PartnersWays() {
-    const data: DataType[] = [
-        {
-            head: "Events",
-            content: "We work with entertainment, educational, and active events. We can create exclusive marketplaces filled with deep discounts and event partner products, accessible only to participants of your event. We also run friendly competitions with live leaderboard step counts and set targets for the participants to complete as."
-        },
-        {
-            head: "Customer partnerships",
-            content: "We're eager to use our tech for good. We can build out customised partnerships to support humanitarian, animal welfare, and environmental issues."
-        }
-    ]
+    const data: DataType[] = i18next.t('partnersWay', { returnObjects: true });
 
     return (
         <Container>

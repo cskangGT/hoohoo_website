@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import { theme } from '../../style';
+import i18next from 'i18next';
 const Container = styled.div`
-    width: 100%;
+    width: calc(100% - 30px);
     display: flex;
     margin: 0px auto;
     justify-content: flex-start;
@@ -38,6 +39,9 @@ const Header = styled.h2`
   color: ${theme.darkGray};
 `;
 
+interface DataProps {
+    header: string;
+}
 const GrowingNumber = styled.span`
   font-size: 2rem;
 `;
@@ -51,11 +55,7 @@ function Realtime() {
             clearInterval(interval);
         };
     }, []);
-    const data = {
-        header: "YOUR GREEN IMPACT IN NUMBERS",
-        content: ""
-
-    }
+    const data: DataProps = i18next.t('realtime', { returnObjects: true });
 
     return (
         <Container>

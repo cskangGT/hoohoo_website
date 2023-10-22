@@ -63,22 +63,6 @@ const IntroText = styled.div`
         /* margin-bottom: 20rem; */
     }
   `;
-
-const IntroTitle = styled.h2`
-  margin-bottom: 10px;
-  font-size: 3.3rem;
-  color: ${theme.darkGray};
-  font-weight:bold;
-  text-align: center;
-  @media screen and (max-width: 1100px) {
-    font-size: 46px;
-}
-    @media screen and (max-width: 700px) {
-        font-size: 34px;
-        margin-bottom: 1rem;
-    }
-`;
-
 const FirstDesc = styled.h1`
     text-align: center;
   font-size: 5.0rem;
@@ -111,6 +95,19 @@ const SecondDesc = styled.h3`
         margin-bottom: 1.2rem;
     }
 `;
+
+const FlexBox = styled.div`
+   display:flex;
+    flex-direction: column;
+    width: calc(100% - 20px);
+    padding: 30px 0px;
+    margin: 20px 10px;
+    background-color: rgba(57,62,70, 0.25);
+    border-radius: 40px;
+    position: relative;
+    overflow: hidden;
+`;
+
 const LeftImage = styled.img`
     padding-top: 200px;
   max-width: 150px;
@@ -161,7 +158,7 @@ const SlideContent: React.FC<{ imagePath: string, data: any, windowWidth: number
                     {windowWidth >= 1100 && imagePath === "Images/1__.svg" &&
                         <LeftImage src="Images/1.svg" alt="앱 소개 이미지" draggable="false" />}
                     <IntroText>
-                        <IntroTitle>{data[imagePath]["header"]}</IntroTitle>
+                        {/* <IntroTitle>{data[imagePath].header}</IntroTitle> */}
                         <FirstDesc >
                             {data[imagePath].firstDesc}
                         </FirstDesc>
@@ -182,16 +179,20 @@ const LottieBox = styled.a`
     bottom: 3px;
     position: absolute;
 `;
-
 interface DataStructure {
+    secondImages: ImageProps[];
+    slides: SlideData;
+}
+interface SlideData {
     [key: string]: {
-        "header": string;
-        firstDesc: string;
-        secondDesc: string;
+        firstDesc?: string;
+        secondDesc?: string;
     };
 }
 type ImageProps = {
     imagePath: string;
+    head: string;
+    desc: string;
 }
 function AboutEarthmera() {
     const [windowWidth, setWindowWidth] = useState<number>(window.innerWidth);
@@ -207,10 +208,9 @@ function AboutEarthmera() {
     }, []);
 
     const [currentSlide, setCurrentSlide] = useState<number>(0);
-    const data: DataStructure = i18next.t('IntroPage', { returnObjects: true });
-    const images = Object.keys(data);
+    const data: DataStructure = i18next.t('AboutEarthMera', { returnObjects: true });
+    const images = Object.keys(data.slides);
     const [isAutoSliding, setIsAutoSliding] = useState<boolean>(true);
-
     const handleLeftClick = () => {
         if (currentSlide > 0) {
             setCurrentSlide(currentSlide - 1);
@@ -222,13 +222,6 @@ function AboutEarthmera() {
             setCurrentSlide(currentSlide + 1);
         }
     };
-    const secondImages: ImageProps[] = [{
-        imagePath: 'Images/2-1.png'
-    }, {
-        imagePath: 'Images/2-2.png'
-    }, {
-        imagePath: 'Images/2-3.png'
-    }];
 
     useEffect(() => {
         let slideInterval: NodeJS.Timeout;
@@ -264,7 +257,7 @@ function AboutEarthmera() {
                         handleRightClick={handleRightClick}
                         pageNumber={images.length}>
                         {images.map((imagePath, index) => (
-                            <SlideContent key={index} imagePath={imagePath} data={data} windowWidth={windowWidth} />
+                            <SlideContent key={index} imagePath={imagePath} data={data.slides} windowWidth={windowWidth} />
                         ))}
                     </Slider>
                     <LottieBox href='#partners'>
@@ -274,12 +267,12 @@ function AboutEarthmera() {
                 <ContentBox id="partners">
                     <Partners />
                 </ContentBox>
+                <FlexBox>
+                    <Realtime />
+                </FlexBox>
+                <ListSection id={"next"} data={data.secondImages} isBot={false} />
                 <ContentBox>
-                    <Realtime></Realtime>
-                </ContentBox>
-                <ListSection id={"next"} data={secondImages} header='' isBot={false} />
-                <ContentBox>
-                    <Rewards></Rewards>
+                    <Rewards />
                 </ContentBox>
                 <ContentBox key="table" id="table">
                     <NumberIconContent />

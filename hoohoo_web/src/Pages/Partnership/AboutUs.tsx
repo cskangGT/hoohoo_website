@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import styled from 'styled-components';
 import { theme } from '../../style';
 import PartnerModal from './PartnerModal';
+import i18next from 'i18next';
 const SectionBox = styled.section`
     padding-bottom: 13rem;
     width: 100%;
@@ -132,21 +133,21 @@ const PartnerButton = styled.a`
 
 function AboutUs() {
     const [isOpen, setIsOpen] = useState(false);
+    const data: any = i18next.t('AboutUs', { returnObjects: true });
     const handleOpen = () => setIsOpen(true);
-    console.log('isOpen', isOpen)
     return (
         <SectionBox>
             <ContainerBox>
                 <Grid>
                     <LeftCell>
-                        <AboutHeader>ABOUT US</AboutHeader>
-                        <AboutTitle>We're Looking for Eco-Action people. </AboutTitle>
-                        <AboutContent>Millions of people engage with EarthMera to verify eco-action and get rewarded while capturing.</AboutContent>
-                        <PartnerButton onClick={handleOpen}>Partner with Us</PartnerButton>
+                        <AboutHeader>{data["header"]}</AboutHeader>
+                        <AboutTitle>{data["title"]} </AboutTitle>
+                        <AboutContent>{data["content"]}</AboutContent>
+                        <PartnerButton onClick={handleOpen}>{data["button"]}</PartnerButton>
                         {isOpen && <PartnerModal isOpen={isOpen} setIsOpen={setIsOpen} />}
                     </LeftCell>
                     <RightCell>
-                        <AboutUsImage src="Images/ll_image.webp" />
+                        <AboutUsImage src={data["image"]} />
                     </RightCell>
                 </Grid>
             </ContainerBox>

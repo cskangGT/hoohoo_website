@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
 import { theme } from '../../style';
+import i18next from 'i18next';
 const Container = styled.div`
     height: 29vw;
     max-height: 390px;
@@ -92,29 +93,12 @@ const VideoContent = styled.iframe`
         height: 212px;
     }
 `;
-
-
-
 interface DataProps {
     video: string;
     title: string;
 }
-
 function VideoSection() {
-    const data: DataProps[] = [{
-        video: "https://www.youtube.com/embed/yzk18ZvRW0E?si=H_37XpQejN9CmF34",
-        title: "Protecting the Environment with EarthMera"
-    }, {
-        video: "https://www.youtube.com/embed/_iar-vWcimE?si=yAVI4Ls07kt0TVuQ",
-        title: "Keep claen the Music festival with EarthMera"
-    }, {
-        video: "https://www.youtube.com/embed/0xmXdZHHuwI?si=DeOc5FIszCL_ndmA",
-        title: "Save Earth Make points!"
-    }, {
-        video: "https://www.youtube.com/embed/xehU5GHS3I4?si=zp7KSx0gIIxQ_1t_",
-        title: "EarthMera with school challenge"
-    }]
-
+    const data: DataProps[] = i18next.t('video_youtube', { returnObjects: true });
     const [selectedVideo, setSelectedVideo] = useState<DataProps>(data[0]);
 
     return (

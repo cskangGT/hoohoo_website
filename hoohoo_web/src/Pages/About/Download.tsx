@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { theme } from '../../style';
+import i18next from 'i18next';
 
 const Container = styled.div<DownloadProps>`
     margin-top: 0px;
@@ -157,7 +158,8 @@ interface DownloadProps {
   dropb: boolean | undefined;
 }
 function Download({ dropb }: DownloadProps) {
-  const image = dropb ? "Images/preview1.png" : "Images/preview.png";
+  const data: any = i18next.t('download', { returnObjects: true });
+  const image = dropb ? data["dropb"]["image"] : data["earthmera"]["image"];
   return (
     <Container dropb={dropb}>
       <ContentBox>
@@ -167,17 +169,17 @@ function Download({ dropb }: DownloadProps) {
         </ImageBox>
         <RightBox>
           <Header>
-            {dropb ? "Download DropB App" : "Download the EarthMera App"}
+            {dropb ? data["dropb"]["header"] : data["earthmera"]["header"]}
           </Header>
           <SubHeader>
-            {dropb ? "Record tags for your day!" : "Make a change with one tap in EarthMera!"}
+            {dropb ? data["dropb"]["subheader"] : data["earthmera"]["subheader"]}
           </SubHeader>
           <BannerBtnContainer>
             <BannerBtn href='/coming_soon'>
-              <Img src={'Images/appstore.svg'}></Img>
+              <Img src={data["storeImage"]["appstore"]}></Img>
             </BannerBtn>
             <BannerBtn href='/coming_soon'>
-              <Img src={'Images/googleplay.svg'}></Img>
+              <Img src={data["storeImage"]["googleplay"]}></Img>
             </BannerBtn>
           </BannerBtnContainer>
         </RightBox>

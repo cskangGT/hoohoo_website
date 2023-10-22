@@ -1,8 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
-import { theme } from '../../style';
-import { useSwipeable } from 'react-swipeable';
-
 import Bubble from '../../Component/Bubble';
 import i18next from 'i18next';
 import Slider from '../../Component/ContentBox/Slider';

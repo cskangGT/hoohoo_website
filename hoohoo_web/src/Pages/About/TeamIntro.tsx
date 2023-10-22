@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import { theme } from '../../style';
 import Slider from '../../Component/ContentBox/Slider';
 import ProfileCard from '../../Component/ContentBox/ProfileCard';
+import i18next from 'i18next';
 const SectionBox = styled.section`
     padding-bottom: 5rem;
     width: 100%;
@@ -71,26 +72,7 @@ function SlideContent({ array }: SlideContentProps) {
 };
 
 function TeamIntro() {
-    const data = [{
-        "photoPath": 'Images/sung.jpeg',
-        "name": "Sung Kang",
-        "role": "Founder"
-    },
-    {
-        "photoPath": 'Images/profile_photo1.jpeg',
-        "name": "Jisan Park",
-        "role": "FE Engineer"
-    },
-    {
-        "photoPath": 'Images/moung.jpeg',
-        "name": "Moungsung Im",
-        "role": "FE Engineer"
-    },
-    {
-        "photoPath": 'Images/jimmy.jpeg',
-        "name": "Jimmy Sim",
-        "role": "Business Manager"
-    }]
+    const data: any = i18next.t('teamIntro', { returnObjects: true });
     const groupedData = [];
     for (let i = 0; i < data.length; i += 4) {
         groupedData.push(data.slice(i, i + 4));
