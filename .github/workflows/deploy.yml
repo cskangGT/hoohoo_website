@@ -23,20 +23,40 @@ jobs:
 
     - name: Install dependencies and build
       run: |
+        cd hoohoo_web
         npm ci
         npm run build
+
+    - name: List contents of dist directory
+      run: ls -la hoohoo_web/dist/
 
   deploy:
     needs: build
     runs-on: ubuntu-latest
 
     steps:
-    - name: Deploy to S3
-      uses: jakejarvis/s3-sync-action@master
+    - name: Configure AWS credentials
+      uses: aws-actions/configure-aws-credentials@v1
       with:
-        args: --acl public-read --follow-symlinks --delete --source build/
+        aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+        aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+        aws-region: us-east-2
+
+    - name: Check AWS CLI Version
+      run: aws --version
+
+    - name: Check AWS CLI Installation
+      run: which aws
+
+    - name: Debugging Info
+      run: |
+        echo "Current directory: $(pwd)"
+        ls -la
+
+    - name: Deploy to S3
+      run: |
+        aws s3 sync $(pwd)/hoohoo_web/dist/ s3://www.earthmera.com/ --delete --acl public-read
       env:
-        AWS_S3_BUCKET: www.earthmera.com
         AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
         AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
         AWS_REGION: 'us-east-2'
