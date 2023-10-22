@@ -23,12 +23,12 @@ jobs:
 
     - name: Install dependencies and build
       run: |
-        cd hoohoo_web  # Adjusted path to the hoohoo_web directory
+        cd hoohoo_web
         npm ci
         npm run build
 
     - name: List contents of dist directory
-      run: ls -la hoohoo_web/dist/  # Adjusted path to the dist directory
+      run: ls -la hoohoo_web/dist/
 
   deploy:
     needs: build
@@ -44,7 +44,7 @@ jobs:
 
     - name: Deploy to S3
       run: |
-        cd hoohoo_web/dist/
+        cd hoohoo_web/dist/  
         aws s3 sync ./ s3://www.earthmera.com/ --delete --acl public-read
       env:
         AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
