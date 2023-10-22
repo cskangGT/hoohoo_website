@@ -60,10 +60,6 @@ const ItemBox = styled.div`
 const FirstText = styled.div`
   font-size: 34px;
   font-weight: 600;
-//   grid-column-end: span 1;
-//   grid-column-start :span 1;
-//   grid-row-end: span 1;
-//   grid-row-start: span 1;
 `;
 const SecondText = styled.div`
     font-size: 25px;

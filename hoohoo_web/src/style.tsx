@@ -1,10 +1,8 @@
-import { createGlobalStyle } from 'styled-components';
 import styled from 'styled-components';
 
 
 export const BgImage = styled.div`
-    background: url("Images/bg.svg") center top / cover no-repeat;
-    // background-size: cover;
+    background: url("Images/bg2.webp") center top / cover no-repeat;
     display: flex;
     flex-direction: column;
     width: 100%;
@@ -31,13 +29,3 @@ export const theme: any = {
   lineHeightRegular: 27,
   lineHeightMicro: 18,
 };
-
-// const FontFaces = createGlobalStyle`
-// @font-face {
-//   font-family: 'Myfont';
-//   src: url(${myFontURL}) format('otf');
-//   font-weight: 300;
-//   font-style: normal;
-// }
-// `;
-// export default FontFaces;

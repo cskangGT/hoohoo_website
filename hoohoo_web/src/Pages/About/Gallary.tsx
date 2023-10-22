@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
-import { theme } from '../../style';
 import { useSwipeable } from 'react-swipeable';
 import Slider from '../../Component/ContentBox/Slider';
+import i18next from 'i18next';
 
 const SectionContainer = styled.section`
     display: flex;
@@ -30,7 +30,6 @@ const Inside = styled.div`
   @media screen and (max-width: 1100px) {
     flex-direction: column-reverse;
     align-items: center;
-    // padding-bottom: 50px;
     margin-left: 15px;
 }
 @media screen and (max-width: 700px) {
@@ -45,18 +44,10 @@ const Slide = styled.div`
   
 `;
 
-interface DataStructure {
-    "images": string[]
-}
 
-const data: DataStructure = {
-    "images": ['Images/1.jpeg', 'Images/2.jpeg', 'Images/3.jpeg', 'Images/4.jpeg', 'Images/5.jpeg', 'Images/6.jpeg', 'Images/7.jpeg']
-}
 const BannerContainer = styled.div`
   width: 100%;
   display: flex;
-  
-//   margin-bottom: 100px;
 justify-content: center;
 align-items: center;
 `;
@@ -94,7 +85,6 @@ const SlideContent: React.FC<{ imagePaths: string[] }> = ({ imagePaths }) => {
                     {
                         imagePaths.map((imagePath, index) => (<Banner src={imagePath} key={index} />))
                     }
-
                 </Border>
             </BannerContainer>
         </Slide>
@@ -102,16 +92,13 @@ const SlideContent: React.FC<{ imagePaths: string[] }> = ({ imagePaths }) => {
     );
 };
 const Gallary: React.FC = () => {
-
     const [currentSlide, setCurrentSlide] = useState<number>(0);
-    const slides = data['images'];
+    const slides: string[] = i18next.t('gallery', { returnObjects: true });;
     const handleLeftClick = () => {
         if (currentSlide > 0) {
             setCurrentSlide(currentSlide - 1);
         }
     };
-
-    // 오른쪽 화살표 버튼 클릭 핸들러
     const handleRightClick = () => {
         if (currentSlide < groupedImages.length - 1) {
             setCurrentSlide(currentSlide + 1);
@@ -131,7 +118,7 @@ const Gallary: React.FC = () => {
     for (let i = 0; i < slides.length; i += 3) {
         groupedImages.push(slides.slice(i, i + 3));
     }
-    console.log('groupedImages.length', groupedImages.length)
+    console.log('groupedImages', groupedImages)
     useEffect(() => {
         const slideInterval = setInterval(() => {
             setCurrentSlide((prevSlide) => (prevSlide + 1) % groupedImages.length);

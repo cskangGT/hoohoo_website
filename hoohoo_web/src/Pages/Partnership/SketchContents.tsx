@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { theme } from '../../style';
+import i18next from 'i18next';
 
 const Container = styled.section`
     justify-content: center;
@@ -18,7 +19,7 @@ const Grid = styled.div`
     grid-column-gap: 1rem;
     grid-row-gap: 1rem;
     grid-template-rows: auto;
-    grid-template-columns: .75fr 1fr;
+    grid-template-columns: 1fr 1fr;
     grid-auto-columns: 1fr;
     display: grid;
     margin-top: 6rem;
@@ -31,13 +32,13 @@ const Grid = styled.div`
     }
 `;
 const Box = styled.div`
-  border-radius: 10px;
+  border-radius: 30px;
   color: ${theme.darkGray};
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
   display: flex;
-  background-color: ${theme.white};
+  background-color: #E1E7ED;
 `;
 const Image = styled.img`
     max-width: 55%;
@@ -69,17 +70,7 @@ interface DataItem {
     content: string;
 }
 
-// data 객체에 대한 타입 정의
-const data: Record<string, DataItem> = {
-    'Images/Test1.svg': {
-        headerText: "User-centric goal",
-        content: "Providing players with a continuously rewarding experience while discovering new digital worlds at the tap of a button."
-    },
-    'Images/Test2.svg': {
-        headerText: "Partner focus goal",
-        content: "Building the leading play-and-earn solution that drives high user engagement for game publishers and advertisers on a global scale."
-    }
-};
+const data: Record<string, DataItem> = i18next.t('sketch', { returnObjects: true });
 const SketchContents: React.FC = () => {
 
     const images = Object.keys(data);

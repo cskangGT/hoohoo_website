@@ -1,8 +1,9 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import { theme } from '../../style';
 import Slider from '../../Component/ContentBox/Slider';
 import ProfileCard from '../../Component/ContentBox/ProfileCard';
+import i18next from 'i18next';
 const SectionBox = styled.section`
     padding-bottom: 5rem;
     width: 100%;
@@ -34,7 +35,7 @@ const HeaderBox = styled.div`
 const HeaderText = styled.h2`
   font-size: 3rem;
   text-align: center;
-    color: ${theme.white};
+    color: ${theme.darkGray};
     @media screen and (max-width: 700px) {
         font-size: 2rem;
     }
@@ -71,29 +72,10 @@ function SlideContent({ array }: SlideContentProps) {
 };
 
 function TeamIntro() {
-    const data = [{
-        "photoPath": 'Images/sung.jpeg',
-        "name": "Sung Kang",
-        "role": "Founder"
-    },
-    {
-        "photoPath": 'Images/profile_photo1.jpeg',
-        "name": "Jisan Park",
-        "role": "FE Engineer"
-    },
-    {
-        "photoPath": 'Images/moung.jpeg',
-        "name": "Moungsung Im",
-        "role": "FE Engineer"
-    },
-    {
-        "photoPath": 'Images/jimmy.jpeg',
-        "name": "Jimmy Shim",
-        "role": "Business Manager"
-    }]
+    const data: any = i18next.t('teamIntro', { returnObjects: true });
     const groupedData = [];
-    for (let i = 0; i < data.length; i += 3) {
-        groupedData.push(data.slice(i, i + 3));
+    for (let i = 0; i < data.length; i += 4) {
+        groupedData.push(data.slice(i, i + 4));
     }
     const [currentSlide, setCurrentSlide] = useState<number>(0);
     const handleLeftClick = () => {
@@ -102,12 +84,14 @@ function TeamIntro() {
         }
     };
 
-    // 오른쪽 화살표 버튼 클릭 핸들러
     const handleRightClick = () => {
         if (currentSlide < data.length - 1) {
             setCurrentSlide(currentSlide + 1);
         }
     };
+    useEffect(() => {
+        window.scrollTo(0, 0);
+    }, []);
     return (
         <SectionBox>
             <ContainerBox>
@@ -116,8 +100,7 @@ function TeamIntro() {
                         Team EarthMera
                     </HeaderText>
                 </HeaderBox>
-
-                <React.Fragment >
+                <React.Fragment>
                     <Slider
                         currentSlide={currentSlide}
                         handleLeftClick={handleLeftClick}
@@ -126,7 +109,6 @@ function TeamIntro() {
                         {groupedData.map((value, index) => (
                             <SlideContent array={value} />
                         ))}
-
                     </Slider>
                 </React.Fragment>
             </ContainerBox>

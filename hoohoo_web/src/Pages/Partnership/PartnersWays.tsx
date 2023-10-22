@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { theme } from '../../style';
+import i18next from 'i18next';
 
 const Container = styled.div`
     width: 920px;
@@ -21,7 +22,7 @@ const LeftHeader = styled.h1`
   width: 100%;
   font-weight: 400;
   letter-spacing: 1.1px;
-  color: ${theme.white};
+  color: ${theme.darkGray};
   font-size: 26px;
   @media screen and (max-width: 1100px){
       text-align: center;
@@ -38,7 +39,10 @@ const Boxes = styled.div`
     }
 `;
 const Box = styled.div`
-  color: ${theme.white};
+  color: ${theme.darkGray};
+  background: linear-gradient(-50deg, rgba(80, 108, 93, 0.1) 10%, rgba(46, 46, 46, 0.2) 30%);
+  border-radius: 10px;
+  padding: 15px;
   width: 45%;
   @media screen and (max-width: 1100px){
         width: 100%;
@@ -59,7 +63,7 @@ const Header = styled.h4`
 const BoxContent = styled.p`
     font-size: 16px;
     line-height: 140%;
-    color: rgba(252, 232, 200, 1);
+    color: #5c3b03bc;
     @media screen and (max-width: 1100px){
         align-items: center;
         text-align:center;
@@ -74,16 +78,7 @@ type DataType = {
     content: string;
 };
 function PartnersWays() {
-    const data: DataType[] = [
-        {
-            head: "Events",
-            content: "We work with entertainment, educational, and active events. We can create exclusive marketplaces filled with deep discounts and event partner products, accessible only to participants of your event. We also run friendly competitions with live leaderboard step counts and set targets for the participants to complete as."
-        },
-        {
-            head: "Customer partnerships",
-            content: "We're eager to use our tech for good. We can build out customised partnerships to support humanitarian, animal welfare, and environmental issues."
-        }
-    ]
+    const data: DataType[] = i18next.t('partnersWay', { returnObjects: true });
 
     return (
         <Container>

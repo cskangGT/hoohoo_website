@@ -69,7 +69,6 @@ const RowBox = styled.div`
   flex-direction: row;
   align-content: center;
   justify-content: space-between;
-  // margin-top: -10px;
   padding: 10px;
   padding-top: 25px;
   padding-bottom:0;
@@ -92,13 +91,10 @@ const FooterButton = styled.a`
     cursor: pointer;
     text-decoration: none;
     color: ${theme.white};
-    // margin-bottom: 3px;
-    // margin-top: 4px;
-    // margin: 2px 0;
+
     &:hover {
       background-color: #313131;
       color: ${theme.white};
-        // color: ${theme.mainNeon};
     }
 `;
 const IconBox = styled.div`

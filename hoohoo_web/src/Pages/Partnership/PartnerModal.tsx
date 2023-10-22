@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faX } from '@fortawesome/free-solid-svg-icons';
 import { theme } from '../../style';
+import i18next from 'i18next';
 const ModalBackground = styled.div`
   position: fixed;
   z-index: 9999;
@@ -176,7 +177,7 @@ function PartnerModal({ isOpen, setIsOpen }: Props) {
             console.log("Error:", error);
         }
     };
-    // "
+    const data: any = i18next.t('partnerModal', { returnObjects: true });
     return (
         <React.Fragment>
             {isOpen && (
@@ -187,7 +188,7 @@ function PartnerModal({ isOpen, setIsOpen }: Props) {
 
                             <Form onSubmit={handleSubmit}>
                                 <HeaderCotainer>
-                                    <HeaderText>Unlock the power of player loyalty to boost LTV.</HeaderText>
+                                    <HeaderText>{data["header"]}</HeaderText>
                                 </HeaderCotainer>
                                 <Label>Email</Label>
                                 <Input type="email"
@@ -218,7 +219,7 @@ function PartnerModal({ isOpen, setIsOpen }: Props) {
                                     placeholder="Your Message"
                                     required />
                                 <ConsentContainer>
-                                    <RichText>EarthMera is committed to protecting and respecting your privacy, and we’ll only use your personal information to administer your account and to provide the products and services you requested from us. From time to time, we would like to contact you about our products and services, as well as other content that may be of interest to you. If you consent to us contacting you for this purpose, please tick below to say how you would like us to contact you:</RichText>
+                                    <RichText>{data["rich"]}</RichText>
                                     <AgreeBox>
                                         <legend />
                                         <React.Fragment>
@@ -232,8 +233,8 @@ function PartnerModal({ isOpen, setIsOpen }: Props) {
                                             </InputList>
                                         </React.Fragment>
                                     </AgreeBox>
-                                    <RichTextP>You may unsubscribe from these communications at any time. For more information on how to unsubscribe, our privacy practices, and how we are committed to protecting and respecting your privacy, please review our <a href={'/privacy'}>Privacy Policy</a>.</RichTextP>
-                                    <RichTextP>By clicking submit below, you consent to allow Mistplay to store and process the personal information submitted above to provide you the content requested.</RichTextP>
+                                    <RichTextP>{data["rich1"]} <a href={'/privacy'}>Privacy Policy</a>.</RichTextP>
+                                    <RichTextP>{data["rich2"]}</RichTextP>
                                     <ReCaptchaBox>
                                         <ReCap>
                                             <iframe src="https://www.google.com/recaptcha/enterprise/anchor?ar=1&k=6Ld_ad8ZAAAAAAqr0ePo1dUfAi0m4KPkCMQYwPPm&co=aHR0cHM6Ly93d3cubWlzdHBsYXkuY29tOjQ0Mw..&hl=en&v=0hCdE87LyjzAkFO5Ff-v7Hj1&size=invisible&badge=inline&cb=ti16pg6gvhcq"></iframe>

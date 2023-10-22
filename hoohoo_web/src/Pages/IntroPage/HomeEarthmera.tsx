@@ -1,12 +1,8 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import styled from 'styled-components';
 import IntroSection from './IntroSection';
-import NumberIconContent from '../../Component/ContentBox/NumberIconContent';
-import ListSection from './ListSection';
-import VideoSection from './Video';
-import Download from './Download';
-import Partners from './Partners';
-import Wrapper from '../../Component/Wrapper/Wrapper';
+
+
 import { BgImage } from '../../style';
 const ContentBox = styled.section`
     padding-top: 20px;
@@ -14,46 +10,45 @@ const ContentBox = styled.section`
   width: 100%;
   display: flex;
 `;
+const Wrap = styled.div`
+  width: calc(100%);
+  max-width: 1300px; 
+  margin: 0 auto;
+  @media screen and (max-width: 1400px) {
+    max-width: 1300px;
+  }
+  @media screen and (max-width: 1200px) {
+    max-width: 1200px;
+  }
 
-type ImageProps = {
-    imagePath: string;
-}
+  @media screen and (max-width: 1000px) {
+    max-width: 850px;
+  }
+
+  @media screen and (max-width: 850px) {
+    max-width: 750px;
+  }
+
+  @media screen and (max-width: 700px) {
+    max-width: 550px;
+  }
+
+  @media screen and (max-width: 550px) {
+    max-width: 400px;
+  }
+`;
+
 
 function HomeEarthmera() {
-    const secondImages: ImageProps[] = [{
-        imagePath: 'Images/2-1.webp'
-    }, {
-        imagePath: 'Images/2-2.webp'
-    }, {
-        imagePath: 'Images/2-3.webp'
-    }];
-    const thirdImages: ImageProps[] = [{
-        imagePath: 'Images/3-1.webp'
-    }, {
-        imagePath: 'Images/3-2.webp'
-    }, {
-        imagePath: 'Images/3-3.webp'
-    }];
-    return (
-        <BgImage>
-            <Wrapper>
-                <IntroSection />
-                <ContentBox id="partners">
-                    <Partners />
-                </ContentBox>
-                <ListSection id={"next"} data={secondImages} header='' isBot={false} />
-                <ListSection id={"rewards"} data={thirdImages} header='REDEEM REWARDS WITH POINTS.' isBot={true} />
-                <ContentBox key="table" id="table">
-                    <NumberIconContent />
-                </ContentBox>
-                <ContentBox key="video" id="video">
-                    <VideoSection />
-                </ContentBox>
-                <ContentBox id="download" key="download">
-                    <Download dropb={false} />
-                </ContentBox>
-            </Wrapper>
-        </BgImage>
-    );
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+  return (
+    <BgImage>
+      <Wrap>
+        <IntroSection />
+      </Wrap>
+    </BgImage>
+  );
 }
 export default HomeEarthmera; 

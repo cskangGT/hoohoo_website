@@ -175,25 +175,6 @@ function LandingFormModal({ isOpen, setIsOpen }: Props) {
                                     placeholder="Reach out for an exclusive 50% partner discount!"
                                     required />
                                 <ConsentContainer>
-                                    {/* <RichText></RichText> */}
-                                    {/* <AgreeBox>
-                                        <legend />
-                                        <React.Fragment>
-                                            <InputList>
-                                                <CheckList>
-                                                    <Label style={{ fontSize: 14 }}>
-                                                        <Check type="checkbox" />
-                                                        I agree to the terms and conditions.
-                                                    </Label>
-                                                </CheckList>
-                                            </InputList>
-                                        </React.Fragment>
-                                    </AgreeBox> */}
-                                    {/* <ReCaptchaBox>
-                                        <ReCap>
-                                            <Iframe src="https://www.google.com/recaptcha/enterprise/anchor?ar=1&k=6Ld_ad8ZAAAAAAqr0ePo1dUfAi0m4KPkCMQYwPPm&co=aHR0cHM6Ly93d3cubWlzdHBsYXkuY29tOjQ0Mw..&hl=en&v=0hCdE87LyjzAkFO5Ff-v7Hj1&size=invisible&badge=inline&cb=ti16pg6gvhcq" />
-                                        </ReCap>
-                                    </ReCaptchaBox> */}
                                 </ConsentContainer>
                                 <SubmitBtn data-l10n-id="partnership-submit">
                                     Submit</SubmitBtn>

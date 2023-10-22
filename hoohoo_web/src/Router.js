@@ -14,7 +14,6 @@ import BlogDetail from "./Pages/Blog/BlogDetail";
 import ComingSoon from "./Component/ErrorComponent/ComingSoon";
 import Privacy from "./Pages/Legal/Privacy";
 import TandC from "./Pages/Legal/T&C";
-import LandingPage from "./Pages/LandingPage/LandingPage";
 const Router = createBrowserRouter([
     {
         path: "/",
@@ -79,10 +78,6 @@ const Router = createBrowserRouter([
             }, {
                 path: "/coming_soon",
                 element: <ComingSoon />,
-                errorElement: <ErrorComponent />
-            }, {
-                path: "/landing",
-                element: <LandingPage />,
                 errorElement: <ErrorComponent />
             }
         ],

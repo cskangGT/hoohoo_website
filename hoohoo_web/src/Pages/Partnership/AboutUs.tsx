@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import styled from 'styled-components';
 import { theme } from '../../style';
 import PartnerModal from './PartnerModal';
+import i18next from 'i18next';
 const SectionBox = styled.section`
     padding-bottom: 13rem;
     width: 100%;
@@ -60,22 +61,16 @@ const AboutHeader = styled.h4`
     font-size: .85rem;
     font-weight: 500;
     line-height: 1.5;
-    color: ${theme.white};
+    color: ${theme.darkGray};
     @media screen and (max-width: 700px) {
         font-size: 1rem;
     }
 `;
 const RightCell = styled.div`
-// justify-content: flex-end;
  align-items: center;
  display: flex;
  width: 900px;
  height: 600px;
-/* position: absolute; */
-/* top: -500px;
-    position: absolute;
-    left: -500px; */
-    /* width: 100%; */
     overflow: visible;
     @media screen and (max-width: 1100px) {
         position: relative;
@@ -89,21 +84,17 @@ const RightCell = styled.div`
 `;
 
 const AboutUsImage = styled.img`
-  /* width: 200%; */
-    /* width: 160%; */
     position: absolute;
     top: -970px;
     left: -1200px;
     width: 350%;
     height: auto;
-    /* object-position: 50% 50%; */
-    /* object-fit: scale-down; */
     @media screen and (max-width: 1100px) {
             object-fit: scale-down;
         }
 `;
 const AboutTitle = styled.h1`
-    color: ${theme.white};
+    color: ${theme.darkGray};
     letter-spacing: .4px;
     margin-top: 0.4rem;
     margin-bottom: 0.8rem;
@@ -119,7 +110,7 @@ const AboutContent = styled.p`
     font-size: 1.4rem;
     font-weight: 200;
     line-height: 1.6;
-    color: rgba(180, 255, 250, 1);
+    color: #1b4442;
     margin-top: 0.5rem;
     margin-bottom: 1rem;
     @media screen and (max-width: 1100px) {
@@ -128,7 +119,6 @@ const AboutContent = styled.p`
 
 `;
 const PartnerButton = styled.a`
-// margin : 20px 5px;
     font-size: 20px;
     font-weight: 700;
     cursor: pointer;
@@ -140,33 +130,24 @@ const PartnerButton = styled.a`
   max-width:60%;
   padding: 10px 15px;
 `;
-const style: any = {
-    position: 'absolute',
-    top: '50%',
-    left: '50%',
-    transform: 'translate(-50%, -50%)',
-    width: 400,
-    border: '2px solid #000',
-    boxShadow: 24,
-    p: 4,
-};
+
 function AboutUs() {
     const [isOpen, setIsOpen] = useState(false);
+    const data: any = i18next.t('AboutUs', { returnObjects: true });
     const handleOpen = () => setIsOpen(true);
-    console.log('isOpen', isOpen)
     return (
         <SectionBox>
             <ContainerBox>
                 <Grid>
                     <LeftCell>
-                        <AboutHeader>ABOUT US</AboutHeader>
-                        <AboutTitle>We're Looking for Eco-Action people. </AboutTitle>
-                        <AboutContent>Millions of people engage with EarthMera to verify eco-action and get rewarded while capturing.</AboutContent>
-                        <PartnerButton onClick={handleOpen}>Partner with Us</PartnerButton>
+                        <AboutHeader>{data["header"]}</AboutHeader>
+                        <AboutTitle>{data["title"]} </AboutTitle>
+                        <AboutContent>{data["content"]}</AboutContent>
+                        <PartnerButton onClick={handleOpen}>{data["button"]}</PartnerButton>
                         {isOpen && <PartnerModal isOpen={isOpen} setIsOpen={setIsOpen} />}
                     </LeftCell>
                     <RightCell>
-                        <AboutUsImage src="Images/ll_image.webp" />
+                        <AboutUsImage src={data["image"]} />
                     </RightCell>
                 </Grid>
             </ContainerBox>

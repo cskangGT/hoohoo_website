@@ -5,9 +5,7 @@ import { theme } from '../../style';
 import LandingFormModal from './LandingFormModal';
 import Wrapper from '../../Component/Wrapper/Wrapper';
 const Background = styled.div`
-    /* background: url("Images/bg.svg") center top / cover no-repeat; */
     background-color: #f1f1f1;
-    // background-size: cover;
     display: flex;
     flex-direction: column;
     width: 100%;

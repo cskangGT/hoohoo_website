@@ -36,7 +36,6 @@ const Input = styled.input`
   border-radius: 5px;
   width: 100%;
     height: 2.75rem;
-  /* color: ${theme.white}; */
 `;
 const HeaderBox = styled.div`
   display: flex;
@@ -90,22 +89,7 @@ function AdminLogin() {
       path: '/', maxAge: 3600
     });
     setLogIn(true);
-    //   }
 
-    // } catch (error) {
-    //   setError('Login failed. Please check your credentials and try again.');
-    // }
-    // try {
-    //     const response = await axios.post('YOUR_SERVER_ENDPOINT_HERE', {
-    //         username: username,
-    //         password: password,
-    //     });
-    //     const token = response.data.token;
-    //     localStorage.setItem('token', token); // 토큰을 로컬스토리지에 저장
-    //     // 로그인 성공 후 다른 페이지로 이동 또는 상태 업데이트
-    // } catch (err) {
-    //     setError('Login failed. Please check your credentials and try again.');
-    // }
   };
   useEffect(() => {
 

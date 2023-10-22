@@ -66,6 +66,5 @@ function Main() {
             <PreviewContainer ><MobileImg src='Images/preview.png'></MobileImg></PreviewContainer>
         </StoresLinkSections>
     </BgImage></Header>);
-
 }
 export default Main; 

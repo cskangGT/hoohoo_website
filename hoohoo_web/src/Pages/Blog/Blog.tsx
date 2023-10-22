@@ -6,7 +6,7 @@ import PageNav from '../../Component/Blog/PageNav';
 import BlogModal from './BlogModal';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlus } from '@fortawesome/free-solid-svg-icons';
-import blogdata from './data.json';
+// import blogdata from './data.json';
 import { useCookies } from 'react-cookie';
 import Wrapper from '../../Component/Wrapper/Wrapper';
 import { useSwipeable } from 'react-swipeable';
@@ -74,30 +74,22 @@ const Outline = styled.button<OutlineProps>`
     border-radius: 10px;
     &:hover {
         background-color: ${theme.darkGray};
-        color: ${theme.mainNeon};
+        color: ${theme.white};
     }
     @media screen and (max-width: 800px) {
         height: 70%;
-    /* display: inline-block;  // Modified this line to keep all items in a single line */
   }
 `;
 const OutlineText = styled.h3`
-    color: ${theme.white};
+    color: ${theme.darkGray};
     padding: 5px;
-    /* padding: 10px 5px; */
     margin : 0;
-    
-`;
-const LeftBar = styled.div`
-  display: flex;
-  
-  @media screen and (max-width: 1100px){
-    justify-content: center;
-    margin-bottom: 0;
+    &:hover {
+        color: ${theme.white};
     }
-    
 `;
 const Grid = styled.div`
+    
     grid-column-gap: 0.5rem;
     grid-row-gap: 0.5rem;
     grid-template-rows: auto;
@@ -125,7 +117,7 @@ type BlogData = {
     'desc': string;
 };
 const Text = styled.span`
-  color: ${theme.white};
+  color: ${theme.darkGray};
   display: flex;
   width: 100%;
   margin: 20px 30px;
@@ -144,7 +136,7 @@ const NewBlogBtn = styled.button`
     text-decoration: none;
     
     background-color: transparent;
-    color: ${theme.white};
+    color: ${theme.darkGray};
   /* padding: 10px 15px; */
     border: none;
     outline: none;
@@ -165,31 +157,29 @@ function Blog() {
     const [fetchedList, setFetchedList] = useState<BlogData[]>([]);
     const list: string[] = ["All", "Trash-Picking", "Reuse", "Recycle", "Transportation", "Eco Product"];
     const [isOpen, setIsOpen] = useState<boolean>(false);
-    const [numTotalData, setNumTotalData] = useState<number>(blogdata.length);
+    const [numTotalData, setNumTotalData] = useState<number>(1);
     const handleOpen = () => setIsOpen(true);
     const [cookies] = useCookies(['token', 'username']);
     const [logIn, setLogIn] = useState<boolean>(!!cookies.username);
-    const [isSwiping, setIsSwiping] = useState(false);
-    const [startX, setStartX] = useState<number>(0);
-    const [scrollLeft, setScrollLeft] = useState<number>(0);
+
     const scrollContainerRef = useRef<HTMLDivElement>(null);
-    blogdata.reverse();
+    // blogdata.reverse();
 
     useEffect(() => {
         setLogIn(!!cookies.username);
     }, [cookies.username]);
     const fetchData = (category: string, page: number) => {
-        let filteredData: BlogData[];
-        if (category === list[0]) {
-            filteredData = blogdata;
-        } else {
-            filteredData = blogdata.filter(item => item.category === category);
-        }
-        setNumTotalData(filteredData.length);
-        const startIndex = Math.max(0, filteredData.length - OFFSET * page);
-        const endIndex = filteredData.length - OFFSET * (page - 1);
-        const slicedData = filteredData.slice(startIndex, endIndex);
-        setFetchedList(slicedData); // 필요한 데이터 OFFSET만큼만 가져온다.
+        // let filteredData: BlogData[];
+        // if (category === list[0]) {
+        //     filteredData = blogdata;
+        // } else {
+        //     filteredData = blogdata.filter(item => item.category === category);
+        // }
+        // setNumTotalData(filteredData.length);
+        // const startIndex = Math.max(0, filteredData.length - OFFSET * page);
+        // const endIndex = filteredData.length - OFFSET * (page - 1);
+        // const slicedData = filteredData.slice(startIndex, endIndex);
+        // setFetchedList(slicedData); // 필요한 데이터 OFFSET만큼만 가져온다.
         // fetch(`http://localhost:4000/blogs?category=${category}&offset=${OFFSET}&page=${page}`)
         //     .then(response => response.json())
         //     .then(data => setFetchedList(data))
@@ -211,7 +201,9 @@ function Blog() {
         handleSelectCategory(selectedCategory);
     }, [])
 
-
+    useEffect(() => {
+        window.scrollTo(0, 0);
+    }, []);
     const handlers = useSwipeable({
         onSwiping: (eventData) => {
             if (scrollContainerRef.current) {
@@ -219,13 +211,8 @@ function Blog() {
             }
         },
         preventScrollOnSwipe: false,
-
         trackMouse: true
     });
-
-
-
-
 
     return (
         <BgImage>
@@ -248,7 +235,7 @@ function Blog() {
                             </LongBar>
                         </SlickBar>
                         {
-                            fetchedList.length === 0 ? <Text>No Posts to show</Text>
+                            fetchedList.length === 0 ? <Text style={{ minHeight: 400 }}>Opening Soon</Text>
                                 : <Grid> {
                                     fetchedList.map((item, index) => (
                                         <BlogCard key={index} data={item}></BlogCard>

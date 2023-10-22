@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import { theme } from '../../style';
 import { useSwipeable } from 'react-swipeable';
 import Slider from '../../Component/ContentBox/Slider';
+import i18next from 'i18next';
 
 const SectionContainer = styled.section`
     display: flex;
@@ -48,14 +49,13 @@ const IntroText = styled.div`
     width: 100%;
     padding: 0;
         flex-direction: column;
-        /* margin-bottom: 20rem; */
     }
 `;
 
 const IntroTitle = styled.h2`
   margin-bottom: 10px;
   font-size: 3.3rem;
-  color: ${theme.white};
+  color: ${theme.darkGray};
   font-weight:bold;
   text-align: center;
   @media screen and (max-width: 1100px) {
@@ -72,7 +72,7 @@ text-align: center;
   font-weight: 600;
   line-height: 1.1;
   margin-bottom: 3rem;
-  color: ${theme.white};
+  color: ${theme.darkGray};
   @media screen and (max-width: 1100px) {
     font-size: 54px;
     margin-bottom: 2rem;
@@ -87,7 +87,7 @@ const SecondDesc = styled.h3`
   font-size: 1.6rem;
   margin-bottom: 4.5rem;
   line-height: 1.3;
-  color: ${theme.white};
+  color: ${theme.darkGray};
   font-weight: 500;
   text-align: center;
   @media screen and (max-width: 1100px) {
@@ -130,16 +130,11 @@ interface DataStructure {
     };
 }
 
-const data: DataStructure = {
-    "Images/preview1.png": {
-        "firstDesc": "CAPTURE AND BE REWARDED",
-        "secondDesc": "CLICK YOUR SHUTTER,<br />BUILD EARTH'S SHELTER, <br />GET POINTS AND BECOME WEALTHIER."
-    }
-}
-
+const data: DataStructure = i18next.t('dropbIntro', { returnObjects: true });
 
 const SlideContent: React.FC<{ imagePath: string, data: any, windowWidth: number }> = ({ imagePath, data, windowWidth }) => {
     // 여기에 슬라이드의 내용을 적용하세요.
+
     return (
         <Slide key={imagePath}>
             <IntroText>
@@ -158,7 +153,6 @@ const SlideContent: React.FC<{ imagePath: string, data: any, windowWidth: number
     );
 };
 const DropBIntro: React.FC = () => {
-    const [windowWidth, setWindowWidth] = useState<number>(window.innerWidth);
     const [currentSlide, setCurrentSlide] = useState<number>(0);
     const slides = Object.keys(data);
     const handleLeftClick = () => {
@@ -201,7 +195,7 @@ const DropBIntro: React.FC = () => {
                 handleRightClick={handleRightClick}
                 pageNumber={slides.length} >
                 {slides.map((imagePath, index) => (
-                    <SlideContent key={index} imagePath={imagePath} data={data} windowWidth={windowWidth} />
+                    <SlideContent key={index} imagePath={imagePath} data={data} windowWidth={window.innerWidth} />
                 ))}
             </Slider>
         </Inside>

@@ -8,6 +8,8 @@
         }
     },
     "Nav" : {
+      "logo" : { "text":"EarthMera",
+    "image": "Images/icon_image.png"},
         "navlist" : [
           { "label": "Home", "link": "/home" },
           {
@@ -24,7 +26,7 @@
           {
             "label": "Download",
             "subItems": [
-              { "label": "EarthMera", "link": "/home#download" },
+              { "label": "EarthMera", "link": "/about_earthmera#download_earthmera" },
               { "label": "DropB", "link": "/dropb" }
             ]
           },
@@ -37,15 +39,215 @@
             "link": "#contact"
           }]
     },
-    "IntroPage": {
+    "AboutEarthMera": {
+      "secondImages" : [{
+        "imagePath": "Images/L1.png",
+        "head": "TAKE AN ECO-ACTION",
+        "desc" : "Try various ways of taking eco-actions."
+    }, {
+        "imagePath": "Images/L2.png",
+        "head": "TAKE A PHOTO",
+        "desc" : "Use the EarthMera app to capture eco-actions."
+    }, {
+        "imagePath": "Images/L3.png",
+        "head": "TAKE A REWARD",
+        "desc" : "Get points! Through photo-taking."
+    }],
+      "slides": {
         "Images/1__.svg": {
             "firstDesc": "CAPTURE AND BE REWARDED",
             "secondDesc": "CLICK YOUR SHUTTER,<br />BUILD EARTH'S SHELTER, <br />GET POINTS AND BECOME WEALTHIER."
         },
-        "Images/Banner.png": {},
+        "Images/banner2.png": {
+          "firstDesc": "123",
+        "secondDesc": "123"
+        },
         "Images/preview.png": {
-            "firstDesc": "CAPTURE AND BE REWARDED",
-            "secondDesc": "CLICK YOUR SHUTTER,<br />BUILD EARTH'S SHELTER, <br />GET POINTS AND BECOME WEALTHIER."
+            "firstDesc": "Empower Your Green Journey",
+            "secondDesc": "Take steps for a greener future,<br /> Celebrate eco-milestones with us,<br /> Earn rewards for helping the Earth."
         }
+      }
+    },
+    "gallery" : ["Images/1.jpeg", "Images/2.jpeg", "Images/4.jpeg", "Images/5.jpeg", "Images/6.jpeg"],
+    "teamIntro" : [{
+      "photoPath": "Images/sung.jpeg",
+      "name": "Sung Kang",
+      "role": "Founder"
+  },
+  {
+      "photoPath": "Images/profile_photo1.jpeg",
+      "name": "Jisan Park",
+      "role": "FE Engineer"
+  },
+  {
+      "photoPath": "Images/moung.jpeg",
+      "name": "Moungsung Im",
+      "role": "FE Engineer"
+  },
+  {
+      "photoPath": "Images/jimmy.jpeg",
+      "name": "Jimmy Sim",
+      "role": "Content Designer"
+  }],
+    "partners" : {
+      "header": "How do EarthMera",
+      "subHeader": "get their value?",
+      "list": ["Partners", "NHS", "Government"],
+      "content": {
+          "Partners": {
+              "header": "Partners",
+              "imagePath": "Images/partner1.jpg",
+              "description": "The value of a sweatcoin is derived from our wide-reaching partnerships. From brands that want to connect with health conscious audiences, insurers wishing to encourage healthier lifestyle choices and governments looking to reduce healthcare costs."
+          },
+          "NHS": {
+              "header": "NHS",
+              "imagePath": "Images/nhs.jpg",
+              "description": "GoverSweatcoin work with the NHS to deliver Healthy Incentive programmes across the country, using personalised data-driven approaches to deliver sustained behaviour change.nment"
+          },
+          "Government": {
+              "header": "Government",
+              "imagePath": "Images/government.jpg",
+              "description": "Sweatcoin helps users become +20% more active each day, even after 6 months — this has the potential to transform public health, by using Sweatcoin as a prevention tool for sustained behaviour change."
+          }
+      }
+  },
+  "realtime" : {
+    "header": "ECO-ACTION HEROES IN REAL-TIME"
+  },
+  "fundraising" : {
+    "fundsData" : [{
+          "image": "Images/connect.png",
+          "head": "Connect",
+          "content": "We find a corporate investor to sponsor your festival."
+      }, {
+          "image": "Images/golive.png",
+          "head": "Go live",
+          "content": "Your campaign goes live with Eco-Action through our EarthMera."
+      }, {
+          "image": "Images/donate.png",
+          "head": "Action",
+          "content": "Users donate their sweatcoins to hit your fundraising goal."
+      }, {
+          "image": "Images/release.png",
+          "head": "Release",
+          "content": "When the sweatcoin target is hit, the donor releases the funds."
+      }],
+      "cardData" : [
+        {
+            "image": "Images/c1.jpg",
+            "msg": "Are you a festival organizer?",
+            "button": "CONNECT TO EARTHMERA"
+        },
+        {
+            "image": "Images/p1.jpg",
+            "msg": "Are you a sponsor?",
+            "button": "SUPPORT EARTHMERA"
+        }],
+        "modelData" : {
+          "first_header": "Future",
+          "second_header": "model",
+          "content": "Earthmera offers eco-friendly biobased plastic bags to participants. Our AI, using computer vision object detection, verifies if the bags are filled as per the assigned missions, promoting environmental responsibility.",
+          "image": "Images/trash_bag.png",
+          "compImage": "Images/model_comp.png"
+      },
+      "solutionData" : {
+        "Imagef" : "Images/solution1.png",
+        "Imageb" : "Images/solution2.png",
+        "list":[
+        {
+            "index": "01",
+            "header": "Background",
+            "contents": "We, EarthMera, have established a partnership with music festivals. Through this partnership, festival organizers define missions and EarthMera encourages participants to complete missions."
+        },
+        {
+            "index": "02",
+            "header": "Solution",
+            "contents": "Through these missions, we minimize the environmental pollution caused by festival participants, leading to significant cost savings on cleanup expenses."
+        }
+      ]}
+  },
+  "video_youtube" : [{
+    "video": "https://www.youtube.com/embed/yzk18ZvRW0E?si=H_37XpQejN9CmF34",
+    "title": "Protecting the Environment with EarthMera"
+  }, {
+      "video": "https://www.youtube.com/embed/_iar-vWcimE?si=yAVI4Ls07kt0TVuQ",
+      "title": "Keep claen the Music festival with EarthMera"
+  }, {
+      "video": "https://www.youtube.com/embed/0xmXdZHHuwI?si=DeOc5FIszCL_ndmA",
+      "title": "Save Earth Make points!"
+  }, {
+      "video": "https://www.youtube.com/embed/xehU5GHS3I4?si=zp7KSx0gIIxQ_1t_",
+      "title": "EarthMera with school challenge"
+  }],
+  "download" : {
+    "earthmera" : {
+      "image" : "Images/preview.png",
+      "header": "Download the EarthMera App",
+      "subheader" : "Make a change with one tap in EarthMera!"
+    },
+    "dropb" : {
+      "image" : "Images/preview1.png",
+      "header": "Download DropB App",
+      "subheader" : "Record tags for your day!"
+    },
+    "storeImage" : {
+      "appstore": "Images/appstore.svg",
+      "googleplay": "Images/googleplay.svg"
     }
+  },
+  "dropbIntro" : {
+    "Images/preview1.png": {
+        "firstDesc": "SPEAK, WRITE, AND DIVE-IN",
+        "secondDesc": "Click to create your own diary with Drop B"
+    } 
+  },
+  "landingFestival" : {
+    "header": "Earthmera",
+    "image": "Images/fst.png",
+    "firstDesc": "Save up to $324,400 in festival cleaning costs for free",
+    "secDesc": "At major festivals, approximately 600 individuals are paid $15 per hour for cleaning during a span of three days. However, we encourage over 400,000 festival attendees to help maintain cleanliness.",
+    "button": "Try it Free",
+    "rightUp": "Images/1p_right_side_half_circle.svg"
+  },
+  "landingOrganizer" : {
+    "header": "Earthmera",
+    "image": "Images/4p_picture_and_shape.svg",
+    "decoImage": "Images/orgLeft.svg",
+    "firstDesc": "Save up to 10% in the festival budget for free",
+    "secDesc": "Even with over 2,000 cleaners, the festival always needed extra assistance. However, we enlighten over 400,000 festival attendees to help maintain cleanliness.",
+    "button": "Try it Free"
+  },
+  "AboutUs":{
+    "header": "ABOUT US",
+    "title" : "We're Looking for Eco-Action people.",
+    "button": "Partner with Us",
+    "content" : "Millions of people engage with EarthMera to verify eco-action and get rewarded while capturing.",
+    "image" : "Images/ll_image.webp"
+  },
+  "partnersWay": [
+    {
+        "head": "Events",
+        "content": "We work with entertainment, educational, and active events. We can create exclusive marketplaces filled with deep discounts and event partner products, accessible only to participants of your event. We also run friendly competitions with live leaderboard step counts and set targets for the participants to complete as."
+    },
+    {
+        "head": "Customer partnerships",
+        "content": "We're eager to use our tech for good. We can build out customised partnerships to support humanitarian, animal welfare, and environmental issues."
+    }
+  ],
+  "partnerModal" : {
+    "header": "Unlock the power of player loyalty to boost LTV.",
+    "rich": "EarthMera is committed to protecting and respecting your privacy, and we’ll only use your personal information to administer your account and to provide the products and services you requested from us. From time to time, we would like to contact you about our products and services, as well as other content that may be of interest to you. If you consent to us contacting you for this purpose, please tick below to say how you would like us to contact you:",
+    "rich1": "You may unsubscribe from these communications at any time. For more information on how to unsubscribe, our privacy practices, and how we are committed to protecting and respecting your privacy, please review our ",
+    "rich2": "By clicking submit below, you consent to allow Mistplay to store and process the personal information submitted above to provide you the content requested."
+  },
+  "sketch" : {
+    "Images/Asset_44x-8.png": {
+        "headerText": "User-centric goal",
+        "content": "Providing players with a continuously rewarding experience while discovering new digital worlds at the tap of a button."
+    },
+    "Images/Asset_54x-8.png": {
+        "headerText": "Partner focus goal",
+        "content": "Building the leading play-and-earn solution that drives high user engagement for game publishers and advertisers on a global scale."
+    }
+  }
 }
