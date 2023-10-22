@@ -23,7 +23,7 @@ jobs:
 
     - name: Install dependencies and build
       run: |
-        cd hoohoo_website/hoohoo_web  # Adjusted path to the hoohoo_web directory
+        cd hoohoo_web  # Adjusted path to the hoohoo_web directory
         npm ci
         npm run build
 
