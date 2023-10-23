@@ -6,7 +6,6 @@ import arrow from './arrow-ani.json';
 import Wrapper from '../../Component/Wrapper/Wrapper';
 import Slider from '../../Component/ContentBox/Slider';
 import i18next from 'i18next';
-import NumberIconContent from '../../Component/ContentBox/NumberIconContent';
 import ListSection from './ListSection';
 import VideoSection from './Video';
 import Download from './Download';
@@ -22,7 +21,6 @@ const SlideSection = styled.section`
     display: flex;
     height: 900px;
     overflow: hidden;
-
     @media screen and (max-width: 600px) {
         height: 850px;
     }

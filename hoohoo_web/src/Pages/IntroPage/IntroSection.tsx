@@ -42,6 +42,7 @@ const Slide = styled.div`
   min-width: 100%;
   box-sizing: border-box;
   position: relative;
+  overflow: hidden;
   display: flex;
 `;
 
@@ -74,7 +75,7 @@ const IntroSection: React.FC = () => {
         if (isAutoSliding) {
             slideInterval = setInterval(() => {
                 setCurrentSlide((prevSlide) => (prevSlide + 1) % numImage);
-            }, 5000);
+            }, 1200000);
         }
         return () => {
             clearInterval(slideInterval);

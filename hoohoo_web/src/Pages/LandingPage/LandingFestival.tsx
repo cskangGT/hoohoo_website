@@ -18,8 +18,8 @@ const Grid = styled.div`
     width: 100%;
     display: flex;
     justify-content: space-between;
-    
     margin: 20px 0;
+    overflow: hidden;
     margin-bottom: 100px;
     @media screen and (max-width:1100px) {
         flex-direction: column;
@@ -44,6 +44,7 @@ const RightCell = styled.div`
     display: flex;
     flex-direction: column;
     align-items: flex-start;
+    overflow: hidden;
     width: 40%;
     margin-bottom: 120px;
     z-index: 100;
@@ -127,7 +128,7 @@ const LeftImage = styled.img`
 const RightUpper = styled.img`
   position: absolute;
   height: 40%;
-  right: -8%;
+  right: -5%;
   top: -10%;
   
 `;

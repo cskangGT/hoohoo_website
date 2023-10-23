@@ -12,20 +12,22 @@ const Background = styled.div`
     width: 100%;
     height: 100%;
     border-radius: 40px;
-    overflow-x: hidden;
+    overflow: hidden;
     
 `;
 const Grid = styled.div`
     width: 100%;
+    position: relative;
     display: flex;
     justify-content: space-between;
+    overflow: hidden;
     @media screen and (max-width: 1100px) {
         flex-direction: column-reverse;
     }
 `;
 const RightCell = styled.div`
-    position: relative;
     display: flex;
+    position: relative;
     width: 60%;
     overflow: visible;
     @media screen and (max-width: 1100px) {
@@ -39,6 +41,7 @@ const LeftCell = styled.div`
     flex-direction: column;
     align-items: flex-start;
     width: 55%;
+    overflow: hidden;
     padding: 20px 20px;
     padding-top: 0px;
     @media screen and (max-width: 1100px) {
