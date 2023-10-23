@@ -59,8 +59,7 @@
             "secondDesc": "CLICK YOUR SHUTTER,<br />BUILD EARTH'S SHELTER, <br />GET POINTS AND BECOME WEALTHIER."
         },
         "Images/banner2.png": {
-          "firstDesc": "123",
-        "secondDesc": "123"
+
         },
         "Images/preview.png": {
             "firstDesc": "Empower Your Green Journey",
@@ -92,22 +91,22 @@
     "partners" : {
       "header": "How do EarthMera",
       "subHeader": "get their value?",
-      "list": ["Partners", "NHS", "Government"],
+      "list": ["Partners", "Users", "Government"],
       "content": {
           "Partners": {
               "header": "Partners",
               "imagePath": "Images/partner2.jpeg",
-              "description": "The value of a sweatcoin is derived from our wide-reaching partnerships. From brands that want to connect with health conscious audiences, insurers wishing to encourage healthier lifestyle choices and governments looking to reduce healthcare costs."
+              "description": "EarthMera thrives on powerful alliances. We collaborate with brands eager to resonate with eco-conscious audiences, industries aiming to reduce their carbon footprint, and organizations looking to champion green initiatives. Together, we are not just endorsing sustainability; we are mainstreaming it."
           },
-          "NHS": {
-              "header": "NHS",
+          "Users": {
+              "header": "Users",
               "imagePath": "Images/nhs1.jpeg",
-              "description": "GoverSweatcoin work with the NHS to deliver Healthy Incentive programmes across the country, using personalised data-driven approaches to deliver sustained behaviour change.nment"
+              "description": "Every click with EarthMera amplifies your contribution to our planet. Capture your eco-actions, earn rewards, and join a community that’s reshaping the world. With every action you take, you’re not just securing points for yourself but ensuring a greener future for the next generation."
           },
           "Government": {
               "header": "Government",
               "imagePath": "Images/government1.jpeg",
-              "description": "Sweatcoin helps users become +20% more active each day, even after 6 months — this has the potential to transform public health, by using Sweatcoin as a prevention tool for sustained behaviour change."
+              "description": "EarthMera motivates eco-friendly habits at the grassroots level. We aid governments in achieving their sustainability goals. By motivating citizens to adopt eco-friendly habits, we are creating tangible change at a grassroots level. We help governments measure and achieve their sustainability goals, fostering a society where eco-consciousness is the norm. With EarthMera, we're not just building an app; we're building a movement."
           }
       }
   },
@@ -144,9 +143,9 @@
             "button": "SUPPORT EARTHMERA"
         }],
         "modelData" : {
-          "first_header": "Future",
-          "second_header": "model",
-          "content": "Earthmera offers eco-friendly biobased plastic bags to participants. Our AI, using computer vision object detection, verifies if the bags are filled as per the assigned missions, promoting environmental responsibility.",
+          "first_header": "AI Model",
+          "second_header": "with EarthMera",
+          "content": "Earthmera offers eco-friendly bio-based plastic bags to participants. Our AI, using computer vision object detection, verifies if the bags are filled as per the assigned missions, promoting environmental responsibility.",
           "image": "Images/trash_bag.png",
           "compImage": "Images/model_comp.png"
       },
@@ -235,10 +234,10 @@
     }
   ],
   "partnerModal" : {
-    "header": "Unlock the power of player loyalty to boost LTV.",
+    "header": "Unlock the power of user loyalty to boost Eco-Action.",
     "rich": "EarthMera is committed to protecting and respecting your privacy, and we’ll only use your personal information to administer your account and to provide the products and services you requested from us. From time to time, we would like to contact you about our products and services, as well as other content that may be of interest to you. If you consent to us contacting you for this purpose, please tick below to say how you would like us to contact you:",
     "rich1": "You may unsubscribe from these communications at any time. For more information on how to unsubscribe, our privacy practices, and how we are committed to protecting and respecting your privacy, please review our ",
-    "rich2": "By clicking submit below, you consent to allow Mistplay to store and process the personal information submitted above to provide you the content requested."
+    "rich2": "By clicking submit below, you consent to allow EarthMera to store and process the personal information submitted above to provide you the content requested."
   },
   "sketch" : {
     "Images/sketch1.jpeg": {
@@ -257,15 +256,15 @@
         "text": "EarthMera's Vision"
     },
     "ll2": {
-        "part1": "B2B",
-        "part2": "B2C"
+        "part1": "1M",
+        "part2": " EarthMera Heroes"
     },
     "ll3": "Fundraising for EarthMera:",
-    "l1": "We manufacture bio-based plastic bags. These bags not only boost AI detection accuracy but also have the potential to become a global standard for eco-friendly bags.",
+    "l1": "We manufacture bio-based plastic bags that are becoming a global standard for eco-friendly bags.",
     "l2": "Images/l2_bag.png",
     "r1": "Images/r1.png",
-    "r2": "Taking EarthMera's AI model to the next level, we've developed a real-time computer vision object detection system that can precisely monitor the amount of waste inside the bag.",
-    "rr1": "Venues where people gather in large numbers, such as theaters, sports arenas, or cinemas, have the potential to become our partners.",
+    "r2": "We developed a real-time computer vision system for precise waste monitoring inside bags.",
+    "rr1": "Large gathering venues like theaters, sports arenas, and cinemas can be our partners.",
     "rr2": "Images/rr2.png"
   },
   "takesteps" : {

@@ -41,18 +41,10 @@ interface DataStructure {
 const Slide = styled.div`
   min-width: 100%;
   box-sizing: border-box;
+  position: relative;
   display: flex;
 `;
 
-const SlideContent: React.FC<{ data: any, windowWidth: number, slide: number }> = ({ data, windowWidth, slide }) => {
-    console.log('slide', slide)
-    return (
-        <Slide>
-            {slide === 0 && <LandingFestival></LandingFestival>}
-            {slide === 1 && <LandingOrganizer></LandingOrganizer>}
-        </Slide>
-    );
-};
 
 const IntroSection: React.FC = () => {
     const [windowWidth, setWindowWidth] = useState<number>(window.innerWidth);
@@ -74,12 +66,15 @@ const IntroSection: React.FC = () => {
             setCurrentSlide(currentSlide + 1);
         }
     };
+    const toggleAutoSliding = (state: boolean) => {
+        setIsAutoSliding(state);
+    };
     useEffect(() => {
         let slideInterval: NodeJS.Timeout;
         if (isAutoSliding) {
             slideInterval = setInterval(() => {
                 setCurrentSlide((prevSlide) => (prevSlide + 1) % numImage);
-            }, 100000);
+            }, 5000);
         }
         return () => {
             clearInterval(slideInterval);
@@ -102,7 +97,12 @@ const IntroSection: React.FC = () => {
                     handleLeftClick={handleLeftClick}
                     handleRightClick={handleRightClick}
                     pageNumber={numImage} >
-                    {arr.map((slide, index) => (<SlideContent data={data} windowWidth={windowWidth} slide={slide} />))}
+                    {arr.map((slide, index) => (
+                        <Slide>
+                            {slide === 0 && <LandingFestival toggleAutoSliding={toggleAutoSliding}></LandingFestival>}
+                            {slide === 1 && <LandingOrganizer toggleAutoSliding={toggleAutoSliding}></LandingOrganizer>}
+                        </Slide>
+                    ))}
                 </Slider>
             </Inside>
             {isBubble ? <Bubble setIsBubble={setIsBubble} /> : <React.Fragment />}

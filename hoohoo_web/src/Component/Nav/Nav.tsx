@@ -272,15 +272,19 @@ type NavItem = {
   link?: string;
   subItems?: NavItem[];
 };
+type Props = {
+  navlist: NavItem[];
+  logo: any;
+}
 
 function Nav({ isKorean, setIsKorean }: NavProps) {
   const navigate = useNavigate();
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const [windowWidth, setWindowWidth] = useState<number>(window.innerWidth);
   const { i18n } = useTranslation();
-  const navItems: NavItem[] = i18next.t('Nav', { returnObjects: true })["navlist"]
-  const logo: any = i18next.t('Nav', { returnObjects: true })["logo"]
-  console.log('navItems', navItems)
+  const data: Props = i18next.t('Nav', { returnObjects: true })
+  const navItems: NavItem[] = data["navlist"]
+  const logo: any = data["logo"]
   const changelanguageToKo = () => i18n.changeLanguage('ko')
   const changelanguageToEn = () => i18n.changeLanguage('en')
   useEffect(() => {
@@ -289,8 +293,6 @@ function Nav({ isKorean, setIsKorean }: NavProps) {
     };
 
     window.addEventListener('resize', handleResize);
-
-    // 컴포넌트 언마운트 시 이벤트 리스너 제거
     return () => {
       window.removeEventListener('resize', handleResize);
     };
@@ -301,7 +303,6 @@ function Nav({ isKorean, setIsKorean }: NavProps) {
         <HeaderLogo key="logo" src={logo.image} />
         <LogoText key="earthmera">{logo.text}</LogoText>
       </Logo>
-
       <NavbarMenu isOpen={isOpen}>
         {
           navItems.map((item, i) => {
@@ -317,7 +318,7 @@ function Nav({ isKorean, setIsKorean }: NavProps) {
                           <NavSubList key={subIndex}>
                             <SubNavLink key={subIndex + "subLink"} onClick={() => {
                               navigate(subItem.link ? subItem.link : "")
-                              setIsOpen(false);
+                              isOpen && setIsOpen(false);
                             }} >{subItem.label}</SubNavLink>
                           </NavSubList>))
                         }
@@ -326,8 +327,13 @@ function Nav({ isKorean, setIsKorean }: NavProps) {
                     id={item.link}
                     key={i}
                     onClick={() => {
-                      navigate(item.link ? item.link : "");
-                      setIsOpen(false);
+                      if (item.label === "Contact") {
+                        window.location.href = "mailto:devceohoony@gmail.com";
+                      } else {
+                        navigate(item.link ? item.link : "");
+                      }
+
+                      isOpen && setIsOpen(false);
                     }}
                   >{item.label}</NavLink>}
               </NavMenuList>

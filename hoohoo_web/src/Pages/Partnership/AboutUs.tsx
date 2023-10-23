@@ -131,6 +131,7 @@ const PartnerButton = styled.a`
     background-color: ${theme.mainNeon};
   max-width:60%;
   padding: 10px 15px;
+  z-index: 100;
 `;
 
 function AboutUs() {

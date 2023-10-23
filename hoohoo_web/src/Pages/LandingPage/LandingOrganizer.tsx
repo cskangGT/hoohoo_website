@@ -18,7 +18,6 @@ const Background = styled.div`
 const Grid = styled.div`
     width: 100%;
     display: flex;
-    position: relative;
     justify-content: space-between;
     @media screen and (max-width: 1100px) {
         flex-direction: column-reverse;
@@ -42,7 +41,6 @@ const LeftCell = styled.div`
     width: 55%;
     padding: 20px 20px;
     padding-top: 0px;
-    position: relative;
     @media screen and (max-width: 1100px) {
         width: calc(100% - 30px);
         padding: 30px 15px;
@@ -144,10 +142,21 @@ interface DataProps {
     secDesc: string;
     button: string;
 }
-function LandingOrganizer() {
+interface Props {
+    toggleAutoSliding: (state: boolean) => void;
+}
+function LandingOrganizer({ toggleAutoSliding }: Props) {
     const data: DataProps = i18next.t('landingOrganizer', { returnObjects: true });
     const [isOpen, setIsOpen] = useState<boolean>(false);
-    const handleOpen = () => setIsOpen(true);
+    const handleOpen = () => {
+        toggleAutoSliding(false);
+        setIsOpen(true);
+    };
+
+    const handleClose = () => {
+        toggleAutoSliding(true);
+        setIsOpen(false);
+    };
     return (
         <Background>
             <Wrapper>
@@ -161,7 +170,7 @@ function LandingOrganizer() {
                             <Title>{data.firstDesc} </Title>
                             <Content>{data.secDesc}</Content>
                             <Button onClick={handleOpen}>{data.button}</Button>
-                            {isOpen && <LandingFormModal isOpen={isOpen} setIsOpen={setIsOpen} />}
+                            {isOpen && <LandingFormModal isOpen={isOpen} handleClose={handleClose} />}
                         </LeftCell>
                         <RightCell>
                             <RightImage src={data.image} />

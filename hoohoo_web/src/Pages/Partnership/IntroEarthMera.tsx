@@ -90,6 +90,9 @@ const LeftSpace = styled.div`
 `;
 const RightSpace = styled.div`
   width: 45%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   position: relative;
   @media screen and (max-width: 700px) {
        width: 100%;
@@ -110,7 +113,7 @@ const ImageL = styled.img`
 
 const ImageR = styled.img`
   position: absolute;
-  width:230px;
+  width: 230px;
   top: -60%;
   right:50px;
   @media screen and (max-width: 700px) {
@@ -175,46 +178,37 @@ function SubTitle({ item }: Item) {
     )
 }
 const FutureHeader = styled.span`
-  font-size: 10rem;
+  font-size: 8rem;
   width: 100%;
   font-weight: 600;
   padding-left: 40px;
   line-height: 1;
-  letter-spacing: -12px;
+  letter-spacing: -4px;
   @media screen and (max-width: 700px) {
     font-size: 5rem;
     letter-spacing: -5px;
     }
 `;
 const TrashImage = styled.img`
-  width: 100%;
+  width: 80%;
   border-radius: 20px;
 `;
-const GearImage = styled.img`
-  margin: 20px;
-  margin-left: 50px;
-  width:70px;
-  height: 70px;
-  @media screen and (max-width: 700px) {
-    width: 30px;
-    margin-left: 30px;
-    height: 30px;
-    }
-`;
 const ModelText = styled.span`
-  font-size: 1.5rem;
+  font-size: 1.6rem;
   padding-right: 10px;
+  padding-left: 40px;
   @media screen and (max-width: 700px) {
     font-size: 1rem;
     padding-bottom: 20px;
     }
 `;
 const SmallHeader = styled.span`
-  font-size: 4rem;
+  font-size: 2.5rem;
   line-height: 1.4;
   width: 100%;
   padding-left: 50px;
   font-weight: 500;
+  margin-bottom: 30px;
 `;
 
 
@@ -232,7 +226,6 @@ function IntroEarthMera() {
         <Container>
             <ContentBox>
                 <CardBoxContainer>
-
                     <Fundraising></Fundraising>
                 </CardBoxContainer>
                 <CardContentBox>
@@ -257,7 +250,6 @@ function IntroEarthMera() {
                             <FutureHeader>{modelData.first_header}</FutureHeader>
                             <SmallHeader>{modelData.second_header}</SmallHeader>
                             <ModelContentBox>
-                                <GearImage src={modelData.compImage} />
                                 <ModelText>{modelData.content}</ModelText>
                             </ModelContentBox>
                         </LeftSpace>

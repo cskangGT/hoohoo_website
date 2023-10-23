@@ -18,7 +18,7 @@ const Grid = styled.div`
     width: 100%;
     display: flex;
     justify-content: space-between;
-    position: relative;
+    
     margin: 20px 0;
     margin-bottom: 100px;
     @media screen and (max-width:1100px) {
@@ -139,11 +139,22 @@ interface DataProps {
     button: string;
     rightUp: string;
 }
-function LandingFestival() {
+interface Props {
+    toggleAutoSliding: (state: boolean) => void;
+}
+function LandingFestival({ toggleAutoSliding }: Props) {
     const data: DataProps = i18next.t('landingFestival', { returnObjects: true });
 
     const [isOpen, setIsOpen] = useState<boolean>(false);
-    const handleOpen = () => setIsOpen(true);
+    const handleOpen = () => {
+        toggleAutoSliding(false);
+        setIsOpen(true);
+    };
+
+    const handleClose = () => {
+        toggleAutoSliding(true);
+        setIsOpen(false);
+    };
     return (
         <Background>
             <Wrapper>
@@ -157,7 +168,7 @@ function LandingFestival() {
                             <Title>{data.firstDesc} </Title>
                             <Content>{data.secDesc}</Content>
                             <PartnerButton onClick={handleOpen}>{data.button}</PartnerButton>
-                            {isOpen && <LandingFormModal isOpen={isOpen} setIsOpen={setIsOpen} />}
+                            {isOpen && <LandingFormModal isOpen={isOpen} handleClose={handleClose} />}
                         </RightCell>
                         <RightUpper src={data.rightUp} />
 
