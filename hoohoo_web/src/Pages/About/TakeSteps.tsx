@@ -1,17 +1,15 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import styled from 'styled-components';
 import { theme } from '../../style';
-import Slider from '../../Component/ContentBox/Slider';
-import ProfileCard from '../../Component/ContentBox/ProfileCard';
 import i18next from 'i18next';
 const SectionBox = styled.section`
     padding-bottom: 5rem;
-    width: 100%;
+    width: calc(100% - 30px);
     display: flex;
     align-items: center;
     padding-top: 5rem;
-    justify-content: center;
-    margin-top: 100px;
+    margin: 0 15px;
+    margin-top: 50px;
     @media screen and (max-width: 700px) {
         margin-top: 40px;
     }
@@ -21,19 +19,70 @@ const ContainerBox = styled.div`
   display:flex;
   margin: 0 auto;
   flex-direction: column;
-  justify-content: flex-start;
+  justify-content: center;
   align-items: center;
   position: relative;
-  transition: all .2s;
-    padding: 0 15px;
+    padding: 10px 15px;
+    padding-bottom: 40px;
     overflow: hidden;
+    background-color: #F2F2F2;
+    border-radius: 40px;
+`;
+
+const StepBox = styled.div`
+  overflow: hidden;
+  padding: 10px 0;
+  width: 100%;
+  display: flex; 
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+`;
+const Image = styled.img`
+    width: 70%;
+  object-fit: cover;
+  object-position: 50% 50%;
+  @media screen and (max-width: 700px) {
+        font-size: 1rem;
+        width: 50%;
+    }
+`;
+const Number = styled.span`
+  padding: 10px 0;
+  font-size: 3rem;
+  line-height: 1.2;
+  width: 100%;
+  font-weight: 700;
+  text-transform: uppercase;
+  text-align:center;
+  transform: scaleX(0.7);
+  letter-spacing: -1px;
+  @media screen and (max-width: 700px) {
+        font-size: 2rem;
+    }
+`;
+const LongText = styled.span`
+  font-size: 0.85rem;
+  font-weight: 400;
+  width: 100%;
+  display: flex;
+  text-transform: uppercase;
+  text-align:center;
+  @media screen and (max-width: 700px) {
+        font-size: 1rem;
+        width: 70%;
+    }
 `;
 const HeaderBox = styled.div`
   width: 100%;
   align-items: center;
+  margin-bottom: 40px;
+  @media screen and (max-width: 700px) {
+        width: 80%;
+    }
 `;
 const HeaderText = styled.h2`
-text-transform: uppercase;
+  text-transform: uppercase;
   font-size: 3rem;
   text-align: center;
   font-family: 'Gagalin';
@@ -42,56 +91,54 @@ text-transform: uppercase;
         font-size: 2rem;
     }
 `;
-const Slide = styled.div`
-  min-width: 100%;
-  box-sizing: border-box;
+const ContentBox = styled.div`
+  width: 100%;
   display: flex;
   justify-content: center;
-  @media screen and (max-width: 1100px) {
-      align-items: center;
-      justify-content: start;
-    flex-direction: column;
+  align-items: flex-start;
+  @media screen and (max-width: 700px) {
+        flex-direction: column;
+        align-items: center;
     }
 `;
-interface Profile {
-    "photoPath": string;
-    "name": string;
-    "role": string;
-}
-interface SlideContentProps {
-    array: Profile[];
-}
-
-function SlideContent({ array }: SlideContentProps) {
-
-    return (
-        <Slide key={array[0].name}>
-            {array.map((value, index) => (
-                <ProfileCard item={value} />
-            ))}
-        </Slide>
-    );
-};
-
-function TakeSteps() {
-    const data: any = {
-        "header": "take it from small steps",
-        "image1": "",
-        "text1": "out of 6 trillion cigarettes, 450 billion are littered on the streets.",
-        "number1": "75%",
-        "image2": "",
-        "number2": "9%",
-        "text2": "of the 460 million tons of plastic produced yearly, 353 million tons become waste, with just 9% being recycled.",
-        "image3": "",
-        "number3": "80%",
-        "text3": "of the 8.6 million tons of marine debris is plastic.",
-        "image4": "",
-        "number4": "CHANGE",
-        "text4": "the numbers speak, it's time for us to act genuinely. Let's make a significant impact on our planet through our app.",
+const Plus = styled.img`
+  width: 120px;
+  padding: 40px 0; 
+  @media screen and (max-width: 700px) {
+        width:80px;
     }
-    // i18next.t('teamIntro', { returnObjects: true });
-
-
+`;
+const Equal = styled.img`
+    width: 140px;
+    padding: 40px 0;
+    @media screen and (max-width: 700px) {
+        width: 100px;
+        transform: rotate(90deg);
+    }
+`;
+interface StepProps {
+    image: string;
+    text: string;
+    number: string;
+}
+interface DataProps {
+    data: StepProps;
+}
+function Step({ data }: DataProps) {
+    return (
+        <StepBox>
+            <Image src={data.image} />
+            <Number>
+                {data.number}
+            </Number>
+            <LongText>
+                {data.text}
+            </LongText>
+        </StepBox>
+    )
+}
+function TakeSteps() {
+    const data: any = i18next.t('takesteps', { returnObjects: true });
     useEffect(() => {
         window.scrollTo(0, 0);
     }, []);
@@ -103,9 +150,15 @@ function TakeSteps() {
                         {data["header"]}
                     </HeaderText>
                 </HeaderBox>
-                <React.Fragment>
-
-                </React.Fragment>
+                <ContentBox>
+                    <Step data={data["first"]} />
+                    <Plus src={data["plus"]} />
+                    <Step data={data["second"]} />
+                    <Plus src={data["plus"]} />
+                    <Step data={data["third"]} />
+                    <Equal src={data["equal"]} />
+                    <Step data={data["change"]} />
+                </ContentBox>
             </ContainerBox>
         </SectionBox >)
 }

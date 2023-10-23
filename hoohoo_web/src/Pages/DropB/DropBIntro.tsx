@@ -130,7 +130,7 @@ interface DataStructure {
     };
 }
 
-const data: DataStructure = i18next.t('dropbIntro', { returnObjects: true });
+
 
 const SlideContent: React.FC<{ imagePath: string, data: any, windowWidth: number }> = ({ imagePath, data, windowWidth }) => {
     // 여기에 슬라이드의 내용을 적용하세요.
@@ -153,6 +153,7 @@ const SlideContent: React.FC<{ imagePath: string, data: any, windowWidth: number
     );
 };
 const DropBIntro: React.FC = () => {
+    const data: DataStructure = i18next.t('dropbIntro', { returnObjects: true });
     const [currentSlide, setCurrentSlide] = useState<number>(0);
     const slides = Object.keys(data);
     const handleLeftClick = () => {

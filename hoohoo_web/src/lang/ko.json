@@ -114,7 +114,7 @@
 "realtime" : {
   "header": "ECO-ACTION HEROES IN REAL-TIME"
 },
-"fundraising" : {
+"IntroEarthMera" : {
   "fundsData" : [{
         "image": "Images/connect.png",
         "head": "Connect",
@@ -249,5 +249,48 @@
       "headerText": "Partner focus goal",
       "content": "Building the leading play-and-earn solution that drives high user engagement for game publishers and advertisers on a global scale."
   }
-}
+  },
+  "fundraising": {
+    "ll1":
+    {
+        "image": "Images/og_earthmera_logo.png",
+        "text": "EarthMera's Vision"
+    },
+    "ll2": {
+        "part1": "B2B",
+        "part2": "B2C"
+    },
+    "ll3": "Fundraising for EarthMera:",
+    "l1": "We manufacture bio-based plastic bags. These bags not only boost AI detection accuracy but also have the potential to become a global standard for eco-friendly bags.",
+    "l2": "Images/l2_bag.png",
+    "r1": "Images/r1.png",
+    "r2": "Taking EarthMera's AI model to the next level, we've developed a real-time computer vision object detection system that can precisely monitor the amount of waste inside the bag.",
+    "rr1": "Venues where people gather in large numbers, such as theaters, sports arenas, or cinemas, have the potential to become our partners.",
+    "rr2": "Images/rr2.png"
+  },
+  "takesteps" : {
+    "header": "take it from small steps",
+    "first": {
+        "image": "Images/takestep1.png",
+        "text": "out of 6 trillion cigarettes, 450 billion are littered on the streets.",
+        "number": "75%"
+    },
+    "second": {
+        "image": "Images/takestep2.png",
+        "number": "9%",
+        "text": "of the 460 million tons of plastic produced yearly, 353 million tons become waste, with just 9% being recycled."
+    },
+    "plus": "Images/takeplus.png",
+    "equal": "Images/takeequal.png",
+    "third": {
+        "image": "Images/takestep3.png",
+        "number": "80%",
+        "text": "of the 8.6 million tons of marine debris is plastic."
+    },
+    "change": {
+        "image": "Images/change.png",
+        "number": "CHANGE",
+        "text": "the numbers speak, it's time for us to act genuinely. Let's make a significant impact on our planet through our app."
+    }
+  }
 }

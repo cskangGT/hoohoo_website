@@ -42,7 +42,7 @@ function Impact() {
             contents: 'Annual music festival waste in the US.'
         },
         {
-            photoPath: 'Images/card2.jpg',
+            photoPath: 'Images/card2.png',
             header: '5.00lb',
             contents: 'Avergae Daily Waste Generated per Music festival Attendee.'
         },

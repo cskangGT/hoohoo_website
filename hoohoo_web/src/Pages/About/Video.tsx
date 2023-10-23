@@ -16,6 +16,8 @@ const Container = styled.div`
       height: auto;
       max-height: auto;
       margin: 15vh 0;
+      margin-top: 10vh;
+      margin-bottom: 30vh;
     }
 `;
 const ContentBox = styled.div`
@@ -100,7 +102,6 @@ interface DataProps {
 function VideoSection() {
     const data: DataProps[] = i18next.t('video_youtube', { returnObjects: true });
     const [selectedVideo, setSelectedVideo] = useState<DataProps>(data[0]);
-
     return (
         <Container>
             <ContentBox>

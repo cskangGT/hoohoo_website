@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import styled from 'styled-components';
 
 import i18next from 'i18next';
@@ -7,7 +7,7 @@ const Container = styled.section`
     width: calc(100% - 30px);
     display: flex;
     margin: 30px auto;
-    justify-content: flex-start;
+    justify-content: center;
     align-items: center;
     transition: all 0.2s ease 0s;
     padding: 0 15px;
@@ -52,10 +52,7 @@ const LL2 = styled.div`
   align-items: center;
     background-color: #293E72;
 `;
-// const LL2Text = styled.h2`
-//   text-align: center;
-//   width: 100%;
-// `;
+
 const LL3 = styled.div`
     display: flex;
     height: 250px;
@@ -89,28 +86,16 @@ const BlackText = styled.span`
   font-weight: 400;
   padding: 0 10px;
 `;
-// const L2 = styled.div`
 
-// `;
-// const R1 = styled.div`
-
-// `;
-// const R2 = styled.div`
-
-// `;
-// const RR1 = styled.div`
-
-// `;
-// const RR2 = styled.div`
-
-// `;
 const GridContainer = styled.div`
 width: 100%;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr;
   gap: 16px;
   @media (max-width: 600px) {
-    grid-template-columns: 1fr 1fr;
+    width: 65%;
+    grid-template-columns: 1fr;
+    gap: 8px;
   }
 `;
 
@@ -119,12 +104,17 @@ const LeftMostColumn = styled.div`
   display: grid;
   grid-template-rows: 1fr 1fr 2fr;
   gap: 16px;
+  width: 100%;
+  @media (max-width: 600px) {
+    gap: 8px;
+  }
 `;
 
 const BigBot = styled.div`
   display: grid;
   grid-template-rows: 1fr 2fr;
   gap: 16px;
+  width: 100%;
 `;
 const BigTop = styled.div`
   display: grid;
@@ -142,25 +132,7 @@ const Image = styled.img`
 `;
 function Fundraising() {
 
-    const data: any = {
-        "ll1":
-        {
-            "image": "Images/og_earthmera_logo.png",
-            "text": "EarthMera's Vision"
-        },
-        "ll2": {
-            "part1": "B2B",
-            "part2": "B2C"
-        },
-        "ll3": "Fundraising for EarthMera:",
-        "l1": "We manufacture bio-based plastic bags. These bags not only boost AI detection accuracy but also have the potential to become a global standard for eco-friendly bags.",
-        "l2": "Images/l2_bag.png",
-        "r1": "Images/r1.png",
-        "r2": "Taking EarthMera's AI model to the next level, we've developed a real-time computer vision object detection system that can precisely monitor the amount of waste inside the bag.",
-        "rr1": "Venues where people gather in large numbers, such as theaters, sports arenas, or cinemas, have the potential to become our partners.",
-        "rr2": "Images/rr2.png"
-    }
-    // = i18next.t('fundraising', { returnObjects: true });
+    const data: any = i18next.t('fundraising', { returnObjects: true });
 
     return (
         <Container>
@@ -192,29 +164,6 @@ function Fundraising() {
                     <ImageBox><Image src={data["rr2"]} /></ImageBox>
                 </BigBot>
             </GridContainer>
-            {/* <ContentBox>
-                <LeftBox>
-
-                    <LL>
-                        <LL1>
-                            <LL1Image src={data["ll1"]["image"]} />
-                            <LL1Text>{data["ll1"]["text"]}</LL1Text>
-                        </LL1>
-                        <LL2>
-                            <LL2Text>
-                                {data["ll2"]}
-                            </LL2Text>
-                        </LL2>
-                        <LL3></LL3>
-                    </LL>
-                    <LR>
-
-                    </LR>
-                </LeftBox>
-                <RightBox>
-
-                </RightBox>
-            </ContentBox> */}
         </Container >
     )
 }

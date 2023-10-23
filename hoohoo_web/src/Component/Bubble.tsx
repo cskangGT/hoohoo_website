@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
 import { theme } from '../style';
+import i18next from 'i18next';
 const BubbleBox = styled.div<any>`
     cursor: pointer;
     color: ${theme.darkgrey};
@@ -59,6 +60,7 @@ type BubbleProps = {
 };
 
 const Bubble: React.FC<BubbleProps> = ({ setIsBubble }) => {
+  const data: any = i18next.t('bubble', { returnObjects: true });
   const [isFadingOut, setIsFadingOut] = useState<boolean>(false);
   const handleClose = () => {
     setIsFadingOut(true);
@@ -70,13 +72,13 @@ const Bubble: React.FC<BubbleProps> = ({ setIsBubble }) => {
   return (
     <BubbleBox isFadingOut={isFadingOut}>
       <Inside>
-        <Image src='Images/dropb_logo.png' />
+        <Image src={data["image"]} />
         <TextBox>
-          <Text>We are the creator of DropB <br />Do you want to tag your day? Try DropB!</Text>
+          <Text>{data["text_part1"]} <br />{data["text_part2"]}</Text>
         </TextBox>
       </Inside>
       <CloseBox onClick={handleClose}>
-        <Close src='Images/close_btn.png' />
+        <Close src={data["close"]} />
       </CloseBox>
     </BubbleBox>
   )

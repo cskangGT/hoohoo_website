@@ -1,7 +1,6 @@
 import React, { useEffect } from 'react';
 import styled from 'styled-components';
 import SketchContents from './SketchContents';
-import Fundraising from './Fundraising';
 import AboutUs from './AboutUs';
 import Wrapper from '../../Component/Wrapper/Wrapper';
 import { BgImage } from '../../style';
@@ -12,6 +11,9 @@ const ContentBox = styled.section`
   width: 100%;
   display: flex;
   margin-top: 82px;
+  @media screen and (max-width: 700px){
+    margin-top: 40px;
+  }
 `;
 function Partnership() {
     useEffect(() => {

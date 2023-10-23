@@ -279,7 +279,7 @@ function Nav({ isKorean, setIsKorean }: NavProps) {
   const [windowWidth, setWindowWidth] = useState<number>(window.innerWidth);
   const { i18n } = useTranslation();
   const navItems: NavItem[] = i18next.t('Nav', { returnObjects: true })["navlist"]
-  const logo = i18next.t('Nav', { returnObjects: true })["logo"]
+  const logo: any = i18next.t('Nav', { returnObjects: true })["logo"]
   console.log('navItems', navItems)
   const changelanguageToKo = () => i18n.changeLanguage('ko')
   const changelanguageToEn = () => i18n.changeLanguage('en')
@@ -315,14 +315,20 @@ function Nav({ isKorean, setIsKorean }: NavProps) {
                       <HoverLinks key={i + "hvLinks"} >
                         {item.subItems.map((subItem, subIndex) => (
                           <NavSubList key={subIndex}>
-                            <SubNavLink key={subIndex + "subLink"} onClick={() => { navigate(subItem.link ? subItem.link : "") }} >{subItem.label}</SubNavLink>
+                            <SubNavLink key={subIndex + "subLink"} onClick={() => {
+                              navigate(subItem.link ? subItem.link : "")
+                              setIsOpen(false);
+                            }} >{subItem.label}</SubNavLink>
                           </NavSubList>))
                         }
                       </HoverLinks></ContainerSubItems>
                   </HoverContainer> : <NavLink
                     id={item.link}
                     key={i}
-                    onClick={() => { navigate(item.link ? item.link : "") }}
+                    onClick={() => {
+                      navigate(item.link ? item.link : "");
+                      setIsOpen(false);
+                    }}
                   >{item.label}</NavLink>}
               </NavMenuList>
             );

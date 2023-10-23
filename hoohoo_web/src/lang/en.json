@@ -96,17 +96,17 @@
       "content": {
           "Partners": {
               "header": "Partners",
-              "imagePath": "Images/partner1.jpg",
+              "imagePath": "Images/partner2.jpeg",
               "description": "The value of a sweatcoin is derived from our wide-reaching partnerships. From brands that want to connect with health conscious audiences, insurers wishing to encourage healthier lifestyle choices and governments looking to reduce healthcare costs."
           },
           "NHS": {
               "header": "NHS",
-              "imagePath": "Images/nhs.jpg",
+              "imagePath": "Images/nhs1.jpeg",
               "description": "GoverSweatcoin work with the NHS to deliver Healthy Incentive programmes across the country, using personalised data-driven approaches to deliver sustained behaviour change.nment"
           },
           "Government": {
               "header": "Government",
-              "imagePath": "Images/government.jpg",
+              "imagePath": "Images/government1.jpeg",
               "description": "Sweatcoin helps users become +20% more active each day, even after 6 months — this has the potential to transform public health, by using Sweatcoin as a prevention tool for sustained behaviour change."
           }
       }
@@ -134,12 +134,12 @@
       }],
       "cardData" : [
         {
-            "image": "Images/c1.jpg",
+            "image": "Images/c2.png",
             "msg": "Are you a festival organizer?",
             "button": "CONNECT TO EARTHMERA"
         },
         {
-            "image": "Images/p1.jpg",
+            "image": "Images/p1.png",
             "msg": "Are you a sponsor?",
             "button": "SUPPORT EARTHMERA"
         }],
@@ -203,7 +203,7 @@
   },
   "landingFestival" : {
     "header": "Earthmera",
-    "image": "Images/fst.png",
+    "image": "Images/image_trash.png",
     "firstDesc": "Save up to $324,400 in festival cleaning costs for free",
     "secDesc": "At major festivals, approximately 600 individuals are paid $15 per hour for cleaning during a span of three days. However, we encourage over 400,000 festival attendees to help maintain cleanliness.",
     "button": "Try it Free",
@@ -241,13 +241,62 @@
     "rich2": "By clicking submit below, you consent to allow Mistplay to store and process the personal information submitted above to provide you the content requested."
   },
   "sketch" : {
-    "Images/Asset_44x-8.png": {
+    "Images/sketch1.jpeg": {
         "headerText": "User-centric goal",
         "content": "Providing players with a continuously rewarding experience while discovering new digital worlds at the tap of a button."
     },
-    "Images/Asset_54x-8.png": {
+    "Images/sketch2.jpeg": {
         "headerText": "Partner focus goal",
         "content": "Building the leading play-and-earn solution that drives high user engagement for game publishers and advertisers on a global scale."
     }
-  }
+  },
+  "fundraising": {
+    "ll1":
+    {
+        "image": "Images/og_earthmera_logo.png",
+        "text": "EarthMera's Vision"
+    },
+    "ll2": {
+        "part1": "B2B",
+        "part2": "B2C"
+    },
+    "ll3": "Fundraising for EarthMera:",
+    "l1": "We manufacture bio-based plastic bags. These bags not only boost AI detection accuracy but also have the potential to become a global standard for eco-friendly bags.",
+    "l2": "Images/l2_bag.png",
+    "r1": "Images/r1.png",
+    "r2": "Taking EarthMera's AI model to the next level, we've developed a real-time computer vision object detection system that can precisely monitor the amount of waste inside the bag.",
+    "rr1": "Venues where people gather in large numbers, such as theaters, sports arenas, or cinemas, have the potential to become our partners.",
+    "rr2": "Images/rr2.png"
+  },
+  "takesteps" : {
+    "header": "take it from small steps",
+    "first": {
+        "image": "Images/takestep1.png",
+        "text": "out of 6 trillion cigarettes, 450 billion are littered on the streets.",
+        "number": "75%"
+    },
+    "second": {
+        "image": "Images/takestep2.png",
+        "number": "9%",
+        "text": "of the 460 million tons of plastic produced yearly, 353 million tons become waste, with just 9% being recycled."
+    },
+    "plus": "Images/takeplus.png",
+    "equal": "Images/takeequal.png",
+    "third": {
+        "image": "Images/takestep3.png",
+        "number": "80%",
+        "text": "of the 8.6 million tons of marine debris is plastic."
+    },
+    "change": {
+        "image": "Images/change.png",
+        "number": "CHANGE",
+        "text": "the numbers speak, it's time for us to act genuinely. Let's make a significant impact on our planet through our app."
+    }
+    },
+    "bubble" : {
+      "image": "Images/dropb_logo.png",
+      "text_part1": "We are the creator of DropB",
+      "text_part2": "Do you want to tag your day? Try DropB!",
+      "close": "Images/close_btn.png"
+    }
 }
