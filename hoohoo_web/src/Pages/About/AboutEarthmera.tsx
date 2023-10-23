@@ -13,6 +13,7 @@ import Download from './Download';
 import Partners from './Partners';
 import Rewards from './Rewards';
 import Realtime from './Realtime';
+import TakeSteps from './TakeSteps';
 const SlideSection = styled.section`
     padding-top: 20px;
     justify-content: center;
@@ -275,7 +276,7 @@ function AboutEarthmera() {
                     <Rewards />
                 </ContentBox>
                 <ContentBox key="table" id="table">
-                    <NumberIconContent />
+                    <TakeSteps />
                 </ContentBox>
                 <ContentBox key="video" id="video">
                     <VideoSection />

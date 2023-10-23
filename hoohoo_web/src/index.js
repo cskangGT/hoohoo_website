@@ -7,9 +7,13 @@ import './lang/i18n';
 
 
 const GlobalStyle = createGlobalStyle`
+    @font-face {
+        font-family: 'Gagalin';
+        src: url('Gagalin-Regular.otf') format('opentype');
+    }
     body {
       margin: 0;
-      font-family: 'Poppins', sans-serif;
+      font-family: 'Poppins', 'Gagalin', sans-serif;
       font-weight: 500;
     }
     html {
