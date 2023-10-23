@@ -93,7 +93,6 @@ const RightSpace = styled.div`
   position: relative;
   @media screen and (max-width: 700px) {
        width: 100%;
-       height: 350px;
     }
 `;
 const ImageL = styled.img`

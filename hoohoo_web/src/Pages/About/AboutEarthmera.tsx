@@ -212,6 +212,7 @@ function AboutEarthmera() {
     const data: DataStructure = i18next.t('AboutEarthMera', { returnObjects: true });
     const images = Object.keys(data.slides);
     const [isAutoSliding, setIsAutoSliding] = useState<boolean>(true);
+    const [isBubble, setIsBubble] = useState<boolean>(true);
     const handleLeftClick = () => {
         if (currentSlide > 0) {
             setCurrentSlide(currentSlide - 1);

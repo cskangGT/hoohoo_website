@@ -14,10 +14,12 @@ const SectionBox = styled.section`
     @media screen and (max-width: 1100px) {
         padding-top: 5rem;
         padding-bottom: 0rem;
+        margin-bottom: 50px;
     }
     @media screen and (max-width: 800px) {
         padding-top: 4.5rem;
         padding-bottom: 0rem;
+        margin-bottom: 30px;
     }
 `;
 const ContainerBox = styled.div`

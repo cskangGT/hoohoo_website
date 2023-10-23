@@ -119,11 +119,11 @@ type BlogData = {
 const Text = styled.span`
   color: ${theme.darkGray};
   display: flex;
-  width: 100%;
+  width: calc(100% - 60px);
   margin: 20px 30px;
   justify-content: center;
   align-items: center;
-
+  align-items: center;
 `;
 
 const OFFSET: number = 6;
@@ -157,7 +157,7 @@ function Blog() {
     const [fetchedList, setFetchedList] = useState<BlogData[]>([]);
     const list: string[] = ["All", "Trash-Picking", "Reuse", "Recycle", "Transportation", "Eco Product"];
     const [isOpen, setIsOpen] = useState<boolean>(false);
-    const [numTotalData, setNumTotalData] = useState<number>(1);
+    const [numTotalData, setNumTotalData] = useState<number>(0);
     const handleOpen = () => setIsOpen(true);
     const [cookies] = useCookies(['token', 'username']);
     const [logIn, setLogIn] = useState<boolean>(!!cookies.username);
@@ -236,13 +236,15 @@ function Blog() {
                         </SlickBar>
                         {
                             fetchedList.length === 0 ? <Text style={{ minHeight: 400 }}>Opening Soon</Text>
-                                : <Grid> {
+                                : <><Grid> {
                                     fetchedList.map((item, index) => (
                                         <BlogCard key={index} data={item}></BlogCard>
                                     ))
                                 }</Grid>
+                                    <PageNav pages={Math.ceil(numTotalData / OFFSET)} currentPage={currentPage} changePage={changePage} />
+                                </>
                         }
-                        <PageNav pages={Math.ceil(numTotalData / OFFSET)} currentPage={currentPage} changePage={changePage} />
+
 
                     </ContentBox>
                 </Container>
