@@ -147,10 +147,12 @@ interface DataProps {
 }
 interface Props {
     toggleAutoSliding: (state: boolean) => void;
+    isOpen : boolean;
+    setIsOpen: (state: boolean) => void;
 }
-function LandingOrganizer({ toggleAutoSliding }: Props) {
+function LandingOrganizer({ toggleAutoSliding,  isOpen, setIsOpen }: Props) {
     const data: DataProps = i18next.t('landingOrganizer', { returnObjects: true });
-    const [isOpen, setIsOpen] = useState<boolean>(false);
+    // const [isOpen, setIsOpen] = useState<boolean>(false);
     const handleOpen = () => {
         toggleAutoSliding(false);
         setIsOpen(true);

@@ -54,6 +54,7 @@ const IntroSection: React.FC = () => {
     const data: DataStructure = i18next.t('IntroPage', { returnObjects: true });
     const images = Object.keys(data);
     const [isAutoSliding, setIsAutoSliding] = useState<boolean>(true);
+    const [isOpen, setIsOpen] = useState<boolean>(false);
     const numImage = 2;
 
     const handleLeftClick = () => {
@@ -95,13 +96,13 @@ const IntroSection: React.FC = () => {
         <SectionContainer>
             <Inside>
                 <Slider currentSlide={currentSlide}
-                    handleLeftClick={handleLeftClick}
-                    handleRightClick={handleRightClick}
-                    pageNumber={numImage} >
+                handleLeftClick={handleLeftClick}
+                handleRightClick={handleRightClick}
+                pageNumber={numImage} isModalOpen={isOpen}>
                     {arr.map((slide, index) => (
                         <Slide>
-                            {slide === 0 && <LandingFestival toggleAutoSliding={toggleAutoSliding}></LandingFestival>}
-                            {slide === 1 && <LandingOrganizer toggleAutoSliding={toggleAutoSliding}></LandingOrganizer>}
+                            {slide === 0 && <LandingFestival toggleAutoSliding={toggleAutoSliding} isOpen={isOpen} setIsOpen={setIsOpen}></LandingFestival>}
+                            {slide === 1 && <LandingOrganizer toggleAutoSliding={toggleAutoSliding} isOpen={isOpen} setIsOpen={setIsOpen}></LandingOrganizer>}
                         </Slide>
                     ))}
                 </Slider>

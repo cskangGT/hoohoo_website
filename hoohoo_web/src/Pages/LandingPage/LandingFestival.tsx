@@ -54,17 +54,6 @@ const RightCell = styled.div`
         margin-bottom: 30px;
     }
 `;
-const Header = styled.h4`
-    margin-top: 0.5rem;
-    margin-bottom: 0.2rem;
-    font-size: 1.5rem;
-    font-weight: 300;
-    line-height: 1.5;
-    color: ${theme.darkGray};
-    @media screen and (max-width: 1100px) {
-        margin-top: 2rem;
-    }
-`;
 const Title = styled.h1`
     color: ${theme.darkGray};
     letter-spacing: .4px;
@@ -142,11 +131,11 @@ interface DataProps {
 }
 interface Props {
     toggleAutoSliding: (state: boolean) => void;
+    isOpen : boolean;
+    setIsOpen: (state: boolean) => void;
 }
-function LandingFestival({ toggleAutoSliding }: Props) {
+function LandingFestival({ toggleAutoSliding, isOpen, setIsOpen }: Props) {
     const data: DataProps = i18next.t('landingFestival', { returnObjects: true });
-
-    const [isOpen, setIsOpen] = useState<boolean>(false);
     const handleOpen = () => {
         toggleAutoSliding(false);
         setIsOpen(true);
@@ -165,16 +154,13 @@ function LandingFestival({ toggleAutoSliding }: Props) {
                             <LeftImage src={data.image} />
                         </LeftCell>
                         <RightCell>
-                            <Header>{data.header}</Header>
                             <Title>{data.firstDesc} </Title>
                             <Content>{data.secDesc}</Content>
                             <PartnerButton onClick={handleOpen}>{data.button}</PartnerButton>
                             {isOpen && <LandingFormModal isOpen={isOpen} handleClose={handleClose} />}
                         </RightCell>
                         <RightUpper src={data.rightUp} />
-
                     </Grid>
-
                 </Container>
             </Wrapper>
         </Background>

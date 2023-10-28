@@ -27,20 +27,28 @@ const Wrapper = styled.div`
     max-height: 100%;
     padding: 6rem 2rem 3rem;
     overflow: auto;
+    @media screen and (max-width: 700px) {
+        padding: 10px 5px;
+    }
 `;
 const ModalContent = styled.div`
     z-index: 10;
-    width: 100%;
+    width: calc(100%);
     max-width: 35rem;
     min-width: 600px;
     background-color: #1d1d1d;
     border-radius: 1rem;
     margin-left: auto;
     margin-right: auto;
-    padding: 40px;
+    padding: 20px 10px;
     position: relative;
     box-shadow: 0 16px 32px rgba(220, 220, 200, 0.25);
     overflow-y: auto;
+    @media screen and (max-width: 700px) {
+        min-width: 300px;
+        width: calc(100% - 20px);
+        margin-left: 0;
+    }
 `;
 
 const CloseButton = styled.a`
