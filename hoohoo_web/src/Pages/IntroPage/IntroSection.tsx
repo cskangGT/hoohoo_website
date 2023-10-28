@@ -5,6 +5,7 @@ import i18next from 'i18next';
 import Slider from '../../Component/ContentBox/Slider';
 import LandingOrganizer from '../LandingPage/LandingOrganizer';
 import LandingFestival from '../LandingPage/LandingFestival';
+import LandingB2C from '../LandingPage/LandingB2C';
 const SectionContainer = styled.section`
     display: flex;
     box-sizing: border-box;
@@ -48,8 +49,9 @@ const SlideContent: React.FC<{ data: any, windowWidth: number, slide: number }> 
     console.log('slide', slide)
     return (
         <Slide>
-            {slide === 0 && <LandingFestival></LandingFestival>}
+            {slide === 0 && <LandingB2C></LandingB2C>}
             {slide === 1 && <LandingOrganizer></LandingOrganizer>}
+            {slide === 2 && <LandingFestival></LandingFestival>}
         </Slide>
     );
 };

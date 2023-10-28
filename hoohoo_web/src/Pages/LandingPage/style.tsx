@@ -8,4 +8,7 @@ export const Container = styled.section`
     justify-content: flex-start;
     align-items: center;
     min-height: 800px;
+    @media screen and (max-width: 1100px) {
+        margin-top: 0;
+    }
 `;
