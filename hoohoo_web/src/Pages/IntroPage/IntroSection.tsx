@@ -49,9 +49,9 @@ const SlideContent: React.FC<{ data: any, windowWidth: number, slide: number }> 
     console.log('slide', slide)
     return (
         <Slide>
-            {slide === 0 && <LandingB2C></LandingB2C>}
+            {slide === 2 && <LandingB2C></LandingB2C>}
             {slide === 1 && <LandingOrganizer></LandingOrganizer>}
-            {slide === 2 && <LandingFestival></LandingFestival>}
+            {slide === 0 && <LandingFestival></LandingFestival>}
         </Slide>
     );
 };
@@ -63,7 +63,7 @@ const IntroSection: React.FC = () => {
     const data: DataStructure = i18next.t('IntroPage', { returnObjects: true });
     const images = Object.keys(data);
     const [isAutoSliding, setIsAutoSliding] = useState<boolean>(true);
-    const numImage = 2;
+    const slide = [0, 1, 2];
 
     const handleLeftClick = () => {
         if (currentSlide > 0) {
@@ -72,7 +72,7 @@ const IntroSection: React.FC = () => {
     };
 
     const handleRightClick = () => {
-        if (currentSlide < numImage - 1) {
+        if (currentSlide < slide.length - 1) {
             setCurrentSlide(currentSlide + 1);
         }
     };
@@ -80,14 +80,14 @@ const IntroSection: React.FC = () => {
         let slideInterval: NodeJS.Timeout;
         if (isAutoSliding) {
             slideInterval = setInterval(() => {
-                setCurrentSlide((prevSlide) => (prevSlide + 1) % numImage);
+                setCurrentSlide((prevSlide) => (prevSlide + 1) % slide.length);
             }, 100000);
         }
         return () => {
             clearInterval(slideInterval);
         };
     }, [images.length, isAutoSliding]);
-    const arr = [0, 1];
+    
     useEffect(() => {
         const handleResize = () => {
             setWindowWidth(window.innerWidth);
@@ -103,8 +103,8 @@ const IntroSection: React.FC = () => {
                 <Slider currentSlide={currentSlide}
                     handleLeftClick={handleLeftClick}
                     handleRightClick={handleRightClick}
-                    pageNumber={numImage} >
-                    {arr.map((slide, index) => (<SlideContent data={data} windowWidth={windowWidth} slide={slide} />))}
+                    pageNumber={slide.length} >
+                    {slide.map((slide, index) => (<SlideContent data={data} windowWidth={windowWidth} slide={slide} />))}
                 </Slider>
             </Inside>
             {isBubble ? <Bubble setIsBubble={setIsBubble} /> : <React.Fragment />}

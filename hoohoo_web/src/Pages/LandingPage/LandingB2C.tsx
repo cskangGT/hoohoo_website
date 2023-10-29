@@ -1,70 +1,63 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
-import { Container } from './style'
 import { theme } from '../../style';
-import Wrapper from '../../Component/Wrapper/Wrapper';
 import LandingFormModal from './LandingFormModal';
 import i18next from 'i18next';
 const Background = styled.section`
-    width: 100%;
-    /* height: calc(100% - 82px); */
-    height: 100px;
-    margin-top: 82px;
-    position: relative;
+    background-color: #fffefe;
     display: flex;
-    flex-flow: wrap;
-    
+    width: 100%;
+    border-radius: 40px;
+    overflow-x: hidden;
+    margin-top: 50px;
 `;
 const Cell = styled.div`
-    display: flex;
     width: 100%;
-    height: 100%;
-    margin: 0 auto;
+    display: flex;
     position: relative;
-    @media screen and (max-width: 1100px) {
+    justify-content: space-between;
+    @media screen and (max-width: 800px) {
         flex-direction: column;
     }
 `;
 const LeftCell = styled.div`
-    align-items: center;
+    position: relative;
     display: flex;
     width: 60%;
     overflow: visible;
-    position: relative;
-    z-index: 100;
-    @media screen and (max-width: 800px) {
-        display: absolute;
-        
-        width: calc(100% - 30px);
-        padding: 0 15px;
+    @media screen and (max-width: 1100px) {
+        width: 100%;
+        align-items: center;
     }
-    
 `;
 const RightCell = styled.div`
-    /* background-color: #fffefe; */
+    justify-content:center;
     display: flex;
     flex-direction: column;
-    width: 40%;
-    padding-left: 20px;
-    @media screen and (max-width: 800px) {
-        padding: 15px;
+    align-items: flex-start;
+    width: calc(40%);
+    padding: 40px 50px;
+    position: relative;
+    @media screen and (max-width: 1100px) {
         width: calc(100% - 30px);
-        justify-content: center;
+        padding: 30px 15px;
         align-items: center;
+        margin-bottom: 30px;
     }
 `;
 const Header = styled.h4`
     text-transform: uppercase;
     color: ${theme.darkGray};
     letter-spacing: .4px;
-    margin-top: 90px;
+    margin-top: 40px;
     margin-bottom: 0.8rem;
     font-size: 3.5rem;
-    font-weight: 800;
-    line-height: 1.4;
+    font-weight: 700;
+    line-height: 1.5;
+    font-family: 'Fredoka';
     @media screen and (max-width: 800px) {
         text-align: center;
-        font-size: 1.3rem;
+        font-size: 2rem;
         margin-top: 10px;
     }
 `;
@@ -77,7 +70,7 @@ const Title = styled.h3`
     color: ${theme.darkGray};
     @media screen and (max-width: 800px) {
         margin-top: 0.7rem;
-        font-size: 1rem;
+        font-size: 1.5rem;
     }
 `;
 const Title2 = styled.h3`
@@ -87,14 +80,13 @@ const Title2 = styled.h3`
     font-weight: 700;
     line-height: 1.5;
     padding-left: 5px;
-    color: ${theme.darkGray};
+    color: #FF7B27;
     @media screen and (max-width: 800px) {
         margin-top: 0.7rem;   
-        font-size: 1rem;
+        font-size: 1.5rem;
     }
 `;
 const Content = styled.p`
-    width: 80%;
     letter-spacing: -0.5px;
     font-size: 1.4rem;
     font-weight: 400;
@@ -104,7 +96,7 @@ const Content = styled.p`
     margin-bottom: 1rem;
     @media screen and (max-width: 800px) {
         text-align: center;
-        font-size: 1rem;
+        font-size: 1.3rem;
     }
 `;
 const PartnerButton = styled.a`
@@ -115,16 +107,19 @@ const PartnerButton = styled.a`
     text-decoration: none;
     border-radius: 30px;
     box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.5);
-    margin-top: 0.75rem;
-    background-color: ${theme.darkGray};
+    margin: 1rem 0;
+    margin-top: 40px;
+    background-color: #006DFF;
     color: ${theme.white};
-    width: 30%;
+    width: 50%;
     text-align: center;
     padding: 12px 50px;
-    margin-right: 40px;
+    font-family: 'Fredoka';
+    text-transform: uppercase;
     @media screen and (max-width: 1100px) {
         font-size: 22px;
         margin-right: 0;
+        margin-top: 20px;
         width: auto;
     }
 `;
@@ -133,16 +128,12 @@ const TitleBox = styled.div`
   width: 100%;
   @media screen and (max-width: 1100px) {
         justify-content: center;
-    }
-  
+  }
 `;
 const LeftImage = styled.img`
   object-fit: cover;
-  position: absolute;
-  left: -30px;
-  top: 50px;
   width: 100%;
-  height: 110%;
+  height: 100%;
   @media screen and (max-width: 1100px) {
         position: relative;
         top: 0;
@@ -151,7 +142,7 @@ const LeftImage = styled.img`
     }
 `;
 const HighlightedText = styled.span`
-    color: #FF5733; /* 원하는 색상으로 변경하세요. */
+    color: #FF7B27;
 `;
 interface DataProps {
     image: string;
@@ -167,25 +158,12 @@ interface DataProps {
     button: string;
 }
 function LandingB2C() {
-    const data: DataProps = {
-        "image"  : "Images/card2.png",
-        "header" :"so I just get money for using tumblers and eco-bags?",
-        "firstDesc": {
-            "part1" : "Sign up now,",
-            "part2" : "earn $10."
-        },
-        "secDesc" : {
-            "part1" : "Earn money by snapping eco-friendly actions with EarthMera.",
-            "part2" : "Let's make money and save the Earth."
-        },
-        "button" : "Grab $10"
-    }
+    const data: DataProps = i18next.t('b2c', { returnObjects: true });
 
     const [isOpen, setIsOpen] = useState<boolean>(false);
     const handleOpen = () => setIsOpen(true);
     return (
         <Background>
-            <Container>
             <Cell>
                 <LeftCell>
                     <LeftImage src={data.image} />
@@ -211,7 +189,7 @@ function LandingB2C() {
                 </RightCell>
 
             </Cell>
-            </Container>
+        
         </Background>
     )
 }

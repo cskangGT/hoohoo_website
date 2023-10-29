@@ -6,24 +6,20 @@ import Wrapper from '../../Component/Wrapper/Wrapper';
 import LandingFormModal from './LandingFormModal';
 import i18next from 'i18next';
 const Background = styled.div`
-    background-color: transparent;
+    background-color: #fffefe;
     display: flex;
-    flex-direction: column;
     width: 100%;
-    height: 100%;
-    overflow: hidden;
     border-radius: 40px;
+    overflow: hidden;
+    margin-top: 50px;
 `;
 const Grid = styled.div`
     width: 100%;
     display: flex;
-    justify-content: space-between;
     position: relative;
-    margin: 20px 0;
-    margin-bottom: 100px;
-    @media screen and (max-width:1100px) {
+    justify-content: space-between;
+    @media screen and (max-width: 1100px) {
         flex-direction: column;
-        margin-bottom: 30px;
     }
 `;
 const LeftCell = styled.div`
@@ -44,11 +40,12 @@ const RightCell = styled.div`
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    width: 40%;
-    margin-bottom: 120px;
-    z-index: 100;
+    width: calc(40%);
+    padding: 40px 50px;
+    position: relative;
     @media screen and (max-width: 1100px) {
-        width: 100%;
+        width: calc(100% - 30px);
+        padding: 30px 15px;
         align-items: center;
         margin-bottom: 30px;
     }
@@ -70,17 +67,18 @@ const Title = styled.h1`
     margin-top: 0.4rem;
     margin-bottom: 0.8rem;
     font-size: 3.5rem;
-    font-weight: 500;
-    line-height: 1.4;
+    font-weight: 700;
+    line-height: 1.5;
+    text-transform: uppercase;
     @media screen and (max-width: 1100px) {
         text-align: center;
         font-size: 2rem;
     }
 `;
 const Content = styled.p`
-    font-size: 1.2rem;
+    font-size: 1.4rem;
     font-weight: 200;
-    line-height: 1.5;
+    line-height: 1.4;
     color: #5f5555;
     margin-top: 0.5rem;
     margin-bottom: 1rem;
@@ -88,6 +86,9 @@ const Content = styled.p`
         text-align: center;
     }
 
+`;
+const HighlightedText = styled.span`
+    color: #006dff;
 `;
 const PartnerButton = styled.a`
 // margin : 20px 5px;
@@ -98,7 +99,7 @@ const PartnerButton = styled.a`
     border-radius: 10px;
     box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.5);
     margin-top: 0.75rem;
-    background-color: ${theme.darkGray};
+    background-color: #00bf63;
     color: ${theme.white};
     width: calc(100% - 30px);
     text-align: center;
@@ -111,11 +112,9 @@ const PartnerButton = styled.a`
 
 const LeftImage = styled.img`
   object-fit: cover;
-  position: absolute;
-  left: -30px;
-  top: 50px;
-  width: 100%;
   height: 110%;
+  width: 100%;
+  
   @media screen and (max-width: 1100px) {
         position: relative;
         top: 0;
@@ -127,8 +126,8 @@ const LeftImage = styled.img`
 const RightUpper = styled.img`
   position: absolute;
   height: 40%;
-  right: -8%;
-  top: -10%;
+  right: -5%;
+  top: -7%;
   
 `;
 interface DataProps {
@@ -146,25 +145,25 @@ function LandingFestival() {
     const handleOpen = () => setIsOpen(true);
     return (
         <Background>
-            <Wrapper>
-                <Container>
-                    <Grid>
-                        <LeftCell>
-                            <LeftImage src={data.image} />
-                        </LeftCell>
-                        <RightCell>
-                            <Header>{data.header}</Header>
-                            <Title>{data.firstDesc} </Title>
-                            <Content>{data.secDesc}</Content>
-                            <PartnerButton onClick={handleOpen}>{data.button}</PartnerButton>
-                            {isOpen && <LandingFormModal isOpen={isOpen} setIsOpen={setIsOpen} />}
-                        </RightCell>
-                        <RightUpper src={data.rightUp} />
+            <Grid>
+                <LeftCell>
+                    <LeftImage src={data.image} />
+                </LeftCell>
+                <RightCell>
+                    <Title>{data.firstDesc.split("$324,400").map((segment, index, array) => 
+                        index === array.length - 1
+                        ? segment
+                        : <>
+                            {segment}
+                            <HighlightedText>$324,400</HighlightedText>
+                        </>)}</Title>
+                    <Content>{data.secDesc}</Content>
+                    <PartnerButton onClick={handleOpen}>{data.button}</PartnerButton>
+                    {isOpen && <LandingFormModal isOpen={isOpen} setIsOpen={setIsOpen} />}
+                </RightCell>
+                <RightUpper src={data.rightUp} />
 
-                    </Grid>
-
-                </Container>
-            </Wrapper>
+            </Grid>
         </Background>
     )
 }

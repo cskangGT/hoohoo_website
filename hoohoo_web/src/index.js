@@ -13,7 +13,7 @@ const GlobalStyle = createGlobalStyle`
     }
     body {
       margin: 0;
-      font-family: 'Poppins', 'Gagalin', sans-serif;
+      font-family: 'Poppins','Fredoka', 'Gagalin', sans-serif;
       font-weight: 500;
     }
     html {

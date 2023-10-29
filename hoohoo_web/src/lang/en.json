@@ -298,5 +298,18 @@
       "text_part1": "We are the creator of DropB",
       "text_part2": "Do you want to tag your day? Try DropB!",
       "close": "Images/close_btn.png"
-    }
+    },
+    "b2c" : {
+      "image"  : "Images/b2c.png",
+      "header" :"so I just get money for using tumblers and eco-bags?",
+      "firstDesc": {
+          "part1" : "Sign up now,",
+          "part2" : "earn $10."
+      },
+      "secDesc" : {
+          "part1" : "Earn money by snapping eco-friendly actions with EarthMera.",
+          "part2" : "Let's make money and save the Earth."
+      },
+      "button" : "Go Green Now"
+  }
 }

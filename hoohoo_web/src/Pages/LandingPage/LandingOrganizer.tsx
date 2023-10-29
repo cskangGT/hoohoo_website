@@ -1,19 +1,15 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
-import { Container } from './style'
-
-import Wrapper from '../../Component/Wrapper/Wrapper';
 import LandingFormModal from './LandingFormModal';
 import i18next from 'i18next';
 const Background = styled.div`
-    background-color: transparent;
+    background-color: #fffefe;
     display: flex;
     flex-direction: column;
     width: 100%;
-    height: 100%;
     border-radius: 40px;
     overflow-x: hidden;
-    
+    margin-top: 50px;
 `;
 const Grid = styled.div`
     width: 100%;
@@ -39,9 +35,10 @@ const LeftCell = styled.div`
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    width: 55%;
-    padding: 20px 20px;
-    padding-top: 0px;
+    width: calc(40%);
+    padding: 40px 0;
+    padding-left : 60px;
+    padding-right: 0;
     position: relative;
     @media screen and (max-width: 1100px) {
         width: calc(100% - 30px);
@@ -50,23 +47,7 @@ const LeftCell = styled.div`
         margin-bottom: 30px;
     }
 `;
-const HeaderBox = styled.div`
-  display: flex;
-`;
-const Header = styled.h4`
-    margin-top: 2rem;
-    margin-bottom: 1rem;
-    font-size: 2.5rem;
-    font-weight: 600;
-    line-height: 1;
-    padding-left: 5px;
-    color: #216C53;
-    text-transform: uppercase;
 
-    @media screen and (max-width: 700px) {
-        font-size: 1rem;
-    }
-`;
 const Title = styled.h1`
     color: #216C53;
     letter-spacing: .4px;
@@ -115,21 +96,13 @@ const Button = styled.a`
         margin : auto;
     }
 `;
-const LeftEclipse = styled.img`
-  width: 13rem;
-`;
-const EclipseBox = styled.div`
-    top: -5rem;
-    left: -10rem;
-  position: absolute;
-  transform: rotate(180deg);
+const HighlightedText = styled.span`
+    color: #FFD259;
 `;
 const RightImage = styled.img`
   object-fit: cover;
-  position: absolute;
-  top: 20px;
-  left: -50px;
-  width: 100%;
+  width: calc(100% - 20px);
+  padding: 10px;
   @media screen and (max-width: 1100px) {
         position: relative;
         top: 0;
@@ -150,15 +123,17 @@ function LandingOrganizer() {
     const handleOpen = () => setIsOpen(true);
     return (
         <Background>
-            <Wrapper>
-                <Container style={{ overflow: 'hidden' }}>
                     <Grid>
                         <LeftCell>
-                            <HeaderBox>
-                                <Header>{data.header}</Header>
-                            </HeaderBox>
-                            <EclipseBox><LeftEclipse src={data.decoImage} /></EclipseBox>
-                            <Title>{data.firstDesc} </Title>
+                            <Title>
+                            {data.firstDesc.split("10%").map((segment, index, array) => 
+                        index === array.length - 1
+                        ? segment
+                        : <>
+                            {segment}
+                            <HighlightedText>10%</HighlightedText>
+                        </>
+                    )} </Title>
                             <Content>{data.secDesc}</Content>
                             <Button onClick={handleOpen}>{data.button}</Button>
                             {isOpen && <LandingFormModal isOpen={isOpen} setIsOpen={setIsOpen} />}
@@ -167,8 +142,6 @@ function LandingOrganizer() {
                             <RightImage src={data.image} />
                         </RightCell>
                     </Grid>
-                </Container>
-            </Wrapper>
         </Background>
     )
 }
