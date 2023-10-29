@@ -18,8 +18,8 @@ const Grid = styled.div`
     width: 100%;
     display: flex;
     justify-content: space-between;
-    position: relative;
     margin: 20px 0;
+    overflow: hidden;
     margin-bottom: 100px;
     @media screen and (max-width:1100px) {
         flex-direction: column;
@@ -44,6 +44,7 @@ const RightCell = styled.div`
     display: flex;
     flex-direction: column;
     align-items: flex-start;
+    overflow: hidden;
     width: 40%;
     margin-bottom: 120px;
     z-index: 100;
@@ -51,17 +52,6 @@ const RightCell = styled.div`
         width: 100%;
         align-items: center;
         margin-bottom: 30px;
-    }
-`;
-const Header = styled.h4`
-    margin-top: 0.5rem;
-    margin-bottom: 0.2rem;
-    font-size: 1.5rem;
-    font-weight: 300;
-    line-height: 1.5;
-    color: ${theme.darkGray};
-    @media screen and (max-width: 1100px) {
-        margin-top: 2rem;
     }
 `;
 const Title = styled.h1`
@@ -127,7 +117,7 @@ const LeftImage = styled.img`
 const RightUpper = styled.img`
   position: absolute;
   height: 40%;
-  right: -8%;
+  right: -5%;
   top: -10%;
   
 `;
@@ -139,11 +129,22 @@ interface DataProps {
     button: string;
     rightUp: string;
 }
-function LandingFestival() {
+interface Props {
+    toggleAutoSliding: (state: boolean) => void;
+    isOpen : boolean;
+    setIsOpen: (state: boolean) => void;
+}
+function LandingFestival({ toggleAutoSliding, isOpen, setIsOpen }: Props) {
     const data: DataProps = i18next.t('landingFestival', { returnObjects: true });
+    const handleOpen = () => {
+        toggleAutoSliding(false);
+        setIsOpen(true);
+    };
 
-    const [isOpen, setIsOpen] = useState<boolean>(false);
-    const handleOpen = () => setIsOpen(true);
+    const handleClose = () => {
+        toggleAutoSliding(true);
+        setIsOpen(false);
+    };
     return (
         <Background>
             <Wrapper>
@@ -153,16 +154,13 @@ function LandingFestival() {
                             <LeftImage src={data.image} />
                         </LeftCell>
                         <RightCell>
-                            <Header>{data.header}</Header>
                             <Title>{data.firstDesc} </Title>
                             <Content>{data.secDesc}</Content>
                             <PartnerButton onClick={handleOpen}>{data.button}</PartnerButton>
-                            {isOpen && <LandingFormModal isOpen={isOpen} setIsOpen={setIsOpen} />}
+                            {isOpen && <LandingFormModal isOpen={isOpen} handleClose={handleClose} />}
                         </RightCell>
                         <RightUpper src={data.rightUp} />
-
                     </Grid>
-
                 </Container>
             </Wrapper>
         </Background>

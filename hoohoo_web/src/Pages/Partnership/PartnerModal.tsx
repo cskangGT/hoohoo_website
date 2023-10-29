@@ -1,9 +1,15 @@
-import React, { useState } from 'react';
+import React, { useRef, useState } from 'react';
 import styled from 'styled-components';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faX } from '@fortawesome/free-solid-svg-icons';
 import { theme } from '../../style';
+import emailjs from '@emailjs/browser';
+import { toast } from 'react-toastify';
 import i18next from 'i18next';
+const serviceId = process.env.REACT_APP_EMAILJS_SERVICE_ID;
+const templateId = process.env.REACT_APP_EMAILJS_TEMPLATE_ID2;
+const public_Key = process.env.REACT_APP_EMAILJS_PUBLIC_KEY;
+
 const ModalBackground = styled.div`
   position: fixed;
   z-index: 9999;
@@ -126,14 +132,14 @@ margin-inline-end: 0px;
 font-size: 14px;
   color: ${theme.white};
 `;
-const ReCaptchaBox = styled.div`
-  margin: 18px 0;
-`;
-const ReCap = styled.div`
-    width: 256px;
-    height: 60px;
-    box-shadow: gray 0px 0px 5px;
-`;
+// const ReCaptchaBox = styled.div`
+//   margin: 18px 0;
+// `;
+// const ReCap = styled.div`
+//     width: 256px;
+//     height: 60px;
+//     box-shadow: gray 0px 0px 5px;
+// `;
 type Props = {
     isOpen: boolean;
     setIsOpen: React.Dispatch<React.SetStateAction<boolean>>;
@@ -145,38 +151,38 @@ function PartnerModal({ isOpen, setIsOpen }: Props) {
         email: '',
         message: ''
     });
-
+    const formRef = useRef<HTMLFormElement | null>(null);
     const handleChange = (e: any) => {
         const { name, value } = e.target;
         setFormData(prevData => ({ ...prevData, [name]: value }));
     };
-
     const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
-        try {
-            const response = await fetch('http://localhost:3001/send-email', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify(formData)
-            });
-            if (response.status === 200) {
-                console.log("Email sent successfully.");
-                // Optionally, clear the form after successful submission
-                setFormData({
-                    name: '',
-                    company: '',
-                    email: '',
-                    message: ''
-                });
-            } else {
-                console.log("Error sending email.");
+        if (formRef.current && serviceId && templateId && public_Key) {
+
+            try {
+                await emailjs.sendForm(
+                    serviceId,
+                    templateId,
+                    formRef.current,
+                    public_Key
+                );
+                toast.success("Email successfully sent!");
+                setIsOpen(false)
+            } catch (error: unknown) {
+                toast.error("Error sending email.");
+                if (typeof error === 'object' && error !== null && 'text' in error) {
+                    console.log("Error sending email:", (error as { text: string }).text);
+                } else {
+                    console.log("Error sending email:", error);
+                }
             }
-        } catch (error) {
-            console.log("Error:", error);
+        } else {
+            console.log("Form reference is null");
         }
+
     };
+
     const data: any = i18next.t('partnerModal', { returnObjects: true });
     return (
         <React.Fragment>
@@ -185,8 +191,7 @@ function PartnerModal({ isOpen, setIsOpen }: Props) {
                     <Wrapper>
                         <ModalContent>
                             <CloseButton onClick={() => setIsOpen(false)}><FontAwesomeIcon icon={faX} /></CloseButton>
-
-                            <Form onSubmit={handleSubmit}>
+                            <Form ref={formRef} onSubmit={handleSubmit}>
                                 <HeaderCotainer>
                                     <HeaderText>{data["header"]}</HeaderText>
                                 </HeaderCotainer>
@@ -235,11 +240,11 @@ function PartnerModal({ isOpen, setIsOpen }: Props) {
                                     </AgreeBox>
                                     <RichTextP>{data["rich1"]} <a href={'/privacy'}>Privacy Policy</a>.</RichTextP>
                                     <RichTextP>{data["rich2"]}</RichTextP>
-                                    <ReCaptchaBox>
+                                    {/* <ReCaptchaBox>
                                         <ReCap>
                                             <iframe src="https://www.google.com/recaptcha/enterprise/anchor?ar=1&k=6Ld_ad8ZAAAAAAqr0ePo1dUfAi0m4KPkCMQYwPPm&co=aHR0cHM6Ly93d3cubWlzdHBsYXkuY29tOjQ0Mw..&hl=en&v=0hCdE87LyjzAkFO5Ff-v7Hj1&size=invisible&badge=inline&cb=ti16pg6gvhcq"></iframe>
                                         </ReCap>
-                                    </ReCaptchaBox>
+                                    </ReCaptchaBox> */}
                                 </ConsentContainer>
                                 <SubmitBtn data-l10n-id="partnership-submit">
                                     Submit</SubmitBtn>

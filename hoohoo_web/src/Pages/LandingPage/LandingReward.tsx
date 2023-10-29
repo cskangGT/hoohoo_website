@@ -144,7 +144,10 @@ const RightMock = styled.img`
   left: 50%;
   transform: translate(-50%,-50%);
 `;
-function LandingReward() {
+interface Props {
+    toggleAutoSliding: (state: boolean) => void;
+}
+function LandingReward({ toggleAutoSliding }: Props) {
     const data =
     {
         header: "Earthmera",
@@ -156,7 +159,15 @@ function LandingReward() {
         button: "Get Rewards"
     }
     const [isOpen, setIsOpen] = useState<boolean>(false);
-    const handleOpen = () => setIsOpen(true);
+    const handleOpen = () => {
+        toggleAutoSliding(false);
+        setIsOpen(true);
+    };
+
+    const handleClose = () => {
+        toggleAutoSliding(true);
+        setIsOpen(false);
+    };
     return (
         <Background>
             <Wrapper>
@@ -172,7 +183,7 @@ function LandingReward() {
                             <Title>{data.firstDesc} </Title>
                             <Content>{data.secDesc}</Content>
                             <PartnerButton onClick={handleOpen}>{data.button}</PartnerButton>
-                            {isOpen && <LandingFormModal isOpen={isOpen} setIsOpen={setIsOpen} />}
+                            {isOpen && <LandingFormModal isOpen={isOpen} handleClose={handleClose} />}
                         </LeftCell>
                         <RightCell>
                             <RightImage src={data.rightImage} />

@@ -41,18 +41,11 @@ interface DataStructure {
 const Slide = styled.div`
   min-width: 100%;
   box-sizing: border-box;
+  position: relative;
+  overflow: hidden;
   display: flex;
 `;
 
-const SlideContent: React.FC<{ data: any, windowWidth: number, slide: number }> = ({ data, windowWidth, slide }) => {
-    console.log('slide', slide)
-    return (
-        <Slide>
-            {slide === 0 && <LandingFestival></LandingFestival>}
-            {slide === 1 && <LandingOrganizer></LandingOrganizer>}
-        </Slide>
-    );
-};
 
 const IntroSection: React.FC = () => {
     const [windowWidth, setWindowWidth] = useState<number>(window.innerWidth);
@@ -61,6 +54,7 @@ const IntroSection: React.FC = () => {
     const data: DataStructure = i18next.t('IntroPage', { returnObjects: true });
     const images = Object.keys(data);
     const [isAutoSliding, setIsAutoSliding] = useState<boolean>(true);
+    const [isOpen, setIsOpen] = useState<boolean>(false);
     const numImage = 2;
 
     const handleLeftClick = () => {
@@ -74,12 +68,15 @@ const IntroSection: React.FC = () => {
             setCurrentSlide(currentSlide + 1);
         }
     };
+    const toggleAutoSliding = (state: boolean) => {
+        setIsAutoSliding(state);
+    };
     useEffect(() => {
         let slideInterval: NodeJS.Timeout;
         if (isAutoSliding) {
             slideInterval = setInterval(() => {
                 setCurrentSlide((prevSlide) => (prevSlide + 1) % numImage);
-            }, 100000);
+            }, 1200000);
         }
         return () => {
             clearInterval(slideInterval);
@@ -99,10 +96,15 @@ const IntroSection: React.FC = () => {
         <SectionContainer>
             <Inside>
                 <Slider currentSlide={currentSlide}
-                    handleLeftClick={handleLeftClick}
-                    handleRightClick={handleRightClick}
-                    pageNumber={numImage} >
-                    {arr.map((slide, index) => (<SlideContent data={data} windowWidth={windowWidth} slide={slide} />))}
+                handleLeftClick={handleLeftClick}
+                handleRightClick={handleRightClick}
+                pageNumber={numImage} isModalOpen={isOpen}>
+                    {arr.map((slide, index) => (
+                        <Slide>
+                            {slide === 0 && <LandingFestival toggleAutoSliding={toggleAutoSliding} isOpen={isOpen} setIsOpen={setIsOpen}></LandingFestival>}
+                            {slide === 1 && <LandingOrganizer toggleAutoSliding={toggleAutoSliding} isOpen={isOpen} setIsOpen={setIsOpen}></LandingOrganizer>}
+                        </Slide>
+                    ))}
                 </Slider>
             </Inside>
             {isBubble ? <Bubble setIsBubble={setIsBubble} /> : <React.Fragment />}

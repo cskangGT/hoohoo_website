@@ -187,7 +187,10 @@ const ImageSlider: React.FC<ImageSliderProps> = ({ images }) => {
         </SliderContainer>
     );
 };
-function LandingOrganizer() {
+interface Props {
+    toggleAutoSliding: (state: boolean) => void;
+}
+function LandingOrganizer({ toggleAutoSliding }: Props) {
     const data =
     {
         header: "Take photos, Take rewards.",
@@ -208,7 +211,15 @@ function LandingOrganizer() {
         ]
     }
     const [isOpen, setIsOpen] = useState<boolean>(false);
-    const handleOpen = () => setIsOpen(true);
+    const handleOpen = () => {
+        toggleAutoSliding(false);
+        setIsOpen(true);
+    };
+
+    const handleClose = () => {
+        toggleAutoSliding(true);
+        setIsOpen(false);
+    };
 
 
     return (
@@ -225,7 +236,7 @@ function LandingOrganizer() {
                         <ImageSlider images={data.images} />
                         {/* <Image src={data.centerImage} /> */}
                         <Button onClick={handleOpen}>{data.button}</Button>
-                        {isOpen && <LandingFormModal isOpen={isOpen} setIsOpen={setIsOpen} />}
+                        {isOpen && <LandingFormModal isOpen={isOpen} handleClose={handleClose} />}
                         <RightText>{data.rightMsg}</RightText>
 
                     </BelowBox>

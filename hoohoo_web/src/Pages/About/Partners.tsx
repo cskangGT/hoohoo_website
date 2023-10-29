@@ -113,31 +113,33 @@ const HorizonContainer = styled.div`
     }
 `;
 const Desc = styled.p`
-    font-size: 1.4rem;
-    line-height: 1.6;
-    width: 100%;
+    font-size: 1.2rem;
+    line-height: 1.4;
+    width: calc(100% - 30px);
     color: ${theme.darkGray};
     opacity: 0.8;
     margin: 0 5px;
+    padding: 0 10px;
     @media screen and (max-width: 1100px){
       text-align:center;
       margin: 20px 0;
     }
     @media screen and (max-width: 700px){
-        width: 100%;
+        width: calc(100% - 20px);
         font-size: 1rem;
         
     }
 `;
+type BoxProps = {
+    isText: boolean;
+}
 const RightBox = styled.div`
     box-sizing: border-box;
     width: 500px;
     height: 350px;
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    padding: 20px;
+    padding: 10px;
     background: linear-gradient(170deg, rgba(255, 255, 255, 0.14) 0%, rgba(255, 255, 255, 0.05) 100%);
     border-radius: 20%;
     border: 2px solid rgba(255, 255, 255, 0.05);
@@ -152,19 +154,29 @@ const ImageWrapper = styled.div`
   width: 100%;
   height: 100%;
   border-radius: 30px; 
+  
   overflow: hidden; 
 `;
 const Image = styled.img`
   width: 100%;  
   height: 100%;
-  object-fit: contain;
+  object-fit: fill;
   overflow: hidden;
   border-radius: 30px;
 `;
-const ImageButton = styled.button`
+const ImageButton = styled.button<BoxProps>`
   text-decoration: none;
+  cursor: pointer;
+  height: 100%;
+  box-shadow:  ${props => props.isText ? "0px 0px 2px 2px #4f4f4f" : "3px 3px 5px 5px #888888"};
   background-color: transparent;
-  border: 0;
+  border: 0px solid white;
+  border-radius: 30px;
+  padding: 0;
+  &:hover{
+   
+    box-shadow: 5px 5px 7px 10px #888888;
+  }
 `;
 type Data = {
     "header": string;
@@ -215,8 +227,8 @@ function Partners() {
 
                     <DescBox>
                         <RightBox>
-                            <ImageButton onClick={handleButtonClick}>
-                                {!isText ? <ImageWrapper><Image src={imagePaths[slideIndex]} /></ImageWrapper>
+                            <ImageButton onClick={handleButtonClick} isText={isText}>
+                                {!isText ? <ImageWrapper><Image src={imagePaths[slideIndex]} draggable="false" /></ImageWrapper>
                                     : <Desc>{desc[slideIndex]}</Desc>}
                             </ImageButton>
                         </RightBox>

@@ -6,7 +6,6 @@ import arrow from './arrow-ani.json';
 import Wrapper from '../../Component/Wrapper/Wrapper';
 import Slider from '../../Component/ContentBox/Slider';
 import i18next from 'i18next';
-import NumberIconContent from '../../Component/ContentBox/NumberIconContent';
 import ListSection from './ListSection';
 import VideoSection from './Video';
 import Download from './Download';
@@ -22,7 +21,6 @@ const SlideSection = styled.section`
     display: flex;
     height: 900px;
     overflow: hidden;
-
     @media screen and (max-width: 600px) {
         height: 850px;
     }
@@ -71,6 +69,7 @@ const FirstDesc = styled.h1`
   line-height: 1.1;
   margin-bottom: 3rem;
   color: ${theme.darkGray};
+  text-transform: uppercase;
   @media screen and (max-width: 1100px) {
     font-size: 54px;
     margin-bottom: 2rem;
@@ -87,6 +86,7 @@ const SecondDesc = styled.h3`
   color: ${theme.darkGray};
   font-weight: 600;
   text-align: center;
+  text-transform: uppercase;
   @media screen and (max-width: 1100px) {
     font-size: 22px;
     margin-bottom: 2.5rem;
@@ -212,7 +212,6 @@ function AboutEarthmera() {
     const data: DataStructure = i18next.t('AboutEarthMera', { returnObjects: true });
     const images = Object.keys(data.slides);
     const [isAutoSliding, setIsAutoSliding] = useState<boolean>(true);
-    const [isBubble, setIsBubble] = useState<boolean>(true);
     const handleLeftClick = () => {
         if (currentSlide > 0) {
             setCurrentSlide(currentSlide - 1);
