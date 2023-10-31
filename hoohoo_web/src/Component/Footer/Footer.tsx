@@ -155,7 +155,7 @@ function Footer({ isKorean }: FooterProps) {
           {
             isKorean ? <Column>
               <FooterTitle>어스메라(Earthmera)</FooterTitle>
-              <BusinessDetail> 대표이사 : 강성훈
+              <BusinessDetail> 대표이사 : Sung Kang
                 <br /> 이메일 : devceohoony@gmail.com
               </BusinessDetail>
             </Column> : <Column>
@@ -167,7 +167,7 @@ function Footer({ isKorean }: FooterProps) {
           }
           {
             isKorean ? <RowBox>
-              <Buttons text1="소개글" action1={() => navigate(`/about_team`)}
+              <Buttons text1="팀 어스메라" action1={() => navigate(`/about_team`)}
                 text2="제휴" action2={() => navigate(`/partnership`)} />
               <Buttons text1="이용약관" action1={() => navigate('/term_of_use')}
                 text2="개인정보처리방침" action2={() => navigate(`/privacy`)} />

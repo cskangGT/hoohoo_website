@@ -30,7 +30,8 @@ const Content = styled.h2`
   margin-top: 40px;
   color: ${theme.darkGray};
   text-align: center;
-  font-weight: 600;
+  font-size: 1.5rem;
+  font-weight: 500;
 `;
 const Btn = styled.a`
     text-decoration: none;

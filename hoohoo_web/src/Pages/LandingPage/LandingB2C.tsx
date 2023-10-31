@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
 import { theme } from '../../style';
-import LandingFormModal from './LandingFormModal';
 import i18next from 'i18next';
 import { useNavigate } from 'react-router-dom';
 const Background = styled.section`
@@ -19,6 +18,7 @@ const Cell = styled.div`
     justify-content: space-between;
     @media screen and (max-width: 800px) {
         flex-direction: column;
+        align-items: center;
     }
 `;
 const LeftCell = styled.div`
@@ -28,7 +28,6 @@ const LeftCell = styled.div`
     overflow: visible;
     @media screen and (max-width: 1100px) {
         width: 100%;
-        align-items: center;
     }
 `;
 const RightCell = styled.div`
@@ -112,9 +111,9 @@ const PartnerButton = styled.a`
     margin-top: 40px;
     background-color: #006DFF;
     color: ${theme.white};
-    width: 50%;
+    width: 70%;
     text-align: center;
-    padding: 12px 50px;
+    padding: 12px 30px;
     font-family: 'Fredoka';
     text-transform: uppercase;
     @media screen and (max-width: 1100px) {

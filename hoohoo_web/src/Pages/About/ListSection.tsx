@@ -22,26 +22,6 @@ const ContentBox = styled.div`
     position: relative;
     width: 100%;
 `;
-const HeaderBox = styled.div`
-    margin-top: 15px;
-    align-items: center;
-    width: 80%;
-    max-width: 1200px;
-`;
-const Header = styled.h1`
-    font-size: 3rem;
-    font-weight: bold;
-    text-align:center;
-    color: ${theme.darkGray};
-    line-height: 1;
-    @media screen and (max-width: 1100px) {
-        font-size: 2.3rem;
-    }
-    @media screen and (max-width: 500px) {
-        font-size: 2rem;
-    }
-`;
-
 const ImageBox = styled.div`
     align-items: center;
     justify-content: center;
@@ -86,6 +66,7 @@ text-align: center;
     font-size: 1.5rem;
     font-weight: 600;
     line-height: 1;
+    margin-top:30px;
 `;
 const ActDesc = styled.span`
   text-align: center;
@@ -94,10 +75,6 @@ const Image = styled.img`
     width: 100%;
     height: auto;
     object-fit: contain;
-    
-    @media screen and (max-width: 500px) {
-        width: 80%;
-    }
 `;
 
 type DataProps = {

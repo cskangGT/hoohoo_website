@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import styled from 'styled-components';
 import { BgImage, theme } from '../../style';
 import emailjs from '@emailjs/browser';
@@ -127,6 +127,9 @@ function EarlySignUp() {
         password: '',
         secondPassword: ''
     });
+    useEffect(() => {
+        window.scrollTo(0, 0);
+      }, []);
     const navigate = useNavigate();
     const [isChecked, setIsChecked] = useState<boolean>(false);
     const formRef = useRef<HTMLFormElement | null>(null);

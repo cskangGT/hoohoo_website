@@ -42,19 +42,11 @@ interface DataStructure {
 const Slide = styled.div`
   min-width: 100%;
   box-sizing: border-box;
+  position: relative;
+  overflow: hidden;
   display: flex;
 `;
 
-const SlideContent: React.FC<{ data: any, windowWidth: number, slide: number }> = ({ data, windowWidth, slide }) => {
-    console.log('slide', slide)
-    return (
-        <Slide>
-            {slide === 2 && <LandingB2C></LandingB2C>}
-            {slide === 1 && <LandingOrganizer></LandingOrganizer>}
-            {slide === 0 && <LandingFestival></LandingFestival>}
-        </Slide>
-    );
-};
 
 const IntroSection: React.FC = () => {
     const [windowWidth, setWindowWidth] = useState<number>(window.innerWidth);
@@ -63,7 +55,8 @@ const IntroSection: React.FC = () => {
     const data: DataStructure = i18next.t('IntroPage', { returnObjects: true });
     const images = Object.keys(data);
     const [isAutoSliding, setIsAutoSliding] = useState<boolean>(true);
-    const slide = [0, 1, 2];
+    const slides = [0, 1, 2];
+    const [isOpen, setIsOpen] = useState<boolean>(false);
 
     const handleLeftClick = () => {
         if (currentSlide > 0) {
@@ -72,15 +65,18 @@ const IntroSection: React.FC = () => {
     };
 
     const handleRightClick = () => {
-        if (currentSlide < slide.length - 1) {
+        if (currentSlide < slides.length - 1) {
             setCurrentSlide(currentSlide + 1);
         }
+    };
+    const toggleAutoSliding = (state: boolean) => {
+        setIsAutoSliding(state);
     };
     useEffect(() => {
         let slideInterval: NodeJS.Timeout;
         if (isAutoSliding) {
             slideInterval = setInterval(() => {
-                setCurrentSlide((prevSlide) => (prevSlide + 1) % slide.length);
+                setCurrentSlide((prevSlide) => (prevSlide + 1) % slides.length);
             }, 100000);
         }
         return () => {
@@ -101,10 +97,16 @@ const IntroSection: React.FC = () => {
         <SectionContainer>
             <Inside>
                 <Slider currentSlide={currentSlide}
-                    handleLeftClick={handleLeftClick}
-                    handleRightClick={handleRightClick}
-                    pageNumber={slide.length} >
-                    {slide.map((slide, index) => (<SlideContent data={data} windowWidth={windowWidth} slide={slide} />))}
+                handleLeftClick={handleLeftClick}
+                handleRightClick={handleRightClick}
+                pageNumber={slides.length} isModalOpen={isOpen}>
+                    {slides.map((slide, index) => (
+                        <Slide>
+                            {slide === 0 && <LandingFestival toggleAutoSliding={toggleAutoSliding} isOpen={isOpen} setIsOpen={setIsOpen}></LandingFestival>}
+                            {slide === 1 && <LandingOrganizer toggleAutoSliding={toggleAutoSliding} isOpen={isOpen} setIsOpen={setIsOpen}></LandingOrganizer>}
+                            {slide === 2 && <LandingB2C />}
+                        </Slide>
+                    ))}
                 </Slider>
             </Inside>
             {isBubble ? <Bubble setIsBubble={setIsBubble} /> : <React.Fragment />}

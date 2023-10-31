@@ -9,6 +9,7 @@ interface SlidersProps {
   handleRightClick: () => void;
   pageNumber: number;
   children: any;
+  isModalOpen?: boolean;
 }
 
 const SlideContainer = styled.div<{ currentSlide: number }>`
@@ -61,12 +62,14 @@ const RightArrow = styled(ArrowButton)`
 const Container = styled.div`
   width: 100%;
 `;
-const Slider: React.FC<SlidersProps> = ({ currentSlide, handleLeftClick, handleRightClick, children, pageNumber }) => {
+const Slider: React.FC<SlidersProps> = ({ currentSlide, handleLeftClick, handleRightClick, children, pageNumber, isModalOpen }) => {
   const handlers = useSwipeable({
     onSwipedLeft: () => {
+      if(!isModalOpen)
       handleRightClick();
     },
     onSwipedRight: () => {
+      if(!isModalOpen)
       handleLeftClick();
     },
     preventScrollOnSwipe: true,

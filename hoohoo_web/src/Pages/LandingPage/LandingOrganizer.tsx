@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import styled from 'styled-components';
 import LandingFormModal from './LandingFormModal';
 import i18next from 'i18next';
@@ -8,20 +8,21 @@ const Background = styled.div`
     flex-direction: column;
     width: 100%;
     border-radius: 40px;
-    overflow-x: hidden;
+    overflow: hidden;
     margin-top: 50px;
 `;
 const Grid = styled.div`
     width: 100%;
-    display: flex;
     position: relative;
+    display: flex;
     justify-content: space-between;
+    overflow: hidden;
     @media screen and (max-width: 1100px) {
         flex-direction: column-reverse;
+        align-items: center;
     }
 `;
 const RightCell = styled.div`
-    position: relative;
     display: flex;
     width: 60%;
     overflow: visible;
@@ -39,7 +40,6 @@ const LeftCell = styled.div`
     padding: 40px 0;
     padding-left : 60px;
     padding-right: 0;
-    position: relative;
     @media screen and (max-width: 1100px) {
         width: calc(100% - 30px);
         padding: 30px 15px;
@@ -117,10 +117,23 @@ interface DataProps {
     secDesc: string;
     button: string;
 }
-function LandingOrganizer() {
+interface Props {
+    toggleAutoSliding: (state: boolean) => void;
+    isOpen : boolean;
+    setIsOpen: (state: boolean) => void;
+}
+function LandingOrganizer({ toggleAutoSliding,  isOpen, setIsOpen }: Props) {
     const data: DataProps = i18next.t('landingOrganizer', { returnObjects: true });
-    const [isOpen, setIsOpen] = useState<boolean>(false);
-    const handleOpen = () => setIsOpen(true);
+    // const [isOpen, setIsOpen] = useState<boolean>(false);
+    const handleOpen = () => {
+        toggleAutoSliding(false);
+        setIsOpen(true);
+    };
+
+    const handleClose = () => {
+        toggleAutoSliding(true);
+        setIsOpen(false);
+    };
     return (
         <Background>
                     <Grid>
@@ -136,7 +149,7 @@ function LandingOrganizer() {
                     )} </Title>
                             <Content>{data.secDesc}</Content>
                             <Button onClick={handleOpen}>{data.button}</Button>
-                            {isOpen && <LandingFormModal isOpen={isOpen} setIsOpen={setIsOpen} />}
+                            {isOpen && <LandingFormModal isOpen={isOpen} handleClose={handleClose} />}
                         </LeftCell>
                         <RightCell>
                             <RightImage src={data.image} />

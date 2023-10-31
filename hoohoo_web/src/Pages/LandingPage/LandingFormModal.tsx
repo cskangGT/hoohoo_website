@@ -10,15 +10,14 @@ const templateId = process.env.REACT_APP_EMAILJS_TEMPLATE_ID;
 const public_Key = process.env.REACT_APP_EMAILJS_PUBLIC_KEY;
 
 const ModalBackground = styled.div`
-  position: fixed;
-  z-index: 9999;
-  top: 82px;
+  position: absolute;
+  z-index: 10000;
+  top: 40px;
   left: 0;
   width: 100%;
     bottom:0;
     right:0;
     max-height:100%;
-  background-color: rgba(0, 0, 0, 0.5);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -28,20 +27,27 @@ const Wrapper = styled.div`
     max-height: 100%;
     padding: 6rem 2rem 3rem;
     overflow: auto;
+    @media screen and (max-width: 700px) {
+        padding: 10px 5px;
+    }
 `;
 const ModalContent = styled.div`
-    z-index: 10;
-    width: 100%;
-    max-width: 35rem;
+    width: calc(100%);
+    max-width: 40rem;
     min-width: 600px;
     background-color: #1d1d1d;
     border-radius: 1rem;
     margin-left: auto;
     margin-right: auto;
-    padding: 40px;
+    padding: 3rem;
     position: relative;
     box-shadow: 0 16px 32px rgba(220, 220, 200, 0.25);
     overflow-y: auto;
+    @media screen and (max-width: 700px) {
+        min-width: 300px;
+        width: calc(100% - 20px);
+        margin-left: 0;
+    }
 `;
 
 const CloseButton = styled.a`
@@ -49,6 +55,7 @@ const CloseButton = styled.a`
   color: ${theme.white};
   right: 20px;
   top: 10px;
+  padding: 5px;
   text-decoration: none;
 `;
 
@@ -92,10 +99,10 @@ const ConsentContainer = styled.div`
 `;
 type Props = {
     isOpen: boolean;
-    setIsOpen: React.Dispatch<React.SetStateAction<boolean>>;
+    handleClose: () => void;
 };
 
-function LandingFormModal({ isOpen, setIsOpen }: Props) {
+function LandingFormModal({ isOpen, handleClose }: Props) {
 
     const [formData, setFormData] = useState({
         name: '',
@@ -120,8 +127,7 @@ function LandingFormModal({ isOpen, setIsOpen }: Props) {
                     public_Key
                 );
                 toast.success("Email successfully sent!");
-
-                setIsOpen(false);
+                handleClose()
             } catch (error: unknown) {
                 toast.error("Error sending email.");
                 if (typeof error === 'object' && error !== null && 'text' in error) {
@@ -133,7 +139,6 @@ function LandingFormModal({ isOpen, setIsOpen }: Props) {
         } else {
             console.log("Form reference is null");
         }
-
     };
     return (
         <React.Fragment>
@@ -141,7 +146,7 @@ function LandingFormModal({ isOpen, setIsOpen }: Props) {
                 <ModalBackground>
                     <Wrapper>
                         <ModalContent>
-                            <CloseButton onClick={() => setIsOpen(false)}><FontAwesomeIcon icon={faX} /></CloseButton>
+                            <CloseButton onClick={() => { handleClose() }}><FontAwesomeIcon icon={faX} /></CloseButton>
                             <Form ref={formRef} onSubmit={handleSubmit}>
                                 <HeaderCotainer>
                                     <HeaderText>Discover more about what Earthmera can provide!</HeaderText>

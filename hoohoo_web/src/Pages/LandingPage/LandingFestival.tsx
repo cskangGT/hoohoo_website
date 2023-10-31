@@ -16,6 +16,8 @@ const Grid = styled.div`
     display: flex;
     position: relative;
     justify-content: space-between;
+    margin: 20px 0;
+    margin-bottom: 30px;
     @media screen and (max-width: 1100px) {
         flex-direction: column;
         align-items: center;
@@ -25,9 +27,9 @@ const Grid = styled.div`
 const LeftCell = styled.div`
     align-items: center;
     display: flex;
-    width: 60%;
+    justify-content: center;
+    width: 55%;
     overflow: visible;
-    position: relative;
     z-index: 100;
     @media screen and (max-width: 1100px) {
         width: calc(100% - 30px);
@@ -41,9 +43,8 @@ const RightCell = styled.div`
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    width: calc(40%);
+    width: calc(45%);
     padding: 40px 50px;
-    position: relative;
     @media screen and (max-width: 1100px) {
         width: calc(100% - 30px);
         padding: 30px 15px;
@@ -103,14 +104,15 @@ const PartnerButton = styled.a`
 
 const LeftImage = styled.img`
   object-fit: cover;
-  height: 100%;
-  width: 100%;
-  margin-left: 70px;
+  width: 80%;
+  height: 80%;
+  margin-left: 30px;
+  z-index: 99;
   @media screen and (max-width: 800px) {
     margin-top: 50px;
+    width: 100%;
         margin-left: 0;
         height: auto;
-        z-index: 99;
     }
 `;
 
@@ -118,15 +120,15 @@ const LeftBot = styled.img`
   position: absolute;
   left:0;
   width: 20%;
-  bottom: 0;
-  z-index: 100;
+  bottom: -30px;
+  z-index: 120;
   @media screen and (max-width: 800px) {
         width:50%;
     }
 `;
 const RightTop = styled.img`
   position: absolute;
-  top:0;
+  top : -20px;
   width: 20%;
   right: 0;
   z-index: 100;
@@ -146,10 +148,21 @@ interface DataProps {
     leftBotImg: string;
     rightTopImg: string;
 }
-function LandingFestival() {
+interface Props {
+    toggleAutoSliding: (state: boolean) => void;
+    isOpen : boolean;
+    setIsOpen: (state: boolean) => void;
+}
+function LandingFestival({ toggleAutoSliding, isOpen, setIsOpen }: Props) {
     const data: DataProps = i18next.t('landingFestival', { returnObjects: true });
-    const [isOpen, setIsOpen] = useState<boolean>(false);
-    const handleOpen = () => setIsOpen(true);
+    const handleOpen = () => {
+        toggleAutoSliding(false);
+        setIsOpen(true);
+    };
+    const handleClose = () => {
+        toggleAutoSliding(true);
+        setIsOpen(false);
+    };
     return (
         <Background>
             <Grid>
@@ -167,8 +180,9 @@ function LandingFestival() {
                         </>)}</Title>
                     <Content>{data.secDesc}</Content>
                     <PartnerButton onClick={handleOpen}>{data.button}</PartnerButton>
-                    {isOpen && <LandingFormModal isOpen={isOpen} setIsOpen={setIsOpen} />}
+                    
                 </RightCell>
+                {isOpen && <LandingFormModal isOpen={isOpen} handleClose={handleClose} />}
                 <RightTop src={data.rightTopImg} />
             </Grid>
         </Background>
