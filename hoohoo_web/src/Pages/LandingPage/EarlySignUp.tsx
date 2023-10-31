@@ -8,7 +8,7 @@ import { CFormInput, CFormLabel, CFormCheck,CForm } from '@coreui/react';
 import { useNavigate } from 'react-router-dom';
 import i18next from 'i18next';
 const serviceId = process.env.REACT_APP_EMAILJS_SERVICE_ID;
-const templateId = process.env.REACT_APP_EMAILJS_TEMPLATE_ID;
+const templateId = process.env.REACT_APP_EMAILJS_TEMPLATE_ID2;
 const public_Key = process.env.REACT_APP_EMAILJS_PUBLIC_KEY;
 
 
@@ -158,28 +158,29 @@ function EarlySignUp() {
             alert("Password and Confirm Password do not match!");
             return;
         }
-        // e.preventDefault();
-        // if (formRef.current && serviceId && templateId && public_Key) {
-        //     try {
-        //         await emailjs.sendForm(
-        //             serviceId,
-        //             templateId,
-        //             formRef.current,
-        //             public_Key
-        //         );
-        //         toast.success("Email successfully Submitted!");
-        //     } catch (error: unknown) {
-        //         toast.error("Error sending email.");
-        //         if (typeof error === 'object' && error !== null && 'text' in error) {
-        //             console.log("Error sending email:", (error as { text: string }).text);
-        //         } else {
-        //             console.log("Error sending email:", error);
-        //         }
-        //     }
-        // } else {
-        //     console.log("Form reference is null");
-        // }
-        navigate('/home')
+        e.preventDefault();
+        if (formRef.current && serviceId && templateId && public_Key) {
+            try {
+                await emailjs.sendForm(
+                    serviceId,
+                    templateId,
+                    formRef.current,
+                    public_Key
+                );
+                toast.success("Email successfully Submitted!");
+                navigate('/home')
+            } catch (error: unknown) {
+                toast.error("Error sending email.");
+                if (typeof error === 'object' && error !== null && 'text' in error) {
+                    console.log("Error sending email:", (error as { text: string }).text);
+                } else {
+                    console.log("Error sending email:", error);
+                }
+            }
+        } else {
+            console.log("Form reference is null");
+        }
+        
     };
     const data: DataProps = i18next.t('earlysignup', { returnObjects: true });
     return (
