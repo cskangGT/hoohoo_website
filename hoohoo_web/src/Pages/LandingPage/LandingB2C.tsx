@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import { theme } from '../../style';
 import LandingFormModal from './LandingFormModal';
 import i18next from 'i18next';
+import { useNavigate } from 'react-router-dom';
 const Background = styled.section`
     background-color: #fffefe;
     display: flex;
@@ -155,13 +156,15 @@ interface DataProps {
         part1: string;
         part2: string;
     };
+    highlight: string;
     button: string;
 }
 function LandingB2C() {
     const data: DataProps = i18next.t('b2c', { returnObjects: true });
-
-    const [isOpen, setIsOpen] = useState<boolean>(false);
-    const handleOpen = () => setIsOpen(true);
+    const navigate = useNavigate();
+    const handleOpen = () => {
+        navigate('/submitform');
+    };
     return (
         <Background>
             <Cell>
@@ -170,12 +173,12 @@ function LandingB2C() {
                 </LeftCell>
                 <RightCell>
                     <Header>
-                    {data.header.split("money").map((segment, index, array) => 
+                    {data.header.split(data.highlight).map((segment, index, array) => 
                         index === array.length - 1
                         ? segment
                         : <>
                             {segment}
-                            <HighlightedText>money</HighlightedText>
+                            <HighlightedText>{data.highlight}</HighlightedText>
                         </>
                     )}
                     </Header>
@@ -185,7 +188,7 @@ function LandingB2C() {
                     </TitleBox>
                     <Content>{data.secDesc.part1}<br /> {data.secDesc.part2}</Content>
                     <PartnerButton onClick={handleOpen}>{data.button}</PartnerButton>
-                    {isOpen && <LandingFormModal isOpen={isOpen} setIsOpen={setIsOpen} />}
+                    
                 </RightCell>
 
             </Cell>
