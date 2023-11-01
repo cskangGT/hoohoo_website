@@ -7,7 +7,7 @@ import emailjs from '@emailjs/browser';
 import { toast } from 'react-toastify';
 import i18next from 'i18next';
 const serviceId = process.env.REACT_APP_EMAILJS_SERVICE_ID;
-const templateId = process.env.REACT_APP_EMAILJS_TEMPLATE_ID2;
+const templateId = process.env.REACT_APP_EMAILJS_TEMPLATE_ID;
 const public_Key = process.env.REACT_APP_EMAILJS_PUBLIC_KEY;
 
 const ModalBackground = styled.div`

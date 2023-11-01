@@ -14,6 +14,7 @@ import BlogDetail from "./Pages/Blog/BlogDetail";
 import ComingSoon from "./Component/ErrorComponent/ComingSoon";
 import Privacy from "./Pages/Legal/Privacy";
 import TandC from "./Pages/Legal/T&C";
+import EarlySignUp from "./Pages/LandingPage/EarlySignUp";
 const Router = createBrowserRouter([
     {
         path: "/",
@@ -75,7 +76,12 @@ const Router = createBrowserRouter([
                 path: "/term_of_use",
                 element: <TandC />,
                 errorElement: <ErrorComponent />
-            }, {
+                
+            },{
+                path: "/submitform",
+                element: <EarlySignUp />,
+                errorElement: <ErrorComponent />
+            },{
                 path: "/coming_soon",
                 element: <ComingSoon />,
                 errorElement: <ErrorComponent />

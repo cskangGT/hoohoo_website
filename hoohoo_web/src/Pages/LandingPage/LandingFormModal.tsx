@@ -32,15 +32,14 @@ const Wrapper = styled.div`
     }
 `;
 const ModalContent = styled.div`
-    z-index: 10;
     width: calc(100%);
-    max-width: 35rem;
+    max-width: 40rem;
     min-width: 600px;
     background-color: #1d1d1d;
     border-radius: 1rem;
     margin-left: auto;
     margin-right: auto;
-    padding: 20px 10px;
+    padding: 3rem;
     position: relative;
     box-shadow: 0 16px 32px rgba(220, 220, 200, 0.25);
     overflow-y: auto;

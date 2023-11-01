@@ -13,8 +13,8 @@ const Container = styled.section`
     padding: 0 15px;
 `;
 const LL1 = styled.div`
-display: flex;
-width: 100%;
+  display: flex;
+  width: 100%;
   position: relative;
   background-color: #050A30;
   border-radius: 20px;
@@ -99,7 +99,7 @@ const BlackText = styled.span`
 `;
 
 const GridContainer = styled.div`
-width: 100%;
+  width: 100%;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr;
   gap: 16px;

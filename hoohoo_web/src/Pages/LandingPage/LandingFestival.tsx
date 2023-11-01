@@ -1,41 +1,40 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
-import { Container } from './style'
 import { theme } from '../../style';
-import Wrapper from '../../Component/Wrapper/Wrapper';
 import LandingFormModal from './LandingFormModal';
 import i18next from 'i18next';
 const Background = styled.div`
-    background-color: transparent;
+    background-color: #fffefe;
     display: flex;
-    flex-direction: column;
     width: 100%;
-    height: 100%;
-    overflow: hidden;
     border-radius: 40px;
+    overflow: hidden;
+    margin-top: 50px;
 `;
 const Grid = styled.div`
     width: 100%;
     display: flex;
+    position: relative;
     justify-content: space-between;
     margin: 20px 0;
-    overflow: hidden;
-    margin-bottom: 100px;
-    @media screen and (max-width:1100px) {
+    margin-bottom: 30px;
+    @media screen and (max-width: 1100px) {
         flex-direction: column;
-        margin-bottom: 30px;
+        align-items: center;
+        justify-content: center;
     }
 `;
 const LeftCell = styled.div`
     align-items: center;
     display: flex;
-    width: 60%;
+    justify-content: center;
+    width: 55%;
     overflow: visible;
-    position: relative;
     z-index: 100;
     @media screen and (max-width: 1100px) {
         width: calc(100% - 30px);
         padding: 0 15px;
+        justify-content: center;
     }
     
 `;
@@ -44,12 +43,11 @@ const RightCell = styled.div`
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    overflow: hidden;
-    width: 40%;
-    margin-bottom: 120px;
-    z-index: 100;
+    width: calc(45%);
+    padding: 40px 50px;
     @media screen and (max-width: 1100px) {
-        width: 100%;
+        width: calc(100% - 30px);
+        padding: 30px 15px;
         align-items: center;
         margin-bottom: 30px;
     }
@@ -60,17 +58,19 @@ const Title = styled.h1`
     margin-top: 0.4rem;
     margin-bottom: 0.8rem;
     font-size: 3.5rem;
-    font-weight: 500;
-    line-height: 1.4;
+    font-weight: 700;
+    font-family: 'Fredoka';
+    line-height: 1.5;
+    text-transform: uppercase;
     @media screen and (max-width: 1100px) {
         text-align: center;
         font-size: 2rem;
     }
 `;
 const Content = styled.p`
-    font-size: 1.2rem;
+    font-size: 1.4rem;
     font-weight: 200;
-    line-height: 1.5;
+    line-height: 1.4;
     color: #5f5555;
     margin-top: 0.5rem;
     margin-bottom: 1rem;
@@ -79,8 +79,10 @@ const Content = styled.p`
     }
 
 `;
+const HighlightedText = styled.span`
+    color: #FF7B27;
+`;
 const PartnerButton = styled.a`
-// margin : 20px 5px;
     font-size: 20px;
     font-weight: 700;
     cursor: pointer;
@@ -88,12 +90,13 @@ const PartnerButton = styled.a`
     border-radius: 10px;
     box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.5);
     margin-top: 0.75rem;
-    background-color: ${theme.darkGray};
+    background-color: #846140;
     color: ${theme.white};
     width: calc(100% - 30px);
     text-align: center;
     padding: 10px 0;
     margin-right: 30px;
+    z-index: 9999;
     @media screen and (max-width: 1100px) {
         margin-right: 0;
     }
@@ -101,33 +104,49 @@ const PartnerButton = styled.a`
 
 const LeftImage = styled.img`
   object-fit: cover;
-  position: absolute;
-  left: -30px;
-  top: 50px;
-  width: 100%;
-  height: 110%;
-  @media screen and (max-width: 1100px) {
-        position: relative;
-        top: 0;
-        left: 0;
+  width: 80%;
+  height: 80%;
+  margin-left: 30px;
+  z-index: 99;
+  @media screen and (max-width: 800px) {
+    margin-top: 50px;
+    width: 100%;
+        margin-left: 0;
         height: auto;
     }
 `;
 
-const RightUpper = styled.img`
+const LeftBot = styled.img`
   position: absolute;
-  height: 40%;
-  right: -5%;
-  top: -10%;
-  
+  left:0;
+  width: 20%;
+  bottom: -30px;
+  z-index: 120;
+  @media screen and (max-width: 800px) {
+        width:50%;
+    }
 `;
+const RightTop = styled.img`
+  position: absolute;
+  top : -20px;
+  width: 20%;
+  right: 0;
+  z-index: 100;
+  @media screen and (max-width: 800px) {
+        width:50%;
+    }
+`;
+
 interface DataProps {
     image: string;
     header: string;
     firstDesc: string;
     secDesc: string;
     button: string;
+    highlight: string;
     rightUp: string;
+    leftBotImg: string;
+    rightTopImg: string;
 }
 interface Props {
     toggleAutoSliding: (state: boolean) => void;
@@ -140,29 +159,32 @@ function LandingFestival({ toggleAutoSliding, isOpen, setIsOpen }: Props) {
         toggleAutoSliding(false);
         setIsOpen(true);
     };
-
     const handleClose = () => {
         toggleAutoSliding(true);
         setIsOpen(false);
     };
     return (
         <Background>
-            <Wrapper>
-                <Container>
-                    <Grid>
-                        <LeftCell>
-                            <LeftImage src={data.image} />
-                        </LeftCell>
-                        <RightCell>
-                            <Title>{data.firstDesc} </Title>
-                            <Content>{data.secDesc}</Content>
-                            <PartnerButton onClick={handleOpen}>{data.button}</PartnerButton>
-                            {isOpen && <LandingFormModal isOpen={isOpen} handleClose={handleClose} />}
-                        </RightCell>
-                        <RightUpper src={data.rightUp} />
-                    </Grid>
-                </Container>
-            </Wrapper>
+            <Grid>
+            <LeftBot src={data.leftBotImg} />
+                <LeftCell>
+                    <LeftImage src={data.image} />        
+                </LeftCell>
+                <RightCell>
+                    <Title>{data.firstDesc.split(data.highlight).map((segment, index, array) => 
+                        index === array.length - 1
+                        ? segment
+                        : <>
+                            {segment}
+                            <HighlightedText>{data.highlight}</HighlightedText>
+                        </>)}</Title>
+                    <Content>{data.secDesc}</Content>
+                    <PartnerButton onClick={handleOpen}>{data.button}</PartnerButton>
+                    
+                </RightCell>
+                {isOpen && <LandingFormModal isOpen={isOpen} handleClose={handleClose} />}
+                <RightTop src={data.rightTopImg} />
+            </Grid>
         </Background>
     )
 }

@@ -121,7 +121,7 @@ const AboutContent = styled.p`
 
 `;
 const PartnerButton = styled.a`
-    font-size: 20px;
+    font-size: 18px;
     font-weight: 700;
     cursor: pointer;
     text-decoration: none;
@@ -129,7 +129,7 @@ const PartnerButton = styled.a`
     box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.5);
     margin-top: 0.75rem;
     background-color: ${theme.mainNeon};
-  max-width:60%;
+  max-width:70%;
   padding: 10px 15px;
   z-index: 100;
 `;

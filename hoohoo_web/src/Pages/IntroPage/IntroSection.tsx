@@ -5,6 +5,7 @@ import i18next from 'i18next';
 import Slider from '../../Component/ContentBox/Slider';
 import LandingOrganizer from '../LandingPage/LandingOrganizer';
 import LandingFestival from '../LandingPage/LandingFestival';
+import LandingB2C from '../LandingPage/LandingB2C';
 const SectionContainer = styled.section`
     display: flex;
     box-sizing: border-box;
@@ -54,8 +55,8 @@ const IntroSection: React.FC = () => {
     const data: DataStructure = i18next.t('IntroPage', { returnObjects: true });
     const images = Object.keys(data);
     const [isAutoSliding, setIsAutoSliding] = useState<boolean>(true);
+    const slides = [0, 1, 2];
     const [isOpen, setIsOpen] = useState<boolean>(false);
-    const numImage = 2;
 
     const handleLeftClick = () => {
         if (currentSlide > 0) {
@@ -64,7 +65,7 @@ const IntroSection: React.FC = () => {
     };
 
     const handleRightClick = () => {
-        if (currentSlide < numImage - 1) {
+        if (currentSlide < slides.length - 1) {
             setCurrentSlide(currentSlide + 1);
         }
     };
@@ -75,14 +76,14 @@ const IntroSection: React.FC = () => {
         let slideInterval: NodeJS.Timeout;
         if (isAutoSliding) {
             slideInterval = setInterval(() => {
-                setCurrentSlide((prevSlide) => (prevSlide + 1) % numImage);
-            }, 1200000);
+                setCurrentSlide((prevSlide) => (prevSlide + 1) % slides.length);
+            }, 100000);
         }
         return () => {
             clearInterval(slideInterval);
         };
     }, [images.length, isAutoSliding]);
-    const arr = [0, 1];
+    
     useEffect(() => {
         const handleResize = () => {
             setWindowWidth(window.innerWidth);
@@ -98,11 +99,12 @@ const IntroSection: React.FC = () => {
                 <Slider currentSlide={currentSlide}
                 handleLeftClick={handleLeftClick}
                 handleRightClick={handleRightClick}
-                pageNumber={numImage} isModalOpen={isOpen}>
-                    {arr.map((slide, index) => (
+                pageNumber={slides.length} isModalOpen={isOpen}>
+                    {slides.map((slide, index) => (
                         <Slide>
                             {slide === 0 && <LandingFestival toggleAutoSliding={toggleAutoSliding} isOpen={isOpen} setIsOpen={setIsOpen}></LandingFestival>}
                             {slide === 1 && <LandingOrganizer toggleAutoSliding={toggleAutoSliding} isOpen={isOpen} setIsOpen={setIsOpen}></LandingOrganizer>}
+                            {slide === 2 && <LandingB2C />}
                         </Slide>
                     ))}
                 </Slider>

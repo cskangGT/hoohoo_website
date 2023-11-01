@@ -13,9 +13,8 @@ const GlobalStyle = createGlobalStyle`
     }
     body {
       margin: 0;
-      font-family: 'Noto Sans', 'Poppins', 'Gagalin', sans-serif;
+      font-family: 'Noto Sans', 'Fredoka', 'Poppins', 'Gagalin', sans-serif;
       font-weight: 500;
-      
     }
     html {
       scroll-behavior: smooth;

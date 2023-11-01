@@ -202,11 +202,13 @@
   },
   "landingFestival" : {
     "header": "Earthmera",
-    "image": "Images/image_trash.png",
+    "image": "Images/fest_img.png",
     "firstDesc": "Save up to $324,400 in festival cleaning costs for free",
     "secDesc": "At major festivals, approximately 600 individuals are paid $15 per hour for cleaning during a span of three days. However, we encourage over 400,000 festival attendees to help maintain cleanliness.",
     "button": "Try it Free",
-    "rightUp": "Images/1p_right_side_half_circle.svg"
+    "highlight": "$324,400",
+    "leftBotImg": "Images/fest_left_bot.png",
+    "rightTopImg": "Images/fest_right_top.png"
   },
   "landingOrganizer" : {
     "header": "Earthmera",
@@ -297,5 +299,30 @@
       "text_part1": "We are the creator of DropB",
       "text_part2": "Do you want to tag your day? Try DropB!",
       "close": "Images/close_btn.png"
-    }
+    },
+    "b2c" : {
+      "image"  : "Images/b2c.png",
+      "header" :"so I just get money for using tumblers and eco-bags?",
+      "firstDesc": {
+          "part1" : "Sign up now,",
+          "part2" : "earn $10."
+      },
+      "secDesc" : {
+          "part1" : "Earn money by snapping eco-friendly actions with EarthMera.",
+          "part2" : "Let's make money and save the Earth."
+      },
+      "highlight": "money",
+      "button" : "Go Green Now"
+  },
+  "earlysignup": {
+    "header": {
+        "part1": "Early sign-up gets you $10, ",
+        "part2": "EarthMera's benefits."
+    },
+    "terms": {
+        "part1": "I agree with ",
+        "part2": "Terms and Conditions."
+    },
+    "button": "Submit"
+}
 }

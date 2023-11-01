@@ -4,6 +4,7 @@ import IntroSection from './IntroSection';
 
 
 import { BgImage } from '../../style';
+import LandingB2C from '../LandingPage/LandingB2C';
 const ContentBox = styled.section`
     padding-top: 20px;
     justify-content: center;

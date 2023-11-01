@@ -45,12 +45,10 @@ const LeftBox = styled.div`
     display: flex;
     width: 45%;
     flex-direction :row;
-    @media screen and (max-width: 1100px){
-        text-align: center;
-    }
     @media screen and (max-width: 500px){
         padding: 0 10px;
         width: 80%;
+        text-align: center;
     }
 `;
 const Header = styled.h2`
@@ -66,14 +64,15 @@ const Desc = styled.p`
     color: ${theme.darkGray};
     opacity: 0.8;
     margin: 0 5px;
+    text-align:left;
     @media screen and (max-width: 1100px){
-      text-align:center;
+      
       margin: 20px 0;
     }
     @media screen and (max-width: 700px){
         width: 100%;
         font-size: 1rem;
-        
+        text-align:center;
     }
 `;
 const RightBox = styled.div`
