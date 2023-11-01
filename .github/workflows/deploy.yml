@@ -30,11 +30,25 @@ jobs:
     - name: List contents of dist directory
       run: ls -la hoohoo_web/dist/
 
+    # dist 디렉터리를 아티팩트로 업로드
+    - name: Upload dist directory as artifact
+      uses: actions/upload-artifact@v2
+      with:
+        name: dist-directory
+        path: hoohoo_web/dist/
+
   deploy:
     needs: build
     runs-on: ubuntu-latest
 
     steps:
+    # 아티팩트로부터 dist 디렉터리 다운로드
+    - name: Download dist directory artifact
+      uses: actions/download-artifact@v2
+      with:
+        name: dist-directory
+        path: hoohoo_web/dist/
+
     - name: Configure AWS credentials
       uses: aws-actions/configure-aws-credentials@v1
       with:
