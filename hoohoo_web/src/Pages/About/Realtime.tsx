@@ -12,7 +12,7 @@ const Container = styled.div`
     transition: all 0.2s ease 0s;
     padding: 5rem 15px;
     @media screen and (max-width: 600px){
-        margin-top: 70px;
+        margin-top: 0px;
     }
 `;
 const ContentBox = styled.div`

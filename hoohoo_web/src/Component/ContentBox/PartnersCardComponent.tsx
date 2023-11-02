@@ -41,7 +41,7 @@ const Btn = styled.a`
     border-radius: 20px;
     border : none;
     box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.5);
-    width:288px;
+    width: 288px;
     margin: 40px auto 0px;
     font-weight: 600;
     justify-content: center;
@@ -52,6 +52,9 @@ const Btn = styled.a`
     &:hover {
         background-color: ${theme.mainNeon};
         box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.7);
+    }
+    @media screen and (max-width: 700px) {
+        width: 90%;
     }
 `;
 type Item = {

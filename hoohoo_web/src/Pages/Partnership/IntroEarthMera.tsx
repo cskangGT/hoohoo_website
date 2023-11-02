@@ -31,7 +31,7 @@ const CardBoxContainer = styled.div`
 `;
 const PartnersCardBox = styled.div`
     // background: linear-gradient(253deg, rgba(255, 255, 255, 0.14) 0%, rgba(255, 255, 255, 0.05) 100%);
-    width: calc(100% - 30px);
+    width: calc(100%);
     border-radius: 20px;
     display: flex;
     align-items: center;
@@ -42,8 +42,9 @@ const PartnersCardBox = styled.div`
         flex-direction: column;
     }
     @media screen and (max-width: 700px) {
-        padding-left: 15px;
-        padding-right: 15px;
+        padding: 0 15px;
+        width: calc(100%);
+
     }
 `;
 type CardType = {
@@ -90,24 +91,26 @@ const LeftSpace = styled.div`
 `;
 const RightSpace = styled.div`
   width: 45%;
+  
   display: flex;
   justify-content: center;
   align-items: center;
   position: relative;
   @media screen and (max-width: 700px) {
        width: 100%;
+       height: 400px;
     }
 `;
 const ImageL = styled.img`
   position: absolute;
   width:350px;
   top: 50%;
-  right: 100px;
+  right: 40px;
   z-index: 100;
   @media screen and (max-width: 700px) {
         width: 250px;
         top: 20%;
-        right: 25%;
+        right: 20%;
     }
 `;
 
@@ -149,6 +152,10 @@ const CT = styled.span`
 interface Item {
     item: SubTitleProps
 }
+interface SolutionProps {
+    list : SubTitleProps[];
+    title: string;
+}
 interface SubTitleProps {
     index: string;
     header: string;
@@ -181,12 +188,14 @@ const FutureHeader = styled.span`
   font-size: 8rem;
   width: 100%;
   font-weight: 600;
-  padding-left: 40px;
   line-height: 1;
+  padding-left: 40px;
   letter-spacing: -4px;
   @media screen and (max-width: 700px) {
-    font-size: 5rem;
-    letter-spacing: -5px;
+    text-align: center;
+    padding-left: 0;
+    font-size: 4rem;
+    letter-spacing: -4px;
     }
 `;
 const TrashImage = styled.img`
@@ -209,6 +218,12 @@ const SmallHeader = styled.span`
   padding-left: 50px;
   font-weight: 500;
   margin-bottom: 30px;
+  @media screen and (max-width: 700px) {
+    text-align: center;
+    padding-left: 0;
+    font-size: 2rem;
+    letter-spacing: -3px;
+    }
 `;
 
 
@@ -229,7 +244,7 @@ function IntroEarthMera() {
                     <Fundraising></Fundraising>
                 </CardBoxContainer>
                 <CardContentBox>
-                    <SolutionHeader>EarthMera's Solution</SolutionHeader>
+                    <SolutionHeader>{sd.title}</SolutionHeader>
                     <RowSpace>
                         <LeftSpace>
                             {

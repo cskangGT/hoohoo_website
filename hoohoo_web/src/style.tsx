@@ -16,6 +16,9 @@ export const theme: any = {
   white: '#f1f1f1',
   darkGray: '#1e1e1e',
   whiteGreen: '#E5FFD4',
+  darkSky: '#191F28',
+  darkWhite: '#EBEBEB',
+  gray: '#C4C1C1',
 
   fontLarge: 26,
   fontMedium: 22,

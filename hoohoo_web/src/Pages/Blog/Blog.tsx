@@ -9,7 +9,6 @@ import { faPlus } from '@fortawesome/free-solid-svg-icons';
 // import blogdata from './data.json';
 import { useCookies } from 'react-cookie';
 import Wrapper from '../../Component/Wrapper/Wrapper';
-import { useSwipeable } from 'react-swipeable';
 
 const Container = styled.div`
     width: calc(100% - 30px);
@@ -34,27 +33,24 @@ const SlickBar = styled.div`
   padding: 0;
   margin-top: 20px;
 `;
+
 // 아래가 LeftBar
 const ScrollContainer = styled.div`
-    /* @media screen and (max-width: 700px) {
+margin-bottom: 20px;
+padding-bottom: 10px;
+  display: flex;
+  justify-content: space-between;
+  
+    @media screen and (max-width: 700px) {
+        margin-bottom: 0;
         overflow-x: scroll;
         white-space: nowrap;
         user-select: none;
         -webkit-overflow-scrolling: touch; // for smooth scrolling on iOS
-    } */
+    }
 `;
 
-const LongBar = styled.div`
-  margin-bottom: 20px;
-  display: flex;
-  justify-content: space-between;
-  @media screen and (max-width: 1100px){
-        justify-content: center;
-    }
-    @media screen and (max-width: 700px){
-        margin-bottom: 0;
-    }
-`;
+
 
 interface OutlineProps {
     op: number;
@@ -77,7 +73,7 @@ const Outline = styled.button<OutlineProps>`
         color: ${theme.white};
     }
     @media screen and (max-width: 800px) {
-        height: 70%;
+        height: 30%;
   }
 `;
 const OutlineText = styled.h3`
@@ -204,15 +200,6 @@ function Blog() {
     useEffect(() => {
         window.scrollTo(0, 0);
     }, []);
-    const handlers = useSwipeable({
-        onSwiping: (eventData) => {
-            if (scrollContainerRef.current) {
-                scrollContainerRef.current.scrollLeft -= eventData.deltaX;
-            }
-        },
-        preventScrollOnSwipe: false,
-        trackMouse: true
-    });
 
     return (
         <BgImage>
@@ -220,19 +207,20 @@ function Blog() {
                 <Container>
                     <ContentBox>
                         <SlickBar>
-                            <LongBar>
-                                <ScrollContainer {...handlers}>
+                                <ScrollContainer >
                                     {list.map((item, index) => (
                                         <Outline key={index} op={index} selectedCategory={selectedCategory} onClick={() => handleSelectCategory(index)} >
                                             <OutlineText key={index + "text"}>{item}</OutlineText>
                                         </Outline>
-                                    ))}</ScrollContainer>
-                                {logIn &&
+                                    ))}
+                                    {logIn &&
                                     <NewBlogBtn onClick={handleOpen} ><FontAwesomeIcon icon={faPlus} style={{ paddingRight: 10 }} />New Blog</NewBlogBtn>}
 
                                 {isOpen &&
                                     <BlogModal isOpen={isOpen} setIsOpen={setIsOpen} />}
-                            </LongBar>
+                                    </ScrollContainer>
+                                
+                    
                         </SlickBar>
                         {
                             fetchedList.length === 0 ? <Text style={{ minHeight: 400 }}>Opening Soon</Text>

@@ -13,10 +13,10 @@ const Container = styled.div`
     display: block;
     margin: 0px;
     align-items:center;
-    background-color: ${theme.darkGray};
+    background-color: ${theme.darkSky};
 `;
 const ContactBox = styled.div`
-   background-color: ${theme.darkGray};
+   background-color: ${theme.darkSky};
    display: flex;
    justify-content: center;
    padding: 0 10px;
@@ -30,16 +30,16 @@ const ContactText = styled.h3`
     margin: 26px 10px ;
     font-size: 1.3rem;
     text-align: center;
-  color: ${theme.white};
+  color: ${theme.darkWhite};
 `;
 
 const LinktoEmail = styled.a`
   text-decoration: none;
-  color: ${theme.darkGray};
+  color: ${theme.darkSky};
   background-color: ${theme.mainNeon};
   height: 50px;
   border-radius: 20px;
-  border-color: ${theme.darkGray};
+  border-color: ${theme.darkSky};
   width:200px;
   font-weight: bold;
   display: flex;

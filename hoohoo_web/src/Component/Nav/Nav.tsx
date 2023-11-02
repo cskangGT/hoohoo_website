@@ -17,6 +17,7 @@ const Logo = styled.a`
 const LogoText = styled.span`
   padding-left: 10px;
   color: ${theme.white};
+  font-family: 'Fredoka';
 `;
 
 const Bar = styled.nav`

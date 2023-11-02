@@ -125,8 +125,8 @@ const Desc = styled.p`
       margin: 20px 0;
     }
     @media screen and (max-width: 700px){
-        width: calc(100% - 20px);
-        font-size: 1rem;
+        width: calc(100%);
+        font-size: 0.95rem;
         
     }
 `;
@@ -154,7 +154,6 @@ const ImageWrapper = styled.div`
   width: 100%;
   height: 100%;
   border-radius: 30px; 
-  
   overflow: hidden; 
 `;
 const Image = styled.img`
@@ -174,7 +173,6 @@ const ImageButton = styled.button<BoxProps>`
   border-radius: 30px;
   padding: 0;
   &:hover{
-   
     box-shadow: 5px 5px 7px 10px #888888;
   }
 `;

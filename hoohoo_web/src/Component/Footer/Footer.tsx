@@ -7,7 +7,7 @@ import { faInstagram, faPinterestP, faTiktok, faLinkedinIn, faYoutube } from '@f
 import { useNavigate } from 'react-router-dom';
 
 const Background = styled.footer`
-    background-color: ${theme.darkGray};
+    background-color: ${theme.darkSky};
     display: block;
     padding: 40px 0;
     @media (max-width: 1000px) {
@@ -57,12 +57,12 @@ const FooterBottom = styled.div`
   }
 `;
 const FooterTitle = styled.h3`
-  color: #f1f1f1;
+  color: ${theme.white};
 `;
 const BusinessDetail = styled.p`
   font-size: 0.7rem;
   line-height: 24px;
-  color: #f1f1f1;
+  color: ${theme.gray};
 `;
 const RowBox = styled.div`
   display : flex;
@@ -90,10 +90,10 @@ const FooterButton = styled.a`
     border-radius: 5px;
     cursor: pointer;
     text-decoration: none;
-    color: ${theme.white};
+    color: ${theme.gray};
 
     &:hover {
-      background-color: #313131;
+      
       color: ${theme.white};
     }
 `;
@@ -141,7 +141,7 @@ function Buttons({ text1, action1, text2, action2 }: Button) {
 function Ibutton({ icon, url, style }: IbuttonProps) {
   return (
     <IconButton href={url} style={style} target="_blank">
-      <FontAwesomeIcon icon={icon} size='xl' style={{ color: "#f1f1f1", paddingTop: 7 }} />
+      <FontAwesomeIcon icon={icon} size='xl' style={{ color: theme.gray, paddingTop: 7 }} />
     </IconButton>
   )
 }
@@ -154,12 +154,12 @@ function Footer({ isKorean }: FooterProps) {
         <Box>
           {
             isKorean ? <Column>
-              <FooterTitle>어스메라(Earthmera)</FooterTitle>
+              <FooterTitle>어스메라(EarthMera)</FooterTitle>
               <BusinessDetail> 대표이사 : Sung Kang
                 <br /> 이메일 : devceohoony@gmail.com
               </BusinessDetail>
             </Column> : <Column>
-              <FooterTitle>Earthmera</FooterTitle>
+              <FooterTitle>EarthMera</FooterTitle>
               <BusinessDetail> CEO : Sung Kang
                 <br /> Email : devceohoony@gmail.com
               </BusinessDetail>
@@ -180,8 +180,6 @@ function Footer({ isKorean }: FooterProps) {
           }
         </Box>
         <FooterBottom>
-          {/* <hr style={{ color: '#f1f1f1' }} /> */}
-          {/* <Box style={{ justifyContent: 'space-between' }}> */}
           <BusinessDetail style={{ paddingLeft: 15 }}>Copyright&copy; 2023 by EarthMera, All rights reserved.</BusinessDetail>
           <IconBox>
             <Ibutton icon={faInstagram} url={'https://instagram.com/earthmera_?igshid=MzRlODBiNWFlZA=='} />

@@ -50,9 +50,10 @@ const Col = styled.div`
 const IntroText = styled.div`
   display:flex;
   justify-content: center;
+  align-items: center;
   text-align: center;
   flex-direction: column;
-  width: 55%;
+  width: 50%;
   margin-top: 20px;
   padding-left: 20px;
   @media screen and (max-width: 700px) {
@@ -109,24 +110,38 @@ const FlexBox = styled.div`
     overflow: hidden;
 `;
 
-const LeftImage = styled.img`
-    padding-top: 200px;
-  max-width: 150px;
-  min-width: 100px;
-  height: auto;
-`;
 const RightImage = styled.img`
   padding: 0 20px;
   height: auto;
-  width: 40%;
-  @media screen and (max-width: 1100px) {
-      width: 60%;
-  }
+  width: 50%;
+  padding-left: 60px;
   @media screen and (max-width: 700px) {
     padding: 0;
-      width: 85%;
+      width: 80%;
       align-self: center;
   }
+`;
+const PartnerButton = styled.a`
+    font-size: 26px;
+    font-weight: 500;
+    cursor: pointer;
+    line-height: 1.5;
+    text-decoration: none;
+    border-radius: 30px;
+    box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.5);
+    margin: 0.7rem 0;
+    background-color: #006DFF;
+    color: ${theme.white};
+    width: 60%;
+    text-align: center;
+    padding: 12px 30px;
+    font-family: 'Fredoka';
+    @media screen and (max-width: 1100px) {
+        font-size: 22px;
+        margin-right: 0;
+        margin-top: 20px;
+        width: auto;
+    }
 `;
 const Screen = styled.img`
     padding: 0 20px;
@@ -156,17 +171,17 @@ const SlideContent: React.FC<{ imagePath: string, data: any, windowWidth: number
                     <Banner src={imagePath} draggable="false" />
                 </BannerContainer> :
                 <Col>
-                    {windowWidth >= 1100 && imagePath === "Images/1__.svg" &&
-                        <LeftImage src="Images/1.svg" alt="앱 소개 이미지" draggable="false" />}
+                    
                     <IntroText>
                         {/* <IntroTitle>{data[imagePath].header}</IntroTitle> */}
                         <FirstDesc >
                             {data[imagePath].firstDesc}
                         </FirstDesc>
                         <SecondDesc dangerouslySetInnerHTML={{ __html: data[imagePath].secondDesc }} />
+                        <PartnerButton href='#rewards'>{data.button}</PartnerButton>
                     </IntroText>
                     {
-                        imagePath === "Images/1__.svg" ? <RightImage src={imagePath} alt="앱 소개 이미지" draggable="false" />
+                        imagePath === "Images/earth_image.svg" ? <RightImage src={imagePath} alt="앱 소개 이미지" draggable="false" />
                             : <Screen src={imagePath} alt="앱 소개 이미지" draggable="false" style={{ maxWidth: windowWidth < 700 ? 'auto' : 350 }} />
                     }
                 </Col>
@@ -229,7 +244,7 @@ function AboutEarthmera() {
         if (isAutoSliding) {
             slideInterval = setInterval(() => {
                 setCurrentSlide((prevSlide) => (prevSlide + 1) % images.length);
-            }, 5000);
+            }, 5000000);
         }
         return () => {
             clearInterval(slideInterval);
@@ -271,8 +286,8 @@ function AboutEarthmera() {
                 <FlexBox>
                     <Realtime />
                 </FlexBox>
-                <ListSection id={"next"} data={data.secondImages} isBot={false} />
-                <ContentBox>
+                <ListSection id="rewards" data={data.secondImages} isBot={false} />
+                <ContentBox >
                     <Rewards />
                 </ContentBox>
                 <ContentBox key="table" id="table">

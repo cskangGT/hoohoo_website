@@ -44,8 +44,9 @@ const Box = styled.div`
   border-radius: 10px;
   padding: 15px;
   width: 45%;
-  @media screen and (max-width: 1100px){
+  @media screen and (max-width: 800px){
         width: 100%;
+        margin-bottom: 15px;
     }
 `;
 const Header = styled.h4`
@@ -77,17 +78,21 @@ type DataType = {
     head: string;
     content: string;
 };
+interface Props {
+    content: DataType[];
+    header: string;
+}
 function PartnersWays() {
-    const data: DataType[] = i18next.t('partnersWay', { returnObjects: true });
+    const data: Props = i18next.t('partnersWay', { returnObjects: true });
 
     return (
         <Container>
             <LeftHeader>
-                More ways to partner with us
+                {data.header}
             </LeftHeader>
             <Boxes>
                 {
-                    data.map((item, index) => (
+                    data.content.map((item, index) => (
                         <Box key={index}>
                             <Header>
                                 {item.head}
