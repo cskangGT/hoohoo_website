@@ -54,7 +54,7 @@
         "desc" : "Get points! Through photo-taking."
     }],
       "slides": {
-        "Images/1__.svg": {
+        "Images/earth_image.svg": {
             "firstDesc": "CAPTURE AND BE REWARDED",
             "secondDesc": "CLICK YOUR SHUTTER,<br />BUILD EARTH'S SHELTER, <br />GET POINTS AND BECOME WEALTHIER."
         },
@@ -64,10 +64,11 @@
         "Images/preview.png": {
             "firstDesc": "Empower Your Green Journey",
             "secondDesc": "Take steps for a greener future,<br /> Celebrate eco-milestones with us,<br /> Earn rewards for helping the Earth."
-        }
+        },
+        "button" : "Learn More"
       }
     },
-    "gallery" : ["Images/1.jpeg", "Images/2.jpeg", "Images/4.jpeg", "Images/5.jpeg", "Images/6.jpeg"],
+    "gallery" : ["Images/1.jpeg","Images/2.jpeg","Images/4.jpeg", "Images/12.jpeg" , "Images/7.jpeg",  "Images/5.jpeg", "Images/6.jpeg","Images/11.jpeg", "Images/13.jpeg","Images/10.jpeg","Images/3.jpeg", "Images/14.jpeg"],
     "teamIntro" : [{
       "photoPath": "Images/sung.jpeg",
       "name": "Sung Kang",
@@ -152,6 +153,7 @@
       "solutionData" : {
         "Imagef" : "Images/solution1.png",
         "Imageb" : "Images/solution2.png",
+        "title" : "EarthMera's Solution",
         "list":[
         {
             "index": "01",
@@ -225,16 +227,20 @@
     "content" : "Millions of people engage with EarthMera to verify eco-action and get rewarded while capturing.",
     "image" : "Images/ll_image.webp"
   },
-  "partnersWay": [
-    {
-        "head": "Events",
-        "content": "We work with entertainment, educational, and active events. We can create exclusive marketplaces filled with deep discounts and event partner products, accessible only to participants of your event. We also run friendly competitions with live leaderboard step counts and set targets for the participants to complete as."
-    },
-    {
-        "head": "Customer partnerships",
-        "content": "We're eager to use our tech for good. We can build out customised partnerships to support humanitarian, animal welfare, and environmental issues."
-    }
-  ],
+  "partnersWay": {
+    "content" : [
+      {
+          "head": "Events",
+          "content": "We work with entertainment, educational, and active events. We can create exclusive marketplaces filled with deep discounts and event partner products, accessible only to participants of your event. We also run friendly competitions with live leaderboard step counts and set targets for the participants to complete as."
+      },
+      {
+          "head": "Customer partnerships",
+          "content": "We're eager to use our tech for good. We can build out customised partnerships to support humanitarian, animal welfare, and environmental issues."
+      }
+    ],
+    "header" : "More ways to partner with us"
+  }
+  ,
   "partnerModal" : {
     "header": "Unlock the power of user loyalty to boost Eco-Action.",
     "rich": "EarthMera is committed to protecting and respecting your privacy, and we’ll only use your personal information to administer your account and to provide the products and services you requested from us. From time to time, we would like to contact you about our products and services, as well as other content that may be of interest to you. If you consent to us contacting you for this purpose, please tick below to say how you would like us to contact you:",
@@ -302,7 +308,7 @@
     },
     "b2c" : {
       "image"  : "Images/b2c.png",
-      "header" :"so I just get money for using tumblers and eco-bags?",
+      "header" : "so I just get money for using any tumblers and eco-bags?",
       "firstDesc": {
           "part1" : "Sign up now,",
           "part2" : "earn $10."

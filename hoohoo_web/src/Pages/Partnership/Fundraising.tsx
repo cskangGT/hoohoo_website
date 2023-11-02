@@ -4,7 +4,7 @@ import styled from 'styled-components';
 import i18next from 'i18next';
 import { theme } from '../../style';
 const Container = styled.section`
-    width: calc(100% - 30px);
+    width: calc(100%);
     display: flex;
     margin: 30px auto;
     justify-content: center;
@@ -48,6 +48,9 @@ const Text1M = styled.span`
   font-size: 2rem;
   line-height: 1.1;
   font-weight: 500;
+  @media (max-width: 600px) {
+    padding-left: 20px;
+  }
 `;
 const LL2 = styled.div`
     display: flex;
@@ -104,7 +107,7 @@ const GridContainer = styled.div`
   grid-template-columns: 1fr 1fr 1fr 1fr;
   gap: 16px;
   @media (max-width: 600px) {
-    width: 65%;
+    width: 70%;
     grid-template-columns: 1fr;
     gap: 8px;
   }

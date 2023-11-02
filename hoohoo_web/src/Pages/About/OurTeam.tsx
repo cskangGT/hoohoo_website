@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import styled from 'styled-components';
 import TeamIntro from './TeamIntro';
-import Gallary from './Gallary';
+import Gallery from './Gallery';
 import Wrapper from '../../Component/Wrapper/Wrapper';
 import { BgImage } from '../../style';
 const ContentBox = styled.section`
@@ -21,7 +21,7 @@ function OurTeam() {
                     <TeamIntro />
                 </ContentBox>
                 <ContentBox>
-                    <Gallary />
+                    <Gallery />
                 </ContentBox>
             </Wrapper>
         </BgImage>
