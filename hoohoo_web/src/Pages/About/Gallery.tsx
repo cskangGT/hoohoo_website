@@ -91,7 +91,7 @@ const SlideContent: React.FC<{ imagePaths: string[] }> = ({ imagePaths }) => {
 
     );
 };
-const Gallary: React.FC = () => {
+const Gallery: React.FC = () => {
     const [currentSlide, setCurrentSlide] = useState<number>(0);
     const slides: string[] = i18next.t('gallery', { returnObjects: true });;
     const handleLeftClick = () => {
@@ -144,4 +144,4 @@ const Gallary: React.FC = () => {
     );
 }
 
-export default Gallary;
+export default Gallery;
