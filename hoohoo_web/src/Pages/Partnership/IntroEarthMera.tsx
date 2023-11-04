@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import PartnersWays from './PartnersWays';
 import PartnersCardComponent from '../../Component/ContentBox/PartnersCardComponent';
 import i18next from 'i18next';
-import Fundraising from './Fundraising';
+import Vision from './Vision';
 const Container = styled.section`
     width: calc(100% - 30px);
     display: flex;
@@ -241,7 +241,7 @@ function IntroEarthMera() {
         <Container>
             <ContentBox>
                 <CardBoxContainer>
-                    <Fundraising></Fundraising>
+                    <Vision></Vision>
                 </CardBoxContainer>
                 <CardContentBox>
                     <SolutionHeader>{sd.title}</SolutionHeader>

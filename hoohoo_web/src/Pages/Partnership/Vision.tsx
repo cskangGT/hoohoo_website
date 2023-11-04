@@ -144,8 +144,8 @@ const Image = styled.img`
   object-fit: contain;
   width:100%;
 `;
-function Fundraising() {
-  const data: any = i18next.t('fundraising', { returnObjects: true });
+function Vision() {
+  const data: any = i18next.t('vision', { returnObjects: true });
 
   return (
     <Container>
@@ -180,4 +180,4 @@ function Fundraising() {
     </Container >
   )
 }
-export default Fundraising;
+export default Vision;

@@ -8,10 +8,13 @@
         }
     },
     "Nav" : {
-      "logo" : { "text":"EarthMera",
-    "image": "Images/icon_image.png"},
+              "logo" : { 
+                "text":"EarthMera",
+                "image": "Images/icon_image.png",
+                "link" : "/"
+        },
         "navlist" : [
-          { "label": "Home", "link": "/home" },
+          { "label": "Home", "link": "/" },
           {
             "label": "About",
             "subItems": [
@@ -20,8 +23,9 @@
             ]
           },
           {
-            "label": "Partnership",
+            "label": "What we do",
             "link": "/partnership"
+            
           },
           {
             "label": "Download",
@@ -56,17 +60,20 @@
       "slides": {
         "Images/earth_image.svg": {
             "firstDesc": "CAPTURE AND BE REWARDED",
-            "secondDesc": "CLICK YOUR SHUTTER,<br />BUILD EARTH'S SHELTER, <br />GET POINTS AND BECOME WEALTHIER."
+            "secondDesc": "CLICK YOUR SHUTTER,<br />BUILD EARTH'S SHELTER, <br />GET POINTS AND BECOME WEALTHIER.",
+            "button" : "Learn More"
         },
         "Images/banner2.png": {
 
         },
         "Images/preview.png": {
             "firstDesc": "Empower Your Green Journey",
-            "secondDesc": "Take steps for a greener future,<br /> Celebrate eco-milestones with us,<br /> Earn rewards for helping the Earth."
-        },
-        "button" : "Learn More"
+            "secondDesc": "Take steps for a greener future,<br /> Celebrate eco-milestones with us,<br /> Earn rewards for helping the Earth.",
+            "button" : "Learn More"
+        }
+        
       }
+      
     },
     "gallery" : ["Images/1.jpeg","Images/2.jpeg","Images/4.jpeg", "Images/12.jpeg" , "Images/7.jpeg",  "Images/5.jpeg", "Images/6.jpeg","Images/11.jpeg", "Images/13.jpeg","Images/10.jpeg","Images/3.jpeg", "Images/14.jpeg"],
     "teamIntro" : [{
@@ -257,7 +264,7 @@
         "content": "Building the leading play-and-earn solution that drives high user engagement for game publishers and advertisers on a global scale."
     }
   },
-  "fundraising": {
+  "vision": {
     "ll1":
     {
         "image": "Images/og_earthmera_logo.png",

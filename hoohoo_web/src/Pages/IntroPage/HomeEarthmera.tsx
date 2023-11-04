@@ -4,13 +4,7 @@ import IntroSection from './IntroSection';
 
 
 import { BgImage } from '../../style';
-import LandingB2C from '../LandingPage/LandingB2C';
-const ContentBox = styled.section`
-    padding-top: 20px;
-    justify-content: center;
-  width: 100%;
-  display: flex;
-`;
+
 const Wrap = styled.div`
   width: calc(100%);
   max-width: 1300px; 

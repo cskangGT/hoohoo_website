@@ -20,18 +20,8 @@ const Router = createBrowserRouter([
         path: "/",
         element: <Root />,
         children: [
-            // {
-            //     path: "/home",
-            //     element: <Main />,
-            //     errorElement: <ErrorComponent />
-            // },
             {
                 path: "/",
-                element: <HomeEarthmera />,
-                errorElement: <ErrorComponent />
-            },
-            {
-                path: "/home",
                 element: <HomeEarthmera />,
                 errorElement: <ErrorComponent />
             },

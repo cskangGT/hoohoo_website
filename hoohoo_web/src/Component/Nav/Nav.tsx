@@ -6,12 +6,14 @@ import { faBars } from '@fortawesome/free-solid-svg-icons';
 import { useTranslation } from 'react-i18next';
 import i18next from 'i18next';
 import { useNavigate } from 'react-router-dom';
-const Logo = styled.a`
+const Logo = styled.button`
   padding: 15px;
   font-size: 25px;
   display: flex;
   align-items: center;
   text-decoration: none;
+  border: none;
+  background-color: transparent;
 `;
 
 const LogoText = styled.span`
@@ -276,6 +278,7 @@ type NavItem = {
 type Props = {
   navlist: NavItem[];
   logo: any;
+  link: string;
 }
 
 function Nav({ isKorean, setIsKorean }: NavProps) {
@@ -300,7 +303,9 @@ function Nav({ isKorean, setIsKorean }: NavProps) {
   }, []);
   return (
     <Bar>
-      <Logo key="logo_link" href="/home">
+      <Logo key="logo_link" onClick={()=> {
+        navigate(logo.link);
+      }}>
         <HeaderLogo key="logo" src={logo.image} />
         <LogoText key="earthmera">{logo.text}</LogoText>
       </Logo>
@@ -312,18 +317,33 @@ function Nav({ isKorean, setIsKorean }: NavProps) {
                 <LogoIcon key={i + "hd_icon"} className="hidden-icon" src='Images/icon_image.png' />
                 {item.subItems ?
                   <HoverContainer key={i + "hoverContainer"} style={{ overflow: 'visible' }}>
-                    <NavHover id={item.link} key={i + "navh"}>{item.label}</NavHover>
+                    <NavLink
+                    id={item.link}
+                    key={i}
+                    onClick={() => {
+                      if (item.label === "Contact") {
+                        window.location.href = "mailto:devceohoony@gmail.com";
+                      } else {
+                        navigate(item.link ? item.link : "");
+                      }
+
+                      isOpen && setIsOpen(false);
+                    }}
+                  >{item.label}</NavLink>
                     <ContainerSubItems className="hidden-subItems" key={i + "hd_subItems"}>
                       <HoverLinks key={i + "hvLinks"} >
-                        {item.subItems.map((subItem, subIndex) => (
-                          <NavSubList key={subIndex}>
-                            <SubNavLink key={subIndex + "subLink"} onClick={() => {
-                              navigate(subItem.link ? subItem.link : "")
-                              isOpen && setIsOpen(false);
-                            }} >{subItem.label}</SubNavLink>
-                          </NavSubList>))
+                        {
+                          item.subItems.map((subItem, subIndex) => (
+                            <NavSubList key={subIndex}>
+                              <SubNavLink key={subIndex + "subLink"} onClick={() => {
+                                navigate(subItem.link ? subItem.link : "")
+                                isOpen && setIsOpen(false);
+                              }} >{subItem.label}</SubNavLink>
+                            </NavSubList>
+                          ))
                         }
-                      </HoverLinks></ContainerSubItems>
+                      </HoverLinks>
+                      </ContainerSubItems>
                   </HoverContainer> : <NavLink
                     id={item.link}
                     key={i}
