@@ -43,6 +43,8 @@ const Banner = styled.img`
 
 const Col = styled.div`
   display: flex;
+  justify-content: center;
+  align-items: center;
   @media screen and (max-width: 700px) {
         flex-direction: column-reverse;
     }
@@ -147,10 +149,12 @@ const Screen = styled.img`
     padding: 0 20px;
   height: auto;
   width: 40%;
+  margin-left: 30px;
   @media screen and (max-width: 1100px) {
       width: 60%;
   }
   @media screen and (max-width: 700px) {
+    margin-left: 0;
     padding: 0;
     width: 45%;
     align-self: center;
@@ -171,14 +175,12 @@ const SlideContent: React.FC<{ imagePath: string, data: any, windowWidth: number
                     <Banner src={imagePath} draggable="false" />
                 </BannerContainer> :
                 <Col>
-                    
                     <IntroText>
-                        {/* <IntroTitle>{data[imagePath].header}</IntroTitle> */}
                         <FirstDesc >
                             {data[imagePath].firstDesc}
                         </FirstDesc>
                         <SecondDesc dangerouslySetInnerHTML={{ __html: data[imagePath].secondDesc }} />
-                        <PartnerButton href='#rewards'>{data.button}</PartnerButton>
+                        <PartnerButton href='#rewards'>{data[imagePath].button}</PartnerButton>
                     </IntroText>
                     {
                         imagePath === "Images/earth_image.svg" ? <RightImage src={imagePath} alt="앱 소개 이미지" draggable="false" />

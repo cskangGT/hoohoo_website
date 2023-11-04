@@ -119,7 +119,8 @@ interface DataProps {
 }
 
 function EarlySignUp() {
-    const [validated, setValidated] = useState(false)
+    const [isSubmitting, setIsSubmitting] = useState<boolean>(false);
+    const [validated, setValidated] = useState<boolean>(false)
     const [formData, setFormData] = useState({
         fullName: '',
         email: '',
@@ -136,14 +137,12 @@ function EarlySignUp() {
     const handleChange = (e: any) => {
         const { name, value } = e.target;
         setFormData(prevData => ({ ...prevData, [name]: value }));
-        console.log('formData', formData)
     };
     const handleCheckboxChange = (e: any) => {
         setIsChecked(e.target.checked);
     };
 
     const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-        console.log('formData', formData)
         const form = e.currentTarget
         if (form.checkValidity() === false) {
             e.preventDefault()
@@ -161,21 +160,24 @@ function EarlySignUp() {
         e.preventDefault();
         if (formRef.current && serviceId && templateId && public_Key) {
             try {
+                setIsSubmitting(true);
                 await emailjs.sendForm(
                     serviceId,
                     templateId,
                     formRef.current,
                     public_Key
                 );
-                toast.success("Email successfully Submitted!");
+                toast.success("SignUp successfully Submitted!");
                 navigate('/home')
             } catch (error: unknown) {
-                toast.error("Error sending email.");
+                toast.error("Error occured in submitting.");
                 if (typeof error === 'object' && error !== null && 'text' in error) {
                     console.log("Error sending email:", (error as { text: string }).text);
                 } else {
                     console.log("Error sending email:", error);
                 }
+            } finally {
+                setIsSubmitting(false);
             }
         } else {
             console.log("Form reference is null");
@@ -258,8 +260,8 @@ function EarlySignUp() {
                                         </AgreeText>
                                         </HeaderCotainer>
                                     </InputBox>
-                                <SubmitBtn type="submit" data-l10n-id="partnership-submit">
-                                    {data.button}
+                                <SubmitBtn type="submit" data-l10n-id="partnership-submit" disabled={isSubmitting}>
+                                {data.button}
                                 </SubmitBtn>
                             </Form>
                             </LoginContainer></SectionContainer>

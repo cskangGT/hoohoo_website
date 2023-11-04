@@ -1,10 +1,7 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 import Bubble from '../../Component/Bubble';
-import i18next from 'i18next';
-import Slider from '../../Component/ContentBox/Slider';
-import LandingOrganizer from '../LandingPage/LandingOrganizer';
-import LandingFestival from '../LandingPage/LandingFestival';
+
 import LandingB2C from '../LandingPage/LandingB2C';
 const SectionContainer = styled.section`
     display: flex;
@@ -31,86 +28,17 @@ const Inside = styled.div`
         margin-left: 0;
     }
 `;
-interface DataStructure {
-    [key: string]: {
-        "header": string;
-        "firstDesc": string;
-        "secondDesc": string;
-    };
-}
-
-const Slide = styled.div`
-  min-width: 100%;
-  box-sizing: border-box;
-  position: relative;
-  overflow: hidden;
-  display: flex;
-`;
 
 
 const IntroSection: React.FC = () => {
-    const [windowWidth, setWindowWidth] = useState<number>(window.innerWidth);
-    const [currentSlide, setCurrentSlide] = useState<number>(0);
-    const [isBubble, setIsBubble] = useState<boolean>(true);
-    const data: DataStructure = i18next.t('IntroPage', { returnObjects: true });
-    const images = Object.keys(data);
-    const [isAutoSliding, setIsAutoSliding] = useState<boolean>(true);
-    const slides = [0, 1, 2];
-    const [isOpen, setIsOpen] = useState<boolean>(false);
-
-    const handleLeftClick = () => {
-        if (currentSlide > 0) {
-            setCurrentSlide(currentSlide - 1);
-        }
-    };
-
-    const handleRightClick = () => {
-        if (currentSlide < slides.length - 1) {
-            setCurrentSlide(currentSlide + 1);
-        }
-    };
-    const toggleAutoSliding = (state: boolean) => {
-        setIsAutoSliding(state);
-    };
-    useEffect(() => {
-        let slideInterval: NodeJS.Timeout;
-        if (isAutoSliding) {
-            slideInterval = setInterval(() => {
-                setCurrentSlide((prevSlide) => (prevSlide + 1) % slides.length);
-            }, 100000);
-        }
-        return () => {
-            clearInterval(slideInterval);
-        };
-    }, [images.length, isAutoSliding]);
     
-    useEffect(() => {
-        const handleResize = () => {
-            setWindowWidth(window.innerWidth);
-        };
-        window.addEventListener('resize', handleResize);
-        return () => {
-            window.removeEventListener('resize', handleResize);
-        };
-    }, []);
+    const [isBubble, setIsBubble] = useState<boolean>(true);
     return (
         <SectionContainer>
             <Inside>
-                <Slider currentSlide={currentSlide}
-                handleLeftClick={handleLeftClick}
-                handleRightClick={handleRightClick}
-                pageNumber={slides.length} isModalOpen={isOpen}>
-                    {slides.map((slide, index) => (
-                        <Slide>
-                            {slide === 0 && <LandingFestival toggleAutoSliding={toggleAutoSliding} isOpen={isOpen} setIsOpen={setIsOpen}></LandingFestival>}
-                            {slide === 1 && <LandingOrganizer toggleAutoSliding={toggleAutoSliding} isOpen={isOpen} setIsOpen={setIsOpen}></LandingOrganizer>}
-                            {slide === 2 && <LandingB2C />}
-                        </Slide>
-                    ))}
-                </Slider>
+            <LandingB2C />
             </Inside>
             {isBubble ? <Bubble setIsBubble={setIsBubble} /> : <React.Fragment />}
-
         </SectionContainer >
     );
 }

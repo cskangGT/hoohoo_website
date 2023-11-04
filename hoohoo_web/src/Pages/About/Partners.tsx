@@ -115,7 +115,7 @@ const HorizonContainer = styled.div`
 const Desc = styled.p`
     font-size: 1.2rem;
     line-height: 1.4;
-    width: calc(100% - 30px);
+    width: calc(100% - 10px);
     color: ${theme.darkGray};
     opacity: 0.8;
     margin: 0 5px;

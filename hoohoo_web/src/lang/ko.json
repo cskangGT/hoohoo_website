@@ -9,9 +9,11 @@
     },
     "Nav" : {
       "logo" : { "text":"어스메라",
-    "image": "Images/icon_image.png"},
+    "image": "Images/icon_image.png",
+  "link" : "/"
+},
         "navlist" : [
-          { "label": "홈", "link": "/home" },
+          { "label": "홈", "link": "/" },
           {
             "label": "소개",
             "subItems": [
@@ -26,7 +28,7 @@
           {
             "label": "다운로드",
             "subItems": [
-              { "label": "EarthMera", "link": "/home#download" },
+              { "label": "EarthMera", "link": "/about_earthmera#download" },
               { "label": "DropB", "link": "/dropb" }
             ]
           },
@@ -56,17 +58,20 @@
       "slides": {
         "Images/earth_image.svg": {
             "firstDesc": "CAPTURE AND BE REWARDED",
-            "secondDesc": "CLICK YOUR SHUTTER,<br />BUILD EARTH'S SHELTER, <br />GET POINTS AND BECOME WEALTHIER."
+            "secondDesc": "CLICK YOUR SHUTTER,<br />BUILD EARTH'S SHELTER, <br />GET POINTS AND BECOME WEALTHIER.",
+            "button" : "Learn More"
         },
         "Images/banner2.png": {
 
         },
         "Images/preview.png": {
             "firstDesc": "Empower Your Green Journey",
-            "secondDesc": "Take steps for a greener future,<br /> Celebrate eco-milestones with us,<br /> Earn rewards for helping the Earth."
-        },
-        "button" : "Learn More"
+            "secondDesc": "Take steps for a greener future,<br /> Celebrate eco-milestones with us,<br /> Earn rewards for helping the Earth.",
+            "button" : "Learn More"
+        }
+        
       }
+      
     },
     "gallery" : ["Images/1.jpeg","Images/2.jpeg","Images/4.jpeg", "Images/12.jpeg" , "Images/7.jpeg",  "Images/5.jpeg", "Images/6.jpeg","Images/11.jpeg", "Images/13.jpeg","Images/10.jpeg","Images/3.jpeg", "Images/14.jpeg"],
     "teamIntro" : [{
@@ -153,6 +158,7 @@
       "solutionData" : {
         "Imagef" : "Images/solution1.png",
         "Imageb" : "Images/solution2.png",
+        "title" : "EarthMera's Solution",
         "list":[
         {
             "index": "01",
@@ -226,16 +232,20 @@
     "content" : "Millions of people engage with EarthMera to verify eco-action and get rewarded while capturing.",
     "image" : "Images/ll_image.webp"
   },
-  "partnersWay": [
-    {
-        "head": "Events",
-        "content": "We work with entertainment, educational, and active events. We can create exclusive marketplaces filled with deep discounts and event partner products, accessible only to participants of your event. We also run friendly competitions with live leaderboard step counts and set targets for the participants to complete as."
-    },
-    {
-        "head": "Customer partnerships",
-        "content": "We're eager to use our tech for good. We can build out customised partnerships to support humanitarian, animal welfare, and environmental issues."
-    }
-  ],
+  "partnersWay": {
+    "content" : [
+      {
+          "head": "Events",
+          "content": "We work with entertainment, educational, and active events. We can create exclusive marketplaces filled with deep discounts and event partner products, accessible only to participants of your event. We also run friendly competitions with live leaderboard step counts and set targets for the participants to complete as."
+      },
+      {
+          "head": "Customer partnerships",
+          "content": "We're eager to use our tech for good. We can build out customised partnerships to support humanitarian, animal welfare, and environmental issues."
+      }
+    ],
+    "header" : "More ways to partner with us"
+  }
+  ,
   "partnerModal" : {
     "header": "Unlock the power of user loyalty to boost Eco-Action.",
     "rich": "EarthMera is committed to protecting and respecting your privacy, and we’ll only use your personal information to administer your account and to provide the products and services you requested from us. From time to time, we would like to contact you about our products and services, as well as other content that may be of interest to you. If you consent to us contacting you for this purpose, please tick below to say how you would like us to contact you:",
@@ -252,7 +262,7 @@
         "content": "Building the leading play-and-earn solution that drives high user engagement for game publishers and advertisers on a global scale."
     }
   },
-  "fundraising": {
+  "vision": {
     "ll1":
     {
         "image": "Images/og_earthmera_logo.png",

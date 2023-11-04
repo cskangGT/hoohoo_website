@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
 import { theme } from '../../style';
-import PartnerModal from './PartnerModal';
 import i18next from 'i18next';
+import PartnerModal from './PartnerModal';
+
 const SectionBox = styled.section`
     padding-bottom: 13rem;
     width: 100%;
