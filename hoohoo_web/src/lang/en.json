@@ -18,14 +18,13 @@
           {
             "label": "About",
             "subItems": [
-              { "label": "Our Team", "link": "/about_team" },
-              { "label": "EarthMera", "link": "/about_earthmera" }
+              { "label": "EarthMera", "link": "/about_earthmera" },
+              { "label": "Our Team", "link": "/about_team" }
             ]
           },
           {
             "label": "What we do",
             "link": "/partnership"
-            
           },
           {
             "label": "Download",
@@ -35,13 +34,12 @@
             ]
           },
           {
-            "label": "Blog",
-            "link": "/blog"
-          },
-          {
-            "label": "Contact",
-            "link": "#contact"
-          }]
+            "label": "Info",
+            "subItems": [
+              { "label": "Blog", "link": "/blog" },
+              { "label": "Contact", "link": "#contact" }
+            ]
+    }]
     },
     "AboutEarthMera": {
       "secondImages" : [{
@@ -58,7 +56,7 @@
         "desc" : "Get points! Through photo-taking."
     }],
       "slides": {
-        "Images/earth_image.svg": {
+        "Images/earth.png": {
             "firstDesc": "CAPTURE AND BE REWARDED",
             "secondDesc": "CLICK YOUR SHUTTER,<br />BUILD EARTH'S SHELTER, <br />GET POINTS AND BECOME WEALTHIER.",
             "button" : "Learn More"
@@ -79,22 +77,26 @@
     "teamIntro" : [{
       "photoPath": "Images/sung.jpeg",
       "name": "Sung Kang",
-      "role": "Founder"
+      "role": "CEO / Founder <br /> Software Engineer",
+      "contact" : "mailto:devceohoony@gmail.com"
   },
   {
       "photoPath": "Images/profile_photo1.jpeg",
       "name": "Jisan Park",
-      "role": "FE Engineer"
+      "role": "AI<br />Software Engineer",
+      "contact" : "mailto:jisanpark94@gmail.com"
   },
   {
       "photoPath": "Images/moung.jpeg",
       "name": "Moungsung Im",
-      "role": "FE Engineer"
+      "role": "Application<br />Software Engineer",
+      "contact" : "mailto:devceohoony@gmail.com"
   },
   {
       "photoPath": "Images/jimmy.jpeg",
       "name": "Jimmy Sim",
-      "role": "Content Designer"
+      "role": "UI UX Designer<br />Content Designer",
+      "contact" : "mailto:devceohoony@gmail.com"
   }],
     "partners" : {
       "header": "How do EarthMera",
@@ -113,8 +115,8 @@
           },
           "Government": {
               "header": "Government",
-              "imagePath": "Images/government1.jpeg",
-              "description": "EarthMera motivates eco-friendly habits at the grassroots level. We aid governments in achieving their sustainability goals. By motivating citizens to adopt eco-friendly habits, we are creating tangible change at a grassroots level. We help governments measure and achieve their sustainability goals, fostering a society where eco-consciousness is the norm. With EarthMera, we're not just building an app; we're building a movement."
+              "imagePath": "",
+              "description": "Coming soon"
           }
       }
   },
@@ -175,6 +177,9 @@
       ]}
   },
   "video_youtube" : [{
+    "video": "https://www.youtube.com/embed/B4BQuJaPLkM?si=-g1Kg6-xSGR4ZVAu",
+      "title": "Do you use a Tumblr or an eco-bag?!"
+  },{
     "video": "https://www.youtube.com/embed/yzk18ZvRW0E?si=H_37XpQejN9CmF34",
     "title": "Protecting the Environment with EarthMera"
   }, {
@@ -186,7 +191,8 @@
   }, {
       "video": "https://www.youtube.com/embed/xehU5GHS3I4?si=zp7KSx0gIIxQ_1t_",
       "title": "EarthMera with school challenge"
-  }],
+  }
+],
   "download" : {
     "earthmera" : {
       "image" : "Images/preview.png",

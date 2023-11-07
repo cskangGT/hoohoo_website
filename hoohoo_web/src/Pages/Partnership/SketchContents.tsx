@@ -50,7 +50,6 @@ const FirstText = styled.h3`
     color: #111425;
     margin-top: 0.2rem;
     margin-bottom: 0.5rem;
-    font-family: Poppins,sans-serif;
     font-size: 1.55rem;
     font-weight: 600;
     line-height: 1.5;
@@ -61,8 +60,7 @@ const SecondText = styled.p`
     text-align:center;
     color: #5a5c81;
     margin-top: 0.3rem;
-    font-family: Poppins,sans-serif;
-    font-size: .875rem;
+    font-size: 1rem;
     line-height: 1.85;
 `;
 

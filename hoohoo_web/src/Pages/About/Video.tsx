@@ -55,7 +55,7 @@ const HisBox = styled.a<VideoListProps>`
     margin-left: 10px;
     padding: 5px 30px;
     flex-direction: flex-start;
-    height: calc(90%/ ${props => props.num});
+    height: calc(100% / ${props => props.num});
     align-items: center;
     text-decoration: none;
     color: ${theme.darkGray};

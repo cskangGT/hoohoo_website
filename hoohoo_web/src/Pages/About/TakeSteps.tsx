@@ -25,7 +25,7 @@ const ContainerBox = styled.div`
     padding: 10px 15px;
     padding-bottom: 40px;
     overflow: hidden;
-    background-color: #F2F2F2;
+    background-color: transparent;
     border-radius: 40px;
 `;
 
@@ -82,10 +82,9 @@ const HeaderBox = styled.div`
     }
 `;
 const HeaderText = styled.h2`
-  text-transform: uppercase;
-  font-size: 3rem;
-  text-align: center;
-  font-family: 'Gagalin';
+    text-transform: uppercase;
+    font-size: 3rem;
+    text-align: center;
     color: ${theme.darkGray};
     @media screen and (max-width: 700px) {
         font-size: 2rem;

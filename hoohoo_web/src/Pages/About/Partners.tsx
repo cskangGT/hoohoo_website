@@ -226,7 +226,7 @@ function Partners() {
                     <DescBox>
                         <RightBox>
                             <ImageButton onClick={handleButtonClick} isText={isText}>
-                                {!isText ? <ImageWrapper><Image src={imagePaths[slideIndex]} draggable="false" /></ImageWrapper>
+                                {!isText ? slideIndex === 2 ? <Desc>{desc[slideIndex]}</Desc> : <ImageWrapper><Image src={imagePaths[slideIndex]} draggable="false" /></ImageWrapper>
                                     : <Desc>{desc[slideIndex]}</Desc>}
                             </ImageButton>
                         </RightBox>

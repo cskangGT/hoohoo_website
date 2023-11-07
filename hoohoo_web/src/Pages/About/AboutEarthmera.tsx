@@ -13,7 +13,9 @@ import Partners from './Partners';
 import Rewards from './Rewards';
 import Realtime from './Realtime';
 import TakeSteps from './TakeSteps';
+import { slideInFromTop } from '../../style';
 const SlideSection = styled.section`
+    animation: ${slideInFromTop} 0.7s ease-out forwards;
     padding-top: 20px;
     justify-content: center;
     align-items: center;
@@ -41,10 +43,14 @@ const Banner = styled.img`
     width: 80%;
 `;
 
-const Col = styled.div`
+type ColProps = {
+    slide: number;
+}
+const Col = styled.div<ColProps>`
   display: flex;
   justify-content: center;
   align-items: center;
+  flex-direction: ${props => props.slide === 2 ? 'row':'row-reverse'};
   @media screen and (max-width: 700px) {
         flex-direction: column-reverse;
     }
@@ -112,11 +118,11 @@ const FlexBox = styled.div`
     overflow: hidden;
 `;
 
-const RightImage = styled.img`
+const LeftImage = styled.img`
   padding: 0 20px;
   height: auto;
   width: 50%;
-  padding-left: 60px;
+  padding-left: 10px;
   @media screen and (max-width: 700px) {
     padding: 0;
       width: 80%;
@@ -167,14 +173,14 @@ const Slide = styled.div`
   display: flex;
 `;
 
-const SlideContent: React.FC<{ imagePath: string, data: any, windowWidth: number }> = ({ imagePath, data, windowWidth }) => {
+const SlideContent: React.FC<{ imagePath: string, data: any, windowWidth: number, slide: number }> = ({ imagePath, data, windowWidth, slide }) => {
     return (
         <Slide key={imagePath}>
             {imagePath === "Images/banner2.png" ?
                 <BannerContainer>
                     <Banner src={imagePath} draggable="false" />
                 </BannerContainer> :
-                <Col>
+                <Col slide={slide}>
                     <IntroText>
                         <FirstDesc >
                             {data[imagePath].firstDesc}
@@ -183,7 +189,7 @@ const SlideContent: React.FC<{ imagePath: string, data: any, windowWidth: number
                         <PartnerButton href='#rewards'>{data[imagePath].button}</PartnerButton>
                     </IntroText>
                     {
-                        imagePath === "Images/earth_image.svg" ? <RightImage src={imagePath} alt="앱 소개 이미지" draggable="false" />
+                        imagePath === "Images/earth.png" ? <LeftImage src={imagePath} alt="앱 소개 이미지" draggable="false" />
                             : <Screen src={imagePath} alt="앱 소개 이미지" draggable="false" style={{ maxWidth: windowWidth < 700 ? 'auto' : 350 }} />
                     }
                 </Col>
@@ -275,7 +281,7 @@ function AboutEarthmera() {
                         handleRightClick={handleRightClick}
                         pageNumber={images.length}>
                         {images.map((imagePath, index) => (
-                            <SlideContent key={index} imagePath={imagePath} data={data.slides} windowWidth={windowWidth} />
+                            <SlideContent key={index} slide={index} imagePath={imagePath} data={data.slides} windowWidth={windowWidth} />
                         ))}
                     </Slider>
                     <LottieBox href='#partners'>
