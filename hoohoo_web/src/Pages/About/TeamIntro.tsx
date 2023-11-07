@@ -114,7 +114,7 @@ function TeamIntro() {
                         Team EarthMera
                     </HeaderText>
                     <HeaderDescText>
-We drived fkljasl;dfajs dlf;nas;ldfkasjd;fklasl;dfajksldfkjsakl;dfas;ldfkasl;dkf
+                        
                     </HeaderDescText>
                 </HeaderBox>
                 <React.Fragment>
