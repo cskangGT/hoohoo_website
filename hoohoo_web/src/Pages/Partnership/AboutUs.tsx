@@ -3,8 +3,9 @@ import styled from 'styled-components';
 import { theme } from '../../style';
 import i18next from 'i18next';
 import PartnerModal from './PartnerModal';
-
+import { slideInFromTop } from '../../style';
 const SectionBox = styled.section`
+    animation: ${slideInFromTop} 1.5s ease-out forwards;
     padding-bottom: 13rem;
     width: 100%;
     display: flex;
@@ -133,6 +134,7 @@ const PartnerButton = styled.a`
   max-width:70%;
   padding: 10px 15px;
   z-index: 100;
+  animation: ${slideInFromTop} 2s ease-out forwards;
 `;
 
 function AboutUs() {

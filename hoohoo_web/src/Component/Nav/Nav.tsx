@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 import styled from 'styled-components';
 import { theme } from '../../style';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faBars } from '@fortawesome/free-solid-svg-icons';
+import { faBars, faCaretDown } from '@fortawesome/free-solid-svg-icons';
 import { useTranslation } from 'react-i18next';
 import i18next from 'i18next';
 import { useNavigate } from 'react-router-dom';
@@ -18,8 +18,7 @@ const Logo = styled.button`
 
 const LogoText = styled.span`
   padding-left: 10px;
-  color: ${theme.white};
-  font-family: 'Fredoka';
+  color: ${theme.white };
 `;
 
 const Bar = styled.nav`
@@ -29,13 +28,14 @@ const Bar = styled.nav`
   left: 0;
   z-index: 9999;
   backdrop-filter: blur(15px);
-  background-color: rgba(0, 0, 0, 0.29);
+  background-color: rgba(0,0,0,0.29);
   box-sizing: border-box;
   width: 100%;
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 8px 22px;
+  transition: top 0.5s; // 부드러운 애니메이션 효과를 위한 전환
   @media screen and (max-width: 1100px) {
     flex-direction: column;
     align-items: flex-start;
@@ -71,6 +71,32 @@ const HeaderLogo = styled.img`
   width: 36px;
   height: 36px;
 `;
+const HoverContainer = styled.div`
+  cursor: pointer;
+  color: ${theme.white};
+  position: relative;
+  @media screen and (max-width: 1100px) {
+    margin-left: 10px;
+    align-items: center;
+    justify-content: center;
+    
+  }
+  .fa-caret {
+    transition: transform 0.2s ease;
+    transform-origin: center; // 중앙을 기준으로 회전
+    margin-left: 5px;
+  }
+  &:hover {
+    border-radius: 4px;
+    .fa-caret {
+      transform: rotate(180deg); // 호버 시 180도 회전
+    }
+    .hidden-subItems {
+      display: block;
+      transition: all 0.5s ease;
+    }
+  }
+`;
 const NavMenuList = styled.li`
   text-decoration : none;
   color: ${theme.white};
@@ -84,10 +110,21 @@ const NavMenuList = styled.li`
   }
   &:hover {
     border-radius: 5Px;
-    & .hidden-icon {
+    .hidden-icon {
       opacity: 1;
       transition: all 0.5s ease;
       transform: rotate(360deg);
+    }
+    .HoverContainer {
+      border-radius: 4px;
+      .fa-caret {
+        transform: rotate(180deg);
+      }
+    }
+    .ContainerSubItems {
+      display: block;
+      margin-top: 10px;
+      transition: all 0.5s ease;
     }
   }
   @media screen and (max-width: 1100px) {
@@ -99,9 +136,13 @@ const NavMenuList = styled.li`
 const NavLink = styled.a`
   text-decoration : none;
   color: ${theme.white};
+  font-size: 18px;
   padding-left: 10px;
   cursor: pointer;
-  &:hover {
+  position: relative;
+  padding-bottom: 5px;
+  padding-right: 5px;
+  &:hover  {
     border-radius: 4px;
     color: ${theme.mainNeon};
   }
@@ -116,7 +157,10 @@ const NavRight = styled.div`
   justify-content: center;
   
 `;
-const MenuToogleButton = styled.button`
+type IsOpen ={
+  isOpen : boolean;
+}
+const MenuToogleButton = styled.button<IsOpen>`
   background: none;
   border: none;
   cursor: pointer;  
@@ -124,14 +168,13 @@ const MenuToogleButton = styled.button`
   right: 32px;
   top: 25px;
   font-size: 24px;
-  color: ${theme.mainNeon};
+  color: ${props => props.isOpen ? theme.mainNeon: theme.white};
   display: none;
   @media screen and (max-width: 1100px) {
     display: block;
   }
   &:hover {
     transition: all 0.3s ease;
-    color: ${theme.mainNeon};
   }
 `;
 
@@ -187,41 +230,21 @@ const LanguageButton = styled.button<LanguageProps>`
     display: none;
   }
 `;
-const HoverContainer = styled.div`
-  cursor: pointer;
-  color: ${theme.white};
-  @media screen and (max-width: 1100px) {
-    margin-left: 10px;
-    align-items: center;
-    justify-content: center;
-    
-  }
-  &:hover {
-    border-radius: 4px;
-    color: ${theme.mainNeon};
-    & .hidden-subItems {
-      display: block;
-      transition: all 0.5s ease;
-    }
-  }
-`;
-
-const NavHover = styled.span`
-  text-decoration : none;
-  padding-left: 10px;
-  @media screen and (max-width: 1100px) {
-    padding-left: 0px;
-  }
-  
-`;
-
 const ContainerSubItems = styled.div`
   position: absolute;
   display: none;
-  // margin-top: 30px;
-  // padding-top: 12px;
-  // background-color: rgba(250, 250, 250, 0.09);
+  /* width: 150px; */
+  border-radius: 15px;
+  left: 50%; // Start by aligning the left edge to the center
+  top: 0%;
+  transform: translate(-50%, 0); // Center it horizontally
+  padding: 10px 0;
+  /* backdrop-filter: blur(15px);
+  background-color: rgba(47,47,47,0.29); */
   @media screen and (max-width: 1100px) {
+    padding: 0;
+    backdrop-filter: none;
+  background-color: transparent;
     position: relative;
     align-items: center;
     justify-content: center;
@@ -239,29 +262,29 @@ const HoverLinks = styled.ul`
 `;
 const NavSubList = styled.li`
   text-decoration : none;
-  color: ${theme.white};
   display: flex;
-  padding : 5px 0px;
-  
-  padding-right: 15px;
-  @media screen and (max-width: 1100px) {
-    align-items: center;
+  padding: 5px 0;
+  padding-right: 15px; 
+  align-items: center;
     justify-content: center;
+  @media screen and (max-width: 1100px) {
+   
     padding : 7px 7px;
   }
 `;
 const SubNavLink = styled.a`
   text-decoration : none;
   color: ${theme.darkGray};
+  display: flex;
   padding-left: 10px;
+  text-align: center; 
   cursor: pointer;
   @media screen and (max-width: 1100px) {
-    font-size: 12px;  
-    text-align: center; 
+    font-size: 14px;  
     padding-left: 0px;
+    color: #d1d1d1;
   }
   &:hover {
-    border-radius: 4px;
     color: ${theme.mainNeon};
   }
 `;
@@ -283,6 +306,7 @@ type Props = {
 
 function Nav({ isKorean, setIsKorean }: NavProps) {
   const navigate = useNavigate();
+  
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const [windowWidth, setWindowWidth] = useState<number>(window.innerWidth);
   const { i18n } = useTranslation();
@@ -291,6 +315,31 @@ function Nav({ isKorean, setIsKorean }: NavProps) {
   const logo: any = data["logo"]
   const changelanguageToKo = () => i18n.changeLanguage('ko')
   const changelanguageToEn = () => i18n.changeLanguage('en')
+  const [lastScrollY, setLastScrollY] = useState(0);
+  const [visible, setVisible] = useState(true);
+
+  const handleScroll = () => {
+    const currentScrollY = window.scrollY;
+    
+    // 스크롤이 아래로 내려가고 있고, 네비게이션 바가 보이는 상태라면 숨깁니다.
+    if (currentScrollY > lastScrollY && visible) {
+      setVisible(false);
+    }
+    // 스크롤이 위로 올라가고 있고, 네비게이션 바가 숨겨진 상태라면 보여줍니다.
+    else if (currentScrollY < lastScrollY && !visible) {
+      setVisible(true);
+    }
+
+    setLastScrollY(currentScrollY); // 마지막 스크롤 위치를 업데이트합니다.
+  };
+
+  useEffect(() => {
+    window.addEventListener('scroll', handleScroll, { passive: true });
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, [lastScrollY, visible]);
   useEffect(() => {
     const handleResize = () => {
       setWindowWidth(window.innerWidth);
@@ -302,7 +351,7 @@ function Nav({ isKorean, setIsKorean }: NavProps) {
     };
   }, []);
   return (
-    <Bar>
+    <Bar style={{ top: visible ? '0' : '-100%' }}>
       <Logo key="logo_link" onClick={()=> {
         navigate(logo.link);
       }}>
@@ -316,27 +365,24 @@ function Nav({ isKorean, setIsKorean }: NavProps) {
               <NavMenuList key={i} >
                 <LogoIcon key={i + "hd_icon"} className="hidden-icon" src='Images/icon_image.png' />
                 {item.subItems ?
-                  <HoverContainer key={i + "hoverContainer"} style={{ overflow: 'visible' }}>
-                    <NavLink
+                  <HoverContainer className="HoverContainer" key={i + "hoverContainer"} style={{ overflow: 'visible' }} >
+                    <NavLink 
+                    className="NavLink"
                     id={item.link}
                     key={i}
-                    onClick={() => {
-                      if (item.label === "Contact") {
-                        window.location.href = "mailto:devceohoony@gmail.com";
-                      } else {
-                        navigate(item.link ? item.link : "");
-                      }
-
-                      isOpen && setIsOpen(false);
-                    }}
-                  >{item.label}</NavLink>
-                    <ContainerSubItems className="hidden-subItems" key={i + "hd_subItems"}>
+                  >{item.label}<FontAwesomeIcon icon={faCaretDown} className="fa-caret" />
+                  </NavLink>
+                    <ContainerSubItems className="ContainerSubItems hidden-subItems" key={i + "hd_subItems"}>
                       <HoverLinks key={i + "hvLinks"} >
                         {
                           item.subItems.map((subItem, subIndex) => (
                             <NavSubList key={subIndex}>
                               <SubNavLink key={subIndex + "subLink"} onClick={() => {
-                                navigate(subItem.link ? subItem.link : "")
+                                if (subItem.label === "Contact") {
+                                  window.location.href = "mailto:devceohoony@gmail.com";
+                                } else {
+                                  navigate(subItem.link ? subItem.link : "");
+                                }
                                 isOpen && setIsOpen(false);
                               }} >{subItem.label}</SubNavLink>
                             </NavSubList>
@@ -344,19 +390,15 @@ function Nav({ isKorean, setIsKorean }: NavProps) {
                         }
                       </HoverLinks>
                       </ContainerSubItems>
-                  </HoverContainer> : <NavLink
+                  </HoverContainer> : <HoverContainer className="HoverContainer" key={i + "hoverContainer"} style={{ overflow: 'visible' }} ><NavLink
+                    className="NavLink"
                     id={item.link}
                     key={i}
                     onClick={() => {
-                      if (item.label === "Contact") {
-                        window.location.href = "mailto:devceohoony@gmail.com";
-                      } else {
                         navigate(item.link ? item.link : "");
-                      }
-
                       isOpen && setIsOpen(false);
                     }}
-                  >{item.label}</NavLink>}
+                  >{item.label}</NavLink></HoverContainer>}
               </NavMenuList>
             );
           })
@@ -391,7 +433,7 @@ function Nav({ isKorean, setIsKorean }: NavProps) {
         </LanguageBoxSecond>
       </NavRight>}
 
-      <MenuToogleButton onClick={() => setIsOpen(!isOpen)}>
+      <MenuToogleButton onClick={() => setIsOpen(!isOpen)} isOpen={isOpen}>
         <FontAwesomeIcon icon={faBars} />
       </MenuToogleButton>
     </Bar >

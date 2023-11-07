@@ -1,6 +1,16 @@
 import React from 'react';
-import styled from 'styled-components';
+import styled, { keyframes } from 'styled-components';
 import { theme } from '../../style';
+const slideInFromTop = keyframes`
+  from {
+    transform: translateY(-20%);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+`;
 const CardContainer = styled.div`
     position: static;
     display: grid;
@@ -12,6 +22,7 @@ const CardContainer = styled.div`
     color: ${theme.darkGray};
     place-items: center;
     margin-bottom: 50px;
+    animation: ${slideInFromTop} 1.3s ease-out forwards;
     @media screen and (max-width: 700px) {
         margin-bottom: 1.5rem;
     }
@@ -19,7 +30,7 @@ const CardContainer = styled.div`
 const PhotoBox = styled.div`
   overflow: hidden;
   padding: 35px 50px;
-  padding-bottom: 80px;
+  padding-bottom: 50px;
   width: 220px;
   display: flex; 
   justify-content: center;
@@ -37,7 +48,7 @@ const Image = styled.img`
   aspect-ratio: auto 220 / 220;
 `;
 const Name = styled.span`
-padding-bottom: 30px;
+padding-bottom: 20px;
   font-size: 22px;
   width: 100%;
   text-align:center;
@@ -48,7 +59,6 @@ padding-bottom: 30px;
 `;
 const Role = styled.span`
   font-size: 16px;
-  padding-bottom: 30px;
   width: 100%;
   text-align:center;
   @media screen and (max-width: 700px) {
@@ -80,12 +90,20 @@ interface Profile {
   photoPath: string;
   name: string;
   role: string;
+  contact: string;
 }
 interface Item {
   item: Profile
 }
 
 function ProfileCard({ item }: Item) {
+  const roleHtml = item.role.split('<br />').map((line, index) => (
+    // 각 줄을 div 또는 span으로 감싸고, 필요한 경우 <br />를 추가합니다.
+    <React.Fragment key={index}>
+      {line}
+      {index < item.role.split('<br />').length - 1 && <br />}
+    </React.Fragment>
+  ));
   return (
     <CardContainer>
       <PhotoBox>
@@ -94,12 +112,8 @@ function ProfileCard({ item }: Item) {
       <Name>
         {item.name}
       </Name>
-      <Role>
-        {item.role}
-      </Role>
-      <ButtonBox>
-        <Btn href='#'>Get in Touch</Btn>
-      </ButtonBox>
+      <Role>{roleHtml}</Role>
+      
     </CardContainer>
   )
 }

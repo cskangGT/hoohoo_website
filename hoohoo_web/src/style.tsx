@@ -1,6 +1,15 @@
-import styled from 'styled-components';
+import styled, {keyframes} from 'styled-components';
 
-
+export const slideInFromTop = keyframes`
+  from {
+    transform: translateY(-20%);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+`;
 export const BgImage = styled.div`
     background: url("Images/bg2.webp") center top / cover no-repeat;
     display: flex;

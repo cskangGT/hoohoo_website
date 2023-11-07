@@ -39,10 +39,11 @@ const ScrollContainer = styled.div`
 margin-bottom: 20px;
 padding-bottom: 10px;
   display: flex;
-  justify-content: space-between;
+  
   
     @media screen and (max-width: 700px) {
         margin-bottom: 0;
+        justify-content: space-between;
         overflow-x: scroll;
         white-space: nowrap;
         user-select: none;
@@ -80,8 +81,12 @@ const OutlineText = styled.h3`
     color: ${theme.darkGray};
     padding: 5px;
     margin : 0;
+    font-size: 18px;
     &:hover {
         color: ${theme.white};
+    }
+    @media screen and (max-width: 700px){
+        font-size: 14px;
     }
 `;
 const Grid = styled.div`

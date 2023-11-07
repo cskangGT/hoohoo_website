@@ -4,6 +4,7 @@ import { theme } from '../../style';
 import Slider from '../../Component/ContentBox/Slider';
 import ProfileCard from '../../Component/ContentBox/ProfileCard';
 import i18next from 'i18next';
+import { slideInFromTop } from '../../style';
 const SectionBox = styled.section`
     padding-bottom: 5rem;
     width: 100%;
@@ -12,6 +13,7 @@ const SectionBox = styled.section`
     padding-top: 5rem;
     justify-content: center;
     margin-top: 100px;
+    animation: ${slideInFromTop} 0.7s ease-out forwards;
     @media screen and (max-width: 700px) {
         margin-top: 40px;
     }
@@ -30,14 +32,24 @@ const ContainerBox = styled.div`
 `;
 const HeaderBox = styled.div`
   width: 100%;
+  display:flex;
+  flex-direction: column;
   align-items: center;
 `;
-const HeaderText = styled.h2`
+const HeaderText = styled.h1`
   font-size: 3rem;
   text-align: center;
     color: ${theme.darkGray};
     @media screen and (max-width: 700px) {
         font-size: 2rem;
+    }
+`;
+const HeaderDescText = styled.h2`
+  font-size: 2rem;
+  text-align: center;
+    color: ${theme.darkGray};
+    @media screen and (max-width: 700px) {
+        font-size: 1rem;
     }
 `;
 const Slide = styled.div`
@@ -52,9 +64,10 @@ const Slide = styled.div`
     }
 `;
 interface Profile {
-    "photoPath": string;
-    "name": string;
-    "role": string;
+    photoPath: string;
+    name: string;
+    role: string;
+    contact: string;
 }
 interface SlideContentProps {
     array: Profile[];
@@ -72,10 +85,11 @@ function SlideContent({ array }: SlideContentProps) {
 };
 
 function TeamIntro() {
-    const data: any = i18next.t('teamIntro', { returnObjects: true });
+    const numProfileInSlide : number =3;
+    const data: Profile[] = i18next.t('teamIntro', { returnObjects: true });
     const groupedData = [];
-    for (let i = 0; i < data.length; i += 4) {
-        groupedData.push(data.slice(i, i + 4));
+    for (let i = 0; i < data.length; i += numProfileInSlide) {
+        groupedData.push(data.slice(i, i + numProfileInSlide));
     }
     const [currentSlide, setCurrentSlide] = useState<number>(0);
     const handleLeftClick = () => {
@@ -99,6 +113,9 @@ function TeamIntro() {
                     <HeaderText>
                         Team EarthMera
                     </HeaderText>
+                    <HeaderDescText>
+We drived fkljasl;dfajs dlf;nas;ldfkasjd;fklasl;dfajksldfkjsakl;dfas;ldfkasl;dkf
+                    </HeaderDescText>
                 </HeaderBox>
                 <React.Fragment>
                     <Slider
