@@ -31,9 +31,10 @@ const ImageBox = styled.div`
     grid-template-rows: auto;
     grid-template-columns: 1fr 1fr 1fr;
     display: grid;
-    @media screen and (max-width: 1100px) {
+    @media screen and (max-width: 700px) {
         height: auto;
         grid-template-columns: auto;
+        width: 80%;
         grid-column-gap: 20px;
     grid-template-rows: 1fr 1fr 1fr;
     }
@@ -51,7 +52,7 @@ const EachBox = styled.div<BoxProps>`
     display: flex;
     flex-direction: column;
     align-items: center;
-
+justify-content: center;
     background: linear-gradient(170deg, rgba(255, 255, 255, 0.14) 0%, rgba(255, 255, 255, 0.05) 100%);
     border-color: ${theme.white};
     border-width: 2px;

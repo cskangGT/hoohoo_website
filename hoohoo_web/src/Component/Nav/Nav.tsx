@@ -13,12 +13,12 @@ const Logo = styled.button`
   align-items: center;
   text-decoration: none;
   border: none;
-  background-color: transparent;
+  background-color: #FFFEFE;
 `;
 
 const LogoText = styled.span`
   padding-left: 10px;
-  color: ${theme.white };
+  color: ${theme.darkGray };
 `;
 
 const Bar = styled.nav`
@@ -27,15 +27,27 @@ const Bar = styled.nav`
   right: 0;
   left: 0;
   z-index: 9999;
-  backdrop-filter: blur(15px);
-  background-color: rgba(0,0,0,0.29);
+  /* backdrop-filter: blur(15px);
+  background-color: rgba(0,0,0,0.29); */
   box-sizing: border-box;
   width: 100%;
   display: flex;
+  background-color: #FFFEFE;
   justify-content: space-between;
   align-items: center;
   padding: 8px 22px;
   transition: top 0.5s; // 부드러운 애니메이션 효과를 위한 전환
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: 0px; // NavLink 바닥 바로 아래에 위치
+    left: 0;
+    width: 100%;
+    height: 1px;
+    background: #000; // 밑줄 색상
+    z-index: 300;
+    
+  }
   @media screen and (max-width: 1100px) {
     flex-direction: column;
     align-items: flex-start;
@@ -73,13 +85,12 @@ const HeaderLogo = styled.img`
 `;
 const HoverContainer = styled.div`
   cursor: pointer;
-  color: ${theme.white};
+  color: ${theme.darkGray};
   position: relative;
   @media screen and (max-width: 1100px) {
     margin-left: 10px;
     align-items: center;
     justify-content: center;
-    
   }
   .fa-caret {
     transition: transform 0.2s ease;
@@ -99,7 +110,7 @@ const HoverContainer = styled.div`
 `;
 const NavMenuList = styled.li`
   text-decoration : none;
-  color: ${theme.white};
+  color: ${theme.darkGray};
   display: flex;
   padding : 12.5px 15px;
   justify-content: center;
@@ -110,6 +121,9 @@ const NavMenuList = styled.li`
   }
   &:hover {
     border-radius: 5Px;
+    .NavLink::after {
+      width: 100%;
+    }
     .hidden-icon {
       opacity: 1;
       transition: all 0.5s ease;
@@ -135,7 +149,7 @@ const NavMenuList = styled.li`
 `;
 const NavLink = styled.a`
   text-decoration : none;
-  color: ${theme.white};
+  color: ${theme.darkGray};
   font-size: 18px;
   padding-left: 10px;
   cursor: pointer;
@@ -145,6 +159,17 @@ const NavLink = styled.a`
   &:hover  {
     border-radius: 4px;
     color: ${theme.mainNeon};
+  }
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: 0px; // NavLink 바닥 바로 아래에 위치
+    left: 0;
+    width: 0; // 기본 상태에서는 가로선이 보이지 않음
+    height: 2px;
+    background: #000; // 밑줄 색상
+    transition: width 0.3s ease-in-out;
+    
   }
 `;
 const NavRight = styled.div`
@@ -168,7 +193,7 @@ const MenuToogleButton = styled.button<IsOpen>`
   right: 32px;
   top: 25px;
   font-size: 24px;
-  color: ${props => props.isOpen ? theme.mainNeon: theme.white};
+  color: ${props => props.isOpen ? theme.mainNeon: theme.darkGray};
   display: none;
   @media screen and (max-width: 1100px) {
     display: block;
@@ -205,7 +230,7 @@ type LanguageProps =
 
 const LanguageButton = styled.button<LanguageProps>`
   font-size: 12px;
-  color: ${theme.white};
+  color: ${theme.darkGray};
   background: none;
   border: none;
   cursor: pointer;
@@ -233,14 +258,16 @@ const LanguageButton = styled.button<LanguageProps>`
 const ContainerSubItems = styled.div`
   position: absolute;
   display: none;
-  /* width: 150px; */
+  width: 150px;
   border-radius: 15px;
   left: 50%; // Start by aligning the left edge to the center
-  top: 0%;
+  top: 100%;
   transform: translate(-50%, 0); // Center it horizontally
   padding: 10px 0;
-  /* backdrop-filter: blur(15px);
-  background-color: rgba(47,47,47,0.29); */
+  /* backdrop-filter: blur(15px); */
+  z-index: 10000;
+  background-color: #FFFEFE;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5); 
   @media screen and (max-width: 1100px) {
     padding: 0;
     backdrop-filter: none;
@@ -301,7 +328,7 @@ type NavItem = {
 type Props = {
   navlist: NavItem[];
   logo: any;
-  link: string;
+  lang: string[];
 }
 
 function Nav({ isKorean, setIsKorean }: NavProps) {
@@ -312,6 +339,7 @@ function Nav({ isKorean, setIsKorean }: NavProps) {
   const { i18n } = useTranslation();
   const data: Props = i18next.t('Nav', { returnObjects: true })
   const navItems: NavItem[] = data["navlist"]
+  const lang: string[] = data["lang"]
   const logo: any = data["logo"]
   const changelanguageToKo = () => i18n.changeLanguage('ko')
   const changelanguageToEn = () => i18n.changeLanguage('en')
@@ -409,12 +437,12 @@ function Nav({ isKorean, setIsKorean }: NavProps) {
               onClick={() => {
                 setIsKorean(true)
                 changelanguageToKo()
-              }}>KO</LanguageButton>
+              }}>{lang[0]}</LanguageButton>
             <LanguageButton isKorean={!isKorean}
               onClick={() => {
                 setIsKorean(false)
                 changelanguageToEn()
-              }}>EN</LanguageButton>
+              }}>{lang[1]}</LanguageButton>
           </LanguageBox>
         }
       </NavbarMenu>
@@ -424,12 +452,12 @@ function Nav({ isKorean, setIsKorean }: NavProps) {
             onClick={() => {
               setIsKorean(true)
               changelanguageToKo()
-            }}>KO</LanguageButton>
+            }}>{lang[0]}</LanguageButton>
           <LanguageButton isKorean={!isKorean}
             onClick={() => {
               setIsKorean(false)
               changelanguageToEn()
-            }}>EN</LanguageButton>
+            }}>{lang[1]}</LanguageButton>
         </LanguageBoxSecond>
       </NavRight>}
 

@@ -10,8 +10,10 @@ export const slideInFromTop = keyframes`
     opacity: 1;
   }
 `;
-export const BgImage = styled.div`
-    background: url("Images/bg2.webp") center top / cover no-repeat;
+export const BgImage = styled.div<{bgcolor?: string}>`
+    /* background: url("Images/bg2.webp") center top / cover no-repeat;
+     */
+    background-color:${props=> props.bgcolor? props.bgcolor:'#FFFEFE'} ;
     display: flex;
     flex-direction: column;
     width: 100%;
@@ -28,6 +30,8 @@ export const theme: any = {
   darkSky: '#191F28',
   darkWhite: '#EBEBEB',
   gray: '#C4C1C1',
+  green: '#2A895F',
+  blue: '#2D8BBA',
 
   fontLarge: 26,
   fontMedium: 22,

@@ -66,26 +66,7 @@ const Role = styled.span`
         font-size: 1rem;
     }
 `;
-const ButtonBox = styled.div`
-  width: 100%;
-  display:flex;
-  align-items: center;
-  justify-content: center;
-  padding: 15px 0;
-  @media screen and (max-width: 700px) {
-        /* padding-bottom: 1.2rem; */
-        font-size: 0.8rem;
-    }
-`;
-const Btn = styled.a`
-  text-decoration: none;
-  padding: 10px 12px;
-  background-color: transparent;
-    border: solid ${theme.darkGray} 1px;
-    border-radius: 20px;
-    cursor: pointer!important;
-  color: ${theme.darkGray};
-`;
+
 interface Profile {
   photoPath: string;
   name: string;

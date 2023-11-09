@@ -10,7 +10,7 @@ const SectionBox = styled.section`
     padding-top: 5rem;
     margin: 0 15px;
     margin-top: 50px;
-    @media screen and (max-width: 700px) {
+    @media screen and (max-width: 1000px) {
         margin-top: 40px;
     }
 `;
@@ -42,7 +42,7 @@ const Image = styled.img`
     width: 70%;
   object-fit: cover;
   object-position: 50% 50%;
-  @media screen and (max-width: 700px) {
+  @media screen and (max-width: 1000px) {
         font-size: 1rem;
         width: 50%;
     }
@@ -57,7 +57,7 @@ const Number = styled.span`
   text-align:center;
   transform: scaleX(0.7);
   letter-spacing: -1px;
-  @media screen and (max-width: 700px) {
+  @media screen and (max-width: 1000px) {
         font-size: 2rem;
     }
 `;
@@ -68,7 +68,7 @@ const LongText = styled.span`
   display: flex;
   text-transform: uppercase;
   text-align:center;
-  @media screen and (max-width: 700px) {
+  @media screen and (max-width: 1000px) {
         font-size: 1rem;
         width: 70%;
     }
@@ -77,7 +77,7 @@ const HeaderBox = styled.div`
   width: 100%;
   align-items: center;
   margin-bottom: 40px;
-  @media screen and (max-width: 700px) {
+  @media screen and (max-width: 1000px) {
         width: 80%;
     }
 `;
@@ -86,7 +86,7 @@ const HeaderText = styled.h2`
     font-size: 3rem;
     text-align: center;
     color: ${theme.darkGray};
-    @media screen and (max-width: 700px) {
+    @media screen and (max-width: 1000px) {
         font-size: 2rem;
     }
 `;
@@ -95,7 +95,7 @@ const ContentBox = styled.div`
   display: flex;
   justify-content: center;
   align-items: flex-start;
-  @media screen and (max-width: 700px) {
+  @media screen and (max-width: 1000px) {
         flex-direction: column;
         align-items: center;
     }
@@ -103,14 +103,14 @@ const ContentBox = styled.div`
 const Plus = styled.img`
   width: 120px;
   padding: 40px 0; 
-  @media screen and (max-width: 700px) {
+  @media screen and (max-width: 1000px) {
         width:80px;
     }
 `;
 const Equal = styled.img`
     width: 140px;
     padding: 40px 0;
-    @media screen and (max-width: 700px) {
+    @media screen and (max-width: 1000px) {
         width: 100px;
         transform: rotate(90deg);
     }

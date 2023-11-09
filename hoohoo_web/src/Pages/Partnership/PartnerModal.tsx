@@ -34,7 +34,7 @@ const ModalContent = styled.div`
     z-index: 10;
     width: 100%;
     max-width: 35rem;
-    min-width: 600px;
+    min-width: 390px;
     background-color: #1d1d1d;
     border-radius: 1rem;
     margin-left: auto;
