@@ -309,7 +309,7 @@ const SubNavLink = styled.a`
   @media screen and (max-width: 1100px) {
     font-size: 14px;  
     padding-left: 0px;
-    color: #d1d1d1;
+    color: #424242;
   }
   &:hover {
     color: ${theme.mainNeon};

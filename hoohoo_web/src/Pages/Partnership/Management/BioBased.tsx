@@ -15,7 +15,7 @@ const Bg = styled.div<{image: string}>`
   justify-content: center;
   align-items: center;
   @media screen and (max-width: 1000px){
-        height: auto;
+        height: 700px;
     }
 `; 
 const Container = styled.div`

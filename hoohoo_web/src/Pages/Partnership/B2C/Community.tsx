@@ -14,25 +14,13 @@ type DataProps = {
     image: string;
     lineImage?: string;
     midcontent: string;
-    dotImage?: string;
 }
 type Props = {
     data : DataProps;
     flip? : boolean;
     index? : number;
 }
-const DotImage = styled.img`
-  position: absolute;
-  left:10px;
-  bottom: 0;
-  width:80px;
-  @media screen and (max-width: 800px){
-        position: relative;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-    }
-`;
+
 export default function Community(props : Props) {
     let i: number = props.index ? props.index : 0;
     const [isLargeScreen, setIsLargeScreen] = useState(true);
@@ -68,7 +56,6 @@ export default function Community(props : Props) {
                             <Desc>
                                 {props.data.content}
                             </Desc>
-                            {props.data.dotImage && <DotImage src={props.data.dotImage} />}
                             
                     </RightBox>
                     <LeftBox>

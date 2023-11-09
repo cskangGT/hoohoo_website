@@ -12,10 +12,13 @@ const Bg = styled.div`
   background-position: center;
   background-repeat: no-repeat;
   background-attachment: fixed; // 필요한 경우 추가
-  height: 700px;
+  height: 740px;
   display: flex;
   justify-content: center;
   align-items: center;
+  @media screen and (max-width: 500px){
+    height: auto;
+  }
 `;
 
 function PlatformIntro() {

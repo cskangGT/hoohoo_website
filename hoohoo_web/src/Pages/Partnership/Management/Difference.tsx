@@ -8,6 +8,7 @@ const ContentBox = styled.div`
     display: flex;
     flex-direction: column;
     justify-content: center;
+    align-items: center;
     width: calc(100%);
     padding: 40px 0;
     min-height: 600px;

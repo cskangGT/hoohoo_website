@@ -47,6 +47,9 @@ const TextBox = styled.div`
   padding-left: 10px;
   @media screen and (max-width: 700px){
         text-align: center;
+        width: 90%;
+        padding-left: 0px;
+        padding-top: 20px;
     }
 `;
 const Title = styled.p`
@@ -74,6 +77,7 @@ const GridContainer = styled.div`
         grid-template-columns: repeat(1, 1fr); // 3열로 나눕니다.
         grid-template-rows: repeat(4, 1fr); // 4행으로 나눕니다.
         margin-top: 20px;
+        padding: 0 20px;
     }
 `;
 type DataProps = {

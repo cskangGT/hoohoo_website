@@ -48,6 +48,9 @@ const HeaderText = styled.h1`
 const Image = styled.img`
   width:20%;
   margin-top: 30px;
+  @media screen and (max-width: 700px) {
+        width: 70%;
+    }
 `;
 function Bag() {
     

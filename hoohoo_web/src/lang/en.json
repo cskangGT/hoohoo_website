@@ -400,21 +400,18 @@
     "content": "Participate in group activities through various challenges, become a member of the ECO community, share your green experiences, and have more fun while collecting points.",
     "midcontent": "Share your green experiences.",
     "lineImage": "Images/platform3pline.png",
-    "dotImage": "Images/platform3pdot.png",
     "image": "Images/platform3pimage.png"
   },{
     "header": "Enjoy an<br /> eco community.",
     "content": "Create an environmental education challenge on EarthMera, where you can exchange ideas and share recycling tips. Earn points by taking pictures, AND motivating education about the environment.",
     "midcontent": "Create an environmental education challenge.",
     "lineImage": "Images/platform3pline.png",
-    "dotImage": "Images/platform4pdot.png",
     "image": "Images/platform4pimage.png" 
   },{
     "header": "Enjoy an<br /> eco community.",
     "content": "Get involved in the environmental event and help clean up your neighborhood. This eco-community not only makes the local area more beautiful but can also have a positive impact by spreading eco-consciousness to many.",
     "midcontent": "Join the environmental challenge.",
     "lineImage": "Images/platform3pline.png",
-    "dotImage": "Images/platform5pdot.png",
     "image": "Images/platform5pimage.png" 
   }],
   "b2bhowwork" : {
@@ -469,7 +466,7 @@
   ]
 },
 "bio-based" : {
-  "image": "Images/esg2pbg.jpg",
+  "image": "Images/esg2pbg.png",
   "header": "We produce bio-based<br /> plastic bags.",
   "content": "EarthMera's BioBag not only enhances<br />EarthMera AI's object detection rate<br /> but also serves as an eco-friendly <br /> alternative to plastic bags <br />that are currently banned in many countries."
 }, 
