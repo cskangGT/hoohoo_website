@@ -6,7 +6,7 @@ import ErrorComponent from "./Component/ErrorComponent/ErrorComponent";
 import HomeEarthmera from "./Pages/IntroPage/HomeEarthmera";
 import OurTeam from "./Pages/About/OurTeam";
 import AboutEarthmera from "./Pages/About/AboutEarthmera";
-import Partnership from "./Pages/Partnership/Partnership";
+import Partnership from "./Pages/Partnership/B2B/Partnership";
 import MainDropB from "./Pages/DropB/MainDropB";
 import Blog from "./Pages/Blog/Blog";
 import AdminLogin from "./Pages/Admin/AdminLogin";
@@ -15,6 +15,8 @@ import ComingSoon from "./Component/ErrorComponent/ComingSoon";
 import Privacy from "./Pages/Legal/Privacy";
 import TandC from "./Pages/Legal/T&C";
 import EarlySignUp from "./Pages/LandingPage/EarlySignUp";
+import Platform from "./Pages/Partnership/B2C/Platform";
+import ESGManagement from "./Pages/Partnership/Management/ESGManagement";
 const Router = createBrowserRouter([
     {
         path: "/",
@@ -38,6 +40,15 @@ const Router = createBrowserRouter([
             {
                 path: "/partnership",
                 element: <Partnership />,
+                errorElement: <ErrorComponent />
+            },{
+                path: "/esgmanagement",
+                element: <ESGManagement />,
+                errorElement: <ErrorComponent />
+            },
+            {
+                path: "/platform",
+                element: <Platform />,
                 errorElement: <ErrorComponent />
             },
             {

@@ -16,7 +16,7 @@ const SectionContainer = styled.section`
     display: flex;
     box-sizing: border-box;
     justify-content: center;
-    width: calc(100% );
+    width: calc(100%);
     padding: 0 10px;
     align-items: center;
     margin-top: 82px;

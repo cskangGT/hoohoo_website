@@ -10,7 +10,7 @@ import ListSection from './ListSection';
 import VideoSection from './Video';
 import Download from './Download';
 import Partners from './Partners';
-import Rewards from './Rewards';
+import Rewards from '../Partnership/B2C/Rewards';
 import Realtime from './Realtime';
 import TakeSteps from './TakeSteps';
 import { slideInFromTop } from '../../style';
@@ -65,7 +65,7 @@ const IntroText = styled.div`
   margin-top: 20px;
   padding-left: 20px;
   @media screen and (max-width: 700px) {
-    width: 100%;
+    width: 90%;
     padding: 0;
         flex-direction: column;
         /* margin-bottom: 20rem; */
@@ -294,7 +294,7 @@ function AboutEarthmera() {
                 <FlexBox>
                     <Realtime />
                 </FlexBox>
-                <ListSection id="rewards" data={data.secondImages} isBot={false} />
+                {/* <ListSection id="rewards" data={data.secondImages} isBot={false} /> */}
                 <ContentBox >
                     <Rewards />
                 </ContentBox>

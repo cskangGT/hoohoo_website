@@ -9,21 +9,27 @@
     },
     "Nav" : {
       "logo" : { "text":"어스메라",
-    "image": "Images/icon_image.png",
-  "link" : "/"
-},
+                "image": "Images/icon_image.png",
+                "link" : "/"
+                },
+      "lang": ["한", "영"],
+
         "navlist" : [
           { "label": "홈", "link": "/" },
           {
             "label": "소개",
             "subItems": [
-              { "label": "팀 소개", "link": "/about_team" },
-              { "label": "어스메라", "link": "/about_earthmera" }
+              { "label": "어스메라", "link": "/about_earthmera" },
+              { "label": "팀 소개", "link": "/about_team" }
+              
             ]
           },
           {
-            "label": "파트너십",
-            "link": "/partnership"
+            "label": "제품",
+            "subItems": [
+              { "label": "플랫폼 비지니스", "link": "/platform" },
+              { "label": "파트너십", "link": "/partnership" }
+            ]
           },
           {
             "label": "다운로드",
@@ -31,15 +37,13 @@
               { "label": "EarthMera", "link": "/about_earthmera#download" },
               { "label": "DropB", "link": "/dropb" }
             ]
-          },
-          {
-            "label": "블로그",
-            "link": "/blog"
-          },
-          {
-            "label": "연락처",
-            "link": "#contact"
-          }]
+          },{
+            "label": "정보",
+            "subItems": [
+              { "label": "블로그", "link": "/blog" },
+              { "label": "연락처", "link": "#contact" }
+            ]
+    }]
     },
     "AboutEarthMera": {
       "secondImages" : [{
