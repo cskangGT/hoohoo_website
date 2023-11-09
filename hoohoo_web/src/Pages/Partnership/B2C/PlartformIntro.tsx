@@ -12,7 +12,7 @@ const Bg = styled.div`
   background-position: center;
   background-repeat: no-repeat;
   background-attachment: fixed; // 필요한 경우 추가
-  height: 740px;
+  height: 900px;
   display: flex;
   justify-content: center;
   align-items: center;
