@@ -6,7 +6,6 @@ import { faBars, faCaretDown } from '@fortawesome/free-solid-svg-icons';
 import { useTranslation } from 'react-i18next';
 import i18next from 'i18next';
 import { useNavigate } from 'react-router-dom';
-import { debounce } from 'lodash';
 const Logo = styled.button`
   padding: 15px;
   font-size: 25px;
@@ -330,11 +329,19 @@ type Props = {
   logo: any;
   lang: string[];
 }
+export const throttleHelper = (callback: () => void, waitTime: number) => {
+  let timerId: ReturnType<typeof setTimeout> | null = null;
 
+  return () => {
+    if (timerId) return;
+    timerId = setTimeout(() => {
+      callback();
+      timerId = null;
+    }, waitTime);
+  };
+};
 function Nav({ isKorean, setIsKorean }: NavProps) {
   const navigate = useNavigate();
-  const SCROLL_THRESHOLD = 10; // 스크롤 임계값 설정
-  let lastKnownScrollY = 0;
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const [windowWidth, setWindowWidth] = useState<number>(window.innerWidth);
   const { i18n } = useTranslation();
@@ -344,31 +351,24 @@ function Nav({ isKorean, setIsKorean }: NavProps) {
   const logo: any = data["logo"]
   const changelanguageToKo = () => i18n.changeLanguage('ko')
   const changelanguageToEn = () => i18n.changeLanguage('en')
-  const [visible, setVisible] = useState(true);
-
+  const [hide, setHide] = useState(false);
+  // 2022/05/11 - 현재 스크롤 위치값 저장할 변수 - by 1-blue
+  const [pageY, setPageY] = useState(0);
+  // 2022/05/11 - 현재 스크롤을 내렸는지 올렸는지 확인할 스크롤 이벤트 함수 - by 1-blue
   const handleScroll = () => {
-    const currentScrollY = window.scrollY;
-    
-    if (Math.abs(currentScrollY - lastKnownScrollY) > SCROLL_THRESHOLD) {
-      if (currentScrollY > lastKnownScrollY && visible) {
-        setVisible(false);
-      } else if (currentScrollY < lastKnownScrollY && !visible) {
-        setVisible(true);
-      }
-      lastKnownScrollY = currentScrollY; // 마지막 스크롤 위치 업데이트
-    }
-
+    const { pageYOffset } = window;
+    const deltaY = pageYOffset - pageY;
+    const hide = pageYOffset !== 0 && deltaY >= 0;
+    setHide(hide);
+    setPageY(pageYOffset);
   };
-
-  const debouncedHandleScroll = debounce(handleScroll, 30);
-
+  // 2022/05/11 - 스크롤 이벤트에 스로틀링 적용 - by 1-blue
+  const throttleScroll = throttleHelper(handleScroll, 50);
+  // 2022/05/11 - 스크롤 이벤트 등록 - by 1-blue
   useEffect(() => {
-    window.addEventListener('scroll', debouncedHandleScroll, { passive: true });
-
-    return () => {
-      window.removeEventListener('scroll', debouncedHandleScroll);
-    };
-  }, [visible]);
+    document.addEventListener("scroll", throttleScroll);
+    return () => document.removeEventListener("scroll", throttleScroll);
+  }, [throttleScroll]);
   useEffect(() => {
     const handleResize = () => {
       setWindowWidth(window.innerWidth);
@@ -380,7 +380,7 @@ function Nav({ isKorean, setIsKorean }: NavProps) {
     };
   }, []);
   return (
-    <Bar style={{ top: visible ? '0' : '-100%' }}>
+    <Bar style={{ top: !hide ? '0' : '-100%' }}>
       <Logo key="logo_link" onClick={()=> {
         navigate(logo.link);
       }}>

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import styled from 'styled-components';
 import { BgImage, theme } from '../../style';
 import Lottie from "lottie-react";
@@ -13,6 +13,7 @@ import Partners from './Partners';
 import Realtime from './Realtime';
 import TakeSteps from './TakeSteps';
 import { slideInFromTop } from '../../style';
+import { useLocation } from 'react-router-dom';
 const SlideSection = styled.section`
     animation: ${slideInFromTop} 0.7s ease-out forwards;
     padding-top: 20px;
@@ -26,11 +27,12 @@ const SlideSection = styled.section`
         height: 850px;
     }
 `;
-const ContentBox = styled.section`
+const ContentBox = styled.div`
     padding-top: 20px;
     justify-content: center;
   width: 100%;
   display: flex;
+  -webkit-overflow-scrolling: touch;
 `;
 const BannerContainer = styled.div`
   width: 100%;
@@ -39,7 +41,7 @@ const BannerContainer = styled.div`
   align-items: center;
 `;
 const Banner = styled.img`
-    width: 80%;
+    width: 90%;
 `;
 
 type ColProps = {
@@ -185,7 +187,7 @@ const SlideContent: React.FC<{ imagePath: string, data: any, windowWidth: number
                             {data[imagePath].firstDesc}
                         </FirstDesc>
                         <SecondDesc dangerouslySetInnerHTML={{ __html: data[imagePath].secondDesc }} />
-                        <PartnerButton href='#rewards'>{data[imagePath].button}</PartnerButton>
+                        <PartnerButton href='/platform#action'>{data[imagePath].button}</PartnerButton>
                     </IntroText>
                     {
                         imagePath === "Images/earth.png" ? <LeftImage src={imagePath} alt="앱 소개 이미지" draggable="false" />
@@ -219,6 +221,22 @@ type ImageProps = {
 }
 function AboutEarthmera() {
     const [windowWidth, setWindowWidth] = useState<number>(window.innerWidth);
+    const location = useLocation();
+    const sectionRef = useRef<HTMLDivElement>(null);
+    useEffect(() => {
+        console.log('location.hash', location.hash)
+        
+        if (location.hash === '#download' ){
+            setTimeout(() => {
+                if (sectionRef.current) {
+                    sectionRef.current.scrollIntoView({ behavior: 'smooth' });
+                }
+            }, 100);
+          
+        } else {
+            window.scrollTo(0, 0);
+        }
+      }, [location]);
     useEffect(() => {
         const handleResize = () => {
             setWindowWidth(window.innerWidth);
@@ -233,30 +251,40 @@ function AboutEarthmera() {
     const [currentSlide, setCurrentSlide] = useState<number>(0);
     const data: DataStructure = i18next.t('AboutEarthMera', { returnObjects: true });
     const images = Object.keys(data.slides);
-    const [isAutoSliding, setIsAutoSliding] = useState<boolean>(true);
+    const [isPaused, setIsPaused] = useState(false);
+
     const handleLeftClick = () => {
         if (currentSlide > 0) {
             setCurrentSlide(currentSlide - 1);
         }
+        pauseAutoSlide();
     };
 
     const handleRightClick = () => {
         if (currentSlide < images.length - 1) {
             setCurrentSlide(currentSlide + 1);
         }
+        pauseAutoSlide();
+    };
+
+    const pauseAutoSlide = () => {
+        setIsPaused(true);
+        setTimeout(() => {
+            setIsPaused(false);
+        }, 5000);
     };
 
     useEffect(() => {
         let slideInterval: NodeJS.Timeout;
-        if (isAutoSliding) {
+        if (!isPaused) {
             slideInterval = setInterval(() => {
                 setCurrentSlide((prevSlide) => (prevSlide + 1) % images.length);
-            }, 5000000);
+            }, 5000);
         }
         return () => {
             clearInterval(slideInterval);
         };
-    }, [images.length, isAutoSliding]);
+    }, [images.length, isPaused]);
 
     useEffect(() => {
         const handleResize = () => {
@@ -299,7 +327,7 @@ function AboutEarthmera() {
                 <ContentBox key="video" id="video">
                     <VideoSection />
                 </ContentBox>
-                <ContentBox id="download_earthmera" key="download">
+                <ContentBox ref={sectionRef} id="download" key="download">
                     <Download dropb={false} />
                 </ContentBox>
             </Wrapper>

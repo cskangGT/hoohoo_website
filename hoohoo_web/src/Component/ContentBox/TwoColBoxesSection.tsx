@@ -138,7 +138,7 @@ type Props = {
 export default function TwoColBoxesSection(props : Props) {
 
     return (
-        <Container>
+        <Container style={{marginTop: 60}}>
                 <HorizonContainer rightImage={props.rightImage? props.rightImage : false} 
                 style={{backgroundColor: 'rgba(0,0,0,0.48)'}}>
                 <LeftBox>

@@ -7,8 +7,6 @@ const Background = styled.section`
     background-color: #fffefe;
     display: flex;
     width: 100%;
-    border-radius: 40px;
-    overflow-x: hidden;
     margin-top: 50px;
 `;
 const Cell = styled.div`
@@ -24,8 +22,7 @@ const Cell = styled.div`
 const LeftCell = styled.div`
     position: relative;
     display: flex;
-    width: 60%;
-    overflow: visible;
+    width: 55%;
     @media screen and (max-width: 1100px) {
         width: 100%;
     }
@@ -35,8 +32,8 @@ const RightCell = styled.div`
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    width: calc(40%);
-    padding: 40px 50px;
+    width: calc(45%);
+    padding: 30px 50px;
     position: relative;
     @media screen and (max-width: 1100px) {
         width: calc(100% - 30px);
@@ -49,7 +46,7 @@ const Header = styled.h4`
     text-transform: uppercase;
     color: ${theme.darkGray};
     letter-spacing: .4px;
-    margin-top: 40px;
+    margin-top: 20px;
     margin-bottom: 0.8rem;
     font-size: 3.5rem;
     font-weight: 700;
@@ -131,14 +128,15 @@ const TitleBox = styled.div`
   }
 `;
 const LeftImage = styled.img`
-  object-fit: cover;
+  object-fit: contain;
   width: 100%;
-  height: 100%;
+  overflow: hidden;
+    border-radius: 20px;
   @media screen and (max-width: 1100px) {
         position: relative;
+        object-fit: cover;
         top: 0;
         left: 0;
-        height: auto;
     }
 `;
 const HighlightedText = styled.span`
