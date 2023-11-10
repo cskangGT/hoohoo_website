@@ -3,7 +3,9 @@ import styled from 'styled-components';
 import Bubble from '../../Component/Bubble';
 
 import LandingB2C from '../LandingPage/LandingB2C';
+import { slideInFromTop } from '../../style';
 const SectionContainer = styled.section`
+    animation: ${slideInFromTop} 0.7s ease-out forwards;
     display: flex;
     box-sizing: border-box;
     justify-content: center;

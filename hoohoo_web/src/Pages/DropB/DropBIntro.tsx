@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
-import { theme } from '../../style';
+import { slideInFromTop, theme } from '../../style';
 import { useSwipeable } from 'react-swipeable';
 import Slider from '../../Component/ContentBox/Slider';
 import i18next from 'i18next';
 
 const SectionContainer = styled.section`
+    animation: ${slideInFromTop} 0.7s ease-out forwards;
     display: flex;
     height:940px;
     box-sizing: border-box;

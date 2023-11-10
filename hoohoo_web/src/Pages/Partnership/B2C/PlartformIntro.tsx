@@ -1,12 +1,12 @@
-import React, { useState } from 'react';
+import React from 'react';
 import styled from 'styled-components';
-import { theme } from '../../../style';
+import { slideInFromTop } from '../../../style';
 import i18next from 'i18next';
-import HeaderContent from '../../../Component/ContentBox/HeaderContent';
 import Wrapper from '../../../Component/Wrapper/Wrapper';
 import TwoColBoxesSection from '../../../Component/ContentBox/TwoColBoxesSection';
 const Bg = styled.div`
   width:calc(100%);
+  animation: ${slideInFromTop} 0.7s ease-out forwards;
   background-image: url('Images/platform1pbg.png');
   background-size: cover;
   background-position: center;

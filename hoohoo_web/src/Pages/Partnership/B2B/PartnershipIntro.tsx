@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
-import { theme } from '../../../style';
+import { slideInFromTop, theme } from '../../../style';
 import i18next from 'i18next';
 import Wrapper from '../../../Component/Wrapper/Wrapper';
 const Bg = styled.div`
   width: calc(100%);
+  animation: ${slideInFromTop} 0.7s ease-out forwards;
   height: 900px;
   background-image: url('Images/b2b1p.jpeg');
   background-size: cover;

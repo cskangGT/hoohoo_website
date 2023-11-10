@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
-import { theme } from '../../../style';
+import { slideInFromTop, theme } from '../../../style';
 import i18next from 'i18next';
 import Wrapper from '../../../Component/Wrapper/Wrapper';
 import { LeftBox, RightBox, Image } from '../../../Component/ContentBox/TwoColBoxesSection'
@@ -13,6 +13,7 @@ const Bg = styled.div`
 `; 
 const Container = styled.div`
   width:100%;
+  animation: ${slideInFromTop} 0.7s ease-out forwards;
   display: flex;
   justify-content: center;
   align-items: center;
