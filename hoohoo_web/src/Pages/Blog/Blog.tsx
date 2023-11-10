@@ -1,6 +1,6 @@
 import React, { useEffect, useState, useRef } from 'react';
 import styled from 'styled-components';
-import { BgImage, theme } from '../../style';
+import { BgImage, slideInFromTop, theme } from '../../style';
 import BlogCard from '../../Component/Blog/BlogCard';
 import PageNav from '../../Component/Blog/PageNav';
 import BlogModal from './BlogModal';
@@ -12,6 +12,7 @@ import Wrapper from '../../Component/Wrapper/Wrapper';
 
 const Container = styled.div`
     width: calc(100% - 30px);
+    animation: ${slideInFromTop} 0.7s ease-out forwards;
     display: flex;
     margin: 0px auto;
     justify-content: flex-start;

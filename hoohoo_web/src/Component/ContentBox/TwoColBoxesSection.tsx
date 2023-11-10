@@ -104,8 +104,8 @@ export const LeftBox = styled.div`
         width: 70%;
     }
     @media screen and (max-width: 500px){
-        margin-top: 10px;
-        width: 100%;
+        margin-top: 0px;
+        width: 80%;
     }
     
 `;
@@ -115,7 +115,9 @@ export const Image = styled.img`
   height: 100%;
   object-fit: contain;
   overflow: hidden;
-  border-radius: 30px;
+  @media screen and (max-width: 500px){
+    height: auto;
+  }
 `;
 
 type DataProps = {

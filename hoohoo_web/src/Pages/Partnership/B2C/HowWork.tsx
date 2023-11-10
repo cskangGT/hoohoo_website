@@ -73,7 +73,7 @@ function HowWork() {
     const data : any= i18next.t('howwork', { returnObjects: true });
     return (
             <ContentBox>
-                <LinedHeader data={data.title} color={theme.darkGray}/>
+                <LinedHeader data={data.title} color={theme.darkGray} />
                 <ImageBox>
                     {data.steps.map((item : DataProps, index : number) => (
                         <EachBox key={index}>

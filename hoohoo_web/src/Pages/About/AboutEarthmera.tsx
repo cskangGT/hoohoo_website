@@ -10,7 +10,6 @@ import ListSection from './ListSection';
 import VideoSection from './Video';
 import Download from './Download';
 import Partners from './Partners';
-import Rewards from '../Partnership/B2C/Rewards';
 import Realtime from './Realtime';
 import TakeSteps from './TakeSteps';
 import { slideInFromTop } from '../../style';
@@ -294,10 +293,6 @@ function AboutEarthmera() {
                 <FlexBox>
                     <Realtime />
                 </FlexBox>
-                {/* <ListSection id="rewards" data={data.secondImages} isBot={false} /> */}
-                <ContentBox >
-                    <Rewards />
-                </ContentBox>
                 <ContentBox key="table" id="table">
                     <TakeSteps />
                 </ContentBox>

@@ -72,6 +72,7 @@ const HeaderText = styled.h1`
     margin-bottom: 30px;
     @media screen and (max-width: 700px) {
         font-size: 2.4rem;
+        text-align: center;
     }
 `;
 const Container = styled.div`

@@ -2,10 +2,11 @@ import React, { useEffect } from 'react';
 import styled from 'styled-components';
 import Wrapper from '../../../Component/Wrapper/Wrapper';
 import { BgImage } from '../../../style';
-import R3 from './R3';
+import ESGIntro from './ESGIntro';
 import BioBased from './BioBased';
 import Difference from './Difference';
-import Bag from './Bag';
+import Bag, { Bg } from './Bag';
+import BioWork from './BioWork';
 const ContentBox = styled.section`
     justify-content: center;
   width: calc(100%);
@@ -19,15 +20,22 @@ function ESGManagement() {
 
     return (
         <BgImage>
-            <ContentBox>
-          <R3></R3>
+          <ContentBox>
+            <ESGIntro/>
           </ContentBox>
           <ContentBox>
             <BioBased />
           </ContentBox>
-          <ContentBox>
-            <Difference />
-          </ContentBox>
+          <Bg>
+            <Wrapper>
+              <ContentBox>
+                <Difference />
+              </ContentBox>
+              <ContentBox>
+                <BioWork />
+              </ContentBox>
+          </Wrapper>
+          </Bg>
           <ContentBox>
             <Bag />
           </ContentBox>

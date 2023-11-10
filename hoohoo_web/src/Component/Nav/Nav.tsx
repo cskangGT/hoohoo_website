@@ -6,6 +6,7 @@ import { faBars, faCaretDown } from '@fortawesome/free-solid-svg-icons';
 import { useTranslation } from 'react-i18next';
 import i18next from 'i18next';
 import { useNavigate } from 'react-router-dom';
+import { debounce } from 'lodash';
 const Logo = styled.button`
   padding: 15px;
   font-size: 25px;
@@ -23,6 +24,7 @@ const LogoText = styled.span`
 
 const Bar = styled.nav`
   position: fixed;
+  
   top: 0;
   right: 0;
   left: 0;
@@ -264,9 +266,9 @@ const ContainerSubItems = styled.div`
   top: 100%;
   transform: translate(-50%, 0); // Center it horizontally
   padding: 10px 0;
-  /* backdrop-filter: blur(15px); */
   z-index: 10000;
   background-color: #FFFEFE;
+  transition: top 0.5s ease;
   box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5); 
   @media screen and (max-width: 1100px) {
     padding: 0;
@@ -275,7 +277,6 @@ const ContainerSubItems = styled.div`
     position: relative;
     align-items: center;
     justify-content: center;
-    // margin-left: 15px;
   }
 `;
 
@@ -295,7 +296,6 @@ const NavSubList = styled.li`
   align-items: center;
     justify-content: center;
   @media screen and (max-width: 1100px) {
-   
     padding : 7px 7px;
   }
 `;
@@ -309,7 +309,7 @@ const SubNavLink = styled.a`
   @media screen and (max-width: 1100px) {
     font-size: 14px;  
     padding-left: 0px;
-    color: #d1d1d1;
+    color: #424242;
   }
   &:hover {
     color: ${theme.mainNeon};
@@ -333,7 +333,8 @@ type Props = {
 
 function Nav({ isKorean, setIsKorean }: NavProps) {
   const navigate = useNavigate();
-  
+  const SCROLL_THRESHOLD = 10; // 스크롤 임계값 설정
+  let lastKnownScrollY = 0;
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const [windowWidth, setWindowWidth] = useState<number>(window.innerWidth);
   const { i18n } = useTranslation();
@@ -343,31 +344,31 @@ function Nav({ isKorean, setIsKorean }: NavProps) {
   const logo: any = data["logo"]
   const changelanguageToKo = () => i18n.changeLanguage('ko')
   const changelanguageToEn = () => i18n.changeLanguage('en')
-  const [lastScrollY, setLastScrollY] = useState(0);
   const [visible, setVisible] = useState(true);
 
   const handleScroll = () => {
     const currentScrollY = window.scrollY;
     
-    // 스크롤이 아래로 내려가고 있고, 네비게이션 바가 보이는 상태라면 숨깁니다.
-    if (currentScrollY > lastScrollY && visible) {
-      setVisible(false);
-    }
-    // 스크롤이 위로 올라가고 있고, 네비게이션 바가 숨겨진 상태라면 보여줍니다.
-    else if (currentScrollY < lastScrollY && !visible) {
-      setVisible(true);
+    if (Math.abs(currentScrollY - lastKnownScrollY) > SCROLL_THRESHOLD) {
+      if (currentScrollY > lastKnownScrollY && visible) {
+        setVisible(false);
+      } else if (currentScrollY < lastKnownScrollY && !visible) {
+        setVisible(true);
+      }
+      lastKnownScrollY = currentScrollY; // 마지막 스크롤 위치 업데이트
     }
 
-    setLastScrollY(currentScrollY); // 마지막 스크롤 위치를 업데이트합니다.
   };
 
+  const debouncedHandleScroll = debounce(handleScroll, 30);
+
   useEffect(() => {
-    window.addEventListener('scroll', handleScroll, { passive: true });
+    window.addEventListener('scroll', debouncedHandleScroll, { passive: true });
 
     return () => {
-      window.removeEventListener('scroll', handleScroll);
+      window.removeEventListener('scroll', debouncedHandleScroll);
     };
-  }, [lastScrollY, visible]);
+  }, [visible]);
   useEffect(() => {
     const handleResize = () => {
       setWindowWidth(window.innerWidth);

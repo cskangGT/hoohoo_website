@@ -3,10 +3,10 @@ import styled from 'styled-components';
 import { theme } from '../../../style';
 import i18next from 'i18next';
 import Wrapper from '../../../Component/Wrapper/Wrapper';
-export const Bg = styled.section`
+export const Bg = styled.section<{bgcolor?: string}>`
   width: calc(100%);
-  height: 600px;
-  background-color: #DFC7BD;
+  height: auto;
+  background-color: ${props => props.bgcolor? props.bgcolor:'#EFE7DF'};
   display: flex;
   justify-content: center;
   align-items: center;
@@ -46,8 +46,11 @@ const HeaderText = styled.h1`
 
 
 const Image = styled.img`
-  width:20%;
+  width:70%;
   margin-top: 30px;
+  @media screen and (max-width: 700px) {
+        width: 95%;
+    }
 `;
 function Bag() {
     

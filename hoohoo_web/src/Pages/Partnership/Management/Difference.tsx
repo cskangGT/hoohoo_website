@@ -3,11 +3,11 @@ import styled from 'styled-components';
 import { theme } from '../../../style';
 import LinedHeader from '../../../Component/ContentBox/LinedHeader';
 import i18next from 'i18next';
-import Wrapper from '../../../Component/Wrapper/Wrapper';
 const ContentBox = styled.div`
     display: flex;
     flex-direction: column;
     justify-content: center;
+    align-items: center;
     width: calc(100%);
     padding: 40px 0;
     min-height: 600px;
@@ -75,7 +75,6 @@ type DataProps = {
 function Difference() {
     const data : any= i18next.t('diff', { returnObjects: true });
     return (
-        <Wrapper>
             <ContentBox>
                 <LinedHeader data={{header:data.header}} color={theme.darkGray} style={{fontSize: '3rem', width: '100%'}}/>
                 <ImageBox>
@@ -88,7 +87,6 @@ function Difference() {
                     ))}
                 </ImageBox>
             </ContentBox>
-            </Wrapper>
     )
 }
 export default Difference;
