@@ -27,37 +27,19 @@ const ArrowButton = styled.button`
   transform: translateY(-50%);
   color: ${theme.darkGray};
   font-size: 2rem;
-  z-index: 10;
-
+  z-index: 1000;
+  padding: 10px;
   &:focus {
     outline: none;
   }
 `;
 const LeftArrow = styled(ArrowButton)`
-  left:70px;
-  @media screen and (max-width:1700px) {
-    left: 0px;
-  }
-  @media screen and (max-width:1500px) {
-    left: 0px;
-  }
-  @media screen and (max-width:550px) {
-    left: 0px;
-  }
+  left: 0px;
+  
 `;
 
 const RightArrow = styled(ArrowButton)`
-  right: 70px;
-
-  @media screen and (max-width:1700px) {
-    right: 0px;
-  }
-  @media screen and (max-width:1500px) {
-    right: 0px;
-  }
-  @media screen and (max-width:550px) {
-    right: 0px;
-  }
+  right: 0px;
 `;
 const Container = styled.div`
   width: 100%;

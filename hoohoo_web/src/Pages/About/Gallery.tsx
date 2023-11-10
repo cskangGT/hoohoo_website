@@ -94,16 +94,9 @@ const SlideContent: React.FC<{ imagePaths: string[] }> = ({ imagePaths }) => {
 const Gallery: React.FC = () => {
     const [currentSlide, setCurrentSlide] = useState<number>(0);
     const slides: string[] = i18next.t('gallery', { returnObjects: true });;
-    const handleLeftClick = () => {
-        if (currentSlide > 0) {
-            setCurrentSlide(currentSlide - 1);
-        }
-    };
-    const handleRightClick = () => {
-        if (currentSlide < groupedImages.length - 1) {
-            setCurrentSlide(currentSlide + 1);
-        }
-    };
+    const [isPaused, setIsPaused] = useState(false);
+
+    
     const handlers = useSwipeable({
         onSwipedLeft: () => {
             handleRightClick();
@@ -122,13 +115,44 @@ const Gallery: React.FC = () => {
     useEffect(() => {
         const slideInterval = setInterval(() => {
             setCurrentSlide((prevSlide) => (prevSlide + 1) % groupedImages.length);
-        }, 5000);
+        }, 10000);
 
         return () => {
             clearInterval(slideInterval);
         };
     }, [groupedImages.length]);
+    const handleLeftClick = () => {
+        if (currentSlide > 0) {
+            setCurrentSlide(currentSlide - 1);
+        }
+        pauseAutoSlide();
+    };
 
+    const handleRightClick = () => {
+        if (currentSlide < groupedImages.length - 1) {
+            setCurrentSlide(currentSlide + 1);
+        }
+        pauseAutoSlide();
+    };
+
+    const pauseAutoSlide = () => {
+        setIsPaused(true);
+        setTimeout(() => {
+            setIsPaused(false);
+        }, 5000);
+    };
+
+    useEffect(() => {
+        let slideInterval: NodeJS.Timeout;
+        if (!isPaused) {
+            slideInterval = setInterval(() => {
+                setCurrentSlide((prevSlide) => (prevSlide + 1) % groupedImages.length);
+            }, 5000);
+        }
+        return () => {
+            clearInterval(slideInterval);
+        };
+    }, [groupedImages.length, isPaused]);
     return (<SectionContainer>
         <Inside {...handlers} >
             <Slider currentSlide={currentSlide}

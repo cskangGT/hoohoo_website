@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useRef } from 'react';
 import styled from 'styled-components';
 import Wrapper from '../../../Component/Wrapper/Wrapper';
 import { BgImage, theme } from '../../../style';
@@ -9,6 +9,7 @@ import Community from './Community';
 import Rewards from './Rewards';
 import Pioneer from './Pioneer';
 import i18next from 'i18next';
+import { useLocation } from 'react-router-dom';
 const IntroBox = styled.section`
     justify-content: center;
   width: 100%;
@@ -26,9 +27,17 @@ const ContentBox = styled.div`
   }
 `;
 function Platform() {
+    const location = useLocation();
+    const sectionRef = useRef<HTMLDivElement>(null);
+
     useEffect(() => {
         window.scrollTo(0, 0);
     }, []);
+    useEffect(() => {
+        if (location.hash === '#action' && sectionRef.current) {
+          sectionRef.current.scrollIntoView({ behavior: 'smooth' });
+        }
+      }, [location]);
     const data :any= i18next.t('community', { returnObjects: true });
 
     return (
@@ -38,7 +47,7 @@ function Platform() {
                <PlatformIntro />
             </IntroBox>
             <Wrapper>
-                <ContentBox>
+                <ContentBox ref={sectionRef} id="action">
                     <HowWork />
                 </ContentBox>
                 <ContentBox>
