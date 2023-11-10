@@ -10,7 +10,7 @@ const SectionContainer = styled.section`
     box-sizing: border-box;
     justify-content: center;
     align-items: center;
-    margin-top: 82px;
+    margin-top: 20px;
     border-radius: 20px;
 `;
 const Inside = styled.div`
