@@ -77,13 +77,13 @@
   {
       "photoPath": "Images/profile_photo1.jpeg",
       "name": "Jisan Park",
-      "role": "AI<br />Software Engineer",
+      "role": "Tech Lead<br />Software Engineer",
       "contact" : "mailto:jisanpark94@gmail.com"
   },
   {
       "photoPath": "Images/jimmy.jpeg",
       "name": "Jimmy Sim",
-      "role": "UI UX Designer<br />Content Designer",
+      "role": "Marketing<br />UI / UX Designer",
       "contact" : "mailto:devceohoony@gmail.com"
   }],
     "partners" : {
@@ -459,14 +459,19 @@
 
   ]
 },
-"bio-based" : {
-  "image": "Images/esg2pbg.png",
-  "header": "We produce bio-based<br /> plastic bags.",
-  "content": "EarthMera's BioBag not only enhances<br />EarthMera AI's object detection rate<br /> but also serves as an eco-friendly <br /> alternative to plastic bags <br />that are currently banned in many countries."
-}, 
-"bag" : {
-  "header": "Choose a greener tomorrow <br />with our bio-based plastic bags.",
-  "image" : "Images/Bag.png"
-}
+  "bio-based" : {
+    "image": "Images/esg2pbg.png",
+    "header": "We produce bio-based<br /> plastic bags.",
+    "content": "EarthMera's BioBag not only enhances<br />EarthMera AI's object detection rate<br /> but also serves as an eco-friendly <br /> alternative to plastic bags <br />that are currently banned in many countries."
+  }, 
+  "bag" : {
+    "header": "Choose a greener tomorrow <br />with our bio-based plastic bags.",
+    "image" : "Images/Bag.png"
+  }, 
+  "biowork" : {
+    "image": "Images/esg4pimg.png",
+    "header": "How does EarthMera<br /> Bio Bag work?",
+    "content": "mbedded with a QR code, the EarthMera Bio-bag offers an enhanced AI detection capability that quantifies the bag's contents precisely. This feature ensures not only greater accuracy but also detailed insights into the bag's fill level."
+  }
 
 }

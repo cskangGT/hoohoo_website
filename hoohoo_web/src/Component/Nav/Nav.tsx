@@ -267,6 +267,7 @@ const ContainerSubItems = styled.div`
   /* backdrop-filter: blur(15px); */
   z-index: 10000;
   background-color: #FFFEFE;
+  transition: top 0.5s ease;
   box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5); 
   @media screen and (max-width: 1100px) {
     padding: 0;

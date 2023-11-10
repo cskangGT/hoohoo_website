@@ -69,7 +69,7 @@ const LogoImage = styled.img`
         
     }
 `;
-function R3() {
+function ESGIntro() {
     
     const data : any =  {
         image: "Images/esg1pbg.png",
@@ -100,4 +100,4 @@ function R3() {
         </Bg>
     )
 }
-export default R3;
+export default ESGIntro;
