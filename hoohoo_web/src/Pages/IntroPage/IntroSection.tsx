@@ -12,6 +12,7 @@ const SectionContainer = styled.section`
     align-items: center;
     margin-top: 20px;
     border-radius: 20px;
+    position: relative;
 `;
 const Inside = styled.div`
     overflow: hidden;
@@ -36,12 +37,14 @@ const IntroSection: React.FC = () => {
     
     const [isBubble, setIsBubble] = useState<boolean>(true);
     return (
+    <React.Fragment>
         <SectionContainer>
             <Inside>
             <LandingB2C />
             </Inside>
-            {isBubble ? <Bubble setIsBubble={setIsBubble} /> : <React.Fragment />}
-        </SectionContainer >
+            
+        </SectionContainer >{isBubble ? <Bubble setIsBubble={setIsBubble} /> : <React.Fragment />}
+        </React.Fragment>
     );
 }
 
