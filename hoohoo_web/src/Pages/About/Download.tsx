@@ -7,7 +7,8 @@ const Container = styled.div<DownloadProps>`
     margin-top: 0px;
     display: flex;
     justify-content: flex-start;
-    height: 420px;
+    height: ${props => (props.dropb ? 480 : 350)}px;
+    width: ${props => (props.dropb ? 'auto' : '80%')};
     border-radius: 40px;
     background: linear-gradient(299deg, rgba(60, 214, 238, 0.44) 0%, ${props => (props.dropb ? '#1e1e1e' : '#93FF3F')} 100%);
     border-radius: 20px;
@@ -24,7 +25,7 @@ const Container = styled.div<DownloadProps>`
         height: 700px;
     }
     @media screen and (max-width: 500px) {
-      height: ${props => (props.dropb ? '400px' : '530px')};
+      height: ${props => (props.dropb ? '530px' : '530px')};
     }
 `;
 const ContentBox = styled.div`
@@ -32,14 +33,32 @@ const ContentBox = styled.div`
     position: relative;
     width: 100%;
     justify-content: center;
+    @media screen and (max-width: 500px) {
+      flex-direction: column;
+    }
 `;
-const ImageBox = styled.div`
-  padding-top: 30px;
+const ImageBox = styled.div<DownloadProps>`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+  width: ${props => (props.dropb ? 'auto' : '45%')};
+  @media screen and (max-width: 500px) {
+      width: 100%;
+    }
 `;
-
+const RightBox2 = styled.div`
+  width: 55%;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  @media screen and (max-width: 500px) {
+    width: 100%;
+}
+`;
 const Image = styled.img<DownloadProps>`
   width: ${props => (props.dropb ? '280px' : '220px')};
-  position: absolute;
+  position:${props => (props.dropb ? 'absolute' : 'relative')};
   left: ${props => (props.dropb ? '50px' : '70px')};
   // transform: rotate(-15deg);
   @media screen and (max-width: 1100px) {
@@ -52,6 +71,9 @@ const Image = styled.img<DownloadProps>`
       width: 150px;
       bottom: -20px;
     }
+`;
+const EarthMeraImg = styled.img`
+  height: 300px;
 `;
 const SecondImage = styled.img<DownloadProps>`
   width: ${props => (props.dropb ? '270px' : '215px')};
@@ -72,6 +94,7 @@ const SecondImage = styled.img<DownloadProps>`
       bottom: -20px;
     }
 `;
+
 const RightBox = styled.div`
   margin: 70px 22px 92px 530px;
   width: 100%;
@@ -134,6 +157,7 @@ const BannerBtnContainer = styled.div`
       flex-direction: row;
     }
 `;
+
 const BannerBtn = styled.a`
     text-decoration: none;
     color: ${theme.white};
@@ -163,11 +187,18 @@ function Download({ dropb }: DownloadProps) {
   return (
     <Container dropb={dropb}>
       <ContentBox>
-        <ImageBox>
-          <SecondImage src={image} dropb={dropb} />
+        <ImageBox dropb={dropb}>
+          {
+            !dropb? <EarthMeraImg src={image} />
+            :<>
+            <SecondImage src={image} dropb={dropb} />
           <Image src={image} dropb={dropb} />
+          </>
+          }
+          
         </ImageBox>
-        <RightBox>
+        {
+          dropb? <RightBox>
           <Header>
             {dropb ? data["dropb"]["header"] : data["earthmera"]["header"]}
           </Header>
@@ -182,7 +213,24 @@ function Download({ dropb }: DownloadProps) {
               <Img src={data["storeImage"]["googleplay"]}></Img>
             </BannerBtn>
           </BannerBtnContainer>
-        </RightBox>
+        </RightBox>: <RightBox2>
+        <Header>
+            {dropb ? data["dropb"]["header"] : data["earthmera"]["header"]}
+          </Header>
+          <SubHeader>
+            {dropb ? data["dropb"]["subheader"] : data["earthmera"]["subheader"]}
+          </SubHeader>
+          <BannerBtnContainer>
+            <BannerBtn href='/coming_soon'>
+              <Img src={data["storeImage"]["appstore"]}></Img>
+            </BannerBtn>
+            <BannerBtn href='/coming_soon'>
+              <Img src={data["storeImage"]["googleplay"]}></Img>
+            </BannerBtn>
+          </BannerBtnContainer>
+        </RightBox2>
+        }
+        
       </ContentBox>
     </Container>
   )

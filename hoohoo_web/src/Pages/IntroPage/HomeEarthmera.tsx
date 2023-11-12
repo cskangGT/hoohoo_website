@@ -4,6 +4,7 @@ import IntroSection from './IntroSection';
 
 
 import { BgImage } from '../../style';
+import IntroEarth from '../About/IntroEarth';
 
 const Wrap = styled.div`
   width: calc(100%);
@@ -42,6 +43,7 @@ function HomeEarthmera() {
     <BgImage>
       <Wrap>
         <IntroSection />
+        <IntroEarth />
       </Wrap>
     </BgImage>
   );

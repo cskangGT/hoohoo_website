@@ -4,6 +4,7 @@ import { theme } from '../style';
 import i18next from 'i18next';
 const BubbleBox = styled.div<any>`
     cursor: pointer;
+    z-index: 10000;
     color: ${theme.darkgrey};
     padding-left: 20px;
     padding-right: 30px;

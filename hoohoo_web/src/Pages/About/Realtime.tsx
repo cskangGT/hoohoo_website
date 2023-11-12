@@ -51,7 +51,6 @@ const Header = styled.h2<{bot?:boolean} >`
   font-size: ${props=> props.bot ?'2rem' : '3rem' };
   line-height: 1.3;
   text-align: center;
-  text-transform: uppercase;
   width: 100%;
   color: ${theme.darkGray};
   @media screen and (max-width: 600px){

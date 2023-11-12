@@ -4,27 +4,28 @@ import styled from 'styled-components';
 import LinedHeader from '../../../Component/ContentBox/LinedHeader';
 import { theme } from '../../../style';
 import PartnerModal from '../PartnerModal';
+import i18next from 'i18next';
 
 const Bg = styled.section`
-  position: relative; /* Positioned relative to place absolute elements inside */
+  position: relative;
   width: 100%;
-  height: auto; /* Will expand to fit the video */
-  overflow: hidden; /* Prevents any overflow from the video */
+  height: auto;
+  overflow: hidden;
   
   video {
-    width: 100%; /* Will fill the width */
-    height: auto; /* Adjust height automatically */
-    min-height: 100vh; /* Minimum height to fill screen on desktop */
-    object-fit: cover; /* Cover the entire container */
-    z-index: -1; /* Ensures video stays behind content */
+    width: 100%;
+    height: auto;
+    min-height: 100vh;
+    object-fit: cover;
+    z-index: -1;
   }
 `; 
 
 const Container  = styled.div`
-  position: relative; /* Relative position to place absolute elements */
+  position: relative;
   margin-bottom: 40px;
   width: calc(100%);
-  height: 100vh; /* Minimum height to fill screen */
+  height: 100vh;
 `;
 const Button = styled.button`
   text-decoration: none;
@@ -44,32 +45,25 @@ const Button = styled.button`
     font-size: 22px;
     }
 `;
-// Rest of your styles...
 
 export default function B2BVideo() {
-    // Your useState and data...
-    const [isOpen, setIsOpen] = useState<boolean>(false);
-    const data = {
-            video: "Images/Earthmera.mp4",
-            "header" : "EarthMera <br /> gives you wings.",
-            "content" : "ready to make a strong ESG statement?",
-            "button" : "Get Started"
-          } 
-    return (
-    <Bg>
-        <Wrapper>
-          <Container>
-            <video autoPlay loop muted playsInline>
-              <source src={data.video} type="video/mp4" />
-            </video>
-            <LinedHeader data={{header: data.header}} style={{position: 'absolute', top: '10%', left: '50%', transform: 'translateX(-50%)',
-                  fontSize: '4.5rem', color: theme.white, zIndex: 10, textAlign:'center' }}/>
-            <LinedHeader data={{header: data.content}} style={{position: 'absolute', top: '50%', left: '50%', transform: 'translateX(-50%)',
-                  fontSize: '2.4rem', color: theme.white, zIndex: 10, textAlign:'center' }}/>
-            <Button onClick={()=>{setIsOpen(true)}}>{data.button}</Button>
-            {isOpen && <PartnerModal isOpen={isOpen} setIsOpen={setIsOpen} />}
-          </Container>
-        </Wrapper>
-    </Bg>
+  const [isOpen, setIsOpen] = useState<boolean>(false);
+  const data : any= i18next.t('b2bvideo', { returnObjects: true }); 
+  return (
+  <Bg>
+      <Wrapper>
+        <Container>
+          <video autoPlay loop muted playsInline>
+            <source src={data.video} type="video/mp4" />
+          </video>
+          <LinedHeader data={{header: data.header}} style={{position: 'absolute', top: '10%', left: '50%', transform: 'translateX(-50%)',
+                fontSize: '4.5rem', color: theme.white, zIndex: 10, textAlign:'center' }}/>
+          <LinedHeader data={{header: data.content}} style={{position: 'absolute', top: '50%', left: '50%', transform: 'translateX(-50%)',
+                fontSize: '2.4rem', color: theme.white, zIndex: 10, textAlign:'center', width: '100%'}}/>
+          <Button onClick={()=>{setIsOpen(true)}}>{data.button}</Button>
+          {isOpen && <PartnerModal isOpen={isOpen} setIsOpen={setIsOpen} />}
+        </Container>
+      </Wrapper>
+  </Bg>
   )
 }

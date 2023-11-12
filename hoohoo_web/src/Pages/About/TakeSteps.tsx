@@ -53,7 +53,6 @@ const Number = styled.span`
   line-height: 1.2;
   width: 100%;
   font-weight: 700;
-  text-transform: uppercase;
   text-align:center;
   transform: scaleX(0.7);
   letter-spacing: -1px;
@@ -66,7 +65,6 @@ const LongText = styled.span`
   font-weight: 400;
   width: 100%;
   display: flex;
-  text-transform: uppercase;
   text-align:center;
   @media screen and (max-width: 1000px) {
         font-size: 1rem;
@@ -82,9 +80,9 @@ const HeaderBox = styled.div`
     }
 `;
 const HeaderText = styled.h2`
-    text-transform: uppercase;
     font-size: 3rem;
     text-align: center;
+    font-family: 'Fredoka';
     color: ${theme.darkGray};
     @media screen and (max-width: 1000px) {
         font-size: 2rem;

@@ -2,6 +2,7 @@ import React from 'react'
 import Wrapper from '../../../Component/Wrapper/Wrapper'
 import LinedHeader from '../../../Component/ContentBox/LinedHeader'
 import styled from 'styled-components';
+import i18next from 'i18next';
 
 const HeaderBox = styled.div`
   padding-top: 60px;
@@ -101,31 +102,7 @@ function Solution({data} :Props) {
 }
 
 export default function Solutions() {
-  const data= {
-    "header": "Who can use EarthMera Solutions?",
-    "solutions" : [
-        {
-            title: "All entertainment businesses that sell tickets.",
-            image : "Images/b2bsolution1.png",
-            content: "Users can earn rewards and extract data by helping with environmental improvement through the QR code on their tickets during entertainment."
-        },{
-            title: "Companies that manufactures eco-friendly products.",
-            image : "Images/b2bsolution2.png",
-            content: "We promote your products in our app and offer user feedback and data reporting."
-        },
-        {
-            title: "Businesses engaged in ESG management.",
-            image : "Images/b2bsolution3.png",
-            content: "We offer MD data reporting to companies in ESG management facing challenges in quantifying their product's environmental contributions and ESG compliance level."
-        },
-        {
-            title: "Other companies need the product statistics.",
-            image : "Images/b2bsolution4.png",
-            content: "We provide statistical data and consulting services to interested companies through our platform to help them ensure that consumers are using eco-friendly products as intended by the company."
-        }
-    ]
-    
-  }
+  const data :any = i18next.t('b2csolutions', { returnObjects: true });
     return (
     <Bg>
         <Wrapper>

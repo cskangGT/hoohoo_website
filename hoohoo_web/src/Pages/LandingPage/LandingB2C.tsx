@@ -22,6 +22,8 @@ const Cell = styled.div`
 const LeftCell = styled.div`
     position: relative;
     display: flex;
+    justify-content: center;
+    align-items: center;
     width: 55%;
     @media screen and (max-width: 1100px) {
         width: 100%;
@@ -43,14 +45,14 @@ const RightCell = styled.div`
     }
 `;
 const Header = styled.h4`
-    text-transform: uppercase;
     color: ${theme.darkGray};
     letter-spacing: .4px;
     margin-top: 20px;
+    margin-right: 20px;
     margin-bottom: 0.8rem;
     font-size: 3.5rem;
     font-weight: 700;
-    line-height: 1.5;
+    line-height: 1.2;
     font-family: 'Fredoka';
     @media screen and (max-width: 800px) {
         text-align: center;
@@ -112,7 +114,6 @@ const PartnerButton = styled.a`
     text-align: center;
     padding: 12px 30px;
     font-family: 'Fredoka';
-    text-transform: uppercase;
     @media screen and (max-width: 1100px) {
         font-size: 22px;
         margin-right: 0;
@@ -129,7 +130,7 @@ const TitleBox = styled.div`
 `;
 const LeftImage = styled.img`
   object-fit: contain;
-  width: 100%;
+  width: 90%;
   overflow: hidden;
     border-radius: 20px;
   @media screen and (max-width: 1100px) {
