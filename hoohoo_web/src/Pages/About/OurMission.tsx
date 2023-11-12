@@ -104,15 +104,15 @@ const GridContainer = styled.div`
   display: grid;
   grid-template-rows: repeat(3, 1fr); // 4행으로 나눕니다.
   gap: 20px; // 셀 사이의 간격
-  width: 100%;
-  margin-top: 30px;
+  width: 80%;
   padding: 0 50px;
   align-items: center; 
   justify-items: center;
   @media screen and (max-width: 1000px){
         flex-direction: column;
         margin-top: 20px;
-        padding: 0 20px;
+        padding: 0px;
+        /* padding: 0 20px; */
     }
 `;
 type DataProps = {

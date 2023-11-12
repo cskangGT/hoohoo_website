@@ -7,7 +7,7 @@ import Wrapper from '../../Component/Wrapper/Wrapper';
 import Slider from '../../Component/ContentBox/Slider';
 import i18next from 'i18next';
 import ListSection from './ListSection';
-import VideoSection from './Video';
+import VideoSection from '../IntroPage/Video';
 import Download from './Download';
 import Partners from './Partners';
 import Realtime from './Realtime';
@@ -31,7 +31,7 @@ const FlexBox = styled.div`
     overflow: hidden;
 `;
 
-const ContentBox = styled.div`
+export const ContentBox = styled.div`
     padding-top: 20px;
     justify-content: center;
   width: 100%;
@@ -81,42 +81,46 @@ export default function EarthMeraVision() {
         }
       }, [location]);
     return (
-        <BgImage bgcolor='#EFE7DF'> 
+        <BgImage bgcolor='#F6F4F1'> 
             <ContentBox>
                 <VisionIntro />
             </ContentBox>
             <ContentBox>
                 <IntroApp />
             </ContentBox>
+            <ContentBox key="table" id="table">
+                    <TakeSteps />
+            </ContentBox>
+            <BgImage bgcolor='#EFE7DF'> 
                 <Wrapper>
                     <SmallTopContentBox>
                         <OurMission />
                     </SmallTopContentBox>
+                    <ContentBox id="partners">
+                        <Partners />
+                    </ContentBox>
+                </Wrapper>
+            </BgImage>
                     {/* <LottieBox href='#partners'>
                         <Lottie animationData={arrow} loop={true} />
                     </LottieBox> */}
-                    <SmallTopContentBox>
-                        <Heros />
-                    </SmallTopContentBox>
-                    <ContentBox>
-                        <FutureModel />
-                    </ContentBox>
-                <ContentBox id="partners">
-                    <Partners />
+            <Wrapper>
+                
+    
+                <ContentBox>
+                    <FlexBox>
+                        <Realtime />
+                    </FlexBox>
                 </ContentBox>
-                <FlexBox>
-                    <Realtime />
-                </FlexBox>
-                <ContentBox key="table" id="table">
-                    <TakeSteps />
-                </ContentBox>
-                <ContentBox key="video" id="video">
-                    <VideoSection />
-                </ContentBox>
+                <SmallTopContentBox>
+                    <Heros />
+                </SmallTopContentBox>
+                
                 <ContentBox ref={sectionRef} id="download" key="download">
                     <Download dropb={false} />
                 </ContentBox>
-                </Wrapper>
+            </Wrapper>
+            
         </BgImage>
     )
 }

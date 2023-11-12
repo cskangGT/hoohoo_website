@@ -4,8 +4,9 @@ import IntroSection from './IntroSection';
 
 
 import { BgImage } from '../../style';
-import IntroEarth from '../About/IntroEarth';
-
+import IntroEarth from './IntroEarth';
+import { ContentBox } from '../About/EarthMeraVision';
+import VideoSection from './Video';
 const Wrap = styled.div`
   width: calc(100%);
   max-width: 1300px; 
@@ -44,6 +45,9 @@ function HomeEarthmera() {
       <Wrap>
         <IntroSection />
         <IntroEarth />
+        <ContentBox key="video" id="video">
+          <VideoSection />
+        </ContentBox>
       </Wrap>
     </BgImage>
   );

@@ -9,7 +9,7 @@ const Bg = styled.div`
   width: calc(100%);
   display: flex;
   justify-content: center;
-  background-color: #323012;
+  background-color: #F6F4F1;
   align-items: center;
 `; 
 const Container = styled.div`
@@ -27,7 +27,7 @@ const LeftCell = styled(LeftBox)`
   margin-bottom: 60px;
 `;
 const Line = styled.div`
-  background-color: ${theme.white};
+  background-color: ${theme.darkGray};
   width: 30%;
   height: 2px;
   @media screen and (max-width: 700px){
@@ -40,7 +40,7 @@ padding: 30px 0;
   line-height: 1;
   width: 100%;
   font-family:'Fredoka';
-  color: ${theme.white};
+  color: ${theme.darkGray};
   text-align: left;
   @media screen and (max-width: 1100px){
         font-size: 4rem;
@@ -52,7 +52,7 @@ padding: 30px 0;
 `;
 const ContentText = styled(Desc)`
   padding-top: 30px;
-  color: ${theme.white};
+  color: ${theme.darkGray};
 `;
 export default function IntroApp() {
     

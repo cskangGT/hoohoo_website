@@ -7,7 +7,7 @@ import Wrapper from '../../Component/Wrapper/Wrapper';
 import Slider from '../../Component/ContentBox/Slider';
 import i18next from 'i18next';
 import ListSection from './ListSection';
-import VideoSection from './Video';
+import VideoSection from '../IntroPage/Video';
 import Download from './Download';
 import Partners from './Partners';
 import Realtime from './Realtime';

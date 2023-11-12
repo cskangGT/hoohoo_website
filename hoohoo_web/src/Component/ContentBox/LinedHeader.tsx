@@ -16,8 +16,17 @@ const Header = styled.h2`
   line-height: 1;
   text-align: left;
   font-family:'Fredoka';
-  @media screen and (max-width: 500px){
+  @media screen and (max-width: 1100px){
         text-align: center;
+        font-size: 3rem;
+    }
+  @media screen and (max-width: 700px){
+        text-align: center;
+        font-size: 2.7rem;
+    }
+    @media screen and (max-width: 500px){
+        text-align: center;
+        font-size: 2.5rem;
     }
 `;
 const Line = styled.img<{dynamicWidth: number}>`

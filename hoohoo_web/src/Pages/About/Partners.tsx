@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import styled from 'styled-components';
 import { theme } from '../../style';
 import i18next from 'i18next';
+import LinedHeader from '../../Component/ContentBox/LinedHeader';
 const Container = styled.div`
     width: 100%;
     display: flex;
@@ -177,10 +178,9 @@ const ImageButton = styled.button<BoxProps>`
   }
 `;
 type Data = {
-    "header": string;
-    "subHeader": string;
-    "list": string[];
-    "content": SubDataType;
+    header: string;
+    list: string[];
+    content: SubDataType;
 }
 type SubDataType = {
     [key: string]: {
@@ -207,10 +207,7 @@ function Partners() {
         <Container>
             <ContentBox>
                 <HeaderBox>
-                    <FirstHeader>
-                        {data.header}
-                        <SecondHeader><br />{data.subHeader}</SecondHeader>
-                    </FirstHeader>
+                    <LinedHeader data={{header: data.header}} />
                 </HeaderBox>
                 <HorizonContainer>
                     <SlickBar>
@@ -226,7 +223,7 @@ function Partners() {
                     <DescBox>
                         <RightBox>
                             <ImageButton onClick={handleButtonClick} isText={isText}>
-                                {!isText ? slideIndex === 2 ? <Desc>{desc[slideIndex]}</Desc> : <ImageWrapper><Image src={imagePaths[slideIndex]} draggable="false" /></ImageWrapper>
+                                {!isText ? <ImageWrapper><Image src={imagePaths[slideIndex]} draggable="false" /></ImageWrapper>
                                     : <Desc>{desc[slideIndex]}</Desc>}
                             </ImageButton>
                         </RightBox>

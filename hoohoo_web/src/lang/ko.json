@@ -55,7 +55,7 @@
             "button" : "Learn More"
         },
         "Images/Banner.png": {
-
+            "firstDesc" : "Do you want the festival to be kept clean?"
         },
         "Images/preview.png": {
             "firstDesc": "Empower your green journey",
@@ -86,23 +86,22 @@
       "contact" : "mailto:devceohoony@gmail.com"
   }],
     "partners" : {
-      "header": "How does EarthMera",
-      "subHeader": "get their value?",
-      "list": ["Partners", "Users", "Government"],
+      "header": "How does EarthMera derive its value?",
+      "list": ["Users", "Partners", "Government"],
       "content": {
+        "Users": {
+            "header": "Users",
+            "imagePath": "Images/user1.png",
+            "description": "Every click with EarthMera amplifies your contribution to our planet. Capture your eco-actions, earn rewards, and join a community that’s reshaping the world. With every action you take, you’re not just securing points for yourself but ensuring a greener future for the next generation."
+          },
           "Partners": {
               "header": "Partners",
-              "imagePath": "Images/partner2.jpeg",
+              "imagePath": "Images/partner2.png",
               "description": "EarthMera thrives on powerful alliances. We collaborate with brands eager to resonate with eco-conscious audiences, industries aiming to reduce their carbon footprint, and organizations looking to champion green initiatives. Together, we are not just endorsing sustainability; we are mainstreaming it."
-          },
-          "Users": {
-              "header": "Users",
-              "imagePath": "Images/nhs1.jpeg",
-              "description": "Every click with EarthMera amplifies your contribution to our planet. Capture your eco-actions, earn rewards, and join a community that’s reshaping the world. With every action you take, you’re not just securing points for yourself but ensuring a greener future for the next generation."
           },
           "Government": {
               "header": "Government",
-              "imagePath": "",
+              "imagePath": "Images/government.png",
               "description": "Coming soon"
           }
       }
@@ -490,7 +489,7 @@
 },
   "bio-based" : {
     "image": "Images/esg2pbg.png",
-    "header": "We produce bio-based<br /> plastic bags.",
+    "header": "We produce<br /> bio-based<br /> plastic bags.",
     "content": "EarthMera's BioBag not only enhances<br />EarthMera AI's object detection rate<br /> but also serves as an eco-friendly <br /> alternative to plastic bags <br />that are currently banned in many countries."
   }, 
   "bag" : {

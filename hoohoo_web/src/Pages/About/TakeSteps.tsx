@@ -2,13 +2,13 @@ import React, { useEffect } from 'react';
 import styled from 'styled-components';
 import { theme } from '../../style';
 import i18next from 'i18next';
+import Wrapper from '../../Component/Wrapper/Wrapper';
 const SectionBox = styled.section`
     padding-bottom: 5rem;
     width: calc(100% - 30px);
     display: flex;
     align-items: center;
     padding-top: 5rem;
-    margin: 0 15px;
     margin-top: 50px;
     @media screen and (max-width: 1000px) {
         margin-top: 40px;
@@ -23,7 +23,7 @@ const ContainerBox = styled.div`
   align-items: center;
   position: relative;
     padding: 10px 15px;
-    padding-bottom: 40px;
+    padding-bottom: 80px;
     overflow: hidden;
     background-color: transparent;
     border-radius: 40px;
@@ -61,7 +61,7 @@ const Number = styled.span`
     }
 `;
 const LongText = styled.span`
-  font-size: 0.85rem;
+  font-size: 1rem;
   font-weight: 400;
   width: 100%;
   display: flex;
@@ -140,23 +140,26 @@ function TakeSteps() {
         window.scrollTo(0, 0);
     }, []);
     return (
-        <SectionBox>
-            <ContainerBox>
-                <HeaderBox>
-                    <HeaderText>
-                        {data["header"]}
-                    </HeaderText>
-                </HeaderBox>
-                <ContentBox>
-                    <Step data={data["first"]} />
-                    <Plus src={data["plus"]} />
-                    <Step data={data["second"]} />
-                    <Plus src={data["plus"]} />
-                    <Step data={data["third"]} />
-                    <Equal src={data["equal"]} />
-                    <Step data={data["change"]} />
-                </ContentBox>
-            </ContainerBox>
-        </SectionBox >)
+        <Wrapper>
+            <SectionBox>
+                <ContainerBox>
+                    <HeaderBox>
+                        <HeaderText>
+                            {data["header"]}
+                        </HeaderText>
+                    </HeaderBox>
+                    <ContentBox>
+                        <Step data={data["first"]} />
+                        <Plus src={data["plus"]} />
+                        <Step data={data["second"]} />
+                        <Plus src={data["plus"]} />
+                        <Step data={data["third"]} />
+                        <Equal src={data["equal"]} />
+                        <Step data={data["change"]} />
+                    </ContentBox>
+                </ContainerBox>
+            </SectionBox >
+        </Wrapper>
+        )
 }
 export default TakeSteps;
