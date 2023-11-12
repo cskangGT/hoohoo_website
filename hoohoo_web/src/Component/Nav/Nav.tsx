@@ -214,13 +214,13 @@ const LanguageBox = styled.div`
     top: 25px;
   }
 `;
-const LanguageBoxSecond = styled.div`
+const LanguageBoxSecond = styled.div<LanguageProps>`
   margin: 0 30px;
   display: none;
   @media screen and (max-width: 1100px) {
     display: block;
     position:absolute;
-    right: 45px;
+    right: ${props => (props.isKorean ? 60 : 45)}px;
     top: 27px;
   }
 `;
@@ -237,6 +237,7 @@ const LanguageButton = styled.button<LanguageProps>`
   cursor: pointer;
   position: relative;
   opacity: ${props => (props.isKorean ? 1 : 0.5)};
+  padding: 0 ${props => (props.isKorean ? 10 : 'auto')};
   &:hover {
     transition: all 0.3s ease;
     opacity: 1;
@@ -247,9 +248,9 @@ const LanguageButton = styled.button<LanguageProps>`
     position: absolute;
     top: 50%;
     right: 0;  
-    width: 1px;  // 선의 너비
-    height: 20px;  // 선의 높이
-    background-color: gray;  // 선의 색상
+    width: 1px;
+    height: 20px;
+    background-color: gray;
     transform: translateY(-50%);
   }
   &:last-child::after {
@@ -352,9 +353,7 @@ function Nav({ isKorean, setIsKorean }: NavProps) {
   const changelanguageToKo = () => i18n.changeLanguage('ko')
   const changelanguageToEn = () => i18n.changeLanguage('en')
   const [hide, setHide] = useState(false);
-  // 2022/05/11 - 현재 스크롤 위치값 저장할 변수 - by 1-blue
   const [pageY, setPageY] = useState(0);
-  // 2022/05/11 - 현재 스크롤을 내렸는지 올렸는지 확인할 스크롤 이벤트 함수 - by 1-blue
   const handleScroll = () => {
     const { pageYOffset } = window;
     const deltaY = pageYOffset - pageY;
@@ -362,9 +361,7 @@ function Nav({ isKorean, setIsKorean }: NavProps) {
     setHide(hide);
     setPageY(pageYOffset);
   };
-  // 2022/05/11 - 스크롤 이벤트에 스로틀링 적용 - by 1-blue
   const throttleScroll = throttleHelper(handleScroll, 50);
-  // 2022/05/11 - 스크롤 이벤트 등록 - by 1-blue
   useEffect(() => {
     document.addEventListener("scroll", throttleScroll);
     return () => document.removeEventListener("scroll", throttleScroll);
@@ -413,7 +410,9 @@ function Nav({ isKorean, setIsKorean }: NavProps) {
                                   navigate(subItem.link ? subItem.link : "");
                                 }
                                 isOpen && setIsOpen(false);
-                              }} >{subItem.label}</SubNavLink>
+                              }}>
+                                {subItem.label}
+                              </SubNavLink>
                             </NavSubList>
                           ))
                         }
@@ -448,7 +447,7 @@ function Nav({ isKorean, setIsKorean }: NavProps) {
         }
       </NavbarMenu>
       {windowWidth < 1100 && <NavRight>
-        <LanguageBoxSecond>
+        <LanguageBoxSecond isKorean={isKorean}>
           <LanguageButton isKorean={isKorean}
             onClick={() => {
               setIsKorean(true)

@@ -10,7 +10,7 @@ const SectionContainer = styled.section`
     box-sizing: border-box;
     justify-content: center;
     align-items: center;
-    margin-top: 20px;
+    margin-top: 90px;
     border-radius: 20px;
     position: relative;
 `;
@@ -43,7 +43,8 @@ const IntroSection: React.FC = () => {
             <LandingB2C />
             </Inside>
             
-        </SectionContainer >{isBubble ? <Bubble setIsBubble={setIsBubble} /> : <React.Fragment />}
+        </SectionContainer >
+        {isBubble ? <Bubble setIsBubble={setIsBubble} /> : <React.Fragment />}
         </React.Fragment>
     );
 }

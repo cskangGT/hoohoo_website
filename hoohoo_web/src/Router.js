@@ -5,7 +5,6 @@ import NotFound from "./Component/ErrorComponent/ErrorComponent"
 import ErrorComponent from "./Component/ErrorComponent/ErrorComponent";
 import HomeEarthmera from "./Pages/IntroPage/HomeEarthmera";
 import OurTeam from "./Pages/About/OurTeam";
-import AboutEarthmera from "./Pages/About/AboutEarthmera";
 import Partnership from "./Pages/Partnership/B2B/Partnership";
 import MainDropB from "./Pages/DropB/MainDropB";
 import Blog from "./Pages/Blog/Blog";
@@ -17,6 +16,7 @@ import TandC from "./Pages/Legal/T&C";
 import EarlySignUp from "./Pages/LandingPage/EarlySignUp";
 import Platform from "./Pages/Partnership/B2C/Platform";
 import ESGManagement from "./Pages/Partnership/Management/ESGManagement";
+import EarthMeraVision from "./Pages/About/EarthMeraVision";
 const Router = createBrowserRouter([
     {
         path: "/",
@@ -28,8 +28,8 @@ const Router = createBrowserRouter([
                 errorElement: <ErrorComponent />
             },
             {
-                path: "/about_earthmera",
-                element: <AboutEarthmera />,
+                path: "/vision",
+                element: <EarthMeraVision />,
                 errorElement: <ErrorComponent />
             },
             {

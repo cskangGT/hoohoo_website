@@ -5,6 +5,7 @@ import i18next from 'i18next';
 import Wrapper from '../../../Component/Wrapper/Wrapper';
 import { LeftBox, RightBox, Image } from '../../../Component/ContentBox/TwoColBoxesSection'
 const Bg = styled.div`
+  animation: ${slideInFromTop} 0.7s ease-out forwards;
   width: calc(100%);
   display: flex;
   justify-content: center;
@@ -72,12 +73,7 @@ const LogoImage = styled.img`
 `;
 function ESGIntro() {
     
-    const data : any =  {
-        image: "Images/esg1pbg.png",
-        leftImage: "Images/esg1pleft.png",
-        logos: ["Images/esg1plogo1.png", "Images/esg1plogo2.png","Images/esg1plogo3.png","Images/esg1plogo4.png"],
-        header: "Introduce EarthMera <br /> Bio-bag"
-    }
+    const data : any =  i18next.t('esgIntro', { returnObjects: true });
     return (
         <Bg>
             <Wrapper>

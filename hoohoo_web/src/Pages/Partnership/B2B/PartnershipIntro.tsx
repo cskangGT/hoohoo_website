@@ -74,7 +74,6 @@ const SubHeader = styled.h3`
   width: 100%;
   font-family: 'Fredoka';
   color: ${theme.green};
-  
   text-align: left;
   @media screen and (max-width: 1000px){
         font-size: 1.7rem;
@@ -85,7 +84,6 @@ const SubHeader = styled.h3`
 const Header = styled.h2`
   font-size: 4rem;
   line-height: 1;
-  text-transform: uppercase;
   width: 100%;
   text-align: left;
   @media screen and (max-width: 1000px){

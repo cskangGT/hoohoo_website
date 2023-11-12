@@ -51,12 +51,10 @@ export default function Community(props : Props) {
                             style={{color: theme.darkGray, textAlign: isLargeScreen && 'left'}}  
                         />
                     }
-                            
-                            <MidTitle>{props.data.midcontent}</MidTitle>
-                            <Desc>
-                                {props.data.content}
-                            </Desc>
-                            
+                        <MidTitle>{props.data.midcontent}</MidTitle>
+                        <Desc>
+                            {props.data.content}
+                        </Desc>       
                     </RightBox>
                     <LeftBox>
                         <Image src={props.data.image} />

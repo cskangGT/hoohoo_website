@@ -43,6 +43,7 @@ const RightArrow = styled(ArrowButton)`
 `;
 const Container = styled.div`
   width: 100%;
+  position: relative;
 `;
 const Slider: React.FC<SlidersProps> = ({ currentSlide, handleLeftClick, handleRightClick, children, pageNumber, isModalOpen }) => {
   const handlers = useSwipeable({

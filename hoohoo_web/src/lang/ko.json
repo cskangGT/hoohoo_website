@@ -19,7 +19,7 @@
           {
             "label": "소개",
             "subItems": [
-              { "label": "어스메라", "link": "/about_earthmera" },
+              { "label": "비전", "link": "/vision" },
               { "label": "팀 소개", "link": "/about_team" }
               
             ]
@@ -28,13 +28,14 @@
             "label": "제품",
             "subItems": [
               { "label": "플랫폼 비지니스", "link": "/platform" },
-              { "label": "파트너십", "link": "/partnership" }
+              { "label": "파트너십", "link": "/partnership" },
+              { "label": "ESG 경영관리", "link": "/esgmanagement" }
             ]
           },
           {
             "label": "다운로드",
             "subItems": [
-              { "label": "EarthMera", "link": "/about_earthmera#download" },
+              { "label": "EarthMera", "link": "/vision#download" },
               { "label": "DropB", "link": "/dropb" }
             ]
           },{
@@ -44,32 +45,19 @@
               { "label": "연락처", "link": "#contact" }
             ]
     }]
-    },
-    "AboutEarthMera": {
-      "secondImages" : [{
-        "imagePath": "Images/L1.png",
-        "head": "TAKE AN ECO-ACTION",
-        "desc" : "Try various ways of taking eco-actions."
-    }, {
-        "imagePath": "Images/L2.png",
-        "head": "TAKE A PHOTO",
-        "desc" : "Use the EarthMera app to capture eco-actions."
-    }, {
-        "imagePath": "Images/L3.png",
-        "head": "TAKE A REWARD",
-        "desc" : "Get points! Through photo-taking."
-    }],
+    },"AboutEarthMera": {
+      
       "slides": {
-        "Images/earth_image.svg": {
-            "firstDesc": "CAPTURE AND BE REWARDED",
-            "secondDesc": "CLICK YOUR SHUTTER,<br />BUILD EARTH'S SHELTER, <br />GET POINTS AND BECOME WEALTHIER.",
+        "Images/earth.png": {
+            "firstDesc": "Capture and be rewarded",
+            "secondDesc": "Click your shutters,<br />Build earth's shelter, <br />Get points and become wealthier.",
             "button" : "Learn More"
         },
-        "Images/banner2.png": {
+        "Images/Banner.png": {
 
         },
         "Images/preview.png": {
-            "firstDesc": "Empower Your Green Journey",
+            "firstDesc": "Empower your green journey",
             "secondDesc": "Take steps for a greener future,<br /> Celebrate eco-milestones with us,<br /> Earn rewards for helping the Earth.",
             "button" : "Learn More"
         }
@@ -81,25 +69,23 @@
     "teamIntro" : [{
       "photoPath": "Images/sung.jpeg",
       "name": "Sung Kang",
-      "role": "Founder"
+      "role": "CEO / Founder <br /> Software Engineer",
+      "contact" : "mailto:devceohoony@gmail.com"
   },
   {
       "photoPath": "Images/profile_photo1.jpeg",
       "name": "Jisan Park",
-      "role": "FE Engineer"
-  },
-  {
-      "photoPath": "Images/moung.jpeg",
-      "name": "Moungsung Im",
-      "role": "FE Engineer"
+      "role": "Tech Lead<br />Software Engineer",
+      "contact" : "mailto:jisanpark94@gmail.com"
   },
   {
       "photoPath": "Images/jimmy.jpeg",
       "name": "Jimmy Sim",
-      "role": "Content Designer"
+      "role": "Marketing<br />UI / UX Designer",
+      "contact" : "mailto:devceohoony@gmail.com"
   }],
     "partners" : {
-      "header": "How do EarthMera",
+      "header": "How does EarthMera",
       "subHeader": "get their value?",
       "list": ["Partners", "Users", "Government"],
       "content": {
@@ -115,13 +101,15 @@
           },
           "Government": {
               "header": "Government",
-              "imagePath": "Images/government1.jpeg",
-              "description": "EarthMera motivates eco-friendly habits at the grassroots level. We aid governments in achieving their sustainability goals. By motivating citizens to adopt eco-friendly habits, we are creating tangible change at a grassroots level. We help governments measure and achieve their sustainability goals, fostering a society where eco-consciousness is the norm. With EarthMera, we're not just building an app; we're building a movement."
+              "imagePath": "",
+              "description": "Coming soon"
           }
       }
   },
   "realtime" : {
-    "header": "ECO-ACTION HEROES IN REAL-TIME"
+    "header": "Early sign up heroes:",
+    "content": "Pioneers for a sustainable future!",
+    "image": "Images/realtime.png"
   },
   "IntroEarthMera" : {
     "fundsData" : [{
@@ -176,22 +164,56 @@
         }
       ]}
   },
+  "b2bvideo" : {
+    "video": "Images/Earthmera.mp4",
+    "header" : "EarthMera <br /> gives you wings.",
+    "content" : "ready to make a strong ESG statement?",
+    "button" : "Get Started"
+  },
+  "b2csolutions": {
+    "header": "Who can use EarthMera solutions?",
+    "solutions" : [
+        {
+            "title": "All entertainment businesses that sell tickets.",
+            "image" : "Images/b2bsolution1.png",
+            "content": "Users can earn rewards and extract data by helping with environmental improvement through the QR code on their tickets during entertainment."
+        },{
+            "title": "Companies that manufactures eco-friendly products.",
+            "image" : "Images/b2bsolution2.png",
+            "content": "We promote your products in our app and offer user feedback and data reporting."
+        },
+        {
+            "title": "Businesses engaged in ESG management.",
+            "image" : "Images/b2bsolution3.png",
+            "content": "We offer MD data reporting to companies in ESG management facing challenges in quantifying their product's environmental contributions and ESG compliance level."
+        },
+        {
+            "title": "Other companies need the product statistics.",
+            "image" : "Images/b2bsolution4.png",
+            "content": "We provide statistical data and consulting services to interested companies through our platform to help them ensure that consumers are using eco-friendly products as intended by the company."
+        }
+    ]
+  },
   "video_youtube" : [{
+    "video": "https://www.youtube.com/embed/B4BQuJaPLkM?si=-g1Kg6-xSGR4ZVAu",
+      "title": "Do you use a Tumblr or an eco-bag?!"
+  },{
     "video": "https://www.youtube.com/embed/yzk18ZvRW0E?si=H_37XpQejN9CmF34",
     "title": "Protecting the Environment with EarthMera"
   }, {
       "video": "https://www.youtube.com/embed/_iar-vWcimE?si=yAVI4Ls07kt0TVuQ",
       "title": "Keep claen the Music festival with EarthMera"
   }, {
-      "video": "https://www.youtube.com/embed/0xmXdZHHuwI?si=DeOc5FIszCL_ndmA",
+      "video": "https://www.youtube.com/embed/YMLrvU-TGXw?si=RYpMqsyTtxpibfdA",
       "title": "Save Earth Make points!"
   }, {
       "video": "https://www.youtube.com/embed/xehU5GHS3I4?si=zp7KSx0gIIxQ_1t_",
       "title": "EarthMera with school challenge"
-  }],
+  }
+],
   "download" : {
     "earthmera" : {
-      "image" : "Images/preview.png",
+      "image" : "Images/platform1pimage.png",
       "header": "Download the EarthMera App",
       "subheader" : "Make a change with one tap in EarthMera!"
     },
@@ -207,7 +229,7 @@
   },
   "dropbIntro" : {
     "Images/preview1.png": {
-        "firstDesc": "SPEAK, WRITE, AND DIVE-IN",
+        "firstDesc": "Speak, write, and dive-in",
         "secondDesc": "Click to create your own diary with Drop B"
     } 
   },
@@ -285,7 +307,7 @@
     "rr2": "Images/rr2.png"
   },
   "takesteps" : {
-    "header": "take it from small steps",
+    "header": "Take it from small steps",
     "first": {
         "image": "Images/takestep1.png",
         "text": "out of 6 trillion cigarettes, 450 billion are littered on the streets.",
@@ -305,7 +327,7 @@
     },
     "change": {
         "image": "Images/change.png",
-        "number": "CHANGE",
+        "number": "Change",
         "text": "the numbers speak, it's time for us to act genuinely. Let's make a significant impact on our planet through our app."
     }
     },
@@ -317,7 +339,7 @@
     },
     "b2c" : {
       "image"  : "Images/b2c.png",
-      "header" : "so I just get money for using any tumblers and eco-bags?",
+      "header" : "So I just get money for using any tumblers and eco-bags?",
       "firstDesc": {
           "part1" : "Sign up now,",
           "part2" : "earn $10."
@@ -332,12 +354,198 @@
   "earlysignup": {
     "header": {
         "part1": "Early sign-up gets you $10, ",
-        "part2": "EarthMera's benefits."
+        "part2": "EarthMera's Benefits."
     },
     "terms": {
         "part1": "I agree with ",
         "part2": "Terms and Conditions."
     },
     "button": "Submit"
-}
+  },
+  "platform1p" : {
+    "header": "The Best<br /> Eco-Friendly Platform",
+    "lineImage": "Images/platform1pline.png",
+    "image": "Images/platform1pimage.png",
+    "content": "This app lets you earn points for eco-friendly photos, exchange them for rewards, and promotes eco-conscious behavior and community."
+  },
+  "howwork" : {
+      "steps":[{
+          "imagePath": "Images/L1.png",
+          "head": "Take an eco-action",
+          "desc" : "Try various ways of taking eco-actions."
+      }, {
+          "imagePath": "Images/L2.png",
+          "head": "Take a photo",
+          "desc" : "Use the EarthMera app to capture eco-actions."
+      }, {
+          "imagePath": "Images/L3.png",
+          "head": "Take a reward",
+          "desc" : "Get points! Through photo-taking."
+      }],
+      "title" :{
+        "header": "How does our platform work?",
+        "lineImage": "Images/platform2pline.png"
+    }
+  },
+  "rewards" : {
+    "header": " 100+ rewards",
+    "content": "We've prepared numerous rewards for EarthMera heroes! Enjoy the process of earning points as you contribute to the conservation of our planet.",
+    "midcontent": "Your eco-actions deserve these rewards",
+    "lineImage": "Images/platform6pline.png",
+    "image": "Images/platform6pimage.png" 
+},
+  "pioneer": {
+    "header": "You are a true <br />eco-culture <br />pioneer",
+    "content": "Your act of taking coffee in a reusable tumbler sets a great example for many. By following these small actions, others can contribute to building an environmentally conscious culture.",
+    "midcontent": "Your small impact will be a butterfly effect.",
+    "lineImage": "Images/platform7pline.png",
+    "image": "Images/platform7pimage.png" 
+  },
+  "offer" : {
+    "header" : "What data can we offer?",
+    "comp" : [{
+      "compHeader": "Sustainable Usage Monitoring",
+      "compContent" : "We monitor specific ESG-related indicators such as product lifecycle, Waste reduction, and Energy consumption reduction.",
+      "compImage" : "Images/dataoffercomp1.png"
+  },{
+      "compHeader": "Societal Impact Assessment",
+      "compContent" : "Evaluating the beneficial effects that a product or service provides to society.",
+      "compImage" : "Images/dataoffercomp2.png"
+  },{
+      "compHeader": "Data Analysis and Reporting",
+      "compContent" : "Analyzing collected data to provide a statistical report on the achievement of ESG goals.",
+      "compImage" : "Images/dataoffercomp3.png"
+  }]
+  },
+  "community" : [{
+    "header": "Enjoy an<br /> eco community.",
+    "content": "Participate in group activities through various challenges, become a member of the ECO community, share your green experiences, and have more fun while collecting points.",
+    "midcontent": "Share your green experiences.",
+    "lineImage": "Images/platform3pline.png",
+    "image": "Images/platform3pimage.png"
+  },{
+    "header": "Enjoy an<br /> eco community.",
+    "content": "Create an environmental education challenge on EarthMera, where you can exchange ideas and share recycling tips. Earn points by taking pictures, AND motivating education about the environment.",
+    "midcontent": "Create an environmental education challenge.",
+    "lineImage": "Images/platform3pline.png",
+    "image": "Images/platform4pimage.png" 
+  },{
+    "header": "Enjoy an<br /> eco community.",
+    "content": "Get involved in the environmental event and help clean up your neighborhood. This eco-community not only makes the local area more beautiful but can also have a positive impact by spreading eco-consciousness to many.",
+    "midcontent": "Join the environmental challenge.",
+    "lineImage": "Images/platform3pline.png",
+    "image": "Images/platform5pimage.png" 
+  }],
+  "b2bhowwork" : {
+    "bg": "Images/b2b4pbg.png",
+    "header": "How does EarthMera work?",
+    "left": "Any Coffee brand",
+    "o": "Images/b2b4po.png",
+    "x": "Images/b2b4px.png",
+    "mid": ["The number of uses", "The quantity of waste reduction", "Eco-products feedback", "Extent of ESG compliance level"],
+    "right": "Our Partner brand"
+  },
+  "partnershipIntro" : {
+    "subheader": "Providing statistics for your ESG",
+    "header": "Your ESG Success <br />Starts with Our <br />Data Solutions.",
+    "image": "Images/b2b1phand.png",
+    "smallBg": "Images/b2b1pbg.png",
+    "content": "EarthMera brings true social responsibility value to your business and beyond."
+  },
+  "usingb2c": {
+    "header": "How EarthMera <br /> does it?",
+    "content": "Our B2C platform enhances users' ability to engage in eco-friendly actions and, through the data accumulated from user eco-actions, we can measure the ESG compliance level of the product.",
+    "image": "Images/b2b5pimage.png",
+    "midcontent": "Using B2C Model"
+},
+"esg" : {
+  "header": "Need better data on your ESG?",
+  "image": "Images/b2b2pimage.png",
+  "content": "EarthMera provides a platform to analyze how consumers use your products in line with ESG management, offering diverse and accurate reporting on how they consume and utilize your products."
+},
+"esg1p" :{
+  "image": "Images/esg1pimage.png"
+},
+"diff" : {
+  "header": "The difference between regular and bio-based bags.",
+  "items": [
+      {
+        "image": "Images/diff1.png",
+        "title": "Material",
+        "content": "Bio bags from renewables, regular bags from oil."
+      },
+      {
+        "image": "Images/diff2.png",
+        "title": "Eco-friendliness",
+        "content": "Bio bags eco-friendly, degrade naturally; regular bags harm the environment."
+      },
+      {
+        "image": "Images/diff3.png",
+        "title": "Biodegradability",
+        "content": "Bio bags biodegrade fast, regular bags pollute slow."
+      }
+
+  ]
+},
+  "bio-based" : {
+    "image": "Images/esg2pbg.png",
+    "header": "We produce bio-based<br /> plastic bags.",
+    "content": "EarthMera's BioBag not only enhances<br />EarthMera AI's object detection rate<br /> but also serves as an eco-friendly <br /> alternative to plastic bags <br />that are currently banned in many countries."
+  }, 
+  "bag" : {
+    "header": "Choose a greener tomorrow <br />with our bio-based plastic bags.",
+    "image" : "Images/Bag.png"
+  }, 
+  "biowork" : {
+    "image": "Images/esg4pimg.png",
+    "header": "How does EarthMera<br /> bio bag work?",
+    "content": "Embedded with a QR code, the EarthMera Bio-bag offers an enhanced AI detection capability that quantifies the bag's contents precisely. This feature ensures not only greater accuracy but also detailed insights into the bag's fill level."
+  },
+  "esgIntro" : {
+    "image": "Images/esg1pbg.png",
+    "leftImage": "Images/esg1pleft.png",
+    "logos": ["Images/esg1plogo1.png", "Images/esg1plogo2.png","Images/esg1plogo3.png","Images/esg1plogo4.png"],
+    "header": "Introduce EarthMera <br /> bio-bag"
+  },
+  "visionIntro" : {
+    "bg": "Images/vision1pimg.png",
+    "header": "Your small actions, <br /> a big inspiration for all",
+    "content": "Our vision"
+  },
+  "ourMission" : {
+    "header" : "Our mission",
+    "content" : "Environmentally mindful individuals create a butterfly effect. We aim to amplify their impact, resonating across individuals, businesses, and the globe.",
+    "items" : [
+        {
+            "title": "For individuals",
+            "content" : "EarthMera supports eco-conscious individuals. Snap eco-friendly moments on our platform, earn rewards, and inspire many others.",
+            "img" : "Images/vision3pitem1.png"
+        },{
+            "title": "For businesses",
+            "content" : "With EarthMera, companies practicing ESG can enhance their social responsibility. We offer precise reporting tailored to their ESG compliance level.",
+            "img" : "Images/vision3pitem2.png"
+        },{
+            "title": "For the globe",
+            "content" : "EarthMera is directly manufacturing bio-based bags to contribute to creating a more sustainable Earth.",
+            "img" : "Images/vision3pitem3.png"
+        }
+    ]
+  },
+  "futureModel": {
+    "header" : "Guiding the future personal AI with Green technology and supercomputer vision",
+    "sub" : "Objective",
+    "subcontent" : "Through personalized experiences, enhanced creativity, and improved problem-solving abilities, our Personal AI not only elevates the quality of life but also innovates creative solutions to environmental challenges.",
+    "sub2" : "Key value",
+    "image" : "Images/vision5pimg.png"
+  },
+  "introApp" :  {
+    "header" : "Introducing EarthMera",
+    "content" : "EarthMera is an innovative startup that rewards individuals who protect the environment in small ways in their daily lives. By incentivizing eco-friendly actions on a micro-level, we aim to inspire a growing community dedicated to making the Earth more beautiful.",
+    "image" : "Images/vision2pimg.png"
+  },
+  "heros": {
+    "header" : "Connecting people and cultures",
+    "content" : "Small eco-friendly actions have the potential to inspire many, just like the butterfly effect. EarthMera will take the lead in shaping a societal culture that values the environment, with the collaboration of one million Earth heroes.",
+    "image" : "Images/vision4pimg.png"
+  }
 }
