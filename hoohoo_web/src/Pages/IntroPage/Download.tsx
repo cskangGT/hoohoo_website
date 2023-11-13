@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import { theme } from '../../../style';
+import { theme } from '../../style';
 import i18next from 'i18next';
 
 const Container = styled.div<DownloadProps>`
@@ -34,6 +34,7 @@ const ContentBox = styled.div`
     width: 100%;
     justify-content: center;
     @media screen and (max-width: 500px) {
+      padding:10px;
       flex-direction: column;
     }
 `;
@@ -145,11 +146,11 @@ const SubHeader = styled.h3`
     }
 `;
 const BannerBtnContainer = styled.div`
-  display:flex;
+  display:grid;
+  grid-template-columns: 1fr 1fr;
   box-sizing: inherit;
   width: 100%;
-  align-items: center;
-  justify-content: center;
+  gap: 10px;
   @media screen and (max-width: 730px) {
     flex-direction: column;
 }
@@ -172,7 +173,8 @@ const BannerBtn = styled.a`
     margin-top: 7px;
     }
     @media screen and (max-width: 500px) {
-      width: 45%;
+      margin: 0;
+      width: 100%;
     }
 `;
 const Img = styled.img`

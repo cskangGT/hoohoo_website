@@ -35,7 +35,7 @@
           {
             "label": "Download",
             "subItems": [
-              { "label": "EarthMera", "link": "/vision#download" },
+              { "label": "EarthMera", "link": "/#download" },
               { "label": "DropB", "link": "/dropb" }
             ]
           },

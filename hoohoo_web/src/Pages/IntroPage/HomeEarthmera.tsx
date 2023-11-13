@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useRef } from 'react';
 import styled from 'styled-components';
 import IntroSection from './IntroSection';
 
@@ -7,6 +7,8 @@ import { BgImage } from '../../style';
 import IntroEarth from './IntroEarth';
 import { ContentBox } from '../About/Vision/EarthMeraVision';
 import VideoSection from './Video';
+import Download from './Download';
+import { useLocation } from 'react-router-dom';
 const Wrap = styled.div`
   width: calc(100%);
   max-width: 1300px; 
@@ -37,9 +39,22 @@ const Wrap = styled.div`
 
 
 function HomeEarthmera() {
-  useEffect(() => {
-    window.scrollTo(0, 0);
-  }, []);
+  const location = useLocation();
+    const sectionRef = useRef<HTMLDivElement>(null);
+    useEffect(() => {
+        console.log('location.hash', location.hash)
+        
+        if (location.hash === '#download' ){
+            setTimeout(() => {
+                if (sectionRef.current) {
+                    sectionRef.current.scrollIntoView({ behavior: 'smooth' });
+                }
+            }, 100);
+          
+        } else {
+            window.scrollTo(0, 0);
+        }
+      }, [location]);
   return (
     <BgImage>
       <Wrap>
@@ -48,6 +63,9 @@ function HomeEarthmera() {
         <ContentBox key="video" id="video">
           <VideoSection />
         </ContentBox>
+        <ContentBox ref={sectionRef} id="download" key="download">
+                    <Download dropb={false} />
+                </ContentBox>
       </Wrap>
     </BgImage>
   );
