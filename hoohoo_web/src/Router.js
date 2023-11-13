@@ -42,7 +42,7 @@ const Router = createBrowserRouter([
                 element: <Partnership />,
                 errorElement: <ErrorComponent />
             },{
-                path: "/esgmanagement",
+                path: "/esgbiobag",
                 element: <ESGManagement />,
                 errorElement: <ErrorComponent />
             },
