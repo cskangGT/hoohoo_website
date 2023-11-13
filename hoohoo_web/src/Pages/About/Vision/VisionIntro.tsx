@@ -29,6 +29,7 @@ const Container = styled.div`
   align-items: right;
   color: ${theme.white};
   padding-right: 35px;
+  padding-bottom: 30px;
 `;
 export default function VisionIntro() {
   const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
@@ -44,13 +45,14 @@ export default function VisionIntro() {
   }, []);
   return (
     <Wrapper>
-    <Bg image={data.bg}>
-      <Container>
-        <Desc style={{textAlign: 'right', color: theme.mainNeon, fontSize: '2.5rem', paddingBottom: 20}} dangerouslySetInnerHTML={{__html: data.content}} />
-        <LinedHeader 
-          style={{textAlign: 'right', color: '#055534', fontSize: isMobile && '2.2rem' }}
-          data={{header: data.header}} />
-      </Container>
-    </Bg></Wrapper>
+      <Bg image={data.bg}>
+        <Container>
+          <Desc style={{textAlign: 'right', color: theme.mainNeon, fontSize: '2.5rem', paddingBottom: 20}} dangerouslySetInnerHTML={{__html: data.content}} />
+          <LinedHeader 
+            style={{textAlign: 'right', color: '#055534', fontSize: isMobile && '2.2rem' }}
+            data={{header: data.header}} />
+        </Container>
+      </Bg>
+    </Wrapper>
   )
 }
