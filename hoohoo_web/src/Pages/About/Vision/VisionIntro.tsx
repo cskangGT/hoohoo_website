@@ -30,7 +30,6 @@ const SubHeader = styled(Desc)`
   padding-bottom: 25px;
   @media screen and (max-width: 1000px){
     padding-bottom: 0px;
-    margin-right: 5px;
   }
 `;
 const Container = styled.div`
