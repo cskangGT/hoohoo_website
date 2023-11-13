@@ -510,6 +510,7 @@
   },
   "visionIntro" : {
     "bg": "Images/vision1pimg.png",
+    "flipImg": "Images/vision1pimgflip.png",
     "header": "Your small actions, <br /> a big inspiration for all",
     "content": "Our vision"
   },
