@@ -42,12 +42,12 @@ export const RightBox = styled.div`
   line-height: 1.2;
     @media screen and (max-width: 1000px){
         padding: 0 10px;
-        width: 60%;
+        width: 70%;
         text-align: center;
     }
     @media screen and (max-width: 500px){
         padding: 0 10px;
-        width: 80%;
+        width: 90%;
         text-align: center;
     }
 `;
@@ -67,7 +67,7 @@ padding: 30px 0;
     }
 `;
 export const Desc = styled.p`
-    font-size: 1.4rem;
+    font-size: 1.5rem;
     line-height: 1.3;
     width: 100%;
     color: ${theme.darkGray};
@@ -78,14 +78,10 @@ export const Desc = styled.p`
     @media screen and (max-width: 1000px){
         margin: 20px 0;
         width: 100%;
-        font-size: 2rem;
         text-align:center;
     }
     @media screen and (max-width: 500px){
         margin: 10px 0;
-        width: 100%;
-        font-size: 1rem;
-        text-align:center;
     }
 `;
 export const LeftBox = styled.div`

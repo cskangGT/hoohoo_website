@@ -23,6 +23,7 @@ const ContentBox = styled.div`
   justify-content: center;
   align-items: center;
   @media screen and (max-width: 500px){
+    margin-bottom: 40px;
     height: auto;
   }
 `;

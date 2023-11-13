@@ -37,16 +37,15 @@ const IntroSection: React.FC = () => {
     
     const [isBubble, setIsBubble] = useState<boolean>(true);
     return (
-    <React.Fragment>
-        <SectionContainer>
-            <Inside>
-            <LandingB2C />
-            </Inside>
-            
-        </SectionContainer >
-        {isBubble ? <Bubble setIsBubble={setIsBubble} /> : <React.Fragment />}
+        <React.Fragment>
+            <SectionContainer>
+                <Inside>
+                    <LandingB2C />
+                </Inside>
+            </SectionContainer >
+            {isBubble ? 
+            <Bubble setIsBubble={setIsBubble} /> : <React.Fragment />}
         </React.Fragment>
     );
 }
-
 export default IntroSection;

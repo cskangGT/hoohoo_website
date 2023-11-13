@@ -87,7 +87,7 @@ const Header = styled.h2`
   width: 100%;
   text-align: left;
   @media screen and (max-width: 1000px){
-        font-size: 2rem;
+        font-size: 2.3rem;
         text-align:center;
     }
 `;

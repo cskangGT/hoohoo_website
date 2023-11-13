@@ -56,7 +56,7 @@
             "button" : "Learn More"
         },
         "Images/Banner.png": {
-
+            "firstDesc" : "Do you want the festival to be kept clean?"
         },
         "Images/preview.png": {
             "firstDesc": "Empower your green journey",
@@ -87,23 +87,22 @@
       "contact" : "mailto:devceohoony@gmail.com"
   }],
     "partners" : {
-      "header": "How does EarthMera",
-      "subHeader": "get their value?",
-      "list": ["Partners", "Users", "Government"],
+      "header": "How does EarthMera derive its value?",
+      "list": ["Users", "Partners", "Government"],
       "content": {
+        "Users": {
+            "header": "Users",
+            "imagePath": "Images/user1.png",
+            "description": "Every click with EarthMera amplifies your contribution to our planet. Capture your eco-actions, earn rewards, and join a community that’s reshaping the world. With every action you take, you’re not just securing points for yourself but ensuring a greener future for the next generation."
+          },
           "Partners": {
               "header": "Partners",
-              "imagePath": "Images/partner2.jpeg",
+              "imagePath": "Images/partner2.png",
               "description": "EarthMera thrives on powerful alliances. We collaborate with brands eager to resonate with eco-conscious audiences, industries aiming to reduce their carbon footprint, and organizations looking to champion green initiatives. Together, we are not just endorsing sustainability; we are mainstreaming it."
-          },
-          "Users": {
-              "header": "Users",
-              "imagePath": "Images/nhs1.jpeg",
-              "description": "Every click with EarthMera amplifies your contribution to our planet. Capture your eco-actions, earn rewards, and join a community that’s reshaping the world. With every action you take, you’re not just securing points for yourself but ensuring a greener future for the next generation."
           },
           "Government": {
               "header": "Government",
-              "imagePath": "",
+              "imagePath": "Images/government.png",
               "description": "Coming soon"
           }
       }
@@ -135,12 +134,12 @@
         {
             "image": "Images/c2.png",
             "msg": "Are you a festival organizer?",
-            "button": "CONNECT TO EARTHMERA"
+            "button": "Connect to EarthMera"
         },
         {
             "image": "Images/p1.png",
             "msg": "Are you a sponsor?",
-            "button": "SUPPORT EARTHMERA"
+            "button": "Support EarthMera"
         }],
         "modelData" : {
           "first_header": "AI Model",
@@ -169,7 +168,7 @@
   "b2bvideo" : {
     "video": "Images/Earthmera.mp4",
     "header" : "EarthMera <br /> gives you wings.",
-    "content" : "ready to make a strong ESG statement?",
+    "content" : "Ready to make a strong ESG statement?",
     "button" : "Get Started"
   },
   "b2csolutions": {
@@ -421,13 +420,13 @@
   },
   "community" : [{
     "header": "Enjoy an<br /> eco community.",
-    "content": "Participate in group activities through various challenges, become a member of the ECO community, share your green experiences, and have more fun while collecting points.",
+    "content": "Participate in group activities through various challenges, become a member of the eco community, share your green experiences, and have more fun while collecting points.",
     "midcontent": "Share your green experiences.",
     "lineImage": "Images/platform3pline.png",
     "image": "Images/platform3pimage.png"
   },{
     "header": "Enjoy an<br /> eco community.",
-    "content": "Create an environmental education challenge on EarthMera, where you can exchange ideas and share recycling tips. Earn points by taking pictures, AND motivating education about the environment.",
+    "content": "Create an environmental education challenge on EarthMera, where you can exchange ideas and share recycling tips. Earn points by taking pictures, and motivating education about the environment.",
     "midcontent": "Create an environmental education challenge.",
     "lineImage": "Images/platform3pline.png",
     "image": "Images/platform4pimage.png" 
@@ -491,7 +490,7 @@
 },
   "bio-based" : {
     "image": "Images/esg2pbg.png",
-    "header": "We produce bio-based<br /> plastic bags.",
+    "header": "We produce<br /> bio-based<br /> plastic bags.",
     "content": "EarthMera's BioBag not only enhances<br />EarthMera AI's object detection rate<br /> but also serves as an eco-friendly <br /> alternative to plastic bags <br />that are currently banned in many countries."
   }, 
   "bag" : {
@@ -550,5 +549,4 @@
     "content" : "Small eco-friendly actions have the potential to inspire many, just like the butterfly effect. EarthMera will take the lead in shaping a societal culture that values the environment, with the collaboration of one million Earth heroes.",
     "image" : "Images/vision4pimg.png"
   }
-
 }
