@@ -12,7 +12,7 @@ const Bg = styled.div<{image: string}>`
   display: flex;
   background-image: url(${props=> props.image});
   background-size: cover; // 배경 이미지가 컨테이너를 가능한 많이 채우도록 설정
-  background-position: 35%;
+  background-position: 60%;
   justify-content: center;
   align-items: center;
   margin-top: 120px;
@@ -22,22 +22,37 @@ const Bg = styled.div<{image: string}>`
         height: 700px;
     }
 `; 
+const SubHeader = styled(Desc)`
+  width: auto;
+  text-align: right;
+  color: ${theme.mainNeon};
+  font-size: 2.5rem;
+  padding-bottom: 25px;
+  @media screen and (max-width: 1000px){
+    padding-bottom: 0px;
+    margin-right: 5px;
+  }
+`;
 const Container = styled.div`
   width:100%;
   display: flex;
+  position: relative;
   flex-direction: column;
   align-items: right;
   color: ${theme.white};
-  padding-right: 35px;
+  padding-right: 25px;
   padding-bottom: 30px;
+  @media screen and (max-width: 1000px){
+    padding-right: 15px;
+  }
 `;
 export default function VisionIntro() {
-  const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
+  const [isMobile, setIsMobile] = useState(window.innerWidth < 1000);
   const data : any = i18next.t('visionIntro', { returnObjects: true });
 
   useEffect(() => {
     const handleResize = () => {
-      setIsMobile(window.innerWidth < 768);
+      setIsMobile(window.innerWidth < 1000);
     };
 
     window.addEventListener('resize', handleResize);
@@ -45,11 +60,11 @@ export default function VisionIntro() {
   }, []);
   return (
     <Wrapper>
-      <Bg image={data.bg}>
+      <Bg image={isMobile? data.flipImg : data.bg}>
         <Container>
-          <Desc style={{textAlign: 'right', color: theme.mainNeon, fontSize: '2.5rem', paddingBottom: 20}} dangerouslySetInnerHTML={{__html: data.content}} />
+          <SubHeader dangerouslySetInnerHTML={{__html: data.content}} />
           <LinedHeader 
-            style={{textAlign: 'right', color: '#055534', fontSize: isMobile && '2.2rem' }}
+            style={{textAlign: 'right', color: theme.white, fontSize: isMobile && '2.2rem' }}
             data={{header: data.header}} />
         </Container>
       </Bg>
