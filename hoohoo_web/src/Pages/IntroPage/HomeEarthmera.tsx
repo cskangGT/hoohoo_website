@@ -5,7 +5,7 @@ import IntroSection from './IntroSection';
 
 import { BgImage } from '../../style';
 import IntroEarth from './IntroEarth';
-import { ContentBox } from '../About/EarthMeraVision';
+import { ContentBox } from '../About/Vision/EarthMeraVision';
 import VideoSection from './Video';
 const Wrap = styled.div`
   width: calc(100%);

@@ -1,8 +1,8 @@
 import React, { useEffect } from 'react';
 import styled from 'styled-components';
-import { theme } from '../../style';
+import { theme } from '../../../style';
 import i18next from 'i18next';
-import Wrapper from '../../Component/Wrapper/Wrapper';
+import Wrapper from '../../../Component/Wrapper/Wrapper';
 const SectionBox = styled.section`
     padding-bottom: 5rem;
     width: calc(100% - 30px);

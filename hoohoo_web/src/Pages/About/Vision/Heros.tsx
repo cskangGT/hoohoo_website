@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
-import { slideInFromTop, theme } from '../../style';
+import { slideInFromTop, theme } from '../../../style';
 import i18next from 'i18next';
-import Wrapper from '../../Component/Wrapper/Wrapper';
-import { LeftBox, RightBox, Image } from '../../Component/ContentBox/TwoColBoxesSection'
-import { Desc } from '../../Component/ContentBox/TwoColBoxesSection';
+import Wrapper from '../../../Component/Wrapper/Wrapper';
+import { LeftBox, RightBox, Image } from '../../../Component/ContentBox/TwoColBoxesSection'
+import { Desc } from '../../../Component/ContentBox/TwoColBoxesSection';
 
 const Container = styled.div`
   width:100%;

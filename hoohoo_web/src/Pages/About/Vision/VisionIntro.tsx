@@ -1,10 +1,10 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import styled from 'styled-components';
-import { slideInFromTop, theme } from '../../style'
+import { slideInFromTop, theme } from '../../../style'
 import i18next from 'i18next';
-import Wrapper from '../../Component/Wrapper/Wrapper';
-import LinedHeader from '../../Component/ContentBox/LinedHeader';
-import { Desc } from '../../Component/ContentBox/TwoColBoxesSection';
+import Wrapper from '../../../Component/Wrapper/Wrapper';
+import LinedHeader from '../../../Component/ContentBox/LinedHeader';
+import { Desc } from '../../../Component/ContentBox/TwoColBoxesSection';
 const Bg = styled.div<{image: string}>`
   animation: ${slideInFromTop} 0.7s ease-out forwards;
   width: calc(100%);
@@ -31,14 +31,24 @@ const Container = styled.div`
   padding-right: 35px;
 `;
 export default function VisionIntro() {
+  const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
   const data : any = i18next.t('visionIntro', { returnObjects: true });
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
   return (
     <Wrapper>
     <Bg image={data.bg}>
       <Container>
         <Desc style={{textAlign: 'right', color: theme.mainNeon, fontSize: '2.5rem', paddingBottom: 20}} dangerouslySetInnerHTML={{__html: data.content}} />
         <LinedHeader 
-          style={{textAlign: 'right', color: '#055534'}}
+          style={{textAlign: 'right', color: '#055534', fontSize: isMobile && '2.2rem' }}
           data={{header: data.header}} />
       </Container>
     </Bg></Wrapper>

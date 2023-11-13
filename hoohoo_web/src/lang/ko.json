@@ -397,7 +397,7 @@
   "pioneer": {
     "header": "You are a true <br />eco-culture <br />pioneer",
     "content": "Your act of taking coffee in a reusable tumbler sets a great example for many. By following these small actions, others can contribute to building an environmentally conscious culture.",
-    "midcontent": "Your small impact will be a butterfly effect.",
+    "midcontent": "Your simple actions will resonate with many.",
     "lineImage": "Images/platform7pline.png",
     "image": "Images/platform7pimage.png" 
   },
@@ -419,13 +419,13 @@
   },
   "community" : [{
     "header": "Enjoy an<br /> eco community.",
-    "content": "Participate in group activities through various challenges, become a member of the ECO community, share your green experiences, and have more fun while collecting points.",
+    "content": "Participate in group activities through various challenges, become a member of the eco community, share your green experiences, and have more fun while collecting points.",
     "midcontent": "Share your green experiences.",
     "lineImage": "Images/platform3pline.png",
     "image": "Images/platform3pimage.png"
   },{
     "header": "Enjoy an<br /> eco community.",
-    "content": "Create an environmental education challenge on EarthMera, where you can exchange ideas and share recycling tips. Earn points by taking pictures, AND motivating education about the environment.",
+    "content": "Create an environmental education challenge on EarthMera, where you can exchange ideas and share recycling tips. Earn points by taking pictures, and motivating education about the environment.",
     "midcontent": "Create an environmental education challenge.",
     "lineImage": "Images/platform3pline.png",
     "image": "Images/platform4pimage.png" 

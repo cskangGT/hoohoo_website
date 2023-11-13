@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import { theme } from '../../style';
+import { theme } from '../../../style';
 
 type Props = {
     bg: boolean;

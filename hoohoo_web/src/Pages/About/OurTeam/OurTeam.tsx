@@ -2,8 +2,8 @@ import React, { useEffect } from 'react';
 import styled from 'styled-components';
 import TeamIntro from './TeamIntro';
 import Gallery from './Gallery';
-import Wrapper from '../../Component/Wrapper/Wrapper';
-import { BgImage } from '../../style';
+import Wrapper from '../../../Component/Wrapper/Wrapper';
+import { BgImage } from '../../../style';
 const ContentBox = styled.section`
     padding-top: 20px;
     justify-content: center;

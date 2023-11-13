@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
-import { theme } from '../../style';
-import Slider from '../../Component/ContentBox/Slider';
-import ProfileCard from '../../Component/ContentBox/ProfileCard';
+import { theme } from '../../../style';
+import Slider from '../../../Component/ContentBox/Slider';
+import ProfileCard from '../../../Component/ContentBox/ProfileCard';
 import i18next from 'i18next';
-import { slideInFromTop } from '../../style';
+import { slideInFromTop } from '../../../style';
 const SectionBox = styled.section`
     padding-bottom: 5rem;
     width: 100%;

@@ -134,12 +134,12 @@
         {
             "image": "Images/c2.png",
             "msg": "Are you a festival organizer?",
-            "button": "CONNECT TO EARTHMERA"
+            "button": "Connect to EarthMera"
         },
         {
             "image": "Images/p1.png",
             "msg": "Are you a sponsor?",
-            "button": "SUPPORT EARTHMERA"
+            "button": "Support EarthMera"
         }],
         "modelData" : {
           "first_header": "AI Model",
@@ -168,7 +168,7 @@
   "b2bvideo" : {
     "video": "Images/Earthmera.mp4",
     "header" : "EarthMera <br /> gives you wings.",
-    "content" : "ready to make a strong ESG statement?",
+    "content" : "Ready to make a strong ESG statement?",
     "button" : "Get Started"
   },
   "b2csolutions": {
@@ -420,13 +420,13 @@
   },
   "community" : [{
     "header": "Enjoy an<br /> eco community.",
-    "content": "Participate in group activities through various challenges, become a member of the ECO community, share your green experiences, and have more fun while collecting points.",
+    "content": "Participate in group activities through various challenges, become a member of the eco community, share your green experiences, and have more fun while collecting points.",
     "midcontent": "Share your green experiences.",
     "lineImage": "Images/platform3pline.png",
     "image": "Images/platform3pimage.png"
   },{
     "header": "Enjoy an<br /> eco community.",
-    "content": "Create an environmental education challenge on EarthMera, where you can exchange ideas and share recycling tips. Earn points by taking pictures, AND motivating education about the environment.",
+    "content": "Create an environmental education challenge on EarthMera, where you can exchange ideas and share recycling tips. Earn points by taking pictures, and motivating education about the environment.",
     "midcontent": "Create an environmental education challenge.",
     "lineImage": "Images/platform3pline.png",
     "image": "Images/platform4pimage.png" 

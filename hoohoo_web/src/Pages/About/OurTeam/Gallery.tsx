@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import { useSwipeable } from 'react-swipeable';
-import Slider from '../../Component/ContentBox/Slider';
+import Slider from '../../../Component/ContentBox/Slider';
 import i18next from 'i18next';
 
 const SectionContainer = styled.section`

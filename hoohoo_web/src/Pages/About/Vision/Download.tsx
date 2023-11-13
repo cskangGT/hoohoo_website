@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import { theme } from '../../style';
+import { theme } from '../../../style';
 import i18next from 'i18next';
 
 const Container = styled.div<DownloadProps>`
