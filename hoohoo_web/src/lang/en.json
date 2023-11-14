@@ -21,7 +21,7 @@
             "label": "About",
             "subItems": [
               { "label": "Vision", "link": "/vision" },
-              { "label": "Our Team", "link": "/about_team" }
+              { "label": "Team", "link": "/about_team" }
             ]
           },
           {
@@ -29,13 +29,13 @@
             "subItems": [
               { "label": "Platform Business", "link": "/platform" },
               { "label": "Partnership", "link": "/partnership" },
-              { "label": "ESG Management", "link": "/esgmanagement" }
+              { "label": "ESG Bio-Bag", "link": "/esgbiobag" }
             ]
           },
           {
             "label": "Download",
             "subItems": [
-              { "label": "EarthMera", "link": "/vision#download" },
+              { "label": "EarthMera", "link": "/#download" },
               { "label": "DropB", "link": "/dropb" }
             ]
           },
@@ -449,8 +449,8 @@
   "partnershipIntro" : {
     "subheader": "Providing statistics for your ESG",
     "header": "Your ESG success <br />starts with our <br />data solutions.",
-    "image": "Images/b2b1phand.png",
-    "smallBg": "Images/b2b1pbg.png",
+    "verticalBg": "Images/b2b1pverticalbg.png",
+    "smallBg": "Images/b2b1pbg.jpg",
     "content": "EarthMera brings true social responsibility value to your business and beyond."
   },
   "usingb2c": {

@@ -20,7 +20,7 @@
             "label": "소개",
             "subItems": [
               { "label": "비전", "link": "/vision" },
-              { "label": "팀 소개", "link": "/about_team" }
+              { "label": "팀", "link": "/about_team" }
               
             ]
           },
@@ -29,7 +29,7 @@
             "subItems": [
               { "label": "플랫폼 비지니스", "link": "/platform" },
               { "label": "파트너십", "link": "/partnership" },
-              { "label": "ESG 경영관리", "link": "/esgmanagement" }
+              { "label": "ESG 친환경 봉투", "link": "/esgbiobag" }
             ]
           },
           {
@@ -133,12 +133,12 @@
         {
             "image": "Images/c2.png",
             "msg": "Are you a festival organizer?",
-            "button": "CONNECT TO EARTHMERA"
+            "button": "Connect to EarthMera"
         },
         {
             "image": "Images/p1.png",
             "msg": "Are you a sponsor?",
-            "button": "SUPPORT EARTHMERA"
+            "button": "Support EarthMera"
         }],
         "modelData" : {
           "first_header": "AI Model",
@@ -167,7 +167,7 @@
   "b2bvideo" : {
     "video": "Images/Earthmera.mp4",
     "header" : "EarthMera <br /> gives you wings.",
-    "content" : "ready to make a strong ESG statement?",
+    "content" : "Ready to make a strong ESG statement?",
     "button" : "Get Started"
   },
   "b2csolutions": {
@@ -397,7 +397,7 @@
   "pioneer": {
     "header": "You are a true <br />eco-culture <br />pioneer",
     "content": "Your act of taking coffee in a reusable tumbler sets a great example for many. By following these small actions, others can contribute to building an environmentally conscious culture.",
-    "midcontent": "Your simple actions will resonate with many.",
+    "midcontent": "Your small impact will be a butterfly effect.",
     "lineImage": "Images/platform7pline.png",
     "image": "Images/platform7pimage.png" 
   },
@@ -448,8 +448,8 @@
   "partnershipIntro" : {
     "subheader": "Providing statistics for your ESG",
     "header": "Your ESG success <br />starts with our <br />data solutions.",
-    "image": "Images/b2b1phand.png",
-    "smallBg": "Images/b2b1pbg.png",
+    "verticalBg": "Images/b2b1pverticalbg.png",
+    "smallBg": "Images/b2b1pbg.jpg",
     "content": "EarthMera brings true social responsibility value to your business and beyond."
   },
   "usingb2c": {
@@ -509,6 +509,7 @@
   },
   "visionIntro" : {
     "bg": "Images/vision1pimg.png",
+    "flipImg": "Images/vision1pimgflip.png",
     "header": "Your small actions, <br /> a big inspiration for all",
     "content": "Our vision"
   },

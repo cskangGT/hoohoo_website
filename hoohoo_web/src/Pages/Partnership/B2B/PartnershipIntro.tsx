@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import { slideInFromTop, theme } from '../../../style';
 import i18next from 'i18next';
@@ -35,10 +35,10 @@ const Container = styled.div`
 `;
 
 
-const HorizonContainer = styled.div<{smallBg : string}>`
+const HorizonContainer = styled.div<{bg : string}>`
   display: flex;
   width: 100%;
-  background-image: url(${props => props.smallBg});
+  background-image: url(${props => props.bg});
     background-size: cover;
   background-position: center;
   justify-content: center;
@@ -57,7 +57,9 @@ const LeftBox = styled.div`
   text-align: center;
   padding: 0 40px;
   line-height: 1.2;
+  margin: 100px 0;
     @media screen and (max-width: 1000px){
+        margin: 0px;
         padding: 0 10px;
         width: 60%;
         text-align: center;
@@ -86,6 +88,7 @@ const Header = styled.h2`
   line-height: 1;
   width: 100%;
   text-align: left;
+  font-family: 'Fredoka';
   @media screen and (max-width: 1000px){
         font-size: 2.3rem;
         text-align:center;
@@ -114,10 +117,7 @@ const RightBox = styled.div`
     /* background: linear-gradient(170deg, rgba(255, 255, 255, 0.14) 0%, rgba(255, 255, 255, 0.05) 100%); */
     margin: 0;
     @media screen and (max-width: 1000px){
-        width: 70%;
-    }
-    @media screen and (max-width: 500px){
-        width: 100%;
+        height: 450px;
     }
     
 `;
@@ -129,11 +129,20 @@ const Image = styled.img`
 function PartnershipIntro() {
     
     const data : any =  i18next.t('partnershipIntro', { returnObjects: true });
+    const [isMobile, setIsMobile] = useState(window.innerWidth < 1000);
+    useEffect(() => {
+        const handleResize = () => {
+        setIsMobile(window.innerWidth < 1000);
+        };
+
+        window.addEventListener('resize', handleResize);
+        return () => window.removeEventListener('resize', handleResize);
+    }, []);
     return (
         <Bg>
             <Wrapper>
             <Container >
-                <HorizonContainer smallBg={data.smallBg}>
+                <HorizonContainer bg={isMobile? data.verticalBg :data.smallBg }>
                     <LeftBox>
                         <SubHeader>{data.subheader}</SubHeader>
                         <Header dangerouslySetInnerHTML={{__html: data.header}} />
@@ -142,7 +151,7 @@ function PartnershipIntro() {
                             </Desc>
                     </LeftBox>
                     <RightBox>
-                        <Image src={data.image} />
+                        {/* <Image src={data.image} /> */}
                     </RightBox>
                 </HorizonContainer>
         </Container >

@@ -1,24 +1,14 @@
 import React, { useState, useEffect, useRef } from 'react';
 import styled from 'styled-components';
 import { BgImage, theme } from '../../../style';
-import Lottie from "lottie-react";
-import arrow from '../arrow-ani.json';
 import Wrapper from '../../../Component/Wrapper/Wrapper';
-import Slider from '../../../Component/ContentBox/Slider';
-import i18next from 'i18next';
-import ListSection from './ListSection';
-import VideoSection from '../../IntroPage/Video';
-import Download from './Download';
 import Partners from './Partners';
 import Realtime from './Realtime';
 import TakeSteps from './TakeSteps';
-import { slideInFromTop } from '../../../style';
-import { useLocation } from 'react-router-dom';
 import VisionIntro from './VisionIntro';
 import IntroApp from './IntroApp';
 import OurMission from './OurMission';
 import Heros from './Heros';
-import FutureModel from './FutureModel';
 const FlexBox = styled.div`
    display:flex;
     flex-direction: column;
@@ -64,22 +54,9 @@ type ImageProps = {
     desc: string;
 }
 export default function EarthMeraVision() {
-    const location = useLocation();
-    const sectionRef = useRef<HTMLDivElement>(null);
     useEffect(() => {
-        console.log('location.hash', location.hash)
-        
-        if (location.hash === '#download' ){
-            setTimeout(() => {
-                if (sectionRef.current) {
-                    sectionRef.current.scrollIntoView({ behavior: 'smooth' });
-                }
-            }, 100);
-          
-        } else {
             window.scrollTo(0, 0);
-        }
-      }, [location]);
+      }, []);
     return (
         <BgImage bgcolor='#F6F4F1'> 
             <ContentBox>
@@ -116,9 +93,7 @@ export default function EarthMeraVision() {
                     <Heros />
                 </SmallTopContentBox>
                 
-                <ContentBox ref={sectionRef} id="download" key="download">
-                    <Download dropb={false} />
-                </ContentBox>
+                
             </Wrapper>
             
         </BgImage>

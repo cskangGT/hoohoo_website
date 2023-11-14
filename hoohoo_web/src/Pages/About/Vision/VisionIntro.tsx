@@ -46,9 +46,9 @@ const Container = styled.div`
   }
 `;
 export default function VisionIntro() {
-  const [isMobile, setIsMobile] = useState(window.innerWidth < 1000);
+  
   const data : any = i18next.t('visionIntro', { returnObjects: true });
-
+  const [isMobile, setIsMobile] = useState(window.innerWidth < 1000);
   useEffect(() => {
     const handleResize = () => {
       setIsMobile(window.innerWidth < 1000);
