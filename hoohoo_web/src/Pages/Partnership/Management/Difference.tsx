@@ -60,7 +60,6 @@ text-align: center;
 `;
 const ActDesc = styled.span`
   text-align: center;
-  text-transform: uppercase;
 `;
 const Image = styled.img`
     width: 100%;
