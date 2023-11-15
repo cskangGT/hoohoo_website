@@ -354,18 +354,23 @@ function Nav({ isKorean, setIsKorean }: NavProps) {
   const changelanguageToEn = () => i18n.changeLanguage('en')
   const [hide, setHide] = useState(false);
   const [pageY, setPageY] = useState(0);
-  const handleScroll = () => {
+  const handleScroll = (hide: boolean) => {
     const { pageYOffset } = window;
     const deltaY = pageYOffset - pageY;
-    const hide = pageYOffset !== 0 && deltaY >= 0;
-    setHide(hide);
+    if (!hide && deltaY < 0) {
+      return;
+    }
+  
+    const newHide = pageYOffset !== 0 && deltaY >= 0;
+    setHide(newHide);
     setPageY(pageYOffset);
   };
-  const throttleScroll = throttleHelper(handleScroll, 50);
+  const throttleScroll = throttleHelper(()=>handleScroll(hide), 20);
   useEffect(() => {
     document.addEventListener("scroll", throttleScroll);
     return () => document.removeEventListener("scroll", throttleScroll);
   }, [throttleScroll]);
+
   useEffect(() => {
     const handleResize = () => {
       setWindowWidth(window.innerWidth);
