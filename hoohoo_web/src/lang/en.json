@@ -20,8 +20,8 @@
           {
             "label": "About",
             "subItems": [
-              { "label": "Vision", "link": "/vision" },
-              { "label": "Team", "link": "/about_team" }
+              { "label": "EM Vision", "link": "/vision" },
+              { "label": "EM Team", "link": "/about_team" }
             ]
           },
           {

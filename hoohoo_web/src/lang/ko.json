@@ -19,8 +19,8 @@
           {
             "label": "소개",
             "subItems": [
-              { "label": "비전", "link": "/vision" },
-              { "label": "팀", "link": "/about_team" }
+              { "label": "EM 비전", "link": "/vision" },
+              { "label": "EM 팀", "link": "/about_team" }
               
             ]
           },
