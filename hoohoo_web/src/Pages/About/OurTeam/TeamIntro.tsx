@@ -85,7 +85,7 @@ function SlideContent({ array }: SlideContentProps) {
 };
 
 function TeamIntro() {
-    const numProfileInSlide : number =3;
+    const numProfileInSlide : number =4;
     const data: Profile[] = i18next.t('teamIntro', { returnObjects: true });
     const groupedData = [];
     for (let i = 0; i < data.length; i += numProfileInSlide) {

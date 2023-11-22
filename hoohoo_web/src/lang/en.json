@@ -67,7 +67,7 @@
       }
       
     },
-    "gallery" : ["Images/1.jpeg","Images/2.jpeg","Images/4.jpeg", "Images/12.jpeg" , "Images/7.jpeg",  "Images/5.jpeg", "Images/6.jpeg","Images/11.jpeg", "Images/13.jpeg","Images/10.jpeg","Images/3.jpeg", "Images/14.jpeg"],
+    "gallery" : ["Images/1.jpeg","Images/2.jpeg","Images/4.jpeg" , "Images/7.jpeg", "Images/5.jpeg", "Images/11.jpeg", "Images/10.jpeg", "Images/9.jpeg", "Images/8.jpeg"],
     "teamIntro" : [{
       "photoPath": "Images/sung.jpeg",
       "name": "Sung Kang",
@@ -77,13 +77,19 @@
   {
       "photoPath": "Images/profile_photo1.jpeg",
       "name": "Jisan Park",
-      "role": "Tech Lead<br />Software Engineer",
+      "role": "Lead Frond-End<br />Software Engineer",
       "contact" : "mailto:jisanpark94@gmail.com"
   },
   {
       "photoPath": "Images/jimmy.jpeg",
       "name": "Jimmy Sim",
       "role": "Marketing<br />UI / UX Designer",
+      "contact" : "mailto:devceohoony@gmail.com"
+  },
+  {
+      "photoPath": "Images/jungwon.jpeg",
+      "name": "Jungwon Park",
+      "role": "ML Engineer<br />Software Engineer",
       "contact" : "mailto:devceohoony@gmail.com"
   }],
     "partners" : {
