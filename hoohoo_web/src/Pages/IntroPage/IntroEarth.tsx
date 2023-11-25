@@ -62,6 +62,7 @@ const FirstDesc = styled.h1`
   line-height: 1.1;
   margin-bottom: 3rem;
   color: ${theme.darkGray};
+  font-family: 'Fredoka';
   @media screen and (max-width: 1100px) {
     font-size: 54px;
     margin-bottom: 2rem;
@@ -109,8 +110,8 @@ const PartnerButton = styled.a`
     border-radius: 30px;
     box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.5);
     margin: 0.7rem 0;
-    background-color: #006DFF;
-    color: ${theme.white};
+    background-color: ${theme.mainNeon};
+    color: ${theme.darkGray};
     width: 60%;
     text-align: center;
     padding: 12px 30px;

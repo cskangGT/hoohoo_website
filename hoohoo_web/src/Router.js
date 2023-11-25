@@ -7,9 +7,9 @@ import HomeEarthmera from "./Pages/IntroPage/HomeEarthmera";
 import OurTeam from "./Pages/About/OurTeam/OurTeam";
 import Partnership from "./Pages/Partnership/B2B/Partnership";
 import MainDropB from "./Pages/DropB/MainDropB";
-import Blog from "./Pages/Blog/Blog";
+import Blog from "./Pages/Info/Blog/Blog";
 import AdminLogin from "./Pages/Admin/AdminLogin";
-import BlogDetail from "./Pages/Blog/BlogDetail";
+import BlogDetail from "./Pages/Info/Blog/BlogDetail";
 import ComingSoon from "./Component/ErrorComponent/ComingSoon";
 import Privacy from "./Pages/Legal/Privacy";
 import TandC from "./Pages/Legal/T&C";
@@ -17,6 +17,7 @@ import EarlySignUp from "./Pages/LandingPage/EarlySignUp";
 import Platform from "./Pages/Partnership/B2C/Platform";
 import ESGManagement from "./Pages/Partnership/Management/ESGManagement";
 import EarthMeraVision from "./Pages/About/Vision/EarthMeraVision";
+import ContactPage from "./Pages/Info/Contact/ContactPage";
 const Router = createBrowserRouter([
     {
         path: "/",
@@ -69,7 +70,13 @@ const Router = createBrowserRouter([
                 path: "/blog/:id",
                 element: <BlogDetail />,
                 errorElement: <ErrorComponent />
-            }, {
+            }, 
+            // {
+            //     path: "/contact",
+            //     element: <ContactPage />,
+            //     errorElement: <ErrorComponent />
+            // }, 
+            {
                 path: "/privacy",
                 element: <Privacy />,
                 errorElement: <ErrorComponent />

@@ -47,8 +47,26 @@
             ]
     }]
     },
+    "footcontact": {
+      "title" : "Interested in partnering with us or have any questions?",
+      "button" : "Contact Us"
+    },
+    "idealcustomer" : {
+      "header": "What if every ad viewer was your ideal customer?<br />How thrilling!",
+      "img" : "Images/contact2pImg.png",
+      "subheader" : "Clear platform vision, quick fulfillment of your needs.",
+      "content" : "EarthMera offers highly effective mobile-optimized advertising targeting precise consumer segments within the rapidly growing environmental market."
+    },
+    "contactInto" : {
+      "header": "Reach Eco Users for Your Business"
+    },
+    "retention" : {
+      "bgImage": "Images/contactRetentionBg.png",
+        "DesktopImg": "Images/retentionDesktop.png",
+        "mobileImg": "Images/retentionMobile.png",
+      "header" : "Our retention, Your business advantage"
+    },
     "AboutEarthMera": {
-      
       "slides": {
         "Images/earth.png": {
             "firstDesc": "Capture and be rewarded",
@@ -68,30 +86,65 @@
       
     },
     "gallery" : ["Images/1.jpeg","Images/2.jpeg","Images/4.jpeg" , "Images/7.jpeg", "Images/5.jpeg", "Images/11.jpeg", "Images/10.jpeg", "Images/9.jpeg", "Images/8.jpeg"],
+    "em_team_Intro": {
+      "header": "Introducing <br />Team EarthMera"
+    },
+    "strength": {
+      "header": "Achieve growth,<br />united in<br />Collaboration's strength",
+      "items" : [
+          {
+              "title": "Unity",
+              "content": "Alone we can do so little, together we can do so much."
+          },
+          {
+              "title": "Progress",
+              "content": "Effort in the right direction is always welcome."
+          },
+          {
+              "title": "Support",
+              "content": "Communication is important, but it should be aimed at helping each other."
+          }
+      ]
+      },
+    "mindset": {
+      "header": "Where growth thrives, <br />powered by mindset!",
+      "items" : [
+          {
+              "title": "Humbleness",
+              "content": "Humility is the key to progress."
+          },{
+              "title": "Humanity",
+              "content": "It's not AI that changes the world, but people."
+          },{
+              "title": "Resilience",
+              "content": "From adversity to triumph: the underdog's relentless pursuit of victory."
+          }
+      ]
+  },
     "teamIntro" : [{
       "photoPath": "Images/sung.jpeg",
       "name": "Sung Kang",
-      "role": "CEO / Founder <br /> Software Engineer",
+      "role": "CEO / Founder <br /> Full-Stack Engineer",
       "contact" : "mailto:devceohoony@gmail.com"
   },
   {
       "photoPath": "Images/profile_photo1.jpeg",
       "name": "Jisan Park",
-      "role": "Lead Frond-End<br />Software Engineer",
+      "role": "SWE<br />Frond-End Engineer",
       "contact" : "mailto:jisanpark94@gmail.com"
-  },
+  },{
+    "photoPath": "Images/jungwon.jpeg",
+    "name": "Jungwon Park",
+    "role": "SWE<br />ML Engineer",
+    "contact" : "mailto:devceohoony@gmail.com"
+},
   {
       "photoPath": "Images/jimmy.jpeg",
       "name": "Jimmy Sim",
-      "role": "Marketing<br />UI / UX Designer",
+      "role": "UI / UX<br /> Content Designer",
       "contact" : "mailto:devceohoony@gmail.com"
-  },
-  {
-      "photoPath": "Images/jungwon.jpeg",
-      "name": "Jungwon Park",
-      "role": "ML Engineer<br />Software Engineer",
-      "contact" : "mailto:devceohoony@gmail.com"
-  }],
+  }
+  ],
     "partners" : {
       "header": "How does EarthMera derive its value?",
       "list": ["Users", "Partners", "Government"],
@@ -180,15 +233,7 @@
   "b2csolutions": {
     "header": "Who can use EarthMera solutions?",
     "solutions" : [
-        {
-            "title": "All entertainment businesses that sell tickets.",
-            "image" : "Images/b2bsolution1.png",
-            "content": "Users can earn rewards and extract data by helping with environmental improvement through the QR code on their tickets during entertainment."
-        },{
-            "title": "Companies that manufactures eco-friendly products.",
-            "image" : "Images/b2bsolution2.png",
-            "content": "We promote your products in our app and offer user feedback and data reporting."
-        },
+        
         {
             "title": "Businesses engaged in ESG management.",
             "image" : "Images/b2bsolution3.png",
@@ -295,23 +340,32 @@
         "content": "Building the leading play-and-earn solution that drives high user engagement for game publishers and advertisers on a global scale."
     }
   },
-  "vision": {
-    "ll1":
-    {
-        "image": "Images/og_earthmera_logo.png",
-        "text": "EarthMera's Vision"
-    },
-    "ll2": {
-        "part1": "1M",
-        "part2": " EarthMera Heroes"
-    },
-    "ll3": "Fundraising for EarthMera:",
-    "l1": "We manufacture bio-based plastic bags that are becoming a global standard for eco-friendly bags.",
-    "l2": "Images/l2_bag.png",
-    "r1": "Images/r1.png",
-    "r2": "We developed a real-time computer vision system for precise waste monitoring inside bags.",
-    "rr1": "Large gathering venues like theaters, sports arenas, and cinemas can be our partners.",
-    "rr2": "Images/rr2.png"
+  
+  "vision" : {
+    "header" : "EarthMera's Vision",
+    "img": "Images/visionCenter.png",
+    "items1" : [
+        {
+            "title": "Environmental Conservation",
+            "content" : "Supporting individuals who safeguard the planet through daily eco-friendly actions, pioneering a green future.",
+            "color": "#00BF63"
+        },{
+          "title": "Social Responsibility",
+          "content" : "Aiding ESG-driven companies to achieve authentic social responsibility.",
+          "color": "#006DFF"
+      }
+      ],
+    "items2" : [
+        {
+        "title": "Economic Benefits",
+        "content" : "Incentivizing environmental care with smart actions and big rewards.",
+        "color": "#F06525"
+    },{
+        "title": "Social Culture",
+        "content" : "Cultivating sustainable habits, EarthMera builds a journey towards a greener culture.",
+        "color": "#FADB5E"
+      }
+    ]
   },
   "takesteps" : {
     "header": "Take it from small steps",
@@ -464,18 +518,18 @@
     "content": "Our B2C platform enhances users' ability to engage in eco-friendly actions and, through the data accumulated from user eco-actions, we can measure the ESG compliance level of the product.",
     "image": "Images/b2b5pimage.png",
     "midcontent": "Using B2C Model"
+  },
+  "esg" : {
+    "header": "Need better data on your ESG?",
+    "image": "Images/b2b2pimage.png",
+    "content": "EarthMera provides a platform to analyze how consumers use your products in line with ESG management, offering diverse and accurate reporting on how they consume and utilize your products."
+  },
+  "esg1p" :{
+    "image": "Images/esg1pimage.png"
 },
-"esg" : {
-  "header": "Need better data on your ESG?",
-  "image": "Images/b2b2pimage.png",
-  "content": "EarthMera provides a platform to analyze how consumers use your products in line with ESG management, offering diverse and accurate reporting on how they consume and utilize your products."
-},
-"esg1p" :{
-  "image": "Images/esg1pimage.png"
-},
-"diff" : {
-  "header": "The difference between regular and bio-based bags.",
-  "items": [
+  "diff" : {
+    "header": "The difference between regular<br /> and bio-based bags.",
+    "items": [
       {
         "image": "Images/diff1.png",
         "title": "Material",
@@ -555,5 +609,11 @@
     "header" : "Connecting people and cultures",
     "content" : "Small eco-friendly actions have the potential to inspire many, just like the butterfly effect. EarthMera will take the lead in shaping a societal culture that values the environment, with the collaboration of one million Earth heroes.",
     "image" : "Images/vision4pimg.png"
+  },
+  "ticket" : {
+    "header": "Use bio-bags for<br />ticket-selling<br />entertainment",
+    "image": "Images/ticketSellingImg.png",
+    "midcontent" :"Encourage attendee cleanup<br />in entertainment spaces.",
+    "content" : "Utilize individual ticket codes as participant IDs. Distribute eco-bags before the festival, incentivize waste collection during the event, and reward verification. Encourage all attendees to pick up litter, ensuring a cleaner festival. Maximize efficiency and cleanliness at your event."
   }
 }

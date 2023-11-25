@@ -7,6 +7,7 @@ import BioBased from './BioBased';
 import Difference from './Difference';
 import Bag, { Bg } from './Bag';
 import BioWork from './BioWork';
+import Ticket from './Ticket';
 const ContentBox = styled.section`
     justify-content: center;
   width: calc(100%);
@@ -36,6 +37,9 @@ function ESGManagement() {
               </ContentBox>
           </Wrapper>
           </Bg>
+          <ContentBox>
+            <Ticket />
+          </ContentBox>
           <ContentBox>
             <Bag />
           </ContentBox>

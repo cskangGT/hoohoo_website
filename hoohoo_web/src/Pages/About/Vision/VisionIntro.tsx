@@ -5,7 +5,7 @@ import i18next from 'i18next';
 import Wrapper from '../../../Component/Wrapper/Wrapper';
 import LinedHeader from '../../../Component/ContentBox/LinedHeader';
 import { Desc } from '../../../Component/ContentBox/TwoColBoxesSection';
-const Bg = styled.div<{image: string}>`
+export const Bg = styled.div<{image: string}>`
   animation: ${slideInFromTop} 0.7s ease-out forwards;
   width: calc(100%);
   height: 600px;
@@ -46,7 +46,6 @@ const Container = styled.div`
   }
 `;
 export default function VisionIntro() {
-  
   const data : any = i18next.t('visionIntro', { returnObjects: true });
   const [isMobile, setIsMobile] = useState(window.innerWidth < 1000);
   useEffect(() => {

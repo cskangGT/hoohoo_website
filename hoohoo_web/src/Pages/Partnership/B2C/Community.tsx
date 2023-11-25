@@ -4,9 +4,10 @@ import { theme } from '../../../style';
 import LinedHeader from '../../../Component/ContentBox/LinedHeader'
 import {Container, HorizonContainer, LeftBox, Image, RightBox, Desc, } from '../../../Component/ContentBox/TwoColBoxesSection'
 const MidTitle = styled(Desc)`
-  font-weight: 600;
+  font-weight: 700;
   padding: 10px 0;
-  font-size: 1.5rem;
+  font-size: 1.7rem;
+  padding-bottom: 30px;
 `;
 type DataProps = {
     header: string;
@@ -51,7 +52,7 @@ export default function Community(props : Props) {
                             style={{color: theme.darkGray, textAlign: isLargeScreen && 'left'}}  
                         />
                     }
-                        <MidTitle>{props.data.midcontent}</MidTitle>
+                        <MidTitle dangerouslySetInnerHTML={{__html: props.data.midcontent}} />
                         <Desc>
                             {props.data.content}
                         </Desc>       

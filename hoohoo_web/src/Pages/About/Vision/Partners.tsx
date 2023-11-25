@@ -77,7 +77,7 @@ interface OutlineProps {
     slideIndex: number;
 }
 const Outline = styled.button<OutlineProps>`
-    opacity: ${props => props.op === props.slideIndex ? 1 : 0.3};
+    color: ${props => props.op === props.slideIndex ? '#F46F36': theme.darkGray };
     background : none;
     border: none;
     cursor: pointer;
@@ -96,7 +96,6 @@ const Outline = styled.button<OutlineProps>`
     }
 `;
 const OutlineText = styled.h3`
-    color: ${theme.darkGray};
     @media screen and (max-width: 600px){
         font-size: 1.1rem;
         margin: 0 0.5rem;
@@ -219,7 +218,6 @@ function Partners() {
                             ))}
                         </LongBar>
                     </SlickBar>
-
                     <DescBox>
                         <RightBox>
                             <ImageButton onClick={handleButtonClick} isText={isText}>

@@ -108,8 +108,8 @@ const PartnerButton = styled.a`
     box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.5);
     margin: 1rem 0;
     margin-top: 40px;
-    background-color: #006DFF;
-    color: ${theme.white};
+    background-color: ${theme.mainNeon};
+    color: ${theme.darkGray};
     width: 70%;
     text-align: center;
     padding: 12px 30px;

@@ -13,7 +13,7 @@ const Header = styled.h2`
   margin: 0;
   padding: 0;
   font-size: 3.7rem;
-  line-height: 1;
+  line-height: 1.2;
   text-align: left;
   font-family:'Fredoka';
   @media screen and (max-width: 1100px){
@@ -34,6 +34,7 @@ const Line = styled.img<{dynamicWidth: number}>`
 `;
 type Props = {
   style? : {};
+  containerStyle? : {};
     data: any;
     color?: string;
 }
@@ -46,7 +47,7 @@ export default function LinedHeader(props : Props) {
           }
     }, []); // props.data.header가 변경될 때마다 실행
     return (
-      <HeaderContainer>
+      <HeaderContainer style={{...props.containerStyle}}>
         <Header ref={headerRef} style={{color: props.color && props.color, ...props.style}}
         dangerouslySetInnerHTML={{__html: props.data.header}} />
         <Line src={props.data.lineImage} dynamicWidth={headerWidth} />
