@@ -27,7 +27,6 @@ const ImageBox = styled.div`
     justify-content: center;
     margin-top: 20px;
     width: 100%;
-    
     grid-template-rows: auto;
     grid-template-columns: 1fr 1fr 1fr;
     display: grid;
@@ -52,7 +51,7 @@ const EachBox = styled.div<BoxProps>`
     display: flex;
     flex-direction: column;
     align-items: center;
-justify-content: center;
+    justify-content: center;
     background: linear-gradient(170deg, rgba(255, 255, 255, 0.14) 0%, rgba(255, 255, 255, 0.05) 100%);
     border-color: ${theme.white};
     border-width: 2px;

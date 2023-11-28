@@ -6,7 +6,9 @@ import i18next from 'i18next';
 
 const HeaderBox = styled.div`
   padding-top: 60px;
-  padding-left: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   @media screen and (max-width: 700px){
         padding: 30px 20px;
     }
@@ -24,9 +26,13 @@ const SBox = styled.div`
     display: flex;
     flex-direction: row;
     height: 200px;
+    justify-content: center;
+    align-items: center;
+    width: 70%;
     border-bottom: 1px solid #2D8BBA;
     @media screen and (max-width: 700px){
         flex-direction: column;
+        width: auto;
         height: auto;
         align-items: center;
         justify-content: center;
@@ -65,8 +71,7 @@ const Content = styled.p`
 `;
 const GridContainer = styled.div`
   display: grid;
-  grid-template-columns: repeat(2, 1fr); // 3열로 나눕니다.
-  grid-template-rows: repeat(2, 1fr); // 4행으로 나눕니다.
+  grid-template-rows: 1fr 1fr;
   gap: 15px; // 셀 사이의 간격
   width: 100%;
   margin-top: 50px;
@@ -103,7 +108,7 @@ function Solution({data} :Props) {
 
 export default function Solutions() {
   const data :any = i18next.t('b2csolutions', { returnObjects: true });
-    return (
+  return (
     <Bg>
         <Wrapper>
             <HeaderBox>

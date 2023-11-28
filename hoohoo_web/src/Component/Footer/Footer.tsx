@@ -7,7 +7,7 @@ import { faInstagram, faPinterestP, faTiktok, faLinkedinIn, faYoutube } from '@f
 import { useNavigate } from 'react-router-dom';
 
 const Background = styled.footer`
-    background-color: ${theme.darkSky};
+    background-color: transparent;
     display: block;
     padding: 40px 0;
     @media (max-width: 1000px) {
@@ -22,8 +22,7 @@ const Background = styled.footer`
 `;
 const Container = styled.div`
     max-width: 980px;
-    padding-left: 22px;
-    padding-right: 22px;
+    padding: 0 22px;
     margin: 0 auto;
     @media screen and (max-width: 700px){
          
@@ -57,12 +56,12 @@ const FooterBottom = styled.div`
   }
 `;
 const FooterTitle = styled.h3`
-  color: ${theme.white};
+  color: ${theme.darkGray};
 `;
 const BusinessDetail = styled.p`
-  font-size: 0.7rem;
+  font-size: 1rem;
   line-height: 24px;
-  color: ${theme.gray};
+  color: ${theme.darkGray};
 `;
 const RowBox = styled.div`
   display : flex;
@@ -90,11 +89,9 @@ const FooterButton = styled.a`
     border-radius: 5px;
     cursor: pointer;
     text-decoration: none;
-    color: ${theme.gray};
-
+    color: ${theme.darkGray};
     &:hover {
-      
-      color: ${theme.white};
+      color: ${theme.darkGray};
     }
 `;
 const IconBox = styled.div`
@@ -141,7 +138,7 @@ function Buttons({ text1, action1, text2, action2 }: Button) {
 function Ibutton({ icon, url, style }: IbuttonProps) {
   return (
     <IconButton href={url} style={style} target="_blank">
-      <FontAwesomeIcon icon={icon} size='xl' style={{ color: theme.gray, paddingTop: 7 }} />
+      <FontAwesomeIcon icon={icon} size='xl' style={{ color: theme.darkGray, paddingTop: 7 }} />
     </IconButton>
   )
 }

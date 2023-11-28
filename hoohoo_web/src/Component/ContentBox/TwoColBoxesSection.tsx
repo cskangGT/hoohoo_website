@@ -5,7 +5,7 @@ import LinedHeader from './LinedHeader';
 export const Container = styled.div`
     width: 100%;
     display: flex;
-    margin: 0px auto;
+    margin: 100px auto;
     justify-content: flex-start;
     align-items: center;
     position: relative;
@@ -13,7 +13,7 @@ export const Container = styled.div`
     padding: 3rem 15px;
     padding-bottom: 20px;
     @media screen and (max-width: 1000px){
-        margin-top: 20px;
+        margin: 20px auto;
     }
 `;
 
@@ -97,11 +97,11 @@ export const LeftBox = styled.div`
     margin: auto;
     @media screen and (max-width: 1000px){
         margin-top: 10px;
-        width: 70%;
+        width: 90%;
     }
     @media screen and (max-width: 500px){
         margin-top: 0px;
-        width: 80%;
+        width: 100%;
     }
     
 `;

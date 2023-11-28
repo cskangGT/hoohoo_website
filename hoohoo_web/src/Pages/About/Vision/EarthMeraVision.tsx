@@ -9,6 +9,7 @@ import VisionIntro from './VisionIntro';
 import IntroApp from './IntroApp';
 import OurMission from './OurMission';
 import Heros from './Heros';
+import VisionSection from './VisionSection';
 const FlexBox = styled.div`
    display:flex;
     flex-direction: column;
@@ -65,6 +66,9 @@ export default function EarthMeraVision() {
             <ContentBox>
                 <IntroApp />
             </ContentBox>
+            {/* <ContentBox>
+                <VisionSection />
+            </ContentBox> */}
             <ContentBox key="table" id="table">
                     <TakeSteps />
             </ContentBox>

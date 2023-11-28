@@ -28,9 +28,8 @@ const LeftCell = styled(RightBox)`
 `;
 const Line = styled.div`
   background-color: ${theme.darkGray};
-  width: 30%;
+  width: 35%;
   height: 2px;
-  margin: 15px 0;
   @media screen and (max-width: 700px){
         align-self: center;
     }
@@ -81,7 +80,7 @@ const TextBox = styled.div`
   display: flex;
   flex-direction: column;
   text-align: left;
-  padding: 20px 10px ;
+  height: 100%;
   padding-left: 10px;
   @media screen and (max-width: 700px){
         text-align: center;
@@ -90,16 +89,23 @@ const TextBox = styled.div`
         padding-top: 20px;
     }
 `;
-const Title = styled.p`
+const TitleBox = styled.div`
   width: 100%;
+  height: 50%;
+  display: flex;
+  align-items: flex-end;
+`;
+const Title = styled.p`
   font-size: 1.5rem;
   font-weight: 700;
   line-height: 1;
   margin: 0px;
+  margin-bottom: 15px;
 `;
 const Content = styled.p`
-  width: 100%;
+  width: 90%;
   font-size: 1rem;
+  margin-top: 15px;
 `;
 const GridContainer = styled.div`
   display: grid;
@@ -129,7 +135,9 @@ function Mission({data} :Props) {
     <SBox>
         <Image src={data.img}/>
         <TextBox>
+            <TitleBox>
             <Title>{data.title}</Title>
+            </TitleBox>
             <Line />
             <Content>{data.content}</Content>
         </TextBox>
@@ -137,9 +145,7 @@ function Mission({data} :Props) {
     )
 }
 export default function OurMission() {
-    
     const data : any =  i18next.t('ourMission', { returnObjects: true });
-    
     return (
                 <Container>
                     <LeftCell>

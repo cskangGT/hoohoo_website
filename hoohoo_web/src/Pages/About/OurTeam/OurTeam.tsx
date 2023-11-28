@@ -1,9 +1,12 @@
 import React, { useEffect } from 'react';
 import styled from 'styled-components';
-import TeamIntro from './TeamIntro';
+import TeamProfiles from './TeamProfiles';
 import Gallery from './Gallery';
 import Wrapper from '../../../Component/Wrapper/Wrapper';
 import { BgImage } from '../../../style';
+import TeamIntro from './TeamIntro';
+import Strength from './Strength';
+import Mindset from './Mindset';
 const ContentBox = styled.section`
     padding-top: 20px;
     justify-content: center;
@@ -16,9 +19,20 @@ function OurTeam() {
     }, []);
     return (
         <BgImage>
+            <TeamIntro />
+               {/* <BgImage bgcolor='#393E46'>
+                <Wrapper>
+                    <ContentBox>
+                        <Strength />
+                    </ContentBox>
+                    <ContentBox>
+                        <Mindset />
+                    </ContentBox>
+                </Wrapper>
+               </BgImage> */}
             <Wrapper>
                 <ContentBox>
-                    <TeamIntro />
+                    <TeamProfiles />
                 </ContentBox>
                 <ContentBox>
                     <Gallery />

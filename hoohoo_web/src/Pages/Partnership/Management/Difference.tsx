@@ -11,7 +11,10 @@ const ContentBox = styled.div`
     width: calc(100%);
     padding: 40px 0;
     min-height: 600px;
-    height: auto;
+    height: 900px;
+    @media screen and (max-width: 800px) {
+        height: auto;
+    }
 `;
 const ImageBox = styled.div`
     align-items: center;
@@ -35,24 +38,25 @@ const ImageBox = styled.div`
     }
 `;
 
-const EachBox = styled.div`
+const EachBox = styled.div<{index: number}>`
     padding: 0 35px;
-    height: 450px;
+    height: 500px;
     display: flex;
     flex-direction: column;
     align-items: center;
-justify-content: center;
+    justify-content: flex-start;
     background: linear-gradient(170deg, rgba(255, 255, 255, 0.14) 0%, rgba(255, 255, 255, 0.05) 100%);
     border-color: ${theme.white};
     border-width: 2px;
     border-radius: 20px;
+    padding-top: ${props=> props.index===1 && 50}px;
     @media screen and (max-width: 500px) {
         height: 450px;
         width: 300px;
     }
 `;
 const ActName = styled.h3`
-text-align: center;
+    text-align: center;
     font-size: 1.5rem;
     font-weight: 600;
     line-height: 1;
@@ -75,10 +79,10 @@ function Difference() {
     const data : any= i18next.t('diff', { returnObjects: true });
     return (
             <ContentBox>
-                <LinedHeader data={{header:data.header}} color={theme.darkGray} style={{fontSize: '3rem', width: '100%'}}/>
+                <LinedHeader data={{header:data.header}} color={theme.darkGray} style={{fontSize: '3rem', width: '100%', textAlign:'center'}}/>
                 <ImageBox>
                     {data.items.map((item : DataProps, index : number) => (
-                        <EachBox key={index}>
+                        <EachBox key={index} index={index}>
                             <Image src={item.image} key={index + "img"} />
                             <ActName>{item.title}</ActName>
                             <ActDesc>{item.content}</ActDesc>
