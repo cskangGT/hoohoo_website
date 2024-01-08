@@ -13,7 +13,7 @@ const ContentBox = styled.div`
 const ImageBox = styled.div`
     align-items: center;
     justify-content: center;
-    margin-top: 20px;
+    margin-top: 30px;
     width: 100%;
     
     grid-template-rows: auto;
@@ -38,7 +38,7 @@ const EachBox = styled.div`
     display: flex;
     flex-direction: column;
     align-items: center;
-justify-content: center;
+justify-content: flex-start;
     background: linear-gradient(170deg, rgba(255, 255, 255, 0.14) 0%, rgba(255, 255, 255, 0.05) 100%);
     border-color: ${theme.white};
     border-width: 2px;

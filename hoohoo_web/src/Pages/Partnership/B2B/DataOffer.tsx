@@ -63,6 +63,9 @@ const CompContent = styled.span`
 const Image = styled.img`
   height: 150px;
   object-fit: contain;
+  @media screen and (max-width: 1000px) {
+        height: 100px;
+    }
 `;
 const HeaderText = styled.h1`
   font-size: 3.5rem;

@@ -66,9 +66,9 @@ export default function EarthMeraVision() {
             <ContentBox>
                 <IntroApp />
             </ContentBox>
-            {/* <ContentBox>
+            <ContentBox>
                 <VisionSection />
-            </ContentBox> */}
+            </ContentBox>
             <ContentBox key="table" id="table">
                     <TakeSteps />
             </ContentBox>
@@ -82,12 +82,7 @@ export default function EarthMeraVision() {
                     </ContentBox>
                 </Wrapper>
             </BgImage>
-                    {/* <LottieBox href='#partners'>
-                        <Lottie animationData={arrow} loop={true} />
-                    </LottieBox> */}
             <Wrapper>
-                
-    
                 <ContentBox>
                     <FlexBox>
                         <Realtime />

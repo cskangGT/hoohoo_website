@@ -28,8 +28,7 @@
             "label": "우리가 하는 일",
             "subItems": [
               { "label": "플랫폼 비지니스", "link": "/platform" },
-              { "label": "파트너십", "link": "/partnership" },
-              { "label": "ESG 친환경 봉투", "link": "/esgbiobag" }
+              { "label": "파트너십", "link": "/partnership" }
             ]
           },
           {

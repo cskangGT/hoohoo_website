@@ -28,8 +28,8 @@
             "label": "What we do",
             "subItems": [
               { "label": "Platform Business", "link": "/platform" },
-              { "label": "Partnership", "link": "/partnership" },
-              { "label": "ESG Bio-Bag", "link": "/esgbiobag" }
+              { "label": "Partnership", "link": "/partnership" }
+              
             ]
           },
           {
@@ -43,7 +43,7 @@
             "label": "Info",
             "subItems": [
               { "label": "Blog", "link": "/blog" },
-              { "label": "Contact", "link": "#contact" }
+              { "label": "Contact", "link": "/contact" }
             ]
     }]
     },
@@ -234,16 +234,25 @@
     "header": "Who can use EarthMera solutions?",
     "solutions" : [
         
-        {
-            "title": "Businesses engaged in ESG management.",
-            "image" : "Images/b2bsolution3.png",
-            "content": "We offer MD data reporting to companies in ESG management facing challenges in quantifying their product's environmental contributions and ESG compliance level."
-        },
-        {
-            "title": "Other companies need the product statistics.",
-            "image" : "Images/b2bsolution4.png",
-            "content": "We provide statistical data and consulting services to interested companies through our platform to help them ensure that consumers are using eco-friendly products as intended by the company."
-        }
+      {
+        "title": "All entertainment businesses that sell tickets.",
+        "image" : "Images/b2bsolution1.png",
+        "content": "Users can earn rewards and extract data by helping with environmental improvement through the QR code on their tickets during entertainment."
+    },{
+        "title": "Companies that manufactures eco-friendly products.",
+        "image" : "Images/b2bsolution2.png",
+        "content": "We promote your products in our app and offer user feedback and data reporting."
+    },
+    {
+        "title": "Businesses engaged in ESG management.",
+        "image" : "Images/b2bsolution3.png",
+        "content": "We offer MD data reporting to companies in ESG management facing challenges in quantifying their product's environmental contributions and ESG compliance level."
+    },
+    {
+        "title": "Other companies need the product statistics.",
+        "image" : "Images/b2bsolution4.png",
+        "content": "We provide statistical data and consulting services to interested companies through our platform to help them ensure that consumers are using eco-friendly products as intended by the company."
+    }
     ]
   },
   "video_youtube" : [{
@@ -431,12 +440,12 @@
   },
   "howwork" : {
       "steps":[{
-          "imagePath": "Images/L1.png",
-          "head": "Take an eco-action",
-          "desc" : "Try various ways of taking eco-actions."
+          "imagePath": "Images/L1_23.png",
+          "head": "Select a category",
+          "desc" : "Choose a category related to the eco-action you want to take."
       }, {
           "imagePath": "Images/L2.png",
-          "head": "Take a photo",
+          "head": "Take a snap",
           "desc" : "Use the EarthMera app to capture eco-actions."
       }, {
           "imagePath": "Images/L3.png",
@@ -515,9 +524,9 @@
   },
   "usingb2c": {
     "header": "How EarthMera <br /> does it?",
-    "content": "Our B2C platform enhances users' ability to engage in eco-friendly actions and, through the data accumulated from user eco-actions, we can measure the ESG compliance level of the product.",
+    "content": "Our platform enhances users' ability to engage in eco-friendly actions and, through the data accumulated from user eco-actions, we can measure the ESG compliance level of the product.",
     "image": "Images/b2b5pimage.png",
-    "midcontent": "Using B2C Model"
+    "midcontent": "Using Platform Model"
   },
   "esg" : {
     "header": "Need better data on your ESG?",

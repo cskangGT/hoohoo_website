@@ -409,11 +409,11 @@ function Nav({ isKorean, setIsKorean }: NavProps) {
                           item.subItems.map((subItem, subIndex) => (
                             <NavSubList key={subIndex}>
                               <SubNavLink key={subIndex + "subLink"} onClick={() => {
-                                if (subItem.label === "Contact") {
-                                  window.location.href = "mailto:devceohoony@gmail.com";
-                                } else {
+                                // if (subItem.label === "Contact") {
+                                //   window.location.href = "mailto:devceohoony@gmail.com";
+                                // } else {
                                   navigate(subItem.link ? subItem.link : "");
-                                }
+                                // }
                                 isOpen && setIsOpen(false);
                               }}>
                                 {subItem.label}

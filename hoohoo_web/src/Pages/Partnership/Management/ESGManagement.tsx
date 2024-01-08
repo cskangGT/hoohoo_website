@@ -37,9 +37,9 @@ function ESGManagement() {
               </ContentBox>
           </Wrapper>
           </Bg>
-          {/* <ContentBox>
+          <ContentBox>
             <Ticket />
-          </ContentBox> */}
+          </ContentBox>
           <ContentBox>
             <Bag />
           </ContentBox>
