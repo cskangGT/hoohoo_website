@@ -71,11 +71,11 @@ const Router = createBrowserRouter([
                 element: <BlogDetail />,
                 errorElement: <ErrorComponent />
             }, 
-            // {
-            //     path: "/contact",
-            //     element: <ContactPage />,
-            //     errorElement: <ErrorComponent />
-            // }, 
+            {
+                path: "/contact",
+                element: <ContactPage />,
+                errorElement: <ErrorComponent />
+            }, 
             {
                 path: "/privacy",
                 element: <Privacy />,

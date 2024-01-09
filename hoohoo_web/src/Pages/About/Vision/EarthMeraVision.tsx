@@ -82,12 +82,7 @@ export default function EarthMeraVision() {
                     </ContentBox>
                 </Wrapper>
             </BgImage>
-                    {/* <LottieBox href='#partners'>
-                        <Lottie animationData={arrow} loop={true} />
-                    </LottieBox> */}
             <Wrapper>
-                
-    
                 <ContentBox>
                     <FlexBox>
                         <Realtime />

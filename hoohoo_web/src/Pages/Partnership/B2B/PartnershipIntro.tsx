@@ -22,7 +22,6 @@ const Bg = styled.div`
 const Container = styled.div`
     width: 100%;
     display: flex;
-    
     margin: 0px auto;
     justify-content: flex-start;
     align-items: center;
@@ -51,7 +50,7 @@ const LeftBox = styled.div`
     align-items: center;
     justify-content: start;
     display: flex;
-    width: 50%;
+    width: 60%;
     flex-direction :column;
     color: ${theme.darkGray};
   text-align: center;
@@ -61,12 +60,12 @@ const LeftBox = styled.div`
     @media screen and (max-width: 1000px){
         margin: 0px;
         padding: 0 10px;
-        width: 60%;
+        width: 70%;
         text-align: center;
     }
     @media screen and (max-width: 500px){
         padding: 30px 10px;
-        width: 80%;
+        width: 90%;
         text-align: center;
     }
 `;
@@ -117,7 +116,7 @@ const RightBox = styled.div`
     /* background: linear-gradient(170deg, rgba(255, 255, 255, 0.14) 0%, rgba(255, 255, 255, 0.05) 100%); */
     margin: 0;
     @media screen and (max-width: 1000px){
-        height: 450px;
+        height: 550px;
     }
     
 `;
@@ -127,7 +126,6 @@ const Image = styled.img`
   object-fit: fill;
 `;
 function PartnershipIntro() {
-    
     const data : any =  i18next.t('partnershipIntro', { returnObjects: true });
     const [isMobile, setIsMobile] = useState(window.innerWidth < 1000);
     useEffect(() => {
