@@ -69,6 +69,7 @@ interface Profile {
     name: string;
     role: string;
     contact: string;
+    url: string;
 }
 interface SlideContentProps {
     array: Profile[];
@@ -86,7 +87,7 @@ function SlideContent({ array }: SlideContentProps) {
 };
 
 function TeamProfiles() {
-    const numProfileInSlide : number =4;
+    const numProfileInSlide : number = 4;
     const data: Profile[] = i18next.t('teamIntro', { returnObjects: true });
     const groupedData = [];
     for (let i = 0; i < data.length; i += numProfileInSlide) {
@@ -115,7 +116,6 @@ function TeamProfiles() {
                         Team EarthMera
                     </HeaderText>
                     <HeaderDescText>
-                        
                     </HeaderDescText>
                 </HeaderBox>
                 <React.Fragment>

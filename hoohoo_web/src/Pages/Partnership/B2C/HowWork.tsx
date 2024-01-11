@@ -38,7 +38,7 @@ const EachBox = styled.div`
     display: flex;
     flex-direction: column;
     align-items: center;
-justify-content: flex-start;
+    justify-content: flex-start;
     background: linear-gradient(170deg, rgba(255, 255, 255, 0.14) 0%, rgba(255, 255, 255, 0.05) 100%);
     border-color: ${theme.white};
     border-width: 2px;

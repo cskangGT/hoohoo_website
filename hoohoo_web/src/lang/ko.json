@@ -122,24 +122,28 @@
       "photoPath": "Images/sung.jpeg",
       "name": "Sung Kang",
       "role": "CEO / Founder <br /> Full-Stack Engineer",
-      "contact" : "mailto:devceohoony@gmail.com"
+      "contact" : "mailto:devceohoony@gmail.com",
+      "url" : "https://www.linkedin.com/in/sungcoding/"
   },
   {
       "photoPath": "Images/profile_photo1.jpeg",
       "name": "Jisan Park",
       "role": "SWE<br />Front-End Engineer",
-      "contact" : "mailto:jisanpark94@gmail.com"
+      "contact" : "mailto:jisanpark94@gmail.com",
+      "url" : "https://www.linkedin.com/in/jisanpark5309/"
   },{
     "photoPath": "Images/jungwon.jpeg",
     "name": "Jeongwon Park",
     "role": "SWE<br />ML Engineer",
-    "contact" : "mailto:devceohoony@gmail.com"
+    "contact" : "mailto:devceohoony@gmail.com",
+    "url" : "https://www.linkedin.com/in/jwpark44/"
 },
   {
       "photoPath": "Images/jimmy.jpeg",
       "name": "Jimmy Sim",
       "role": "UI / UX<br /> Content Designer",
-      "contact" : "mailto:devceohoony@gmail.com"
+      "contact" : "mailto:devceohoony@gmail.com",
+      "url" : "https://www.linkedin.com/in/jimmysim93/"
   }
   ],
     "partners" : {
