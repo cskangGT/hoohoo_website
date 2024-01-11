@@ -1,6 +1,8 @@
 import React from 'react';
 import styled, { keyframes } from 'styled-components';
 import { theme } from '../../style';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faLinkedin } from '@fortawesome/free-brands-svg-icons';
 const slideInFromTop = keyframes`
   from {
     transform: translateY(-20%);
@@ -32,7 +34,7 @@ const PhotoBox = styled.div`
   padding: 35px 50px;
   padding-bottom: 50px;
   width: 220px;
-  display: flex; 
+  display: flex;
   justify-content: center;
   @media screen and (max-width: 700px) {
         padding-bottom: 1.2rem;
@@ -66,17 +68,37 @@ const Role = styled.span`
         font-size: 1rem;
     }
 `;
-
+const IconButton = styled.a`
+  text-align: center;
+  width: 40px;
+  height: 40px;
+  &:hover {
+    opacity: 0.7;
+  }
+`;
 interface Profile {
   photoPath: string;
   name: string;
   role: string;
   contact: string;
+  url: string;
+}
+type IbuttonProps = {
+  icon: any;
+  url?: string;
+  style?: {};
 }
 interface Item {
   item: Profile
 }
 
+function Ibutton({ icon, url, style }: IbuttonProps) {
+  return (
+    <IconButton href={url} style={style} target="_blank">
+      <FontAwesomeIcon icon={icon} size='xl' style={{ color: '#0077B5', paddingTop: 7 }} />
+    </IconButton>
+  )
+}
 function ProfileCard({ item }: Item) {
   const roleHtml = item.role.split('<br />').map((line, index) => (
     // 각 줄을 div 또는 span으로 감싸고, 필요한 경우 <br />를 추가합니다.
@@ -94,7 +116,7 @@ function ProfileCard({ item }: Item) {
         {item.name}
       </Name>
       <Role>{roleHtml}</Role>
-      
+      <Ibutton icon={faLinkedin} url={item.url} />
     </CardContainer>
   )
 }

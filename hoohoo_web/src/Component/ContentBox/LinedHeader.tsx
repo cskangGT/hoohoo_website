@@ -1,6 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
 import styled from 'styled-components';
-import { theme } from '../../style';
 const HeaderContainer = styled.div`
   display: inline-block;
   margin-bottom: 30px;

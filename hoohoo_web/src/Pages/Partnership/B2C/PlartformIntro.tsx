@@ -21,8 +21,7 @@ const Bg = styled.div`
   }
 `;
 
-function PlatformIntro() {
-    
+function PlatformIntro() {   
     const data : any = i18next.t('platform1p', { returnObjects: true });
     return (
         <Bg>
