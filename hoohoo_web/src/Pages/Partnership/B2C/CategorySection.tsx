@@ -7,11 +7,26 @@ const Container = styled.div`
     flex-direction: column;
     width: 100%;
     padding-top: 40px;
-    min-width: 700px;
+    
+    @media screen and (max-width: 1100px) {
+    
+    }
+  @media screen and (max-width: 700px) {
+        
+    }
 `;
 const HeaderBox = styled.div`
   width: auto;
   margin-left: 30px;
+  
+  @media screen and (max-width: 1100px) {
+    width: 80%;
+    }
+  @media screen and (max-width: 700px) {
+        width: 80%;
+        justify-content: center;
+        align-items: center;
+    }
 `;
 const ContentBox = styled.div`
 
@@ -198,7 +213,7 @@ export default function CategorySection() {
   return (
     <Container>
         <HeaderBox>
-        <LinedHeader data={data.title} color={theme.darkGray} style={{textAlign: 'left'}} />
+            <LinedHeader data={data.title} color={theme.darkGray} style={{textAlign: 'center'}} />
         </HeaderBox>
         <ContentBox>
             <Upper>

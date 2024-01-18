@@ -49,7 +49,7 @@ const EachBox = styled.div`
     }
 `;
 const ActName = styled.h3`
-text-align: center;
+    text-align: center;
     font-size: 1.5rem;
     font-weight: 600;
     line-height: 1;
