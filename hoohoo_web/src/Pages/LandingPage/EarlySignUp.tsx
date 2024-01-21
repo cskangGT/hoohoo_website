@@ -11,7 +11,6 @@ const serviceId = process.env.REACT_APP_EMAILJS_SERVICE_ID;
 const templateId = process.env.REACT_APP_EMAILJS_TEMPLATE_ID2;
 const public_Key = process.env.REACT_APP_EMAILJS_PUBLIC_KEY;
 
-
 const SectionContainer = styled.section`
     display: flex;
     box-sizing: border-box;
@@ -20,7 +19,6 @@ const SectionContainer = styled.section`
     padding: 0 10px;
     align-items: center;
     margin-top: 82px;
-    
     @media screen and (max-width: 800px) {
     }
 `;
