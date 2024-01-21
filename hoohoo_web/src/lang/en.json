@@ -416,7 +416,7 @@
       "header" : "So I just get money for using any tumblers and eco-bags?",
       "firstDesc": {
           "part1" : "Sign up now,",
-          "part2" : "earn $10."
+          "part2" : "earn $5."
       },
       "secDesc" : {
           "part1" : "Earn money by snapping eco-friendly actions with EarthMera.",
@@ -427,7 +427,7 @@
   },
   "earlysignup": {
     "header": {
-        "part1": "Early sign-up gets you $10, ",
+        "part1": "Early sign-up gets you $5, ",
         "part2": "EarthMera's Benefits."
     },
     "terms": {
