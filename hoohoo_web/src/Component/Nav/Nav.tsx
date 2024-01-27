@@ -18,6 +18,7 @@ const Logo = styled.button`
 
 const LogoText = styled.span`
   padding-left: 10px;
+  font-family: Fredoka;
   color: ${theme.darkGray };
 `;
 

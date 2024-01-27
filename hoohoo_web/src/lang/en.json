@@ -28,8 +28,8 @@
             "label": "What we do",
             "subItems": [
               { "label": "Platform Business", "link": "/platform" },
-              { "label": "Partnership", "link": "/partnership" }
-              
+              { "label": "Partnership", "link": "/partnership" },
+              { "label": "ESG Bio-bag", "link": "/esgbiobag" }
             ]
           },
           {
