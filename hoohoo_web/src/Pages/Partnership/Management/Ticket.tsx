@@ -8,9 +8,9 @@ export default function Ticket() {
     const data :any = i18next.t('ticket', { returnObjects: true });
   return (
     <Bg>
-    <Wrapper>
-    <Community data={data}  />
-    </Wrapper>
-</Bg>
+      <Wrapper>
+        <Community data={data}  />
+      </Wrapper>
+    </Bg>
   )
 }

@@ -9,6 +9,7 @@ import Community from '../B2C/Community';
 import UsingB2C from './UsingB2C';
 import Solutions from './Solutions';
 import B2BVideo from './B2BVideo';
+import HowWork from './HowWork';
 const ContentBox = styled.section`
     justify-content: center;
   width: 100%;
@@ -27,6 +28,9 @@ function Partnership() {
           </ContentBox>
           <ContentBox>
             <DataOffer />
+          </ContentBox>
+          <ContentBox>
+            <HowWork></HowWork>
           </ContentBox>
           <ContentBox>
            <UsingB2C />

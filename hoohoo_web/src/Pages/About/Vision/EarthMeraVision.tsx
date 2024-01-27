@@ -66,9 +66,9 @@ export default function EarthMeraVision() {
             <ContentBox>
                 <IntroApp />
             </ContentBox>
-            {/* <ContentBox>
+            <ContentBox>
                 <VisionSection />
-            </ContentBox> */}
+            </ContentBox>
             <ContentBox key="table" id="table">
                     <TakeSteps />
             </ContentBox>
@@ -91,10 +91,7 @@ export default function EarthMeraVision() {
                 <SmallTopContentBox>
                     <Heros />
                 </SmallTopContentBox>
-                
-                
             </Wrapper>
-            
         </BgImage>
     )
 }

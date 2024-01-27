@@ -20,7 +20,7 @@ function OurTeam() {
     return (
         <BgImage>
             <TeamIntro />
-               {/* <BgImage bgcolor='#393E46'>
+               <BgImage bgcolor='#393E46'>
                 <Wrapper>
                     <ContentBox>
                         <Strength />
@@ -29,7 +29,7 @@ function OurTeam() {
                         <Mindset />
                     </ContentBox>
                 </Wrapper>
-               </BgImage> */}
+               </BgImage>
             <Wrapper>
                 <ContentBox>
                     <TeamProfiles />
