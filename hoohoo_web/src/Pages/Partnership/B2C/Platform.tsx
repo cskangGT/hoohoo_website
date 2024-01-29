@@ -12,6 +12,7 @@ import i18next from 'i18next';
 import { useLocation } from 'react-router-dom';
 import { Category } from '../../../Component/Blog/BlogCard';
 import CategorySection from './CategorySection';
+import FootContact from '../../../Component/Footer/FootContact';
 const IntroBox = styled.section`
     justify-content: center;
   width: 100%;
@@ -47,6 +48,7 @@ function Platform() {
     const data :any= i18next.t('community', { returnObjects: true });
 
     return (
+        <>
         <BgImage>
             <IntroBox>
                <PlatformIntro />
@@ -77,6 +79,9 @@ function Platform() {
                     </Wrapper>
             </BgImage>
         </BgImage>
+        <hr style={{ color: theme.darkGray, margin: 0 }} />
+        <FootContact />
+        </>
     )
 }
 export default Platform

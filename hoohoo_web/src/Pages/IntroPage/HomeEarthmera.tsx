@@ -3,12 +3,13 @@ import styled from 'styled-components';
 import IntroSection from './IntroSection';
 
 
-import { BgImage } from '../../style';
+import { BgImage, theme } from '../../style';
 import IntroEarth from './IntroEarth';
 import { ContentBox } from '../About/Vision/EarthMeraVision';
 import VideoSection from './Video';
 import Download from './Download';
 import { useLocation } from 'react-router-dom';
+import FootContact from '../../Component/Footer/FootContact';
 const Wrap = styled.div`
   width: calc(100%);
   max-width: 1300px; 
@@ -59,13 +60,15 @@ function HomeEarthmera() {
     <BgImage>
       <Wrap>
         <IntroSection />
-        <IntroEarth />
+        {/* <IntroEarth /> */}
         <ContentBox key="video" id="video">
           <VideoSection />
         </ContentBox>
         <ContentBox ref={sectionRef} id="download" key="download">
-                    <Download dropb={false} />
-                </ContentBox>
+            <Download dropb={false} />
+        </ContentBox>
+        <hr style={{ color: theme.darkGray, margin: 0 }} />
+      <FootContact />
       </Wrap>
     </BgImage>
   );

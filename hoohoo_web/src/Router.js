@@ -15,7 +15,7 @@ import Privacy from "./Pages/Legal/Privacy";
 import TandC from "./Pages/Legal/T&C";
 import EarlySignUp from "./Pages/LandingPage/EarlySignUp";
 import Platform from "./Pages/Partnership/B2C/Platform";
-import ESGManagement from "./Pages/Partnership/Management/ESGManagement";
+
 import EarthMeraVision from "./Pages/About/Vision/EarthMeraVision";
 import ContactPage from "./Pages/Info/Contact/ContactPage";
 const Router = createBrowserRouter([
@@ -41,10 +41,6 @@ const Router = createBrowserRouter([
             {
                 path: "/partnership",
                 element: <Partnership />,
-                errorElement: <ErrorComponent />
-            },{
-                path: "/esgbiobag",
-                element: <ESGManagement />,
                 errorElement: <ErrorComponent />
             },
             {
