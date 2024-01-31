@@ -8,6 +8,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlus } from '@fortawesome/free-solid-svg-icons';
 import { useCookies } from 'react-cookie';
 import Wrapper from '../../../Component/Wrapper/Wrapper';
+import FootContact from '../../../Component/Footer/FootContact';
 
 const Container = styled.div`
     width: calc(100% - 30px);
@@ -206,6 +207,7 @@ function Blog() {
     }, []);
 
     return (
+        <>
         <BgImage>
             <Wrapper>
                 <Container>
@@ -242,6 +244,9 @@ function Blog() {
                 </Container>
             </Wrapper >
         </BgImage>
+        <hr style={{ color: theme.darkGray, margin: 0 }} />
+        <FootContact />
+        </>
     )
 }
 export default Blog;

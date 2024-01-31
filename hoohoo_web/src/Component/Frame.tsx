@@ -27,8 +27,6 @@ function Frame({ children }: FrameProps) {
       <Nav setIsKorean={setIsKorean} isKorean={isKorean} />
       {children}
       <hr style={{ color: theme.darkGray, margin: 0 }} />
-      <FootContact />
-      <hr style={{ color: theme.darkGray, margin: 0 }} />
       <Footer isKorean={isKorean} />
     </Container>
   )

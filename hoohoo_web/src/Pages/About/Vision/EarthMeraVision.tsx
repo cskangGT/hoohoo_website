@@ -10,6 +10,7 @@ import IntroApp from './IntroApp';
 import OurMission from './OurMission';
 import Heros from './Heros';
 import VisionSection from './VisionSection';
+import FootContact from '../../../Component/Footer/FootContact';
 const FlexBox = styled.div`
    display:flex;
     flex-direction: column;
@@ -59,6 +60,7 @@ export default function EarthMeraVision() {
             window.scrollTo(0, 0);
       }, []);
     return (
+        <>
         <BgImage bgcolor='#F6F4F1'> 
             <ContentBox>
                 <VisionIntro />
@@ -91,7 +93,11 @@ export default function EarthMeraVision() {
                 <SmallTopContentBox>
                     <Heros />
                 </SmallTopContentBox>
+                    
             </Wrapper>
         </BgImage>
+        <hr style={{ color: theme.darkGray, margin: 0 }} />
+        <FootContact />
+        </>
     )
 }
