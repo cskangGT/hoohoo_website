@@ -52,7 +52,7 @@ export const RightBox = styled.div`
     }
 `;
 export const Header = styled.h2`
-padding: 30px 0;
+    padding: 30px 0;
   font-size: 4rem;
   line-height: 1;
   width: 100%;

@@ -98,7 +98,7 @@ const Content = styled.p`
         font-size: 1.3rem;
     }
 `;
-const PartnerButton = styled.a`
+export const PartnerButton = styled.a`
     font-size: 26px;
     font-weight: 500;
     cursor: pointer;

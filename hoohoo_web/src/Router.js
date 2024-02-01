@@ -3,7 +3,7 @@ import React from "react";
 import Root from "./Root"
 import NotFound from "./Component/ErrorComponent/ErrorComponent"
 import ErrorComponent from "./Component/ErrorComponent/ErrorComponent";
-import HomeEarthmera from "./Pages/IntroPage/HomeEarthmera";
+import HomeEarthmera from "./Pages/Home/HomeEarthmera";
 import OurTeam from "./Pages/About/OurTeam/OurTeam";
 import Partnership from "./Pages/Partnership/B2B/Partnership";
 import MainDropB from "./Pages/DropB/MainDropB";

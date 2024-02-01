@@ -14,7 +14,7 @@ type DataProps = {
     content: string;
     image: string;
     lineImage?: string;
-    midcontent: string;
+    midcontent?: string;
 }
 type Props = {
     data : DataProps;
@@ -52,7 +52,7 @@ export default function Community(props : Props) {
                             style={{color: theme.darkGray, textAlign: isLargeScreen && 'left'}}  
                         />
                     }
-                        <MidTitle dangerouslySetInnerHTML={{__html: props.data.midcontent}} />
+                        {props.data.midcontent && <MidTitle dangerouslySetInnerHTML={{__html: props.data.midcontent}} />}
                         <Desc>
                             {props.data.content}
                         </Desc>       

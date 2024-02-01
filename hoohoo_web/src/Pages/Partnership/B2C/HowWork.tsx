@@ -3,28 +3,29 @@ import styled from 'styled-components';
 import { theme } from '../../../style';
 import LinedHeader from '../../../Component/ContentBox/LinedHeader';
 import i18next from 'i18next';
+import Wrapper from '../../../Component/Wrapper/Wrapper';
 const ContentBox = styled.div`
     display: flex;
     flex-direction: column;
     align-items: center;
     width: calc(100%);
-    padding-top: 40px;
+    padding-top: 60px;
 `;
 const ImageBox = styled.div`
     align-items: center;
     justify-content: center;
     margin-top: 30px;
     width: 100%;
-    
+    position: relative;
     grid-template-rows: auto;
-    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
     display: grid;
     @media screen and (max-width: 700px) {
         height: auto;
         grid-template-columns: auto;
         width: 80%;
         grid-column-gap: 20px;
-    grid-template-rows: 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr 1fr;
     }
     @media screen and (max-width: 500px) {
         width: 70%;
@@ -43,6 +44,7 @@ const EachBox = styled.div`
     border-color: ${theme.white};
     border-width: 2px;
     border-radius: 20px;
+    z-index: 10;
     @media screen and (max-width: 500px) {
         height: 450px;
         width: 300px;
@@ -58,9 +60,25 @@ const ActName = styled.h3`
 const ActDesc = styled.span`
   text-align: center;
 `;
+const TapeBgImage = styled.img`
+  
+  height: 150px;
+  z-index: 1;
+  position: absolute;
+  left: -70px;
+  right: 20px;
+  top:80px;
+  @media screen and (max-width: 700px) {
+    top: 10px;
+    left: auto;
+    right: auto;
+    bottom: 0;
+        transform: rotate(90deg);
+    }
+`;
 const Image = styled.img`
-    width: 100%;
-    height: auto;
+    /* width: 100%; */
+    height: 315px;
     object-fit: contain;
 `;
 type DataProps = {
@@ -71,9 +89,11 @@ type DataProps = {
 function HowWork() {
     const data : any= i18next.t('howwork', { returnObjects: true });
     return (
+        <Wrapper>
             <ContentBox>
                 <LinedHeader data={data.title} color={theme.darkGray} />
                 <ImageBox>
+                    <TapeBgImage src={data.bgImage}></TapeBgImage>
                     {data.steps.map((item : DataProps, index : number) => (
                         <EachBox key={index}>
                             <Image src={item.imagePath} key={index + "img"} />
@@ -83,6 +103,7 @@ function HowWork() {
                     ))}
                 </ImageBox>
             </ContentBox>
+        </Wrapper>
     )
 }
 export default HowWork;

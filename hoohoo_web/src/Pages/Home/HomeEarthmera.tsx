@@ -10,6 +10,9 @@ import VideoSection from './Video';
 import Download from './Download';
 import { useLocation } from 'react-router-dom';
 import FootContact from '../../Component/Footer/FootContact';
+import HomeIntroPage from './HomeIntroPage';
+import HomePlatform from './HomePlatform';
+import HomePartnership from './HomePartnership';
 const Wrap = styled.div`
   width: calc(100%);
   max-width: 1300px; 
@@ -58,6 +61,15 @@ function HomeEarthmera() {
       }, [location]);
   return (
     <BgImage>
+      <ContentBox>
+        <HomeIntroPage></HomeIntroPage>
+      </ContentBox>
+      <ContentBox>
+        <HomePlatform></HomePlatform>
+      </ContentBox>
+      <ContentBox>
+        <HomePartnership></HomePartnership>
+      </ContentBox>
       <Wrap>
         <IntroSection />
         {/* <IntroEarth /> */}

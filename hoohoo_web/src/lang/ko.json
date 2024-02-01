@@ -119,33 +119,39 @@
       ]
   },
     "teamIntro" : [{
-      "photoPath": "Images/sung.jpeg",
+      "photoPath": "Images/profile_sung.jpeg",
       "name": "Sung Kang",
       "role": "CEO / Founder <br /> Full-Stack Engineer",
       "contact" : "mailto:devceohoony@gmail.com",
       "url" : "https://www.linkedin.com/in/sungcoding/"
   },
   {
-      "photoPath": "Images/profile_photo1.jpeg",
+      "photoPath": "Images/profile_jisan.jpeg",
       "name": "Jisan Park",
       "role": "SWE<br />Front-End Engineer",
       "contact" : "mailto:jisanpark94@gmail.com",
       "url" : "https://www.linkedin.com/in/jisanpark5309/"
   },{
-    "photoPath": "Images/jungwon.jpeg",
+    "photoPath": "Images/profile_jungwon.jpeg",
     "name": "Jeongwon Park",
     "role": "SWE<br />ML Engineer",
     "contact" : "mailto:devceohoony@gmail.com",
     "url" : "https://www.linkedin.com/in/jwpark44/"
 },
   {
-      "photoPath": "Images/jimmy.jpeg",
+      "photoPath": "Images/profile_jimmy.jpeg",
       "name": "Jimmy Sim",
       "role": "UI / UX<br /> Content Designer",
       "contact" : "mailto:devceohoony@gmail.com",
       "url" : "https://www.linkedin.com/in/jimmysim93/"
-  }
-  ],
+  },
+  {
+      "photoPath": "Images/profile_daniel.jpeg",
+      "name": "Daniel Park",
+      "role": "UI / UX<br /> Content Designer",
+      "contact" : "mailto:devceohoony@gmail.com",
+      "url" : "https://www.linkedin.com/in/jimmysim93/"
+  }],
     "partners" : {
       "header": "How does EarthMera derive its value?",
       "list": ["Users", "Partners", "Government"],
