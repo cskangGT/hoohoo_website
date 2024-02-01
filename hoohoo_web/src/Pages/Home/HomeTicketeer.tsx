@@ -1,9 +1,9 @@
 import React from 'react'
 import styled from 'styled-components';
-import { theme } from '../../style';
-import { HomeTransitionButton } from './HomeIntroPage';
-import { useNavigate } from 'react-router-dom';
 import Wrapper from '../../Component/Wrapper/Wrapper';
+import { HomeTransitionButton } from './HomeIntroPage';
+import { UpperTitle, HeaderText, ButtonBox } from './HomePlatform';
+import { useNavigate } from 'react-router-dom';
 const Container = styled.section`
 width: 100%;
   background-color: transparent;
@@ -14,28 +14,36 @@ width: 100%;
 `;
 const Background = styled.div<{ backgroundImage: string }>`
   width: 100%;
-  margin-top: 300px;
+  margin-top: 50px;
   background-image: url(${props => props.backgroundImage});
   background-size: cover;
   background-position: center;
   position: relative;
   flex-direction: row;
-  height: 400px;
+  height: 700px;
   display: flex;
   justify-content: center;
   align-items: center;
   z-index: 1;
   @media screen and (max-width: 800px){
     height: auto;
-    margin-top: 90px;
+    margin-top: 50px;
     
   }
   `;
-
+const ScreenImage = styled.img`
+  height: 600px;
+  object-fit: contain;
+  @media screen and (max-width: 800px){
+    height: 400px;
+    margin-top: 20px;
+    
+  }
+`;
 const InnerContainer = styled.div`
   position: relative;
   flex-direction: row;
-  height: 400px;
+  height: 450px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -48,13 +56,13 @@ const InnerContainer = styled.div`
 `;
 const LeftBox = styled.div`
     padding: 30px 60px;
-    height: 100%;
+    height: 450px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     width: 50%;
     @media screen and (max-width: 800px){
-        width: 80%;
+        width: 90%;
         padding :30px 0px;
         height: auto;
         align-items: center;
@@ -62,65 +70,29 @@ const LeftBox = styled.div`
 `;
 const RightBox = styled.div`
     width: 50%;
-    height: 400px;
+    height: 600px;
     position: relative;
     display: flex;
     @media screen and (max-width: 800px){
-        height: 180px;
-        width: 40%;
+        height: auto;
+        width: 90%;
+        height: 400px;
     }
 `;
-const ScreenImage = styled.img`
-    position: absolute;
-    bottom: 0px;
-    height: 550px;
-    left: 50%; /* Center horizontally */
-  transform: translate(-50%, 0);
-    @media screen and (max-width: 800px){
-        height: 250px;
-    }
-`;
-export const UpperTitle = styled.p`
-    font-size: 1.5rem;
-    color: #39B54A;
-    @media screen and (max-width: 800px){
-        font-size: 1.2rem;
-        text-align: center;
-    }
-`;
-export const HeaderText = styled.h2`
-  font-size: 2.5rem;
-    color: ${theme.white};
-    @media screen and (max-width: 800px){
-        text-align: center;
-        font-size: 1.8rem;
-    }
-`;
-export const ButtonBox = styled.div`
-  display: flex;
-  width: 60%;
-  @media screen and (max-width: 800px){
-      width: 80%;
-      justify-content: center;
-      align-items: center;
-      padding: 20px 0;
-    }
-`;
-
-export default function HomePlatform() {
+export default function HomeTicketeer() {
     const navigate = useNavigate();
-    const data ={
-        "title": "Snap, Reward and <br /> check your green impact",
-        "uptitle" : "For EarthMera Users",
-        "buttonText": "Check our platform",
-        "bgImage" : "Images/home2bg.jpeg",
-        "image" : "Images/home2Screen.png"
+    const data = {
+        "bgImage": "Images/home4bg.jpeg",
+        "image" : "Images/home4Image.png",
+        "uptitle" : "For festival organizer",
+        "title" : "Imagine the environmental and cost benefits with Earthmera if festival attendees helped clean up!",
+        "buttonText" : "Check EM Ticketeer"
+
     }
-    function goPlatform () {
-        navigate('/platform')
+    function goTicketeer () {
+        navigate('/partnership#ticketeer')
     }
   return (
-    <Container>
         <Background backgroundImage={data.bgImage}>
             <Wrapper>
                 <InnerContainer>
@@ -128,7 +100,7 @@ export default function HomePlatform() {
                 <UpperTitle>{data.uptitle}</UpperTitle>
                 <HeaderText dangerouslySetInnerHTML={{__html: data.title}} />
                 <ButtonBox>
-                    <HomeTransitionButton onClick={goPlatform}>{data.buttonText}</HomeTransitionButton>
+                    <HomeTransitionButton onClick={goTicketeer}>{data.buttonText}</HomeTransitionButton>
                 </ButtonBox>
             </LeftBox>
             <RightBox>
@@ -137,6 +109,5 @@ export default function HomePlatform() {
             </InnerContainer>
             </Wrapper>
         </Background>
-    </Container>
   )
 }

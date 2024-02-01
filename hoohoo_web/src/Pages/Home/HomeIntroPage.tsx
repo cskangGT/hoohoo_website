@@ -7,14 +7,15 @@ import { PartnerButton } from '../LandingPage/LandingB2C';
 import { useNavigate } from 'react-router-dom';
 const TitleHeader = styled(Header)`
   color: ${theme.white};
-  font-size: 4rem;
+  font-size: 3.5rem;
   font-family: 'Fredoka';
   z-index: 11;
   width: 70%;
+  padding: 15px 0;
   text-align: center;
   @media screen and (max-width: 1000px){
     width: 80%;
-    font-size: 2rem;
+    font-size: 2.5rem;
   }
   @media screen and (max-width: 500px){
     width: 90%;
@@ -23,7 +24,7 @@ const TitleHeader = styled(Header)`
 `;
 
 const Image = styled.img`
-  width: 80%;
+  height: 500px;
   padding: 10px 0;
   z-index: 11;
   @media screen and (max-width: 800px){
@@ -55,6 +56,7 @@ export const HomeTransitionButton = styled(PartnerButton)`
   font-family: 'Yanolga Yachae';
   font-weight: 700;
   background-color: #00BF63;
+  color: white;
 `;
 export default function HomeIntroPage() {
   const navigate = useNavigate();
@@ -74,8 +76,8 @@ export default function HomeIntroPage() {
 
   const data = {
     "bgImage": "Images/homebg1.jpeg",
-    "title" : 'Every eco action in your daily life, rewarding time!',
-    "image" : 'Images/home1Image.png',
+    "title" : "Every eco action in your daily life,<br />rewarding time!",
+    "image" : "Images/home1Image.png",
     "topImage": "Images/home1top.png",
     "botImage": "Images/home1bot.png",
     "phoneImage" : "Images/home1ImageSmall.png",
@@ -84,7 +86,7 @@ export default function HomeIntroPage() {
   };
   return (
     <BackgroundWithStripe backgroundImage={data.bgImage}>
-      <TitleHeader>{data.title}</TitleHeader>
+      <TitleHeader dangerouslySetInnerHTML={{__html : data.title}} />
       {
         isLargeScreen ? <Image src={data.image} />
         : <Image src={data.phoneImage} />

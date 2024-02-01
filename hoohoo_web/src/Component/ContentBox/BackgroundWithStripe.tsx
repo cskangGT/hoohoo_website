@@ -14,7 +14,7 @@ const Background = styled.div<{ backgroundImage: string }>`
   background-position: center;
   position: relative;
   flex-direction: column;
-  height: 900px;
+  height: 960px;
   display: flex;
   justify-content: center;
   align-items: center;

@@ -13,6 +13,7 @@ import FootContact from '../../Component/Footer/FootContact';
 import HomeIntroPage from './HomeIntroPage';
 import HomePlatform from './HomePlatform';
 import HomePartnership from './HomePartnership';
+import HomeTicketeer from './HomeTicketeer';
 const Wrap = styled.div`
   width: calc(100%);
   max-width: 1300px; 
@@ -70,8 +71,11 @@ function HomeEarthmera() {
       <ContentBox>
         <HomePartnership></HomePartnership>
       </ContentBox>
+      <ContentBox>
+        <HomeTicketeer></HomeTicketeer>
+      </ContentBox>
       <Wrap>
-        <IntroSection />
+        {/* <IntroSection /> */}
         {/* <IntroEarth /> */}
         <ContentBox key="video" id="video">
           <VideoSection />

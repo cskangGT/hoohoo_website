@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useRef } from 'react';
 import styled from 'styled-components';
 import Wrapper from '../../../Component/Wrapper/Wrapper';
 import { BgImage, theme } from '../../../style';
@@ -11,41 +11,99 @@ import Solutions from './Solutions';
 import B2BVideo from './B2BVideo';
 import HowWork from './HowWork';
 import FootContact from '../../../Component/Footer/FootContact';
+import B2BIntroSection from './B2BIntroSection';
+import PhotoVideoes from './PhotoVideoes';
+import EMBags from './EMBags';
+import GetInTouch from './GetInTouch';
+import TicketeerIntro from './TicketeerIntro';
+import WhatTicketeer from './WhatTicketeer';
+import HowDoesItWork from './HowDoesItWork';
+import HowWorkFirst from './HowWorkFirst';
+import HowWorkSecond from './HowWorkSecond';
+import HowWorkThird from './HowWorkThird';
+import HowWorkFourth from './HowWorkFourth';
+import AskTicketeer from './AskTicketeer';
 const ContentBox = styled.section`
+    display: flex;
     justify-content: center;
+    align-items: center;
   width: 100%;
-  display: flex;
+  height: 800px;
+  @media screen and (max-width: 1200px){
+      height: auto;
+    }
 `;
 const Container = styled.div`
-display: flex;
+  display: flex;
   align-items: center;
   justify-content: center;
   height: 800px;
+  @media screen and (max-width: 800px){
+      height: auto;
+    }
 `;
-const ConstructionText = styled.p`
-  margin-top: 80px;
-  align-self: center;
-  color: ${theme.darkGray};
-  width: 100%;
-  font-size: 30px;
-  font-weight: 700;
-  text-align: center;
+const NoHeight = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: auto;
 `;
 function Partnership() {
-    
-    useEffect(() => {
-        window.scrollTo(0, 0);
-    }, []);
+  const sectionRef = useRef<HTMLDivElement>(null);
+  useEffect(() => {
+      
+      if (location.hash === '#ticketeer' ){
+          setTimeout(() => {
+              if (sectionRef.current) {
+                  sectionRef.current.scrollIntoView({ behavior: 'smooth' });
+              }
+          }, 100);
+        
+      } else {
+          window.scrollTo(0, 0);
+      }
+    }, [location]);
     return (
       <>
         <BgImage>
         <Wrapper>
           <ContentBox>
-            <Container>
-              <ConstructionText>{"Our partnership will be released soon :)"}</ConstructionText>
-            </Container>
+              <B2BIntroSection></B2BIntroSection>
+              {/* <ConstructionText>{"Our partnership will be released soon :)"}</ConstructionText> */}
           </ContentBox>
-          </Wrapper>
+        </Wrapper>
+        <Container>
+          <PhotoVideoes></PhotoVideoes>
+        </Container>
+        <Container>
+          <EMBags></EMBags>
+        </Container>
+        <Container>
+          <GetInTouch />
+        </Container>
+        <Container>
+          <TicketeerIntro></TicketeerIntro>
+        </Container>
+        <Wrapper>
+          <NoHeight ref={sectionRef} id="ticketeer" key="ticketeer">
+            <WhatTicketeer ></WhatTicketeer>
+          </NoHeight>
+          <Container>
+            <HowWorkFirst />
+          </Container>
+          <Container>
+            <HowWorkSecond></HowWorkSecond>
+          </Container>
+          <Container>
+            <HowWorkThird></HowWorkThird>
+          </Container>
+          <Container>
+            <HowWorkFourth></HowWorkFourth>
+          </Container>
+          <Container>
+            <AskTicketeer></AskTicketeer>
+          </Container>
+        </Wrapper>
           {/* <PartnershipIntro />
           <ContentBox>
             <ESG />
