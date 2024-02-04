@@ -179,7 +179,7 @@ function Footer({ isKorean }: FooterProps) {
         <FooterBottom>
           <BusinessDetail style={{ paddingLeft: 15 }}>Copyright&copy; 2024 EarthMera. All rights reserved.</BusinessDetail>
           <IconBox>
-            <Ibutton icon={faInstagram} url={'https://instagram.com/earthmera_?igshid=MzRlODBiNWFlZA=='} />
+            <Ibutton icon={faInstagram} url={'https://www.instagram.com/earthmera_global?igsh=YXRicWw5dzd4eDVy&utm_source=qr'} />
             <Ibutton icon={faLinkedinIn} url={'https://www.linkedin.com/company/earthmera/'} />
             <Ibutton icon={faPinterestP} style={{ opacity: 1 }} />
             <Ibutton icon={faTiktok} style={{ opacity: 1 }} />
