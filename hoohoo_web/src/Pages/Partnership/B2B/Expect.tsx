@@ -49,12 +49,13 @@ const ItemContainer = styled.div`
   @media screen and (max-width: 800px){
     align-self: center;
     justify-self: center;
-    height: 500px;
+    height: auto;
     width: 90%;
   }
 `;
 const StepImage = styled.img`
   width: 90%;
+  object-fit: contain;
 `;
 const ContentText = styled.span`
   color: black;
@@ -72,7 +73,7 @@ type ItemType = {
 }
 function StepItem ({item} : {item :ItemType}): JSX.Element {
   return (<ItemContainer>
-    <StepImage src={item.image} />
+    <StepImage src={item.image}  />
     <ContentText>{item.content}</ContentText>
   </ItemContainer>) 
    

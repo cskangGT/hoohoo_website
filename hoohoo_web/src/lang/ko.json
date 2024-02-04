@@ -141,16 +141,15 @@
   {
       "photoPath": "Images/profile_jimmy.jpeg",
       "name": "Jimmy Sim",
-      "role": "UI / UX<br /> Content Designer",
+      "role": "UI / UX<br />Content Designer",
       "contact" : "mailto:devceohoony@gmail.com",
       "url" : "https://www.linkedin.com/in/jimmysim93/"
   },
   {
       "photoPath": "Images/profile_daniel.jpeg",
       "name": "Daniel Park",
-      "role": "UI / UX<br /> Content Designer",
-      "contact" : "mailto:devceohoony@gmail.com",
-      "url" : "https://www.linkedin.com/in/jimmysim93/"
+      "role": "SWE<br />Back-End Engineer",
+      "contact" : "mailto:devceohoony@gmail.com"
   }],
     "partners" : {
       "header": "How does EarthMera derive its value?",
@@ -447,37 +446,35 @@
   },
   "howwork" : {
       "steps":[{
-          "imagePath": "Images/L1_23.png",
+          "imagePath": "Images/platform2step1.png",
           "head": "Select a category",
           "desc" : "Choose a category related to the eco-action you want to take."
       }, {
-          "imagePath": "Images/L2.png",
+          "imagePath": "Images/home1phone.png",
           "head": "Take a snap",
           "desc" : "Use the EarthMera app to capture eco-actions."
       }, {
-          "imagePath": "Images/L3.png",
+          "imagePath": "Images/platform2step3.png",
           "head": "Take a reward",
           "desc" : "Get points! Through photo-taking."
-      }],
+      }, {
+        "imagePath": "Images/platform2step4.png",
+        "head": "Check your impact",
+        "desc" : "See the environmental impact instantly from eco actions."
+    }],
       "title" :{
         "header": "How does our platform work?",
         "lineImage": "Images/platform2pline.png"
-    }
+    },
+    "bgImage" : "Images/platform2bg.jpeg"
   },
   "rewards" : {
-    "header": " 100+ rewards",
+    "header": " 100+ Rewards",
     "content": "We've prepared numerous rewards for EarthMera heroes! Enjoy the process of earning points as you contribute to the conservation of our planet.",
     "midcontent": "Your eco-actions deserve these rewards",
     "lineImage": "Images/platform6pline.png",
     "image": "Images/platform6pimage.png" 
 },
-  "pioneer": {
-    "header": "You are a true <br />eco-culture <br />pioneer",
-    "content": "Your act of taking coffee in a reusable tumbler sets a great example for many. By following these small actions, others can contribute to building an environmentally conscious culture.",
-    "midcontent": "Your small impact will be a butterfly effect.",
-    "lineImage": "Images/platform7pline.png",
-    "image": "Images/platform7pimage.png" 
-  },
   "offer" : {
     "header" : "What data can we offer?",
     "comp" : [{
@@ -495,23 +492,20 @@
   }]
   },
   "community" : [{
-    "header": "Enjoy an<br /> eco community.",
-    "content": "Participate in group activities through various challenges, become a member of the eco community, share your green experiences, and have more fun while collecting points.",
-    "midcontent": "Share your green experiences.",
+    "header": "Enjoy events and challenges with your group.",
+    "content": "Create events and set missions for schools, companies, or local groups. Your small steps will foster eco-communities and drive everyone to go green.",
     "lineImage": "Images/platform3pline.png",
-    "image": "Images/platform3pimage.png"
+    "image": "Images/platform5Image.png"
   },{
-    "header": "Enjoy an<br /> eco community.",
-    "content": "Create an environmental education challenge on EarthMera, where you can exchange ideas and share recycling tips. Earn points by taking pictures, and motivating education about the environment.",
-    "midcontent": "Create an environmental education challenge.",
+    "header": "Share your<br />EcoActions!",
+    "content": "Share your unique eco-friendly tips and thoughts on the environment. Connect with like-minded individuals, inspire others with your sustainable lifestyle, and discover new ways to care for our planet. ",
     "lineImage": "Images/platform3pline.png",
-    "image": "Images/platform4pimage.png" 
+    "image": "Images/platform6Image.png" 
   },{
-    "header": "Enjoy an<br /> eco community.",
-    "content": "Get involved in the environmental event and help clean up your neighborhood. This eco-community not only makes the local area more beautiful but can also have a positive impact by spreading eco-consciousness to many.",
-    "midcontent": "Join the environmental challenge.",
+    "header": "Eco-Culture Pioneer.",
+    "content": "Your act of taking coffee in a reusable tumbler sets a great example for many. By following these small actions, others can contribute to building an environmentally conscious culture.",
     "lineImage": "Images/platform3pline.png",
-    "image": "Images/platform5pimage.png" 
+    "image": "Images/platform7Image2.png" 
   }],
   "b2bhowwork" : {
     "bg": "Images/b2b4pbg.png",
