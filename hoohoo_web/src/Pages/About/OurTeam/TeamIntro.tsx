@@ -36,9 +36,10 @@ export default function TeamIntro() {
   }, []);
   return (
     <BackgroundImage image='Images/teamIntroImg.png'>
-        <Wrapper><IntroHeaderTextContainer>
+        <Wrapper>
+          <IntroHeaderTextContainer>
             <LinedHeader data={{header: data.header}} style={{fontSize: isMobile? '3rem': '5rem', color: theme.white, textAlign:'left'}}/>
-            </IntroHeaderTextContainer>
+          </IntroHeaderTextContainer>
         </Wrapper>
     </BackgroundImage>
   )

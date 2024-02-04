@@ -7,7 +7,7 @@ export default function HowWorkSecond() {
         "number": "#2",
         "header":  "Participants check-in and engage in missions.",
         "content" : "Participants check in with their own event code from their ticket or mobile ticket and engage in missions.",
-        "image": "Images/ticketeer4Image.png",
+        "image": "Images/ticketeer5Image.png",
         "tailText" : "EM bag is mailed with a festival ticket."
     }
   return (

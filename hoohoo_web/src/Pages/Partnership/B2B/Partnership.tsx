@@ -23,6 +23,7 @@ import HowWorkSecond from './HowWorkSecond';
 import HowWorkThird from './HowWorkThird';
 import HowWorkFourth from './HowWorkFourth';
 import AskTicketeer from './AskTicketeer';
+import Expect from './Expect';
 const ContentBox = styled.section`
     display: flex;
     justify-content: center;
@@ -88,6 +89,9 @@ function Partnership() {
           <NoHeight ref={sectionRef} id="ticketeer" key="ticketeer">
             <WhatTicketeer ></WhatTicketeer>
           </NoHeight>
+          <Container>
+            <Expect></Expect>
+          </Container>
           <Container>
             <HowWorkFirst />
           </Container>

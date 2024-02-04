@@ -15,6 +15,11 @@ const ContentBox = styled.section`
   width: 100%;
   display: flex;
 `;
+const WhiteBlankGap = styled.div`
+  width: 100%;
+  height: 100px;
+  background-color: white;
+`;
 function OurTeam() {
     useEffect(() => {
         window.scrollTo(0, 0);
@@ -26,12 +31,16 @@ function OurTeam() {
                 <Wrapper>
                     <ContentBox>
                         <Strength />
-                    </ContentBox>
+                    </ContentBox></Wrapper></BgImage>
+                    <WhiteBlankGap></WhiteBlankGap>
+                    <BgImage bgcolor='#212937'>
+                        <Wrapper>
                     <ContentBox>
                         <Mindset />
                     </ContentBox>
-                </Wrapper>
-               </BgImage>
+                    </Wrapper>
+                    </BgImage>
+               
             <Wrapper>
                 <ContentBox>
                     <TeamProfiles />

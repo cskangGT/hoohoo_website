@@ -98,9 +98,9 @@ export const HeaderText = styled.h2`
 `;
 export const ButtonBox = styled.div`
   display: flex;
-  width: 60%;
+  width: 80%;
   @media screen and (max-width: 800px){
-      width: 80%;
+      
       justify-content: center;
       align-items: center;
       padding: 20px 0;

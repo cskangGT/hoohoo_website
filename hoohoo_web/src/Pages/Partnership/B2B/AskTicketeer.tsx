@@ -87,7 +87,7 @@ export default function AskTicketeer() {
     const data = {
         "header" : "Make your ticketed events greener with EarthMera Tickteer.",
         "content" : "Partner with EarthMera for your ticketed events. We'll transform your business into a greener model, enlighten your attendees about environmental responsibility, and significantly reduce your cleaning expenses.",
-        "image" : "Images/ticketeer6Image.png",
+        "image" : "Images/ticketeer8Image.png",
         "leftTop": "Images/ticketeerLeftTop.png",
         "rightBot": "Images/ticketeerRightBot.png",
         "buttonText": "Ask about Ticketeer",

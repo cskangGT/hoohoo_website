@@ -99,7 +99,7 @@ const TailContainer = styled.div`
 `;
 const TailText = styled.span`
   color: black;
-  font-size: 1.3rem;
+  font-size: 1rem;
   min-width: 80px;
   @media screen and (max-width: 800px){
     font-size: 1rem;
@@ -127,9 +127,8 @@ export default function HowDoesItWork({data}: Props) {
                 <NumberText>
                     {data.number}
                 </NumberText>
-                <HeaderText>
-                    {data.header}
-                </HeaderText>
+                <HeaderText dangerouslySetInnerHTML={{__html: data.header}} />
+                    
                 <ContentBlackText>
                     {data.content}
                 </ContentBlackText>

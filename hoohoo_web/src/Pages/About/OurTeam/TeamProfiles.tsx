@@ -64,19 +64,24 @@ const Slide = styled.div`
     flex-direction: column;
     }
 `;
+const ProfileRow = styled.div`
+  width: 100%;
+  display: flex;
+flex-direction: column;
+`;
 interface Profile {
     photoPath: string;
     name: string;
     role: string;
     contact: string;
-    url: string;
+    url?: string;
 }
 interface SlideContentProps {
     array: Profile[];
 }
 
 function SlideContent({ array }: SlideContentProps) {
-
+    console.log('array', array)
     return (
         <Slide key={array[0].name}>
             {array.map((value, index) => (
@@ -87,7 +92,7 @@ function SlideContent({ array }: SlideContentProps) {
 };
 
 function TeamProfiles() {
-    const numProfileInSlide : number = 4;
+    const numProfileInSlide : number = 3;
     const data: Profile[] = i18next.t('teamIntro', { returnObjects: true });
     const groupedData = [];
     for (let i = 0; i < data.length; i += numProfileInSlide) {
@@ -99,7 +104,7 @@ function TeamProfiles() {
             setCurrentSlide(currentSlide - 1);
         }
     };
-
+console.log('groupedData', groupedData)
     const handleRightClick = () => {
         if (currentSlide < groupedData.length - 1) {
             setCurrentSlide(currentSlide + 1);
@@ -118,7 +123,10 @@ function TeamProfiles() {
                     <HeaderDescText>
                     </HeaderDescText>
                 </HeaderBox>
-                <React.Fragment>
+                <ProfileRow>{groupedData.map((value, index) => (
+                            <SlideContent array={value} />
+                        ))}</ProfileRow>
+                {/* <React.Fragment>
                     <Slider
                         currentSlide={currentSlide}
                         handleLeftClick={handleLeftClick}
@@ -128,7 +136,7 @@ function TeamProfiles() {
                             <SlideContent array={value} />
                         ))}
                     </Slider>
-                </React.Fragment>
+                </React.Fragment> */}
             </ContainerBox>
         </SectionBox >
         )

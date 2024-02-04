@@ -46,7 +46,7 @@ const ButtonBox = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 40%;
+  width: 30%;
   @media screen and (max-width: 800px){
     width: 80%;
     padding-bottom: 30px;

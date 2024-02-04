@@ -7,7 +7,7 @@ export default function HowWorkFirst() {
         "number": "#1",
         "header":  "Create missions for participants to engage in.",
         "content" : "Enter the organizer's event code to check in, set the date, and create missions.",
-        "image": "Images/ticketeer3Image.png",
+        "image": "Images/ticketeer4Image.png",
         "tailText" : "Colsulting on setting up missions with EarthMera."
     }
   return (

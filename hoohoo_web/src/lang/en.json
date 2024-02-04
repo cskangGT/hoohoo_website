@@ -143,16 +143,15 @@
   {
       "photoPath": "Images/profile_jimmy.jpeg",
       "name": "Jimmy Sim",
-      "role": "UI / UX<br /> Content Designer",
+      "role": "UI / UX<br />Content Designer",
       "contact" : "mailto:devceohoony@gmail.com",
       "url" : "https://www.linkedin.com/in/jimmysim93/"
   },
   {
       "photoPath": "Images/profile_daniel.jpeg",
       "name": "Daniel Park",
-      "role": "UI / UX<br /> Content Designer",
-      "contact" : "mailto:devceohoony@gmail.com",
-      "url" : "https://www.linkedin.com/in/jimmysim93/"
+      "role": "SWE<br />Back-End Engineer",
+      "contact" : "mailto:devceohoony@gmail.com"
   }],
     "partners" : {
       "header": "How does EarthMera derive its value?",

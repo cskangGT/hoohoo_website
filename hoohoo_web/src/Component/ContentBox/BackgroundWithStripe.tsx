@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import { slideInFromTop } from '../../style';
 
 // Define the types for your component's props
 interface BackgroundWithStripeProps {
@@ -8,6 +9,7 @@ interface BackgroundWithStripeProps {
 }
 
 const Background = styled.div<{ backgroundImage: string }>`
+  animation: ${slideInFromTop} 0.7s ease-out forwards;
   width: 100%;
   background-image: url(${props => props.backgroundImage});
   background-size: cover;
