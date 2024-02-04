@@ -7,12 +7,14 @@ import PlatformIntro from './PlartformIntro';
 import HowWork from './HowWork';
 import Community from './Community';
 import Rewards from './Rewards';
-import Pioneer from './Pioneer';
 import i18next from 'i18next';
 import { useLocation } from 'react-router-dom';
 import { Category } from '../../../Component/Blog/BlogCard';
 import CategorySection from './CategorySection';
 import FootContact from '../../../Component/Footer/FootContact';
+import B2cIntroSection from './B2cIntroSection';
+import EcoActionCategories from './EcoActionCategories';
+import Badges from './Badges';
 const IntroBox = styled.section`
     justify-content: center;
   width: 100%;
@@ -21,7 +23,7 @@ const IntroBox = styled.section`
 `;
 const ContentBox = styled.div`
   width: calc(100%);
-  height: 800px;
+  height: 900px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -50,16 +52,26 @@ function Platform() {
     return (
         <>
         <BgImage>
-            <IntroBox>
+            {/* <IntroBox>
                <PlatformIntro />
+            </IntroBox> */}
+            <IntroBox>
+                <B2cIntroSection></B2cIntroSection>
             </IntroBox>
-            <Wrapper>
-                <ContentBox ref={sectionRef} id="action">
+            <ContentBox ref={sectionRef} id="action">
                     <HowWork />
                 </ContentBox>
-                <NoHeight>
+            <ContentBox>
+                    <EcoActionCategories></EcoActionCategories>
+                </ContentBox>
+            <Wrapper>
+                
+                <ContentBox>
+                    <Badges></Badges>
+                </ContentBox>
+                {/* <NoHeight>
                     <CategorySection />
-                </NoHeight>
+                </NoHeight> */}
                 <ContentBox>
                     <Rewards />
                 </ContentBox>
@@ -73,9 +85,6 @@ function Platform() {
                                 </ContentBox>
                             ))
                         }
-                        <ContentBox>
-                            <Pioneer />
-                        </ContentBox>
                     </Wrapper>
             </BgImage>
         </BgImage>

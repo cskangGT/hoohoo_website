@@ -12,7 +12,7 @@ const Header = styled.h2`
   margin: 0;
   padding: 0;
   font-size: 3.7rem;
-  line-height: 1.2;
+  line-height: 1.1;
   text-align: left;
   font-family:'Fredoka';
   @media screen and (max-width: 1100px){

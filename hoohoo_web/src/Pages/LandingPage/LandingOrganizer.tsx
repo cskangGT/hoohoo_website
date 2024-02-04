@@ -136,25 +136,25 @@ function LandingOrganizer({ toggleAutoSliding,  isOpen, setIsOpen }: Props) {
     };
     return (
         <Background>
-                    <Grid>
-                        <LeftCell>
-                            <Title>
-                            {data.firstDesc.split("10%").map((segment, index, array) => 
-                        index === array.length - 1
-                        ? segment
-                        : <>
-                            {segment}
-                            <HighlightedText>10%</HighlightedText>
-                        </>
-                    )} </Title>
-                            <Content>{data.secDesc}</Content>
-                            <Button onClick={handleOpen}>{data.button}</Button>
-                            {isOpen && <LandingFormModal isOpen={isOpen} handleClose={handleClose} />}
-                        </LeftCell>
-                        <RightCell>
-                            <RightImage src={data.image} />
-                        </RightCell>
-                    </Grid>
+            <Grid>
+                <LeftCell>
+                    <Title>
+                    {data.firstDesc.split("10%").map((segment, index, array) => 
+                index === array.length - 1
+                ? segment
+                : <>
+                    {segment}
+                    <HighlightedText>10%</HighlightedText>
+                </>
+            )} </Title>
+                    <Content>{data.secDesc}</Content>
+                    <Button onClick={handleOpen}>{data.button}</Button>
+                    {isOpen && <LandingFormModal isOpen={isOpen} handleClose={handleClose} />}
+                </LeftCell>
+                <RightCell>
+                    <RightImage src={data.image} />
+                </RightCell>
+            </Grid>
         </Background>
     )
 }

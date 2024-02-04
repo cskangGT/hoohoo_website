@@ -81,7 +81,7 @@ interface Profile {
   name: string;
   role: string;
   contact: string;
-  url: string;
+  url?: string;
 }
 type IbuttonProps = {
   icon: any;
@@ -116,7 +116,10 @@ function ProfileCard({ item }: Item) {
         {item.name}
       </Name>
       <Role>{roleHtml}</Role>
-      <Ibutton icon={faLinkedin} url={item.url} />
+      {
+        item.url && <Ibutton icon={faLinkedin} url={item.url} />
+      }
+      
     </CardContainer>
   )
 }
