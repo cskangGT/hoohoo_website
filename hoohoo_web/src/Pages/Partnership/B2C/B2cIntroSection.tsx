@@ -5,11 +5,12 @@ import { HomeTransitionButton } from '../../Home/HomeIntroPage';
 import { UpperTitle, HeaderText, ButtonBox } from '../../Home/HomePlatform';
 import { Header } from '../../../Component/ContentBox/TwoColBoxesSection';
 import LinedHeader from '../../../Component/ContentBox/LinedHeader';
-import { theme } from '../../../style';
+import { slideInFromTop, theme } from '../../../style';
 const Container = styled.section`
 width: 100%;
   background-color: transparent;
   height: 900px;
+  animation: ${slideInFromTop} 0.7s ease-out forwards;
   @media screen and (max-width: 800px){
     height: auto;
   }

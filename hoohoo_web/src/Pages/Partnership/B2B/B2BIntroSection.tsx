@@ -1,6 +1,7 @@
 import React from 'react'
 import styled from 'styled-components';
 import Wrapper from '../../../Component/Wrapper/Wrapper';
+import { slideInFromTop } from '../../../style';
 
 // 공통적으로 사용될 스타일 변수들을 정의합니다.
 const colors = {
@@ -10,6 +11,7 @@ const colors = {
 };
 
 const Container = styled.div`
+animation: ${slideInFromTop} 0.7s ease-out forwards;
   display: flex;
   flex-direction: row;
   justify-content: center;
