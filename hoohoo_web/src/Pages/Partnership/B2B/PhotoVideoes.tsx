@@ -35,6 +35,10 @@ const ContentText = styled.span`
 const Header = styled(HeaderText)`
   color: black;
   font-family: 'Fredoka';
+  font-size: 4rem;
+  @media screen and (max-width: 1000px){
+    font-size: 3rem;
+    }
 `;
 const YHighlightedText = styled.span`
   color: #FFC940;

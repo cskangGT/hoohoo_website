@@ -11,7 +11,7 @@ width: 100%;
   background-color: transparent;
   height: 900px;
   animation: ${slideInFromTop} 0.7s ease-out forwards;
-  @media screen and (max-width: 800px){
+  @media screen and (max-width: 1000px){
     height: auto;
   }
 `;
@@ -28,10 +28,9 @@ const Background = styled.div<{ backgroundImage: string }>`
   justify-content: center;
   align-items: center;
   z-index: 1;
-  @media screen and (max-width: 800px){
+  @media screen and (max-width: 1000px){
     height: auto;
     margin-top: 150px;
-    
   }
   `;
 
@@ -43,20 +42,20 @@ const InnerContainer = styled.div`
   justify-content: center;
   align-items: center;
   z-index: 10;
-  @media screen and (max-width: 800px){
+  @media screen and (max-width: 1000px){
     height: auto;
     margin-top: 0px;
     flex-direction: column-reverse;
   }
 `;
 const LeftBox = styled.div`
-    padding: 40px 40px;
+    padding: 20px;
     height: 100%;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     width: 40%;
-    @media screen and (max-width: 800px){
+    @media screen and (max-width: 1000px){
         width: 80%;
         padding :30px 0px;
         height: auto;
@@ -68,7 +67,7 @@ const RightBox = styled.div`
     height: 400px;
     position: relative;
     display: flex;
-    @media screen and (max-width: 800px){
+    @media screen and (max-width: 1000px){
         height: 250px;
         width: 100%;
     }
@@ -77,7 +76,9 @@ const ContentText = styled.p`
   font-size: 1.5rem;
   color: black;
   padding-top: 5px;
-
+  @media screen and (max-width: 1200px){
+    font-size: 1.3rem;
+    }
 `;
 const ScreenImage = styled.img`
     position: absolute;
@@ -85,7 +86,7 @@ const ScreenImage = styled.img`
     height: 550px;
     left: 50%; /* Center horizontally */
   transform: translate(-50%, 0);
-    @media screen and (max-width: 800px){
+    @media screen and (max-width: 1000px){
         height: 250px;
         bottom: 0;
     }

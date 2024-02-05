@@ -9,7 +9,7 @@ const Container = styled.section`
     justify-content: center;
     align-items: center;
     flex-direction: column;
-  @media screen and (max-width: 800px){
+  @media screen and (max-width: 1000px){
     height: auto;
   }
 `;
@@ -18,7 +18,7 @@ const HeaderText = styled(Header)`
   width: 100%;
   font-family: 'Fredoka';
   padding-bottom: 20px;
-  @media screen and (max-width: 800px){
+  @media screen and (max-width: 1000px){
     text-align: center;
     width: 100%;
     margin-top: 50px;
@@ -32,7 +32,7 @@ const StepsItemContainer = styled.div`
   padding: 0px 10px;
   justify-content: center;
   align-items: center;
-  @media screen and (max-width: 800px){
+  @media screen and (max-width: 1000px){
     grid-column-gap: 0px;
     grid-row-gap: 15px;
     grid-template-columns: none;
@@ -43,10 +43,10 @@ const ItemContainer = styled.div`
   display: flex;
   flex-direction: column;
   width: 100%;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
   height: 550px;
-  @media screen and (max-width: 800px){
+  @media screen and (max-width: 1000px){
     align-self: center;
     justify-self: center;
     height: auto;
@@ -54,7 +54,8 @@ const ItemContainer = styled.div`
   }
 `;
 const StepImage = styled.img`
-  width: 90%;
+  /* width: 90%; */
+  height: 309px;
   object-fit: contain;
 `;
 const ContentText = styled.span`
@@ -63,7 +64,7 @@ const ContentText = styled.span`
     padding: 30px 0px;
     width: 80%;
     text-align: center;
-    @media screen and (max-width: 800px){
+    @media screen and (max-width: 1000px){
         text-align: center;
     }
 `;
@@ -72,10 +73,12 @@ type ItemType = {
   content : string;
 }
 function StepItem ({item} : {item :ItemType}): JSX.Element {
-  return (<ItemContainer>
+  return (
+  <ItemContainer>
     <StepImage src={item.image}  />
     <ContentText>{item.content}</ContentText>
-  </ItemContainer>) 
+  </ItemContainer>
+  ) 
    
 }
 
@@ -88,7 +91,7 @@ export default function Expect() {
                 "content" : "Voluntary cleaning by participants can significantly reduce festival cleaning expenditures.",
             },
             {
-              "image" : "Images/testStep.jpeg",
+              "image" : "Images/ticketeer3step2.jpeg",
               "content" : "EarthMera can raise environmental awareness among participants who may not respond to traditional cleanup requests on display boards.",
             },
             {

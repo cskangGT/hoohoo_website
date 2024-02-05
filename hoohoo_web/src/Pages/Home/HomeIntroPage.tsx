@@ -16,6 +16,7 @@ const TitleHeader = styled(Header)`
   @media screen and (max-width: 1000px){
     width: 80%;
     font-size: 2.5rem;
+    margin-top: 20px;
   }
   @media screen and (max-width: 500px){
     width: 90%;
@@ -27,8 +28,9 @@ const Image = styled.img`
   height: 500px;
   padding: 10px 0;
   z-index: 11;
-  @media screen and (max-width: 800px){
-    width: 100%;
+  object-fit: contain;
+  @media screen and (max-width: 1000px){
+    width: 90%;
   }
   @media screen and (max-width: 500px){
     width: auto;

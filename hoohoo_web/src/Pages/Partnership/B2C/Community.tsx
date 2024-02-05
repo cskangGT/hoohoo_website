@@ -43,15 +43,12 @@ export default function Community(props : Props) {
     return (
         <Container>
                 <HorizonContainer style={{position: 'relative'}} rightImage={props.flip}>
-                    <RightBox>
-                    {
-                        (i === 0 || !(!isLargeScreen && (i === 1 || i === 2))) && 
+                    <RightBox>            
                         <LinedHeader 
                             data={{header:props.data.header, 
                             lineImage: props.data.lineImage}}
                             style={{color: theme.darkGray, textAlign: isLargeScreen && 'left'}}  
                         />
-                    }
                         {props.data.midcontent && <MidTitle dangerouslySetInnerHTML={{__html: props.data.midcontent}} />}
                         <Desc>
                             {props.data.content}
