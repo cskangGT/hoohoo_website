@@ -64,7 +64,7 @@ export default function HomeIntroPage() {
   const navigate = useNavigate();
   const [isLargeScreen, setIsLargeScreen] = useState(true);
   function handleButton () {
-    navigate('/platform')
+    navigate('/submitform')
   }
   useEffect(() => {
     console.log('window.innerWidth', window.innerWidth)

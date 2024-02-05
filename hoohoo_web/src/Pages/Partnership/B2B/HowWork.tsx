@@ -56,7 +56,7 @@ const GridContainer = styled.div`
   width: 100%; /* 부모 요소에 맞춤 */
   height: 520px; /* 부모 요소에 맞춤 */
   align-items: center; /* 세로 정렬 */
-  justify-items: center; /* 가로 정렬 */
+  justify-items: center;
 `;
 
 const MidContainer = styled.div`

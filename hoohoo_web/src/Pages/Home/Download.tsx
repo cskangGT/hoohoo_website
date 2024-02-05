@@ -17,7 +17,7 @@ const Container = styled.div<DownloadProps>`
     z-index: 1;
     overflow: hidden;
     margin-bottom: 58px;
-    @media screen and (max-width: 1100px) {
+    @media screen and (max-width: 1200px) {
         width: 80%;
         height: 630px;
     }
@@ -25,7 +25,8 @@ const Container = styled.div<DownloadProps>`
         height: 700px;
     }
     @media screen and (max-width: 500px) {
-      height: ${props => (props.dropb ? '530px' : '530px')};
+      height: auto;
+      /* height: ${props => (props.dropb ? '530px' : '530px')}; */
     }
 `;
 const ContentBox = styled.div`
@@ -33,7 +34,7 @@ const ContentBox = styled.div`
     position: relative;
     width: 100%;
     justify-content: center;
-    @media screen and (max-width: 500px) {
+    @media screen and (max-width: 1200px) {
       padding:10px;
       flex-direction: column;
     }
@@ -44,7 +45,7 @@ const ImageBox = styled.div<DownloadProps>`
   align-items: center;
   padding: 10px;
   width: ${props => (props.dropb ? 'auto' : '45%')};
-  @media screen and (max-width: 500px) {
+  @media screen and (max-width: 1200px) {
       width: 100%;
     }
 `;
@@ -53,7 +54,7 @@ const RightBox2 = styled.div`
   display: flex;
   justify-content: center;
   flex-direction: column;
-  @media screen and (max-width: 500px) {
+  @media screen and (max-width: 1200px) {
     width: 100%;
 }
 `;
@@ -62,7 +63,7 @@ const Image = styled.img<DownloadProps>`
   position:${props => (props.dropb ? 'absolute' : 'relative')};
   left: ${props => (props.dropb ? '50px' : '70px')};
   // transform: rotate(-15deg);
-  @media screen and (max-width: 1100px) {
+  @media screen and (max-width: 1200px) {
     width: 200px;
     bottom: -6%;
     left: 30%;
@@ -82,7 +83,7 @@ const SecondImage = styled.img<DownloadProps>`
   height: auto;
   left:200px;
   transform: rotate(15deg);
-  @media screen and (max-width: 1100px) {
+  @media screen and (max-width: 1200px) {
     width: 200px;
     top: auto;
     left: 44%;
@@ -99,7 +100,7 @@ const SecondImage = styled.img<DownloadProps>`
 const RightBox = styled.div`
   margin: 70px 22px 92px 530px;
   width: 100%;
-  @media screen and (max-width: 1100px) {
+  @media screen and (max-width: 1200px) {
     margin: 35px 16px -10px;
     padding: 24px 21px 380px;
 }
@@ -117,7 +118,7 @@ const Header = styled.h1`
   margin-bottom: 22px;
   padding: 0px;
   text-align: left;
-  @media screen and (max-width: 1100px) {
+  @media screen and (max-width: 1200px) {
       margin: 0 10%;
       margin-bottom: 20px;
     text-align:center;
@@ -135,7 +136,7 @@ const SubHeader = styled.h3`
   margin-bottom: 36px;
   padding: 0px;
   text-align: left;
-  @media screen and (max-width: 1100px) {
+  @media screen and (max-width: 1200px) {
       margin: 0 10%;
       margin-bottom: 20px;
     text-align:center;
@@ -146,17 +147,15 @@ const SubHeader = styled.h3`
     }
 `;
 const BannerBtnContainer = styled.div`
-  display:grid;
-  grid-template-columns: 1fr 1fr;
+  display:flex;
   box-sizing: inherit;
   width: 100%;
   gap: 10px;
-  @media screen and (max-width: 730px) {
+  justify-content: center;
+  align-items: center;
+  @media screen and (max-width: 800px) {
     flex-direction: column;
-}
-@media screen and (max-width: 500px) {
-      flex-direction: row;
-    }
+  }
 `;
 
 const BannerBtn = styled.a`
@@ -169,7 +168,7 @@ const BannerBtn = styled.a`
     flex: 0 0 auto;
     position: relative;
     transition: all 0.3s ease 0s;
-    @media screen and (max-width: 730px) {
+    @media screen and (max-width: 1200px) {
     margin-top: 7px;
     }
     @media screen and (max-width: 500px) {

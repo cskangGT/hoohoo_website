@@ -41,10 +41,23 @@ export default function LinedHeader(props : Props) {
     const [headerWidth, setHeaderWidth] = useState<number>(0);
     const headerRef = useRef<HTMLHeadingElement>(null);
     useEffect(() => {
+      const updateWidth = () => {
         if (headerRef.current) {
-            setHeaderWidth(headerRef.current.offsetWidth);
-          }
-    }, []); // props.data.header가 변경될 때마다 실행
+          setHeaderWidth(headerRef.current.offsetWidth);
+        }
+      };
+  
+      // 최초 마운트 시에 너비 설정
+      updateWidth();
+  
+      // 윈도우 리사이즈 이벤트에 대한 리스너 추가
+      window.addEventListener('resize', updateWidth);
+  
+      // 컴포넌트 언마운트 시 또는 재렌더링 시 이벤트 리스너 제거
+      return () => {
+        window.removeEventListener('resize', updateWidth);
+      };
+    }, []); 
     return (
       <HeaderContainer style={{...props.containerStyle}}>
         <Header ref={headerRef} style={{color: props.color && props.color, ...props.style}}

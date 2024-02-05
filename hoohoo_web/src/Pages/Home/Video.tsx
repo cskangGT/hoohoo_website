@@ -12,7 +12,7 @@ const Container = styled.div`
     @media screen and (max-width: 1100px) {
       margin: 15% 0;
     }
-    @media screen and (max-width: 500px) {
+    @media screen and (max-width: 700px) {
       height: auto;
       max-height: auto;
       margin: 15vh 0;
@@ -26,7 +26,7 @@ const ContentBox = styled.div`
     padding: 0;
     display: flex;
     justify-content: space-between;
-    @media screen and (max-width: 500px) {
+    @media screen and (max-width: 700px) {
       flex-direction: column;
     }
 `;
@@ -36,7 +36,7 @@ const IndexBox = styled.div`
   height: 100%;
   @media screen and (max-width: 1100px) {
 }
-    @media screen and (max-width: 500px) {
+    @media screen and (max-width: 700px) {
         display: flex;
         flex-direction: column;
         margin-top: 50px;
@@ -66,7 +66,7 @@ const HisBox = styled.a<VideoListProps>`
     &:hover {
         opacity: 1;
       }
-      @media screen and (max-width: 500px) {
+      @media screen and (max-width: 700px) {
         padding: 10px 20px;
         margin: 0 20px;
     }
@@ -76,7 +76,7 @@ const VideoBox = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  @media screen and (max-width: 500px) {
+  @media screen and (max-width: 700px) {
       width: 100%;
     }
 `;
@@ -91,7 +91,7 @@ const VideoContent = styled.iframe`
   max-height: 390px;
   height: 27vw;
   width: 100%;
-  @media screen and (max-width: 500px) {
+  @media screen and (max-width: 700px) {
         height: 212px;
     }
 `;

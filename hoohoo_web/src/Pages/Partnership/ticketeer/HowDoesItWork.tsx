@@ -97,9 +97,9 @@ const TailContainer = styled.div`
   flex-direction: row;
 `;
 const TailText = styled.span`
-  color: black;
+  color: #545454;
   font-size: 1rem;
-  min-width: 80px;
+  min-width: 56px;
   @media screen and (max-width: 800px){
     font-size: 1rem;
     }

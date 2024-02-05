@@ -61,19 +61,14 @@ const ActDesc = styled.span`
   text-align: center;
 `;
 const TapeBgImage = styled.img`
-  
   height: 150px;
   z-index: 1;
   position: absolute;
   left: -70px;
   right: 20px;
   top:80px;
-  @media screen and (max-width: 700px) {
-    top: 10px;
-    left: auto;
-    right: auto;
-    bottom: 0;
-        transform: rotate(90deg);
+  @media screen and (max-width: 1000px) {
+    display: none;
     }
 `;
 const Image = styled.img`
