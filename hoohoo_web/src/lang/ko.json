@@ -28,7 +28,8 @@
             "label": "우리가 하는 일",
             "subItems": [
               { "label": "플랫폼 비지니스", "link": "/platform" },
-              { "label": "파트너십", "link": "/partnership" }
+              { "label": "파트너십", "link": "/partnership" },
+              { "label": "EM 티켓티어", "link": "/ticketeer" }
             ]
           },
           {

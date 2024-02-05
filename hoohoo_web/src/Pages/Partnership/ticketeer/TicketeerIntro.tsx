@@ -1,10 +1,12 @@
 import React from 'react'
 import styled from 'styled-components';
+import { slideInFromTop } from '../../../style';
 const isMobile = window.innerWidth < 800;
 
 const Background = styled.div<{ backgroundImage: string }>`
+  animation: ${slideInFromTop} 0.7s ease-out forwards;
   width: 100%;
-  margin-top: 100px;
+  margin-top: 150px;
   background-image: url(${props => props.backgroundImage});
   background-size: cover;
   background-position: center;
@@ -15,6 +17,7 @@ const Background = styled.div<{ backgroundImage: string }>`
   align-items: center;
   z-index: 1;
   @media screen and (max-width: 800px){
+    margin-top: 90px;
     height: 700px;
   }
 `;

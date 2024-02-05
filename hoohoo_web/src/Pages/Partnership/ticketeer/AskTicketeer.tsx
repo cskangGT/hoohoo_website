@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components';
 import { HomeTransitionButton } from '../../Home/HomeIntroPage';
-import { ButtonBox } from './PhotoVideoes';
+import { ButtonBox } from '../B2B/PhotoVideoes';
 const Container = styled.section`
     width: 100%;
   background-color: transparent;

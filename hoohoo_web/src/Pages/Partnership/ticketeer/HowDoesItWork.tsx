@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components';
 import { Header } from '../../../Component/ContentBox/TwoColBoxesSection';
-import { ContentText } from './GetInTouch';
+import { ContentText } from '../B2B/GetInTouch';
 const Container = styled.section`
     width: 100%;
   background-color: transparent;
@@ -32,20 +32,19 @@ const UpperText = styled.span`
   text-align: left;
   font-family:'Fredoka';
   @media screen and (max-width: 800px){
-        font-size: 1.5rem;
-        text-align:left;
-    }
+    font-size: 1.5rem;
+    text-align:left;
+  }
 `;
 const TextBox = styled.div`
-  padding-left: 10px;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   width: 80%;
   @media screen and (max-width: 800px){
-        width: 100%;
-    }
+    width: 100%;
+  }
 `;
 const NumberText = styled.span`
   text-align: left;
@@ -54,8 +53,8 @@ const NumberText = styled.span`
   color: #00BF63;
   font-family:'Fredoka';
   @media screen and (max-width: 800px){
-        text-align: center;
-    }
+    text-align: center;
+  }
 `;
 const HeaderText = styled.h2`
   padding: 30px 0;

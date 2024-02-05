@@ -73,6 +73,8 @@ const RightBox = styled.div`
     height: 600px;
     position: relative;
     display: flex;
+    justify-content: center;
+    align-items: center;
     @media screen and (max-width: 800px){
         height: auto;
         width: 90%;
@@ -90,7 +92,7 @@ export default function HomeTicketeer() {
 
     }
     function goTicketeer () {
-        navigate('/partnership#ticketeer')
+        navigate('/ticketeer')
     }
   return (
         <Background backgroundImage={data.bgImage}>

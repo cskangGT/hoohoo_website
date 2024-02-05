@@ -18,6 +18,7 @@ import Platform from "./Pages/Partnership/B2C/Platform";
 
 import EarthMeraVision from "./Pages/About/Vision/EarthMeraVision";
 import ContactPage from "./Pages/Info/Contact/ContactPage";
+import EMTicketeer from "./Pages/Partnership/ticketeer/EMTicketeer";
 const Router = createBrowserRouter([
     {
         path: "/",
@@ -46,6 +47,11 @@ const Router = createBrowserRouter([
             {
                 path: "/platform",
                 element: <Platform />,
+                errorElement: <ErrorComponent />
+            },
+            {
+                path: "/ticketeer",
+                element: <EMTicketeer />,
                 errorElement: <ErrorComponent />
             },
             {

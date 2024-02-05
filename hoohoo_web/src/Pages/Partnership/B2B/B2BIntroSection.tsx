@@ -11,7 +11,7 @@ const colors = {
 };
 
 const Container = styled.div`
-animation: ${slideInFromTop} 0.7s ease-out forwards;
+  animation: ${slideInFromTop} 0.7s ease-out forwards;
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -23,9 +23,13 @@ animation: ${slideInFromTop} 0.7s ease-out forwards;
     justify-content: flex-start;
     flex-direction: column;
     width: 100%;
-    height: 700px;
+    height: 1000px;
     padding-top: 100px;
   }
+  @media (max-width: 800px) {
+    height: 700px;
+  }
+
 `;
 const InnerContainer = styled.div`
   display: flex;

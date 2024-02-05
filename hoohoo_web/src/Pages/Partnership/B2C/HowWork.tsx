@@ -20,15 +20,15 @@ const ImageBox = styled.div`
     grid-template-rows: auto;
     grid-template-columns: 1fr 1fr 1fr 1fr;
     display: grid;
-    @media screen and (max-width: 700px) {
+    @media screen and (max-width: 1000px) {
         height: auto;
         grid-template-columns: auto;
-        width: 80%;
+        width: 70%;
         grid-column-gap: 20px;
     grid-template-rows: 1fr 1fr 1fr 1fr;
     }
     @media screen and (max-width: 500px) {
-        width: 70%;
+        width: 80%;
         padding: 0 20px;
     }
 `;

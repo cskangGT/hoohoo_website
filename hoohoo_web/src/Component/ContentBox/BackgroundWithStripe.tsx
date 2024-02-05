@@ -21,6 +21,7 @@ const Background = styled.div<{ backgroundImage: string }>`
   justify-content: center;
   align-items: center;
   z-index: 9;
+  overflow: visible;
   @media screen and (max-width: 1000px){
     height: auto;
   }
