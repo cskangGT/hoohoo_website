@@ -73,12 +73,18 @@ const RightBox = styled.div`
 `;
 const ContentText = styled(Desc)`
   color: ${isSmall ? 'white':'black' };
+  @media screen and (max-width: 800px){
+    color: white;
+  }
 `;
 const HighlightedText = styled.span`
   background-color: #FF7B27;
   color: black;
   padding: 0.2em;
   border-radius: 4px;
+  @media screen and (max-width: 800px){
+    color: white;
+  }
 `;
 export default function EcoActionCategories() {
     const data ={
