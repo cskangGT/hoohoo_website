@@ -8,7 +8,7 @@ const Container = styled.section`
 width: 100%;
   background-color: transparent;
   height: 800px;
-  @media screen and (max-width: 800px){
+  @media screen and (max-width: 850px){
     height: auto;
   }
 `;
@@ -25,7 +25,7 @@ const Background = styled.div<{ backgroundImage: string }>`
   justify-content: center;
   align-items: center;
   z-index: 1;
-  @media screen and (max-width: 800px){
+  @media screen and (max-width: 850px){
     height: auto;
     margin-top: 50px;
     
@@ -34,7 +34,7 @@ const Background = styled.div<{ backgroundImage: string }>`
 const ScreenImage = styled.img`
   height: 600px;
   object-fit: contain;
-  @media screen and (max-width: 800px){
+  @media screen and (max-width: 850px){
     height: 400px;
     margin-top: 20px;
     
@@ -48,7 +48,7 @@ const InnerContainer = styled.div`
   justify-content: center;
   align-items: center;
   z-index: 10;
-  @media screen and (max-width: 800px){
+  @media screen and (max-width: 850px){
     height: auto;
     margin-top: 0px;
     flex-direction: column-reverse;
@@ -61,7 +61,7 @@ const LeftBox = styled.div`
     flex-direction: column;
     justify-content: space-between;
     width: 50%;
-    @media screen and (max-width: 800px){
+    @media screen and (max-width: 850px){
         width: 90%;
         padding :30px 0px;
         height: auto;
@@ -75,7 +75,7 @@ const RightBox = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
-    @media screen and (max-width: 800px){
+    @media screen and (max-width: 850px){
         height: auto;
         width: 90%;
         height: 400px;

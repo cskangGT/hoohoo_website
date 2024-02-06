@@ -2,12 +2,12 @@ import React, { useEffect, useState } from 'react'
 import styled from 'styled-components';
 import Wrapper from '../../../Component/Wrapper/Wrapper';
 import { Desc, Header } from '../../../Component/ContentBox/TwoColBoxesSection';
-const isSmall = window.innerWidth < 800;
+const isSmall = window.innerWidth < 1300;
 const Container = styled.div`
 width: 100%;
   background-color: white;
   height: 500px;
-  @media screen and (max-width: 800px){
+  @media screen and (max-width: 1300px){
     height: auto;
     margin-bottom: 150px;
   }
@@ -24,7 +24,7 @@ const Background = styled.div<{ backgroundImage: string }>`
   display: flex;
   justify-content: center;
   align-items: center;
-  @media screen and (max-width: 800px){
+  @media screen and (max-width: 1300px){
     height: auto;
   }
   `;
@@ -35,7 +35,11 @@ const InnerContainer = styled.div`
 const HeaderText = styled(Header)`
   font-size: 3rem;
   font-family: 'Fredoka';
-  color: ${isSmall ? 'white':'black' };
+  color: black;
+  @media screen and (max-width: 1300px){
+    color: white;
+    text-align: center;
+  }
 `;
 
 const LeftBox = styled.div`
@@ -44,7 +48,7 @@ const LeftBox = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  @media screen and (max-width: 800px){
+  @media screen and (max-width: 1300px){
     width: 100%;
     padding: 10px;
     height: auto;
@@ -52,7 +56,7 @@ const LeftBox = styled.div`
 `;
 const Image = styled.img`
   height: 500px;
-  @media screen and (max-width: 800px){
+  @media screen and (max-width: 1300px){
     position: absolute;
     left: 50%;
   transform: translate(-50%, 0);
@@ -66,15 +70,16 @@ const RightBox = styled.div`
   height: 500px;
   align-items: center;
   justify-content: center;
-  @media screen and (max-width: 800px){
+  @media screen and (max-width: 1300px){
     width: auto;
     height: 350px;
   }
 `;
 const ContentText = styled(Desc)`
-  color: ${isSmall ? 'white':'black' };
-  @media screen and (max-width: 800px){
+  color: black;
+  @media screen and (max-width: 1300px){
     color: white;
+    text-align: center;
   }
 `;
 const HighlightedText = styled.span`
@@ -82,7 +87,7 @@ const HighlightedText = styled.span`
   color: black;
   padding: 0.2em;
   border-radius: 4px;
-  @media screen and (max-width: 800px){
+  @media screen and (max-width: 1300px){
     color: white;
   }
 `;
@@ -100,12 +105,12 @@ export default function EcoActionCategories() {
     const [isMobile, setIsMobile] = useState(window.innerWidth < 800);
     useEffect(() => {
         const handleResize = () => {
-        setIsMobile(window.innerWidth < 800);
+        setIsMobile(window.innerWidth < 1300);
         };
 
         window.addEventListener('resize', handleResize);
         return () => window.removeEventListener('resize', handleResize);
-    }, []);
+    }, [window.innerWidth]);
   return (
     <Background backgroundImage={data.bgImage}>
         {

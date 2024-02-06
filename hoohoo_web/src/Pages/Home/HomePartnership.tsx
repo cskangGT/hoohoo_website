@@ -8,7 +8,7 @@ const Container = styled.section`
     width: 100%;
   background-color: transparent;
   height: 800px;
-  @media screen and (max-width: 800px){
+  @media screen and (max-width: 1000px){
     height: auto;
   }
 `;
@@ -25,7 +25,7 @@ const Background = styled.div<{ backgroundImage: string }>`
   justify-content: center;
   align-items: center;
   z-index: 1;
-  @media screen and (max-width: 800px){
+  @media screen and (max-width: 1000px){
     height: auto;
   }
   `;
@@ -40,7 +40,7 @@ const Background = styled.div<{ backgroundImage: string }>`
   align-items: center;
   z-index: 10;
   margin-top: 150px;
-  @media screen and (max-width: 800px){
+  @media screen and (max-width: 1000px){
     height: auto;
     margin-top: 0px;
     flex-direction: column;
@@ -53,7 +53,7 @@ const LeftBox = styled.div`
     flex-direction: column;
     justify-content: space-between;
     width: 40%;
-    @media screen and (max-width: 800px){
+    @media screen and (max-width: 1000px){
         width: 90%;
         padding : 30px 0px;
         height: auto;
@@ -65,7 +65,7 @@ const RightBox = styled.div`
     height: 400px;
     position: relative;
     display: flex;
-    @media screen and (max-width: 800px){
+    @media screen and (max-width: 1000px){
         height: 180px;
         width: 90%;
     }
@@ -76,7 +76,7 @@ const ScreenImage = styled.img`
     height: 550px;
     left: 50%;
   transform: translate(-50%, 0);
-    @media screen and (max-width: 800px){
+    @media screen and (max-width: 1000px){
         bottom: -80px;
         height: 300px;
     }
@@ -85,7 +85,7 @@ const ButtonBox = styled.div`
   width: 100%;
   padding-top: 30px;
   
-  @media screen and (max-width: 800px){
+  @media screen and (max-width: 1000px){
     display: flex;
       width: 100%;
       padding: 20px 0;
@@ -96,7 +96,7 @@ const ButtonBox = styled.div`
 const UpperTitle = styled.p`
     font-size: 1.5rem;
     color: #2A895F;
-    @media screen and (max-width: 800px){
+    @media screen and (max-width: 1000px){
         font-size: 1.2rem;
         text-align: center;
     }
