@@ -35,9 +35,9 @@ const ContentText = styled.span`
 const Header = styled(HeaderText)`
   color: black;
   font-family: 'Fredoka';
-  font-size: 4rem;
-  @media screen and (max-width: 1000px){
-    font-size: 3rem;
+  font-size: 2.7rem;
+  @media screen and (max-width: 800px){
+    font-size: 2.4rem;
     }
 `;
 const YHighlightedText = styled.span`
@@ -112,7 +112,7 @@ export default function PhotoVideoes() {
             </Header>
             <ContentText dangerouslySetInnerHTML={{__html: data.content}} />
             <ButtonBox>
-                <HomeTransitionButton onClick={()=> {}}>{data.buttonText}</HomeTransitionButton>
+                <HomeTransitionButton href="mailto:devceohoony@gmail.com">{data.buttonText}</HomeTransitionButton>
             </ButtonBox>
         </Left>
         <Right>

@@ -106,7 +106,7 @@ export default function AskTicketeer() {
             <RightBot src={data.rightBot} />
             </TextBox>
             <ButtonBox>
-                <Button onClick={()=> window.location.href = "mailto:devceohoony@gmail.com"}>{data.buttonText}</Button>
+                <Button href="mailto:devceohoony@gmail.com">{data.buttonText}</Button>
             </ButtonBox>
             
         </LeftBox>

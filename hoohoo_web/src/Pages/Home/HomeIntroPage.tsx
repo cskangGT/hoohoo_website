@@ -25,7 +25,7 @@ const TitleHeader = styled(Header)`
 `;
 
 const Image = styled.img`
-  height: 500px;
+  height: 450px;
   padding: 10px 0;
   z-index: 11;
   object-fit: contain;
@@ -49,6 +49,7 @@ const ButtonBox = styled.div`
   justify-content: center;
   align-items: center;
   width: 30%;
+  margin-bottom: 50px;
   @media screen and (max-width: 800px){
     width: 80%;
     padding-bottom: 30px;
@@ -56,9 +57,16 @@ const ButtonBox = styled.div`
 `;
 export const HomeTransitionButton = styled(PartnerButton)`
   font-family: 'Yanolga Yachae';
-  font-weight: 700;
+  font-weight: 600;
   background-color: #00BF63;
   color: white;
+  padding: 15px 30px;
+  @media screen and (max-width: 1200px){
+      width: 90%;
+    }
+    @media screen and (max-width: 1000px){
+      width: 100%;
+    }
 `;
 export default function HomeIntroPage() {
   const navigate = useNavigate();

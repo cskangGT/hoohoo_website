@@ -20,7 +20,7 @@ const ContactText = styled.h3`
   color: ${theme.darkGray};
 `;
 
-const LinktoEmail = styled.button`
+const LinktoEmail = styled.a`
   text-decoration: none;
   color: ${theme.darkSky};
   background-color: ${theme.mainNeon};
@@ -42,7 +42,7 @@ export default function FootContact() {
     const data : any = i18next.t('footcontact', { returnObjects: true });
   return (
     <ContactBox id="contact" key="contact"><ContactColumnBox><ContactText>{data.title}</ContactText>
-          <LinktoEmail onClick={()=> window.location.href = "mailto:devceohoony@gmail.com"} data-l10n-id="footer_contactus">
+          <LinktoEmail href='mailto:devceohoony@gmail.com' data-l10n-id="footer_contactus">
             {data.button}</LinktoEmail></ContactColumnBox>
       </ContactBox>
   )
