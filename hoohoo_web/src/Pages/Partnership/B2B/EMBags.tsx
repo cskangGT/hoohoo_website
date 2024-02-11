@@ -30,7 +30,6 @@ const Background = styled.div`
     position: relative;
   display: flex;
     flex-direction: row;
-  
   justify-content: center;
   align-items: flex-start;
   height: 700px;
@@ -45,6 +44,8 @@ const LeftBox = styled.div`
     display: flex;
     padding: 10px 10px;
     flex-direction: column;
+    justify-content: center;
+    align-items: center;
     width: 55%;
     @media screen and (max-width: 800px){
         width: 100%;
@@ -63,13 +64,18 @@ const RightBox = styled.div`
 `;
 const HeaderText = styled(Header)`
   width: 100%;
+  font-size: 2.7rem;
   font-family: 'Fredoka';
+  line-height: 1.3;
   color: white;
+  @media screen and (max-width: 800px){
+    font-size: 2.4rem;
+  }
 `;
 const ContentText = styled.span`
   color: white;
   font-size: 1.5rem;
-    padding: 10px 0px;
+    padding: 30px 0px;
     width: 100%;
     @media screen and (max-width: 800px){
         text-align: center;
@@ -108,7 +114,7 @@ const EMBagText = styled.span`
 
 export default function EMBags() {
     const data = {
-        "header": "Still, using plastic or paper bags in your business?",
+        "header": "Still, using plastic<br />or paper bags<br />in your business?",
         "content" : "Plastic bags are being banned worldwide, and even paper bags contribute significantly to pollution. Using the EM bag, consumer data will aid your green business.",
         "image" : "Images/partnership3Image.png",
         "buttonText" : "Ask about EM bags",
@@ -120,7 +126,7 @@ export default function EMBags() {
             <Wrapper>
                 <InnerContainer>
                 <LeftBox>
-                    <HeaderText>{data.header}</HeaderText>
+                    <HeaderText dangerouslySetInnerHTML={{__html: data.header}} />
                     <ContentText>{data.content.split("EM bag,").map((segment, i, arr) =>
                         i === arr.length - 1 ? (
                             segment
@@ -132,7 +138,7 @@ export default function EMBags() {
                         )
                         )}</ContentText>
                     <ButtonBox>
-                        <Button onClick={()=>{}}>{data.buttonText}</Button>
+                        <Button href="mailto:devceohoony@gmail.com">{data.buttonText}</Button>
                     </ButtonBox>
                 </LeftBox>
                 <RightBox>

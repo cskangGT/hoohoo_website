@@ -27,7 +27,7 @@
           {
             "label": "What we do",
             "subItems": [
-              { "label": "Platform Business", "link": "/platform" },
+              { "label": "Platform", "link": "/platform" },
               { "label": "Partnership", "link": "/partnership" },
               { "label": "EM Ticketeer", "link": "/ticketeer" }
             ]
@@ -433,7 +433,7 @@
   "earlysignup": {
     "header": {
         "part1": "Early sign-up gets you $5, ",
-        "part2": "EarthMera's Benefits."
+        "part2": "Get updates from EarthMera."
     },
     "terms": {
         "part1": "I agree with ",

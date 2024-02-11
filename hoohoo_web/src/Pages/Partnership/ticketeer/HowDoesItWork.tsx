@@ -65,12 +65,12 @@ const HeaderText = styled.h2`
   color: black;
   text-align: left;
   @media screen and (max-width: 1000px){
-        font-size: 2.3rem;
-        text-align:center;
-    }
-    @media screen and (max-width: 500px){
-        text-align:center;
-    }
+    font-size: 2.3rem;
+    text-align: center;
+  }
+  @media screen and (max-width: 500px){
+    text-align: center;
+  }
 `;
 const RightBox = styled.div`
   width: 60%;

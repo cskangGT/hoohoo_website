@@ -27,7 +27,7 @@
           {
             "label": "우리가 하는 일",
             "subItems": [
-              { "label": "플랫폼 비지니스", "link": "/platform" },
+              { "label": "플랫폼", "link": "/platform" },
               { "label": "파트너십", "link": "/partnership" },
               { "label": "EM 티켓티어", "link": "/ticketeer" }
             ]
@@ -431,7 +431,7 @@
   "earlysignup": {
     "header": {
         "part1": "Early sign-up gets you $5, ",
-        "part2": "EarthMera's Benefits."
+        "part2": "Get updates from EarthMera."
     },
     "terms": {
         "part1": "I agree with ",
