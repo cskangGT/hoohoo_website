@@ -16,7 +16,7 @@ const Background = styled.div<{ backgroundImage: string }>`
   background-position: center;
   position: relative;
   flex-direction: column;
-  height: 960px;
+  height: 900px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -29,10 +29,10 @@ const Background = styled.div<{ backgroundImage: string }>`
 
 const WhiteStripe = styled.div`
   position: absolute;
-  top: calc(50% - 75);
+  top: calc(50% - 60);
   left: 0;
   width: 100%;
-  height: 150px;
+  height: 120px;
   background-color: white;
   z-index: 10;
 `;
