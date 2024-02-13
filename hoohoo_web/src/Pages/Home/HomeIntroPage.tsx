@@ -7,7 +7,7 @@ import { PartnerButton } from '../LandingPage/LandingB2C';
 import { useNavigate } from 'react-router-dom';
 const TitleHeader = styled(Header)`
   color: ${theme.white};
-  font-size: 3.5rem;
+  font-size: 3rem;
   font-family: 'Fredoka';
   z-index: 11;
   width: 70%;
@@ -60,12 +60,18 @@ export const HomeTransitionButton = styled(PartnerButton)`
   font-weight: 600;
   background-color: #00BF63;
   color: white;
+  height: 60px;
+  width: 300px;
+  align-items: center;
+  justify-content: center;
+  line-height: 1;
+  text-align: center;
   padding: 15px 30px;
   @media screen and (max-width: 1200px){
-      width: 90%;
+      width: 300px;
     }
     @media screen and (max-width: 1000px){
-      width: 100%;
+      width: 300px;
     }
 `;
 export default function HomeIntroPage() {
