@@ -32,7 +32,7 @@ export const theme: any = {
   gray: '#C4C1C1',
   green: '#2A895F',
   blue: '#2D8BBA',
-
+  red: '#EB4949',
   fontLarge: 26,
   fontMedium: 22,
   fontRegular: 18,
@@ -45,3 +45,10 @@ export const theme: any = {
   lineHeightRegular: 27,
   lineHeightMicro: 18,
 };
+export const LineDivider = styled.div`
+  width: 100%;
+  height: 2px;
+  background-color: white;
+`;
+export const IP: string = 'app.earthmera.com';
+export const APIAddress: string = `https://${IP}/`;
