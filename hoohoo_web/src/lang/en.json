@@ -47,6 +47,73 @@
             ]
     }]
     },
+    "ManageAccModal" : {
+      "manageProgress" : {
+        "title": "Manage Account",
+        "subtitle" : "Account control",
+        "list" : ["Delete my account"],
+        "delete" : "Delete"
+      },
+      "emailProgress" : {
+        "title": "Delete My Account",
+        "info" : "Please enter the Email you signed up with.",
+        "error" : "Invalid email address.\nPlease enter a correct email format.",
+        "incorrect" : "The email address entered is not registered. Please check the email address.",
+        "next": "Next"
+      },
+      "ReasonProgress" : {
+        "header": "Delete My Account",
+        "title": "Are you sure you want to delete your account?",
+        "secondTitle": "Why are you leaving EarthMera?",
+        "content": "We're sad to see a fellow environmental advocate leave! Please share why you're considering account deletion. Your feedback helps us enhance the app and support our eco-conscious community.",
+        "category": {
+            "LEAVING_TEMPORAILY": "I'm leaving temporaily",
+            "DISSATISFIED": "Dissatisfied with app features",
+            "LACK_OF_TIME": "Lack of time for environmental activities",
+            "LACK_OF_NECESSITY": "Infrequent use or lack of necessity",
+            "INSUFFICIENT_REWARD_COINS": "Insufficient reward coins",
+            "OTHER": "Another reason"
+        },
+        "placeholder": "Would you tell us why you're deleting?",
+        "next": "Next"
+      },
+      "VerifyEmailProgress": {
+        "title": "We sent 4 digit code to you at :\n",
+        "error": ["The verification code is incorrect.", 
+            "You entered wrong code 10 times. Please Try later.", 
+            "Error occurred. Please Try later."],
+        "info" : "Check your email and enter the code.",
+        "sentToast": "Sent new Verification code",
+        "resend": "Resend",
+        "delete": "Delete"
+    },
+    "DeleteConfirmModal": {
+        "title":"Delete an Account",
+        "content": "Your account will be deactivated, and all personal data, including coins, will be deleted after 30 days. To reactivate, simply log in to EarthMera.",
+        "buttons": ["No", "Yes"],
+        "toasts": [
+            "Your account has been successfully deleted. Thanks for using our service.",
+            "Error occurred. Please try again."
+        ]
+    },
+    "OwnGroupModal" : {
+      "title": "You own a group!",
+      "content" : "To delete your account, you must first delete all groups you own.",
+      "button": "Confirm"
+    }
+    },
+    "Footer" : {
+      "title": "EarthMera",
+      "ceo" : "CEO : Sung Kang",
+      "email" : "Email",
+      "menuButtons": {
+        "about" : "About Us",
+        "partnership" : "Partnership",
+        "terms": "Terms of Use",
+        "privacy" : "Privacy Policy",
+        "manage" : "Manage Account"
+      }
+    },
     "footcontact": {
       "title" : "Interested in partnering with us or have any questions?",
       "button" : "Contact Us"
@@ -152,7 +219,8 @@
       "photoPath": "Images/profile_daniel.jpeg",
       "name": "Daniel Park",
       "role": "SWE<br />Back-End Engineer",
-      "contact" : "mailto:devceohoony@gmail.com"
+      "contact" : "mailto:devceohoony@gmail.com",
+      "url" : "https://www.linkedin.com/in/daniel-park-33b0632b1/"
   }],
     "partners" : {
       "header": "How does EarthMera derive its value?",

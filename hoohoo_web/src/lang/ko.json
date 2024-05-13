@@ -45,7 +45,75 @@
               { "label": "연락처", "link": "/contact" }
             ]
     }]
-    },"footcontact": {
+    },
+    "ManageAccModal" : {
+      "manageProgress" : {
+        "title": "계정 관리",
+        "subtitle" : "Account control",
+        "list" : ["내 계정 삭제"],
+        "delete" : "삭제"
+      },
+      "emailProgress" : {
+        "title": "내 계정 삭제",
+        "info" : "가입한 이메일을 입력해주세요.",
+        "error" : "이메일이 아닙니다.\n정확한 이메일 양식을 입력해주세요.",
+        "incorrect" : "이메일 주소가 등록되어 있지 않습니다. 등록된 이메일 주소를 확인하고 다시 시도해 주세요.",
+        "next" : "다음"
+      },
+      "ReasonProgress" : {
+        "header": "내 계정 삭제",
+        "title": "계정을 삭제하시겠습니까?",
+        "secondTitle": "왜 EarthMera를 떠나시나요?",
+        "content": "환경을 위해 함께 노력한 동료가 떠나는 것이 아쉽습니다! 탈퇴를 고려하는 이유를 공유해주세요. 여러분의 피드백은 앱을 개선하고 친환경 커뮤니티를 지원하는 데 큰 도움이 됩니다.",
+        "category": {
+            "LEAVING_TEMPORAILY": "잠시 떠납니다",
+            "DISSATISFIED": "앱 기능에 불만족을 느낍니다",
+            "LACK_OF_TIME": "에코액션을 할 시간이 부족합니다.",
+            "LACK_OF_NECESSITY": "앱 사용의 필요성을 느끼지 못합니다.",
+            "INSUFFICIENT_REWARD_COINS": "보상 코인이 충분하지 않습니다.",
+            "OTHER": "다른 이유"
+        },
+        "placeholder": "",
+        "next": "다음"
+      },
+      "VerifyEmailProgress": {
+        "title": "귀하의 이메일로 4자리 코드를 보냈습니다.\n",
+        "error": ["인증 코드가 정확하지 않습니다.", 
+            "잘못된 코드를 10회 입력하셨습니다. 나중에 다시 시도해주세요.", 
+            "에러가 발생했습니다. 다시 시도해주세요."],
+        "sentToast": "코드를 재전송했습니다.",
+        "info" : "이메일을 확인하시고 코드를 입력해주세요.",
+        "resend": "재전송",
+        "delete": "삭제"
+      },
+      "DeleteConfirmModal": {
+          "title": "계정 삭제하기",
+          "content": "당신의 계정이 비활성화되며, 코인을 포함한 모든 개인 데이터는 30일 후에 삭제됩니다. 재활성화하려면 EarthMera에 다시 로그인 해주세요.",
+          "buttons": ["취소", "삭제"],
+          "toasts": [
+              "당신의 계정이 성공적으로 삭제되었습니다. 이용해 주셔서 감사합니다.",
+              "오류가 발생했습니다. 다시 시도해주세요."
+          ]
+      },
+      "OwnGroupModal" : {
+        "title": "그룹을 소유하고 있습니다!",
+        "content" : "계정을 삭제하려면 먼저 소유하고 있는 모든 그룹을 삭제해야 합니다.",
+        "button": "확인"
+      }
+    },
+    "Footer" : {
+      "title": "어스메라(EarthMera)",
+      "ceo" : "대표이사 : 강성훈",
+      "email" : "이메일",
+      "menuButtons": {
+        "about" : "팀 어스메라",
+        "partnership" : "제휴",
+        "terms": "이용약관",
+        "privacy" : "개인정보처리방침",
+        "manage" : "계정관리"
+      }
+    },
+    "footcontact": {
       "title" : "비즈니스 파트너십 또는 기타 문의사항을 원하시면 아래의 버튼을 클릭하세요.",
       "button" : "문의하기"
     },
@@ -150,7 +218,8 @@
       "photoPath": "Images/profile_daniel.jpeg",
       "name": "Daniel Park",
       "role": "SWE<br />Back-End Engineer",
-      "contact" : "mailto:devceohoony@gmail.com"
+      "contact" : "mailto:devceohoony@gmail.com",
+      "url" : "https://www.linkedin.com/in/daniel-park-33b0632b1/"
   }],
     "partners" : {
       "header": "How does EarthMera derive its value?",

@@ -4,7 +4,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faX } from '@fortawesome/free-solid-svg-icons';
 import { theme } from '../../../style';
 import { useCookies } from 'react-cookie';
-const ModalBackground = styled.div`
+export const ModalBackground = styled.div`
   position: fixed;
   z-index: 9999;
   top: 0;
@@ -98,7 +98,6 @@ type BlogData = {
 type Props = {
     isOpen: boolean;
     setIsOpen: React.Dispatch<React.SetStateAction<boolean>>;
-
 };
 function BlogModal({ isOpen, setIsOpen }: Props) {
     function formatDate(date: Date): string {

@@ -3,7 +3,6 @@ import styled from 'styled-components';
 import { theme } from '../../src/style';
 import Nav from './Nav/Nav';
 import Footer from './Footer/Footer';
-import FootContact from './Footer/FootContact';
 
 const Container = styled.div`
     width: 100%;
@@ -27,7 +26,7 @@ function Frame({ children }: FrameProps) {
       <Nav setIsKorean={setIsKorean} isKorean={isKorean} />
       {children}
       <hr style={{ color: theme.darkGray, margin: 0 }} />
-      <Footer isKorean={isKorean} />
+      <Footer />
     </Container>
   )
 }
