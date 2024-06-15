@@ -1,8 +1,9 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
-import { theme } from '../../style';
-import { useNavigate } from "react-router-dom";
+
 import { BlogData } from '../../Pages/Info/Blog/type';
+
+import OptimizedImage from '../ContentBox/OptimizedImage';
 
 const Card = styled.div`
     box-shadow: rgba(0, 0, 0, 0.08) 0px 40px 80px 0px;
@@ -73,6 +74,8 @@ export function Category(props: CateProps) {
         {props.category}
     </CategoryBox>)
 }
+
+
 function BlogCard(props: Props) {
     const {data, onClick} = props;
     if (!data || !data.blogImage) {
@@ -80,7 +83,7 @@ function BlogCard(props: Props) {
     }
     return (
         <Card onClick={()=> onClick(data)}>
-            <Image src={data.blogImage} />
+            <OptimizedImage src={data.blogImage} alt="Blog Image" style={{width: "100%", height: 'auto', borderRadius: 10, boxShadow: '5px 5px 5px rgba(0, 0, 0, 0.3)'}} />
         </Card>
     );
 }

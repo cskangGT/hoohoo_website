@@ -34,9 +34,9 @@ export const getBlogList = async (category: string, page: number) => {
         },
         {
           blogId: 22,
-          blogCategory: BlogCategory.EARTHMERA_CATEGORY.value,
+          blogCategory: BlogCategory.OCEAN_TRASH.value,
           blogImage:
-            "https://earthmera-media-storage.s3.amazonaws.com/verification/generalCategoryCigarButts2.png",
+            "https://earthmera-media-storage.s3.amazonaws.com/verification/oceanTrash1.png",
         },
         {
           blogId: 31,

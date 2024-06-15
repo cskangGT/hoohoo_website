@@ -202,7 +202,14 @@ function Blog() {
         const response = await getBlogList(category, page);
         if (response.status >= 200 && response.status < 300) {
             setFetchedList(response.data.blogs);
+            
             setTotalPage(response.data.totalPage);
+            if (category === 'ALL') {
+                setFilteredData(response.data.blogs);
+            } else {
+                setFilteredData(response.data.blogs.filter(blog => blog.blogCategory === category));
+            }
+
         }
     };
 
@@ -214,8 +221,16 @@ function Blog() {
     const handleSelectCategory = (index: number) => { // index는 category index 0 = All
         // e.stopPropagation();
         // category에 대한 데이터 요청
-        setSelectedIndex(index)
+        // const category = dataList[index].value;
+        // if (category === 'All') {
+        //     setFilteredData(fetchedList);
+        // } else {
+        //     setFilteredData(fetchedList.filter(blog => blog.blogCategory === category));
+        // }
+
+        setSelectedIndex(index);
         setCurrentPage(1);
+        
         fetchData(dataList[index].value, 1);
     }
     const handleCardClick = (blog: BlogData) => {
@@ -249,11 +264,11 @@ function Blog() {
                             </ScrollContainer>
                         </SlickBar>
                         {
-                            fetchedList.length === 0 ? <Text style={{ minHeight: 400 }}>No Blog</Text>
+                            filteredData.length === 0 ? <Text style={{ minHeight: 400 }}>No Blog</Text>
                                 : <>
                                     <Grid>
                                         {
-                                            fetchedList.map((item, index) => (
+                                            filteredData.map((item, index) => (
                                                 <BlogCard key={index} data={item} onClick={handleCardClick}></BlogCard>
                                             ))
                                         }
