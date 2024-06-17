@@ -9,7 +9,7 @@ import Community from './Community';
 import Rewards from './Rewards';
 import i18next from 'i18next';
 import { useLocation } from 'react-router-dom';
-import { Category } from '../../../Component/Blog/BlogCard';
+
 import CategorySection from './CategorySection';
 import FootContact from '../../../Component/Footer/FootContact';
 import B2cIntroSection from './B2cIntroSection';

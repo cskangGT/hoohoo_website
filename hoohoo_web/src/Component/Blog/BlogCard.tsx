@@ -1,7 +1,9 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
-import { theme } from '../../style';
-import { useNavigate } from "react-router-dom";
+
+import { BlogData } from '../../Pages/Info/Blog/type';
+
+import OptimizedImage from '../ContentBox/OptimizedImage';
 
 const Card = styled.div`
     box-shadow: rgba(0, 0, 0, 0.08) 0px 40px 80px 0px;
@@ -30,24 +32,7 @@ const Image = styled.img`
     width: 100%;
     height: auto;
     border-radius: 10px;
-`;
-const Title = styled.h3`
-  margin-top: 10px;
-  font-size: 22px;
-  color: ${theme.darkGray};
-  margin-bottom: 5px;
-`;
-const Content = styled.h3`
-  margin-top: 0px;
-  color: ${theme.darkGray};
-  font-size: 12px;
-  font-weight: 500;
-`;
-const ContainerCD = styled.div`
-    justify-content: center;
-    align-items: center;
-    display: flex;
-    margin-bottom: .25rem;
+    box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.3);
 `;
 interface CategoryProps {
     color: string;
@@ -62,22 +47,11 @@ const CategoryBox = styled.div<CategoryProps>`
     padding: 0.25rem 0.75rem;
     background-color: ${props => props.color};
 `;
-const DateBox = styled.div`
-    letter-spacing: .3px;
-    font-size: .725rem;
-    line-height: 1.7;
-`;
 
-type BlogData = {
-    'id': number;
-    'image': string;
-    'category': string;
-    'date': string;
-    'title': string;
-    'desc': string;
-};
+
 type Props = {
     data: BlogData;
+    onClick : (blog : BlogData) => void;
 };
 type CateProps = {
     category: string;
@@ -100,24 +74,16 @@ export function Category(props: CateProps) {
         {props.category}
     </CategoryBox>)
 }
-function BlogCard(props: Props) {
 
-    const navigate = useNavigate();
-    if (!props.data || !props.data.image) {
+
+function BlogCard(props: Props) {
+    const {data, onClick} = props;
+    if (!data || !data.blogImage) {
         return null;
     }
-
-
-
     return (
-        <Card onClick={() => { navigate(`/blog/${props.data.id}`, { state: { blogData: props.data } }) }}>
-            <Image src={props.data.image} />
-            <Title>{props.data.title}</Title>
-            <ContainerCD>
-                <Category category={props.data.category}></Category>
-                <DateBox>{props.data.date}</DateBox>
-            </ContainerCD>
-            <Content>{props.data.desc}</Content>
+        <Card onClick={()=> onClick(data)}>
+            <OptimizedImage src={data.blogImage} alt="Blog Image" style={{width: "100%", height: 'auto', borderRadius: 10, boxShadow: '5px 5px 5px rgba(0, 0, 0, 0.3)'}} />
         </Card>
     );
 }

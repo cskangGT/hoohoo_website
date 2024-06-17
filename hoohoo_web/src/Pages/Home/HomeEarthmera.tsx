@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react';
+import React, { memo, useEffect, useRef } from 'react';
 import styled from 'styled-components';
 import IntroSection from './IntroSection';
 
@@ -14,6 +14,7 @@ import HomeIntroPage from './HomeIntroPage';
 import HomePlatform from './HomePlatform';
 import HomePartnership from './HomePartnership';
 import HomeTicketeer from './HomeTicketeer';
+import { countVisitor, getVisitor } from '../../api/counter';
 const Wrap = styled.div`
   width: calc(100%);
   max-width: 1300px; 
@@ -47,19 +48,38 @@ function HomeEarthmera() {
   const location = useLocation();
     const sectionRef = useRef<HTMLDivElement>(null);
     useEffect(() => {
-        console.log('location.hash', location.hash)
+      console.log('HomeEarthmera mounted');
+  
+      // const fetchCounter = async () => {
+      //   const result = await countVisitor();
+      //   console.log('countVisitor result', result);
+      // }
+  
+      // const getCounter = async () => {
+      //   const result = await getVisitor();
+      //   console.log('getVisitor result', result);
+      // }
+  
+      // fetchCounter();
+      // getCounter();
+  
+      return () => {
+        console.log('HomeEarthmera unmounted');
+      };
+    }, []);
+    useEffect(() => {
+      
+      if (location.hash === '#download' ){
+          setTimeout(() => {
+              if (sectionRef.current) {
+                  sectionRef.current.scrollIntoView({ behavior: 'smooth' });
+              }
+          }, 100);
         
-        if (location.hash === '#download' ){
-            setTimeout(() => {
-                if (sectionRef.current) {
-                    sectionRef.current.scrollIntoView({ behavior: 'smooth' });
-                }
-            }, 100);
-          
-        } else {
-            window.scrollTo(0, 0);
-        }
-      }, [location]);
+      } else {
+          window.scrollTo(0, 0);
+      }
+    }, [location]);
   return (
     <BgImage>
       <ContentBox>
@@ -89,4 +109,4 @@ function HomeEarthmera() {
     </BgImage>
   );
 }
-export default HomeEarthmera; 
+export default memo(HomeEarthmera); 

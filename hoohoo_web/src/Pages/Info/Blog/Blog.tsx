@@ -5,15 +5,17 @@ import BlogCard from '../../../Component/Blog/BlogCard';
 import PageNav from '../../../Component/Blog/PageNav';
 import BlogModal from './BlogModal';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faPlus } from '@fortawesome/free-solid-svg-icons';
+import { faChevronLeft, faChevronRight, faPlus } from '@fortawesome/free-solid-svg-icons';
 import { useCookies } from 'react-cookie';
 import Wrapper from '../../../Component/Wrapper/Wrapper';
 import FootContact from '../../../Component/Footer/FootContact';
-
+import {BlogCategory, BlogData} from './type';
+import { getBlogList } from '../../../api/blog';
 const Container = styled.div`
     width: calc(100% - 30px);
     display: flex;
     margin: 0px auto;
+    flex-direction: column;
     justify-content: flex-start;
     align-items: center;
     position: relative;
@@ -28,19 +30,36 @@ const ContentBox = styled.div`
     justify-content: center;
 `;
 const SlickBar = styled.div`
+display: flex;
   overflow: visible;
+  
   margin: 0;
   padding: 0;
-  margin-top: 20px;
+  
+  padding-top: 10px;
+  margin-top: 10px;
 `;
 
 // 아래가 LeftBar
 const ScrollContainer = styled.div`
-margin-bottom: 20px;
-padding-bottom: 10px;
-  display: flex;
-  
-  
+    margin-bottom: 10px;
+    padding-bottom: 10px;
+    display: flex;
+    border-bottom: 2px solid #12121232;
+    width: 100%;
+    
+    overflow-x: auto;
+  white-space: nowrap;
+  -webkit-overflow-scrolling: touch; // for smooth scrolling on iOS
+  user-select: none;
+
+  /* Hide the scrollbar */
+  &::-webkit-scrollbar {
+    display: none;
+  }
+  -ms-overflow-style: none;  /* Internet Explorer 10+ */
+  scrollbar-width: none;  /* Firefox */
+    
     @media screen and (max-width: 700px) {
         margin-bottom: 0;
         justify-content: space-between;
@@ -55,26 +74,27 @@ padding-bottom: 10px;
 
 interface OutlineProps {
     op: number;
-    selectedCategory: number;
+    selectedIndex: number;
 }
 const Outline = styled.button<OutlineProps>`
-    opacity: ${props => props.op === props.selectedCategory ? 1 : 0.3};
-    background : none;
-    border: none;
-    margin-right: 10px;
-    outline: none;
-    display: block;
-    float: left;
-    height: 100%;
-    min-height: 1px;
-    transition: all 0.2s ease 0s;
-    border-radius: 10px;
+      opacity: ${props => props.op === props.selectedIndex ? 1 : 0.3};
+  background: none;
+  border: none;
+  margin-right: 10px;
+  outline: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  transition: all 0.2s ease 0s;
+  border-radius: 10px;
+  white-space: nowrap;
     &:hover {
         background-color: ${theme.darkGray};
         color: ${theme.white};
     }
     @media screen and (max-width: 800px) {
-        height: 30%;
+        height: 100%;
   }
 `;
 const OutlineText = styled.h3`
@@ -82,6 +102,9 @@ const OutlineText = styled.h3`
     padding: 5px;
     margin : 0;
     font-size: 18px;
+    margin: 0px 10px;
+    margin-bottom: 7px;
+    
     &:hover {
         color: ${theme.white};
     }
@@ -90,7 +113,7 @@ const OutlineText = styled.h3`
     }
 `;
 const Grid = styled.div`
-    
+    min-height: 400px;
     grid-column-gap: 0.5rem;
     grid-row-gap: 0.5rem;
     grid-template-rows: auto;
@@ -109,14 +132,6 @@ const Grid = styled.div`
     margin-top: 50px;
     }
 `;
-type BlogData = {
-    'id': number;
-    'image': string;
-    'category': string;
-    'date': string;
-    'title': string;
-    'desc': string;
-};
 const Text = styled.span`
   color: ${theme.darkGray};
   display: flex;
@@ -127,7 +142,7 @@ const Text = styled.span`
   align-items: center;
 `;
 
-const OFFSET: number = 6;
+const OFFSET: number = 30;
 
 const NewBlogBtn = styled.button`
 // margin : 20px 5px;
@@ -151,55 +166,75 @@ const NewBlogBtn = styled.button`
         color: ${theme.mainNeon};
     }
 `;
-
+const BlogTitleText = styled.h2`
+  font-size: 30px;
+  font-weight: 700;
+  text-transform: uppercase;
+  margin: 50px 0;
+  font-family: 'Fredoka';
+  @media screen and (max-width: 1100px){
+    font-size: 26px;
+    }
+    @media screen and (max-width: 700px){
+        font-size: 22px;
+    }
+`;
 function Blog() {
     const [currentPage, setCurrentPage] = useState<number>(1);
-    const [selectedCategory, setSelectedCategory] = useState<number>(0);
+    const [selectedIndex, setSelectedIndex] = useState<number>(0);
     const [fetchedList, setFetchedList] = useState<BlogData[]>([]);
-    const list: string[] = ["All", "Trash-Picking", "Reuse", "Recycle", "Transportation", "Eco Product"];
+    const [selectedBlog, setSelectedBlog] = useState<BlogData>({blogCategory: '', blogId: 0, blogImage: ''});
+    const dataList = Object.values(BlogCategory).map((item) => ({
+        text: item.text,
+        value: item.value,
+      }));
+    
     const [isOpen, setIsOpen] = useState<boolean>(false);
-    const [numTotalData, setNumTotalData] = useState<number>(0);
-    const handleOpen = () => setIsOpen(true);
-    const [cookies] = useCookies(['token', 'username']);
-    const [logIn, setLogIn] = useState<boolean>(!!cookies.username);
+    const [totalPage, setTotalPage] = useState<number>(0);
+    const toggleBlogModal = () => setIsOpen(!isOpen);
+    
 
     const scrollContainerRef = useRef<HTMLDivElement>(null);
     // blogdata.reverse();
-
-    useEffect(() => {
-        setLogIn(!!cookies.username);
-    }, [cookies.username]);
-    const fetchData = (category: string, page: number) => {
-        // let filteredData: BlogData[];
-        // if (category === list[0]) {
-        //     filteredData = blogdata;
-        // } else {
-        //     filteredData = blogdata.filter(item => item.category === category);
-        // }
-        // setNumTotalData(filteredData.length);
-        // const startIndex = Math.max(0, filteredData.length - OFFSET * page);
-        // const endIndex = filteredData.length - OFFSET * (page - 1);
-        // const slicedData = filteredData.slice(startIndex, endIndex);
-        // setFetchedList(slicedData); // 필요한 데이터 OFFSET만큼만 가져온다.
-        // fetch(`http://localhost:4000/blogs?category=${category}&offset=${OFFSET}&page=${page}`)
-        //     .then(response => response.json())
-        //     .then(data => setFetchedList(data))
-        //     .catch(error => console.error('Error fetching data:', error));
-    }
+    
+    
+    const fetchData = async (page: number, category?: string) => {
+        const response = await getBlogList(page, category !== 'ALL' ? category : undefined);
+        if (response.status >= 200 && response.status < 300) {
+            setFetchedList(response.data.results);
+            setTotalPage(response.data.totalPagesCount);
+        }
+    };
+    useEffect(()=> {
+        fetchData(1);
+    },[])
     const changePage = (num: number) => {
         setCurrentPage(num);
-        fetchData(list[selectedCategory], num);
+        
+        fetchData(num, dataList[selectedIndex].value);
     }
 
     const handleSelectCategory = (index: number) => { // index는 category index 0 = All
         // e.stopPropagation();
         // category에 대한 데이터 요청
-        setSelectedCategory(index)
+        // const category = dataList[index].value;
+        // if (category === 'All') {
+        //     setFilteredData(fetchedList);
+        // } else {
+        //     setFilteredData(fetchedList.filter(blog => blog.blogCategory === category));
+        // }
+
+        setSelectedIndex(index);
         setCurrentPage(1);
-        fetchData(list[index], 1);
+        
+        fetchData( 1,dataList[index].value);
+    }
+    const handleCardClick = (blog: BlogData) => {
+        setSelectedBlog(blog);
+        toggleBlogModal();
     }
     useEffect(() => {
-        handleSelectCategory(selectedCategory);
+        handleSelectCategory(0);
     }, [])
 
     useEffect(() => {
@@ -211,31 +246,30 @@ function Blog() {
         <BgImage>
             <Wrapper>
                 <Container>
+                    <BlogTitleText>This is not a movie poster. It's Real</BlogTitleText>
                     <ContentBox>
-                        <SlickBar>
-                                <ScrollContainer >
-                                    {list.map((item, index) => (
-                                        <Outline key={index} op={index} selectedCategory={selectedCategory} onClick={() => handleSelectCategory(index)} >
-                                            <OutlineText key={index + "text"}>{item}</OutlineText>
-                                        </Outline>
-                                    ))}
-                                    {logIn &&
-                                    <NewBlogBtn onClick={handleOpen} ><FontAwesomeIcon icon={faPlus} style={{ paddingRight: 10 }} />New Blog</NewBlogBtn>}
-
+                        <SlickBar >
+                            <ScrollContainer >
+                                {dataList?.map((item, index) => (
+                                    <Outline key={index} op={index} selectedIndex={selectedIndex} onClick={() => handleSelectCategory(index)} >
+                                        <OutlineText key={index + "text"}>{item.text}</OutlineText>
+                                    </Outline>
+                                ))}
                                 {isOpen &&
-                                    <BlogModal isOpen={isOpen} setIsOpen={setIsOpen} />}
-                                    </ScrollContainer>
-                                
-                    
+                                    <BlogModal isOpen={isOpen} setIsOpen={setIsOpen} selectedBlog={selectedBlog} />}
+                            </ScrollContainer>
                         </SlickBar>
                         {
-                            fetchedList.length === 0 ? <Text style={{ minHeight: 400 }}>Opening Soon</Text>
-                                : <><Grid> {
-                                    fetchedList.map((item, index) => (
-                                        <BlogCard key={index} data={item}></BlogCard>
-                                    ))
-                                }</Grid>
-                                    <PageNav pages={Math.ceil(numTotalData / OFFSET)} currentPage={currentPage} changePage={changePage} />
+                            fetchedList?.length === 0 ? <Text style={{ minHeight: 400 }}>No Blog</Text>
+                                : <>
+                                    <Grid>
+                                        {
+                                            fetchedList?.map((item, index) => (
+                                                <BlogCard key={index} data={item} onClick={handleCardClick}></BlogCard>
+                                            ))
+                                        }
+                                    </Grid>
+                                    <PageNav pages={totalPage} currentPage={currentPage} changePage={changePage} />
                                 </>
                         }
 
