@@ -183,12 +183,12 @@ function Blog() {
     const [currentPage, setCurrentPage] = useState<number>(1);
     const [selectedIndex, setSelectedIndex] = useState<number>(0);
     const [fetchedList, setFetchedList] = useState<BlogData[]>([]);
-    const [selectedBlog, setSelectedBlog] = useState<BlogData>({blogCategory: '', blogId: 1, blogImage: ''});
+    const [selectedBlog, setSelectedBlog] = useState<BlogData>({blogCategory: '', blogId: 0, blogImage: ''});
     const dataList = Object.values(BlogCategory).map((item) => ({
         text: item.text,
         value: item.value,
       }));
-    const [filteredData, setFilteredData] = useState<BlogData[]>([]);
+    
     const [isOpen, setIsOpen] = useState<boolean>(false);
     const [totalPage, setTotalPage] = useState<number>(0);
     const toggleBlogModal = () => setIsOpen(!isOpen);
@@ -198,24 +198,20 @@ function Blog() {
     // blogdata.reverse();
     
     
-    const fetchData = async (category: string, page: number) => {
-        const response = await getBlogList(category, page);
+    const fetchData = async (page: number, category?: string) => {
+        const response = await getBlogList(page, category !== 'ALL' ? category : undefined);
         if (response.status >= 200 && response.status < 300) {
-            setFetchedList(response.data.blogs);
-            
-            setTotalPage(response.data.totalPage);
-            if (category === 'ALL') {
-                setFilteredData(response.data.blogs);
-            } else {
-                setFilteredData(response.data.blogs.filter(blog => blog.blogCategory === category));
-            }
-
+            setFetchedList(response.data.results);
+            setTotalPage(response.data.totalPagesCount);
         }
     };
-
+    useEffect(()=> {
+        fetchData(1);
+    },[])
     const changePage = (num: number) => {
         setCurrentPage(num);
-        fetchData(dataList[selectedIndex].value, num);
+        
+        fetchData(num, dataList[selectedIndex].value);
     }
 
     const handleSelectCategory = (index: number) => { // index는 category index 0 = All
@@ -231,7 +227,7 @@ function Blog() {
         setSelectedIndex(index);
         setCurrentPage(1);
         
-        fetchData(dataList[index].value, 1);
+        fetchData( 1,dataList[index].value);
     }
     const handleCardClick = (blog: BlogData) => {
         setSelectedBlog(blog);
@@ -254,7 +250,7 @@ function Blog() {
                     <ContentBox>
                         <SlickBar >
                             <ScrollContainer >
-                                {dataList.map((item, index) => (
+                                {dataList?.map((item, index) => (
                                     <Outline key={index} op={index} selectedIndex={selectedIndex} onClick={() => handleSelectCategory(index)} >
                                         <OutlineText key={index + "text"}>{item.text}</OutlineText>
                                     </Outline>
@@ -264,11 +260,11 @@ function Blog() {
                             </ScrollContainer>
                         </SlickBar>
                         {
-                            filteredData.length === 0 ? <Text style={{ minHeight: 400 }}>No Blog</Text>
+                            fetchedList?.length === 0 ? <Text style={{ minHeight: 400 }}>No Blog</Text>
                                 : <>
                                     <Grid>
                                         {
-                                            filteredData.map((item, index) => (
+                                            fetchedList?.map((item, index) => (
                                                 <BlogCard key={index} data={item} onClick={handleCardClick}></BlogCard>
                                             ))
                                         }
