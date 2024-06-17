@@ -32,7 +32,7 @@ const StartingSoonText = styled.h2`
   width: 100%;
   font-family: 'Fredoka-Bold';
   height: 8vh;
-  padding-top: 1rem;
+  padding-top: 1.5rem;
   @media screen and (max-width: 1000px) {
     text-align: center;
   }
@@ -87,16 +87,22 @@ const TimeUnit = styled.div`
   align-items: center;
   justify-content: center;
 `;
-const TimeText = styled.p`
-   font-size: 2.8rem;
-    text-transform: uppercase;
-    letter-spacing: 0.5rem;
-    font-family: 'Fredoka';
-    margin-top: 0.5rem;
-    color: #ffffff;
-    font-weight: 500;
-    margin-bottom: 0.3rem;
-    @media screen and (max-width: 1200px) {
+const TimeText = styled.div`
+  display: flex;
+  justify-content: center;
+`;
+
+const TimeChar = styled.span<{ isLast: boolean }>`
+  font-size: 2.8rem;
+  text-transform: uppercase;
+  font-family: 'Fredoka';
+  margin-top: 0.5rem;
+  color: #ffffff;
+  font-weight: 500;
+  align-items: center;
+  text-align: center;
+  ${({ isLast }) => !isLast && 'margin-right: 0.5rem;'}
+  @media screen and (max-width: 1200px) {
     font-size: 2.6rem;
   }
   @media screen and (max-width: 1000px) {
@@ -106,6 +112,30 @@ const TimeText = styled.p`
     font-size: 2.2rem;
   }
 `;
+// const TimeText = styled.p`
+//    font-size: 2.8rem;
+//     text-transform: uppercase;
+//     letter-spacing: 0.5rem;
+//     font-family: 'Fredoka';
+//     margin-top: 0.5rem;
+//     column-gap: 0.5rem;
+//     color: #ffffff;
+//     font-weight: 500;
+//     align-items: center;
+//     text-align: center;
+//     width: 100%;
+//     margin-bottom: 0.3rem;
+//     @media screen and (max-width: 1200px) {
+//     font-size: 2.6rem;
+//   }
+//   @media screen and (max-width: 1000px) {
+//     font-size: 2.4rem;
+//   }
+//   @media screen and (max-width: 800px) {
+//     font-size: 2.2rem;
+//   }
+  
+// `;
 const UnitText = styled.p`
     font-size: 1rem;
     text-transform: uppercase;
@@ -187,9 +217,22 @@ const Countdown: React.FC = () => {
   
       return timeLeft;
     };
-  
+    const formatTime = (time: number) => {
+      return String(time).padStart(2, '0');
+    };
     const [timeLeft, setTimeLeft] = useState(calculateTimeLeft());
-  
+    const renderTimeText = (text: string) => {
+      return (
+        <TimeText>
+          {text.split('').map((char, index) => (
+          <TimeChar key={index} isLast={index === text.length - 1}>
+            {char}
+          </TimeChar>
+        ))}
+
+        </TimeText>
+      );
+    };
     useEffect(() => {
       const timer = setInterval(() => {
         setTimeLeft(calculateTimeLeft());
@@ -210,19 +253,23 @@ const Countdown: React.FC = () => {
         <Title>Green Journey Begins in</Title>
         <TimeDisplay>
           <TimeUnit style={{paddingLeft: 5}}>
-            <TimeText>{timeLeft.days}</TimeText>
+          {renderTimeText(formatTime(timeLeft.days))}
+            {/* <TimeText>{formatTime(timeLeft.days)}</TimeText> */}
             <UnitText>{timeLeft.days > 1 ? 'DAYS':'DAY'}</UnitText>
           </TimeUnit>
           <TimeUnit>
-            <TimeText>{timeLeft.hours}</TimeText>
+          {renderTimeText(formatTime(timeLeft.hours))}
+            {/* <TimeText>{formatTime(timeLeft.hours)}</TimeText> */}
             <UnitText>{timeLeft.hours > 1 ? 'HOURS':'HOUR'}</UnitText>
           </TimeUnit>
           <TimeUnit>
-            <TimeText>{timeLeft.minutes}</TimeText>
+          {renderTimeText(formatTime(timeLeft.minutes))}
+            {/* <TimeText>{formatTime(timeLeft.minutes)}</TimeText> */}
             <UnitText>{timeLeft.minutes > 1 ? 'MINUTES':'MINUTE'}</UnitText>
           </TimeUnit>
           <TimeUnit>
-            <TimeText>{timeLeft.seconds}</TimeText>
+          {renderTimeText(formatTime(timeLeft.seconds))}
+            {/* <TimeText>{formatTime(timeLeft.seconds)}</TimeText> */}
             <UnitText>{timeLeft.seconds > 1 ? 'SECONDS':'SECOND'}</UnitText>
           </TimeUnit>
         </TimeDisplay>
