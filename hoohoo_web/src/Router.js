@@ -23,13 +23,13 @@ import Countdown from "./Pages/Home/Countdown";
 const Router = createBrowserRouter([
     {
         path: "/",
-        element: <Countdown />,
-        // children: [
-        //     {
-        //         path: "/",
-        //         element: <Countdown />,
-        //         errorElement: <ErrorComponent />
-        //     },
+        element: <Root />,
+        children: [
+            {
+                path: "/",
+                element: <Countdown />,
+                errorElement: <ErrorComponent />
+            },
             // {
             //     path: "/vision",
             //     element: <EarthMeraVision />,
@@ -97,7 +97,7 @@ const Router = createBrowserRouter([
             //     element: <ComingSoon />,
             //     errorElement: <ErrorComponent />
             // }
-        // ],
+        ],
         errorElement: <NotFound />,
     }
 ]);
