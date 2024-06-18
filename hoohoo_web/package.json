@@ -19,7 +19,6 @@
     "dotenv": "^16.3.1",
     "i18next": "^23.5.1",
     "lottie-react": "^2.4.0",
-    
     "moment-timezone": "^0.5.45",
     "react": "^18.2.0",
     "react-bootstrap": "^2.7.2",
@@ -83,7 +82,7 @@
     "style-loader": "^3.3.3",
     "ts-loader": "^9.5.0",
     "url-loader": "^4.1.1",
-    "webpack": "^5.89.0",
+    "webpack": "^5.92.0",
     "webpack-cli": "^5.1.4",
     "webpack-dev-server": "^4.15.1",
     "webpack-merge": "^5.10.0"
