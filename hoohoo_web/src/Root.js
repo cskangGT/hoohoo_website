@@ -8,10 +8,10 @@ function Root() {
   return (
     <CookiesProvider>
       <div style={{ backgroundColor: 'transparent' }}>
-        <Frame>
+        {/* <Frame> */}
           <Outlet />
-        </Frame>
-        <ToastContainer />
+        {/* </Frame>
+        <ToastContainer /> */}
       </div>
     </CookiesProvider>
   );
