@@ -5,6 +5,7 @@ const Dotenv = require('dotenv-webpack');
 const path = require('path');
 module.exports = {
     entry: './src/index.js',
+    
     output: {
         publicPath: '/',
         path: path.join(__dirname, '../dist'),
@@ -18,8 +19,10 @@ module.exports = {
         compress: true,
         historyApiFallback: true,
         hot: true,
+        
+      
         open: true,
-        port: 3000,
+        port: 8000,
         static: {
             directory: path.join(__dirname, './dist'),
         },
