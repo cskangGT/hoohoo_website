@@ -23,7 +23,7 @@ import Countdown from "./Pages/Home/Countdown";
 const Router = createBrowserRouter([
     {
         path: "/",
-        element: <Root />,
+        element: <Countdown />,
         children: [
             {
                 path: "/",

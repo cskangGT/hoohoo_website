@@ -28,14 +28,7 @@ const BackgroundContainer = styled.div`
   flex-direction: column;
 `;
 const StartingSoonText = styled.h2`
-  text-align: left;
-  width: 100%;
-  font-family: 'Fredoka-Bold';
-  height: 8vh;
-  padding-top: 1.5rem;
-  @media screen and (max-width: 1000px) {
-    text-align: center;
-  }
+  
 `;
 const BodyContainer = styled.div`
 display: flex;
@@ -170,10 +163,11 @@ const LogoText = styled.span`
   padding-left: 10px;
   font-family: Fredoka;
   color: ${theme.white };
+  font-size: 1.5rem;
 `;
 const HeaderLogo = styled.img`
-  width: 1.3rem;
-  height: 1.3rem;
+  width: 1.5rem;
+  height: 1.5rem;
 `;
 const LogoContainer = styled.div`
   height: 20vh;
@@ -185,12 +179,16 @@ const LogoContainer = styled.div`
 const Logo = styled.div`
   padding: 10px;
   padding-bottom: 0;
-  font-size: 1.3rem;
   display: flex;
   align-items: center;
-  text-decoration: none;
-  border: none;
-  justify-content: center;
+  justify-content: flex-start;
+  
+  width: 100%;
+  height: 8vh;
+  padding-top: 1.5rem;
+  @media screen and (max-width: 1000px) {
+    justify-content: center;
+  }
   
 `;
 const Countdown: React.FC = () => {
@@ -248,7 +246,10 @@ const Countdown: React.FC = () => {
         <BackgroundContainer>
         <Wrapper>
       <Container>
-        <StartingSoonText>Starting Soon</StartingSoonText>
+      <Logo>
+            <HeaderLogo key="logo" src={logo.image} />
+            <LogoText key="earthmera">{logo.text}</LogoText>
+        </Logo>
         <BodyContainer>
         <Title>Green Journey Begins in</Title>
         <TimeDisplay>
@@ -277,10 +278,7 @@ const Countdown: React.FC = () => {
         
         </BodyContainer>
         <LogoContainer>
-        <Logo>
-            <HeaderLogo key="logo" src={logo.image} />
-            <LogoText key="earthmera">{logo.text}</LogoText>
-        </Logo>
+        
         </LogoContainer>
       </Container>
       </Wrapper>
