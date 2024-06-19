@@ -45,7 +45,8 @@ const Title = styled.h1`
   margin-bottom: 3rem;
   text-transform: uppercase;
   letter-spacing: 0.5rem;
-  font-family: 'Fredoka-Bold';
+  font-family: 'Fredoka';
+  font-weight: 700;
   margin-top: 2rem;
   @media screen and (max-width: 1200px) {
     font-size: 3rem;
@@ -134,7 +135,7 @@ const UnitText = styled.p`
     text-transform: uppercase;
     letter-spacing: 0.1rem;
     font-family: 'Fredoka';
-    margin-top: 0.rem;
+    margin-top: 0rem;
     color: #ffffffd1;
     font-weight: 300;
     @media screen and (max-width: 1200px) {
@@ -255,22 +256,18 @@ const Countdown: React.FC = () => {
         <TimeDisplay>
           <TimeUnit style={{paddingLeft: 5}}>
           {renderTimeText(formatTime(timeLeft.days))}
-            {/* <TimeText>{formatTime(timeLeft.days)}</TimeText> */}
             <UnitText>{timeLeft.days > 1 ? 'DAYS':'DAY'}</UnitText>
           </TimeUnit>
           <TimeUnit>
           {renderTimeText(formatTime(timeLeft.hours))}
-            {/* <TimeText>{formatTime(timeLeft.hours)}</TimeText> */}
             <UnitText>{timeLeft.hours > 1 ? 'HOURS':'HOUR'}</UnitText>
           </TimeUnit>
           <TimeUnit>
           {renderTimeText(formatTime(timeLeft.minutes))}
-            {/* <TimeText>{formatTime(timeLeft.minutes)}</TimeText> */}
             <UnitText>{timeLeft.minutes > 1 ? 'MINUTES':'MINUTE'}</UnitText>
           </TimeUnit>
           <TimeUnit>
           {renderTimeText(formatTime(timeLeft.seconds))}
-            {/* <TimeText>{formatTime(timeLeft.seconds)}</TimeText> */}
             <UnitText>{timeLeft.seconds > 1 ? 'SECONDS':'SECOND'}</UnitText>
           </TimeUnit>
         </TimeDisplay>
