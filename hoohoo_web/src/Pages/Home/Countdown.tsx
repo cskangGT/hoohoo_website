@@ -5,6 +5,7 @@ import moment from 'moment-timezone';
 import Wrapper from '../../Component/Wrapper/Wrapper';
 import { theme } from '../../style';
 import i18next from 'i18next';
+import { useLocation, useNavigate } from 'react-router-dom';
 
 const targetDate = moment.tz('2024-07-08 00:00', 'America/New_York');
 const Container = styled.div`
@@ -15,7 +16,6 @@ const BackgroundContainer = styled.div`
   background: url('Images/countBackground.jpeg') center top / cover no-repeat;  // 여기에 배경 이미지 경로를 입력하세요
   background-size: cover;
   background-position: center;
-  
   width: 100%;
   height: 100vh;
   display: flex;
@@ -23,8 +23,6 @@ const BackgroundContainer = styled.div`
   justify-content: center;
   color: white;
   text-align: center;
-  
-  
   flex-direction: column;
 `;
 const StartingSoonText = styled.h2`
@@ -193,7 +191,18 @@ const Logo = styled.div`
   
 `;
 const Countdown: React.FC = () => {
+  const location = useLocation();
+    const navigate = useNavigate();
+  useEffect(()=> {
+      const hash = location.hash.replace('#', '');
+      
+      if (hash) {
+        navigate(hash);
+      }
+  }, [location, navigate]);
+  
     const calculateTimeLeft = () => {
+      
         const now = moment.tz('America/New_York');
         const difference = targetDate.diff(now);
     

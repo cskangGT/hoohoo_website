@@ -8,7 +8,7 @@ import IntroEarth from './IntroEarth';
 import { ContentBox } from '../About/Vision/EarthMeraVision';
 import VideoSection from './Video';
 import Download from './Download';
-import { useLocation } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import FootContact from '../../Component/Footer/FootContact';
 import HomeIntroPage from './HomeIntroPage';
 import HomePlatform from './HomePlatform';
@@ -45,21 +45,23 @@ const Wrap = styled.div`
 
 function HomeEarthmera() {
   const location = useLocation();
+    const navigate = useNavigate();
+  useEffect(()=> {
+    const hash = location.hash.replace('#', '');
+    if (hash) {
+      navigate(hash);
+    }else if (location.hash === '#download' ){
+      setTimeout(() => {
+          if (sectionRef.current) {
+              sectionRef.current.scrollIntoView({ behavior: 'smooth' });
+          }
+      }, 100);
+    
+    } else {
+        window.scrollTo(0, 0);
+    }
+  }, [location, navigate]);
     const sectionRef = useRef<HTMLDivElement>(null);
-    useEffect(() => {
-        console.log('location.hash', location.hash)
-        
-        if (location.hash === '#download' ){
-            setTimeout(() => {
-                if (sectionRef.current) {
-                    sectionRef.current.scrollIntoView({ behavior: 'smooth' });
-                }
-            }, 100);
-          
-        } else {
-            window.scrollTo(0, 0);
-        }
-      }, [location]);
   return (
     <BgImage>
       <ContentBox>
