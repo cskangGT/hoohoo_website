@@ -7,7 +7,7 @@ import { theme } from '../../style';
 import i18next from 'i18next';
 import { useLocation, useNavigate } from 'react-router-dom';
 
-const targetDate = moment.tz('2024-07-08 00:00', 'America/New_York');
+const targetDate = moment.tz('2024-07-26 00:00', 'America/New_York');
 const Container = styled.div`
   text-align: center;
   height: 100%;
@@ -193,13 +193,13 @@ const Logo = styled.div`
 const Countdown: React.FC = () => {
   const location = useLocation();
     const navigate = useNavigate();
-  useEffect(()=> {
-      const hash = location.hash.replace('#', '');
-      
-      if (hash) {
-        navigate(hash);
-      }
-  }, [location, navigate]);
+    useEffect(()=> {
+        const hash = location.hash.replace('#', '');
+        
+        if (hash) {
+          navigate(hash);
+        }
+    }, [location, navigate]);
   
     const calculateTimeLeft = () => {
       
