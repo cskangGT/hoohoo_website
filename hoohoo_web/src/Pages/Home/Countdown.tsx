@@ -10,12 +10,13 @@ import { useLocation, useNavigate } from 'react-router-dom';
 const targetDate = moment.tz('2024-07-26 00:00', 'America/New_York');
 const Container = styled.div`
   text-align: center;
-  height: 100%;
+  height: 100vh;
 `;
 const BackgroundContainer = styled.div`
-  background: url('Images/countBackground.jpeg') center top / cover no-repeat;  // 여기에 배경 이미지 경로를 입력하세요
+  background: url('Images/countBackground.jpg') center top / cover no-repeat;  // 여기에 배경 이미지 경로를 입력하세요
   background-size: cover;
   background-position: center;
+  position: relative;
   width: 100%;
   height: 100vh;
   display: flex;
@@ -25,37 +26,103 @@ const BackgroundContainer = styled.div`
   text-align: center;
   flex-direction: column;
 `;
-const StartingSoonText = styled.h2`
-  
+const BackgroundOverlay = styled.div`
+  background-color: rgba(62,62,62,0.7);
+  width: 100%;
+  height: 100%;
 `;
 const BodyContainer = styled.div`
-display: flex;
-flex-direction: column;
+  display: flex;
+  flex-direction: column;
   width: 100%;
-  height: 70vh;
+  height: 85vh;
   justify-content: center;
   align-items: center;
-  row-gap: 1.6rem;
-  
+  row-gap: 0.5rem;
 `;
 const Title = styled.h1`
-  font-size: 3rem;
-  margin-bottom: 3rem;
-  text-transform: uppercase;
-  letter-spacing: 0.5rem;
+  display: flex;
+  flex-wrap: wrap;
+  font-size: 2.3rem;
+  margin-bottom: 0.4rem;
   font-family: 'Fredoka';
-  font-weight: 700;
+  font-weight: 400;
   margin-top: 2rem;
+  line-height: 2.5rem;
+  align-items: center;
+  justify-content: center;
+  
+  
   @media screen and (max-width: 1200px) {
-    font-size: 3rem;
+    font-size: 2.3rem;
   }
   @media screen and (max-width: 1000px) {
-    font-size: 2.6rem;
+    font-size: 2.1rem;
   }
   @media screen and (max-width: 800px) {
-    font-size: 2.5rem;
+    font-size: 1.9rem;
+  }
+  @media screen and (max-width: 600px) {
+    font-size: 1.7rem;
+  }
+`;
+const TitleDate = styled.span`
+  font-size: 2.3rem;
+  padding-left: 10px;
+  margin: 0px;
+  font-family: 'Fredoka';
+  display: flex;
+  font-weight: 600;
+  line-height: 3rem;
+  @media screen and (max-width: 1200px) {
+    font-size: 2.3rem;
+  }
+  @media screen and (max-width: 1000px) {
+    font-size: 2.1rem;
+  }
+  @media screen and (max-width: 800px) {
+    font-size: 1.9rem;
+  }
+  @media screen and (max-width: 600px) {
+    font-size: 1.7rem;
   }
 
+`;
+const SubtitleText = styled.h2`
+  display: flex;
+  font-size: 1.5rem;
+  margin-bottom: 2rem;
+  width: 45%;
+  font-family: 'Fredoka';
+  font-weight: 400;
+  margin-top: 1.6rem;
+  line-height: 2.3rem;
+  align-items: center;
+  justify-content: center;
+  padding: 0px 30px;
+  @media screen and (max-width: 1200px) {
+    font-size: 1.8rem;
+    width: 60%;
+    padding: 0px 30px;
+  }
+  @media screen and (max-width: 1000px) {
+    font-size: 1.6rem;
+    width: 70%;
+    margin-bottom: 1.5rem;
+    padding: 0px 20px;
+  }
+  @media screen and (max-width: 800px) {
+    font-size: 1.4rem;
+    width: 80%;
+    margin-bottom: 1.3rem;
+    padding: 0px 0px;
+  }
+  @media screen and (max-width: 500px) {
+    font-size: 1.4rem;
+    width: 90%;
+    margin-bottom: 1.3rem;
+    padding: 0px 10px;
+  }
 `;
 const TimeDisplay = styled.div`
   font-size: 2rem;
@@ -169,7 +236,7 @@ const HeaderLogo = styled.img`
   height: 1.5rem;
 `;
 const LogoContainer = styled.div`
-  height: 20vh;
+  height: 10vh;
   display: flex;
     justify-content: center;
     align-items: flex-end;
@@ -180,10 +247,10 @@ const Logo = styled.div`
   padding-bottom: 0;
   display: flex;
   align-items: center;
-  justify-content: flex-start;
+  justify-content: center;
   
   width: 100%;
-  height: 8vh;
+  height: 5vh;
   padding-top: 1.5rem;
   @media screen and (max-width: 1000px) {
     justify-content: center;
@@ -254,14 +321,13 @@ const Countdown: React.FC = () => {
     const logo: any = data["logo"]
     return (
         <BackgroundContainer>
+        <BackgroundOverlay>
         <Wrapper>
       <Container>
-      <Logo>
-            <HeaderLogo key="logo" src={logo.image} />
-            <LogoText key="earthmera">{logo.text}</LogoText>
-        </Logo>
+      
         <BodyContainer>
-        <Title>Green Journey Begins in</Title>
+        <Title>Green Journey Begins on<TitleDate>{' July 26'}</TitleDate>,</Title>
+        <SubtitleText>International Day for the Conservation of the Mangrove Ecosystem</SubtitleText>
         <TimeDisplay>
           <TimeUnit style={{paddingLeft: 5}}>
           {renderTimeText(formatTime(timeLeft.days))}
@@ -284,10 +350,15 @@ const Countdown: React.FC = () => {
         
         </BodyContainer>
         <LogoContainer>
-        
+        <Logo>
+            <HeaderLogo key="logo" src={logo.image} />
+            <LogoText key="earthmera">{logo.text}</LogoText>
+        </Logo>
         </LogoContainer>
+        
       </Container>
       </Wrapper>
+      </BackgroundOverlay>
       </BackgroundContainer>
     );
   };
