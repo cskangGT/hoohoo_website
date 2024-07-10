@@ -20,6 +20,7 @@ import EarthMeraVision from "./Pages/About/Vision/EarthMeraVision";
 import ContactPage from "./Pages/Info/Contact/ContactPage";
 import EMTicketeer from "./Pages/Partnership/ticketeer/EMTicketeer";
 import Countdown from "./Pages/Home/Countdown";
+import RedirectPage from "./Pages/Info/Redirection/RedirectPage";
 const Router = createBrowserRouter([
     {
         path: "/",
@@ -79,15 +80,15 @@ const Router = createBrowserRouter([
             //     element: <ContactPage />,
             //     errorElement: <ErrorComponent />
             // }, 
+            {
+                path: "/privacy",
+                element: <Privacy />,
+                errorElement: <ErrorComponent />
+            }, 
             // {
-            //     path: "/privacy",
-            //     element: <Privacy />,
-            //     errorElement: <ErrorComponent />
-            // }, {
             //     path: "/term_of_use",
             //     element: <TandC />,
             //     errorElement: <ErrorComponent />
-                
             // },{
             //     path: "/submitform",
             //     element: <EarlySignUp />,
@@ -96,7 +97,12 @@ const Router = createBrowserRouter([
             //     path: "/coming_soon",
             //     element: <ComingSoon />,
             //     errorElement: <ErrorComponent />
-            // }
+            // },
+            {
+                path: "/redirect",
+                element: <RedirectPage />,
+                errorElement: <ErrorComponent />
+            }
         ],
         errorElement: <NotFound />,
     }
