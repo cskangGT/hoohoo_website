@@ -85,11 +85,12 @@ const Router = createBrowserRouter([
                 element: <Privacy />,
                 errorElement: <ErrorComponent />
             }, 
+            {
+                path: "/term_of_use",
+                element: <TandC />,
+                errorElement: <ErrorComponent />
+            },
             // {
-            //     path: "/term_of_use",
-            //     element: <TandC />,
-            //     errorElement: <ErrorComponent />
-            // },{
             //     path: "/submitform",
             //     element: <EarlySignUp />,
             //     errorElement: <ErrorComponent />
