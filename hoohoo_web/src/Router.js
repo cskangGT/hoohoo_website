@@ -86,7 +86,7 @@ const Router = createBrowserRouter([
                 errorElement: <ErrorComponent />
             }, 
             {
-                path: "/term_of_use",
+                path: "/terms_of_use",
                 element: <TandC />,
                 errorElement: <ErrorComponent />
             },
