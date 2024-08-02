@@ -252,7 +252,7 @@ function EarlySignUp() {
                                     />
                                         <AgreeText htmlFor="termsAndConditions" style={{ marginLeft: '10px' }}>
                                         {data.terms.part1} 
-                                            <TermsLink href="/term_of_use"
+                                            <TermsLink href="/terms_of_use"
                                             rel="noopener noreferrer">
                                                  {data.terms.part2} </TermsLink>
                                         </AgreeText>

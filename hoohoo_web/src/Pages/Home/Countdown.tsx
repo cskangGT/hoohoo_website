@@ -5,8 +5,9 @@ import moment from 'moment-timezone';
 import Wrapper from '../../Component/Wrapper/Wrapper';
 import { theme } from '../../style';
 import i18next from 'i18next';
+import { useLocation, useNavigate } from 'react-router-dom';
 
-const targetDate = moment.tz('2024-07-26 00:00', 'America/New_York');
+const targetDate = moment.tz('2024-07-26 06:00', 'America/New_York');
 const Container = styled.div`
   text-align: center;
   height: 100%;
@@ -193,6 +194,8 @@ const Logo = styled.div`
   
 `;
 const Countdown: React.FC = () => {
+    const location = useLocation();
+    const navigate = useNavigate();
     const calculateTimeLeft = () => {
         const now = moment.tz('America/New_York');
         const difference = targetDate.diff(now);
@@ -233,6 +236,10 @@ const Countdown: React.FC = () => {
       );
     };
     useEffect(() => {
+      const hash = location.hash.replace('#', '');
+    if (hash) {
+      navigate(hash);
+    }
       const timer = setInterval(() => {
         setTimeLeft(calculateTimeLeft());
       }, 1000);

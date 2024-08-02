@@ -166,12 +166,12 @@ function Footer({ isKorean }: FooterProps) {
             isKorean ? <RowBox>
               <Buttons text1="팀 어스메라" action1={() => navigate(`/about_team`)}
                 text2="제휴" action2={() => navigate(`/partnership`)} />
-              <Buttons text1="이용약관" action1={() => navigate('/term_of_use')}
+              <Buttons text1="이용약관" action1={() => navigate('/terms_of_use')}
                 text2="개인정보처리방침" action2={() => navigate(`/privacy`)} />
             </RowBox> : <RowBox>
               <Buttons text1="About Us" action1={() => navigate(`/about_team`)}
                 text2="Partnership" action2={() => navigate(`/partnership`)} />
-              <Buttons text1="Terms of Use" action1={() => navigate('/term_of_use')}
+              <Buttons text1="Terms of Use" action1={() => navigate('/terms_of_use')}
                 text2="Privacy Policy" action2={() => navigate(`/privacy`)} />
             </RowBox>
           }
