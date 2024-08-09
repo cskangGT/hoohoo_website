@@ -49,8 +49,17 @@ function HomeEarthmera() {
   useEffect(()=> {
     const hash = location.hash.replace('#', '');
     if (hash) {
-      navigate(hash);
-    }else if (location.hash === '#download' ){
+      const [page, query] = hash.split('#?');
+      const params = new URLSearchParams(query);
+      const link = params.get('link');
+      
+      if (link) {
+        console.log('Navigating to', page, 'with link', link);
+        navigate(`/${page}?link=${encodeURIComponent(link)}`);
+      } else {
+        navigate(`/${page}`);
+      }
+    } else if (location.hash === '#download' ){
       setTimeout(() => {
           if (sectionRef.current) {
               sectionRef.current.scrollIntoView({ behavior: 'smooth' });
