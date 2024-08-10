@@ -18,9 +18,13 @@ const RedirectPage: React.FC = () => {
     const location = useLocation();
   
     useEffect(() => {
-      
-      const params = queryString.parse(location.hash);
-      const appLink = params['link'] as string;
+      // console.log('queryString', queryString)
+      // console.log('location.hash', location.hash)
+      // const params = queryString.parse(location.hash);
+      // console.log('params', params)
+      // const appLink = params['link'] as string;
+      const searchParams = new URLSearchParams(location.search);
+    const appLink = searchParams.get('link');
       console.log('appLink', appLink)
   
       const iosAppStoreLink = 'https://apps.apple.com/app/id123456789';
