@@ -47,7 +47,7 @@ function HomeEarthmera() {
   const location = useLocation();
     const navigate = useNavigate();
   useEffect(()=> {
-    const hash = location.hash.replace('#', '');
+    const hash = decodeURIComponent(location.hash.replace('#', ''));
     if (hash) {
       const [page, query] = hash.split('#?');
       const params = new URLSearchParams(query);
