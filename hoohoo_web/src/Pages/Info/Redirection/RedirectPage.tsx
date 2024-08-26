@@ -24,6 +24,7 @@ const RedirectPage: React.FC = () => {
       // console.log('params', params)
       // const appLink = params['link'] as string;
       const searchParams = new URLSearchParams(location.search);
+      console.log('searchParams', searchParams)
     const appLink = searchParams.get('link');
       console.log('appLink', appLink)
   
