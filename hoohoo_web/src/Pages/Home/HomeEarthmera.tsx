@@ -51,11 +51,11 @@ function HomeEarthmera() {
     if (hash) {
       const [page, query] = hash.split('#?');
       const params = new URLSearchParams(query);
-      const link = params.get('link');
+      const link = params.toString();
       
       if (link) {
         console.log('Navigating to', page, 'with link', link);
-        navigate(`/${page}?link=${encodeURIComponent(link)}`);
+        navigate(`/${page}?link=${link}`);
       } else {
         navigate(`/${page}`);
       }

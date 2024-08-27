@@ -24,8 +24,7 @@ const RedirectPage: React.FC = () => {
       // console.log('params', params)
       // const appLink = params['link'] as string;
       const searchParams = new URLSearchParams(location.search);
-      console.log('searchParams', searchParams)
-    const appLink = searchParams.get('link');
+      const appLink = searchParams.toString().slice(5);
       console.log('appLink', appLink)
   
       const iosAppStoreLink = 'https://apps.apple.com/app/id123456789';
@@ -36,12 +35,12 @@ const RedirectPage: React.FC = () => {
       const redirectUser = () => {
         if (appLink) {
           // Try to open the app
-          window.location.href = appLink;
+          window.location.href = decodeURIComponent(appLink);
   
           // If the app does not open within 2 seconds, redirect to the app store
           setTimeout(() => {
             window.location.href = appStoreLink;
-          }, 1500);
+          }, 1321500);
         }
       };
   

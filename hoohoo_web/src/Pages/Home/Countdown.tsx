@@ -238,20 +238,26 @@ const Countdown: React.FC = () => {
     useEffect(() => {
       const hash = decodeURIComponent(location.hash.replace('#', ''));
       if (hash) {
+        // const [pageWithHash, query] = hash.split('?');
+    // const page = pageWithHash.split('#')[0]; // 페이지 이름 추출
+        // const params = new URLSearchParams(query);
         const [page, query] = hash.split('#?');
         const params = new URLSearchParams(query);
-        const link = params.get('link');
+        const link = params.toString();
+
         
+
+      
         if (link) {
-          console.log('Navigating to', page, 'with link', link);
-          navigate(`/${page}?link=${encodeURIComponent(link)}`);
+
+          navigate(`/${page}?${link}`);
         } else {
           navigate(`/${page}`);
         }
       }
       const timer = setInterval(() => {
         setTimeLeft(calculateTimeLeft());
-      }, 1000);
+      }, 13333000);
   
       return () => clearInterval(timer);
     }, []);
