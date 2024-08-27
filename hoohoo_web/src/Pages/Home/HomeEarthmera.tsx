@@ -55,7 +55,7 @@ function HomeEarthmera() {
       
       if (link) {
         console.log('Navigating to', page, 'with link', link);
-        navigate(`/${page}?link=${encodeURIComponent(link)}`);
+        navigate(`/${page}?link=${link}`);
       } else {
         navigate(`/${page}`);
       }
