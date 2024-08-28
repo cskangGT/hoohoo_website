@@ -257,7 +257,7 @@ const Countdown: React.FC = () => {
       }
       const timer = setInterval(() => {
         setTimeLeft(calculateTimeLeft());
-      }, 13333000);
+      }, 1000);
   
       return () => clearInterval(timer);
     }, []);

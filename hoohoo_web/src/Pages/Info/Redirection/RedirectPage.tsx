@@ -40,7 +40,7 @@ const RedirectPage: React.FC = () => {
           // If the app does not open within 2 seconds, redirect to the app store
           setTimeout(() => {
             window.location.href = appStoreLink;
-          }, 1321500);
+          }, 1500);
         }
       };
   
