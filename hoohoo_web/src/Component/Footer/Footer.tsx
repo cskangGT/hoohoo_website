@@ -146,12 +146,12 @@ function Footer() {
   const navigate = useNavigate();
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const data : any = i18next.t('Footer', { returnObjects: true });
-  useEffect(() => {
-    const searchParams = new URLSearchParams(location.search);
-    if (searchParams.get('modal') === 'open') {
-      setIsOpen(true);
-    }
-  }, [location.search]);
+  // useEffect(() => {
+  //   const searchParams = new URLSearchParams(location.search);
+  //   if (searchParams.get('modal') === 'open') {
+  //     setIsOpen(true);
+  //   }
+  // }, [location.search]);
   return (
     <Background>
       <Container>
@@ -183,7 +183,7 @@ function Footer() {
           </IconBox>
         </FooterBottom>
       </Container>
-      <ManageAccModal isOpen={isOpen} setIsOpen={setIsOpen}  />
+      {/* <ManageAccModal isOpen={isOpen} setIsOpen={setIsOpen}  /> */}
     </Background>
   );
 }
