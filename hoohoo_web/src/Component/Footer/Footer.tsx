@@ -1,10 +1,12 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import { theme } from '../../style';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faInstagram, faPinterestP, faTiktok, faLinkedinIn, faYoutube } from '@fortawesome/free-brands-svg-icons';
 import { useNavigate } from 'react-router-dom';
+import i18next from 'i18next';
+import ManageAccModal from '../../Pages/DeleteAccount/ManageAccModal';
 
 const Background = styled.footer`
     background-color: transparent;
@@ -124,9 +126,6 @@ type IbuttonProps = {
   url?: string;
   style?: {};
 }
-type FooterProps = {
-  isKorean: boolean;
-}
 function Buttons({ text1, action1, text2, action2 }: Button) {
   return (
     <Column>
@@ -143,38 +142,35 @@ function Ibutton({ icon, url, style }: IbuttonProps) {
   )
 }
 
-function Footer({ isKorean }: FooterProps) {
+function Footer() {
   const navigate = useNavigate();
+  const [isOpen, setIsOpen] = useState<boolean>(false);
+  const data : any = i18next.t('Footer', { returnObjects: true });
+  useEffect(() => {
+    const searchParams = new URLSearchParams(location.search);
+    if (searchParams.get('modal') === 'open') {
+      setIsOpen(true);
+    }
+  }, [location.search]);
   return (
     <Background>
       <Container>
         <Box>
-          {
-            isKorean ? <Column>
-              <FooterTitle>어스메라(EarthMera)</FooterTitle>
-              <BusinessDetail> 대표이사 : Sung Kang
-                <br /> 이메일 : devceohoony@gmail.com
-              </BusinessDetail>
-            </Column> : <Column>
-              <FooterTitle>EarthMera</FooterTitle>
-              <BusinessDetail> CEO : Sung Kang
-                <br /> Email : devceohoony@gmail.com
+            <Column>
+              <FooterTitle>{data.title}</FooterTitle>
+              <BusinessDetail> {data.ceo}
+                <br /> {data.email} : devceohoony@gmail.com
               </BusinessDetail>
             </Column>
-          }
-          {
-            isKorean ? <RowBox>
-              <Buttons text1="팀 어스메라" action1={() => navigate(`/about_team`)}
-                text2="제휴" action2={() => navigate(`/partnership`)} />
-              <Buttons text1="이용약관" action1={() => navigate('/terms_of_use')}
-                text2="개인정보처리방침" action2={() => navigate(`/privacy`)} />
-            </RowBox> : <RowBox>
-              <Buttons text1="About Us" action1={() => navigate(`/about_team`)}
-                text2="Partnership" action2={() => navigate(`/partnership`)} />
-              <Buttons text1="Terms of Use" action1={() => navigate('/terms_of_use')}
-                text2="Privacy Policy" action2={() => navigate(`/privacy`)} />
+
+            <RowBox>
+              <Buttons text1={data.menuButtons.about} action1={() => navigate(`/about_team`)}
+                text2={data.menuButtons.partnership} action2={() => navigate(`/partnership`)} />
+              <Buttons text1={data.menuButtons.terms} action1={() => navigate('/term_of_use')}
+                text2={data.menuButtons.privacy} action2={() => navigate(`/privacy`)} />
+                <Buttons text1={data.menuButtons.manage} action1={() => setIsOpen(true)}
+                  text2="" action2={() => {}} />
             </RowBox>
-          }
         </Box>
         <FooterBottom>
           <BusinessDetail style={{ paddingLeft: 15 }}>Copyright&copy; 2024 EarthMera. All rights reserved.</BusinessDetail>
@@ -187,6 +183,7 @@ function Footer({ isKorean }: FooterProps) {
           </IconBox>
         </FooterBottom>
       </Container>
+      <ManageAccModal isOpen={isOpen} setIsOpen={setIsOpen}  />
     </Background>
   );
 }
