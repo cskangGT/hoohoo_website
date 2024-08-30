@@ -54,7 +54,7 @@ function HomeEarthmera() {
       const link = params.toString();
       
       if (link) {
-        console.log('Navigating to', page, 'with link', link);
+
         navigate(`/${page}?link=${link}`);
       } else {
         navigate(`/${page}`);

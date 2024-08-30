@@ -6,6 +6,7 @@ import Wrapper from '../../Component/Wrapper/Wrapper';
 import { theme } from '../../style';
 import i18next from 'i18next';
 import { useLocation, useNavigate } from 'react-router-dom';
+import ManageAccModal from '../DeleteAccount/ManageAccModal';
 
 const targetDate = moment.tz('2024-08-30 00:00', 'America/New_York');
 const Container = styled.div`
@@ -196,6 +197,7 @@ const Logo = styled.div`
 const Countdown: React.FC = () => {
     const location = useLocation();
     const navigate = useNavigate();
+    const [isOpen, setIsOpen] = useState<boolean>(false);
     const calculateTimeLeft = () => {
         const now = moment.tz('America/New_York');
         const difference = targetDate.diff(now);
@@ -236,6 +238,12 @@ const Countdown: React.FC = () => {
       );
     };
     useEffect(() => {
+      const searchParams = new URLSearchParams(location.search);
+      if (searchParams.get('modal') === 'open') {
+        setIsOpen(true);
+      }
+    }, [location.search]);
+    useEffect(() => {
       const hash = decodeURIComponent(location.hash.replace('#', ''));
       if (hash) {
         // const [pageWithHash, query] = hash.split('?');
@@ -257,7 +265,7 @@ const Countdown: React.FC = () => {
       }
       const timer = setInterval(() => {
         setTimeLeft(calculateTimeLeft());
-      }, 13333000);
+      }, 1000);
   
       return () => clearInterval(timer);
     }, []);
@@ -301,7 +309,9 @@ const Countdown: React.FC = () => {
         </LogoContainer>
       </Container>
       </Wrapper>
+      <ManageAccModal isOpen={isOpen} setIsOpen={setIsOpen}  />
       </BackgroundContainer>
+      
     );
   };
 export default Countdown;
