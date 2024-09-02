@@ -14,7 +14,7 @@ const SectionHeader = styled(Header)`
 `;
 const SubHeader = styled(Header)`
   text-align: center;
-  font-size: 2.3rem;
+  font-size: 1.4rem;
   padding: 20px;
 `;
 const Bg = styled(BackgroundImage)`
@@ -41,8 +41,8 @@ export default function Support() {
     const data = {
         "bgImage": "Images/greenBgImg.png",
         "header": "Need Help?<br />Have Questions?<br />We're Here for You",
-        "subheader": "Your feedback and questions are important to us.<br />Get in touch anytime.",
-        "button": "Contact Support"
+  "subheader": "Your feedback and questions are important to us.<br />You can also email us directly at <a href='mailto:support@earthmera.com'>support@earthmera.com</a>.",
+  "button": "Contact Support"
     }
   return (
     <Bg image={data.bgImage}>
