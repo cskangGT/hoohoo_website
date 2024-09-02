@@ -21,6 +21,7 @@ import ContactPage from "./Pages/Info/Contact/ContactPage";
 import EMTicketeer from "./Pages/Partnership/ticketeer/EMTicketeer";
 import Countdown from "./Pages/Home/Countdown";
 import RedirectPage from "./Pages/Info/Redirection/RedirectPage";
+import SupportingPage from "./Pages/Info/Contact/SupportingPage";
 const Router = createBrowserRouter([
     {
         path: "/",
@@ -75,11 +76,16 @@ const Router = createBrowserRouter([
             //     element: <BlogDetail />,
             //     errorElement: <ErrorComponent />
             // }, 
-            // {
-            //     path: "/contact",
-            //     element: <ContactPage />,
-            //     errorElement: <ErrorComponent />
-            // }, 
+            {
+                path: "/contact",
+                element: <ContactPage />,
+                errorElement: <ErrorComponent />
+            }, 
+            {
+                path: "/support",
+                element: <SupportingPage />,
+                errorElement: <ErrorComponent />
+            }, 
             {
                 path: "/privacy",
                 element: <Privacy />,

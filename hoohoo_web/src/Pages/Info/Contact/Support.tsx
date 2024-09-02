@@ -9,16 +9,16 @@ const SectionHeader = styled(Header)`
   text-align: center;
   line-height: 1.5;
   padding: 40px 0;
-  font-size: 3rem;
+  font-size: 2.5rem;
   font-family: 'Fredoka';
 `;
 const SubHeader = styled(Header)`
   text-align: center;
-  font-size: 3rem;
+  font-size: 2.3rem;
   padding: 20px;
 `;
 const Bg = styled(BackgroundImage)`
-  height: 1000px;
+  height: 900px;
   margin: 0;
   @media screen and (max-width: 700px) {
         height: auto;
@@ -28,7 +28,7 @@ const Button = styled.a`
   padding: 10px 20px;
   margin: 20px 0;
   text-decoration: none;
-  font-size: 3rem;
+  font-size: 2rem;
   border-radius: 30px;
   overflow: hidden;
   color: ${theme.white};
@@ -37,22 +37,20 @@ const Button = styled.a`
         font-size: 2rem;
     }
 `;
-export default function Green() {
-    const data ={
+export default function Support() {
+    const data = {
         "bgImage": "Images/greenBgImg.png",
-        "header" : "Green platform<br />Green users<br />Green products",
-        "subheader": " Let's make the Earth greener together.",
-        "button": "Contact Us"
+        "header": "Need Help?<br />Have Questions?<br />We're Here for You",
+        "subheader": "Your feedback and questions are important to us.<br />Get in touch anytime.",
+        "button": "Contact Support"
     }
   return (
     <Bg image={data.bgImage}>
         <Wrapper>
             <VerticalSection>
             <SectionHeader dangerouslySetInnerHTML={{__html:data.header}} />
-                <SubHeader>
-                    {data.subheader}
-                </SubHeader>
-                <Button href={"mailto:devceohoony@gmail.com"}>{data.button}</Button>
+                <SubHeader dangerouslySetInnerHTML={{__html:data.subheader}} />
+                <Button href={"mailto:support@earthmera.com?subject=Support"}>{data.button}</Button>
             </VerticalSection>
         </Wrapper>
     </Bg>
