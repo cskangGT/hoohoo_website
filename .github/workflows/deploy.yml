@@ -32,7 +32,7 @@ jobs:
 
     # dist 디렉터리를 아티팩트로 업로드
     - name: Upload dist directory as artifact
-      uses: actions/upload-artifact@v2
+      uses: actions/upload-artifact@v3
       with:
         name: dist-directory
         path: hoohoo_web/dist/
