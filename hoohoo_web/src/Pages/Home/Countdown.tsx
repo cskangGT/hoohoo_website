@@ -241,6 +241,8 @@ const Countdown: React.FC = () => {
       const searchParams = new URLSearchParams(location.search);
       if (searchParams.get('modal') === 'open') {
         setIsOpen(true);
+      } else if (searchParams.get('support') === 'yes') {
+        navigate('/support');
       }
     }, [location.search]);
     useEffect(() => {
