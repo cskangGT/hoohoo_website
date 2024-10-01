@@ -8,7 +8,7 @@ import i18next from 'i18next';
 import { useLocation, useNavigate } from 'react-router-dom';
 import ManageAccModal from '../DeleteAccount/ManageAccModal';
 
-const targetDate = moment.tz('2024-09-15 00:00', 'America/New_York');
+const targetDate = moment.tz('2024-10-10 00:00', 'America/New_York');
 const Container = styled.div`
   text-align: center;
   height: 100%;
