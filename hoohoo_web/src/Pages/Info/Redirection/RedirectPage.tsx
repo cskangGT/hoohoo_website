@@ -27,8 +27,8 @@ const RedirectPage: React.FC = () => {
       const appLink = searchParams.toString().slice(5);
       console.log('appLink', appLink)
   
-      const iosAppStoreLink = 'https://apps.apple.com/us/app/earthmera/id6560118091';
-      const androidAppStoreLink = 'https://play.google.com/store/apps/details?id=com.earthmera';
+      const iosAppStoreLink = 'https://apps.apple.com/app/id123456789';
+      const androidAppStoreLink = 'https://play.google.com/store/apps/details?id=com.yourapp';
       
       const platform = getDevicePlatform();
       const appStoreLink = platform === 'iOS' ? iosAppStoreLink : androidAppStoreLink;
