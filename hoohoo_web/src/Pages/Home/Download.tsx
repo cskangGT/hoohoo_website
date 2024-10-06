@@ -2,7 +2,8 @@ import React from 'react';
 import styled from 'styled-components';
 import { theme } from '../../style';
 import i18next from 'i18next';
-
+export const iosAppStoreLink = 'https://apps.apple.com/app/earthmera/id6560118091';
+export const androidAppStoreLink = 'https://play.google.com/store/apps/details?id=com.earthmera';
 const Container = styled.div<DownloadProps>`
     margin-top: 0px;
     display: flex;
@@ -207,10 +208,10 @@ function Download({ dropb }: DownloadProps) {
             {dropb ? data["dropb"]["subheader"] : data["earthmera"]["subheader"]}
           </SubHeader>
           <BannerBtnContainer>
-            <BannerBtn href='/coming_soon'>
+            <BannerBtn href={iosAppStoreLink}>
               <Img src={data["storeImage"]["appstore"]}></Img>
             </BannerBtn>
-            <BannerBtn href='/coming_soon'>
+            <BannerBtn href={androidAppStoreLink}>
               <Img src={data["storeImage"]["googleplay"]}></Img>
             </BannerBtn>
           </BannerBtnContainer>
@@ -222,10 +223,10 @@ function Download({ dropb }: DownloadProps) {
             {dropb ? data["dropb"]["subheader"] : data["earthmera"]["subheader"]}
           </SubHeader>
           <BannerBtnContainer>
-            <BannerBtn href='/coming_soon'>
+            <BannerBtn href={iosAppStoreLink}>
               <Img src={data["storeImage"]["appstore"]}></Img>
             </BannerBtn>
-            <BannerBtn href='/coming_soon'>
+            <BannerBtn href={androidAppStoreLink}>
               <Img src={data["storeImage"]["googleplay"]}></Img>
             </BannerBtn>
           </BannerBtnContainer>

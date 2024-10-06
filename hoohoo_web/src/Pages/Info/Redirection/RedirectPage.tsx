@@ -1,6 +1,7 @@
 import queryString from 'query-string';
 import React, { useEffect } from 'react'
 import { useLocation } from 'react-router-dom';
+import { androidAppStoreLink, iosAppStoreLink } from '../../Home/Download';
 const getDevicePlatform = () => {
     const userAgent = navigator.userAgent;
   
@@ -18,25 +19,19 @@ const RedirectPage: React.FC = () => {
     const location = useLocation();
     
     const goToStoreLink = () => {
-      const iosAppStoreLink = 'https://apps.apple.com/us/app/earthmera/id6560118091';
-      const androidAppStoreLink = 'https://play.google.com/store/apps/details?id=com.earthmera';
+      
       
       const platform = getDevicePlatform();
       const appStoreLink = platform === 'iOS' ? iosAppStoreLink : androidAppStoreLink;
       window.location.href = appStoreLink;
     }
     useEffect(() => {
-      // console.log('queryString', queryString)
-      // console.log('location.hash', location.hash)
-      // const params = queryString.parse(location.hash);
-      // console.log('params', params)
-      // const appLink = params['link'] as string;
+      
       const searchParams = new URLSearchParams(location.search);
+      console.log('first', searchParams.get('link'))
+      
       const appLink = searchParams.toString().slice(5);
-      console.log('appLink', appLink)
-  
-      const iosAppStoreLink = 'https://apps.apple.com/us/app/earthmera/id6560118091';
-      const androidAppStoreLink = 'https://play.google.com/store/apps/details?id=com.earthmera';
+      console.log('appLink', appLink);      
       
       const platform = getDevicePlatform();
       console.log('platform', platform)
