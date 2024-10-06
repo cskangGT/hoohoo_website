@@ -1,14 +1,15 @@
 import queryString from 'query-string';
 import React, { useEffect } from 'react'
 import { useLocation } from 'react-router-dom';
+import { androidAppStoreLink, iosAppStoreLink } from '../../Home/Download';
 const getDevicePlatform = () => {
     const userAgent = navigator.userAgent;
   
     if (/android/i.test(userAgent)) {
       return 'Android';
     }
-  
-    if (/iPad|iPhone|iPod/.test(userAgent) ) {
+console.log('userAgent', userAgent)
+    if (/iPad|iPhone|iPod|Mac/.test(userAgent) ) {
       return 'iOS';
     }
   
@@ -16,31 +17,40 @@ const getDevicePlatform = () => {
   };
 const RedirectPage: React.FC = () => {
     const location = useLocation();
-  
-    useEffect(() => {
-      // console.log('queryString', queryString)
-      // console.log('location.hash', location.hash)
-      // const params = queryString.parse(location.hash);
-      // console.log('params', params)
-      // const appLink = params['link'] as string;
-      const searchParams = new URLSearchParams(location.search);
-      const appLink = searchParams.toString().slice(5);
-      console.log('appLink', appLink)
-  
-      const iosAppStoreLink = 'https://apps.apple.com/us/app/earthmera/id6560118091';
-      const androidAppStoreLink = 'https://play.google.com/store/apps/details?id=com.earthmera';
+    
+    const goToStoreLink = () => {
+      
       
       const platform = getDevicePlatform();
       const appStoreLink = platform === 'iOS' ? iosAppStoreLink : androidAppStoreLink;
+      window.location.href = appStoreLink;
+    }
+    useEffect(() => {
+      
+      const searchParams = new URLSearchParams(location.search);
+      console.log('first', searchParams.get('link'))
+      
+      const appLink = searchParams.toString().slice(5);
+      console.log('appLink', appLink);      
+      
+      const platform = getDevicePlatform();
+      console.log('platform', platform)
+      const appStoreLink = platform === 'iOS' ? iosAppStoreLink : androidAppStoreLink;
       const redirectUser = () => {
+        let appOpened = false;
         if (appLink) {
-          // Try to open the app
           window.location.href = decodeURIComponent(appLink);
-  
-          // If the app does not open within 2 seconds, redirect to the app store
+
+          window.addEventListener('blur', () => {
+            appOpened = true;
+          });
           setTimeout(() => {
-            window.location.href = appStoreLink;
-          }, 1500);
+            console.log('appOpened', appOpened)
+            if (!appOpened) {
+              window.location.href = appStoreLink;
+            }
+          }, 2000);
+      
         }
       };
   
@@ -50,7 +60,7 @@ const RedirectPage: React.FC = () => {
     return (
       <div>
         <h1>Redirecting...</h1>
-        <p>If you are not redirected automatically, <a href={location.hash}>click here</a>.</p>
+        <p>If you are not redirected automatically, <a href="#!" onClick={goToStoreLink}>click here</a>.</p>
       </div>
     );
   };
