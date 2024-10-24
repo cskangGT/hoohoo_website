@@ -7,6 +7,7 @@ import { theme } from '../../style';
 import i18next from 'i18next';
 import { useLocation, useNavigate } from 'react-router-dom';
 import ManageAccModal from '../DeleteAccount/ManageAccModal';
+import { androidAppStoreLink, iosAppStoreLink } from './Download';
 
 const targetDate = moment.tz('2024-10-10 00:00', 'America/New_York');
 const Container = styled.div`
@@ -179,6 +180,39 @@ const LogoContainer = styled.div`
     align-items: flex-end;
     
 `;
+const BannerBtnContainer = styled.div`
+  display:flex;
+  box-sizing: inherit;
+  width: 100%;
+  gap: 10px;
+  justify-content: center;
+  align-items: center;
+  @media screen and (max-width: 800px) {
+    flex-direction: column;
+  }
+`;
+const BannerBtn = styled.a`
+    text-decoration: none;
+    color: ${theme.white};
+    margin-right:14px;
+    display: flex;
+    width: 200px;
+    border-radius: 20px;
+    flex: 0 0 auto;
+    position: relative;
+    transition: all 0.3s ease 0s;
+    @media screen and (max-width: 1200px) {
+    margin-top: 7px;
+    width: 180px;
+    }
+    @media screen and (max-width: 500px) {
+      margin: 0;
+      width: 100%;
+    }
+`;
+const Img = styled.img`
+  width: 100%;
+`;
 const Logo = styled.div`
   padding: 10px;
   padding-bottom: 0;
@@ -272,7 +306,7 @@ const Countdown: React.FC = () => {
       return () => clearInterval(timer);
     }, []);
     const data = i18next.t('Nav', { returnObjects: true })
-    
+    const downloadLang = i18next.t('download', { returnObjects: true })
     
     const logo: any = data["logo"]
     return (
@@ -304,7 +338,14 @@ const Countdown: React.FC = () => {
           </TimeUnit>
         </TimeDisplay>
         <SmallText>Small changes spark big waves earth</SmallText>
-        
+        {timeLeft.days === 0 && timeLeft.hours === 0 && timeLeft.minutes === 0&& timeLeft.seconds === 0&&<BannerBtnContainer>
+            <BannerBtn href={iosAppStoreLink}>
+              <Img src={downloadLang["storeImage"]["appstore"]}></Img>
+            </BannerBtn>
+            <BannerBtn href={androidAppStoreLink}>
+              <Img src={downloadLang["storeImage"]["googleplay"]}></Img>
+            </BannerBtn>
+          </BannerBtnContainer>}
         </BodyContainer>
         <LogoContainer>
         
