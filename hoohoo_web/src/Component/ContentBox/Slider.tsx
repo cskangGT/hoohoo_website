@@ -1,7 +1,7 @@
 import React from 'react';
-import { useSwipeable } from 'react-swipeable';
+import {useSwipeable} from 'react-swipeable';
 import styled from 'styled-components';
-import { theme } from '../../style';
+import {theme} from '../../style';
 
 interface SlidersProps {
   currentSlide: number;
@@ -12,11 +12,11 @@ interface SlidersProps {
   isModalOpen?: boolean;
 }
 
-const SlideContainer = styled.div<{ currentSlide: number }>`
-width: 100%;
+const SlideContainer = styled.div<{currentSlide: number}>`
+  width: 100%;
   display: flex;
   transition: transform 0.5s ease-in-out;
-    transform: translateX(-${props => props.currentSlide * 100}%);
+  transform: translateX(-${props => props.currentSlide * 100}%);
 `;
 const ArrowButton = styled.button`
   background: none;
@@ -35,7 +35,6 @@ const ArrowButton = styled.button`
 `;
 const LeftArrow = styled(ArrowButton)`
   left: 0px;
-  
 `;
 
 const RightArrow = styled(ArrowButton)`
@@ -45,29 +44,40 @@ const Container = styled.div`
   width: 100%;
   position: relative;
 `;
-const Slider: React.FC<SlidersProps> = ({ currentSlide, handleLeftClick, handleRightClick, children, pageNumber, isModalOpen }) => {
+const Slider: React.FC<SlidersProps> = ({
+  currentSlide,
+  handleLeftClick,
+  handleRightClick,
+  children,
+  pageNumber,
+  isModalOpen,
+}) => {
   const handlers = useSwipeable({
     onSwipedLeft: () => {
-      if(!isModalOpen)
-      handleRightClick();
+      if (!isModalOpen) handleRightClick();
     },
     onSwipedRight: () => {
-      if(!isModalOpen)
-      handleLeftClick();
+      if (!isModalOpen) handleLeftClick();
     },
     preventScrollOnSwipe: true,
     trackMouse: true,
   });
 
   return (
-    <Container {...handlers} >
-      {currentSlide === 0 ? <></> : <LeftArrow onClick={handleLeftClick}>&lt;</LeftArrow>}
+    <Container {...handlers}>
+      {currentSlide === 0 ? (
+        <></>
+      ) : (
+        <LeftArrow onClick={handleLeftClick}>&lt;</LeftArrow>
+      )}
 
-      <SlideContainer currentSlide={currentSlide}>
-        {children}
-      </SlideContainer>
+      <SlideContainer currentSlide={currentSlide}>{children}</SlideContainer>
 
-      {currentSlide !== pageNumber - 1 ? <RightArrow onClick={handleRightClick}>&gt;</RightArrow> : <></>}
+      {currentSlide !== pageNumber - 1 ? (
+        <RightArrow onClick={handleRightClick}>&gt;</RightArrow>
+      ) : (
+        <></>
+      )}
     </Container>
   );
 };

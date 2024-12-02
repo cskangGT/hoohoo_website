@@ -1,12 +1,10 @@
-import React, { useEffect, useState } from 'react'
-import styled from 'styled-components';
-import { theme } from '../../style';
-import { EmailInput, GreenLongNextButton } from './EmailProgress';
 import i18next from 'i18next';
+import React, {useState} from 'react';
+import styled from 'styled-components';
+import {sendCode} from '../../api/deleteAcc';
+import {theme} from '../../style';
 import DeletionCategory from './DeletionCategory';
-import { sendCode } from '../../api/deleteAcc';
-
-
+import {GreenLongNextButton} from './EmailProgress';
 
 const Container = styled.div`
   display: flex;
@@ -23,11 +21,11 @@ const BackButton = styled.a`
   cursor: pointer;
   padding: 20px 0px;
   @media screen and (max-width: 800px) {
-    padding: 14px 0px;    
-    }
+    padding: 14px 0px;
+  }
   @media screen and (max-width: 600px) {
     padding: 12px 0px;
-    }
+  }
   @media screen and (max-width: 400px) {
     padding: 10px 0px;
   }
@@ -39,17 +37,20 @@ const DescriptionInput = styled.textarea`
   width: 70%;
   font-size: 20px;
   color: ${theme.white};
-  padding: 10px ;
-  background-color: rgba(79,79,79,0.4);
+  padding: 10px;
+  background-color: rgba(79, 79, 79, 0.4);
   outline: none;
   border-width: 1px;
   box-shadow: 0px 4px 20px 0px transparent;
-  transition: 0.3s background-color ease-in-out, 0.3s box-shadow ease-in-out, 0.1s padding ease-in-out;
+  transition:
+    0.3s background-color ease-in-out,
+    0.3s box-shadow ease-in-out,
+    0.1s padding ease-in-out;
   &::placeholder {
     color: rgba(255, 255, 255, 0.8);
   }
   &:focus {
-    border-color: #21FF37;
+    border-color: #21ff37;
   }
   @media screen and (max-width: 800px) {
     height: 150px;
@@ -78,7 +79,7 @@ const InfoText = styled.p`
   width: 90%;
   text-align: left;
   padding: 10px 0px;
-  color: rgba(255,255,255,0.8);
+  color: rgba(255, 255, 255, 0.8);
   @media screen and (max-width: 800px) {
     padding: 6px 0px;
     font-size: 16px;
@@ -102,63 +103,77 @@ const Image = styled.img`
 `;
 
 const categories = [
-    'LEAVING_TEMPORAILY',
-    'DISSATISFIED',
-    'LACK_OF_TIME',
-    'LACK_OF_NECESSITY',
-    'INSUFFICIENT_REWARD_COINS',
-    'OTHER',
+  'LEAVING_TEMPORAILY',
+  'DISSATISFIED',
+  'LACK_OF_TIME',
+  'LACK_OF_NECESSITY',
+  'INSUFFICIENT_REWARD_COINS',
+  'OTHER',
 ];
 type Props = {
-    setDeleteAccProgress: React.Dispatch<React.SetStateAction<number>>;
-    setCategory: React.Dispatch<React.SetStateAction<string>>;
-    setReason : React.Dispatch<React.SetStateAction<string>>;
-    reason: string;
-    category: string;
-    email: string;
-}
-function ReasonProgress({setDeleteAccProgress, setReason, reason, setCategory, category, email} : Props) {
-    const data : any = i18next.t('ManageAccModal', { returnObjects: true });
-    // const [fontSize, setFontSize] = useState(44);
-    const [isSelected, setIsSelected] = useState<boolean>(false);
+  setDeleteAccProgress: React.Dispatch<React.SetStateAction<number>>;
+  setCategory: React.Dispatch<React.SetStateAction<string>>;
+  setReason: React.Dispatch<React.SetStateAction<string>>;
+  reason: string;
+  category: string;
+  email: string;
+};
+function ReasonProgress({
+  setDeleteAccProgress,
+  setReason,
+  reason,
+  setCategory,
+  category,
+  email,
+}: Props) {
+  const data: any = i18next.t('ManageAccModal', {returnObjects: true});
+  // const [fontSize, setFontSize] = useState(44);
+  const [isSelected, setIsSelected] = useState<boolean>(false);
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [description, setDescription] = useState<string>('');
-  const handleDescriptionChange = (event : any) => {
+  const handleDescriptionChange = (event: any) => {
     const newDesc = event.target.value;
     setDescription(newDesc);
   };
   const nextStep = async () => {
-    
     const {isRegistered} = await sendCode(email);
     if (isRegistered) {
-        setReason(description);
-        setDeleteAccProgress(3);
+      setReason(description);
+      setDeleteAccProgress(3);
     } else {
-
     }
-  }
+  };
   return (
     <>
-        <ContentContainer>
-            <InfoText>{data.ReasonProgress.title}</InfoText>
-            <Image src={require('../../../public/Images/delete_account_asset.jpeg')} />
-            <InfoText>{data.ReasonProgress.content}</InfoText>
-            {categories.map((categoryConstant: string) => (
-            <DeletionCategory
-                key={categoryConstant}
-                selectedCategory={category}
-                categoryConstant={categoryConstant}
-                setCategory={setCategory}
-                setIsSelected={setIsSelected}
-            />
+      <ContentContainer>
+        <InfoText>{data.ReasonProgress.title}</InfoText>
+        <Image
+          src={require('../../../public/Images/delete_account_asset.jpeg')}
+        />
+        <InfoText>{data.ReasonProgress.content}</InfoText>
+        {categories.map((categoryConstant: string) => (
+          <DeletionCategory
+            key={categoryConstant}
+            selectedCategory={category}
+            categoryConstant={categoryConstant}
+            setCategory={setCategory}
+            setIsSelected={setIsSelected}
+          />
         ))}
-        </ContentContainer>
-        {category === 'OTHER' && <DescriptionInput placeholder={data.ReasonProgress.placeholder} 
-            value={description} onChange={handleDescriptionChange} maxLength={400}
-            />}
-        <GreenLongNextButton unable={!isSelected} onClick={nextStep}>{data.ReasonProgress.next}</GreenLongNextButton>
-        </>
-  )
+      </ContentContainer>
+      {category === 'OTHER' && (
+        <DescriptionInput
+          placeholder={data.ReasonProgress.placeholder}
+          value={description}
+          onChange={handleDescriptionChange}
+          maxLength={400}
+        />
+      )}
+      <GreenLongNextButton unable={!isSelected} onClick={nextStep}>
+        {data.ReasonProgress.next}
+      </GreenLongNextButton>
+    </>
+  );
 }
 
-export default ReasonProgress
+export default ReasonProgress;

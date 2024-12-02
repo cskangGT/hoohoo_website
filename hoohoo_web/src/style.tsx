@@ -11,15 +11,13 @@ export const slideInFromTop = keyframes`
   }
 `;
 export const BgImage = styled.div<{bgcolor?: string}>`
-    /* background: url("Images/bg2.webp") center top / cover no-repeat;
+  /* background: url("Images/bg2.webp") center top / cover no-repeat;
      */
-    background-color:${props=> props.bgcolor? props.bgcolor:'#FFFEFE'} ;
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-    height: 100%;
-    max-height: 100%;
-    overflow-x: hidden;
+  background-color: ${props => (props.bgcolor ? props.bgcolor : '#FFFEFE')};
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
 `;
 export const theme: any = {
   mainNeon: '#93FF3F',
@@ -28,9 +26,10 @@ export const theme: any = {
   darkGray: '#1e1e1e',
   whiteGreen: '#E5FFD4',
   darkSky: '#191F28',
+  
   darkWhite: '#EBEBEB',
   gray: '#C4C1C1',
-  green: '#2A895F',
+  green: '#00bf63',
   blue: '#2D8BBA',
   red: '#EB4949',
   fontLarge: 26,

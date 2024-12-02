@@ -1,354 +1,403 @@
 [
-    {
-        "id": 0,
-        "image": "Images/image2.jpg",
-        "category": "Trash-Picking",
-        "date": "09-15-2023",
-        "title": "Industry tips and insights to scale your mobile app growth",
-        "desc": "Explore our library of expert advice and insights so you can act with confidence on your strategies - big or small."
-    },{
-        "id": 1,
-        "image": "Images/image2.jpg",
-        "category": "Trash-Picking",
-        "date": "09-16-2023",
-        "title": "Industry tips and insights to scale your mobile app growth",
-        "desc": "Explore our library of expert advice and insights so you can act with confidence on your strategies - big or small."
-    },{
-        "id": 2,
-        "image": "Images/image2.jpg",
-        "category": "Recycle",
-        "date": "09-16-2023",
-        "title": "Industry tips and insights to scale your mobile app growth",
-        "desc": "Explore our library of expert advice and insights so you can act with confidence on your strategies - big or small."
-    },{
-        "id": 3,
-        "image": "Images/image2.jpg",
-        "category": "Reuse",
-        "date": "09-16-2023",
-        "title": "Industry tips and insights to scale your mobile app growth",
-        "desc": "Explore our library of expert advice and insights so you can act with confidence on your strategies - big or small."
-    },{
-        "id": 4,
-        "image": "Images/image2.jpg",
-        "category": "Transportation",
-        "date": "09-18-2023",
-        "title": "Industry tips and insights to scale your mobile app growth",
-        "desc": "Explore our library of expert advice and insights so you can act with confidence on your strategies - big or small."
-    },{
-        "id": 5,
-        "image": "Images/image2.jpg",
-        "category": "Trash-Picking",
-        "date": "09-18-2023",
-        "title": "Industry tips and insights to scale your mobile app growth",
-        "desc": "Explore our library of expert advice and insights so you can act with confidence on your strategies - big or small."
-    },{
-        "id": 6,
-        "image": "Images/image2.jpg",
-        "category": "Trash-Picking",
-        "date": "09-18-2023",
-        "title": "Industry tips and insights to scale your mobile app growth",
-        "desc": "Explore our library of expert advice and insights so you can act with confidence on your strategies - big or small."
-    },{
-        "id": 7,
-        "image": "Images/image2.jpg",
-        "category": "Recycle",
-        "date": "09-19-2023",
-        "title": "Industry tips and insights to scale your mobile app growth",
-        "desc": "Explore our library of expert advice and insights so you can act with confidence on your strategies - big or small."
-    },{
-        "id": 8,
-        "image": "Images/image2.jpg",
-        "category": "Reuse",
-        "date": "09-19-2023",
-        "title": "Industry tips and insights to scale your mobile app growth",
-        "desc": "Explore our library of expert advice and insights so you can act with confidence on your strategies - big or small."
-    },{
-        "id": 9,
-        "image": "Images/image2.jpg",
-        "category": "Transportation",
-        "date": "09-19-2023",
-        "title": "Industry tips and insights to scale your mobile app growth",
-        "desc": "Explore our library of expert advice and insights so you can act with confidence on your strategies - big or small."
-    },{
-        "id": 10,
-        "image": "Images/image2.jpg",
-        "category": "Trash-Picking",
-        "date": "09-22-2023",
-        "title": "Industry tips and insights to scale your mobile app growth",
-        "desc": "Explore our library of expert advice and insights so you can act with confidence on your strategies - big or small."
-    },{
-        "id": 11,
-        "image": "Images/image2.jpg",
-        "category": "Trash-Picking",
-        "date": "09-19-2023",
-        "title": "Industry tips and insights to scale your mobile app growth",
-        "desc": "Explore our library of expert advice and insights so you can act with confidence on your strategies - big or small."
-    },{
-        "id": 12,
-        "image": "Images/image2.jpg",
-        "category": "Recycle",
-        "date": "09-20-2023",
-        "title": "Industry tips and insights to scale your mobile app growth",
-        "desc": "Explore our library of expert advice and insights so you can act with confidence on your strategies - big or small."
-    },{
-        "id": 13,
-        "image": "Images/image2.jpg",
-        "category": "Reuse",
-        "date": "09-20-2023",
-        "title": "Industry tips and insights to scale your mobile app growth",
-        "desc": "Explore our library of expert advice and insights so you can act with confidence on your strategies - big or small."
-    },{
-        "id": 14,
-        "image": "Images/image2.jpg",
-        "category": "Transportation",
-        "date": "09-20-2023",
-        "title": "Industry tips and insights to scale your mobile app growth",
-        "desc": "Explore our library of expert advice and insights so you can act with confidence on your strategies - big or small."
-    },{
-        "id": 15,
-        "image": "Images/image2.jpg",
-        "category": "Trash-Picking",
-        "date": "09-20-2023",
-        "title": "Industry tips and insights to scale your mobile app growth",
-        "desc": "Explore our library of expert advice and insights so you can act with confidence on your strategies - big or small."
-    },{
-        "id": 16,
-        "image": "Images/image2.jpg",
-        "category": "Trash-Picking",
-        "date": "09-20-2023",
-        "title": "Industry tips and insights to scale your mobile app growth",
-        "desc": "Explore our library of expert advice and insights so you can act with confidence on your strategies - big or small."
-    },{
-        "id": 17,
-        "image": "Images/image2.jpg",
-        "category": "Recycle",
-        "date": "09-20-2023",
-        "title": "Industry tips and insights to scale your mobile app growth",
-        "desc": "Explore our library of expert advice and insights so you can act with confidence on your strategies - big or small."
-    },{
-        "id": 18,
-        "image": "Images/image2.jpg",
-        "category": "Reuse",
-        "date": "09-20-2023",
-        "title": "Industry tips and insights to scale your mobile app growth",
-        "desc": "Explore our library of expert advice and insights so you can act with confidence on your strategies - big or small."
-    },{
-        "id": 19,
-        "image": "Images/image2.jpg",
-        "category": "Transportation",
-        "date": "09-21-2023",
-        "title": "Industry tips and insights to scale your mobile app growth",
-        "desc": "Explore our library of expert advice and insights so you can act with confidence on your strategies - big or small."
-    },{
-        "id": 20,
-        "image": "Images/image2.jpg",
-        "category": "Eco Product",
-        "date": "09-21-2023",
-        "title": "Industry tips and insights to scale your mobile app growth",
-        "desc": "Explore our library of expert advice and insights so you can act with confidence on your strategies - big or small."
-    },{
-        "id": 21,
-        "image": "Images/image2.jpg",
-        "category": "Trash-Picking",
-        "date": "09-22-2023",
-        "title": "Industry tips and insights to scale your mobile app growth",
-        "desc": "Explore our library of expert advice and insights so you can act with confidence on your strategies - big or small."
-    },{
-        "id": 22,
-        "image": "Images/image2.jpg",
-        "category": "Recycle",
-        "date": "09-21-2023",
-        "title": "Industry tips and insights to scale your mobile app growth",
-        "desc": "Explore our library of expert advice and insights so you can act with confidence on your strategies - big or small."
-    },{
-        "id": 23,
-        "image": "Images/image2.jpg",
-        "category": "Reuse",
-        "date": "09-21-2023",
-        "title": "Industry tips and insights to scale your mobile app growth",
-        "desc": "Explore our library of expert advice and insights so you can act with confidence on your strategies - big or small."
-    },{
-        "id": 24,
-        "image": "Images/image2.jpg",
-        "category": "Eco Product",
-        "date": "09-22-2023",
-        "title": "Industry tips and insights to scale your mobile app growth",
-        "desc": "Explore our library of expert advice and insights so you can act with confidence on your strategies - big or small."
-    },{
-        "id": 25,
-        "image": "Images/image2.jpg",
-        "category": "Trash-Picking",
-        "date": "09-22-2023",
-        "title": "Industry tips and insights to scale your mobile app growth",
-        "desc": "Explore our library of expert advice and insights so you can act with confidence on your strategies - big or small."
-    },{
-        "id": 26,
-        "image": "Images/image2.jpg",
-        "category": "Trash-Picking",
-        "date": "09-22-2023",
-        "title": "Industry tips and insights to scale your mobile app growth",
-        "desc": "Explore our library of expert advice and insights so you can act with confidence on your strategies - big or small."
-    },{
-        "id": 27,
-        "image": "Images/image2.jpg",
-        "category": "Recycle",
-        "date": "09-22-2023",
-        "title": "Industry tips and insights to scale your mobile app growth",
-        "desc": "Explore our library of expert advice and insights so you can act with confidence on your strategies - big or small."
-    },{
-        "id": 28,
-        "image": "Images/image2.jpg",
-        "category": "Eco Product",
-        "date": "09-22-2023",
-        "title": "Industry tips and insights to scale your mobile app growth",
-        "desc": "Explore our library of expert advice and insights so you can act with confidence on your strategies - big or small."
-    },{
-        "id": 29,
-        "image": "Images/image2.jpg",
-        "category": "Transportation",
-        "date": "09-22-2023",
-        "title": "Industry tips and insights to scale your mobile app growth",
-        "desc": "Explore our library of expert advice and insights so you can act with confidence on your strategies - big or small."
-    },{
-        "id": 30,
-        "image": "Images/image2.jpg",
-        "category": "Trash-Picking",
-        "date": "09-22-2023",
-        "title": "Industry tips and insights to scale your mobile app growth",
-        "desc": "Explore our library of expert advice and insights so you can act with confidence on your strategies - big or small."
-    },{
-        "id": 31,
-        "image": "Images/image2.jpg",
-        "category": "Trash-Picking",
-        "date": "09-22-2023",
-        "title": "Industry tips and insights to scale your mobile app growth",
-        "desc": "Explore our library of expert advice and insights so you can act with confidence on your strategies - big or small."
-    },{
-        "id": 32,
-        "image": "Images/image2.jpg",
-        "category": "Recycle",
-        "date": "09-22-2023",
-        "title": "Industry tips and insights to scale your mobile app growth",
-        "desc": "Explore our library of expert advice and insights so you can act with confidence on your strategies - big or small."
-    },{
-        "id": 33,
-        "image": "Images/image2.jpg",
-        "category": "Reuse",
-        "date": "09-22-2023",
-        "title": "Industry tips and insights to scale your mobile app growth",
-        "desc": "Explore our library of expert advice and insights so you can act with confidence on your strategies - big or small."
-    },{
-        "id": 34,
-        "image": "Images/image2.jpg",
-        "category": "Eco Product",
-        "date": "09-22-2023",
-        "title": "Industry tips and insights to scale your mobile app growth",
-        "desc": "Explore our library of expert advice and insights so you can act with confidence on your strategies - big or small."
-    },{
-        "id": 35,
-        "image": "Images/image2.jpg",
-        "category": "Trash-Picking",
-        "date": "09-22-2023",
-        "title": "Industry tips and insights to scale your mobile app growth",
-        "desc": "Explore our library of expert advice and insights so you can act with confidence on your strategies - big or small."
-    },{
-        "id": 36,
-        "image": "Images/image2.jpg",
-        "category": "Trash-Picking",
-        "date": "09-22-2023",
-        "title": "Industry tips and insights to scale your mobile app growth",
-        "desc": "Explore our library of expert advice and insights so you can act with confidence on your strategies - big or small."
-    },{
-        "id": 37,
-        "image": "Images/image2.jpg",
-        "category": "Recycle",
-        "date": "09-22-2023",
-        "title": "Industry tips and insights to scale your mobile app growth",
-        "desc": "Explore our library of expert advice and insights so you can act with confidence on your strategies - big or small."
-    },{
-        "id": 38,
-        "image": "Images/image2.jpg",
-        "category": "Reuse",
-        "date": "09-22-2023",
-        "title": "Industry tips and insights to scale your mobile app growth",
-        "desc": "Explore our library of expert advice and insights so you can act with confidence on your strategies - big or small."
-    },{
-        "id": 39,
-        "image": "Images/image2.jpg",
-        "category": "Transportation",
-        "date": "09-22-2023",
-        "title": "Industry tips and insights to scale your mobile app growth",
-        "desc": "Explore our library of expert advice and insights so you can act with confidence on your strategies - big or small."
-    },{
-        "id": 40,
-        "image": "Images/image2.jpg",
-        "category": "Eco Product",
-        "date": "09-24-2023",
-        "title": "Industry tips and insights to scale your mobile app growth",
-        "desc": "Explore our library of expert advice and insights so you can act with confidence on your strategies - big or small."
-    },{
-        "id": 41,
-        "image": "Images/image2.jpg",
-        "category": "Trash-Picking",
-        "date": "09-24-2023",
-        "title": "Industry tips and insights to scale your mobile app growth",
-        "desc": "Explore our library of expert advice and insights so you can act with confidence on your strategies - big or small."
-    },{
-        "id": 42,
-        "image": "Images/image2.jpg",
-        "category": "Recycle",
-        "date": "09-22-2023",
-        "title": "Industry tips and insights to scale your mobile app growth",
-        "desc": "Explore our library of expert advice and insights so you can act with confidence on your strategies - big or small."
-    },{
-        "id": 43,
-        "image": "Images/image2.jpg",
-        "category": "Reuse",
-        "date": "09-25-2023",
-        "title": "Industry tips and insights to scale your mobile app growth",
-        "desc": "Explore our library of expert advice and insights so you can act with confidence on your strategies - big or small."
-    },{
-        "id": 44,
-        "image": "Images/image2.jpg",
-        "category": "Transportation",
-        "date": "09-25-2023",
-        "title": "Industry tips and insights to scale your mobile app growth",
-        "desc": "Explore our library of expert advice and insights so you can act with confidence on your strategies - big or small.",
-        "long": "High-value mobile gamers and how to identify them \n According to Business of Apps, 48.2% of mobile app revenue comes from in-app purchases (IAP)2. To drill down further, the vast majority of this revenue is generated by a small percentage of users. Some studies show that as little as 2% of a mobile game’s player base generates up to 95% of IAP revenue3. \nThese high-value mobile gamers are the key to generating profitable revenue. Therefore, mobile marketers must adjust their strategies to find, target, and acquire these users at a sustainable rate, thus ensuring your mobile game can profit and grow. \nTo do so, you must first know how to identify which of your current players can be identified as high-value users. This can be achieved by examining a few core metrics, including:\nIn-app purchases: Which of your players are making in-app purchases. Which players spend more than once? Examine the total amount of purchases, frequency of purchases, and the amount of money users spend.Average revenue per user (ARPU): Higher-value users will have a greater ARPU rate than the majority of players. Revenue can also be measured among spenders by measuring ARPPU (average revenue per paying user).\nRetention rate/Average minutes played: The more players return to your game and the longer players spend playing it, the more likely they are to spend money.Lifetime value (LTV): The ultimate metric for determining how much users are worth once acquired, which considers how much revenue a user will generate over their lifetime of using the app.Once you’ve identified a few critical metrics, then you need to work closely with your data team to perform an audience segmentation exercise to determine which players sit at the top your chosen metrics. Once you know who to look for, you can then implement one (or several) of the following strategies to maximize your high-value user acquisition efforts.\n5 strategies for acquiring high-value users 1. Utilize lookalike audiences to target an audience similar to your highest-value players."
-    },{
-        "id": 45,
-        "image": "Images/image2.jpg",
-        "category": "Trash-Picking",
-        "date": "09-22-2023",
-        "title": "Industry tips and insights to scale your mobile app growth",
-        "desc": "Explore our library of expert advice and insights so you can act with confidence on your strategies - big or small."
-    },{
-        "id": 46,
-        "image": "Images/image2.jpg",
-        "category": "Trash-Picking",
-        "date": "09-26-2023",
-        "title": "Industry tips and insights to scale your mobile app growth",
-        "desc": "Explore our library of expert advice and insights so you can act with confidence on your strategies - big or small."
-    },{
-        "id": 47,
-        "image": "Images/image2.jpg",
-        "category": "Recycle",
-        "date": "09-22-2023",
-        "title": "Industry tips and insights to scale your mobile app growth",
-        "desc": "Explore our library of expert advice and insights so you can act with confidence on your strategies - big or small."
-    },{
-        "id": 48,
-        "image": "Images/image2.jpg",
-        "category": "Reuse",
-        "date": "09-28-2023",
-        "title": "Industry tips and insights to scale your mobile app growth",
-        "desc": "Explore our library of expert advice and insights so you can act with confidence on your strategies - big or small."
-    },{
-        "id": 49,
-        "image": "Images/image2.jpg",
-        "category": "Transportation",
-        "date": "09-22-2023",
-        "title": "Industry tips and insights to scale your mobile app growth",
-        "desc": "Explore our library of expert advice and insights so you can act with confidence on your strategies - big or small."
-    }
+  {
+    "id": 0,
+    "image": "Images/image2.jpg",
+    "category": "Trash-Picking",
+    "date": "09-15-2023",
+    "title": "Industry tips and insights to scale your mobile app growth",
+    "desc": "Explore our library of expert advice and insights so you can act with confidence on your strategies - big or small."
+  },
+  {
+    "id": 1,
+    "image": "Images/image2.jpg",
+    "category": "Trash-Picking",
+    "date": "09-16-2023",
+    "title": "Industry tips and insights to scale your mobile app growth",
+    "desc": "Explore our library of expert advice and insights so you can act with confidence on your strategies - big or small."
+  },
+  {
+    "id": 2,
+    "image": "Images/image2.jpg",
+    "category": "Recycle",
+    "date": "09-16-2023",
+    "title": "Industry tips and insights to scale your mobile app growth",
+    "desc": "Explore our library of expert advice and insights so you can act with confidence on your strategies - big or small."
+  },
+  {
+    "id": 3,
+    "image": "Images/image2.jpg",
+    "category": "Reuse",
+    "date": "09-16-2023",
+    "title": "Industry tips and insights to scale your mobile app growth",
+    "desc": "Explore our library of expert advice and insights so you can act with confidence on your strategies - big or small."
+  },
+  {
+    "id": 4,
+    "image": "Images/image2.jpg",
+    "category": "Transportation",
+    "date": "09-18-2023",
+    "title": "Industry tips and insights to scale your mobile app growth",
+    "desc": "Explore our library of expert advice and insights so you can act with confidence on your strategies - big or small."
+  },
+  {
+    "id": 5,
+    "image": "Images/image2.jpg",
+    "category": "Trash-Picking",
+    "date": "09-18-2023",
+    "title": "Industry tips and insights to scale your mobile app growth",
+    "desc": "Explore our library of expert advice and insights so you can act with confidence on your strategies - big or small."
+  },
+  {
+    "id": 6,
+    "image": "Images/image2.jpg",
+    "category": "Trash-Picking",
+    "date": "09-18-2023",
+    "title": "Industry tips and insights to scale your mobile app growth",
+    "desc": "Explore our library of expert advice and insights so you can act with confidence on your strategies - big or small."
+  },
+  {
+    "id": 7,
+    "image": "Images/image2.jpg",
+    "category": "Recycle",
+    "date": "09-19-2023",
+    "title": "Industry tips and insights to scale your mobile app growth",
+    "desc": "Explore our library of expert advice and insights so you can act with confidence on your strategies - big or small."
+  },
+  {
+    "id": 8,
+    "image": "Images/image2.jpg",
+    "category": "Reuse",
+    "date": "09-19-2023",
+    "title": "Industry tips and insights to scale your mobile app growth",
+    "desc": "Explore our library of expert advice and insights so you can act with confidence on your strategies - big or small."
+  },
+  {
+    "id": 9,
+    "image": "Images/image2.jpg",
+    "category": "Transportation",
+    "date": "09-19-2023",
+    "title": "Industry tips and insights to scale your mobile app growth",
+    "desc": "Explore our library of expert advice and insights so you can act with confidence on your strategies - big or small."
+  },
+  {
+    "id": 10,
+    "image": "Images/image2.jpg",
+    "category": "Trash-Picking",
+    "date": "09-22-2023",
+    "title": "Industry tips and insights to scale your mobile app growth",
+    "desc": "Explore our library of expert advice and insights so you can act with confidence on your strategies - big or small."
+  },
+  {
+    "id": 11,
+    "image": "Images/image2.jpg",
+    "category": "Trash-Picking",
+    "date": "09-19-2023",
+    "title": "Industry tips and insights to scale your mobile app growth",
+    "desc": "Explore our library of expert advice and insights so you can act with confidence on your strategies - big or small."
+  },
+  {
+    "id": 12,
+    "image": "Images/image2.jpg",
+    "category": "Recycle",
+    "date": "09-20-2023",
+    "title": "Industry tips and insights to scale your mobile app growth",
+    "desc": "Explore our library of expert advice and insights so you can act with confidence on your strategies - big or small."
+  },
+  {
+    "id": 13,
+    "image": "Images/image2.jpg",
+    "category": "Reuse",
+    "date": "09-20-2023",
+    "title": "Industry tips and insights to scale your mobile app growth",
+    "desc": "Explore our library of expert advice and insights so you can act with confidence on your strategies - big or small."
+  },
+  {
+    "id": 14,
+    "image": "Images/image2.jpg",
+    "category": "Transportation",
+    "date": "09-20-2023",
+    "title": "Industry tips and insights to scale your mobile app growth",
+    "desc": "Explore our library of expert advice and insights so you can act with confidence on your strategies - big or small."
+  },
+  {
+    "id": 15,
+    "image": "Images/image2.jpg",
+    "category": "Trash-Picking",
+    "date": "09-20-2023",
+    "title": "Industry tips and insights to scale your mobile app growth",
+    "desc": "Explore our library of expert advice and insights so you can act with confidence on your strategies - big or small."
+  },
+  {
+    "id": 16,
+    "image": "Images/image2.jpg",
+    "category": "Trash-Picking",
+    "date": "09-20-2023",
+    "title": "Industry tips and insights to scale your mobile app growth",
+    "desc": "Explore our library of expert advice and insights so you can act with confidence on your strategies - big or small."
+  },
+  {
+    "id": 17,
+    "image": "Images/image2.jpg",
+    "category": "Recycle",
+    "date": "09-20-2023",
+    "title": "Industry tips and insights to scale your mobile app growth",
+    "desc": "Explore our library of expert advice and insights so you can act with confidence on your strategies - big or small."
+  },
+  {
+    "id": 18,
+    "image": "Images/image2.jpg",
+    "category": "Reuse",
+    "date": "09-20-2023",
+    "title": "Industry tips and insights to scale your mobile app growth",
+    "desc": "Explore our library of expert advice and insights so you can act with confidence on your strategies - big or small."
+  },
+  {
+    "id": 19,
+    "image": "Images/image2.jpg",
+    "category": "Transportation",
+    "date": "09-21-2023",
+    "title": "Industry tips and insights to scale your mobile app growth",
+    "desc": "Explore our library of expert advice and insights so you can act with confidence on your strategies - big or small."
+  },
+  {
+    "id": 20,
+    "image": "Images/image2.jpg",
+    "category": "Eco Product",
+    "date": "09-21-2023",
+    "title": "Industry tips and insights to scale your mobile app growth",
+    "desc": "Explore our library of expert advice and insights so you can act with confidence on your strategies - big or small."
+  },
+  {
+    "id": 21,
+    "image": "Images/image2.jpg",
+    "category": "Trash-Picking",
+    "date": "09-22-2023",
+    "title": "Industry tips and insights to scale your mobile app growth",
+    "desc": "Explore our library of expert advice and insights so you can act with confidence on your strategies - big or small."
+  },
+  {
+    "id": 22,
+    "image": "Images/image2.jpg",
+    "category": "Recycle",
+    "date": "09-21-2023",
+    "title": "Industry tips and insights to scale your mobile app growth",
+    "desc": "Explore our library of expert advice and insights so you can act with confidence on your strategies - big or small."
+  },
+  {
+    "id": 23,
+    "image": "Images/image2.jpg",
+    "category": "Reuse",
+    "date": "09-21-2023",
+    "title": "Industry tips and insights to scale your mobile app growth",
+    "desc": "Explore our library of expert advice and insights so you can act with confidence on your strategies - big or small."
+  },
+  {
+    "id": 24,
+    "image": "Images/image2.jpg",
+    "category": "Eco Product",
+    "date": "09-22-2023",
+    "title": "Industry tips and insights to scale your mobile app growth",
+    "desc": "Explore our library of expert advice and insights so you can act with confidence on your strategies - big or small."
+  },
+  {
+    "id": 25,
+    "image": "Images/image2.jpg",
+    "category": "Trash-Picking",
+    "date": "09-22-2023",
+    "title": "Industry tips and insights to scale your mobile app growth",
+    "desc": "Explore our library of expert advice and insights so you can act with confidence on your strategies - big or small."
+  },
+  {
+    "id": 26,
+    "image": "Images/image2.jpg",
+    "category": "Trash-Picking",
+    "date": "09-22-2023",
+    "title": "Industry tips and insights to scale your mobile app growth",
+    "desc": "Explore our library of expert advice and insights so you can act with confidence on your strategies - big or small."
+  },
+  {
+    "id": 27,
+    "image": "Images/image2.jpg",
+    "category": "Recycle",
+    "date": "09-22-2023",
+    "title": "Industry tips and insights to scale your mobile app growth",
+    "desc": "Explore our library of expert advice and insights so you can act with confidence on your strategies - big or small."
+  },
+  {
+    "id": 28,
+    "image": "Images/image2.jpg",
+    "category": "Eco Product",
+    "date": "09-22-2023",
+    "title": "Industry tips and insights to scale your mobile app growth",
+    "desc": "Explore our library of expert advice and insights so you can act with confidence on your strategies - big or small."
+  },
+  {
+    "id": 29,
+    "image": "Images/image2.jpg",
+    "category": "Transportation",
+    "date": "09-22-2023",
+    "title": "Industry tips and insights to scale your mobile app growth",
+    "desc": "Explore our library of expert advice and insights so you can act with confidence on your strategies - big or small."
+  },
+  {
+    "id": 30,
+    "image": "Images/image2.jpg",
+    "category": "Trash-Picking",
+    "date": "09-22-2023",
+    "title": "Industry tips and insights to scale your mobile app growth",
+    "desc": "Explore our library of expert advice and insights so you can act with confidence on your strategies - big or small."
+  },
+  {
+    "id": 31,
+    "image": "Images/image2.jpg",
+    "category": "Trash-Picking",
+    "date": "09-22-2023",
+    "title": "Industry tips and insights to scale your mobile app growth",
+    "desc": "Explore our library of expert advice and insights so you can act with confidence on your strategies - big or small."
+  },
+  {
+    "id": 32,
+    "image": "Images/image2.jpg",
+    "category": "Recycle",
+    "date": "09-22-2023",
+    "title": "Industry tips and insights to scale your mobile app growth",
+    "desc": "Explore our library of expert advice and insights so you can act with confidence on your strategies - big or small."
+  },
+  {
+    "id": 33,
+    "image": "Images/image2.jpg",
+    "category": "Reuse",
+    "date": "09-22-2023",
+    "title": "Industry tips and insights to scale your mobile app growth",
+    "desc": "Explore our library of expert advice and insights so you can act with confidence on your strategies - big or small."
+  },
+  {
+    "id": 34,
+    "image": "Images/image2.jpg",
+    "category": "Eco Product",
+    "date": "09-22-2023",
+    "title": "Industry tips and insights to scale your mobile app growth",
+    "desc": "Explore our library of expert advice and insights so you can act with confidence on your strategies - big or small."
+  },
+  {
+    "id": 35,
+    "image": "Images/image2.jpg",
+    "category": "Trash-Picking",
+    "date": "09-22-2023",
+    "title": "Industry tips and insights to scale your mobile app growth",
+    "desc": "Explore our library of expert advice and insights so you can act with confidence on your strategies - big or small."
+  },
+  {
+    "id": 36,
+    "image": "Images/image2.jpg",
+    "category": "Trash-Picking",
+    "date": "09-22-2023",
+    "title": "Industry tips and insights to scale your mobile app growth",
+    "desc": "Explore our library of expert advice and insights so you can act with confidence on your strategies - big or small."
+  },
+  {
+    "id": 37,
+    "image": "Images/image2.jpg",
+    "category": "Recycle",
+    "date": "09-22-2023",
+    "title": "Industry tips and insights to scale your mobile app growth",
+    "desc": "Explore our library of expert advice and insights so you can act with confidence on your strategies - big or small."
+  },
+  {
+    "id": 38,
+    "image": "Images/image2.jpg",
+    "category": "Reuse",
+    "date": "09-22-2023",
+    "title": "Industry tips and insights to scale your mobile app growth",
+    "desc": "Explore our library of expert advice and insights so you can act with confidence on your strategies - big or small."
+  },
+  {
+    "id": 39,
+    "image": "Images/image2.jpg",
+    "category": "Transportation",
+    "date": "09-22-2023",
+    "title": "Industry tips and insights to scale your mobile app growth",
+    "desc": "Explore our library of expert advice and insights so you can act with confidence on your strategies - big or small."
+  },
+  {
+    "id": 40,
+    "image": "Images/image2.jpg",
+    "category": "Eco Product",
+    "date": "09-24-2023",
+    "title": "Industry tips and insights to scale your mobile app growth",
+    "desc": "Explore our library of expert advice and insights so you can act with confidence on your strategies - big or small."
+  },
+  {
+    "id": 41,
+    "image": "Images/image2.jpg",
+    "category": "Trash-Picking",
+    "date": "09-24-2023",
+    "title": "Industry tips and insights to scale your mobile app growth",
+    "desc": "Explore our library of expert advice and insights so you can act with confidence on your strategies - big or small."
+  },
+  {
+    "id": 42,
+    "image": "Images/image2.jpg",
+    "category": "Recycle",
+    "date": "09-22-2023",
+    "title": "Industry tips and insights to scale your mobile app growth",
+    "desc": "Explore our library of expert advice and insights so you can act with confidence on your strategies - big or small."
+  },
+  {
+    "id": 43,
+    "image": "Images/image2.jpg",
+    "category": "Reuse",
+    "date": "09-25-2023",
+    "title": "Industry tips and insights to scale your mobile app growth",
+    "desc": "Explore our library of expert advice and insights so you can act with confidence on your strategies - big or small."
+  },
+  {
+    "id": 44,
+    "image": "Images/image2.jpg",
+    "category": "Transportation",
+    "date": "09-25-2023",
+    "title": "Industry tips and insights to scale your mobile app growth",
+    "desc": "Explore our library of expert advice and insights so you can act with confidence on your strategies - big or small.",
+    "long": "High-value mobile gamers and how to identify them \n According to Business of Apps, 48.2% of mobile app revenue comes from in-app purchases (IAP)2. To drill down further, the vast majority of this revenue is generated by a small percentage of users. Some studies show that as little as 2% of a mobile game’s player base generates up to 95% of IAP revenue3. \nThese high-value mobile gamers are the key to generating profitable revenue. Therefore, mobile marketers must adjust their strategies to find, target, and acquire these users at a sustainable rate, thus ensuring your mobile game can profit and grow. \nTo do so, you must first know how to identify which of your current players can be identified as high-value users. This can be achieved by examining a few core metrics, including:\nIn-app purchases: Which of your players are making in-app purchases. Which players spend more than once? Examine the total amount of purchases, frequency of purchases, and the amount of money users spend.Average revenue per user (ARPU): Higher-value users will have a greater ARPU rate than the majority of players. Revenue can also be measured among spenders by measuring ARPPU (average revenue per paying user).\nRetention rate/Average minutes played: The more players return to your game and the longer players spend playing it, the more likely they are to spend money.Lifetime value (LTV): The ultimate metric for determining how much users are worth once acquired, which considers how much revenue a user will generate over their lifetime of using the app.Once you’ve identified a few critical metrics, then you need to work closely with your data team to perform an audience segmentation exercise to determine which players sit at the top your chosen metrics. Once you know who to look for, you can then implement one (or several) of the following strategies to maximize your high-value user acquisition efforts.\n5 strategies for acquiring high-value users 1. Utilize lookalike audiences to target an audience similar to your highest-value players."
+  },
+  {
+    "id": 45,
+    "image": "Images/image2.jpg",
+    "category": "Trash-Picking",
+    "date": "09-22-2023",
+    "title": "Industry tips and insights to scale your mobile app growth",
+    "desc": "Explore our library of expert advice and insights so you can act with confidence on your strategies - big or small."
+  },
+  {
+    "id": 46,
+    "image": "Images/image2.jpg",
+    "category": "Trash-Picking",
+    "date": "09-26-2023",
+    "title": "Industry tips and insights to scale your mobile app growth",
+    "desc": "Explore our library of expert advice and insights so you can act with confidence on your strategies - big or small."
+  },
+  {
+    "id": 47,
+    "image": "Images/image2.jpg",
+    "category": "Recycle",
+    "date": "09-22-2023",
+    "title": "Industry tips and insights to scale your mobile app growth",
+    "desc": "Explore our library of expert advice and insights so you can act with confidence on your strategies - big or small."
+  },
+  {
+    "id": 48,
+    "image": "Images/image2.jpg",
+    "category": "Reuse",
+    "date": "09-28-2023",
+    "title": "Industry tips and insights to scale your mobile app growth",
+    "desc": "Explore our library of expert advice and insights so you can act with confidence on your strategies - big or small."
+  },
+  {
+    "id": 49,
+    "image": "Images/image2.jpg",
+    "category": "Transportation",
+    "date": "09-22-2023",
+    "title": "Industry tips and insights to scale your mobile app growth",
+    "desc": "Explore our library of expert advice and insights so you can act with confidence on your strategies - big or small."
+  }
 ]

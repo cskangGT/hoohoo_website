@@ -1,33 +1,33 @@
-import React, { useEffect } from 'react';
-import styled from 'styled-components';
-import { theme } from '../../style';
 import DOMPurify from 'dompurify';
+import React, {useEffect} from 'react';
+import styled from 'styled-components';
 import Wrapper from '../../Component/Wrapper/Wrapper';
+import {theme} from '../../style';
 const Background = styled.div`
   width: 100%;
   height: 100%;
   background-color: #dadada;
 `;
 const Container = styled.div`
-    width: 100%;
-    max-width: 1100px;
-    display: flex;
-    margin: 0px auto;
-    justify-content: flex-start;
-    align-items: center;
-    position: relative;
-    transition: all 0.2s ease 0s;
-    padding: 5rem 15px;
-    margin-top: 70px;
+  width: 100%;
+  max-width: 1100px;
+  display: flex;
+  margin: 0px auto;
+  justify-content: flex-start;
+  align-items: center;
+  position: relative;
+  transition: all 0.2s ease 0s;
+  padding: 5rem 15px;
+  margin-top: 70px;
 `;
 const ContentBox = styled.div`
-    max-width: 1100px;
-    display: flex;
-    flex-direction: column;
-    position: relative;
-    width: 100%;
-    justify-content: center;
-    color: ${theme.darkGray};
+  max-width: 1100px;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  width: 100%;
+  justify-content: center;
+  color: ${theme.darkGray};
 `;
 function TandC() {
   const sanitizer = DOMPurify.sanitize;
@@ -155,11 +155,11 @@ function TandC() {
       <Wrapper>
         <Container>
           <ContentBox>
-            <div dangerouslySetInnerHTML={{ __html: privacyPolicyHTML }} />
+            <div dangerouslySetInnerHTML={{__html: privacyPolicyHTML}} />
           </ContentBox>
         </Container>
       </Wrapper>
     </Background>
-  )
+  );
 }
 export default TandC;

@@ -1,33 +1,33 @@
-import React, { useEffect } from 'react';
+import React, {useEffect} from 'react';
 import styled from 'styled-components';
-import DropBIntro from './DropBIntro';
-import Download from '../Home/Download';
 import Wrapper from '../../Component/Wrapper/Wrapper';
-import { BgImage } from '../../style';
+import {BgImage} from '../../style';
+import Download from '../Home/Download';
+import DropBIntro from './DropBIntro';
 const ContentBox = styled.section`
-    padding-top: 20px;
-    justify-content: center;
+  padding-top: 20px;
+  justify-content: center;
   width: 100%;
   display: flex;
 `;
 
 function MainDropB() {
-    useEffect(() => {
-        window.scrollTo(0, 0);
-    }, []);
-    return (
-        <BgImage>
-            <Wrapper>
-                <React.Fragment >
-                    <ContentBox id="sketch">
-                        <DropBIntro />
-                    </ContentBox>
-                    <ContentBox id="download_dropb">
-                        <Download dropb={true} />
-                    </ContentBox>
-                </React.Fragment>
-            </Wrapper>
-        </BgImage>
-    )
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+  return (
+    <BgImage>
+      <Wrapper>
+        <React.Fragment>
+          <ContentBox id="sketch">
+            <DropBIntro />
+          </ContentBox>
+          <ContentBox id="download_dropb">
+            <Download dropb={true} />
+          </ContentBox>
+        </React.Fragment>
+      </Wrapper>
+    </BgImage>
+  );
 }
-export default MainDropB
+export default MainDropB;

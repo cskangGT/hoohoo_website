@@ -1,5 +1,5 @@
 function ErrorComponent() {
-    return <h1>This component Crashed</h1>
+  return <h1>This component Crashed</h1>;
 }
 
-export default ErrorComponent
+export default ErrorComponent;

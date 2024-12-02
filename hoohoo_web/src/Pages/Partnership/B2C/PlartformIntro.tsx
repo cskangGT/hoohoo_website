@@ -1,11 +1,11 @@
+import i18next from 'i18next';
 import React from 'react';
 import styled from 'styled-components';
-import { slideInFromTop } from '../../../style';
-import i18next from 'i18next';
-import Wrapper from '../../../Component/Wrapper/Wrapper';
 import TwoColBoxesSection from '../../../Component/ContentBox/TwoColBoxesSection';
+import Wrapper from '../../../Component/Wrapper/Wrapper';
+import {slideInFromTop} from '../../../style';
 const Bg = styled.div`
-  width:calc(100%);
+  width: calc(100%);
   animation: ${slideInFromTop} 0.7s ease-out forwards;
   background-image: url('Images/platform1pbg.png');
   background-size: cover;
@@ -16,20 +16,24 @@ const Bg = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  @media screen and (max-width: 1000px){
+  @media screen and (max-width: 1000px) {
     height: auto;
   }
 `;
 
-function PlatformIntro() {   
-    const data : any = i18next.t('platform1p', { returnObjects: true });
-    return (
-        <Bg>
-            <Wrapper>
-                <TwoColBoxesSection data={data} rightImage={true} descStyle={{color: 'white', fontSize: 24}}
-                    headerStyle={{color:'white'}} />
-            </Wrapper>
-        </Bg>
-    )
+function PlatformIntro() {
+  const data: any = i18next.t('platform1p', {returnObjects: true});
+  return (
+    <Bg>
+      <Wrapper>
+        <TwoColBoxesSection
+          data={data}
+          rightImage={true}
+          descStyle={{color: 'white', fontSize: 24}}
+          headerStyle={{color: 'white'}}
+        />
+      </Wrapper>
+    </Bg>
+  );
 }
 export default PlatformIntro;

@@ -1,15 +1,15 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import { RouterProvider } from 'react-router-dom';
-import Router from './Router';
-import { createGlobalStyle } from 'styled-components';
+import {RouterProvider} from 'react-router-dom';
+import {createGlobalStyle} from 'styled-components';
+import YanoljaYacheBTtf from '../public/fonts/YanoljaYacheB.ttf';
+import YanoljaYacheBWoff from '../public/fonts/YanoljaYacheB.woff';
+import YanoljaYacheBWoff2 from '../public/fonts/YanoljaYacheB.woff2';
+import YanoljaYacheTtf from '../public/fonts/YanoljaYacheR.ttf';
+import YanoljaYacheWoff from '../public/fonts/YanoljaYacheR.woff';
+import YanoljaYacheWoff2 from '../public/fonts/YanoljaYacheR.woff2';
 import './lang/i18n';
-import YanoljaYacheTtf from '../public/fonts/YanoljaYacheR.ttf'
-import YanoljaYacheWoff from '../public/fonts/YanoljaYacheR.woff'
-import YanoljaYacheWoff2 from '../public/fonts/YanoljaYacheR.woff2'
-import YanoljaYacheBTtf from '../public/fonts/YanoljaYacheB.ttf'
-import YanoljaYacheBWoff from '../public/fonts/YanoljaYacheB.woff'
-import YanoljaYacheBWoff2 from '../public/fonts/YanoljaYacheB.woff2'
+import Router from './Router';
 
 const GlobalStyle = createGlobalStyle`
     @font-face {
@@ -31,9 +31,7 @@ const GlobalStyle = createGlobalStyle`
       scroll-behavior: smooth;
     }
 `;
-const root = ReactDOM.createRoot(
-  document.getElementById('root')
-);
+const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
     <GlobalStyle />

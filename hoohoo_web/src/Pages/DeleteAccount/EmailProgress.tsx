@@ -1,10 +1,9 @@
-import React, { useEffect, useState } from 'react';
-import styled from 'styled-components';
 import i18next from 'i18next';
-import { ModalTitle } from './BaseProgress';
-import { theme } from '../../style';
-import { throttle } from '../../util/throttle';
-import { lookupEmail } from '../../api/deleteAcc';
+import React, {useEffect, useState} from 'react';
+import styled from 'styled-components';
+import {lookupEmail} from '../../api/deleteAcc';
+import {theme} from '../../style';
+import {throttle} from '../../util/throttle';
 
 const InfoHintText = styled.p`
   font-size: 16px;
@@ -43,30 +42,33 @@ export const EmailInput = styled.input`
   height: 55px;
   font-size: 20px;
   color: ${theme.white};
-  padding: 10px ;
-  background-color: rgba(79,79,79,0.4);
+  padding: 10px;
+  background-color: rgba(79, 79, 79, 0.4);
   outline: none;
   border-width: 1px;
   box-shadow: 0px 4px 20px 0px transparent;
-  transition: 0.3s background-color ease-in-out, 0.3s box-shadow ease-in-out, 0.1s padding ease-in-out;
+  transition:
+    0.3s background-color ease-in-out,
+    0.3s box-shadow ease-in-out,
+    0.1s padding ease-in-out;
   &::placeholder {
     color: rgba(255, 255, 255, 0.8);
   }
   &:focus {
-    border-color: #21FF37;
+    border-color: #21ff37;
   }
   @media screen and (max-width: 800px) {
-      font-size: 18px;
-      height: 50px;
-    }
-    @media screen and (max-width: 600px) {
-      font-size: 16px;
-      height: 45px;
-    }
+    font-size: 18px;
+    height: 50px;
+  }
+  @media screen and (max-width: 600px) {
+    font-size: 16px;
+    height: 45px;
+  }
   @media screen and (max-width: 400px) {
-      font-size: 16px;
-      height: 40px;
-    }
+    font-size: 16px;
+    height: 40px;
+  }
 `;
 
 export const GreenLongNextButton = styled.a<{unable: boolean}>`
@@ -88,63 +90,64 @@ export const GreenLongNextButton = styled.a<{unable: boolean}>`
   justify-content: center;
 `;
 type Props = {
-    setDeleteAccProgress: React.Dispatch<React.SetStateAction<number>>;
-    setEmail : React.Dispatch<React.SetStateAction<string>>;
-    email: string;
-}
-function EmailProgress({setDeleteAccProgress,email, setEmail}: Props) {
-    const data : any = i18next.t('ManageAccModal', { returnObjects: true });
-    const [emailError, setEmailError] = useState<string>('');
-    const [disable, setDisable] = useState<boolean>(true);
-    
-    useEffect(()=> {
-        const checkEmail = async () => {
-            if (email.length > 5) {
-                setDisable(false);
-            }
-        }
-        checkEmail();
-    }, [email])
-    const handleEmailChange = (event : any) => {
-        const newEmail = event.target.value;
-        setEmail(newEmail);
-        
-      };
-      const validateEmail = async (email: string) => {
-        const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-        if (!regex.test(email)) {
-          setEmailError(data.emailProgress.error);
-          return false;
-        } else {
-          setEmailError('');
-          return true;
-        }
-      };
-      const sendEmail = throttle(async () => {
-        const isValid = await validateEmail(email);
-        if (isValid) {
-            const {isRegistered} = await lookupEmail(email);
-            console.log('isRegistered', isRegistered)
-            if (isRegistered) {
-                setDeleteAccProgress(2);
-            } else {
-                setEmailError(data.emailProgress.incorrect);
-            }
-        }
-      }, 500);
-      
+  setDeleteAccProgress: React.Dispatch<React.SetStateAction<number>>;
+  setEmail: React.Dispatch<React.SetStateAction<string>>;
+  email: string;
+};
+function EmailProgress({setDeleteAccProgress, email, setEmail}: Props) {
+  const data: any = i18next.t('ManageAccModal', {returnObjects: true});
+  const [emailError, setEmailError] = useState<string>('');
+  const [disable, setDisable] = useState<boolean>(true);
 
-  
+  useEffect(() => {
+    const checkEmail = async () => {
+      if (email.length > 5) {
+        setDisable(false);
+      }
+    };
+    checkEmail();
+  }, [email]);
+  const handleEmailChange = (event: any) => {
+    const newEmail = event.target.value;
+    setEmail(newEmail);
+  };
+  const validateEmail = async (email: string) => {
+    const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!regex.test(email)) {
+      setEmailError(data.emailProgress.error);
+      return false;
+    } else {
+      setEmailError('');
+      return true;
+    }
+  };
+  const sendEmail = throttle(async () => {
+    const isValid = await validateEmail(email);
+    if (isValid) {
+      const {isRegistered} = await lookupEmail(email);
+      console.log('isRegistered', isRegistered);
+      if (isRegistered) {
+        setDeleteAccProgress(2);
+      } else {
+        setEmailError(data.emailProgress.incorrect);
+      }
+    }
+  }, 500);
+
   return (
     <>
-        <InfoHintText>
-            {data.emailProgress.info}
-        </InfoHintText>
-        <EmailInput placeholder='Email' value={email} onChange={handleEmailChange} />
-        {emailError && <InfoErrorText>{emailError}</InfoErrorText>}
-        <GreenLongNextButton unable={disable} onClick={sendEmail}>{data.emailProgress.next}</GreenLongNextButton>
-        </>
-  )
+      <InfoHintText>{data.emailProgress.info}</InfoHintText>
+      <EmailInput
+        placeholder="Email"
+        value={email}
+        onChange={handleEmailChange}
+      />
+      {emailError && <InfoErrorText>{emailError}</InfoErrorText>}
+      <GreenLongNextButton unable={disable} onClick={sendEmail}>
+        {data.emailProgress.next}
+      </GreenLongNextButton>
+    </>
+  );
 }
 
-export default EmailProgress
+export default EmailProgress;

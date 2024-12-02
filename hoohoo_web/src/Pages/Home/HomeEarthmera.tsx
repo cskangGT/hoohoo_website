@@ -1,22 +1,21 @@
-import React, { useEffect, useRef } from 'react';
+import React, {useEffect, useRef, useState} from 'react';
 import styled from 'styled-components';
-import IntroSection from './IntroSection';
 
-
-import { BgImage, theme } from '../../style';
-import IntroEarth from './IntroEarth';
-import { ContentBox } from '../About/Vision/EarthMeraVision';
-import VideoSection from './Video';
-import Download from './Download';
-import { useLocation, useNavigate } from 'react-router-dom';
+import {useLocation, useNavigate} from 'react-router-dom';
 import FootContact from '../../Component/Footer/FootContact';
+import {BgImage, theme} from '../../style';
+import {ContentBox} from '../About/Vision/EarthMeraVision';
+import Download from './Download';
 import HomeIntroPage from './HomeIntroPage';
+
 import HomePlatform from './HomePlatform';
-import HomePartnership from './HomePartnership';
-import HomeTicketeer from './HomeTicketeer';
+
+import HomePlatformGroup from './sections/HomePlatformGroup';
+import HomePlatformShare from './sections/HomePlatformShare';
+import HomePartnership from './sections/HomePartnership';
 const Wrap = styled.div`
   width: calc(100%);
-  max-width: 1300px; 
+  max-width: 1300px;
   margin: 0 auto;
   @media screen and (max-width: 1400px) {
     max-width: 1300px;
@@ -42,35 +41,53 @@ const Wrap = styled.div`
   }
 `;
 
-
 function HomeEarthmera() {
   const location = useLocation();
-    const navigate = useNavigate();
-  useEffect(()=> {
+  const navigate = useNavigate();
+  const [isOpen, setIsOpen] = useState<boolean>(false);
+
+  useEffect(() => {
     const hash = decodeURIComponent(location.hash.replace('#', ''));
     if (hash) {
+      // const [pageWithHash, query] = hash.split('?');
+      // const page = pageWithHash.split('#')[0]; // 페이지 이름 추출
+      // const params = new URLSearchParams(query);
       const [page, query] = hash.split('#?');
       const params = new URLSearchParams(query);
       const link = params.toString();
-      
-      if (link) {
 
-        navigate(`/${page}?link=${link}`);
+      if (link) {
+        navigate(`/${page}?${link}`);
       } else {
         navigate(`/${page}`);
       }
-    } else if (location.hash === '#download' ){
-      setTimeout(() => {
-          if (sectionRef.current) {
-              sectionRef.current.scrollIntoView({ behavior: 'smooth' });
-          }
-      }, 100);
-    
-    } else {
-        window.scrollTo(0, 0);
     }
-  }, [location, navigate]);
-    const sectionRef = useRef<HTMLDivElement>(null);
+  }, []);
+  // useEffect(()=> {
+  //   const hash = decodeURIComponent(location.hash.replace('#', ''));
+  //   if (hash) {
+  //     const [page, query] = hash.split('#?');
+  //     const params = new URLSearchParams(query);
+  //     const link = params.toString();
+
+  //     if (link) {
+
+  //       navigate(`/${page}?link=${link}`);
+  //     } else {
+  //       navigate(`/${page}`);
+  //     }
+  //   } else if (location.hash === '#download' ){
+  //     setTimeout(() => {
+  //         if (sectionRef.current) {
+  //             sectionRef.current.scrollIntoView({ behavior: 'smooth' });
+  //         }
+  //     }, 100);
+
+  //   } else {
+  //       window.scrollTo(0, 0);
+  //   }
+  // }, [location, navigate]);
+  const sectionRef = useRef<HTMLDivElement>(null);
   return (
     <BgImage>
       <ContentBox>
@@ -80,24 +97,28 @@ function HomeEarthmera() {
         <HomePlatform></HomePlatform>
       </ContentBox>
       <ContentBox>
-        <HomePartnership></HomePartnership>
+        <HomePlatformGroup />
+      </ContentBox>
+      
+      <ContentBox>
+        <HomePlatformShare />
       </ContentBox>
       <ContentBox>
-        <HomeTicketeer></HomeTicketeer>
+        <HomePartnership />
       </ContentBox>
       <Wrap>
         {/* <IntroSection /> */}
         {/* <IntroEarth /> */}
-        <ContentBox key="video" id="video">
+        {/* <ContentBox key="video" id="video">
           <VideoSection />
-        </ContentBox>
+        </ContentBox> */}
         <ContentBox ref={sectionRef} id="download" key="download">
-            <Download dropb={false} />
+          <Download dropb={false} />
         </ContentBox>
-        <hr style={{ color: theme.darkGray, margin: 0 }} />
-      <FootContact />
+        <hr style={{color: theme.darkGray, margin: 0}} />
+        <FootContact />
       </Wrap>
     </BgImage>
   );
 }
-export default HomeEarthmera; 
+export default HomeEarthmera;

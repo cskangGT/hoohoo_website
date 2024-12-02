@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import { slideInFromTop } from '../../style';
+import {slideInFromTop} from '../../style';
 
 // Define the types for your component's props
 interface BackgroundWithStripeProps {
@@ -8,7 +8,7 @@ interface BackgroundWithStripeProps {
   children?: React.ReactNode;
 }
 
-const Background = styled.div<{ backgroundImage: string }>`
+const Background = styled.div<{backgroundImage: string}>`
   animation: ${slideInFromTop} 0.7s ease-out forwards;
   width: 100%;
   background-image: url(${props => props.backgroundImage});
@@ -22,10 +22,10 @@ const Background = styled.div<{ backgroundImage: string }>`
   align-items: center;
   z-index: 9;
   overflow: visible;
-  @media screen and (max-width: 1000px){
+  @media screen and (max-width: 1000px) {
     height: auto;
   }
-  `;
+`;
 
 const WhiteStripe = styled.div`
   position: absolute;
@@ -38,7 +38,10 @@ const WhiteStripe = styled.div`
 `;
 
 // Create your component using the styled components
-const BackgroundWithStripe: React.FC<BackgroundWithStripeProps> = ({ backgroundImage, children }) => {
+const BackgroundWithStripe: React.FC<BackgroundWithStripeProps> = ({
+  backgroundImage,
+  children,
+}) => {
   return (
     <Background backgroundImage={backgroundImage}>
       <WhiteStripe />
