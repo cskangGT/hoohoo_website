@@ -21,17 +21,17 @@ type FrameProps = {
 };
 
 function Frame({children}: FrameProps) {
-  const [show, setShow] = useState<boolean>(false);
+  const [show, setShow] = useState<boolean>(true);
   const location = useLocation();
   const navigate = useNavigate();
-  useEffect(() => {
-    const searchParams = new URLSearchParams(location.search);
+  // useEffect(() => {
+  //   const searchParams = new URLSearchParams(location.search);
     
-    if (searchParams.get('home') === 'yes') {
-      setShow(true);
-      navigate('/home');
-    }
-  }, [location.search]);
+  //   if (searchParams.get('home') === 'yes') {
+  //     setShow(true);
+  //     navigate('/home');
+  //   }
+  // }, [location.search]);
   const [isKorean, setIsKorean] = useState(false);
   return (
     <Container>

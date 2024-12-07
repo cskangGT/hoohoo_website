@@ -29,7 +29,7 @@ const Router = createBrowserRouter([
     children: [
       {
         path: '/',
-        element: <Countdown />,
+        element: <HomeEarthmera />,
         errorElement: <ErrorComponent />,
       },
       {

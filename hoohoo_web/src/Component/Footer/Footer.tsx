@@ -214,8 +214,8 @@ function Footer() {
               icon={faLinkedinIn}
               url={'https://www.linkedin.com/company/earthmera/'}
             />
-            <Ibutton icon={faPinterestP} style={{opacity: 1}} />
-            <Ibutton icon={faTiktok} style={{opacity: 1}} />
+            <Ibutton icon={faTiktok}
+              url={'https://www.tiktok.com/@earthmera_global'} />
             <Ibutton
               icon={faYoutube}
               url={'https://www.youtube.com/@Earthmera'}
