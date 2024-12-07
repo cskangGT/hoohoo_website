@@ -6,7 +6,7 @@ import Wrapper from '../../../Component/Wrapper/Wrapper';
 import {theme} from '../../../style';
 import {Bg} from '../Vision/sections/VisionIntro';
 export const BackgroundImage = styled(Bg)`
-  margin: 200px 0;
+  margin: 100px 0;
   height: 700px;
   @media screen and (max-width: 700px) {
     align-items: center;
