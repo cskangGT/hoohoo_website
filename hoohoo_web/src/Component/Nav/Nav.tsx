@@ -193,8 +193,9 @@ const MenuToogleButton = styled.button<IsOpen>`
   border: none;
   cursor: pointer;
   position: absolute;
-  right: 32px;
-  top: 25px;
+  right: 15px;
+  top: 41px;
+  transform : translateY(-50%);
   font-size: 24px;
   color: ${props => (props.isOpen ? theme.mainNeon : theme.darkGray)};
   display: none;
