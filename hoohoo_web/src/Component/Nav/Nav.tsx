@@ -54,6 +54,11 @@ const Bar = styled.nav`
     align-items: flex-start;
     padding: 8px 22px;
   }
+  @media screen and (max-width: 500px) {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 8px 5px;
+  }
 `;
 type NavBarProps = {
   isOpen: boolean;
@@ -188,8 +193,9 @@ const MenuToogleButton = styled.button<IsOpen>`
   border: none;
   cursor: pointer;
   position: absolute;
-  right: 32px;
-  top: 25px;
+  right: 15px;
+  top: 41px;
+  transform : translateY(-50%);
   font-size: 24px;
   color: ${props => (props.isOpen ? theme.mainNeon : theme.darkGray)};
   display: none;
