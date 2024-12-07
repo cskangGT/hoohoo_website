@@ -1,19 +1,17 @@
 import i18next from 'i18next';
-import React from 'react'
+import React from 'react';
 import styled from 'styled-components';
-import { theme, LineDivider } from '../../style';
-import { ModalBackground } from '../Info/Blog/BlogModal';
-import { ModalContent } from './ManageAccModal';
+import {LineDivider, theme} from '../../style';
+import {ModalBackground} from '../Info/Blog/BlogModal';
+import {ModalContent} from './ManageAccModal';
 const Wrapper = styled.div`
-    padding: 6rem 2rem 3rem;
-    @media screen and (max-width: 800px) {
-        
-        padding: auto;
-    }
-    @media screen and (max-width: 500px) {
-        padding: 0px;
-        
-    }
+  padding: 6rem 2rem 3rem;
+  @media screen and (max-width: 800px) {
+    padding: auto;
+  }
+  @media screen and (max-width: 500px) {
+    padding: 0px;
+  }
 `;
 const ModalTitle = styled.p`
   font-size: 20px;
@@ -71,38 +69,36 @@ const GreenButton = styled.a`
   }
 `;
 type Props = {
-    isOpen: boolean;
-    setIsOpen: React.Dispatch<React.SetStateAction<boolean>>;
-    closeModal : () => void;
+  isOpen: boolean;
+  setIsOpen: React.Dispatch<React.SetStateAction<boolean>>;
+  closeModal: () => void;
 };
-function OwnGroupModal({ isOpen, setIsOpen, closeModal }: Props) {
-    const data : any = i18next.t('ManageAccModal', { returnObjects: true });
-    function closeGroupModal () {
-        setIsOpen(false);
-        closeModal();
-    }
+function OwnGroupModal({isOpen, setIsOpen, closeModal}: Props) {
+  const data: any = i18next.t('ManageAccModal', {returnObjects: true});
+  function closeGroupModal() {
+    setIsOpen(false);
+    closeModal();
+  }
   return (
     <>
-        {
-          isOpen && <ModalBackground>
-            <Wrapper>
-              <ModalContent>
-                <ModalTitle>{data.OwnGroupModal.title}</ModalTitle>
-                <LineDivider />
-                <ContentText>
-                    {data.OwnGroupModal.content}
-                </ContentText>
-                <ButtonContainer>
-                    <GreenButton onClick={closeGroupModal}>
-                        {data.OwnGroupModal.button}
-                    </GreenButton>
-                    </ButtonContainer>
-                </ModalContent>
-            </Wrapper>
+      {isOpen && (
+        <ModalBackground>
+          <Wrapper>
+            <ModalContent>
+              <ModalTitle>{data.OwnGroupModal.title}</ModalTitle>
+              <LineDivider />
+              <ContentText>{data.OwnGroupModal.content}</ContentText>
+              <ButtonContainer>
+                <GreenButton onClick={closeGroupModal}>
+                  {data.OwnGroupModal.button}
+                </GreenButton>
+              </ButtonContainer>
+            </ModalContent>
+          </Wrapper>
         </ModalBackground>
-    }
+      )}
     </>
-  )
+  );
 }
 
-export default OwnGroupModal
+export default OwnGroupModal;

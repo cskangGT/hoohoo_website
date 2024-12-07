@@ -1,130 +1,121 @@
-import React, { useEffect, useState } from 'react'
+import React, {useEffect, useState} from 'react';
 import styled from 'styled-components';
 import Wrapper from '../../../Component/Wrapper/Wrapper';
-import { HomeTransitionButton } from '../../Home/HomeIntroPage';
-import { UpperTitle, HeaderText, ButtonBox } from '../../Home/HomePlatform';
-import { Header } from '../../../Component/ContentBox/TwoColBoxesSection';
-import LinedHeader from '../../../Component/ContentBox/LinedHeader';
-import { slideInFromTop, theme } from '../../../style';
+import {slideInFromTop, theme} from '../../../style';
+import i18next from 'i18next';
+import DownloadButtons from '../../Home/DownloadButtons';
 const Container = styled.section`
-width: 100%;
+  width: 100%;
   background-color: transparent;
-  height: 900px;
   animation: ${slideInFromTop} 0.7s ease-out forwards;
-  @media screen and (max-width: 1000px){
-    height: auto;
+  @media screen and (max-width: 1000px) {
   }
 `;
-const Background = styled.div<{ backgroundImage: string }>`
+const Background = styled.div<{backgroundImage: string}>`
   width: 100%;
-  margin-top: 300px;
   background-image: url(${props => props.backgroundImage});
   background-size: cover;
   background-position: center;
   position: relative;
   flex-direction: row;
-  height: 400px;
+  height: 800px;
   display: flex;
   justify-content: center;
   align-items: center;
   z-index: 1;
-  @media screen and (max-width: 1000px){
-    height: auto;
-    margin-top: 150px;
+  @media screen and (max-width: 1000px) {
+    height: 800px;
   }
-  `;
-
+`;
+const Overlay = styled.div<{overlayImage: string}>`
+  background-image: url(${props => props.overlayImage});
+  background-size: cover;
+  background-position: center;
+  position: absolute;
+  z-index: 2;
+  top: 0px;
+  left: 0px;
+  right: 0px;
+  bottom: 0px;
+`;
 const InnerContainer = styled.div`
   position: relative;
-  flex-direction: row;
-  height: 400px;
+  flex-direction: column;
   display: flex;
   justify-content: center;
   align-items: center;
   z-index: 10;
-  @media screen and (max-width: 1000px){
+  @media screen and (max-width: 1000px) {
     height: auto;
     margin-top: 0px;
-    flex-direction: column-reverse;
   }
 `;
-const LeftBox = styled.div`
-    padding: 20px;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    width: 40%;
-    @media screen and (max-width: 1000px){
-        width: 80%;
-        padding :30px 0px;
-        height: auto;
-        align-items: center;
-    }
-`;
-const RightBox = styled.div`
-    width: 60%;
-    height: 400px;
-    position: relative;
-    display: flex;
-    @media screen and (max-width: 1000px){
-        height: 250px;
-        width: 100%;
-    }
-`;
+
 const ContentText = styled.p`
   font-size: 1.5rem;
-  color: black;
-  padding-top: 5px;
-  @media screen and (max-width: 1200px){
+  color: ${theme.white};
+  line-height: 1.3;
+  font-family: 'Fredoka';
+  font-weight: 300;
+  padding-top: 2rem;
+  padding-bottom: 4rem;
+  margin: 0px;
+  @media screen and (max-width: 1200px) {
     font-size: 1.3rem;
-    }
+    text-align: center;
+  }
+`;
+const Header = styled.h2`
+  margin: 0;
+  padding: 0;
+  font-size: 2.5rem;
+  line-height: 1.5;
+  text-align: center;
+  color: ${theme.white};
+  font-family: 'Fredoka';
+  font-weight: 600;
+  @media screen and (max-width: 1200px) {
+
+  }
+  @media screen and (max-width: 700px) {
+    font-size: 2.3rem;
+  }
+  @media screen and (max-width: 500px) {
+    width: 90%;
+    font-size: 2.1rem;
+  }
 `;
 const ScreenImage = styled.img`
-    position: absolute;
-    bottom: -60px;
-    height: 550px;
-    left: 50%; /* Center horizontally */
-  transform: translate(-50%, 0);
-    @media screen and (max-width: 1000px){
-        height: 250px;
-        bottom: 0;
-    }
+  height: 400px;
+  @media screen and (max-width: 1000px) {
+    height: 250px;
+  }
 `;
 export default function B2cIntroSection() {
-    const [isMobile, setIsMobile] = useState(window.innerWidth < 800);
-    useEffect(() => {
-        const handleResize = () => {
-        setIsMobile(window.innerWidth < 800);
-        };
+  const [isMobile, setIsMobile] = useState(window.innerWidth < 800);
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth < 800);
+    };
 
-        window.addEventListener('resize', handleResize);
-        return () => window.removeEventListener('resize', handleResize);
-    }, []);
-    const data ={
-        "title": "Reward time for your green daily life!",
-        "content" : "Take eco actions, snap photos, check the environmental impact, and earn rewards.",
-        "uptitle" : "For EarthMera Users",
-        "bgImage" : "Images/platform1bg.jpeg",
-        "image" : "Images/platform1Image.png",
-        "lineImage": "Images/platform6pline.png",
-    }
-    
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+  const data: any = i18next.t('B2cIntroSection', {returnObjects: true});
+  
+
   return (
     <Container>
-        <Background backgroundImage={data.bgImage}>
-            <Wrapper>
-                <InnerContainer>
-            <LeftBox>
-            <LinedHeader data={{header:data.title, lineImage: data.lineImage}} color={'black'} style={{fontSize: isMobile? '2.5rem': '3.5rem', width: '100%'}}/>
-            <ContentText>{data.content}</ContentText>
-            </LeftBox>
-            <RightBox>
-                <ScreenImage src={data.image}></ScreenImage>
-            </RightBox>
-            </InnerContainer>
-            </Wrapper>
-        </Background>
+      <Background backgroundImage={data.bgImage}>
+        <Wrapper>
+          <InnerContainer>
+              <Header dangerouslySetInnerHTML={{__html: data.title}} />
+              <ContentText dangerouslySetInnerHTML={{__html: data.content}} />
+              <DownloadButtons />
+          </InnerContainer>
+        </Wrapper>
+        <Overlay overlayImage={data.overlay} />
+      </Background>
     </Container>
-  )
+  );
 }

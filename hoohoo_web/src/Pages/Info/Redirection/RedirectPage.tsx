@@ -8,7 +8,7 @@ const getDevicePlatform = () => {
     if (/android/i.test(userAgent)) {
       return 'Android';
     }
-console.log('userAgent', userAgent)
+    console.log('userAgent', userAgent)
     if (/iPad|iPhone|iPod|Mac/.test(userAgent) ) {
       return 'iOS';
     }

@@ -1,22 +1,22 @@
-import React from 'react'
-import styled from 'styled-components';
-import { theme } from '../../style';
 import i18next from 'i18next';
+import React from 'react';
+import styled from 'styled-components';
+import {theme} from '../../style';
 const ContactBox = styled.div`
-   background-color: transparent;
-   display: flex;
-   justify-content: center;
-   padding: 0 10px;
+  background-color: transparent;
+  display: flex;
+  justify-content: center;
+  padding: 0 10px;
 `;
 const ContactColumnBox = styled.div`
-  display:flex;
+  display: flex;
   flex-direction: column;
-  align-items:center;
+  align-items: center;
 `;
 const ContactText = styled.h3`
-    margin: 26px 10px ;
-    font-size: 1.3rem;
-    text-align: center;
+  margin: 26px 10px;
+  font-size: 1.3rem;
+  text-align: center;
   color: ${theme.darkGray};
 `;
 
@@ -27,7 +27,7 @@ const LinktoEmail = styled.a`
   height: 50px;
   border-radius: 20px;
   border-color: ${theme.darkSky};
-  width:200px;
+  width: 200px;
   font-weight: bold;
   display: flex;
   justify-content: center;
@@ -39,11 +39,17 @@ const LinktoEmail = styled.a`
   }
 `;
 export default function FootContact() {
-    const data : any = i18next.t('footcontact', { returnObjects: true });
+  const data: any = i18next.t('footcontact', {returnObjects: true});
   return (
-    <ContactBox id="contact" key="contact"><ContactColumnBox><ContactText>{data.title}</ContactText>
-          <LinktoEmail href='mailto:devceohoony@gmail.com' data-l10n-id="footer_contactus">
-            {data.button}</LinktoEmail></ContactColumnBox>
-      </ContactBox>
-  )
+    <ContactBox id="contact" key="contact">
+      <ContactColumnBox>
+        <ContactText>{data.title}</ContactText>
+        <LinktoEmail
+          href="mailto:devceohoony@gmail.com"
+          data-l10n-id="footer_contactus">
+          {data.button}
+        </LinktoEmail>
+      </ContactColumnBox>
+    </ContactBox>
+  );
 }

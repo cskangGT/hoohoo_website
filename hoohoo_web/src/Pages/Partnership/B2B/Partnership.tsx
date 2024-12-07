@@ -1,46 +1,60 @@
-import React, { useEffect, useRef } from 'react';
+import React, {useEffect} from 'react';
 import styled from 'styled-components';
-import Wrapper from '../../../Component/Wrapper/Wrapper';
-import { BgImage, theme } from '../../../style';
 import FootContact from '../../../Component/Footer/FootContact';
+import Wrapper from '../../../Component/Wrapper/Wrapper';
+import {BgImage, theme} from '../../../style';
 import B2BIntroSection from './B2BIntroSection';
-import PhotoVideoes from './PhotoVideoes';
 import EMBags from './EMBags';
 import GetInTouch from './GetInTouch';
+import PhotoVideoes from './PhotoVideoes';
+import PartnershipCarbonTracking from './sections/PartnershipCarbonTracking';
+import PartnershipShop from './sections/PartnershipShop';
+import PartnershipEcoBoard from './sections/PartnershipEcoBoard';
 const IntroPageSection = styled.section`
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   width: 100%;
   height: 1000px;
-  @media screen and (max-width: 1200px){
-      height: auto;
-    }
+  @media screen and (max-width: 1200px) {
+    height: auto;
+  }
 `;
 const Container = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
   height: 800px;
-  @media screen and (max-width: 800px){
-      height: auto;
-    }
+  @media screen and (max-width: 800px) {
+    height: auto;
+  }
 `;
 
 function Partnership() {
   useEffect(() => {
     window.scrollTo(0, 0);
-    }, []);
-    return (
-      <>
-        <BgImage>
+  }, []);
+  return (
+    <>
+      <BgImage>
         <Wrapper>
           <IntroPageSection>
-              <B2BIntroSection></B2BIntroSection>
-              {/* <ConstructionText>{"Our partnership will be released soon :)"}</ConstructionText> */}
+            <B2BIntroSection></B2BIntroSection>
+            {/* <ConstructionText>{"Our partnership will be released soon :)"}</ConstructionText> */}
           </IntroPageSection>
         </Wrapper>
         <Container>
+          <PartnershipCarbonTracking />
+        </Container>
+        <Wrapper>
+        <Container>
+            <PartnershipEcoBoard />
+          </Container>
+          <Container>
+            <PartnershipShop />
+          </Container>
+        </Wrapper>
+        {/* <Container>
           <PhotoVideoes></PhotoVideoes>
         </Container>
         <Container>
@@ -48,9 +62,9 @@ function Partnership() {
         </Container>
         <Container>
           <GetInTouch />
-        </Container>
-        
-          {/* <PartnershipIntro />
+        </Container> */}
+
+        {/* <PartnershipIntro />
           <ContentBox>
             <ESG />
           </ContentBox>
@@ -69,10 +83,10 @@ function Partnership() {
           <ContentBox>
             <B2BVideo />
           </ContentBox> */}
-        </BgImage>
-        <hr style={{ color: theme.darkGray, margin: 0 }} />
-        <FootContact />
-        </>
-    )
+      </BgImage>
+      <hr style={{color: theme.darkGray, margin: 0}} />
+      <FootContact />
+    </>
+  );
 }
-export default Partnership
+export default Partnership;

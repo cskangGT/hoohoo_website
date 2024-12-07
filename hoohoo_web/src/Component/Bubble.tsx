@@ -1,30 +1,30 @@
-import React, { useState } from 'react';
-import styled from 'styled-components';
-import { theme } from '../style';
 import i18next from 'i18next';
+import React, {useState} from 'react';
+import styled from 'styled-components';
+import {theme} from '../style';
 const BubbleBox = styled.div<any>`
-    cursor: pointer;
-    z-index: 10000;
-    color: ${theme.darkgrey};
-    padding-left: 20px;
-    padding-right: 30px;
-    padding-top: 15px;
-    padding-bottom: 15px;
-    border-radius: 10px 10px;
-    box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.5);
-    position: fixed;
-    right: 20px;
+  cursor: pointer;
+  z-index: 10000;
+  color: ${theme.darkgrey};
+  padding-left: 20px;
+  padding-right: 30px;
+  padding-top: 15px;
+  padding-bottom: 15px;
+  border-radius: 10px 10px;
+  box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.5);
+  position: fixed;
+  right: 20px;
+  bottom: 20px;
+  text-align: left;
+  opacity: ${({isFadingOut}: any) => (isFadingOut ? 0 : 1)};
+  background-color: rgba(30, 30, 30, 0.7);
+  transition: opacity 0.5s;
+  @media screen and (max-width: 700px) {
+    right: auto;
     bottom: 20px;
-    text-align: left;
-    opacity: ${({ isFadingOut }: any) => (isFadingOut ? 0 : 1)};
-    background-color: rgba(30, 30, 30, 0.7);
-    transition: opacity 0.5s;
-    @media screen and (max-width: 700px) {
-      right: auto;
-      bottom: 20px;
-      right: 15px;
-      left: 15px;
-    }
+    right: 15px;
+    left: 15px;
+  }
 `;
 const Inside = styled.div`
   left: 30px;
@@ -35,7 +35,6 @@ const Image = styled.img`
 `;
 const TextBox = styled.div`
   margin-left: 12px;
-  
 `;
 const Text = styled.span`
   font-size: 14px;
@@ -60,8 +59,8 @@ type BubbleProps = {
   setIsBubble: React.Dispatch<React.SetStateAction<boolean>>;
 };
 
-const Bubble: React.FC<BubbleProps> = ({ setIsBubble }) => {
-  const data: any = i18next.t('bubble', { returnObjects: true });
+const Bubble: React.FC<BubbleProps> = ({setIsBubble}) => {
+  const data: any = i18next.t('bubble', {returnObjects: true});
   const [isFadingOut, setIsFadingOut] = useState<boolean>(false);
   const handleClose = () => {
     setIsFadingOut(true);
@@ -73,15 +72,18 @@ const Bubble: React.FC<BubbleProps> = ({ setIsBubble }) => {
   return (
     <BubbleBox isFadingOut={isFadingOut}>
       <Inside>
-        <Image src={data["image"]} />
+        <Image src={data['image']} />
         <TextBox>
-          <Text>{data["text_part1"]} <br />{data["text_part2"]}</Text>
+          <Text>
+            {data['text_part1']} <br />
+            {data['text_part2']}
+          </Text>
         </TextBox>
       </Inside>
       <CloseBox onClick={handleClose}>
-        <Close src={data["close"]} />
+        <Close src={data['close']} />
       </CloseBox>
     </BubbleBox>
-  )
-}
+  );
+};
 export default Bubble;

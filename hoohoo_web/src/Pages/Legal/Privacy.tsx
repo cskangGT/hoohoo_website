@@ -1,41 +1,40 @@
-import React, { useEffect } from 'react';
-import styled from 'styled-components';
-import { theme } from '../../style';
 import DOMPurify from 'dompurify';
+import React, {useEffect} from 'react';
+import styled from 'styled-components';
 import Wrapper from '../../Component/Wrapper/Wrapper';
+import {theme} from '../../style';
 const Background = styled.div`
-  width: 100% ;
+  width: 100%;
   height: 100%;
   background-color: #dadada;
 `;
 const Container = styled.div`
-    width: 100% -20px;
-    display: flex;
-    margin: 0px auto;
-    justify-content: flex-start;
-    align-items: center;
-    position: relative;
-    transition: all 0.2s ease 0s;
-    padding: 5rem 10px;
-    margin-top: 70px;
+  width: 100% -20px;
+  display: flex;
+  margin: 0px auto;
+  justify-content: flex-start;
+  align-items: center;
+  position: relative;
+  transition: all 0.2s ease 0s;
+  padding: 5rem 10px;
+  margin-top: 70px;
 `;
 const ContentBox = styled.div`
-    display: flex;
-    flex-direction: column;
-    position: relative;
-    width: 100%;
-    justify-content: center;
-    color: ${theme.darkGray};
-    
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  width: 100%;
+  justify-content: center;
+  color: ${theme.darkGray};
 `;
 const Title = styled.h1`
-    color: ${theme.darkGray};
-    letter-spacing: .4px;
-    margin-top: 0.4rem;
-    margin-bottom: 0.8rem;
-    font-size: 2.4rem;
-    font-weight: 600;
-    line-height: 1.5;
+  color: ${theme.darkGray};
+  letter-spacing: 0.4px;
+  margin-top: 0.4rem;
+  margin-bottom: 0.8rem;
+  font-size: 2.4rem;
+  font-weight: 600;
+  line-height: 1.5;
 `;
 function Privacy() {
   const sanitizer = DOMPurify.sanitize;
@@ -104,9 +103,11 @@ function Privacy() {
         <Container>
           <ContentBox>
             <Title id="pp">Privacy Policy</Title>
-            <div dangerouslySetInnerHTML={{ __html: privacyPolicyHTML }} />
+            <div dangerouslySetInnerHTML={{__html: privacyPolicyHTML}} />
           </ContentBox>
-        </Container></Wrapper></Background>
-  )
+        </Container>
+      </Wrapper>
+    </Background>
+  );
 }
 export default Privacy;

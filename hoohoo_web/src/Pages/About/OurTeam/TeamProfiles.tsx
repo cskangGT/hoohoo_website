@@ -1,38 +1,36 @@
-import React, { useEffect, useState } from 'react';
-import styled from 'styled-components';
-import { theme } from '../../../style';
-import Slider from '../../../Component/ContentBox/Slider';
-import ProfileCard from '../../../Component/ContentBox/ProfileCard';
 import i18next from 'i18next';
-import { slideInFromTop } from '../../../style';
+import React, {useEffect, useState} from 'react';
+import styled from 'styled-components';
+import ProfileCard from '../../../Component/ContentBox/ProfileCard';
+import {slideInFromTop, theme} from '../../../style';
 const SectionBox = styled.section`
-    padding-bottom: 5rem;
-    width: 100%;
-    display: flex;
-    align-items: center;
-    padding-top: 5rem;
-    justify-content: center;
-    margin-top: 100px;
-    animation: ${slideInFromTop} 0.7s ease-out forwards;
-    @media screen and (max-width: 700px) {
-        margin-top: 40px;
-    }
+  padding-bottom: 5rem;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  padding-top: 5rem;
+  justify-content: center;
+  margin-top: 100px;
+  animation: ${slideInFromTop} 0.7s ease-out forwards;
+  @media screen and (max-width: 700px) {
+    margin-top: 40px;
+  }
 `;
 const ContainerBox = styled.div`
   width: 100%;
-  display:flex;
+  display: flex;
   margin: 0 auto;
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
   position: relative;
-  transition: all .2s;
-    padding: 0 15px;
-    overflow: hidden;
+  transition: all 0.2s;
+  padding: 0 15px;
+  overflow: hidden;
 `;
 const HeaderBox = styled.div`
   width: 100%;
-  display:flex;
+  display: flex;
   flex-direction: column;
   align-items: center;
 `;
@@ -40,18 +38,18 @@ const HeaderText = styled.h1`
   font-size: 3rem;
   text-align: center;
   font-family: 'Fredoka';
-    color: ${theme.darkGray};
-    @media screen and (max-width: 700px) {
-        font-size: 2rem;
-    }
+  color: ${theme.darkGray};
+  @media screen and (max-width: 700px) {
+    font-size: 2rem;
+  }
 `;
 const HeaderDescText = styled.h2`
   font-size: 2rem;
   text-align: center;
-    color: ${theme.darkGray};
-    @media screen and (max-width: 700px) {
-        font-size: 1rem;
-    }
+  color: ${theme.darkGray};
+  @media screen and (max-width: 700px) {
+    font-size: 1rem;
+  }
 `;
 const Slide = styled.div`
   min-width: 100%;
@@ -59,74 +57,73 @@ const Slide = styled.div`
   display: flex;
   justify-content: center;
   @media screen and (max-width: 1100px) {
-      align-items: center;
-      justify-content: start;
+    align-items: center;
+    justify-content: start;
     flex-direction: column;
-    }
+  }
 `;
 const ProfileRow = styled.div`
   width: 100%;
   display: flex;
-flex-direction: column;
+  flex-direction: column;
 `;
 interface Profile {
-    photoPath: string;
-    name: string;
-    role: string;
-    contact: string;
-    url?: string;
+  photoPath: string;
+  name: string;
+  role: string;
+  contact: string;
+  url?: string;
 }
 interface SlideContentProps {
-    array: Profile[];
+  array: Profile[];
 }
 
-function SlideContent({ array }: SlideContentProps) {
-    console.log('array', array)
-    return (
-        <Slide key={array[0].name}>
-            {array.map((value, index) => (
-                <ProfileCard item={value} />
-            ))}
-        </Slide>
-    );
-};
+function SlideContent({array}: SlideContentProps) {
+  console.log('array', array);
+  return (
+    <Slide key={array[0].name}>
+      {array.map((value, index) => (
+        <ProfileCard item={value} />
+      ))}
+    </Slide>
+  );
+}
 
 function TeamProfiles() {
-    const numProfileInSlide : number = 3;
-    const data: Profile[] = i18next.t('teamIntro', { returnObjects: true });
-    const groupedData = [];
-    for (let i = 0; i < data.length; i += numProfileInSlide) {
-        groupedData.push(data.slice(i, i + numProfileInSlide));
+  const numProfileInSlide: number = 3;
+  const data: Profile[] = i18next.t('teamIntro', {returnObjects: true});
+  const groupedData = [];
+  for (let i = 0; i < data.length; i += numProfileInSlide) {
+    groupedData.push(data.slice(i, i + numProfileInSlide));
+  }
+  const [currentSlide, setCurrentSlide] = useState<number>(0);
+  const handleLeftClick = () => {
+    if (currentSlide > 0) {
+      setCurrentSlide(currentSlide - 1);
     }
-    const [currentSlide, setCurrentSlide] = useState<number>(0);
-    const handleLeftClick = () => {
-        if (currentSlide > 0) {
-            setCurrentSlide(currentSlide - 1);
-        }
-    };
-console.log('groupedData', groupedData)
-    const handleRightClick = () => {
-        if (currentSlide < groupedData.length - 1) {
-            setCurrentSlide(currentSlide + 1);
-        }
-    };
-    useEffect(() => {
-        window.scrollTo(0, 0);
-    }, []);
-    return (
-        <SectionBox>
-            <ContainerBox>
-                <HeaderBox>
-                    <HeaderText>
-                        Team EarthMera
-                    </HeaderText>
-                    <HeaderDescText>
-                    </HeaderDescText>
-                </HeaderBox>
-                <ProfileRow>{groupedData.map((value, index) => (
-                            <SlideContent array={value} />
-                        ))}</ProfileRow>
-                {/* <React.Fragment>
+  };
+  console.log('groupedData', groupedData);
+  const handleRightClick = () => {
+    if (currentSlide < groupedData.length - 1) {
+      setCurrentSlide(currentSlide + 1);
+    }
+  };
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+  return (
+    <SectionBox>
+      <ContainerBox>
+        <HeaderBox>
+          <HeaderText>Team EarthMera</HeaderText>
+          <HeaderDescText></HeaderDescText>
+        </HeaderBox>
+        <ProfileRow>
+          {groupedData.map((value, index) => (
+            <SlideContent array={value} />
+          ))}
+        </ProfileRow>
+        {/* <React.Fragment>
                     <Slider
                         currentSlide={currentSlide}
                         handleLeftClick={handleLeftClick}
@@ -137,8 +134,8 @@ console.log('groupedData', groupedData)
                         ))}
                     </Slider>
                 </React.Fragment> */}
-            </ContainerBox>
-        </SectionBox >
-        )
+      </ContainerBox>
+    </SectionBox>
+  );
 }
 export default TeamProfiles;

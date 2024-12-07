@@ -1,24 +1,23 @@
-import styled from 'styled-components';
-import { useState, useEffect } from 'react';
-import React from 'react'
-import moment from 'moment-timezone';
-import Wrapper from '../../Component/Wrapper/Wrapper';
-import { theme } from '../../style';
 import i18next from 'i18next';
-import { useLocation, useNavigate } from 'react-router-dom';
+import moment from 'moment-timezone';
+import React, {useEffect, useState} from 'react';
+import {useLocation, useNavigate} from 'react-router-dom';
+import styled from 'styled-components';
+import Wrapper from '../../Component/Wrapper/Wrapper';
+import {theme} from '../../style';
 import ManageAccModal from '../DeleteAccount/ManageAccModal';
 import { androidAppStoreLink, iosAppStoreLink } from './Download';
 
-const targetDate = moment.tz('2024-10-10 00:00', 'America/New_York');
+const targetDate = moment.tz('2024-12-22 00:00', 'America/New_York');
 const Container = styled.div`
   text-align: center;
   height: 100%;
 `;
 const BackgroundContainer = styled.div`
-  background: url('Images/countBackground.jpeg') center top / cover no-repeat;  // 여기에 배경 이미지 경로를 입력하세요
+  background: url('Images/countBackground.jpeg') center top / cover no-repeat; // 여기에 배경 이미지 경로를 입력하세요
   background-size: cover;
   background-position: center;
-  
+
   width: 100%;
   height: 100vh;
   display: flex;
@@ -26,22 +25,18 @@ const BackgroundContainer = styled.div`
   justify-content: center;
   color: white;
   text-align: center;
-  
-  
+
   flex-direction: column;
 `;
-const StartingSoonText = styled.h2`
-  
-`;
+const StartingSoonText = styled.h2``;
 const BodyContainer = styled.div`
-display: flex;
-flex-direction: column;
+  display: flex;
+  flex-direction: column;
   width: 100%;
   height: 70vh;
   justify-content: center;
   align-items: center;
   row-gap: 1.6rem;
-  
 `;
 const Title = styled.h1`
   font-size: 3rem;
@@ -60,7 +55,6 @@ const Title = styled.h1`
   @media screen and (max-width: 800px) {
     font-size: 2.5rem;
   }
-
 `;
 const TimeDisplay = styled.div`
   font-size: 2rem;
@@ -89,7 +83,7 @@ const TimeText = styled.div`
   justify-content: center;
 `;
 
-const TimeChar = styled.span<{ isLast: boolean }>`
+const TimeChar = styled.span<{isLast: boolean}>`
   font-size: 2.8rem;
   text-transform: uppercase;
   font-family: 'Fredoka';
@@ -98,7 +92,7 @@ const TimeChar = styled.span<{ isLast: boolean }>`
   font-weight: 500;
   align-items: center;
   text-align: center;
-  ${({ isLast }) => !isLast && 'margin-right: 0.5rem;'}
+  ${({isLast}) => !isLast && 'margin-right: 0.5rem;'}
   @media screen and (max-width: 1200px) {
     font-size: 2.6rem;
   }
@@ -131,17 +125,17 @@ const TimeChar = styled.span<{ isLast: boolean }>`
 //   @media screen and (max-width: 800px) {
 //     font-size: 2.2rem;
 //   }
-  
+
 // `;
 const UnitText = styled.p`
-    font-size: 1rem;
-    text-transform: uppercase;
-    letter-spacing: 0.1rem;
-    font-family: 'Fredoka';
-    margin-top: 0rem;
-    color: #ffffffd1;
-    font-weight: 300;
-    @media screen and (max-width: 1200px) {
+  font-size: 1rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1rem;
+  font-family: 'Fredoka';
+  margin-top: 0rem;
+  color: #ffffffd1;
+  font-weight: 300;
+  @media screen and (max-width: 1200px) {
     font-size: 1rem;
   }
   @media screen and (max-width: 1000px) {
@@ -152,21 +146,21 @@ const UnitText = styled.p`
   }
 `;
 const SmallText = styled.p`
-    font-size: 1rem;
-    margin-top: 30px;
-    text-transform: uppercase;
-    letter-spacing: 0.1rem;
-    font-family: 'Fredoka';
-    margin-top: 2rem;
-    color: #ffffffba;
-    font-weight: 400;
-    width: 60%;
+  font-size: 1rem;
+  margin-top: 30px;
+  text-transform: uppercase;
+  letter-spacing: 0.1rem;
+  font-family: 'Fredoka';
+  margin-top: 2rem;
+  color: #ffffffba;
+  font-weight: 400;
+  width: 60%;
 `;
 
 const LogoText = styled.span`
   padding-left: 10px;
   font-family: Fredoka;
-  color: ${theme.white };
+  color: ${theme.white};
   font-size: 1.5rem;
 `;
 const HeaderLogo = styled.img`
@@ -176,9 +170,8 @@ const HeaderLogo = styled.img`
 const LogoContainer = styled.div`
   height: 20vh;
   display: flex;
-    justify-content: center;
-    align-items: flex-end;
-    
+  justify-content: center;
+  align-items: flex-end;
 `;
 const BannerBtnContainer = styled.div`
   display:flex;
@@ -219,55 +212,52 @@ const Logo = styled.div`
   display: flex;
   align-items: center;
   justify-content: flex-start;
-  
+
   width: 100%;
   height: 8vh;
   padding-top: 1.5rem;
   @media screen and (max-width: 1000px) {
     justify-content: center;
   }
-  
 `;
 const Countdown: React.FC = () => {
-    const location = useLocation();
-    const navigate = useNavigate();
-    const [isOpen, setIsOpen] = useState<boolean>(false);
-    const calculateTimeLeft = () => {
-        const now = moment.tz('America/New_York');
-        const difference = targetDate.diff(now);
-    
-      
-      let timeLeft = {
-        days: 0,
-        hours: 0,
-        minutes: 0,
-        seconds: 0,
+  const location = useLocation();
+  const navigate = useNavigate();
+  const [isOpen, setIsOpen] = useState<boolean>(false);
+  const calculateTimeLeft = () => {
+    const now = moment.tz('America/New_York');
+    const difference = targetDate.diff(now);
+
+    let timeLeft = {
+      days: 0,
+      hours: 0,
+      minutes: 0,
+      seconds: 0,
+    };
+
+    if (difference > 0) {
+      timeLeft = {
+        days: Math.floor(difference / (1000 * 60 * 60 * 24)),
+        hours: Math.floor((difference / (1000 * 60 * 60)) % 24),
+        minutes: Math.floor((difference / 1000 / 60) % 60),
+        seconds: Math.floor((difference / 1000) % 60),
       };
-  
-      if (difference > 0) {
-        timeLeft = {
-          days: Math.floor(difference / (1000 * 60 * 60 * 24)),
-          hours: Math.floor((difference / (1000 * 60 * 60)) % 24),
-          minutes: Math.floor((difference / 1000 / 60) % 60),
-          seconds: Math.floor((difference / 1000) % 60),
-        };
-      }
-  
-      return timeLeft;
-    };
-    const formatTime = (time: number) => {
-      return String(time).padStart(2, '0');
-    };
-    const [timeLeft, setTimeLeft] = useState(calculateTimeLeft());
-    const renderTimeText = (text: string) => {
-      return (
-        <TimeText>
-          {text.split('').map((char, index) => (
+    }
+
+    return timeLeft;
+  };
+  const formatTime = (time: number) => {
+    return String(time).padStart(2, '0');
+  };
+  const [timeLeft, setTimeLeft] = useState(calculateTimeLeft());
+  const renderTimeText = (text: string) => {
+    return (
+      <TimeText>
+        {text.split('').map((char, index) => (
           <TimeChar key={index} isLast={index === text.length - 1}>
             {char}
           </TimeChar>
         ))}
-
         </TimeText>
       );
     };

@@ -1,18 +1,18 @@
-import React from 'react'
+import React from 'react';
+import {useNavigate} from 'react-router-dom';
 import styled from 'styled-components';
-import { theme } from '../../style';
-import { HomeTransitionButton } from './HomeIntroPage';
-import { useNavigate } from 'react-router-dom';
 import Wrapper from '../../Component/Wrapper/Wrapper';
+import {theme} from '../../style';
+import {HomeTransitionButton} from './HomeIntroPage';
 const Container = styled.section`
-width: 100%;
+  width: 100%;
   background-color: transparent;
   height: 800px;
-  @media screen and (max-width: 850px){
+  @media screen and (max-width: 850px) {
     height: auto;
   }
 `;
-const Background = styled.div<{ backgroundImage: string }>`
+const Background = styled.div<{backgroundImage: string}>`
   width: 100%;
   margin-top: 300px;
   background-image: url(${props => props.backgroundImage});
@@ -25,12 +25,19 @@ const Background = styled.div<{ backgroundImage: string }>`
   justify-content: center;
   align-items: center;
   z-index: 1;
-  @media screen and (max-width: 850px){
+  @media screen and (max-width: 1200px) {
+    height: 350px;
+
+  }
+  @media screen and (max-width: 1000px) {
+    height: 330px;
+
+  }
+  @media screen and (max-width: 850px) {
     height: auto;
     margin-top: 90px;
-    
   }
-  `;
+`;
 
 const InnerContainer = styled.div`
   position: relative;
@@ -40,103 +47,115 @@ const InnerContainer = styled.div`
   justify-content: center;
   align-items: center;
   z-index: 10;
-  @media screen and (max-width: 850px){
+  @media screen and (max-width: 850px) {
     height: auto;
     margin-top: 0px;
     flex-direction: column-reverse;
   }
 `;
 const LeftBox = styled.div`
-    padding: 30px 60px;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    width: 50%;
-    @media screen and (max-width: 850px){
-        width: 80%;
-        padding :30px 0px;
-        height: auto;
-        align-items: center;
-    }
+  padding: 30px 40px;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 40%;
+  @media screen and (max-width: 850px) {
+    width: 90%;
+    padding: 30px 0px;
+    height: auto;
+    align-items: center;
+  }
 `;
 const RightBox = styled.div`
-    width: 50%;
-    height: 400px;
-    position: relative;
-    display: flex;
-    @media screen and (max-width: 850px){
-        height: 180px;
-        width: 40%;
-    }
+  width: 60%;
+  height: 500px;
+  position: relative;
+  display: flex;
+  @media screen and (max-width: 1200px) {
+    height: 200px;
+  }
+  @media screen and (max-width: 850px) {
+    height: 240px;
+    width: 40%;
+  }
 `;
 const ScreenImage = styled.img`
-    position: absolute;
-    bottom: 0px;
-    height: 550px;
-    left: 50%; /* Center horizontally */
-  transform: translate(-50%, 0);
-    @media screen and (max-width: 850px){
-        height: 250px;
-    }
+  position: absolute;
+  object-fit: contain;
+  height: 500px;
+  top: 50%;
+  left: 50%; /* Center horizontally */
+  transform: translate(-50%, -50%);
+  @media screen and (max-width: 1200px) {
+    height: 400px;
+  }
+  @media screen and (max-width: 1000px) {
+    height: 350px;
+  }
+  @media screen and (max-width: 850px) {
+    height: 250px;
+  }
 `;
 export const UpperTitle = styled.p`
-    font-size: 1.5rem;
-    color: #39B54A;
-    @media screen and (max-width: 850px){
-        font-size: 1.2rem;
-        text-align: center;
-    }
+  font-size: 1.5rem;
+  color: #39b54a;
+  @media screen and (max-width: 850px) {
+    font-size: 1.2rem;
+    text-align: center;
+  }
 `;
 export const HeaderText = styled.h2`
-  font-size: 2.5rem;
-    color: ${theme.white};
-    @media screen and (max-width: 850px){
-        text-align: center;
-        font-size: 1.8rem;
-    }
+  font-size: 2rem;
+  line-height: 1.1;
+  color: ${theme.white};
+  @media screen and (max-width: 850px) {
+    text-align: center;
+    font-size: 1.6rem;
+  }
 `;
 export const ButtonBox = styled.div`
   display: flex;
   width: 80%;
-  @media screen and (max-width: 850px){
-      
-      justify-content: center;
-      align-items: center;
-      padding: 20px 0;
-    }
+  @media screen and (max-width: 850px) {
+    justify-content: center;
+    align-items: center;
+    padding: 20px 0;
+  }
 `;
 
 export default function HomePlatform() {
-    const navigate = useNavigate();
-    const data ={
-        "title": "Snap, Reward and <br /> check your green impact",
-        "uptitle" : "For EarthMera Users",
-        "buttonText": "Check our platform",
-        "bgImage" : "Images/home2bg.jpeg",
-        "image" : "Images/home2Screen.png"
-    }
-    function goPlatform () {
-        navigate('/platform')
-    }
+  const navigate = useNavigate();
+  const data = {
+    title: 'Capture, Reward<br />and Track your<br />environmental impact',
+    uptitle: 'For EarthMera Users',
+    buttonText: 'Check our platform',
+    bgImage: 'Images/home2bg.jpeg',
+    image: 'Images/home2Screen.png',
+  };
+  function goPlatform() {
+    navigate('/platform');
+  }
   return (
     <Container>
-        <Background backgroundImage={data.bgImage}>
-            <Wrapper>
-                <InnerContainer>
+      <Background backgroundImage={data.bgImage}>
+        <Wrapper>
+          <InnerContainer>
             <LeftBox>
-                <UpperTitle>{data.uptitle}</UpperTitle>
-                <HeaderText dangerouslySetInnerHTML={{__html: data.title}} />
-                <ButtonBox>
-                    <HomeTransitionButton onClick={goPlatform}>{data.buttonText}</HomeTransitionButton>
-                </ButtonBox>
+              <UpperTitle>{data.uptitle}</UpperTitle>
+              <HeaderText dangerouslySetInnerHTML={{__html: data.title}} />
+              <ButtonBox>
+                <HomeTransitionButton onClick={goPlatform}>
+                  {data.buttonText}
+                </HomeTransitionButton>
+              </ButtonBox>
             </LeftBox>
             <RightBox>
-                <ScreenImage src={data.image}></ScreenImage>
+              <ScreenImage src={data.image} />
             </RightBox>
-            </InnerContainer>
-            </Wrapper>
-        </Background>
+          </InnerContainer>
+        </Wrapper>
+      </Background>
     </Container>
-  )
+  );
 }

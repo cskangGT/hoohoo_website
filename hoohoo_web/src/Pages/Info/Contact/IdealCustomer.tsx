@@ -1,8 +1,8 @@
-import React from 'react'
-import Wrapper from '../../../Component/Wrapper/Wrapper'
-import styled from 'styled-components';
-import { Header } from '../../../Component/ContentBox/TwoColBoxesSection';
 import i18next from 'i18next';
+import React from 'react';
+import styled from 'styled-components';
+import {Header} from '../../../Component/ContentBox/TwoColBoxesSection';
+import Wrapper from '../../../Component/Wrapper/Wrapper';
 export const VerticalSection = styled.section`
   width: 100%;
   margin: 50px 0;
@@ -23,35 +23,35 @@ const Image = styled.img`
   padding: 15px 0;
   object-fit: contain;
   @media screen and (max-width: 700px) {
-        width: 100%;
-    }
+    width: 100%;
+  }
 `;
 const SubHeader = styled.p`
-    width: 70%;
+  width: 70%;
   font-size: 2rem;
   padding: 15px;
   text-align: center;
   font-weight: 700;
   @media screen and (max-width: 700px) {
-        width: 90%;
-    }
+    width: 90%;
+  }
 `;
 const Content = styled(SubHeader)`
-font-weight: 400;
+  font-weight: 400;
   font-size: 1.5rem;
   text-align: center;
   padding: 15px;
 `;
 export default function IdealCustomer() {
-    const data : any = i18next.t('idealcustomer', { returnObjects: true });
+  const data: any = i18next.t('idealcustomer', {returnObjects: true});
   return (
     <Wrapper>
-        <VerticalSection>
-            <SectionHeader dangerouslySetInnerHTML={{__html: data.header}} />
-            <Image src={data.img}/>
-            <SubHeader>{data.subheader}</SubHeader>
-            <Content dangerouslySetInnerHTML={{__html: data.content}} />
-        </VerticalSection>
+      <VerticalSection>
+        <SectionHeader dangerouslySetInnerHTML={{__html: data.header}} />
+        <Image src={data.img} />
+        <SubHeader>{data.subheader}</SubHeader>
+        <Content dangerouslySetInnerHTML={{__html: data.content}} />
+      </VerticalSection>
     </Wrapper>
-  )
+  );
 }

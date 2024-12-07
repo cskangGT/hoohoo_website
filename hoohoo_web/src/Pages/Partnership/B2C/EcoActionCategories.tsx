@@ -1,182 +1,195 @@
-import React, { useEffect, useState } from 'react'
+import React, {useEffect, useState} from 'react';
 import styled from 'styled-components';
+import {Desc, Header} from '../../../Component/ContentBox/TwoColBoxesSection';
 import Wrapper from '../../../Component/Wrapper/Wrapper';
-import { Desc, Header } from '../../../Component/ContentBox/TwoColBoxesSection';
+import i18next from 'i18next';
+import { theme } from '../../../style';
 const isSmall = window.innerWidth < 1300;
 const Container = styled.div`
-width: 100%;
-  background-color: white;
-  height: 500px;
-  @media screen and (max-width: 1300px){
+  width: 100%;
+  
+  background-color: ${theme.green};
+  @media screen and (max-width: 1000px) {
     height: auto;
-    margin-bottom: 150px;
   }
 `;
-const Background = styled.div<{ backgroundImage: string }>`
+const Background = styled.div`
   width: 100%;
-  margin-top: 100px;
-  background-image: url(${props => props.backgroundImage});
-  background-size: cover;
-  background-position: center;
+  height: 500px;
+
+  background-color: ${theme.green};
   position: relative;
   flex-direction: column;
-  height: 900px;
+
   display: flex;
   justify-content: center;
   align-items: center;
-  @media screen and (max-width: 1300px){
+  @media screen and (max-width: 1000px) {
     height: auto;
   }
-  `;
+`;
 const InnerContainer = styled.div`
   display: flex;
   flex-direction: row;
+  width: calc(100% - 30px);
+  padding: 0px 15px;
+  height: 100%;
 `;
 const HeaderText = styled(Header)`
-  font-size: 3rem;
+  font-size: 2.5rem;
   font-family: 'Fredoka';
+  font-weight: 600;
   color: black;
-  @media screen and (max-width: 1300px){
-    color: white;
+  @media screen and (max-width: 1000px) {
     text-align: center;
   }
 `;
 
 const LeftBox = styled.div`
-  width: 50%;
+  width: 40%;
   display: flex;
   flex-direction: column;
   align-items: center;
+  padding: 0 20px;
+  padding-left: 40px;
   justify-content: center;
-  @media screen and (max-width: 1300px){
-    width: 100%;
+  @media screen and (max-width: 1000px) {
+    width: calc(100% - 20px);
     padding: 10px;
     height: auto;
   }
 `;
 const Image = styled.img`
-  height: 500px;
-  @media screen and (max-width: 1300px){
-    position: absolute;
-    left: 50%;
-  transform: translate(-50%, 0);
-
-    height: 350px;
+width: 100%;
+height: 100%;
+  @media screen and (max-width: 1000px) {
+    
 
   }
 `;
 const RightBox = styled.div`
-  width: 50%;
-  height: 500px;
+  width: 60%;
   align-items: center;
   justify-content: center;
-  @media screen and (max-width: 1300px){
+  @media screen and (max-width: 1000px) {
     width: auto;
-    height: 350px;
+    padding: 0px 20px;
+    padding-top: 30px;
   }
 `;
 const ContentText = styled(Desc)`
   color: black;
-  @media screen and (max-width: 1300px){
-    color: white;
+  @media screen and (max-width: 1000px) {
     text-align: center;
   }
 `;
 const HighlightedText = styled.span`
-  background-color: #FF7B27;
-  color: black;
+  background-color: white;
+  color: [black];
   padding: 0.2em;
   border-radius: 4px;
-  @media screen and (max-width: 1300px){
-    color: white;
+  @media screen and (max-width: 1000px) {
   }
 `;
 export default function EcoActionCategories() {
-    const data ={
-        "title": "Eco-action categories",
-        "content" : "Choose an eco-action, capture it. <br />Got more ideas? <br /> Try 'suggest a category'!",
-        "bgImage" : "Images/home2bg.jpeg",
-        "image" : "Images/platform3Image.png"
-    }
-    data.content = data.content.replace(
-        "suggest a category!",
-        "<span class='highlight'>suggest a category!</span>"
-      );
-    const [isMobile, setIsMobile] = useState(window.innerWidth < 800);
-    useEffect(() => {
-        const handleResize = () => {
-        setIsMobile(window.innerWidth < 1300);
-        };
+  // const data: any = i18next.t('EcoActionProcess', {returnObjects: true});
+  const data = {
+    title: 'Eco-action categories',
+    content:
+      "Choose an eco-action, capture it. <br />Got more ideas? <br /> Try 'suggest a category'!",
+    bgImage: 'Images/home2bg.jpeg',
+    image: 'Images/eco_action_categories.png',
+  };
+  data.content = data.content.replace(
+    'suggest a category!',
+    `<span class='highlight'>suggest a category!</span>`,
+  );
+  const [isMobile, setIsMobile] = useState(window.innerWidth < 800);
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth < 1000);
+    };
 
-        window.addEventListener('resize', handleResize);
-        return () => window.removeEventListener('resize', handleResize);
-    }, [window.innerWidth]);
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, [window.innerWidth]);
   return (
-    <Background backgroundImage={data.bgImage}>
-        {
-            isMobile ? <>
-            <Wrapper>
+    <Background>
+      {isMobile ? (
+        <>
+          <Wrapper>
             <LeftBox>
+              <HeaderText>{data.title}</HeaderText>
+              <ContentText>
+                {data.content.split('<br />').map((line, index, array) => (
+                  <React.Fragment key={index}>
+                    {line
+                      .split("'suggest a category'!")
+                      .map((segment, i, arr) =>
+                        i === arr.length - 1 ? (
+                          segment
+                        ) : (
+                          <>
+                            {segment}
+                            <HighlightedText>
+                              {' '}
+                              {"'suggest a category'!"}
+                            </HighlightedText>
+                          </>
+                        ),
+                      )}
+                    {index !== array.length - 1 && <br />}
+                  </React.Fragment>
+                ))}
+              </ContentText>
+            </LeftBox>
+          </Wrapper>
+          <Container>
+            <Wrapper>
+              <InnerContainer>
+                <RightBox>
+                  <Image src={data.image}  />
+                </RightBox>
+              </InnerContainer>
+            </Wrapper>
+          </Container>
+        </>
+      ) : (
+        <Container>
+          <Wrapper>
+            <InnerContainer>
+              <LeftBox>
                 <HeaderText>{data.title}</HeaderText>
                 <ContentText>
-                    {data.content.split("<br />").map((line, index, array) => (
+                  {data.content.split('<br />').map((line, index, array) => (
                     <React.Fragment key={index}>
-                    {line.split("'suggest a category'!").map((segment, i, arr) =>
-                    i === arr.length - 1 ? (
-                    segment
-                    ) : (
-                    <>
-                    {segment}
-                    <HighlightedText> {"'suggest a category'!"}</HighlightedText>
-                    </>
-                    )
-                    )}
-                    {index !== array.length - 1 && <br />}
+                      {line
+                        .split("'suggest a category'!")
+                        .map((segment, i, arr) =>
+                          i === arr.length - 1 ? (
+                            segment
+                          ) : (
+                            <>
+                              {segment}
+                              <HighlightedText>
+                                {' '}
+                                {"'suggest a category'!"}
+                              </HighlightedText>
+                            </>
+                          ),
+                        )}
+                      {index !== array.length - 1 && <br />}
                     </React.Fragment>
-                    ))}
+                  ))}
                 </ContentText>
-            </LeftBox>
-            </Wrapper>
-            <Container>
-                <Wrapper>
-                <InnerContainer>
-                    <RightBox>
-                        <Image src={data.image}/>
-                    </RightBox>
-                </InnerContainer>
-            </Wrapper>
-        </Container></>
-        : <Container>
-            <Wrapper>
-                <InnerContainer>
-                    <LeftBox>
-                        <HeaderText>{data.title}</HeaderText>
-                        <ContentText>
-                        {data.content.split("<br />").map((line, index, array) => (
-      <React.Fragment key={index}>
-        {line.split("'suggest a category'!").map((segment, i, arr) =>
-          i === arr.length - 1 ? (
-            segment
-          ) : (
-            <>
-              {segment}
-              <HighlightedText> {"'suggest a category'!"}</HighlightedText>
-            </>
-          )
-        )}
-        {index !== array.length - 1 && <br />}
-      </React.Fragment>
-    ))}
-                        </ContentText>
-                    </LeftBox>
-                    <RightBox>
-                        <Image src={data.image}/>
-                    </RightBox>
-                </InnerContainer>
-            </Wrapper>
+              </LeftBox>
+              <RightBox>
+                <Image src={data.image} />
+              </RightBox>
+            </InnerContainer>
+          </Wrapper>
         </Container>
-        }
-        
+      )}
     </Background>
-  )
+  );
 }
