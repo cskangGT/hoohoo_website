@@ -449,7 +449,7 @@ function Nav({isKorean, setIsKorean}: NavProps) {
             </NavMenuList>
           );
         })}
-        {!isOpen && (
+        {/* {!isOpen && (
           <LanguageBox>
             <LanguageButton
               isKorean={isKorean}
@@ -468,9 +468,9 @@ function Nav({isKorean, setIsKorean}: NavProps) {
               {lang[1]}
             </LanguageButton>
           </LanguageBox>
-        )}
+        )} */}
       </NavbarMenu>
-      {windowWidth < 1100 && (
+      {/* {windowWidth < 1100 && (
         <NavRight>
           <LanguageBoxSecond isKorean={isKorean}>
             <LanguageButton
@@ -491,7 +491,7 @@ function Nav({isKorean, setIsKorean}: NavProps) {
             </LanguageButton>
           </LanguageBoxSecond>
         </NavRight>
-      )}
+      )} */}
 
       <MenuToogleButton onClick={() => setIsOpen(!isOpen)} isOpen={isOpen}>
         <FontAwesomeIcon icon={faBars} />
