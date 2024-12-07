@@ -19,6 +19,7 @@ const Container = styled.div`
     flex-direction: column-reverse;
     justify-content: center;
     padding-bottom: 40px;
+    margin-top: 80px;
   }
   
 `;
@@ -109,11 +110,12 @@ const RightBox = styled.div`
     padding: 0 10px;
     width: 90%;
     height: auto;
-    text-align: center;
+    justify-content: center;
+    align-items: center;
   }
   @media screen and (max-width: 500px) {
     padding: 0 10px;
-    text-align: center;
+
   }
 `;
 const Image = styled.img`
@@ -125,21 +127,22 @@ const Image = styled.img`
   transform: translateY(-30%);
   @media screen and (max-width: 1200px) {
     position: relative;
-        transform: translateY(0%);
-        width: 100%;
-        right: 0px;
-        height: 500px;
-    }
+    transform: translateY(0%);
+    width: 70%;
+    right: 0px;
+    height: auto;
+  }
   @media screen and (max-width: 1000px) {
-        position: relative;
-        transform: translateY(0%);
-        width: 100%;
-        right: 0px;
-        height: 500px;
-    }
-    @media screen and (max-width: 500px) {
-        height: 400px;
-    }
+    position: relative;
+    transform: translateY(0%);
+    width: 90%;
+    right: 0px;
+    height: auto;
+  }
+  @media screen and (max-width: 500px) {
+    height: auto;
+    width: 100%;
+  }
 `;
 function HomeLandingSection() {
     const data: any = i18next.t('HomeLandingSection', {returnObjects: true});
