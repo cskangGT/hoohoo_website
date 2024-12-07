@@ -54,6 +54,11 @@ const Bar = styled.nav`
     align-items: flex-start;
     padding: 8px 22px;
   }
+  @media screen and (max-width: 500px) {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 8px 5px;
+  }
 `;
 type NavBarProps = {
   isOpen: boolean;
