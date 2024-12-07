@@ -22,12 +22,14 @@ const Circle = styled.div`
     height: 500px;
   }
   @media screen and (max-width: 500px) {
-    width: 400px;
-    height: 400px;
+    width: 300px;
+    height: 300px;
   }
 `;
 
 export default function Badges() {
   const data: any = i18next.t('Badges', {returnObjects: true});
-  return <Community data={data} flip={false}><Circle /></Community>;
+  return <Community data={data} flip={false}>
+    <Circle />
+    </Community>;
 }

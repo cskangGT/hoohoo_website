@@ -18,7 +18,7 @@ const ImageBox = styled.div`
   position: relative;
   column-gap: 20px;
   grid-template-rows: auto;
-  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-template-columns: 1fr 1fr 1fr;
   display: grid;
   @media screen and (max-width: 1000px) {
     height: auto;
@@ -26,7 +26,7 @@ const ImageBox = styled.div`
     width: 70%;
     row-gap: 30px;
     grid-column-gap: 20px;
-    grid-template-rows: 1fr 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr;
   }
   @media screen and (max-width: 500px) {
     width: 80%;
@@ -38,6 +38,7 @@ const EachBox = styled.div<{index: number}>`
   padding: 0 35px;
   height: 500px;
   display: flex;
+  border: 1px solid red;
   flex-direction: ${props => props.index ===0 || props.index ===2 ? 'column-reverse': 'column'};
   align-items: center;
   justify-content: flex-start;
@@ -86,6 +87,7 @@ const TextBox = styled.div`
   align-items: center;
   justify-content: flex-start;
   display: flex;
+  flex: 1;
   flex-direction: column;
   padding-bottom: 35px;
 `;

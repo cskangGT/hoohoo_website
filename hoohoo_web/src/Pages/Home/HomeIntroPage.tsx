@@ -58,16 +58,17 @@ const ButtonBox = styled.div`
 `;
 export const HomeTransitionButton = styled(PartnerButton)`
   font-family: 'Yanolga Yachae';
-  font-weight: 600;
+  font-weight: 300;
   background-color: #00bf63;
   color: white;
+  font-size: 24px;
   /* height: 60px; */
-  width: auto;
+  width: 240px;
   align-items: center;
   justify-content: center;
   line-height: 1;
   text-align: center;
-  padding: 15px 30px;
+  padding: 15px 20px;
   /* @media screen and (max-width: 1200px){
       width: 300px;
     }

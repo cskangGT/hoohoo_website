@@ -31,7 +31,7 @@ const EachBox = styled.div`
   justify-content: center;
   color: ${theme.white};
   @media screen and (max-width: 800px) {
-    width: 100%;
+    width: calc(100% - 80px);
     padding: 20px;
     height: auto;
     margin-bottom: 30px;

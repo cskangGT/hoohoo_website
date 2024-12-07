@@ -12,7 +12,7 @@
     "lang": ["KOR", "ENG"],
 
     "navlist": [
-      {"label": "Home", "link": "/"},
+      {"label": "Home", "link": "/home"},
       {
         "label": "About",
         "subItems": [
@@ -28,13 +28,7 @@
           {"label": "EM Ticketeer", "link": "/ticketeer"}
         ]
       },
-      {
-        "label": "Download",
-        "subItems": [
-          {"label": "EarthMera", "link": "/#download"},
-          {"label": "DropB", "link": "/dropb"}
-        ]
-      },
+      
       {
         "label": "Info",
         "subItems": [
@@ -698,11 +692,11 @@
     ],
     "header": "Introduce EarthMera <br /> bio-bag"
   },
-  "visionIntro": {
-    "bg": "Images/vision1pimg.png",
-    "flipImg": "Images/vision1pimgflip.png",
-    "header": "Your small actions, <br /> a big inspiration for all",
-    "content": "Our vision"
+  "VisionIntro": {
+    "image": "Images/vision_intro.png",
+    "smallImage" : "Images/vision_intro_small.png",
+    "header": "Awareness into Action,<br />Action into Lasting Habits.",
+    "content": "Awareness is everywhere—action isn’t. We use technology to bridge the gap, turning eco-awareness into sustainable action."
   },
   "ourMission": {
     "header": "Our mission",
@@ -749,8 +743,10 @@
     "content": "Utilize individual ticket codes as participant IDs. Distribute eco-bags before the festival, incentivize waste collection during the event, and reward verification. Encourage all attendees to pick up litter, ensuring a cleaner festival. Maximize efficiency and cleanliness at your event."
   },
   "B2cIntroSection" : {
-    "title" : "Reward time<br />for your green<br />daily life!",
-    "content" : "Capture your Eco-Actions,<br />track your impact, and earn rewards.",
+    "title" : "Track every CO₂-reducing action<br />with EarthMera",
+    "bgImage": "Images/platform_bg.png",
+    "overlay" : "Images/platform_bg_overlay.png",
+    "content" : "Your eco-friendly journey starts now",
     "image": "Images/platform1Image.png"
   },
   "HomePlatformGroup" : {
@@ -830,7 +826,7 @@
   },
   "TicketeerSteps" : {
     "header" : {
-      "text": "Make Eco-Events More Fun<br />and ",
+      "text": "Make Eco-Events More<br />Fun and ",
       "highlight": "Meaningful!",
       "deco" : "Images/ticketeer_step_deco.png",
       "underline" : "Images/ticketeer_step_underline.png"
@@ -893,6 +889,47 @@
         "description": "Organizers can access valuable data insights, such as CO₂ reduction and mission completion statistics, in real time. This data helps evaluate event performance, improve future events, and drive marketing and promotional strategies."
       }
     ]
+  },
+  "ValueMarquee" : {
+    "title": "How EarthMera Creates Value",
+    "cards": [
+      {
+        "title": "Individuals",
+        "description": "EarthMera helps individuals build sustainable habits through CO₂ tracking, rewards, and community features like short-form content and groups.",
+        "icon": "Images/value_individual.png"
+      },
+      {
+        "title": "Group",
+        "description": "EarthMera brings the joy of togetherness. Take action together to make sustainability more fun with group challenges and plogging events!",
+        "icon": "Images/value_group.png"
+      },
+      {
+        "title": "Business",
+        "description": "We help businesses offering eco-friendly services, products, or events use CO₂ reduction data to boost marketing and strengthen ESG initiatives.",
+        "icon": "Images/value_business.png"
+      },
+      {
+        "title": "Government",
+        "description": "We support initiatives like student volunteering, municipal plogging, and local festivals by using CO₂ data to enhance policies and education.",
+        "icon": "Images/value_government.png"
+      }
+    ]
+  },
+  "ValueEMHeroes" : {
+    "header": "EarthMera Heroes",
+    "content": "Small eco-friendly actions have the potential to inspire many, just like the butterfly effect. EarthMera will take the lead in shaping a societal culture that values the environment, with the collaboration of one million Earth heroes.",
+    "image": "Images/value_emheroes.jpg"
+  },
+  "ValueUserCount" : {
+    "title" : "EarthMera Heroes Around the World!",
+    "bgImage" : "Images/value_sky.jpg",
+    "userIcon" : "Images/value_user.png",
+    "content" : "Together, We Make a Greener Future!"
+  },
+  "HomeLandingSection" : {
+    "title" : "Every action to<br />Protect the planet<br />All in one place",
+    "content" : "Start your carbon-reducing journey today<br />and make a real impact!",
+    "image" : "Images/home_intro.png"
   }
   
 }

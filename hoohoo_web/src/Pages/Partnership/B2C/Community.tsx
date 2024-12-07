@@ -12,9 +12,17 @@ import {
 import {theme} from '../../../style';
 const MidTitle = styled(Desc)`
   font-weight: 700;
-  padding: 10px 0;
-  font-size: 1.7rem;
-  padding-bottom: 30px;
+  font-size: 1.3rem;
+  @media screen and (max-width: 1000px) {
+    margin: 20px 0;
+    width: 100%;
+    text-align: center;
+    font-size: 1.3rem;
+  }
+  @media screen and (max-width: 500px) {
+    margin: 10px 0;
+    font-size: 1.1rem;
+  }
 `;
 type DataProps = {
   header: string;
@@ -60,7 +68,7 @@ export default function Community(props: Props) {
             style={{color: theme.darkGray, textAlign: isLargeScreen && 'left'}}
           />
           {props.data.midcontent && (
-            <MidTitle
+            <Desc
               dangerouslySetInnerHTML={{__html: props.data.midcontent}}
             />
           )}

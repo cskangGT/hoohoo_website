@@ -21,6 +21,7 @@ import ContactPage from './Pages/Info/Contact/ContactPage';
 import SupportingPage from './Pages/Info/Contact/SupportingPage';
 import RedirectPage from './Pages/Info/Redirection/RedirectPage';
 import EMTicketeer from './Pages/Partnership/ticketeer/EMTicketeer';
+import Countdown from './Pages/Home/Countdown';
 const Router = createBrowserRouter([
   {
     path: '/',
@@ -28,6 +29,11 @@ const Router = createBrowserRouter([
     children: [
       {
         path: '/',
+        element: <Countdown />,
+        errorElement: <ErrorComponent />,
+      },
+      {
+        path: '/home',
         element: <HomeEarthmera />,
         errorElement: <ErrorComponent />,
       },

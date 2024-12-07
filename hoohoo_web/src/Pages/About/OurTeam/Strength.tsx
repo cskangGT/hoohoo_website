@@ -31,7 +31,7 @@ const ItemBox = styled.div`
     grid-template-rows: 1fr 1fr 1fr;
   }
   @media screen and (max-width: 800px) {
-    padding: 0 20px;
+    width: calc(100% - 40px) ;
   }
 `;
 
@@ -94,7 +94,8 @@ export default function Strenth() {
         style={{
           fontSize: isMobile ? '3rem' : '4rem',
           width: '100%',
-          textAlign: 'left',
+          textAlign: isMobile ? 'center' : 'left',
+          
         }}
       />
       <ItemBox>

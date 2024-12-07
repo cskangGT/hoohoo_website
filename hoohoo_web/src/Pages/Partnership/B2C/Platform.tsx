@@ -32,6 +32,17 @@ const ContentBox = styled.div`
     height: auto;
   }
 `;
+const ProgressContentBox = styled.div`
+  width: calc(100%);
+  height: 900px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  @media screen and (max-width: 1400px) {
+    margin-bottom: 40px;
+    height: auto;
+  }
+`;
 const ShortContentBox = styled.div`
   width: calc(100%);
   height: 700px;
@@ -86,15 +97,15 @@ function Platform() {
         <IntroBox>
           <B2cIntroSection></B2cIntroSection>
         </IntroBox>
-        <ContentBox ref={sectionRef} id="action">
+        <ProgressContentBox ref={sectionRef} id="action">
           <EcoActionProcess />
-        </ContentBox>
+        </ProgressContentBox>
         <ContentBox>
           <EcoActionCategories></EcoActionCategories>
         </ContentBox>
-        <Wrapper>
+        <Wrapper >
           <ShortContentBox>
-            <Badges></Badges>
+            <Badges />
           </ShortContentBox>
           {/* <NoHeight>
                     <CategorySection />

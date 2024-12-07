@@ -116,9 +116,9 @@ function BlogDetail() {
                   fontSize={30}
                 />
               </Back>
-              <Category
+              {/* <Category
                 category={data.category}
-                style={{fontSize: 20}}></Category>
+                style={{fontSize: 20}}></Category> */}
             </CategoryBox>
             <Title>{data.title}</Title>
             <ImageBox>

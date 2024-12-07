@@ -9,8 +9,11 @@ import OurMission from './OurMission';
 import Partners from './Partners';
 import Realtime from './Realtime';
 import TakeSteps from './TakeSteps';
-import VisionIntro from './VisionIntro';
+import VisionIntro from './sections/VisionIntro';
 import VisionSection from './VisionSection';
+import ValueMarquee from './sections/ValueMarquee';
+import ValueEMHeroes from './sections/ValueEMHeroes';
+import ValueUserCount from './sections/ValueUserCount';
 const FlexBox = styled.div`
   display: flex;
   flex-direction: column;
@@ -31,41 +34,31 @@ export const ContentBox = styled.div`
   margin-top: 50px;
   -webkit-overflow-scrolling: touch;
 `;
-const SmallTopContentBox = styled(ContentBox)`
-  margin-top: 20px;
-`;
-const LottieBox = styled.a`
-  width: 70px;
-  height: 70px;
-  bottom: 3px;
-  position: absolute;
-`;
-interface DataStructure {
-  secondImages: ImageProps[];
-  slides: SlideData;
-}
-interface SlideData {
-  [key: string]: {
-    firstDesc?: string;
-    secondDesc?: string;
-  };
-}
-type ImageProps = {
-  imagePath: string;
-  head: string;
-  desc: string;
-};
+
 export default function EarthMeraVision() {
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
   return (
     <>
-      <BgImage bgcolor="#F6F4F1">
+      <BgImage>
+      <Wrapper>
         <ContentBox>
           <VisionIntro />
         </ContentBox>
+      </Wrapper>
+      <ContentBox>
+        <ValueMarquee />
+      </ContentBox>
+      <Wrapper>
         <ContentBox>
+          <ValueEMHeroes />
+        </ContentBox>
+        <ContentBox>
+          <ValueUserCount />
+        </ContentBox>
+      </Wrapper>
+        {/* <ContentBox>
           <IntroApp />
         </ContentBox>
         <ContentBox>
@@ -93,7 +86,7 @@ export default function EarthMeraVision() {
           <SmallTopContentBox>
             <Heros />
           </SmallTopContentBox>
-        </Wrapper>
+        </Wrapper> */}
       </BgImage>
       <hr style={{color: theme.darkGray, margin: 0}} />
       <FootContact />

@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import { slideInFromTop, theme } from '../../../../style';
 import i18next from 'i18next';
 import { HomeTransitionButton } from '../../../Home/HomeIntroPage';
+import { emailTo } from '../../../../util/email';
 const Container = styled.div`
   animation: ${slideInFromTop} 0.7s ease-out forwards;
   display: flex;
@@ -11,7 +12,7 @@ const Container = styled.div`
   align-items: center;
   position: relative;
   width: 100%;
-  height: 600px;
+  height: 550px;
   @media (max-width: 1000px) {
     padding-top: 100px;
     height: auto;
@@ -23,6 +24,8 @@ const Container = styled.div`
 const Header = styled.h2`
   font-size: 2.5rem;
   line-height: 1.2;
+  font-family: Fredoka;
+  font-weight: 600;
   @media screen and (max-width: 1000px) {
     font-size: 2.3rem;
     text-align: center;
@@ -65,7 +68,7 @@ const HeaderBox = styled.div`
   position: relative;
 `;
 const StarImage = styled.img`
-  right: 0px;
+  right: -30px;
   width: 80px;
   height: 80px;
   top: 50%;
@@ -84,7 +87,8 @@ const StarImage = styled.img`
     @media screen and (max-width: 500px) {
         width: 50px;
         height: 50px;
-        
+        right: -15px;
+        transform: translateY(-50%);
     }
 `;
 const RightBox = styled.div`
@@ -114,11 +118,11 @@ function TicketeerIntro() {
     <Container>
         <LeftBox>
             <HeaderBox>
-            <Header dangerouslySetInnerHTML={{__html: data.header}} />
-            <StarImage src={data.titleStar} />
+              <Header dangerouslySetInnerHTML={{__html: data.header}} />
+              <StarImage src={data.titleStar} />
             </HeaderBox>
             
-            <HomeTransitionButton>
+            <HomeTransitionButton href={emailTo}>
                 {data.buttonText}
             </HomeTransitionButton>
         </LeftBox>

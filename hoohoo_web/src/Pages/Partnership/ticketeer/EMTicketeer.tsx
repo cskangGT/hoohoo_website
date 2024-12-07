@@ -2,7 +2,7 @@ import React, {useEffect} from 'react';
 import styled from 'styled-components';
 import FootContact from '../../../Component/Footer/FootContact';
 import Wrapper from '../../../Component/Wrapper/Wrapper';
-import {BgImage, theme} from '../../../style';
+import {BgImage, slideInFromTop, theme} from '../../../style';
 
 
 import WhatTicketeer from './WhatTicketeer';
@@ -32,6 +32,7 @@ const Container = styled.div`
 `;
 const NoHeight = styled.div`
   display: flex;
+  animation: ${slideInFromTop} 0.7s ease-out forwards;
   align-items: center;
   justify-content: center;
   height: auto;
@@ -45,9 +46,9 @@ export default function EMTicketeer() {
     <BgImage>
       
       <Wrapper>
-        <NoHeight>
+        {/* <NoHeight> */}
           <TicketeerIntro />
-        </NoHeight>
+        {/* </NoHeight> */}
         <NoHeight>
           <TicketeerCarbon />
         </NoHeight>

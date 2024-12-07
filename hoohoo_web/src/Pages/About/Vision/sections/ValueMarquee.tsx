@@ -1,10 +1,10 @@
 import i18next from 'i18next';
-import React, { useEffect, useRef, useState } from 'react'
+import React from 'react'
 import styled, { keyframes } from 'styled-components';
-import { theme } from '../../../style';
-import Wrapper from '../../../Component/Wrapper/Wrapper';
-import { UpperTitle } from '../HomePlatform';
-import Marquee from "react-fast-marquee";
+import { theme } from '../../../../style';
+import Marquee from 'react-fast-marquee';
+import Wrapper from '../../../../Component/Wrapper/Wrapper';
+import { UpperTitle } from '../../../Home/HomePlatform';
 const Container = styled.section`
   width: 100%;
   background-color: transparent;
@@ -37,8 +37,6 @@ const HeaderText = styled.h2`
   font-size: 3rem;
   line-height: 1.1;
   color: ${theme.white};
-  margin-top: 0px;
-  margin-bottom: 70px;
   @media screen and (max-width: 850px) {
     text-align: center;
     font-size: 2.5rem;
@@ -51,14 +49,7 @@ const HeaderBox = styled.div`
   justify-content: flex-start;
   align-items: center;
   width: 100%;
-  margin-top: 0px;
-  
-  @media screen and (max-width: 1200px) {
-    padding-left: 20px;
-  }
-  @media screen and (max-width: 850px) {
-    padding-left: 0px;
-  }
+  margin-bottom: 70px;
 `;
 const marquee = keyframes`
   0% {
@@ -69,52 +60,54 @@ const marquee = keyframes`
   }
 `;
 
-
+const Header = styled.h1`
+  width: calc(100% - 20px);
+  font-size: 3rem;
+  color: ${theme.darkGray};
+  text-align: left;
+  font-family: Fredoka;
+  font-weight: 600;
+  padding: 0px 10px;
+  @media screen and (max-width: 1200px) {
+    font-size: 2.5rem;
+  }
+  @media screen and (max-width: 1000px) {
+    font-size: 2.3rem;
+  }
+  @media screen and (max-width: 800px) {
+    font-size: 2.1rem;
+    text-align: center;
+  }
+  @media screen and (max-width: 600px) {
+    font-size: 1.8rem;
+  }
+  @media screen and (max-width: 400px) {
+    font-size: 1.5rem;
+  }
+`;
 const CardBox = styled.div`
   width: 100%;
   overflow: hidden;
   position: relative;
 `;
-
-// 애니메이션 효과를 적용한 카드 리스트
-// const CardList = styled.div`
-//   display: flex;
-//   flex-direction: row;
-//   gap: 20px;
-//   animation: ${marquee} 20s linear infinite;
-//   transition-duration: 5000ms;
-//   @media screen and (max-width: 850px) {
-//     animation: ${marquee} 15s linear infinite;
-//   }
-//   @media screen and (max-width: 500px) {
-//     animation: ${marquee} 10s linear infinite;
-//   }
-// `;
-
-
-function HomePartnership() {
-    const data: any = i18next.t('HomePartnership', {returnObjects: true});
-
+function ValueMarquee() {
+    const data: any = i18next.t('ValueMarquee', {returnObjects: true});
   return (
     <Container>
         <Background backgroundImage={data.bgImage}>
-            <Wrapper>
-              <HeaderBox>
-                  <UpperTitle>
-                      {data.uptitle}
-                  </UpperTitle>
-                  <HeaderText>
-                      {data.title}
-                  </HeaderText>
-              </HeaderBox>
-            </Wrapper>
-            <CardBox>
+          <Wrapper>
+          <HeaderBox>
+              <Header>{data.title}</Header>
+          </HeaderBox>
+          </Wrapper>
+          <CardBox>
               <Marquee >
                 {data.cards.map((_card : any, index: number) => (
-                  <PartnersCard key={index} data={_card} />
+                  <ValueCard key={index} data={_card} />
                 ))}
+                
               </Marquee>
-            </CardBox>
+          </CardBox>
         </Background>
     </Container>
   )
@@ -127,20 +120,16 @@ type CardProps = {
         icon: string;
     }
 }
-const CardContainer = styled.div<{backgroundImage: string}>`
+const CardContainer = styled.div`
     width: 500px;
-    height: 250px;
-  background-image: url(${props => props.backgroundImage});
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
+    height: 300px;
+  background-color: #ebebeb;
   position: relative;
-  border: 3px solid #ffffffa5;
   border-radius: 40px;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding: 20px 30px;
+  padding: 30px;
   margin-right: 24px;
   @media screen and (max-width: 850px) {
     height: 230px;
@@ -148,56 +137,58 @@ const CardContainer = styled.div<{backgroundImage: string}>`
     margin-right: 20px;
   }
   @media screen and (max-width: 500px) {
-    height: 200px;
-    width: 400px;
+    height: 250px;
+    width: 360px;
     margin-right: 16px;
   }
 `;
 const CardHeader = styled.h2`
   font-size: 2.2rem;
   line-height: 1.1;
-  color: ${theme.white};
-  margin: 10px 0px;
+  color: ${theme.darkGray};
+  margin-top: 10px;
+  margin-bottom: 15px;
   text-align: left;
   @media screen and (max-width: 850px) {
     
-    font-size: 2.2rem;
+    font-size: 2rem;
   }
   @media screen and (max-width: 500px) {
     font-size: 1.8rem;
   }
 `;
 const CardDesc = styled.h4`
-  font-size: 2rem;
-  margin: 0px;
+  font-size: 1.7rem;
   line-height: 1.1;
-  color: #d1d1d1;
+  font-weight: 400;
+  color: #525252;
   text-align: left;
-  width: 90%;
+  width: 100%;
+  margin: 10px 0px;
   @media screen and (max-width: 850px) {
 
-    font-size: 1.8rem;
+    font-size: 1.5rem;
   }
   @media screen and (max-width: 500px) {
-    font-size: 1.5rem;
+    font-size: 1.3rem;
   }
 `;
 const IconImage = styled.img`
-  position: absolute;
-  bottom: 20px;
-  right: 20px;
-  width: 90px;
-  object-fit: contain;
+  width: 100px;
+  height: 80px;
+object-fit: contain;
 `;
-function PartnersCard ({data} : CardProps) {
+function ValueCard ({data} : CardProps) {
     return (
-        <CardContainer backgroundImage={'Images/card_background.png'}>
+        <CardContainer >
+            <IconImage src={data.icon} />
             <CardHeader dangerouslySetInnerHTML={{__html : data.title}}>
             </CardHeader>
             <CardDesc dangerouslySetInnerHTML={{__html : data.description}}>
             </CardDesc>
-            <IconImage src={data.icon} />
+            
         </CardContainer>
     )
 }
-export default HomePartnership
+
+export default ValueMarquee

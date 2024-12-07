@@ -13,6 +13,7 @@ import HomePlatform from './HomePlatform';
 import HomePlatformGroup from './sections/HomePlatformGroup';
 import HomePlatformShare from './sections/HomePlatformShare';
 import HomePartnership from './sections/HomePartnership';
+import HomeLandingSection from './sections/HomeLandingSection';
 const Wrap = styled.div`
   width: calc(100%);
   max-width: 1300px;
@@ -40,12 +41,29 @@ const Wrap = styled.div`
     max-width: 400px;
   }
 `;
+const IntroContentBox = styled.div`
+  padding-top: 20px;
+  justify-content: center;
+  width: 100%;
+  display: flex;
+  margin-top: 0px;
+  overflow: hidden;
+  -webkit-overflow-scrolling: touch;
+`;
 
 function HomeEarthmera() {
   const location = useLocation();
   const navigate = useNavigate();
   const [isOpen, setIsOpen] = useState<boolean>(false);
 
+  useEffect(() => {
+    const searchParams = new URLSearchParams(location.search);
+    if (searchParams.get('modal') === 'open') {
+      setIsOpen(true);
+    } else if (searchParams.get('support') === 'yes') {
+      navigate('/support');
+    }
+  }, [location.search]);
   useEffect(() => {
     const hash = decodeURIComponent(location.hash.replace('#', ''));
     if (hash) {
@@ -62,37 +80,16 @@ function HomeEarthmera() {
         navigate(`/${page}`);
       }
     }
+  
   }, []);
-  // useEffect(()=> {
-  //   const hash = decodeURIComponent(location.hash.replace('#', ''));
-  //   if (hash) {
-  //     const [page, query] = hash.split('#?');
-  //     const params = new URLSearchParams(query);
-  //     const link = params.toString();
-
-  //     if (link) {
-
-  //       navigate(`/${page}?link=${link}`);
-  //     } else {
-  //       navigate(`/${page}`);
-  //     }
-  //   } else if (location.hash === '#download' ){
-  //     setTimeout(() => {
-  //         if (sectionRef.current) {
-  //             sectionRef.current.scrollIntoView({ behavior: 'smooth' });
-  //         }
-  //     }, 100);
-
-  //   } else {
-  //       window.scrollTo(0, 0);
-  //   }
-  // }, [location, navigate]);
   const sectionRef = useRef<HTMLDivElement>(null);
   return (
     <BgImage>
-      <ContentBox>
-        <HomeIntroPage></HomeIntroPage>
-      </ContentBox>
+      <BgImage bgcolor={"#F2F2F7"}>
+      <IntroContentBox>
+        <HomeLandingSection />
+      </IntroContentBox>
+      </BgImage>
       <ContentBox>
         <HomePlatform></HomePlatform>
       </ContentBox>
@@ -112,9 +109,9 @@ function HomeEarthmera() {
         {/* <ContentBox key="video" id="video">
           <VideoSection />
         </ContentBox> */}
-        <ContentBox ref={sectionRef} id="download" key="download">
+        {/* <ContentBox ref={sectionRef} id="download" key="download">
           <Download dropb={false} />
-        </ContentBox>
+        </ContentBox> */}
         <hr style={{color: theme.darkGray, margin: 0}} />
         <FootContact />
       </Wrap>

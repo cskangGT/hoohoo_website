@@ -8,7 +8,7 @@
     "lang": ["한", "영"],
 
     "navlist": [
-      {"label": "홈", "link": "/"},
+      {"label": "홈", "link": "/home"},
       {
         "label": "소개",
         "subItems": [
@@ -22,13 +22,6 @@
           {"label": "플랫폼", "link": "/platform"},
           {"label": "파트너십", "link": "/partnership"},
           {"label": "EM 티켓티어", "link": "/ticketeer"}
-        ]
-      },
-      {
-        "label": "다운로드",
-        "subItems": [
-          {"label": "EarthMera", "link": "/#download"},
-          {"label": "DropB", "link": "/dropb"}
         ]
       },
       {

@@ -25,7 +25,7 @@ const Header = styled.h2`
   }
   @media screen and (max-width: 500px) {
     text-align: center;
-    font-size: 2.1rem;
+    font-size: 1.8rem;
   }
 `;
 const Line = styled.img<{dynamicWidth: number}>`

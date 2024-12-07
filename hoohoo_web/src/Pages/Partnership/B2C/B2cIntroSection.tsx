@@ -1,8 +1,9 @@
 import React, {useEffect, useState} from 'react';
 import styled from 'styled-components';
 import Wrapper from '../../../Component/Wrapper/Wrapper';
-import {slideInFromTop} from '../../../style';
+import {slideInFromTop, theme} from '../../../style';
 import i18next from 'i18next';
+import DownloadButtons from '../../Home/DownloadButtons';
 const Container = styled.section`
   width: 100%;
   background-color: transparent;
@@ -10,26 +11,36 @@ const Container = styled.section`
   @media screen and (max-width: 1000px) {
   }
 `;
-const Background = styled.div`
+const Background = styled.div<{backgroundImage: string}>`
   width: 100%;
-
-  /* background-size: cover;
-  background-position: center; */
+  background-image: url(${props => props.backgroundImage});
+  background-size: cover;
+  background-position: center;
   position: relative;
   flex-direction: row;
-  height: 500px;
+  height: 800px;
   display: flex;
   justify-content: center;
   align-items: center;
   z-index: 1;
   @media screen and (max-width: 1000px) {
-    height: auto;
+    height: 800px;
   }
 `;
-
+const Overlay = styled.div<{overlayImage: string}>`
+  background-image: url(${props => props.overlayImage});
+  background-size: cover;
+  background-position: center;
+  position: absolute;
+  z-index: 2;
+  top: 0px;
+  left: 0px;
+  right: 0px;
+  bottom: 0px;
+`;
 const InnerContainer = styled.div`
   position: relative;
-  flex-direction: row;
+  flex-direction: column;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -37,39 +48,18 @@ const InnerContainer = styled.div`
   @media screen and (max-width: 1000px) {
     height: auto;
     margin-top: 0px;
-    flex-direction: column-reverse;
   }
 `;
-const LeftBox = styled.div`
-  padding: 20px;
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  width: 40%;
-  @media screen and (max-width: 1000px) {
-    width: 80%;
-    row-gap: 10px;
-    padding: 30px 0px;
-    height: auto;
-    align-items: center;
-  }
-`;
-const RightBox = styled.div`
-  width: 60%;
-  position: relative;
-  align-items: center;
-  justify-content: center;
-  display: flex;
-  @media screen and (max-width: 1000px) {
-    /* height: 140px; */
-    width: 100%;
-  }
-`;
+
 const ContentText = styled.p`
   font-size: 1.5rem;
-  color: black;
-  padding-top: 5px;
+  color: ${theme.white};
+  line-height: 1.3;
+  font-family: 'Fredoka';
+  font-weight: 300;
+  padding-top: 2rem;
+  padding-bottom: 4rem;
+  margin: 0px;
   @media screen and (max-width: 1200px) {
     font-size: 1.3rem;
     text-align: center;
@@ -79,19 +69,19 @@ const Header = styled.h2`
   margin: 0;
   padding: 0;
   font-size: 2.5rem;
-  line-height: 1.1;
-  text-align: left;
+  line-height: 1.5;
+  text-align: center;
+  color: ${theme.white};
   font-family: 'Fredoka';
   font-weight: 600;
   @media screen and (max-width: 1200px) {
-    text-align: center;
+
   }
   @media screen and (max-width: 700px) {
-    text-align: center;
     font-size: 2.3rem;
   }
   @media screen and (max-width: 500px) {
-    text-align: center;
+    width: 90%;
     font-size: 2.1rem;
   }
 `;
@@ -116,18 +106,15 @@ export default function B2cIntroSection() {
 
   return (
     <Container>
-      <Background>
+      <Background backgroundImage={data.bgImage}>
         <Wrapper>
           <InnerContainer>
-            <LeftBox>
               <Header dangerouslySetInnerHTML={{__html: data.title}} />
               <ContentText dangerouslySetInnerHTML={{__html: data.content}} />
-            </LeftBox>
-            <RightBox>
-              <ScreenImage src={data.image}></ScreenImage>
-            </RightBox>
+              <DownloadButtons />
           </InnerContainer>
         </Wrapper>
+        <Overlay overlayImage={data.overlay} />
       </Background>
     </Container>
   );

@@ -11,7 +11,6 @@ const Container = styled.div`
   background-color: ${theme.green};
   @media screen and (max-width: 1000px) {
     height: auto;
-    margin-bottom: 100px;
   }
 `;
 const Background = styled.div`
@@ -32,6 +31,8 @@ const Background = styled.div`
 const InnerContainer = styled.div`
   display: flex;
   flex-direction: row;
+  width: calc(100% - 30px);
+  padding: 0px 15px;
   height: 100%;
 `;
 const HeaderText = styled(Header)`
@@ -45,13 +46,15 @@ const HeaderText = styled(Header)`
 `;
 
 const LeftBox = styled.div`
-  width: 50%;
+  width: 40%;
   display: flex;
   flex-direction: column;
   align-items: center;
+  padding: 0 20px;
+  padding-left: 40px;
   justify-content: center;
   @media screen and (max-width: 1000px) {
-    width: 100%;
+    width: calc(100% - 20px);
     padding: 10px;
     height: auto;
   }
@@ -65,12 +68,13 @@ height: 100%;
   }
 `;
 const RightBox = styled.div`
-  width: 50%;
+  width: 60%;
   align-items: center;
   justify-content: center;
   @media screen and (max-width: 1000px) {
     width: auto;
-    padding: 20px;
+    padding: 0px 20px;
+    padding-top: 30px;
   }
 `;
 const ContentText = styled(Desc)`

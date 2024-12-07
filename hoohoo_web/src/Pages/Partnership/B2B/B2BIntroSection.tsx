@@ -155,7 +155,7 @@ const TextInFirstCircle = styled.p`
   text-align: center;
   z-index: 3;
   margin: 0;
-  line-height: 1.1;
+  line-height: 1.3;
   @media (max-width: 1200px) {
     width: 100%;
     height: 50%;
@@ -172,7 +172,7 @@ const SecondTextInFirstCircle = styled.p`
   font-family: 'Fredoka';
   z-index: 10;
   margin: 0;
-  line-height: 1.1;
+  line-height: 1.3;
   @media (max-width: 1200px) {
     width: 100%;
     height: 50%;
@@ -198,7 +198,7 @@ const BoxInSecondCircle = styled.div`
 `;
 const TextInSecondCircle = styled.p`
   font-size: 2.5rem;
-  line-height: 1.1;
+  line-height: 1.3;
   color: white;
   margin: 0;
   width: 50%;

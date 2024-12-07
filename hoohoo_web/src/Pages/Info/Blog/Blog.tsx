@@ -9,6 +9,8 @@ import FootContact from '../../../Component/Footer/FootContact';
 import Wrapper from '../../../Component/Wrapper/Wrapper';
 import {BgImage, theme} from '../../../style';
 import BlogModal from './BlogModal';
+import { BlogCategory, BlogDataType } from '../../../Component/Blog/BlogCategory';
+import { getBlogList } from '../../../api/blog';
 
 const Container = styled.div`
   width: calc(100% - 30px);
@@ -28,18 +30,29 @@ const ContentBox = styled.div`
   justify-content: center;
 `;
 const SlickBar = styled.div`
-  overflow: visible;
+
   margin: 0;
   padding: 0;
+  width: 100%;
+
   margin-top: 20px;
 `;
 
-// 아래가 LeftBar
 const ScrollContainer = styled.div`
   margin-bottom: 20px;
   padding-bottom: 10px;
   display: flex;
-
+  width: 100%;
+  overflow-x: auto;
+  overflow-y: hidden;
+  scroll-behavior: smooth;
+  &::-webkit-scrollbar {
+    width: 0px;
+    height: 0px;
+  }
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;
+  align-items: center;
   @media screen and (max-width: 700px) {
     margin-bottom: 0;
     justify-content: space-between;
@@ -51,8 +64,8 @@ const ScrollContainer = styled.div`
 `;
 
 interface OutlineProps {
-  op: number;
-  selectedCategory: number;
+  op: string;
+  selectedCategory: string;
 }
 const Outline = styled.button<OutlineProps>`
   opacity: ${props => (props.op === props.selectedCategory ? 1 : 0.3)};
@@ -60,9 +73,9 @@ const Outline = styled.button<OutlineProps>`
   border: none;
   margin-right: 10px;
   outline: none;
-  display: block;
-  float: left;
+  display: inline-block;
   height: 100%;
+  min-width: 150px;
   min-height: 1px;
   transition: all 0.2s ease 0s;
   border-radius: 10px;
@@ -105,14 +118,7 @@ const Grid = styled.div`
     margin-top: 50px;
   }
 `;
-type BlogData = {
-  id: number;
-  image: string;
-  category: string;
-  date: string;
-  title: string;
-  desc: string;
-};
+
 const Text = styled.span`
   color: ${theme.darkGray};
   display: flex;
@@ -150,16 +156,9 @@ const NewBlogBtn = styled.button`
 
 function Blog() {
   const [currentPage, setCurrentPage] = useState<number>(1);
-  const [selectedCategory, setSelectedCategory] = useState<number>(0);
-  const [fetchedList, setFetchedList] = useState<BlogData[]>([]);
-  const list: string[] = [
-    'All',
-    'Trash-Picking',
-    'Reuse',
-    'Recycle',
-    'Transportation',
-    'Eco Product',
-  ];
+  const [selectedCategory, setSelectedCategory] = useState<string>('ALL');
+  const [fetchedList, setFetchedList] = useState<BlogDataType[]>([]);
+  const [selectedBlog, setSelectedBlog] = useState<BlogDataType | undefined>();
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const [numTotalData, setNumTotalData] = useState<number>(0);
   const handleOpen = () => setIsOpen(true);
@@ -172,7 +171,7 @@ function Blog() {
   useEffect(() => {
     setLogIn(!!cookies.username);
   }, [cookies.username]);
-  const fetchData = (category: string, page: number) => {
+  const fetchData = async (category: string, page: number) => {
     // let filteredData: BlogData[];
     // if (category === list[0]) {
     //     filteredData = blogdata;
@@ -184,23 +183,24 @@ function Blog() {
     // const endIndex = filteredData.length - OFFSET * (page - 1);
     // const slicedData = filteredData.slice(startIndex, endIndex);
     // setFetchedList(slicedData); // 필요한 데이터 OFFSET만큼만 가져온다.
-    // fetch(`http://localhost:4000/blogs?category=${category}&offset=${OFFSET}&page=${page}`)
-    //     .then(response => response.json())
-    //     .then(data => setFetchedList(data))
-    //     .catch(error => console.error('Error fetching data:', error));
+    const response = await getBlogList(page, category === 'ALL' ? '' : category);
+    if (response.data) {
+      setNumTotalData(response.data.totalPagesCount);
+      setFetchedList(response.data.results);
+    }
   };
   const changePage = (num: number) => {
     setCurrentPage(num);
-    fetchData(list[selectedCategory], num);
+    fetchData(selectedCategory, num);
   };
 
-  const handleSelectCategory = (index: number) => {
+  const handleSelectCategory = (category: string) => {
     // index는 category index 0 = All
     // e.stopPropagation();
     // category에 대한 데이터 요청
-    setSelectedCategory(index);
+    setSelectedCategory(category);
     setCurrentPage(1);
-    fetchData(list[index], 1);
+    fetchData(category, 1);
   };
   useEffect(() => {
     handleSelectCategory(selectedCategory);
@@ -209,7 +209,9 @@ function Blog() {
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
-
+  useEffect(()=> {
+console.log('fetchedList', fetchedList)
+  }, [fetchedList])
   return (
     <>
       <BgImage>
@@ -217,17 +219,20 @@ function Blog() {
           <Container>
             <ContentBox>
               <SlickBar>
-                <ScrollContainer>
-                  {list.map((item, index) => (
+                <ScrollContainer >
+                  {Object.values(BlogCategory).map((item: {
+                    value: string;
+                    text: string;
+                  }, index: number) => (
                     <Outline
                       key={index}
-                      op={index}
+                      op={item.value}
                       selectedCategory={selectedCategory}
-                      onClick={() => handleSelectCategory(index)}>
-                      <OutlineText key={index + 'text'}>{item}</OutlineText>
+                      onClick={() => handleSelectCategory(item.value)}>
+                      <OutlineText key={index + 'text'}>{item.text}</OutlineText>
                     </Outline>
                   ))}
-                  {logIn && (
+                  {/* {logIn && (
                     <NewBlogBtn onClick={handleOpen}>
                       <FontAwesomeIcon
                         icon={faPlus}
@@ -235,21 +240,21 @@ function Blog() {
                       />
                       New Blog
                     </NewBlogBtn>
-                  )}
+                  )} */}
 
                   {isOpen && (
-                    <BlogModal isOpen={isOpen} setIsOpen={setIsOpen} />
+                    <BlogModal isOpen={isOpen} setIsOpen={setIsOpen} selectedBlog={selectedBlog} />
                   )}
                 </ScrollContainer>
               </SlickBar>
               {fetchedList.length === 0 ? (
-                <Text style={{minHeight: 400}}>Opening Soon</Text>
+                <Text style={{minHeight: 400}}>No blog found</Text>
               ) : (
                 <>
                   <Grid>
                     {' '}
                     {fetchedList.map((item, index) => (
-                      <BlogCard key={index} data={item}></BlogCard>
+                      <BlogCard key={index} data={item} setSelectedBlog={setSelectedBlog} handleOpen={handleOpen}></BlogCard>
                     ))}
                   </Grid>
                   <PageNav

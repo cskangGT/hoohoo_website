@@ -54,6 +54,7 @@ justify-self: center;
 
 const Content = styled.div`
   align-content: flex-start;
+  padding-bottom: 60px;
 `;
 
 const Subtitle = styled.h3`
@@ -61,16 +62,16 @@ const Subtitle = styled.h3`
   line-height: 1.1;
   font-weight: bold;
   margin: 0 0 10px 0;
-  color: #333;
+  color: ${theme.darkGray};
   @media screen and (max-width: 1100px) {
 
   }
   @media screen and (max-width: 700px) {
 
-    font-size: 1.8rem;
+    font-size: 1.5rem;
   }
   @media screen and (max-width: 500px) {
-    font-size: 1.5rem;
+    font-size: 1.2rem;
   }
 `;
 
@@ -80,6 +81,7 @@ const Description = styled.p`
   color: ${theme.darkGray};
   width: 80%;
   margin: 0;
+  font-weight: 300;
   text-align: left;
   @media screen and (max-width: 1000px) {
     margin: 20px 0;
@@ -125,7 +127,7 @@ type HowWorkItemProps = {
         subtitle: string;
         description: string;
         hasNext: boolean;
-    }
+    };
     index: number;
 }
 function HowWorkItem({data,index} : HowWorkItemProps) {
@@ -146,10 +148,10 @@ function HowWorkItem({data,index} : HowWorkItemProps) {
    return (
     <Container>
         {!isMobile && (
-        <ImageWrapper isInsideContent={false}>
-          <Image src={data.image} alt="step image" />
-        </ImageWrapper>
-      )}
+            <ImageWrapper isInsideContent={false}>
+            <Image src={data.image} alt="step image" />
+            </ImageWrapper>
+        )}
     <NumberContainer>
         <NumberCircle>
             {index+ 1}
@@ -157,17 +159,14 @@ function HowWorkItem({data,index} : HowWorkItemProps) {
         </NumberCircle>
       <VerticalLine hasNext={data.hasNext} />
     </NumberContainer>
-      
       <Content>
-        
-      {isMobile && (
-        <ImageBox>
-          <ImageWrapper isInsideContent={true}>
-            <Image src={data.image} alt="step image" />
-          </ImageWrapper>
-          </ImageBox>
+        {isMobile && (
+            <ImageBox>
+            <ImageWrapper isInsideContent={true}>
+                <Image src={data.image} alt="step image" />
+            </ImageWrapper>
+            </ImageBox>
         )}
-        
         <Subtitle>{data.subtitle}</Subtitle>
         <Description>{data.description}</Description>
       </Content>

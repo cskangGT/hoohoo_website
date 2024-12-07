@@ -4,7 +4,7 @@ import styled from 'styled-components';
 import LinedHeader from '../../../Component/ContentBox/LinedHeader';
 import Wrapper from '../../../Component/Wrapper/Wrapper';
 import {theme} from '../../../style';
-import {Bg} from '../Vision/VisionIntro';
+import {Bg} from '../Vision/sections/VisionIntro';
 export const BackgroundImage = styled(Bg)`
   margin: 200px 0;
   height: 700px;
@@ -42,7 +42,7 @@ export default function TeamIntro() {
             style={{
               fontSize: isMobile ? '3rem' : '5rem',
               color: theme.white,
-              textAlign: 'left',
+              textAlign: isMobile? 'center': 'left',
             }}
           />
         </IntroHeaderTextContainer>

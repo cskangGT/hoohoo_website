@@ -7,6 +7,7 @@ import { HomeTransitionButton } from '../../../Home/HomeIntroPage';
 import { UpperTitle, HeaderText } from '../../../Home/HomePlatform';
 import { ButtonBox } from '../PhotoVideoes';
 import { theme } from '../../../../style';
+import { emailTo } from '../../../../util/email';
 export const PartnershipContainer = styled.section`
   width: 100%;
   background-color: transparent;
@@ -91,6 +92,8 @@ const CarbonImage = styled.img`
 export const PartnershipDescText = styled.p`
   color: ${theme.black};
   font-size: 1.2rem;
+  line-height: 1.3;
+  width: 80%;
   @media screen and (max-width: 850px) {
     text-align: center;
     font-size: 1rem;
@@ -100,6 +103,8 @@ export const PartnershipTitleText = styled.h2`
   color: ${theme.black};
   font-size: 2rem;
   line-height: 1.1;
+  font-family: Fredoka;
+  font-weight: 600;
   @media screen and (max-width: 850px) {
     text-align: center;
     font-size: 1.6rem;
@@ -119,7 +124,7 @@ function PartnershipCarbonTracking() {
     const navigate = useNavigate();
     const data: any = i18next.t('PartnershipCarbonTracking', {returnObjects: true});
     function goPlatform() {
-      navigate('/platform');
+
     }
     return (
       <PartnershipContainer>
@@ -129,7 +134,7 @@ function PartnershipCarbonTracking() {
                 <PartnershipTitleText dangerouslySetInnerHTML={{__html: data.title}} />
                 <PartnershipDescText>{data.description}</PartnershipDescText>
                 <ButtonBox>
-                  <HomeTransitionButton onClick={goPlatform} dangerouslySetInnerHTML={{__html: data.buttonText}}>
+                  <HomeTransitionButton href={emailTo} dangerouslySetInnerHTML={{__html: data.buttonText}}>
                   </HomeTransitionButton>
                 </ButtonBox>
               </PartnershipLeftBox>

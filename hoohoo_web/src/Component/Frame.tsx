@@ -1,8 +1,9 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import styled from 'styled-components';
 import {theme} from '../../src/style';
 import Footer from './Footer/Footer';
 import Nav from './Nav/Nav';
+import { useLocation, useNavigate } from 'react-router-dom';
 
 const Container = styled.div`
   width: 100%;
@@ -20,13 +21,28 @@ type FrameProps = {
 };
 
 function Frame({children}: FrameProps) {
+  const [show, setShow] = useState<boolean>(false);
+  const location = useLocation();
+  const navigate = useNavigate();
+  useEffect(() => {
+    const searchParams = new URLSearchParams(location.search);
+    
+    if (searchParams.get('home') === 'yes') {
+      setShow(true);
+      navigate('/home');
+    }
+  }, [location.search]);
   const [isKorean, setIsKorean] = useState(false);
   return (
     <Container>
-      <Nav setIsKorean={setIsKorean} isKorean={isKorean} />
+      {show && <Nav setIsKorean={setIsKorean} isKorean={isKorean} />}
       {children}
-      <hr style={{color: theme.darkGray, margin: 0}} />
-      <Footer />
+      
+      {show && <>
+        <hr style={{color: theme.darkGray, margin: 0}} />
+        <Footer />
+        </>
+      }
     </Container>
   );
 }

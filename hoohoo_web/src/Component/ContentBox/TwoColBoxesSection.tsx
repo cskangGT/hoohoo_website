@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import {theme} from '../../style';
 import LinedHeader from './LinedHeader';
 export const Container = styled.div`
-  width: 100%;
+  width: calc(100% - 30px);
   display: flex;
   margin: 100px auto;
   justify-content: flex-start;
@@ -26,21 +26,21 @@ export const HorizonContainer = styled.div<{rightImage?: boolean}>`
   align-items: center;
   min-height: 520px;
   @media screen and (max-width: 1000px) {
-    flex-direction: ${props =>
-      props.rightImage ? 'column' : 'column-reverse'};
+    flex-direction: column-reverse;
   }
 `;
 export const RightBox = styled.div`
   align-items: left;
   justify-content: start;
   display: flex;
-  width: calc(35% - 15px);
+  width: calc(38% - 15px);
   flex-direction: column;
   color: ${theme.darkGray};
   text-align: center;
-  padding: 0 20px;
-  padding-left: 40px;
+  /* padding: 0 20px;
+  padding-left: 40px; */
   line-height: 1.2;
+z-index: 3;
   @media screen and (max-width: 1000px) {
     padding: 0 10px;
     width: 70%;
@@ -90,7 +90,7 @@ export const Desc = styled.p`
 `;
 export const LeftBox = styled.div`
   box-sizing: border-box;
-  width: calc(65% - 15px);
+  width: calc(62% - 15px);
 
   display: flex;
   position: relative;
@@ -106,7 +106,7 @@ export const LeftBox = styled.div`
     width: 90%;
   }
   @media screen and (max-width: 500px) {
-    margin-top: 0px;
+    margin-bottom: 30px;
     width: 100%;
   }
 `;
@@ -116,6 +116,7 @@ export const Image = styled.img<{height?: number, width?: number | string}>`
   height: ${props => props.height ? props.height : '100%'};
   overflow: hidden;
   object-fit: contain;
+  border-radius: 20px;
   z-index: 10;
   @media screen and (max-width: 500px) {
     height: auto;

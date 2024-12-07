@@ -2,6 +2,8 @@ import React from 'react';
 import {useNavigate} from 'react-router-dom';
 import styled from 'styled-components';
 import {theme} from '../../style';
+import { BlogCategory, BlogCategoryType, BlogDataType } from './BlogCategory';
+
 
 const Card = styled.div`
   box-shadow: rgba(0, 0, 0, 0.08) 0px 40px 80px 0px;
@@ -20,7 +22,7 @@ const Card = styled.div`
   align-items: flex-start;
   justify-content: flex-start;
   @media screen and (max-width: 1100px) {
-    padding: 10px 12px 35px;
+    padding: 10px 12px 14px;
     width: auto;
   }
   &:hover {
@@ -50,21 +52,24 @@ const Content = styled.h3`
 const ContainerCD = styled.div`
   justify-content: center;
   align-items: center;
+  width: 100%;
   display: flex;
-  margin-bottom: 0.25rem;
+  margin: 0.25rem 0px;
+  margin-top: 14px;
 `;
 interface CategoryProps {
   color: string;
 }
 const CategoryBox = styled.div<CategoryProps>`
   letter-spacing: 0.3px;
-  font-size: 0.725rem;
+  font-size: 1.2rem;
   font-weight: 600;
   line-height: 1.7;
   border-radius: 20px;
   margin-right: 0.5rem;
   padding: 0.25rem 0.75rem;
   background-color: ${props => props.color};
+
 `;
 const DateBox = styled.div`
   letter-spacing: 0.3px;
@@ -72,58 +77,56 @@ const DateBox = styled.div`
   line-height: 1.7;
 `;
 
-type BlogData = {
-  id: number;
-  image: string;
-  category: string;
-  date: string;
-  title: string;
-  desc: string;
-};
+
+
 type Props = {
-  data: BlogData;
+  data: BlogDataType;
+  setSelectedBlog: (blog: BlogDataType) => void;
+  handleOpen: () => void;
 };
 type CateProps = {
-  category: string;
+  category: BlogCategoryType;
   style?: {};
 };
 export function Category(props: CateProps) {
-  let color: string;
-  if (props.category === 'Trash-Picking') {
-    color = '#FFADAD';
-  } else if (props.category === 'Reuse') {
-    color = '#FFD6A5';
-  } else if (props.category === 'Recycle') {
-    color = '#aae0d4';
-  } else if (props.category === 'Transportation') {
-    color = '#FDFFB6';
-  } else {
-    color = '#D9EDF8';
-  }
+  const colors: Record<BlogCategoryType, string> = {
+    ALL: '#D9EDF8',
+    EARTHMERA_CATEGORY: '#FFADAD',
+    GLOBAL_WARMING: '#FFD6A5',
+    AIR_POLLUTION: '#aae0d4',
+    DESERTIFICATION: '#FDFFB6',
+    ECOSYSTEM_DESTRUCTION: '#f3ffc0',
+    SEA_LEVEL_RISE: '#FFCCFF',
+    OCEAN_TRASH: '#ffd085',
+  };
+
+  const color = colors[props.category] || '#D9EDF8'; // 기본 색상 처리
   return (
     <CategoryBox color={color} style={props.style}>
-      {props.category}
+      {props.category ? BlogCategory[props.category]?.text : ''}
     </CategoryBox>
   );
 }
 function BlogCard(props: Props) {
   const navigate = useNavigate();
-  if (!props.data || !props.data.image) {
+  if (!props.data || !props.data.blogImage) {
     return null;
   }
-
+  const {blogId, blogCategory, blogImage} = props.data;
+  const handleBlog = ()=> {
+    props.handleOpen();
+    props.setSelectedBlog(props.data);
+  }
   return (
     <Card
-      onClick={() => {
-        navigate(`/blog/${props.data.id}`, {state: {blogData: props.data}});
-      }}>
-      <Image src={props.data.image} />
-      <Title>{props.data.title}</Title>
+      onClick={handleBlog}>
+      <Image src={blogImage.low} />
+      {/* <Title>{}</Title> */}
       <ContainerCD>
-        <Category category={props.data.category}></Category>
-        <DateBox>{props.data.date}</DateBox>
+        <Category category={blogCategory} />
+        {/* <DateBox>{props.data.date}</DateBox> */}
       </ContainerCD>
-      <Content>{props.data.desc}</Content>
+      {/* <Content>{props.data.desc}</Content> */}
     </Card>
   );
 }

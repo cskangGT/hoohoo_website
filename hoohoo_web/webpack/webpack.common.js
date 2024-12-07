@@ -21,7 +21,7 @@ module.exports = {
     hot: true,
 
     open: true,
-    port: 8000,
+    port: 3000,
     static: {
       directory: path.join(__dirname, './dist'),
     },

@@ -21,6 +21,14 @@ const ImageBox = styled.div`
   grid-template-rows: auto;
   grid-template-columns: 1fr 1fr 1fr 1fr;
   display: grid;
+  @media screen and (max-width: 1400px) {
+    height: auto;
+    grid-template-columns: 1fr 1fr;
+    width: 70%;
+    row-gap: 30px;
+    grid-column-gap: 20px;
+    grid-template-rows: 1fr 1fr;
+  }
   @media screen and (max-width: 1000px) {
     height: auto;
     grid-template-columns: auto;
