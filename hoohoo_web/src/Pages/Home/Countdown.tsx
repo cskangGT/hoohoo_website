@@ -5,8 +5,10 @@ import {useLocation, useNavigate} from 'react-router-dom';
 import styled from 'styled-components';
 import Wrapper from '../../Component/Wrapper/Wrapper';
 import {theme} from '../../style';
+import ManageAccModal from '../DeleteAccount/ManageAccModal';
+import { androidAppStoreLink, iosAppStoreLink } from './Download';
 
-const targetDate = moment.tz('2024-10-10 00:00', 'America/New_York');
+const targetDate = moment.tz('2024-12-22 00:00', 'America/New_York');
 const Container = styled.div`
   text-align: center;
   height: 100%;
@@ -171,6 +173,39 @@ const LogoContainer = styled.div`
   justify-content: center;
   align-items: flex-end;
 `;
+const BannerBtnContainer = styled.div`
+  display:flex;
+  box-sizing: inherit;
+  width: 100%;
+  gap: 10px;
+  justify-content: center;
+  align-items: center;
+  @media screen and (max-width: 800px) {
+    flex-direction: column;
+  }
+`;
+const BannerBtn = styled.a`
+    text-decoration: none;
+    color: ${theme.white};
+    margin-right:14px;
+    display: flex;
+    width: 200px;
+    border-radius: 20px;
+    flex: 0 0 auto;
+    position: relative;
+    transition: all 0.3s ease 0s;
+    @media screen and (max-width: 1200px) {
+    margin-top: 7px;
+    width: 180px;
+    }
+    @media screen and (max-width: 500px) {
+      margin: 0;
+      width: 100%;
+    }
+`;
+const Img = styled.img`
+  width: 100%;
+`;
 const Logo = styled.div`
   padding: 10px;
   padding-bottom: 0;
@@ -223,80 +258,93 @@ const Countdown: React.FC = () => {
             {char}
           </TimeChar>
         ))}
-      </TimeText>
-    );
-  };
-  useEffect(() => {
-    const searchParams = new URLSearchParams(location.search);
-    if (searchParams.get('modal') === 'open') {
-      setIsOpen(true);
-    } else if (searchParams.get('support') === 'yes') {
-      navigate('/support');
-    }
-  }, [location.search]);
-  useEffect(() => {
-    const hash = decodeURIComponent(location.hash.replace('#', ''));
-    if (hash) {
-      // const [pageWithHash, query] = hash.split('?');
-      // const page = pageWithHash.split('#')[0]; // 페이지 이름 추출
-      // const params = new URLSearchParams(query);
-      const [page, query] = hash.split('#?');
-      const params = new URLSearchParams(query);
-      const link = params.toString();
-
-      if (link) {
-        navigate(`/${page}?${link}`);
-      } else {
-        navigate(`/${page}`);
+        </TimeText>
+      );
+    };
+    useEffect(() => {
+      const searchParams = new URLSearchParams(location.search);
+      if (searchParams.get('modal') === 'open') {
+        setIsOpen(true);
+      } else if (searchParams.get('support') === 'yes') {
+        navigate('/support');
       }
-    }
-    const timer = setInterval(() => {
-      setTimeLeft(calculateTimeLeft());
-    }, 1000);
+    }, [location.search]);
+    useEffect(() => {
+      const hash = decodeURIComponent(location.hash.replace('#', ''));
+      if (hash) {
+        // const [pageWithHash, query] = hash.split('?');
+    // const page = pageWithHash.split('#')[0]; // 페이지 이름 추출
+        // const params = new URLSearchParams(query);
+        const [page, query] = hash.split('#?');
+        const params = new URLSearchParams(query);
+        const link = params.toString();
 
-    return () => clearInterval(timer);
-  }, []);
-  const data = i18next.t('Nav', {returnObjects: true});
+        
 
-  const logo: any = data['logo'];
-  return (
-    <BackgroundContainer>
-      <Wrapper>
-        <Container>
-          <Logo>
+      
+        if (link) {
+
+          navigate(`/${page}?${link}`);
+        } else {
+          navigate(`/${page}`);
+        }
+      }
+      const timer = setInterval(() => {
+        setTimeLeft(calculateTimeLeft());
+      }, 1000);
+  
+      return () => clearInterval(timer);
+    }, []);
+    const data = i18next.t('Nav', { returnObjects: true })
+    const downloadLang = i18next.t('download', { returnObjects: true })
+    
+    const logo: any = data["logo"]
+    return (
+        <BackgroundContainer>
+        <Wrapper>
+      <Container>
+      <Logo>
             <HeaderLogo key="logo" src={logo.image} />
             <LogoText key="earthmera">{logo.text}</LogoText>
-          </Logo>
-          <BodyContainer>
-            <Title>Green Journey Begins in</Title>
-            <TimeDisplay>
-              <TimeUnit style={{paddingLeft: 5}}>
-                {renderTimeText(formatTime(timeLeft.days))}
-                <UnitText>{timeLeft.days > 1 ? 'DAYS' : 'DAY'}</UnitText>
-              </TimeUnit>
-              <TimeUnit>
-                {renderTimeText(formatTime(timeLeft.hours))}
-                <UnitText>{timeLeft.hours > 1 ? 'HOURS' : 'HOUR'}</UnitText>
-              </TimeUnit>
-              <TimeUnit>
-                {renderTimeText(formatTime(timeLeft.minutes))}
-                <UnitText>
-                  {timeLeft.minutes > 1 ? 'MINUTES' : 'MINUTE'}
-                </UnitText>
-              </TimeUnit>
-              <TimeUnit>
-                {renderTimeText(formatTime(timeLeft.seconds))}
-                <UnitText>
-                  {timeLeft.seconds > 1 ? 'SECONDS' : 'SECOND'}
-                </UnitText>
-              </TimeUnit>
-            </TimeDisplay>
-            <SmallText>Small changes spark big waves earth</SmallText>
-          </BodyContainer>
-          <LogoContainer></LogoContainer>
-        </Container>
+        </Logo>
+        <BodyContainer>
+        <Title>Green Journey Begins in</Title>
+        <TimeDisplay>
+          <TimeUnit style={{paddingLeft: 5}}>
+          {renderTimeText(formatTime(timeLeft.days))}
+            <UnitText>{timeLeft.days > 1 ? 'DAYS':'DAY'}</UnitText>
+          </TimeUnit>
+          <TimeUnit>
+          {renderTimeText(formatTime(timeLeft.hours))}
+            <UnitText>{timeLeft.hours > 1 ? 'HOURS':'HOUR'}</UnitText>
+          </TimeUnit>
+          <TimeUnit>
+          {renderTimeText(formatTime(timeLeft.minutes))}
+            <UnitText>{timeLeft.minutes > 1 ? 'MINUTES':'MINUTE'}</UnitText>
+          </TimeUnit>
+          <TimeUnit>
+          {renderTimeText(formatTime(timeLeft.seconds))}
+            <UnitText>{timeLeft.seconds > 1 ? 'SECONDS':'SECOND'}</UnitText>
+          </TimeUnit>
+        </TimeDisplay>
+        <SmallText>Small changes spark big waves earth</SmallText>
+        {timeLeft.days === 0 && timeLeft.hours === 0 && timeLeft.minutes === 0&& timeLeft.seconds === 0&&<BannerBtnContainer>
+            <BannerBtn href={iosAppStoreLink}>
+              <Img src={downloadLang["storeImage"]["appstore"]}></Img>
+            </BannerBtn>
+            <BannerBtn href={androidAppStoreLink}>
+              <Img src={downloadLang["storeImage"]["googleplay"]}></Img>
+            </BannerBtn>
+          </BannerBtnContainer>}
+        </BodyContainer>
+        <LogoContainer>
+        
+        </LogoContainer>
+      </Container>
       </Wrapper>
-    </BackgroundContainer>
-  );
-};
+      <ManageAccModal isOpen={isOpen} setIsOpen={setIsOpen}  />
+      </BackgroundContainer>
+      
+    );
+  };
 export default Countdown;
