@@ -85,7 +85,7 @@ function HomeEarthmera() {
   const sectionRef = useRef<HTMLDivElement>(null);
   return (
     <BgImage>
-      <BgImage bgcolor={"#F2F2F7"}>
+      <BgImage bgcolor={"#F2F2F7 !important"}>
       <IntroContentBox>
         <HomeLandingSection />
       </IntroContentBox>

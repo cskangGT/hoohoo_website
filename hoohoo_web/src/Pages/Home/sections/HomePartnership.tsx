@@ -34,17 +34,18 @@ const Background = styled.div<{backgroundImage: string}>`
 `;
 
 const HeaderText = styled.h2`
-  font-size: 3rem;
+  font-size: 2.5rem;
   line-height: 1.1;
   color: ${theme.white};
   margin-top: 0px;
   margin-bottom: 70px;
+  padding: 0px 0px;
   @media screen and (max-width: 850px) {
     text-align: center;
-    font-size: 2.5rem;
+    font-size: 2rem;
   }
   @media screen and (max-width: 500px) {
-    font-size: 2rem;
+    font-size: 1.8rem;
   }
 `;
 const HeaderBox = styled.div`
@@ -58,14 +59,6 @@ const HeaderBox = styled.div`
   }
   @media screen and (max-width: 850px) {
     padding-left: 0px;
-  }
-`;
-const marquee = keyframes`
-  0% {
-    transform: translateX(100%);
-  }
-  100% {
-    transform: translateX(-100%);
   }
 `;
 
@@ -109,7 +102,7 @@ function HomePartnership() {
               </HeaderBox>
             </Wrapper>
             <CardBox>
-              <Marquee >
+              <Marquee speed={80} >
                 {data.cards.map((_card : any, index: number) => (
                   <PartnersCard key={index} data={_card} />
                 ))}

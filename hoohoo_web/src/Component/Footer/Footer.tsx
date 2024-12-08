@@ -1,7 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import styled from 'styled-components';
 import {theme} from '../../style';
-
 import {
   faInstagram,
   faLinkedinIn,
@@ -114,7 +113,6 @@ const FooterButton = styled.a`
 const IconBox = styled.div`
   display: flex;
   flex-direction: row;
-
   justify-content: space-between;
   margin-top: -5px;
   @media (max-width: 800px) {
@@ -185,7 +183,7 @@ function Footer() {
             <BusinessDetail>
               {' '}
               {data.ceo}
-              <br /> {data.email} : devceohoony@gmail.com
+              <br /> {data.email} : sung.ceo@earthmera.com
             </BusinessDetail>
           </HeaderColumn>
 
@@ -225,7 +223,8 @@ function Footer() {
               icon={faLinkedinIn}
               url={'https://www.linkedin.com/company/earthmera/'}
             />
-            <Ibutton icon={faTiktok}
+            <Ibutton 
+              icon={faTiktok}
               url={'https://www.tiktok.com/@earthmera_global'} />
             <Ibutton
               icon={faYoutube}

@@ -19,12 +19,12 @@ const Logo = styled.button`
 const LogoText = styled.span`
   padding-left: 10px;
   font-family: Fredoka;
+  font-weight: 500;
   color: ${theme.darkGray};
 `;
 
 const Bar = styled.nav`
   position: fixed;
-
   top: 0;
   right: 0;
   left: 0;
