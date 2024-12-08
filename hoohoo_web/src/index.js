@@ -27,7 +27,7 @@ const GlobalStyle = createGlobalStyle`
     }
     body {
       margin: 0;
-      font-family: 'Yanolga Yachae','Noto Sans', 'Fredoka', 'Permanent Marker';
+      font-family: 'Yanolga Yachae', 'Noto Sans', 'Fredoka', 'Permanent Marker';
       font-weight: 500;
       overflow-x: hidden;
       user-select: none;
@@ -37,6 +37,15 @@ const GlobalStyle = createGlobalStyle`
     html {
       overflow-x: hidden;
       scroll-behavior: smooth;
+    }
+    @media (prefers-color-scheme: dark) {
+      :root {
+        color-scheme: light;
+      }
+      body {
+        background-color: #ffffff !important;
+        color: #000000 !important;
+      }
     }
 `;
 const root = ReactDOM.createRoot(document.getElementById('root'));

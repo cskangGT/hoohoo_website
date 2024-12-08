@@ -12,12 +12,18 @@ const Container = styled.div`
   align-items: center;
   position: relative;
   width: 100%;
-  height: 550px;
+  /* height: 550px; */
+  padding-top: 82px;
+  padding-bottom: 200px;
   @media (max-width: 1000px) {
-    padding-top: 100px;
+    
     height: auto;
     flex-direction: column-reverse;
     justify-content: center;
+  }
+  @media (max-width: 500px) {
+    padding-top: 82px;
+    
   }
   
 `;
@@ -26,6 +32,7 @@ const Header = styled.h2`
   line-height: 1.2;
   font-family: Fredoka;
   font-weight: 600;
+  margin-bottom: 15px;
   @media screen and (max-width: 1000px) {
     font-size: 2.3rem;
     text-align: center;
@@ -103,14 +110,17 @@ const RightBox = styled.div`
   }
   @media screen and (max-width: 500px) {
     padding: 0 10px;
-    
+    width: 100%;
     text-align: center;
   }
 `;
 const Image = styled.img`
   width: 100%;
-  height: 100%;
+  height: 400px;
   object-fit: cover;
+  @media screen and (max-width: 500px) {
+    height: 350px;
+  }
 `;
 function TicketeerIntro() {
     const data: any = i18next.t('TicketeerIntro', {returnObjects: true});

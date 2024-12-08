@@ -101,7 +101,7 @@ function ValueMarquee() {
           </HeaderBox>
           </Wrapper>
           <CardBox>
-              <Marquee >
+              <Marquee speed={80} >
                 {data.cards.map((_card : any, index: number) => (
                   <ValueCard key={index} data={_card} />
                 ))}
