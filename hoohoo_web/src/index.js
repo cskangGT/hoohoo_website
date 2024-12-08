@@ -22,11 +22,17 @@ const GlobalStyle = createGlobalStyle`
         url(${YanoljaYacheBWoff}) format('woff'),
          url(${YanoljaYacheBWoff2}) format('woff2'),
     }
+    :root {
+      color-scheme: only light;
+    }
     body {
       margin: 0;
       font-family: 'Yanolga Yachae','Noto Sans', 'Fredoka', 'Permanent Marker';
       font-weight: 500;
       overflow-x: hidden;
+      user-select: none;
+      -webkit-user-select: none;
+      -webkit-text-fill-color: unset;
     }
     html {
       overflow-x: hidden;

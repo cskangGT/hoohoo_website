@@ -22,17 +22,18 @@ const Background = styled.footer`
     min-width: 600px;
   }
   @media screen and (max-width: 700px) {
-    min-width: 450px;
-  }
-  @media screen and (max-width: 500px) {
-    min-width: 380px;
+    min-width: auto;
   }
 `;
 const Container = styled.div`
   max-width: 980px;
+  display: block;
   padding: 0 22px;
   margin: 0 auto;
   @media screen and (max-width: 700px) {
+    margin: 0 0;
+    padding: 0 10px;
+    width: calc(100% - 20px);
   }
 `;
 const Box = styled.div`
@@ -42,12 +43,22 @@ const Box = styled.div`
   position: relative;
   @media (max-width: 800px) {
     flex-direction: column;
+    width: 100%;
+  }
+`;
+const HeaderColumn = styled.div`
+  display: flex;
+  flex-direction: column;
+  padding: 0 15px;
+  @media (max-width: 800px) {
+    padding: 0px 15px;
+    width: calc(100% - 40px);
   }
 `;
 const Column = styled.div`
   display: flex;
   flex-direction: column;
-  padding: 0 15px;
+  
 `;
 const FooterBottom = styled.div`
   padding: 10px 0;
@@ -78,7 +89,7 @@ const RowBox = styled.div`
   padding: 10px;
   padding-top: 25px;
   padding-bottom: 0;
-  padding-right: 0px;
+  padding-right: 10px;
   @media (max-width: 800px) {
     flex-direction: column;
     justify-content: center;
@@ -169,14 +180,14 @@ function Footer() {
     <Background>
       <Container>
         <Box>
-          <Column>
+          <HeaderColumn>
             <FooterTitle>{data.title}</FooterTitle>
             <BusinessDetail>
               {' '}
               {data.ceo}
               <br /> {data.email} : devceohoony@gmail.com
             </BusinessDetail>
-          </Column>
+          </HeaderColumn>
 
           <RowBox>
             <Buttons
@@ -187,7 +198,7 @@ function Footer() {
             />
             <Buttons
               text1={data.menuButtons.terms}
-              action1={() => navigate('/term_of_use')}
+              action1={() => navigate('/terms_of_use')}
               text2={data.menuButtons.privacy}
               action2={() => navigate(`/privacy`)}
             />
