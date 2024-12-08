@@ -13,7 +13,7 @@ const Logo = styled.button`
   align-items: center;
   text-decoration: none;
   border: none;
-  background-color: #fffefe;
+  background-color: transparent;
 `;
 
 const LogoText = styled.span`
