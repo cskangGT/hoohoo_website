@@ -144,15 +144,16 @@
     }
   },
   "gallery": [
-    "Images/1.jpeg",
     "Images/2.jpeg",
     "Images/4.jpeg",
-    "Images/7.jpeg",
+    "Images/6.jpeg",
     "Images/5.jpeg",
     "Images/11.jpeg",
     "Images/10.jpeg",
     "Images/9.jpeg",
-    "Images/8.jpeg"
+    "Images/8.jpeg",
+    "Images/12.jpeg",
+    "Images/13.jpeg"
   ],
   "em_team_Intro": {
     "header": "Introducing <br />Team EarthMera"
@@ -207,7 +208,7 @@
       "url": "https://www.linkedin.com/in/jisanpark5309/"
     },
     {
-      "photoPath": "Images/profile_jungwon.jpeg",
+      "photoPath": "Images/profile_jeongwon.jpg",
       "name": "Jeongwon Park",
       "role": "SWE<br />ML Engineer",
       "contact": "mailto:devceohoony@gmail.com",
@@ -226,6 +227,13 @@
       "role": "SWE<br />Back-End Engineer",
       "contact": "mailto:devceohoony@gmail.com",
       "url": "https://www.linkedin.com/in/daniel-park-33b0632b1/"
+    },
+    {
+      "photoPath": "Images/profile_minjun.png",
+      "name": "Minjun Kim",
+      "role": "ML Team<br />ML Intern",
+      "contact": "mailto:devceohoony@gmail.com",
+      "url": "https://www.linkedin.com/in/minjunnkim/"
     }
   ],
   "partners": {
