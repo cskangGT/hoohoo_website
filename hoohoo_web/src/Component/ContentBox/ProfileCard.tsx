@@ -105,7 +105,6 @@ function Ibutton({icon, url, style}: IbuttonProps) {
 }
 function ProfileCard({item}: Item) {
   const roleHtml = item.role.split('<br />').map((line, index) => (
-    // 각 줄을 div 또는 span으로 감싸고, 필요한 경우 <br />를 추가합니다.
     <React.Fragment key={index}>
       {line}
       {index < item.role.split('<br />').length - 1 && <br />}

@@ -65,6 +65,7 @@ function HomeEarthmera() {
     }
   }, [location.search]);
   useEffect(() => {
+    window.scrollTo(0, 0);
     const hash = decodeURIComponent(location.hash.replace('#', ''));
     if (hash) {
       // const [pageWithHash, query] = hash.split('?');
@@ -82,6 +83,7 @@ function HomeEarthmera() {
     }
   
   }, []);
+  
   const sectionRef = useRef<HTMLDivElement>(null);
   return (
     <BgImage>
