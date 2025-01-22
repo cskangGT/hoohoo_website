@@ -212,11 +212,11 @@ const MenuToogleButton = styled.button<IsOpen>`
 const LanguageBox = styled.div`
   margin: 0 30px;
   display: block;
+
   @media screen and (max-width: 1100px) {
-    display: none;
     position: absolute;
-    right: 45px;
-    top: 25px;
+    right: 40px;
+    top: 32px;
   }
 `;
 const LanguageBoxSecond = styled.div<LanguageProps>`
@@ -301,6 +301,12 @@ const NavSubList = styled.li`
   justify-content: center;
   @media screen and (max-width: 1100px) {
     padding: 7px 7px;
+  }
+`;
+const LanguageOutBox = styled.div`
+  display: none;
+  @media screen and (max-width: 1100px) {
+    display: block;
   }
 `;
 const SubNavLink = styled.a`
@@ -490,6 +496,28 @@ function Nav({isKorean, setIsKorean}: NavProps) {
           </LanguageBox>
         )}
       </NavbarMenu>
+
+      <LanguageOutBox>
+        <LanguageBox>
+          <LanguageButton
+            isKorean={isKorean}
+            onClick={() => {
+              setIsKorean(true);
+              changelanguageToKo();
+            }}>
+            {lang[0]}
+          </LanguageButton>
+          <LanguageButton
+            isKorean={!isKorean}
+            onClick={() => {
+              setIsKorean(false);
+              changelanguageToEn();
+            }}>
+            {lang[1]}
+          </LanguageButton>
+        </LanguageBox>
+      </LanguageOutBox>
+
       <MenuToogleButton onClick={() => setIsOpen(!isOpen)} isOpen={isOpen}>
         <FontAwesomeIcon icon={faBars} />
       </MenuToogleButton>
