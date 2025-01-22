@@ -1,10 +1,10 @@
 import i18next from 'i18next';
-import React, { useEffect, useRef, useState } from 'react'
-import styled, { keyframes } from 'styled-components';
-import { theme } from '../../../style';
+import React from 'react';
+import Marquee from 'react-fast-marquee';
+import styled from 'styled-components';
 import Wrapper from '../../../Component/Wrapper/Wrapper';
-import { UpperTitle } from '../HomePlatform';
-import Marquee from "react-fast-marquee";
+import {theme} from '../../../style';
+import {UpperTitle} from './HomeEnvImpact';
 const Container = styled.section`
   width: 100%;
   background-color: transparent;
@@ -28,7 +28,6 @@ const Background = styled.div<{backgroundImage: string}>`
   padding-top: 75px;
   padding-bottom: 100px;
   @media screen and (max-width: 850px) {
-    
     margin-top: 90px;
   }
 `;
@@ -53,7 +52,7 @@ const HeaderBox = styled.div`
   align-items: center;
   width: 100%;
   margin-top: 0px;
-  
+
   @media screen and (max-width: 1200px) {
     padding-left: 20px;
   }
@@ -61,7 +60,6 @@ const HeaderBox = styled.div`
     padding-left: 0px;
   }
 `;
-
 
 const CardBox = styled.div`
   width: 100%;
@@ -84,45 +82,40 @@ const CardBox = styled.div`
 //   }
 // `;
 
-
 function HomePartnership() {
-    const data: any = i18next.t('HomePartnership', {returnObjects: true});
+  const data: any = i18next.t('HomePartnership', {returnObjects: true});
 
   return (
     <Container>
-        <Background backgroundImage={data.bgImage}>
-            <Wrapper>
-              <HeaderBox>
-                  <UpperTitle>
-                      {data.uptitle}
-                  </UpperTitle>
-                  <HeaderText>
-                      {data.title}
-                  </HeaderText>
-              </HeaderBox>
-            </Wrapper>
-            <CardBox>
-              <Marquee speed={80} >
-                {data.cards.map((_card : any, index: number) => (
-                  <PartnersCard key={index} data={_card} />
-                ))}
-              </Marquee>
-            </CardBox>
-        </Background>
+      <Background backgroundImage={data.bgImage}>
+        <Wrapper>
+          <HeaderBox>
+            <UpperTitle>{data.uptitle}</UpperTitle>
+            <HeaderText>{data.title}</HeaderText>
+          </HeaderBox>
+        </Wrapper>
+        <CardBox>
+          <Marquee speed={80}>
+            {data.cards.map((_card: any, index: number) => (
+              <PartnersCard key={index} data={_card} />
+            ))}
+          </Marquee>
+        </CardBox>
+      </Background>
     </Container>
-  )
+  );
 }
 
 type CardProps = {
-    data: {
-        title: string;
-        description: string;
-        icon: string;
-    }
-}
+  data: {
+    title: string;
+    description: string;
+    icon: string;
+  };
+};
 const CardContainer = styled.div<{backgroundImage: string}>`
-    width: 500px;
-    height: 250px;
+  width: 500px;
+  height: 250px;
   background-image: url(${props => props.backgroundImage});
   background-size: cover;
   background-position: center;
@@ -153,7 +146,6 @@ const CardHeader = styled.h2`
   margin: 10px 0px;
   text-align: left;
   @media screen and (max-width: 850px) {
-    
     font-size: 2.2rem;
   }
   @media screen and (max-width: 500px) {
@@ -168,7 +160,6 @@ const CardDesc = styled.h4`
   text-align: left;
   width: 90%;
   @media screen and (max-width: 850px) {
-
     font-size: 1.8rem;
   }
   @media screen and (max-width: 500px) {
@@ -182,15 +173,13 @@ const IconImage = styled.img`
   width: 90px;
   object-fit: contain;
 `;
-function PartnersCard ({data} : CardProps) {
-    return (
-        <CardContainer backgroundImage={'Images/card_background.png'}>
-            <CardHeader dangerouslySetInnerHTML={{__html : data.title}}>
-            </CardHeader>
-            <CardDesc dangerouslySetInnerHTML={{__html : data.description}}>
-            </CardDesc>
-            <IconImage src={data.icon} />
-        </CardContainer>
-    )
+function PartnersCard({data}: CardProps) {
+  return (
+    <CardContainer backgroundImage={'Images/card_background.png'}>
+      <CardHeader dangerouslySetInnerHTML={{__html: data.title}}></CardHeader>
+      <CardDesc dangerouslySetInnerHTML={{__html: data.description}}></CardDesc>
+      <IconImage src={data.icon} />
+    </CardContainer>
+  );
 }
-export default HomePartnership
+export default HomePartnership;

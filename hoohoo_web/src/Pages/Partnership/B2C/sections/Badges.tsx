@@ -1,8 +1,8 @@
-import React from 'react';
-import Community from './Community';
 import i18next from 'i18next';
+import React from 'react';
 import styled from 'styled-components';
-import { theme } from '../../../style';
+import {theme} from '../../../../style';
+import Community from '../../components/Community';
 const Circle = styled.div`
   width: 700px;
   height: 700px;
@@ -29,7 +29,9 @@ const Circle = styled.div`
 
 export default function Badges() {
   const data: any = i18next.t('Badges', {returnObjects: true});
-  return <Community data={data} flip={false}>
-    <Circle />
-    </Community>;
+  return (
+    <Community data={data} flip={false}>
+      <Circle />
+    </Community>
+  );
 }

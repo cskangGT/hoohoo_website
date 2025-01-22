@@ -1,8 +1,9 @@
 import i18next from 'i18next';
-import React, { useEffect, useState } from 'react'
+import React, {useEffect, useState} from 'react';
 import styled from 'styled-components';
-import { theme } from '../../../../style';
-import { getUserCount } from '../../../../api/userCount';
+import {getUserCount} from '../../../../api/userCount';
+import {useLanguage} from '../../../../Component/hooks/LanguageContext';
+import {theme} from '../../../../style';
 const Background = styled.div<{backgroundImage: string}>`
   width: 100%;
   background-image: url(${props => props.backgroundImage});
@@ -27,12 +28,12 @@ const Background = styled.div<{backgroundImage: string}>`
     border-radius: 0px;
   }
 `;
-const Header = styled.h1`
+const Header = styled.h1<{language: string}>`
   width: calc(100% -20px);
   font-size: 3rem;
   z-index: 2;
   color: ${theme.white};
-  font-family: Fredoka;
+  font-family: ${props => (props.language === 'ko' ? 'Jua' : 'Fredoka')};
   font-weight: 600;
   padding: 0px 10px;
   text-align: center;
@@ -106,7 +107,7 @@ const IconImage = styled.img`
 const Overlay = styled.div`
   width: 100%;
   height: 100%;
-  background-color: rgba(0,0,0,0.3);
+  background-color: rgba(0, 0, 0, 0.3);
   position: absolute;
   z-index: 0;
   top: 0px;
@@ -137,36 +138,33 @@ const CountText = styled.p`
     font-size: 2rem;
   }
 `;
-function formatCount (num: number) {
-    return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+function formatCount(num: number) {
+  return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
 }
 function ValueUserCount() {
-    const [userCount, setUserCount] = useState<number>(1231415);
-    const data: any = i18next.t('ValueUserCount', {returnObjects: true});
-    useEffect(()=> {
-        const fetchUserCount = async () => {
-            const response = await getUserCount();
-            if (response.result) {
-                setUserCount(response?.data?.userCount);
-            }
-        }
-        fetchUserCount();
-    }, [])
+  const [userCount, setUserCount] = useState<number>(1231415);
+  const {language} = useLanguage();
+  const data: any = i18next.t('ValueUserCount', {returnObjects: true});
+  useEffect(() => {
+    const fetchUserCount = async () => {
+      const response = await getUserCount();
+      if (response.result) {
+        setUserCount(response?.data?.userCount);
+      }
+    };
+    fetchUserCount();
+  }, []);
   return (
     <Background backgroundImage={data.bgImage}>
       <Overlay></Overlay>
-        <Header>
-            {data.title}
-        </Header>
-        <IconRow>
-            <IconImage src={data.userIcon} />
-            <CountText>{formatCount(userCount)}</CountText>
-        </IconRow>
-        <ContentText>
-            {data.content}
-        </ContentText>
+      <Header language={language}>{data.title}</Header>
+      <IconRow>
+        <IconImage src={data.userIcon} />
+        <CountText>{formatCount(userCount)}</CountText>
+      </IconRow>
+      <ContentText>{data.content}</ContentText>
     </Background>
-  )
+  );
 }
 
-export default ValueUserCount
+export default ValueUserCount;

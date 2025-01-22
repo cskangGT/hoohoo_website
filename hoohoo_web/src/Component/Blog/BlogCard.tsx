@@ -2,8 +2,8 @@ import React from 'react';
 import {useNavigate} from 'react-router-dom';
 import styled from 'styled-components';
 import {theme} from '../../style';
-import { BlogCategory, BlogCategoryType, BlogDataType } from './BlogCategory';
-
+import {useLanguage} from '../hooks/LanguageContext';
+import {BlogCategory, BlogCategoryType, BlogDataType} from './BlogCategory';
 
 const Card = styled.div`
   box-shadow: rgba(0, 0, 0, 0.08) 0px 40px 80px 0px;
@@ -69,15 +69,12 @@ const CategoryBox = styled.div<CategoryProps>`
   margin-right: 0.5rem;
   padding: 0.25rem 0.75rem;
   background-color: ${props => props.color};
-
 `;
 const DateBox = styled.div`
   letter-spacing: 0.3px;
   font-size: 0.725rem;
   line-height: 1.7;
 `;
-
-
 
 type Props = {
   data: BlogDataType;
@@ -89,6 +86,7 @@ type CateProps = {
   style?: {};
 };
 export function Category(props: CateProps) {
+  const {language} = useLanguage();
   const colors: Record<BlogCategoryType, string> = {
     ALL: '#D9EDF8',
     EARTHMERA_CATEGORY: '#FFADAD',
@@ -103,23 +101,27 @@ export function Category(props: CateProps) {
   const color = colors[props.category] || '#D9EDF8'; // 기본 색상 처리
   return (
     <CategoryBox color={color} style={props.style}>
-      {props.category ? BlogCategory[props.category]?.text : ''}
+      {props.category
+        ? language === 'ko'
+          ? BlogCategory[props.category]?.text.ko
+          : BlogCategory[props.category]?.text.en
+        : ''}
     </CategoryBox>
   );
 }
 function BlogCard(props: Props) {
+  const {language} = useLanguage();
   const navigate = useNavigate();
   if (!props.data || !props.data.blogImage) {
     return null;
   }
   const {blogId, blogCategory, blogImage} = props.data;
-  const handleBlog = ()=> {
+  const handleBlog = () => {
     props.handleOpen();
     props.setSelectedBlog(props.data);
-  }
+  };
   return (
-    <Card
-      onClick={handleBlog}>
+    <Card onClick={handleBlog}>
       <Image src={blogImage.low} />
       {/* <Title>{}</Title> */}
       <ContainerCD>

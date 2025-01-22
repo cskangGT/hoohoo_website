@@ -5,7 +5,7 @@ import styled from 'styled-components';
 import {deleteAccountAPI} from '../../api/deleteAcc';
 import {LineDivider, theme} from '../../style';
 import {throttle} from '../../util/throttle';
-import {ModalBackground} from '../Info/Blog/BlogModal';
+import {ModalBackground} from '../EMMedia/Blog/BlogModal';
 import {ModalContent} from './ManageAccModal';
 const Wrapper = styled.div`
   padding: 6rem 2rem 3rem;

@@ -27,7 +27,7 @@ const GlobalStyle = createGlobalStyle`
     }
     body {
       margin: 0;
-      font-family: 'Yanolga Yachae', 'Noto Sans', 'Fredoka', 'Permanent Marker';
+      font-family: 'Yanolga Yachae', 'Noto Sans', 'Fredoka', 'Jua', 'Black Han Sans', 'Permanent Marker';
       font-weight: 500;
       overflow-x: hidden;
       user-select: none;

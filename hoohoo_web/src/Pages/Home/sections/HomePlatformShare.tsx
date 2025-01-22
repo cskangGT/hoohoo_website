@@ -1,10 +1,10 @@
-import React from 'react'
+import i18next from 'i18next';
+import React from 'react';
+import {useNavigate} from 'react-router-dom';
 import styled from 'styled-components';
 import Wrapper from '../../../Component/Wrapper/Wrapper';
-import { HomeTransitionButton } from '../HomeIntroPage';
-import { UpperTitle, HeaderText, ButtonBox } from '../HomePlatform';
-import i18next from 'i18next';
-import { useNavigate } from 'react-router-dom';
+import {HomeTransitionButton} from '../HomeIntroPage';
+import {ButtonBox, HeaderText, UpperTitle} from './HomeEnvImpact';
 const Container = styled.section`
   width: 100%;
   background-color: transparent;
@@ -87,33 +87,33 @@ const ScreenImage = styled.img`
   }
 `;
 function HomePlatformShare() {
-    const navigate = useNavigate();
-    const data: any = i18next.t('HomePlatformShare', {returnObjects: true});
-    function goPlatform() {
-      navigate('/platform');
-    }
+  const navigate = useNavigate();
+  const data: any = i18next.t('HomePlatformShare', {returnObjects: true});
+  function goPlatform() {
+    navigate('/platform');
+  }
   return (
     <Container>
-        <Background backgroundImage={data.bgImage}>
-          <Wrapper>
-            <InnerContainer>
-              <LeftBox>
-                <UpperTitle>{data.uptitle}</UpperTitle>
-                <HeaderText dangerouslySetInnerHTML={{__html: data.title}} />
-                <ButtonBox>
-                  <HomeTransitionButton onClick={goPlatform}>
-                    {data.buttonText}
-                  </HomeTransitionButton>
-                </ButtonBox>
-              </LeftBox>
-              <RightBox>
-                <ScreenImage src={data.image}></ScreenImage>
-              </RightBox>
-            </InnerContainer>
-          </Wrapper>
-        </Background>
-      </Container>
-  )
+      <Background backgroundImage={data.bgImage}>
+        <Wrapper>
+          <InnerContainer>
+            <LeftBox>
+              <UpperTitle>{data.uptitle}</UpperTitle>
+              <HeaderText dangerouslySetInnerHTML={{__html: data.title}} />
+              <ButtonBox>
+                <HomeTransitionButton onClick={goPlatform}>
+                  {data.buttonText}
+                </HomeTransitionButton>
+              </ButtonBox>
+            </LeftBox>
+            <RightBox>
+              <ScreenImage src={data.image}></ScreenImage>
+            </RightBox>
+          </InnerContainer>
+        </Wrapper>
+      </Background>
+    </Container>
+  );
 }
 
-export default HomePlatformShare
+export default HomePlatformShare;

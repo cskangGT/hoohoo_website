@@ -5,15 +5,14 @@ import {useLocation, useNavigate} from 'react-router-dom';
 import FootContact from '../../Component/Footer/FootContact';
 import {BgImage, theme} from '../../style';
 import {ContentBox} from '../About/Vision/EarthMeraVision';
-import Download from './Download';
-import HomeIntroPage from './HomeIntroPage';
-
-import HomePlatform from './HomePlatform';
-
+import HomeEcoProoducts from './sections/HomeEcoProoducts';
+import HomeEcoServices from './sections/HomeEcoServices';
+import HomeEnvImpact from './sections/HomeEnvImpact';
+import HomeLandingSection from './sections/HomeLandingSection';
+import HomePartners from './sections/HomePartners';
+import HomePartnership from './sections/HomePartnership';
 import HomePlatformGroup from './sections/HomePlatformGroup';
 import HomePlatformShare from './sections/HomePlatformShare';
-import HomePartnership from './sections/HomePartnership';
-import HomeLandingSection from './sections/HomeLandingSection';
 const Wrap = styled.div`
   width: calc(100%);
   max-width: 1300px;
@@ -81,40 +80,52 @@ function HomeEarthmera() {
         navigate(`/${page}`);
       }
     }
-  
   }, []);
-  
+
   const sectionRef = useRef<HTMLDivElement>(null);
   return (
     <BgImage>
-      <BgImage bgcolor={"#F2F2F7 !important"}>
-      <IntroContentBox>
-        <HomeLandingSection />
-      </IntroContentBox>
+      <BgImage bgcolor={'#F2F2F7 !important'}>
+        <IntroContentBox>
+          <HomeLandingSection />
+        </IntroContentBox>
       </BgImage>
       <ContentBox>
-        <HomePlatform></HomePlatform>
+        <HomeEnvImpact></HomeEnvImpact>
+      </ContentBox>
+      <ContentBox>
+        <HomeEcoProoducts />
+      </ContentBox>
+      <ContentBox>
+        <HomeEcoServices />
       </ContentBox>
       <ContentBox>
         <HomePlatformGroup />
       </ContentBox>
-      
+
       <ContentBox>
         <HomePlatformShare />
       </ContentBox>
       <ContentBox>
         <HomePartnership />
       </ContentBox>
+
       <Wrap>
-        {/* <IntroSection /> */}
-        {/* <IntroEarth /> */}
-        {/* <ContentBox key="video" id="video">
+        <ContentBox>
+          <HomePartners />
+        </ContentBox>
+      </Wrap>
+      {/* <IntroSection /> */}
+      {/* <IntroEarth /> */}
+      {/* <ContentBox key="video" id="video">
           <VideoSection />
         </ContentBox> */}
-        {/* <ContentBox ref={sectionRef} id="download" key="download">
+      {/* <ContentBox ref={sectionRef} id="download" key="download">
           <Download dropb={false} />
         </ContentBox> */}
-        <hr style={{color: theme.darkGray, margin: 0}} />
+
+      <hr style={{color: theme.darkGray, margin: 0, width: '100%'}} />
+      <Wrap>
         <FootContact />
       </Wrap>
     </BgImage>

@@ -4,16 +4,19 @@ import {Outlet} from 'react-router-dom';
 import {ToastContainer} from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import Frame from './Component/Frame';
+import {LanguageProvider} from './Component/hooks/LanguageContext';
 function Root() {
   return (
-    <CookiesProvider>
-      {/* <div style={{backgroundColor: 'transparent'}}> */}
+    <LanguageProvider>
+      <CookiesProvider>
+        {/* <div style={{backgroundColor: 'transparent'}}> */}
         <Frame>
           <Outlet />
         </Frame>
         <ToastContainer />
-      {/* </div> */}
-    </CookiesProvider>
+        {/* </div> */}
+      </CookiesProvider>
+    </LanguageProvider>
   );
 }
 

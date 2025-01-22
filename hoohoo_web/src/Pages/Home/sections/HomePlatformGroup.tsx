@@ -1,10 +1,10 @@
-import React from 'react'
-import { useNavigate } from 'react-router-dom';
+import i18next from 'i18next';
+import React from 'react';
+import {useNavigate} from 'react-router-dom';
 import styled from 'styled-components';
 import Wrapper from '../../../Component/Wrapper/Wrapper';
-import { ButtonBox, HeaderText, UpperTitle } from '../HomePlatform';
-import { HomeTransitionButton } from '../HomeIntroPage';
-import i18next from 'i18next';
+import {HomeTransitionButton} from '../HomeIntroPage';
+import {ButtonBox, HeaderText, UpperTitle} from './HomeEnvImpact';
 const Container = styled.section`
   width: 100%;
   background-color: transparent;
@@ -87,34 +87,33 @@ const ScreenImage = styled.img`
   }
 `;
 function HomePlatformGroup() {
-    const navigate = useNavigate();
-    const data: any = i18next.t('HomePlatformGroup', {returnObjects: true});
-    function goPlatform() {
-      navigate('/platform');
-    }
-    return (
-      <Container>
-        <Background backgroundImage={data.bgImage}>
-          <Wrapper>
-            <InnerContainer>
-              <LeftBox>
-                <UpperTitle>{data.uptitle}</UpperTitle>
-                <HeaderText dangerouslySetInnerHTML={{__html: data.title}} />
-                <ButtonBox>
-                  <HomeTransitionButton onClick={goPlatform}>
-                    {data.buttonText}
-                  </HomeTransitionButton>
-                </ButtonBox>
-              </LeftBox>
-              <RightBox>
-                <ScreenImage src={data.image}></ScreenImage>
-              </RightBox>
-            </InnerContainer>
-          </Wrapper>
-        </Background>
-      </Container>
-    );
-
+  const navigate = useNavigate();
+  const data: any = i18next.t('HomePlatformGroup', {returnObjects: true});
+  function goPlatform() {
+    navigate('/platform');
+  }
+  return (
+    <Container>
+      <Background backgroundImage={data.bgImage}>
+        <Wrapper>
+          <InnerContainer>
+            <LeftBox>
+              <UpperTitle>{data.uptitle}</UpperTitle>
+              <HeaderText dangerouslySetInnerHTML={{__html: data.title}} />
+              <ButtonBox>
+                <HomeTransitionButton onClick={goPlatform}>
+                  {data.buttonText}
+                </HomeTransitionButton>
+              </ButtonBox>
+            </LeftBox>
+            <RightBox>
+              <ScreenImage src={data.image}></ScreenImage>
+            </RightBox>
+          </InnerContainer>
+        </Wrapper>
+      </Background>
+    </Container>
+  );
 }
 
-export default HomePlatformGroup
+export default HomePlatformGroup;

@@ -1,34 +1,50 @@
 import i18next from 'i18next';
-import React from 'react'
-import { useNavigate } from 'react-router-dom';
+import React from 'react';
+import {useLanguage} from '../../../../Component/hooks/LanguageContext';
 import Wrapper from '../../../../Component/Wrapper/Wrapper';
-import { HomeTransitionButton } from '../../../Home/HomeIntroPage';
-import { ButtonBox } from '../PhotoVideoes';
-import { PartnershipContainer, PartnershipInnerContainer, PartnershipLeftBox, PartnershipTitleText, PartnershipDescText, PartnershipRightBox, PartnershipScreenImage } from './PartnershipCarbonTracking';
-import { emailTo } from '../../../../util/email';
+import {emailTo} from '../../../../util/email';
+import {HomeTransitionButton} from '../../../Home/HomeIntroPage';
+import {ButtonBox} from '../PhotoVideoes';
+import {
+  PartnershipContainer,
+  PartnershipDescText,
+  PartnershipInnerContainer,
+  PartnershipLeftBox,
+  PartnershipRightBox,
+  PartnershipScreenImage,
+  PartnershipTitleText,
+} from './PartnershipCarbonTracking';
 
 function PartnershipShop() {
-    const data: any = i18next.t('PartnershipShop', {returnObjects: true});
-    
-    return (
-      <PartnershipContainer>
-          <Wrapper>
-            <PartnershipInnerContainer>
-              <PartnershipLeftBox>
-                <PartnershipTitleText dangerouslySetInnerHTML={{__html: data.title}} />
-                <PartnershipDescText>{data.description}</PartnershipDescText>
-                <ButtonBox>
-                  <HomeTransitionButton href={emailTo} dangerouslySetInnerHTML={{__html: data.buttonText}}>
-                  </HomeTransitionButton>
-                </ButtonBox>
-              </PartnershipLeftBox>
-              <PartnershipRightBox>
-                <PartnershipScreenImage src={data.image} />
-              </PartnershipRightBox>
-            </PartnershipInnerContainer>
-          </Wrapper>
-      </PartnershipContainer>
-    );
+  const data: any = i18next.t('PartnershipShop', {returnObjects: true});
+  const {language} = useLanguage();
+  return (
+    <PartnershipContainer>
+      <Wrapper>
+        <PartnershipInnerContainer>
+          <PartnershipLeftBox>
+            <PartnershipTitleText
+              language={language}
+              dangerouslySetInnerHTML={{__html: data.title}}
+            />
+            <PartnershipDescText
+              dangerouslySetInnerHTML={{__html: data.description}}
+            />
+            <ButtonBox>
+              <HomeTransitionButton
+                href={emailTo}
+                dangerouslySetInnerHTML={{
+                  __html: data.buttonText,
+                }}></HomeTransitionButton>
+            </ButtonBox>
+          </PartnershipLeftBox>
+          <PartnershipRightBox>
+            <PartnershipScreenImage src={data.image} />
+          </PartnershipRightBox>
+        </PartnershipInnerContainer>
+      </Wrapper>
+    </PartnershipContainer>
+  );
 }
 
-export default PartnershipShop
+export default PartnershipShop;

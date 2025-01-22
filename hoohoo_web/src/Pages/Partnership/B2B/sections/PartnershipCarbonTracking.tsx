@@ -1,23 +1,22 @@
 import i18next from 'i18next';
-import React from 'react'
-import { useNavigate } from 'react-router-dom';
+import React from 'react';
+import {useNavigate} from 'react-router-dom';
 import styled from 'styled-components';
+import {useLanguage} from '../../../../Component/hooks/LanguageContext';
 import Wrapper from '../../../../Component/Wrapper/Wrapper';
-import { HomeTransitionButton } from '../../../Home/HomeIntroPage';
-import { UpperTitle, HeaderText } from '../../../Home/HomePlatform';
-import { ButtonBox } from '../PhotoVideoes';
-import { theme } from '../../../../style';
-import { emailTo } from '../../../../util/email';
+import {theme} from '../../../../style';
+import {emailTo} from '../../../../util/email';
+import {HomeTransitionButton} from '../../../Home/HomeIntroPage';
+import {ButtonBox} from '../PhotoVideoes';
 export const PartnershipContainer = styled.section`
   width: 100%;
   background-color: transparent;
   position: relative;
   align-items: center;
   justify-content: center;
-  
+
   @media screen and (max-width: 850px) {
     height: auto;
-    
   }
 `;
 const Background = styled.div`
@@ -30,7 +29,6 @@ const Background = styled.div`
   z-index: 1;
   @media screen and (max-width: 850px) {
     height: auto;
-    
   }
 `;
 export const PartnershipInnerContainer = styled.div`
@@ -45,7 +43,7 @@ export const PartnershipInnerContainer = styled.div`
     height: auto;
     margin: 10px 0px;
     margin-top: 80px;
-    
+
     flex-direction: column-reverse;
   }
 `;
@@ -69,7 +67,6 @@ export const PartnershipRightBox = styled.div`
   position: relative;
   display: flex;
   @media screen and (max-width: 1200px) {
-
   }
   @media screen and (max-width: 850px) {
     width: 100%;
@@ -90,7 +87,7 @@ const CarbonImage = styled.img`
   }
 `;
 export const PartnershipDescText = styled.p`
-  color: ${theme.black};
+  color: ${theme.darkGray};
   font-size: 1.2rem;
   line-height: 1.3;
   width: 80%;
@@ -99,11 +96,11 @@ export const PartnershipDescText = styled.p`
     font-size: 1rem;
   }
 `;
-export const PartnershipTitleText = styled.h2`
-  color: ${theme.black};
+export const PartnershipTitleText = styled.h2<{language: string}>`
+  color: ${theme.darkGray};
   font-size: 2rem;
-  line-height: 1.1;
-  font-family: Fredoka;
+  line-height: 1.4;
+  font-family: ${props => (props.language === 'ko' ? 'Jua' : 'Fredoka')};
   font-weight: 600;
   @media screen and (max-width: 850px) {
     text-align: center;
@@ -111,8 +108,7 @@ export const PartnershipTitleText = styled.h2`
   }
 `;
 export const PartnershipScreenImage = styled.img`
-
-    width: 100%;
+  width: 100%;
   @media screen and (max-width: 1200px) {
     width: 70%;
   }
@@ -121,31 +117,40 @@ export const PartnershipScreenImage = styled.img`
   }
 `;
 function PartnershipCarbonTracking() {
-    const navigate = useNavigate();
-    const data: any = i18next.t('PartnershipCarbonTracking', {returnObjects: true});
-    function goPlatform() {
-
-    }
-    return (
-      <PartnershipContainer>
-          <Wrapper>
-            <PartnershipInnerContainer>
-              <PartnershipLeftBox>
-                <PartnershipTitleText dangerouslySetInnerHTML={{__html: data.title}} />
-                <PartnershipDescText>{data.description}</PartnershipDescText>
-                <ButtonBox>
-                  <HomeTransitionButton href={emailTo} dangerouslySetInnerHTML={{__html: data.buttonText}}>
-                  </HomeTransitionButton>
-                </ButtonBox>
-              </PartnershipLeftBox>
-              <PartnershipRightBox>
-                <PartnershipScreenImage src={data.image} />
-              </PartnershipRightBox>
-            </PartnershipInnerContainer>
-          </Wrapper>
-            <CarbonImage src={data.carbonImage} />
-      </PartnershipContainer>
-    );
+  const navigate = useNavigate();
+  const data: any = i18next.t('PartnershipCarbonTracking', {
+    returnObjects: true,
+  });
+  const {language} = useLanguage();
+  function goPlatform() {}
+  return (
+    <PartnershipContainer>
+      <Wrapper>
+        <PartnershipInnerContainer>
+          <PartnershipLeftBox>
+            <PartnershipTitleText
+              language={language}
+              dangerouslySetInnerHTML={{__html: data.title}}
+            />
+            <PartnershipDescText
+              dangerouslySetInnerHTML={{__html: data.description}}
+            />
+            <ButtonBox>
+              <HomeTransitionButton
+                href={emailTo}
+                dangerouslySetInnerHTML={{
+                  __html: data.buttonText,
+                }}></HomeTransitionButton>
+            </ButtonBox>
+          </PartnershipLeftBox>
+          <PartnershipRightBox>
+            <PartnershipScreenImage src={data.image} />
+          </PartnershipRightBox>
+        </PartnershipInnerContainer>
+      </Wrapper>
+      <CarbonImage src={data.carbonImage} />
+    </PartnershipContainer>
+  );
 }
 
-export default PartnershipCarbonTracking
+export default PartnershipCarbonTracking;

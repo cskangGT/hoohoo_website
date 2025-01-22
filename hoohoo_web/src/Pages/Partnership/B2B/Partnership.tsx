@@ -3,13 +3,12 @@ import styled from 'styled-components';
 import FootContact from '../../../Component/Footer/FootContact';
 import Wrapper from '../../../Component/Wrapper/Wrapper';
 import {BgImage, theme} from '../../../style';
-import B2BIntroSection from './B2BIntroSection';
-import EMBags from './EMBags';
-import GetInTouch from './GetInTouch';
-import PhotoVideoes from './PhotoVideoes';
+import B2BEcoProducts from './sections/B2BEcoProducts';
+import B2BEcoServices from './sections/B2BEcoServices';
+import B2BIntroSection from './sections/B2BIntroSection';
 import PartnershipCarbonTracking from './sections/PartnershipCarbonTracking';
-import PartnershipShop from './sections/PartnershipShop';
 import PartnershipEcoBoard from './sections/PartnershipEcoBoard';
+import PartnershipShop from './sections/PartnershipShop';
 const IntroPageSection = styled.section`
   display: flex;
   justify-content: center;
@@ -39,50 +38,26 @@ function Partnership() {
       <BgImage>
         <Wrapper>
           <IntroPageSection>
-            <B2BIntroSection></B2BIntroSection>
-            {/* <ConstructionText>{"Our partnership will be released soon :)"}</ConstructionText> */}
+            <B2BIntroSection />
           </IntroPageSection>
         </Wrapper>
         <Container>
           <PartnershipCarbonTracking />
         </Container>
         <Wrapper>
-        <Container>
+          <Container>
+            <B2BEcoProducts />
+          </Container>
+          <Container>
+            <B2BEcoServices />
+          </Container>
+          <Container>
             <PartnershipEcoBoard />
           </Container>
           <Container>
             <PartnershipShop />
           </Container>
         </Wrapper>
-        {/* <Container>
-          <PhotoVideoes></PhotoVideoes>
-        </Container>
-        <Container>
-          <EMBags></EMBags>
-        </Container>
-        <Container>
-          <GetInTouch />
-        </Container> */}
-
-        {/* <PartnershipIntro />
-          <ContentBox>
-            <ESG />
-          </ContentBox>
-          <ContentBox>
-            <DataOffer />
-          </ContentBox>
-          <ContentBox>
-            <HowWork></HowWork>
-          </ContentBox>
-          <ContentBox>
-           <UsingB2C />
-          </ContentBox>
-          <ContentBox>
-            <Solutions /> 
-          </ContentBox>
-          <ContentBox>
-            <B2BVideo />
-          </ContentBox> */}
       </BgImage>
       <hr style={{color: theme.darkGray, margin: 0}} />
       <FootContact />

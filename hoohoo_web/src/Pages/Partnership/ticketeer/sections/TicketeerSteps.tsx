@@ -1,8 +1,9 @@
 import i18next from 'i18next';
-import React, { useRef, useEffect, useState } from 'react';
+import React, {useEffect, useRef, useState} from 'react';
 
 import styled from 'styled-components';
-import { theme } from '../../../../style';
+import {useLanguage} from '../../../../Component/hooks/LanguageContext';
+import {theme} from '../../../../style';
 const ContentBox = styled.div`
   display: flex;
   flex-direction: column;
@@ -39,7 +40,8 @@ const EachBox = styled.div<{index: number}>`
   height: 500px;
   display: flex;
   border: 1px solid red;
-  flex-direction: ${props => props.index ===0 || props.index ===2 ? 'column-reverse': 'column'};
+  flex-direction: ${props =>
+    props.index === 0 || props.index === 2 ? 'column-reverse' : 'column'};
   align-items: center;
   justify-content: flex-start;
   background: linear-gradient(
@@ -47,19 +49,17 @@ const EachBox = styled.div<{index: number}>`
     rgba(255, 255, 255, 0.14) 0%,
     rgba(255, 255, 255, 0.05) 100%
   );
-background-color: #ebebeb;
+  background-color: #ebebeb;
   border-color: ${theme.white};
   border-width: 2px;
   border-radius: 20px;
   z-index: 10;
   @media screen and (max-width: 1000px) {
-    
     flex-direction: column;
   }
   @media screen and (max-width: 500px) {
     height: 450px;
     width: 300px;
-
   }
 `;
 const ActName = styled.h3`
@@ -71,6 +71,8 @@ const ActName = styled.h3`
 `;
 const ActDesc = styled.span`
   text-align: center;
+  font-size: 1.1rem;
+  line-height: 1.5;
 `;
 const TapeBgImage = styled.img`
   height: 150px;
@@ -91,17 +93,16 @@ const TextBox = styled.div`
   flex-direction: column;
   padding-bottom: 35px;
 `;
-const Header = styled.h2`
+const Header = styled.h2<{language: string}>`
   margin: 0;
   padding: 0;
   font-size: 2.5rem;
   line-height: 1.1;
   text-align: center;
-  font-family: 'Fredoka';
+  font-family: ${props => (props.language === 'ko' ? 'Jua' : 'Fredoka')};
   font-weight: 600;
   padding-bottom: 30px;
   @media screen and (max-width: 1100px) {
-    
   }
   @media screen and (max-width: 700px) {
     text-align: center;
@@ -149,50 +150,55 @@ const Underline = styled.img`
   bottom: -5px; /* 밑줄 이미지의 위치 */
   left: 50%;
   transform: translateX(-50%);
-  width: ${({ width }) => `${width}px`}; /* 동적으로 너비 설정 */
+  width: ${({width}) => `${width}px`}; /* 동적으로 너비 설정 */
   height: auto;
 `;
 
-
 type DataProps = {
-    imagePath: string;
-    head: string;
-    desc: string;
-  };
+  imagePath: string;
+  head: string;
+  desc: string;
+};
 function TicketeerSteps() {
-    const data: any = i18next.t('TicketeerSteps', {returnObjects: true});
-    const highlightRef = useRef(null);
-    const [underlineWidth, setUnderlineWidth] = useState(0);
-
-    useEffect(() => {
-        if (highlightRef.current) {
-        const { offsetWidth } = highlightRef.current;
-        setUnderlineWidth(offsetWidth);
-        }
-    }, [highlightRef]);
+  const data: any = i18next.t('TicketeerSteps', {returnObjects: true});
+  const highlightRef = useRef(null);
+  const [underlineWidth, setUnderlineWidth] = useState(0);
+  const {language} = useLanguage();
+  useEffect(() => {
+    if (highlightRef.current) {
+      const {offsetWidth} = highlightRef.current;
+      setUnderlineWidth(offsetWidth);
+    }
+  }, [highlightRef]);
   return (
     <ContentBox>
-        <HeaderBox>
-      <Decoration src={data.header.deco} alt="decoration" />
-      <Header>
-        <span dangerouslySetInnerHTML={{ __html: data.header.text }} />
-        <Highlight ref={highlightRef}>{data.header.highlight}<Underline src={data.header.underline} alt="underline" width={underlineWidth} /></Highlight>
-        
-      </Header>
-    </HeaderBox>
-        <ImageBox>
-          {data.steps.map((item: DataProps, index: number) => (
-            <EachBox key={index} index={index}>
-              <Image src={item.imagePath} key={index + 'img'} />
-              <TextBox>
-                <ActName>{item.head}</ActName>
-                <ActDesc>{item.desc}</ActDesc>
-              </TextBox>
-            </EachBox>
-          ))}
-        </ImageBox>
-      </ContentBox>
-  )
+      <HeaderBox>
+        <Decoration src={data.header.deco} alt="decoration" />
+        <Header language={language}>
+          <span dangerouslySetInnerHTML={{__html: data.header.text}} />
+          <Highlight ref={highlightRef}>
+            {data.header.highlight}
+            <Underline
+              src={data.header.underline}
+              alt="underline"
+              width={underlineWidth}
+            />
+          </Highlight>
+        </Header>
+      </HeaderBox>
+      <ImageBox>
+        {data.steps.map((item: DataProps, index: number) => (
+          <EachBox key={index} index={index}>
+            <Image src={item.imagePath} key={index + 'img'} />
+            <TextBox>
+              <ActName>{item.head}</ActName>
+              <ActDesc dangerouslySetInnerHTML={{__html: item.desc}} />
+            </TextBox>
+          </EachBox>
+        ))}
+      </ImageBox>
+    </ContentBox>
+  );
 }
 
-export default TicketeerSteps
+export default TicketeerSteps;

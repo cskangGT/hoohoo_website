@@ -4,12 +4,10 @@ import FootContact from '../../../Component/Footer/FootContact';
 import Wrapper from '../../../Component/Wrapper/Wrapper';
 import {BgImage, slideInFromTop, theme} from '../../../style';
 
-
-import WhatTicketeer from './WhatTicketeer';
+import HowDoesItWork from './sections/HowDoesItWork';
 import TicketeerCarbon from './sections/TicketeerCarbon';
 import TicketeerIntro from './sections/TicketeerIntro';
 import TicketeerSteps from './sections/TicketeerSteps';
-import HowDoesItWork from './sections/HowDoesItWork';
 const ContentBox = styled.section`
   display: flex;
   align-items: center;
@@ -44,11 +42,8 @@ export default function EMTicketeer() {
   }, []);
   return (
     <BgImage>
-      
       <Wrapper>
-        {/* <NoHeight> */}
-          <TicketeerIntro />
-        {/* </NoHeight> */}
+        <TicketeerIntro />
         <NoHeight>
           <TicketeerCarbon />
         </NoHeight>
@@ -58,27 +53,6 @@ export default function EMTicketeer() {
         <NoHeight>
           <HowDoesItWork />
         </NoHeight>
-        {/* <NoHeight>
-          <WhatTicketeer />
-        </NoHeight>
-        <Container>
-          <Expect></Expect>
-        </Container>
-        <Container>
-          <HowWorkFirst />
-        </Container>
-        <Container>
-          <HowWorkSecond></HowWorkSecond>
-        </Container>
-        <Container>
-          <HowWorkThird></HowWorkThird>
-        </Container>
-        <Container>
-          <HowWorkFourth></HowWorkFourth>
-        </Container>
-        <Container>
-          <AskTicketeer></AskTicketeer>
-        </Container> */}
       </Wrapper>
       <hr style={{color: theme.darkGray, margin: 0}} />
       <FootContact />

@@ -1,8 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
-import Wrapper from '../../../Component/Wrapper/Wrapper';
-import {slideInFromTop} from '../../../style';
-import i18next from 'i18next';
+import Wrapper from '../../../../Component/Wrapper/Wrapper';
+import i18next from '../../../../lang/i18n';
+import {slideInFromTop} from '../../../../style';
 
 // 공통적으로 사용될 스타일 변수들을 정의합니다.
 const colors = {
@@ -18,7 +18,7 @@ const Container = styled.div`
   justify-content: center;
   align-items: center;
   position: relative;
-  
+
   height: 500px;
   @media (max-width: 1200px) {
     justify-content: flex-start;
@@ -38,7 +38,7 @@ const InnerContainer = styled.div`
   justify-content: center;
   align-items: center;
   position: relative;
-column-gap: 20px;
+  column-gap: 20px;
   @media (max-width: 1200px) {
     row-gap: 20px;
     flex-direction: column;
@@ -249,7 +249,6 @@ const TextInLine = styled.span`
     font-size: 1.5rem;
     padding: 20px 0;
   }
-
 `;
 
 export default function B2BIntroSection() {
@@ -259,11 +258,9 @@ export default function B2BIntroSection() {
     <Container>
       <Wrapper>
         <InnerContainer>
-        <TextInLine>{data.showcase}</TextInLine>
+          <TextInLine>{data.showcase}</TextInLine>
           <CircleBox>
-            <CircleImage
-              src={data.image}
-            />
+            <CircleImage src={data.image} />
             {/* <Circle color={colors.yellow}>
               <SecondCircle color={colors.yellow}>
                 <BoxInSecondCircle>
@@ -288,7 +285,6 @@ export default function B2BIntroSection() {
               </SecondCircle>
             </Circle> */}
           </CircleBox>
-          
         </InnerContainer>
       </Wrapper>
     </Container>

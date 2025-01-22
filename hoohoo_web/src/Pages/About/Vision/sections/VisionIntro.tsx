@@ -1,9 +1,8 @@
 import i18next from 'i18next';
 import React, {useEffect, useState} from 'react';
 import styled from 'styled-components';
-import LinedHeader from '../../../../Component/ContentBox/LinedHeader';
 import {Desc} from '../../../../Component/ContentBox/TwoColBoxesSection';
-import Wrapper from '../../../../Component/Wrapper/Wrapper';
+import {useLanguage} from '../../../../Component/hooks/LanguageContext';
 import {slideInFromTop, theme} from '../../../../style';
 export const Bg = styled.div<{image: string}>`
   animation: ${slideInFromTop} 0.7s ease-out forwards;
@@ -22,13 +21,13 @@ export const Bg = styled.div<{image: string}>`
     height: 700px;
   }
 `;
-const Header = styled.h1`
+const Header = styled.h1<{language: string}>`
   width: calc(100% - 60px);
   font-size: 3rem;
   color: ${theme.darkGray};
-  font-family: Fredoka;
+  font-family: ${props => (props.language === 'ko' ? 'Jua' : 'Fredoka')};
   font-weight: 600;
-  
+
   @media screen and (max-width: 1200px) {
     font-size: 2.5rem;
   }
@@ -50,7 +49,7 @@ const Header = styled.h1`
 const ContentText = styled.p`
   color: ${theme.darkGray};
   font-size: 2rem;
-  
+
   line-height: 1.5;
   max-width: 550px;
   @media screen and (max-width: 1200px) {
@@ -81,7 +80,6 @@ const ImageBox = styled.div`
   @media screen and (max-width: 1200px) {
     border-radius: 0px;
   }
-  
 `;
 const Image = styled.img`
   width: 100%;
@@ -99,7 +97,6 @@ const SubHeader = styled(Desc)`
   }
 `;
 const Container = styled.div`
-
   display: flex;
   position: relative;
   flex-direction: column;
@@ -115,6 +112,7 @@ const Container = styled.div`
 `;
 export default function VisionIntro() {
   const data: any = i18next.t('VisionIntro', {returnObjects: true});
+  const {language} = useLanguage();
   const [isMobile, setIsMobile] = useState(window.innerWidth < 1000);
   useEffect(() => {
     const handleResize = () => {
@@ -125,16 +123,15 @@ export default function VisionIntro() {
     return () => window.removeEventListener('resize', handleResize);
   }, []);
   return (
-    
-        <Container>
-        <Header
-            dangerouslySetInnerHTML={{__html: data.header}}
-          />
-          <ImageBox>
-            <Image src={isMobile? data.smallImage : data.image} />
-          </ImageBox>
-          <ContentText dangerouslySetInnerHTML={{__html: data.content}} />
-          
-        </Container>
+    <Container>
+      <Header
+        dangerouslySetInnerHTML={{__html: data.header}}
+        language={language}
+      />
+      <ImageBox>
+        <Image src={isMobile ? data.smallImage : data.image} />
+      </ImageBox>
+      <ContentText dangerouslySetInnerHTML={{__html: data.content}} />
+    </Container>
   );
 }

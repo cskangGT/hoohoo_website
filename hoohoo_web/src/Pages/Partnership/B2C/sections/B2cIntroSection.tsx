@@ -1,9 +1,10 @@
+import i18next from 'i18next';
 import React, {useEffect, useState} from 'react';
 import styled from 'styled-components';
-import Wrapper from '../../../Component/Wrapper/Wrapper';
-import {slideInFromTop, theme} from '../../../style';
-import i18next from 'i18next';
-import DownloadButtons from '../../Home/DownloadButtons';
+import {useLanguage} from '../../../../Component/hooks/LanguageContext';
+import Wrapper from '../../../../Component/Wrapper/Wrapper';
+import {slideInFromTop, theme} from '../../../../style';
+import DownloadButtons from '../../../Home/DownloadButtons';
 const Container = styled.section`
   width: 100%;
   background-color: transparent;
@@ -65,17 +66,16 @@ const ContentText = styled.p`
     text-align: center;
   }
 `;
-const Header = styled.h2`
+const Header = styled.h2<{language: string}>`
   margin: 0;
   padding: 0;
   font-size: 2.5rem;
   line-height: 1.5;
   text-align: center;
   color: ${theme.white};
-  font-family: 'Fredoka';
+  font-family: ${props => (props.language === 'ko' ? 'Jua' : 'Fredoka')};
   font-weight: 600;
   @media screen and (max-width: 1200px) {
-
   }
   @media screen and (max-width: 700px) {
     font-size: 2.3rem;
@@ -93,6 +93,7 @@ const ScreenImage = styled.img`
 `;
 export default function B2cIntroSection() {
   const [isMobile, setIsMobile] = useState(window.innerWidth < 800);
+  const {language} = useLanguage();
   useEffect(() => {
     const handleResize = () => {
       setIsMobile(window.innerWidth < 800);
@@ -102,16 +103,18 @@ export default function B2cIntroSection() {
     return () => window.removeEventListener('resize', handleResize);
   }, []);
   const data: any = i18next.t('B2cIntroSection', {returnObjects: true});
-  
 
   return (
     <Container>
       <Background backgroundImage={data.bgImage}>
         <Wrapper>
           <InnerContainer>
-              <Header dangerouslySetInnerHTML={{__html: data.title}} />
-              <ContentText dangerouslySetInnerHTML={{__html: data.content}} />
-              <DownloadButtons />
+            <Header
+              language={language}
+              dangerouslySetInnerHTML={{__html: data.title}}
+            />
+            <ContentText dangerouslySetInnerHTML={{__html: data.content}} />
+            <DownloadButtons />
           </InnerContainer>
         </Wrapper>
         <Overlay overlayImage={data.overlay} />

@@ -6,15 +6,17 @@ import {BgImage, theme} from '../../../style';
 import i18next from 'i18next';
 import {useLocation} from 'react-router-dom';
 import FootContact from '../../../Component/Footer/FootContact';
-import B2cIntroSection from './B2cIntroSection';
-import Badges from './Badges';
-import Community from './Community';
-import EcoActionCategories from './EcoActionCategories';
-import EcoActionProcess from './EcoActionProcess';
-import Rewards from './Rewards';
-import YouImpactSection from './YouImpactSection';
-import HealthSection from './HealthSection';
-import LifeStyleSection from './LifeStyleSection';
+import Community from '../components/Community';
+import B2CEcoProducts from './sections/B2CEcoProducts';
+import B2CEcoServices from './sections/B2CEcoServices';
+import B2cIntroSection from './sections/B2cIntroSection';
+import Badges from './sections/Badges';
+import EcoActionCategories from './sections/EcoActionCategories';
+import EcoActionProcess from './sections/EcoActionProcess';
+import HealthSection from './sections/HealthSection';
+import LifeStyleSection from './sections/LifeStyleSection';
+import Rewards from './sections/Rewards';
+import YourImpactSection from './sections/YourImpactSection';
 const IntroBox = styled.section`
   justify-content: center;
   width: 100%;
@@ -47,7 +49,7 @@ const ShortContentBox = styled.div`
   width: calc(100%);
   height: 700px;
   display: flex;
-  
+
   align-items: center;
   @media screen and (max-width: 1000px) {
     margin-bottom: 40px;
@@ -55,22 +57,20 @@ const ShortContentBox = styled.div`
   }
 `;
 const ImageContainer = styled.div`
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 50%;
-    height: 100%;
-    z-index: 8;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    @media screen and (max-width: 1000px) {
-        display: none;
-    }
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 50%;
+  height: 100%;
+  z-index: 8;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  @media screen and (max-width: 1000px) {
+    display: none;
+  }
 `;
-const AbsImage = styled.img`
-  
-`;
+const AbsImage = styled.img``;
 const NoHeight = styled(ContentBox)`
   height: auto;
 `;
@@ -103,7 +103,7 @@ function Platform() {
         <ContentBox>
           <EcoActionCategories></EcoActionCategories>
         </ContentBox>
-        <Wrapper >
+        <Wrapper>
           <ShortContentBox>
             <Badges />
           </ShortContentBox>
@@ -111,28 +111,33 @@ function Platform() {
                     <CategorySection />
                 </NoHeight> */}
           <ShortContentBox>
-            <YouImpactSection />
+            <YourImpactSection />
           </ShortContentBox>
+          <ShortContentBox>
+            <B2CEcoProducts />
+          </ShortContentBox>
+          <ShortContentBox>
+            <B2CEcoServices />
+          </ShortContentBox>
+
           <ShortContentBox>
             <Rewards />
           </ShortContentBox>
-          <ShortContentBox >
-        <Community data={data[0]} index={0} imageHeight={800} />
-        </ShortContentBox>
-        <ShortContentBox >
+          <ShortContentBox>
+            <Community data={data[0]} index={0} imageHeight={800} />
+          </ShortContentBox>
+          <ShortContentBox>
             <HealthSection />
-        </ShortContentBox>
-        <ShortContentBox>
+          </ShortContentBox>
+          <ShortContentBox>
             <LifeStyleSection />
-        </ShortContentBox>
+          </ShortContentBox>
           {/* {data.map((item: any, index: number) => (
               <ShortContentBox key={index}>
                 <Community data={item} index={index} />
               </ShortContentBox>
             ))} */}
         </Wrapper>
-
-
       </BgImage>
       <hr style={{color: theme.darkGray, margin: 0}} />
       <FootContact />

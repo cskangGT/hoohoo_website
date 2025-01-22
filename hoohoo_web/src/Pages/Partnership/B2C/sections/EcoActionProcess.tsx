@@ -1,9 +1,9 @@
 import i18next from 'i18next';
 import React from 'react';
 import styled from 'styled-components';
-import LinedHeader from '../../../Component/ContentBox/LinedHeader';
-import Wrapper from '../../../Component/Wrapper/Wrapper';
-import {theme} from '../../../style';
+import {useLanguage} from '../../../../Component/hooks/LanguageContext';
+import Wrapper from '../../../../Component/Wrapper/Wrapper';
+import {theme} from '../../../../style';
 const ContentBox = styled.div`
   display: flex;
   flex-direction: column;
@@ -47,7 +47,8 @@ const EachBox = styled.div<{index: number}>`
   padding: 0 35px;
   height: 500px;
   display: flex;
-  flex-direction: ${props => props.index ===0 || props.index ===3 ? 'column-reverse': 'column'};
+  flex-direction: ${props =>
+    props.index === 0 || props.index === 3 ? 'column-reverse' : 'column'};
   align-items: center;
   justify-content: flex-start;
   background: linear-gradient(
@@ -55,19 +56,17 @@ const EachBox = styled.div<{index: number}>`
     rgba(255, 255, 255, 0.14) 0%,
     rgba(255, 255, 255, 0.05) 100%
   );
-background-color: #ebebeb;
+  background-color: #ebebeb;
   border-color: ${theme.white};
   border-width: 2px;
   border-radius: 20px;
   z-index: 10;
   @media screen and (max-width: 1000px) {
-    
     flex-direction: column;
   }
   @media screen and (max-width: 500px) {
     height: 450px;
     width: 300px;
-
   }
 `;
 const ActName = styled.h3`
@@ -98,13 +97,13 @@ const TextBox = styled.div`
   flex-direction: column;
   padding-bottom: 35px;
 `;
-const Header = styled.h2`
+const Header = styled.h2<{language: string}>`
   margin: 0;
   padding: 0;
   font-size: 2.5rem;
   line-height: 1.1;
   text-align: center;
-  font-family: 'Fredoka';
+  font-family: ${props => (props.language === 'ko' ? 'Jua' : 'Fredoka')};
   font-weight: 600;
   padding-bottom: 30px;
   @media screen and (max-width: 1100px) {
@@ -119,7 +118,7 @@ const Header = styled.h2`
     font-size: 2.1rem;
   }
 `;
-const HighlightedText = styled.span`
+const HighlightedText = styled.span<{language: string}>`
   color: #00bf63;
   margin: 0;
   padding: 0;
@@ -127,7 +126,7 @@ const HighlightedText = styled.span`
   line-height: 1;
   border-radius: 10px;
   text-align: left;
-  font-family: 'Fredoka';
+  font-family: ${props => (props.language === 'ko' ? 'Jua' : 'Fredoka')};
   font-weight: 600;
   padding: 5px;
   @media screen and (max-width: 1100px) {
@@ -153,29 +152,32 @@ type DataProps = {
   desc: string;
 };
 function EcoActionProcess() {
+  const {language} = useLanguage();
   const data: any = i18next.t('EcoActionProcess', {returnObjects: true});
   return (
     <Wrapper>
       <ContentBox>
-        <Header>
-                 {data.title[0]}
-                 <br />
-                 <HighlightedText>
-                  {data.highlight[0]}
-                 </HighlightedText>
-                 {data.title[1]}
-                 <HighlightedText>
-                  {data.highlight[1]}
-                 </HighlightedText>
-                 {data.title[2]}
+        <Header language={language}>
+          {data.title[0]}
+          {language === 'en' && <br />}
+          <HighlightedText language={language}>
+            {data.highlight[0]}
+          </HighlightedText>
+          {language === 'ko' && <br />}
+          {data.title[1]}
+
+          <HighlightedText language={language}>
+            {data.highlight[1]}
+          </HighlightedText>
+          {data.title[2]}
         </Header>
         <ImageBox>
           {data.steps.map((item: DataProps, index: number) => (
             <EachBox key={index} index={index}>
               <Image src={item.imagePath} key={index + 'img'} />
               <TextBox>
-                <ActName>{item.head}</ActName>
-                <ActDesc>{item.desc}</ActDesc>
+                <ActName dangerouslySetInnerHTML={{__html: item.head}} />
+                <ActDesc dangerouslySetInnerHTML={{__html: item.desc}} />
               </TextBox>
             </EachBox>
           ))}

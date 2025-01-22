@@ -2,6 +2,7 @@ import i18next from 'i18next';
 import React, {useEffect, useState} from 'react';
 import styled from 'styled-components';
 import LinedHeader from '../../../Component/ContentBox/LinedHeader';
+import {useLanguage} from '../../../Component/hooks/LanguageContext';
 import {theme} from '../../../style';
 export const ContentBox = styled.div`
   display: flex;
@@ -31,7 +32,7 @@ const ItemBox = styled.div`
     grid-template-rows: 1fr 1fr 1fr;
   }
   @media screen and (max-width: 800px) {
-    width: calc(100% - 40px) ;
+    width: calc(100% - 40px);
   }
 `;
 
@@ -50,9 +51,9 @@ const EachBox = styled.div`
     margin-bottom: 30px;
   }
 `;
-const ActName = styled.h3`
+const ActName = styled.h3<{language: string}>`
   font-size: 3rem;
-  font-family: 'Fredoka';
+  font-family: ${props => (props.language === 'ko' ? 'Jua' : 'Fredoka')};
   font-weight: 600;
   line-height: 1;
   margin-top: 50px;
@@ -78,6 +79,7 @@ type DataProps = {
 export default function Strenth() {
   const data: any = i18next.t('strength', {returnObjects: true});
   const [isMobile, setIsMobile] = useState(window.innerWidth < 800);
+  const {language} = useLanguage();
   useEffect(() => {
     const handleResize = () => {
       setIsMobile(window.innerWidth < 800);
@@ -95,13 +97,12 @@ export default function Strenth() {
           fontSize: isMobile ? '3rem' : '4rem',
           width: '100%',
           textAlign: isMobile ? 'center' : 'left',
-          
         }}
       />
       <ItemBox>
         {data.items.map((item: DataProps, index: number) => (
           <EachBox key={item.title + index}>
-            <ActName>{item.title}</ActName>
+            <ActName language={language}>{item.title}</ActName>
             <ActDesc dangerouslySetInnerHTML={{__html: item.content}} />
           </EachBox>
         ))}
