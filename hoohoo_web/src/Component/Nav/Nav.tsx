@@ -239,7 +239,6 @@ const LanguageButton = styled.button<LanguageProps>`
   background: none;
   border: none;
   cursor: pointer;
-  border: 1px solid red;
   position: relative;
   opacity: ${props => (props.isKorean ? 1 : 0.5)};
   padding: 0 ${props => (props.isKorean ? 10 : 'auto')};
@@ -497,28 +496,28 @@ function Nav({isKorean, setIsKorean}: NavProps) {
           </LanguageBox>
         )}
       </NavbarMenu>
-      {
-        <LanguageOutBox>
-          <LanguageBox>
-            <LanguageButton
-              isKorean={isKorean}
-              onClick={() => {
-                setIsKorean(true);
-                changelanguageToKo();
-              }}>
-              {lang[0]}
-            </LanguageButton>
-            <LanguageButton
-              isKorean={!isKorean}
-              onClick={() => {
-                setIsKorean(false);
-                changelanguageToEn();
-              }}>
-              {lang[1]}
-            </LanguageButton>
-          </LanguageBox>
-        </LanguageOutBox>
-      }
+
+      <LanguageOutBox>
+        <LanguageBox>
+          <LanguageButton
+            isKorean={isKorean}
+            onClick={() => {
+              setIsKorean(true);
+              changelanguageToKo();
+            }}>
+            {lang[0]}
+          </LanguageButton>
+          <LanguageButton
+            isKorean={!isKorean}
+            onClick={() => {
+              setIsKorean(false);
+              changelanguageToEn();
+            }}>
+            {lang[1]}
+          </LanguageButton>
+        </LanguageBox>
+      </LanguageOutBox>
+
       <MenuToogleButton onClick={() => setIsOpen(!isOpen)} isOpen={isOpen}>
         <FontAwesomeIcon icon={faBars} />
       </MenuToogleButton>
