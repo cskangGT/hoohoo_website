@@ -9,6 +9,7 @@ import {
   LeftBox,
   RightBox,
 } from '../../../Component/ContentBox/TwoColBoxesSection';
+import {useLanguage} from '../../../Component/hooks/LanguageContext';
 import {theme} from '../../../style';
 const MidTitle = styled(Desc)`
   font-weight: 700;
@@ -37,14 +38,14 @@ type Props = {
   index?: number;
   children?: React.ReactNode;
   imageHeight?: number;
-  imageWidth?: number| string;
+  imageWidth?: number | string;
   imageComponent?: React.ReactNode;
 };
 
 export default function Community(props: Props) {
   let i: number = props.index ? props.index : 0;
   const [isLargeScreen, setIsLargeScreen] = useState(true);
-
+  const {language} = useLanguage();
   // 화면 크기에 따라 isLargeScreen 상태를 설정합니다.
   useEffect(() => {
     function handleResize() {
@@ -68,19 +69,22 @@ export default function Community(props: Props) {
             style={{color: theme.darkGray, textAlign: isLargeScreen && 'left'}}
           />
           {props.data.midcontent && (
-            <Desc
-              dangerouslySetInnerHTML={{__html: props.data.midcontent}}
-            />
+            <Desc dangerouslySetInnerHTML={{__html: props.data.midcontent}} />
           )}
           <Desc dangerouslySetInnerHTML={{__html: props.data.content}} />
         </RightBox>
         <LeftBox>
-            {props.imageComponent ? props.imageComponent : <Image src={props.data.image} height={props.imageHeight} width={props.imageWidth} />}
-          
+          {props.imageComponent ? (
+            props.imageComponent
+          ) : (
+            <Image
+              src={props.data.image}
+              height={props.imageHeight}
+              width={props.imageWidth}
+            />
+          )}
         </LeftBox>
-        {
-            props.children && props.children
-        }
+        {props.children && props.children}
       </HorizonContainer>
     </Container>
   );

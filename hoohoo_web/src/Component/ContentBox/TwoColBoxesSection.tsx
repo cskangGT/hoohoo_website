@@ -40,7 +40,7 @@ export const RightBox = styled.div`
   /* padding: 0 20px;
   padding-left: 40px; */
   line-height: 1.2;
-z-index: 3;
+  z-index: 3;
   @media screen and (max-width: 1000px) {
     padding: 0 10px;
     width: 70%;
@@ -77,11 +77,11 @@ export const Desc = styled.p`
   margin: 0 5px;
   text-align: left;
   z-index: 10;
+  word-break: keep-all;
   @media screen and (max-width: 1000px) {
     margin: 20px 0;
     width: 100%;
     text-align: center;
-
   }
   @media screen and (max-width: 500px) {
     margin: 10px 0;
@@ -111,9 +111,10 @@ export const LeftBox = styled.div`
   }
 `;
 
-export const Image = styled.img<{height?: number, width?: number | string}>`
-  width: ${props => props.width ? props.width: '80%'}; // RightBox의 너비에 맞춤
-  height: ${props => props.height ? props.height : '100%'};
+export const Image = styled.img<{height?: number; width?: number | string}>`
+  width: ${props =>
+    props.width ? props.width : '80%'}; // RightBox의 너비에 맞춤
+  height: ${props => (props.height ? props.height : '100%')};
   overflow: hidden;
   object-fit: contain;
   border-radius: 20px;
@@ -147,7 +148,11 @@ export default function TwoColBoxesSection(props: Props) {
         rightImage={props.rightImage ? props.rightImage : false}
         style={{backgroundColor: 'rgba(0,0,0,0.48)'}}>
         <LeftBox>
-          <Image style={props.imageStyle} src={props.data.image} height={props.imageHeight} />
+          <Image
+            style={props.imageStyle}
+            src={props.data.image}
+            height={props.imageHeight}
+          />
         </LeftBox>
         <RightBox>
           <LinedHeader

@@ -1,34 +1,58 @@
 export const BlogCategory = {
   ALL: {
-    text: "All",
+    text: {
+      ko: '모두 보기',
+      en: 'All',
+    },
     value: "ALL",
   },
   EARTHMERA_CATEGORY: {
-    text: "EarthMera's Category",
+    text: {
+      ko: "EarthMera의 카테고리",
+      en: "EarthMera's Category",
+    },
     value: "EARTHMERA_CATEGORY",
   },
   GLOBAL_WARMING: {
-    text: "Global warming",
+    text: {
+      ko: "지구 온난화",
+      en: "Global warming",
+    },
     value: "GLOBAL_WARMING",
   },
   AIR_POLLUTION: {
-    text: "Air pollution",
+    text: {
+      ko: "대기 오염",
+      en: "Air pollution",
+    },
     value: "AIR_POLLUTION",
   },
   DESERTIFICATION: {
-    text: "Desertification",
+    text: {
+      ko: "사막화",
+      en: "Desertification",
+    },
     value: "DESERTIFICATION",
   },
   ECOSYSTEM_DESTRUCTION: {
-    text: "Ecosystem destruction",
+    text: {
+      ko: "생태계 파괴",
+      en: "Ecosystem destruction",
+    },
     value: "ECOSYSTEM_DESTRUCTION",
   },
   SEA_LEVEL_RISE: {
-    text: "Sea level rise",
+    text: {
+      ko: "해수면 상승",
+      en: "Sea level rise",
+    },
     value: "SEA_LEVEL_RISE",
   },
   OCEAN_TRASH: {
-    text: "Ocean trash",
+    text: {
+      ko: "해양 쓰레기",
+      en: "Ocean trash",
+    },
     value: "OCEAN_TRASH",
   },
 };
@@ -40,6 +64,6 @@ export type BlogDataType = {
     low: string;
   };
   blogCategory: BlogCategoryType;
-  
+
 };
 

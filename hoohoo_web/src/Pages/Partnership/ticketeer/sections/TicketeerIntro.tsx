@@ -1,9 +1,10 @@
-import React from 'react'
-import styled from 'styled-components';
-import { slideInFromTop, theme } from '../../../../style';
 import i18next from 'i18next';
-import { HomeTransitionButton } from '../../../Home/HomeIntroPage';
-import { emailTo } from '../../../../util/email';
+import React from 'react';
+import styled from 'styled-components';
+import {useLanguage} from '../../../../Component/hooks/LanguageContext';
+import {slideInFromTop, theme} from '../../../../style';
+import {emailTo} from '../../../../util/email';
+import {HomeTransitionButton} from '../../../Home/HomeIntroPage';
 const Container = styled.div`
   animation: ${slideInFromTop} 0.7s ease-out forwards;
   display: flex;
@@ -16,21 +17,18 @@ const Container = styled.div`
   padding-top: 82px;
   padding-bottom: 200px;
   @media (max-width: 1000px) {
-    
     height: auto;
     flex-direction: column-reverse;
     justify-content: center;
   }
   @media (max-width: 500px) {
     padding-top: 82px;
-    
   }
-  
 `;
-const Header = styled.h2`
+const Header = styled.h2<{language: string}>`
   font-size: 2.5rem;
   line-height: 1.2;
-  font-family: Fredoka;
+  font-family: ${props => (props.language === 'ko' ? 'Jua' : 'Fredoka')};
   font-weight: 600;
   margin-bottom: 15px;
   @media screen and (max-width: 1000px) {
@@ -38,37 +36,35 @@ const Header = styled.h2`
     text-align: center;
   }
   @media screen and (max-width: 500px) {
-    
     font-size: 2.1rem;
   }
 `;
 const LeftBox = styled.div`
-    box-sizing: border-box;
-    width: 40%;
+  box-sizing: border-box;
+  width: 40%;
 
-    display: flex;
-    position: relative;
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: flex-start;
-    padding: 10px;
-    /* background: linear-gradient(170deg, rgba(255, 255, 255, 0.14) 0%, rgba(255, 255, 255, 0.05) 100%); */
-    border-radius: 20%;
-    margin: auto;
-    @media screen and (max-width: 1000px) {
+  display: flex;
+  position: relative;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  padding: 10px;
+  /* background: linear-gradient(170deg, rgba(255, 255, 255, 0.14) 0%, rgba(255, 255, 255, 0.05) 100%); */
+  border-radius: 20%;
+  margin: auto;
+  @media screen and (max-width: 1000px) {
     margin-top: 10px;
     width: 100%;
     align-items: center;
-        justify-content: center;
-    }
-    @media screen and (max-width: 500px) {
+    justify-content: center;
+  }
+  @media screen and (max-width: 500px) {
     margin-top: 0px;
-
-    }
+  }
 `;
 const HeaderBox = styled.div`
   padding: 20px 0;
-  
+
   width: 100%;
   color: ${theme.darkGray};
   text-align: left;
@@ -85,18 +81,18 @@ const StarImage = styled.img`
     width: 60px;
     height: 60px;
     top: 20%;
-    }
+  }
   @media screen and (max-width: 1000px) {
     width: 60px;
     height: 60px;
     top: 20%;
-    }
-    @media screen and (max-width: 500px) {
-        width: 50px;
-        height: 50px;
-        right: -15px;
-        transform: translateY(-50%);
-    }
+  }
+  @media screen and (max-width: 500px) {
+    width: 50px;
+    height: 50px;
+    right: -15px;
+    transform: translateY(-50%);
+  }
 `;
 const RightBox = styled.div`
   justify-content: flex-start;
@@ -123,24 +119,28 @@ const Image = styled.img`
   }
 `;
 function TicketeerIntro() {
-    const data: any = i18next.t('TicketeerIntro', {returnObjects: true});
+  const data: any = i18next.t('TicketeerIntro', {returnObjects: true});
+  const {language} = useLanguage();
   return (
     <Container>
-        <LeftBox>
-            <HeaderBox>
-              <Header dangerouslySetInnerHTML={{__html: data.header}} />
-              <StarImage src={data.titleStar} />
-            </HeaderBox>
-            
-            <HomeTransitionButton href={emailTo}>
-                {data.buttonText}
-            </HomeTransitionButton>
-        </LeftBox>
-        <RightBox>
-            <Image src={data.image} />
-        </RightBox>
+      <LeftBox>
+        <HeaderBox>
+          <Header
+            language={language}
+            dangerouslySetInnerHTML={{__html: data.header}}
+          />
+          <StarImage src={data.titleStar} />
+        </HeaderBox>
+
+        <HomeTransitionButton href={emailTo}>
+          {data.buttonText}
+        </HomeTransitionButton>
+      </LeftBox>
+      <RightBox>
+        <Image src={data.image} />
+      </RightBox>
     </Container>
-  )
+  );
 }
 
-export default TicketeerIntro
+export default TicketeerIntro;

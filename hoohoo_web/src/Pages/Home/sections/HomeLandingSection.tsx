@@ -1,9 +1,10 @@
-import React from 'react'
-import styled from 'styled-components';
-import { slideInFromTop, theme } from '../../../style';
 import i18next from 'i18next';
-import DownloadButtons from '../DownloadButtons';
+import React from 'react';
+import styled from 'styled-components';
+import {useLanguage} from '../../../Component/hooks/LanguageContext';
 import Wrapper from '../../../Component/Wrapper/Wrapper';
+import {slideInFromTop, theme} from '../../../style';
+import DownloadButtons from '../DownloadButtons';
 const Container = styled.div`
   animation: ${slideInFromTop} 0.7s ease-out forwards;
   display: flex;
@@ -13,7 +14,7 @@ const Container = styled.div`
   position: relative;
   width: 100%;
   height: 800px;
-  
+
   @media (max-width: 1200px) {
     height: auto;
     flex-direction: column-reverse;
@@ -21,37 +22,35 @@ const Container = styled.div`
     padding-bottom: 40px;
     margin-top: 80px;
   }
-  
 `;
 
 const LeftBox = styled.div`
-    box-sizing: border-box;
-    width: 40%;
-    display: flex;
-    position: relative;
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: flex-start;
-    padding-bottom: 10px;
-    z-index: 10;
-    /* background: linear-gradient(170deg, rgba(255, 255, 255, 0.14) 0%, rgba(255, 255, 255, 0.05) 100%); */
-    border-radius: 20%;
-    margin: auto;
-    @media screen and (max-width: 1200px) {
-        margin-top: 10px;
-        width: 100%;
-        align-items: center;
-        justify-content: center;
-    }
-    @media screen and (max-width: 500px) {
+  box-sizing: border-box;
+  width: 40%;
+  display: flex;
+  position: relative;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  padding-bottom: 10px;
+  z-index: 10;
+  /* background: linear-gradient(170deg, rgba(255, 255, 255, 0.14) 0%, rgba(255, 255, 255, 0.05) 100%); */
+  border-radius: 20%;
+  margin: auto;
+  @media screen and (max-width: 1200px) {
+    margin-top: 10px;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+  }
+  @media screen and (max-width: 500px) {
     margin-top: 0px;
     padding-bottom: 50px;
-
-    }
+  }
 `;
-const TitleText = styled.h2`
+const TitleText = styled.h2<{language: string}>`
   padding: 30px 0;
-  font-size: 2.5rem;
+  font-size: 2.7rem;
   line-height: 1.2;
   width: 100%;
   color: ${theme.darkGray};
@@ -64,9 +63,9 @@ const TitleText = styled.h2`
     text-align: center;
     font-size: 2.1rem;
   }
-  font-family: Fredoka;
-    font-weight: 600;
-    margin: 0px;
+  font-family: ${props => (props.language === 'ko' ? 'Jua' : 'Fredoka')};
+
+  margin: 0px;
 `;
 const HeaderBox = styled.div`
   padding: 20px 0;
@@ -94,7 +93,6 @@ const Desc = styled.p`
     margin: 20px 0;
     width: 100%;
     text-align: center;
-
   }
   @media screen and (max-width: 500px) {
     margin: 10px 0;
@@ -115,12 +113,11 @@ const RightBox = styled.div`
   }
   @media screen and (max-width: 500px) {
     padding: 0 10px;
-
   }
 `;
 const Image = styled.img`
   right: -30%;
-  
+
   z-index: 9;
   position: absolute;
   height: 650px;
@@ -145,24 +142,28 @@ const Image = styled.img`
   }
 `;
 function HomeLandingSection() {
-    const data: any = i18next.t('HomeLandingSection', {returnObjects: true});
+  const {language} = useLanguage();
+  const data: any = i18next.t('HomeLandingSection', {returnObjects: true});
   return (
     <Wrapper>
-        <Container>
-            <LeftBox>
-                <HeaderBox>
-                    <TitleText dangerouslySetInnerHTML={{__html: data.title}} />
-                    <Desc dangerouslySetInnerHTML={{__html: data.content}} />
-                </HeaderBox>
-                
-                <DownloadButtons />
-            </LeftBox>
-            <RightBox>
-                <Image src={data.image} />
-            </RightBox>
-        </Container>
+      <Container>
+        <LeftBox>
+          <HeaderBox>
+            <TitleText
+              language={language}
+              dangerouslySetInnerHTML={{__html: data.title}}
+            />
+            <Desc dangerouslySetInnerHTML={{__html: data.content}} />
+          </HeaderBox>
+
+          <DownloadButtons />
+        </LeftBox>
+        <RightBox>
+          <Image src={data.image} />
+        </RightBox>
+      </Container>
     </Wrapper>
-  )
+  );
 }
 
-export default HomeLandingSection
+export default HomeLandingSection;

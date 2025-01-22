@@ -1,17 +1,15 @@
-import {faPlus} from '@fortawesome/free-solid-svg-icons';
-import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import React, {useEffect, useRef, useState} from 'react';
 import {useCookies} from 'react-cookie';
 import styled from 'styled-components';
+import {getBlogList} from '../../../api/blog';
 import BlogCard from '../../../Component/Blog/BlogCard';
+import {BlogCategory, BlogDataType} from '../../../Component/Blog/BlogCategory';
 import PageNav from '../../../Component/Blog/PageNav';
 import FootContact from '../../../Component/Footer/FootContact';
+import {useLanguage} from '../../../Component/hooks/LanguageContext';
 import Wrapper from '../../../Component/Wrapper/Wrapper';
 import {BgImage, theme} from '../../../style';
 import BlogModal from './BlogModal';
-import { BlogCategory, BlogDataType } from '../../../Component/Blog/BlogCategory';
-import { getBlogList } from '../../../api/blog';
-
 const Container = styled.div`
   width: calc(100% - 30px);
   display: flex;
@@ -30,7 +28,6 @@ const ContentBox = styled.div`
   justify-content: center;
 `;
 const SlickBar = styled.div`
-
   margin: 0;
   padding: 0;
   width: 100%;
@@ -50,7 +47,7 @@ const ScrollContainer = styled.div`
     width: 0px;
     height: 0px;
   }
-  -ms-overflow-style: none;  /* IE and Edge */
+  -ms-overflow-style: none; /* IE and Edge */
   scrollbar-width: none;
   align-items: center;
   @media screen and (max-width: 700px) {
@@ -77,6 +74,7 @@ const Outline = styled.button<OutlineProps>`
   height: 100%;
   min-width: 150px;
   min-height: 1px;
+
   transition: all 0.2s ease 0s;
   border-radius: 10px;
   &:hover {
@@ -91,7 +89,8 @@ const OutlineText = styled.h3`
   color: ${theme.darkGray};
   padding: 5px;
   margin: 0;
-  font-size: 18px;
+  font-size: 16px;
+  word-break: keep-all;
   &:hover {
     color: ${theme.white};
   }
@@ -131,29 +130,6 @@ const Text = styled.span`
 
 const OFFSET: number = 6;
 
-const NewBlogBtn = styled.button`
-  // margin : 20px 5px;
-  font-size: 20px;
-  font-weight: 300;
-  cursor: pointer;
-  text-decoration: none;
-
-  background-color: transparent;
-  color: ${theme.darkGray};
-  /* padding: 10px 15px; */
-  border: none;
-  outline: none;
-  display: flex;
-  justify-content: center;
-  min-height: 1px;
-  transition: all 0.2s ease 0s;
-  border-radius: 10px;
-  padding: 10px;
-  &:hover {
-    color: ${theme.mainNeon};
-  }
-`;
-
 function Blog() {
   const [currentPage, setCurrentPage] = useState<number>(1);
   const [selectedCategory, setSelectedCategory] = useState<string>('ALL');
@@ -183,7 +159,10 @@ function Blog() {
     // const endIndex = filteredData.length - OFFSET * (page - 1);
     // const slicedData = filteredData.slice(startIndex, endIndex);
     // setFetchedList(slicedData); // 필요한 데이터 OFFSET만큼만 가져온다.
-    const response = await getBlogList(page, category === 'ALL' ? '' : category);
+    const response = await getBlogList(
+      page,
+      category === 'ALL' ? '' : category,
+    );
     if (response.data) {
       setNumTotalData(response.data.totalPagesCount);
       setFetchedList(response.data.results);
@@ -209,9 +188,10 @@ function Blog() {
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
-  useEffect(()=> {
-console.log('fetchedList', fetchedList)
-  }, [fetchedList])
+  useEffect(() => {
+    console.log('fetchedList', fetchedList);
+  }, [fetchedList]);
+  const {language} = useLanguage();
   return (
     <>
       <BgImage>
@@ -219,19 +199,26 @@ console.log('fetchedList', fetchedList)
           <Container>
             <ContentBox>
               <SlickBar>
-                <ScrollContainer >
-                  {Object.values(BlogCategory).map((item: {
-                    value: string;
-                    text: string;
-                  }, index: number) => (
-                    <Outline
-                      key={index}
-                      op={item.value}
-                      selectedCategory={selectedCategory}
-                      onClick={() => handleSelectCategory(item.value)}>
-                      <OutlineText key={index + 'text'}>{item.text}</OutlineText>
-                    </Outline>
-                  ))}
+                <ScrollContainer>
+                  {Object.values(BlogCategory).map(
+                    (
+                      item: {
+                        value: string;
+                        text: any;
+                      },
+                      index: number,
+                    ) => (
+                      <Outline
+                        key={index}
+                        op={item.value}
+                        selectedCategory={selectedCategory}
+                        onClick={() => handleSelectCategory(item.value)}>
+                        <OutlineText key={index + 'text'}>
+                          {language === 'ko' ? item.text.ko : item.text.en}
+                        </OutlineText>
+                      </Outline>
+                    ),
+                  )}
                   {/* {logIn && (
                     <NewBlogBtn onClick={handleOpen}>
                       <FontAwesomeIcon
@@ -243,7 +230,11 @@ console.log('fetchedList', fetchedList)
                   )} */}
 
                   {isOpen && (
-                    <BlogModal isOpen={isOpen} setIsOpen={setIsOpen} selectedBlog={selectedBlog} />
+                    <BlogModal
+                      isOpen={isOpen}
+                      setIsOpen={setIsOpen}
+                      selectedBlog={selectedBlog}
+                    />
                   )}
                 </ScrollContainer>
               </SlickBar>
@@ -254,7 +245,11 @@ console.log('fetchedList', fetchedList)
                   <Grid>
                     {' '}
                     {fetchedList.map((item, index) => (
-                      <BlogCard key={index} data={item} setSelectedBlog={setSelectedBlog} handleOpen={handleOpen}></BlogCard>
+                      <BlogCard
+                        key={index}
+                        data={item}
+                        setSelectedBlog={setSelectedBlog}
+                        handleOpen={handleOpen}></BlogCard>
                     ))}
                   </Grid>
                   <PageNav

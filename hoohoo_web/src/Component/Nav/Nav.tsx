@@ -6,6 +6,7 @@ import {useTranslation} from 'react-i18next';
 import {useNavigate} from 'react-router-dom';
 import styled from 'styled-components';
 import {theme} from '../../style';
+import {useLanguage} from '../hooks/LanguageContext';
 const Logo = styled.button`
   padding: 15px;
   font-size: 25px;
@@ -16,11 +17,12 @@ const Logo = styled.button`
   background-color: transparent;
 `;
 
-const LogoText = styled.span`
+const LogoText = styled.span<{language: string}>`
   padding-left: 10px;
-  font-family: Fredoka;
+  font-family: ${props => (props.language === 'ko' ? 'Jua' : 'Fredoka')};
   font-weight: 500;
   color: ${theme.darkGray};
+  font-size: 24px;
 `;
 
 const Bar = styled.nav`
@@ -195,7 +197,7 @@ const MenuToogleButton = styled.button<IsOpen>`
   position: absolute;
   right: 15px;
   top: 41px;
-  transform : translateY(-50%);
+  transform: translateY(-50%);
   font-size: 24px;
   color: ${props => (props.isOpen ? theme.mainNeon : theme.darkGray)};
   display: none;
@@ -352,8 +354,15 @@ function Nav({isKorean, setIsKorean}: NavProps) {
   const navItems: NavItem[] = data['navlist'];
   const lang: string[] = data['lang'];
   const logo: any = data['logo'];
-  const changelanguageToKo = () => i18n.changeLanguage('ko');
-  const changelanguageToEn = () => i18n.changeLanguage('en');
+  const {language, setLanguage} = useLanguage();
+  const changelanguageToKo = () => {
+    i18n.changeLanguage('ko');
+    setLanguage('ko');
+  };
+  const changelanguageToEn = () => {
+    i18n.changeLanguage('en');
+    setLanguage('en');
+  };
   const [hide, setHide] = useState(false);
   const [pageY, setPageY] = useState(0);
   const handleScroll = (hide: boolean) => {
@@ -391,7 +400,9 @@ function Nav({isKorean, setIsKorean}: NavProps) {
           navigate(logo.link);
         }}>
         <HeaderLogo key="logo" src={logo.image} />
-        <LogoText key="earthmera">{logo.text}</LogoText>
+        <LogoText key="earthmera" language={language}>
+          {logo.text}
+        </LogoText>
       </Logo>
       <NavbarMenu isOpen={isOpen}>
         {navItems.map((item, i) => {
@@ -420,7 +431,10 @@ function Nav({isKorean, setIsKorean}: NavProps) {
                           <SubNavLink
                             key={subIndex + 'subLink'}
                             onClick={() => {
-                              if (subItem.label === 'Contact') {
+                              if (
+                                subItem.label === 'Contact' ||
+                                subItem.label === '연락처'
+                              ) {
                                 window.location.href =
                                   'mailto:devceohoony@gmail.com';
                               } else {
@@ -455,7 +469,7 @@ function Nav({isKorean, setIsKorean}: NavProps) {
             </NavMenuList>
           );
         })}
-        {/* {!isOpen && (
+        {!isOpen && (
           <LanguageBox>
             <LanguageButton
               isKorean={isKorean}
@@ -474,31 +488,8 @@ function Nav({isKorean, setIsKorean}: NavProps) {
               {lang[1]}
             </LanguageButton>
           </LanguageBox>
-        )} */}
+        )}
       </NavbarMenu>
-      {/* {windowWidth < 1100 && (
-        <NavRight>
-          <LanguageBoxSecond isKorean={isKorean}>
-            <LanguageButton
-              isKorean={isKorean}
-              onClick={() => {
-                setIsKorean(true);
-                changelanguageToKo();
-              }}>
-              {lang[0]}
-            </LanguageButton>
-            <LanguageButton
-              isKorean={!isKorean}
-              onClick={() => {
-                setIsKorean(false);
-                changelanguageToEn();
-              }}>
-              {lang[1]}
-            </LanguageButton>
-          </LanguageBoxSecond>
-        </NavRight>
-      )} */}
-
       <MenuToogleButton onClick={() => setIsOpen(!isOpen)} isOpen={isOpen}>
         <FontAwesomeIcon icon={faBars} />
       </MenuToogleButton>

@@ -1,5 +1,6 @@
 import React, {useEffect, useRef, useState} from 'react';
 import styled from 'styled-components';
+import {useLanguage} from '../hooks/LanguageContext';
 const HeaderContainer = styled.div`
   display: inline-block;
   margin-bottom: 30px;
@@ -8,13 +9,13 @@ const HeaderContainer = styled.div`
     margin-bottom: 10px;
   }
 `;
-const Header = styled.h2`
+const Header = styled.h2<{language: string}>`
   margin: 0;
   padding: 0;
   font-size: 2.5rem;
   line-height: 1.1;
   text-align: left;
-  font-family: 'Fredoka';
+  font-family: ${props => (props.language === 'ko' ? 'Jua' : 'Fredoka')};
   font-weight: 600;
   @media screen and (max-width: 1100px) {
     text-align: center;
@@ -40,6 +41,7 @@ type Props = {
 export default function LinedHeader(props: Props) {
   const [headerWidth, setHeaderWidth] = useState<number>(0);
   const headerRef = useRef<HTMLHeadingElement>(null);
+  const {language} = useLanguage();
   useEffect(() => {
     const updateWidth = () => {
       if (headerRef.current) {
@@ -61,6 +63,7 @@ export default function LinedHeader(props: Props) {
   return (
     <HeaderContainer style={{...props.containerStyle}}>
       <Header
+        language={language}
         ref={headerRef}
         style={{color: props.color && props.color, ...props.style}}
         dangerouslySetInnerHTML={{__html: props.data.header}}

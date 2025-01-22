@@ -5,7 +5,7 @@ import {theme} from '../style';
 const BubbleBox = styled.div<any>`
   cursor: pointer;
   z-index: 10000;
-  color: ${theme.darkgrey};
+  color: ${theme.darkGray};
   padding-left: 20px;
   padding-right: 30px;
   padding-top: 15px;

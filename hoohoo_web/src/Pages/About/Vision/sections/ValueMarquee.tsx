@@ -1,10 +1,10 @@
 import i18next from 'i18next';
-import React from 'react'
-import styled, { keyframes } from 'styled-components';
-import { theme } from '../../../../style';
+import React from 'react';
 import Marquee from 'react-fast-marquee';
+import styled, {keyframes} from 'styled-components';
+import {useLanguage} from '../../../../Component/hooks/LanguageContext';
 import Wrapper from '../../../../Component/Wrapper/Wrapper';
-import { UpperTitle } from '../../../Home/HomePlatform';
+import {theme} from '../../../../style';
 const Container = styled.section`
   width: 100%;
   background-color: transparent;
@@ -28,7 +28,6 @@ const Background = styled.div<{backgroundImage: string}>`
   padding-top: 75px;
   padding-bottom: 100px;
   @media screen and (max-width: 850px) {
-    
     margin-top: 90px;
   }
 `;
@@ -60,12 +59,12 @@ const marquee = keyframes`
   }
 `;
 
-const Header = styled.h1`
+const Header = styled.h1<{language: string}>`
   width: calc(100% - 20px);
   font-size: 3rem;
   color: ${theme.darkGray};
   text-align: left;
-  font-family: Fredoka;
+  font-family: ${props => (props.language === 'ko' ? 'Jua' : 'Fredoka')};
   font-weight: 600;
   padding: 0px 10px;
   @media screen and (max-width: 1200px) {
@@ -91,38 +90,38 @@ const CardBox = styled.div`
   position: relative;
 `;
 function ValueMarquee() {
-    const data: any = i18next.t('ValueMarquee', {returnObjects: true});
+  const data: any = i18next.t('ValueMarquee', {returnObjects: true});
+  const {language} = useLanguage();
   return (
     <Container>
-        <Background backgroundImage={data.bgImage}>
-          <Wrapper>
+      <Background backgroundImage={data.bgImage}>
+        <Wrapper>
           <HeaderBox>
-              <Header>{data.title}</Header>
+            <Header language={language}>{data.title}</Header>
           </HeaderBox>
-          </Wrapper>
-          <CardBox>
-              <Marquee speed={80} >
-                {data.cards.map((_card : any, index: number) => (
-                  <ValueCard key={index} data={_card} />
-                ))}
-                
-              </Marquee>
-          </CardBox>
-        </Background>
+        </Wrapper>
+        <CardBox>
+          <Marquee speed={80}>
+            {data.cards.map((_card: any, index: number) => (
+              <ValueCard key={index} data={_card} />
+            ))}
+          </Marquee>
+        </CardBox>
+      </Background>
     </Container>
-  )
+  );
 }
 
 type CardProps = {
-    data: {
-        title: string;
-        description: string;
-        icon: string;
-    }
-}
+  data: {
+    title: string;
+    description: string;
+    icon: string;
+  };
+};
 const CardContainer = styled.div`
-    width: 500px;
-    height: 300px;
+  width: 500px;
+  height: 300px;
   background-color: #ebebeb;
   position: relative;
   border-radius: 40px;
@@ -150,7 +149,6 @@ const CardHeader = styled.h2`
   margin-bottom: 15px;
   text-align: left;
   @media screen and (max-width: 850px) {
-    
     font-size: 2rem;
   }
   @media screen and (max-width: 500px) {
@@ -166,7 +164,6 @@ const CardDesc = styled.h4`
   width: 100%;
   margin: 10px 0px;
   @media screen and (max-width: 850px) {
-
     font-size: 1.5rem;
   }
   @media screen and (max-width: 500px) {
@@ -176,19 +173,16 @@ const CardDesc = styled.h4`
 const IconImage = styled.img`
   width: 100px;
   height: 80px;
-object-fit: contain;
+  object-fit: contain;
 `;
-function ValueCard ({data} : CardProps) {
-    return (
-        <CardContainer >
-            <IconImage src={data.icon} />
-            <CardHeader dangerouslySetInnerHTML={{__html : data.title}}>
-            </CardHeader>
-            <CardDesc dangerouslySetInnerHTML={{__html : data.description}}>
-            </CardDesc>
-            
-        </CardContainer>
-    )
+function ValueCard({data}: CardProps) {
+  return (
+    <CardContainer>
+      <IconImage src={data.icon} />
+      <CardHeader dangerouslySetInnerHTML={{__html: data.title}}></CardHeader>
+      <CardDesc dangerouslySetInnerHTML={{__html: data.description}}></CardDesc>
+    </CardContainer>
+  );
 }
 
-export default ValueMarquee
+export default ValueMarquee;

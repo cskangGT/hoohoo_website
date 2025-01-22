@@ -2,7 +2,7 @@ import i18next from 'i18next';
 import React from 'react';
 import styled from 'styled-components';
 import {LineDivider, theme} from '../../style';
-import {ModalBackground} from '../Info/Blog/BlogModal';
+import {ModalBackground} from '../EMMedia/Blog/BlogModal';
 import {ModalContent} from './ManageAccModal';
 const Wrapper = styled.div`
   padding: 6rem 2rem 3rem;

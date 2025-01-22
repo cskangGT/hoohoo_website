@@ -1,12 +1,13 @@
-import React, { useEffect, useState } from 'react'
+import React, {useEffect, useState} from 'react';
 import styled from 'styled-components';
-import { theme } from '../../../../style';
+import {theme} from '../../../../style';
 
 const Container = styled.div`
   display: flex;
   align-items: stretch;
-    flex: 1;
+  flex: 1;
   position: relative;
+  width: 100%;
   column-gap: 30px;
   margin: 0px 15px;
   @media screen and (max-width: 1100px) {
@@ -37,19 +38,18 @@ const NumberCircle = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  
 `;
 
-const VerticalLine = styled.div<{hasNext : boolean}>`
+const VerticalLine = styled.div<{hasNext: boolean}>`
   position: absolute;
-align-self: center;
-justify-self: center;
+  align-self: center;
+  justify-self: center;
   z-index: 8;
   height: 100%;
   flex: 1;
   width: 4px;
   background-color: #a7a7a7;
-  display: ${({ hasNext }) => (hasNext ? 'block' : 'none')};
+  display: ${({hasNext}) => (hasNext ? 'block' : 'none')};
 `;
 
 const Content = styled.div`
@@ -64,10 +64,8 @@ const Subtitle = styled.h3`
   margin: 0 0 10px 0;
   color: ${theme.darkGray};
   @media screen and (max-width: 1100px) {
-
   }
   @media screen and (max-width: 700px) {
-
     font-size: 1.5rem;
   }
   @media screen and (max-width: 500px) {
@@ -79,9 +77,10 @@ const Description = styled.p`
   font-size: 1.3rem;
   line-height: 1.3;
   color: ${theme.darkGray};
-  width: 80%;
+  width: 100%;
   margin: 0;
   font-weight: 300;
+  word-break: keep-all;
   text-align: left;
   @media screen and (max-width: 1000px) {
     margin: 20px 0;
@@ -96,8 +95,8 @@ const ImageBox = styled.div`
   width: auto;
 `;
 const ImageWrapper = styled.div<{isInsideContent: boolean}>`
-  margin-right: ${({ isInsideContent }) => (isInsideContent ? '0' : '20px')};
-  margin-bottom: ${({ isInsideContent }) => (isInsideContent ? '10px' : '30px')};
+  margin-right: ${({isInsideContent}) => (isInsideContent ? '0' : '20px')};
+  margin-bottom: ${({isInsideContent}) => (isInsideContent ? '10px' : '30px')};
   background-color: #ebebeb;
   border-radius: 15px;
   padding: 20px;
@@ -105,73 +104,70 @@ const ImageWrapper = styled.div<{isInsideContent: boolean}>`
 `;
 const Image = styled.img`
   width: 300px;
-    height: auto;
+  height: auto;
 
-    border-radius: 8px;
-    @media screen and (max-width: 1100px) {
-        width: 200px;
-    }
-    @media screen and (max-width: 800px) {
-        width: 300px;
-    }
-    @media screen and (max-width: 600px) {
-        width: 250px;
-    }
-    @media screen and (max-width: 500px) {
-        width: 100%;
-    }
+  border-radius: 8px;
+  @media screen and (max-width: 1100px) {
+    width: 200px;
+  }
+  @media screen and (max-width: 800px) {
+    width: 300px;
+  }
+  @media screen and (max-width: 600px) {
+    width: 250px;
+  }
+  @media screen and (max-width: 500px) {
+    width: 100%;
+  }
 `;
 type HowWorkItemProps = {
-    data : {
-        image: string;
-        subtitle: string;
-        description: string;
-        hasNext: boolean;
-    };
-    index: number;
-}
-function HowWorkItem({data,index} : HowWorkItemProps) {
-    const [isMobile, setIsMobile] = useState<boolean>(window.innerWidth <= 800);
+  data: {
+    image: string;
+    subtitle: string;
+    description: string;
+    hasNext: boolean;
+  };
+  index: number;
+};
+function HowWorkItem({data, index}: HowWorkItemProps) {
+  const [isMobile, setIsMobile] = useState<boolean>(window.innerWidth <= 800);
 
-    useEffect(() => {
-      const handleResize = () => {
-        setIsMobile(window.innerWidth <= 800);
-      };
-  
-      window.addEventListener('resize', handleResize);
-  
-      // Clean up event listener on unmount
-      return () => {
-        window.removeEventListener('resize', handleResize);
-      };
-    }, []);
-   return (
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth <= 800);
+    };
+
+    window.addEventListener('resize', handleResize);
+
+    // Clean up event listener on unmount
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  }, []);
+  return (
     <Container>
-        {!isMobile && (
-            <ImageWrapper isInsideContent={false}>
-            <Image src={data.image} alt="step image" />
-            </ImageWrapper>
-        )}
-    <NumberContainer>
-        <NumberCircle>
-            {index+ 1}
-            
-        </NumberCircle>
-      <VerticalLine hasNext={data.hasNext} />
-    </NumberContainer>
+      {!isMobile && (
+        <ImageWrapper isInsideContent={false}>
+          <Image src={data.image} alt="step image" />
+        </ImageWrapper>
+      )}
+      <NumberContainer>
+        <NumberCircle>{index + 1}</NumberCircle>
+        <VerticalLine hasNext={data.hasNext} />
+      </NumberContainer>
       <Content>
         {isMobile && (
-            <ImageBox>
+          <ImageBox>
             <ImageWrapper isInsideContent={true}>
-                <Image src={data.image} alt="step image" />
+              <Image src={data.image} alt="step image" />
             </ImageWrapper>
-            </ImageBox>
+          </ImageBox>
         )}
         <Subtitle>{data.subtitle}</Subtitle>
-        <Description>{data.description}</Description>
+        <Description dangerouslySetInnerHTML={{__html: data.description}} />
       </Content>
     </Container>
   );
 }
 
-export default HowWorkItem
+export default HowWorkItem;

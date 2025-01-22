@@ -1,9 +1,10 @@
+import i18next from 'i18next';
 import React from 'react';
 import {useNavigate} from 'react-router-dom';
 import styled from 'styled-components';
-import Wrapper from '../../Component/Wrapper/Wrapper';
-import {theme} from '../../style';
-import {HomeTransitionButton} from './HomeIntroPage';
+import Wrapper from '../../../Component/Wrapper/Wrapper';
+import {HomeTransitionButton} from '../HomeIntroPage';
+import {ButtonBox, HeaderText, UpperTitle} from './HomeEnvImpact';
 const Container = styled.section`
   width: 100%;
   background-color: transparent;
@@ -27,11 +28,9 @@ const Background = styled.div<{backgroundImage: string}>`
   z-index: 1;
   @media screen and (max-width: 1200px) {
     height: 350px;
-
   }
   @media screen and (max-width: 1000px) {
     height: 330px;
-
   }
   @media screen and (max-width: 850px) {
     height: auto;
@@ -67,19 +66,6 @@ const LeftBox = styled.div`
     align-items: center;
   }
 `;
-const RightBox = styled.div`
-  width: 60%;
-  height: 500px;
-  position: relative;
-  display: flex;
-  @media screen and (max-width: 1200px) {
-    height: 200px;
-  }
-  @media screen and (max-width: 850px) {
-    height: 240px;
-    width: 40%;
-  }
-`;
 const ScreenImage = styled.img`
   position: absolute;
   object-fit: contain;
@@ -97,42 +83,22 @@ const ScreenImage = styled.img`
     height: 250px;
   }
 `;
-export const UpperTitle = styled.p`
-  font-size: 1.5rem;
-  color: #39b54a;
-  @media screen and (max-width: 850px) {
-    font-size: 1.2rem;
-    text-align: center;
-  }
-`;
-export const HeaderText = styled.h2`
-  font-size: 2rem;
-  line-height: 1.1;
-  color: ${theme.white};
-  @media screen and (max-width: 850px) {
-    text-align: center;
-    font-size: 1.6rem;
-  }
-`;
-export const ButtonBox = styled.div`
+const RightBox = styled.div`
+  width: 60%;
+  height: 500px;
+  position: relative;
   display: flex;
-  width: 80%;
+  @media screen and (max-width: 1200px) {
+    height: 200px;
+  }
   @media screen and (max-width: 850px) {
-    justify-content: center;
-    align-items: center;
-    padding: 20px 0;
+    height: 240px;
+    width: 40%;
   }
 `;
-
-export default function HomePlatform() {
+const HomeEcoProoducts = () => {
   const navigate = useNavigate();
-  const data = {
-    title: 'Capture, Reward<br />and Track your<br />environmental impact',
-    uptitle: 'For EarthMera Users',
-    buttonText: 'Check our platform',
-    bgImage: 'Images/home2bg.jpeg',
-    image: 'Images/home2Screen.png',
-  };
+  const data: any = i18next.t('HomeEcoProoducts', {returnObjects: true});
   function goPlatform() {
     navigate('/platform');
   }
@@ -158,4 +124,6 @@ export default function HomePlatform() {
       </Background>
     </Container>
   );
-}
+};
+
+export default HomeEcoProoducts;

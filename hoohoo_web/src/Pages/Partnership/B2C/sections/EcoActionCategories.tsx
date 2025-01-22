@@ -1,13 +1,17 @@
+import i18next from 'i18next';
 import React, {useEffect, useState} from 'react';
 import styled from 'styled-components';
-import {Desc, Header} from '../../../Component/ContentBox/TwoColBoxesSection';
-import Wrapper from '../../../Component/Wrapper/Wrapper';
-import i18next from 'i18next';
-import { theme } from '../../../style';
+import {
+  Desc,
+  Header,
+} from '../../../../Component/ContentBox/TwoColBoxesSection';
+import {useLanguage} from '../../../../Component/hooks/LanguageContext';
+import Wrapper from '../../../../Component/Wrapper/Wrapper';
+import {theme} from '../../../../style';
 const isSmall = window.innerWidth < 1300;
 const Container = styled.div`
   width: 100%;
-  
+
   background-color: ${theme.green};
   @media screen and (max-width: 1000px) {
     height: auto;
@@ -35,9 +39,9 @@ const InnerContainer = styled.div`
   padding: 0px 15px;
   height: 100%;
 `;
-const HeaderText = styled(Header)`
+const HeaderText = styled(Header)<{language: string}>`
   font-size: 2.5rem;
-  font-family: 'Fredoka';
+  font-family: ${props => (props.language === 'ko' ? 'Jua' : 'Fredoka')};
   font-weight: 600;
   color: black;
   @media screen and (max-width: 1000px) {
@@ -60,11 +64,9 @@ const LeftBox = styled.div`
   }
 `;
 const Image = styled.img`
-width: 100%;
-height: 100%;
+  width: 100%;
+  height: 100%;
   @media screen and (max-width: 1000px) {
-    
-
   }
 `;
 const RightBox = styled.div`
@@ -92,18 +94,9 @@ const HighlightedText = styled.span`
   }
 `;
 export default function EcoActionCategories() {
-  // const data: any = i18next.t('EcoActionProcess', {returnObjects: true});
-  const data = {
-    title: 'Eco-action categories',
-    content:
-      "Choose an eco-action, capture it. <br />Got more ideas? <br /> Try 'suggest a category'!",
-    bgImage: 'Images/home2bg.jpeg',
-    image: 'Images/eco_action_categories.png',
-  };
-  data.content = data.content.replace(
-    'suggest a category!',
-    `<span class='highlight'>suggest a category!</span>`,
-  );
+  const data: any = i18next.t('EcoActionCategories', {returnObjects: true});
+  const {language} = useLanguage();
+
   const [isMobile, setIsMobile] = useState(window.innerWidth < 800);
   useEffect(() => {
     const handleResize = () => {
@@ -119,28 +112,30 @@ export default function EcoActionCategories() {
         <>
           <Wrapper>
             <LeftBox>
-              <HeaderText>{data.title}</HeaderText>
+              <HeaderText language={language}>{data.title}</HeaderText>
               <ContentText>
-                {data.content.split('<br />').map((line, index, array) => (
-                  <React.Fragment key={index}>
-                    {line
-                      .split("'suggest a category'!")
-                      .map((segment, i, arr) =>
-                        i === arr.length - 1 ? (
-                          segment
-                        ) : (
-                          <>
-                            {segment}
-                            <HighlightedText>
-                              {' '}
-                              {"'suggest a category'!"}
-                            </HighlightedText>
-                          </>
-                        ),
-                      )}
-                    {index !== array.length - 1 && <br />}
-                  </React.Fragment>
-                ))}
+                {data?.content
+                  .split('<br />')
+                  .map((line: string, index: number, array: string[]) => (
+                    <React.Fragment key={index}>
+                      {line
+                        .split(`'${data?.highlight}'`)
+                        .map((segment: string, i: number, arr: string[]) =>
+                          i === arr.length - 1 ? (
+                            segment
+                          ) : (
+                            <>
+                              {segment}
+                              <HighlightedText>
+                                {' '}
+                                {`${data?.highlight}`}
+                              </HighlightedText>
+                            </>
+                          ),
+                        )}
+                      {index !== array.length - 1 && <br />}
+                    </React.Fragment>
+                  ))}
               </ContentText>
             </LeftBox>
           </Wrapper>
@@ -148,7 +143,7 @@ export default function EcoActionCategories() {
             <Wrapper>
               <InnerContainer>
                 <RightBox>
-                  <Image src={data.image}  />
+                  <Image src={data.image} />
                 </RightBox>
               </InnerContainer>
             </Wrapper>
@@ -159,28 +154,30 @@ export default function EcoActionCategories() {
           <Wrapper>
             <InnerContainer>
               <LeftBox>
-                <HeaderText>{data.title}</HeaderText>
+                <HeaderText language={language}>{data.title}</HeaderText>
                 <ContentText>
-                  {data.content.split('<br />').map((line, index, array) => (
-                    <React.Fragment key={index}>
-                      {line
-                        .split("'suggest a category'!")
-                        .map((segment, i, arr) =>
-                          i === arr.length - 1 ? (
-                            segment
-                          ) : (
-                            <>
-                              {segment}
-                              <HighlightedText>
-                                {' '}
-                                {"'suggest a category'!"}
-                              </HighlightedText>
-                            </>
-                          ),
-                        )}
-                      {index !== array.length - 1 && <br />}
-                    </React.Fragment>
-                  ))}
+                  {data?.content
+                    .split('<br />')
+                    .map((line: string, index: number, array: string[]) => (
+                      <React.Fragment key={index}>
+                        {line
+                          .split(`'${data?.highlight}'`)
+                          .map((segment: string, i: number, arr: string[]) =>
+                            i === arr.length - 1 ? (
+                              segment
+                            ) : (
+                              <>
+                                {segment}
+                                <HighlightedText>
+                                  {' '}
+                                  {`'${data?.highlight}'`}
+                                </HighlightedText>
+                              </>
+                            ),
+                          )}
+                        {index !== array.length - 1 && <br />}
+                      </React.Fragment>
+                    ))}
                 </ContentText>
               </LeftBox>
               <RightBox>

@@ -7,9 +7,9 @@ import {
 import OurTeam from './Pages/About/OurTeam/OurTeam';
 import AdminLogin from './Pages/Admin/AdminLogin';
 import MainDropB from './Pages/DropB/MainDropB';
+import Blog from './Pages/EMMedia/Blog/Blog';
+import BlogDetail from './Pages/EMMedia/Blog/BlogDetail';
 import HomeEarthmera from './Pages/Home/HomeEarthmera';
-import Blog from './Pages/Info/Blog/Blog';
-import BlogDetail from './Pages/Info/Blog/BlogDetail';
 import Privacy from './Pages/Legal/Privacy';
 import TandC from './Pages/Legal/T&C';
 import Partnership from './Pages/Partnership/B2B/Partnership';
@@ -17,11 +17,11 @@ import Platform from './Pages/Partnership/B2C/Platform';
 import Root from './Root';
 
 import EarthMeraVision from './Pages/About/Vision/EarthMeraVision';
-import ContactPage from './Pages/Info/Contact/ContactPage';
+import NewsDetailPage from './Pages/EMMedia/News/NewsDetailPage';
+import NewsPage from './Pages/EMMedia/NewsPage';
 import SupportingPage from './Pages/Info/Contact/SupportingPage';
 import RedirectPage from './Pages/Info/Redirection/RedirectPage';
 import EMTicketeer from './Pages/Partnership/ticketeer/EMTicketeer';
-import Countdown from './Pages/Home/Countdown';
 const Router = createBrowserRouter([
   {
     path: '/',
@@ -68,7 +68,7 @@ const Router = createBrowserRouter([
         errorElement: <ErrorComponent />,
       },
       {
-        path: '/blog',
+        path: '/climate_card',
         element: <Blog />,
         errorElement: <ErrorComponent />,
       },
@@ -78,15 +78,25 @@ const Router = createBrowserRouter([
         errorElement: <ErrorComponent />,
       },
       {
-        path: '/blog/:id',
+        path: '/climate_card/:id',
         element: <BlogDetail />,
         errorElement: <ErrorComponent />,
       },
       {
-        path: '/contact',
-        element: <ContactPage />,
+        path: '/news',
+        element: <NewsPage />,
         errorElement: <ErrorComponent />,
       },
+      {
+        path: '/news/:id',
+        element: <NewsDetailPage />,
+        errorElement: <ErrorComponent />,
+      },
+      // {
+      //   path: '/contact',
+      //   element: <ContactPage />,
+      //   errorElement: <ErrorComponent />,
+      // },
       {
         path: '/support',
         element: <SupportingPage />,

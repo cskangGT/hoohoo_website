@@ -3,7 +3,7 @@ import {useNavigate} from 'react-router-dom';
 import styled from 'styled-components';
 import Wrapper from '../../Component/Wrapper/Wrapper';
 import {HomeTransitionButton} from './HomeIntroPage';
-import {ButtonBox, HeaderText, UpperTitle} from './HomePlatform';
+import {ButtonBox, HeaderText, UpperTitle} from './sections/HomeEnvImpact';
 const Container = styled.section`
   width: 100%;
   background-color: transparent;

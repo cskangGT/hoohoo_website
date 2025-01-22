@@ -2,6 +2,7 @@ import i18next from 'i18next';
 import React, {useEffect, useState} from 'react';
 import styled from 'styled-components';
 import LinedHeader from '../../../Component/ContentBox/LinedHeader';
+import {useLanguage} from '../../../Component/hooks/LanguageContext';
 import {theme} from '../../../style';
 import {ContentBox} from './Strength';
 
@@ -45,9 +46,9 @@ const TitleContainer = styled.div`
     align-items: center;
   }
 `;
-const ActName = styled.h3`
+const ActName = styled.h3<{language: string}>`
   font-size: 3rem;
-  font-family: 'Fredoka';
+  font-family: ${props => (props.language === 'ko' ? 'Jua' : 'Fredoka')};
   font-weight: 600;
   line-height: 1;
   margin-top: 30px;
@@ -63,6 +64,7 @@ const ActDesc = styled.span`
   text-align: left;
   font-size: 1.5rem;
   width: 40%;
+  word-break: keep-all;
   @media screen and (max-width: 800px) {
     text-align: center;
     width: 100%;
@@ -75,6 +77,7 @@ type DataProps = {
 export default function Mindset() {
   const data: any = i18next.t('mindset', {returnObjects: true});
   const [isMobile, setIsMobile] = useState(window.innerWidth < 800);
+  const {language} = useLanguage();
   useEffect(() => {
     const handleResize = () => {
       setIsMobile(window.innerWidth < 800);
@@ -98,7 +101,7 @@ export default function Mindset() {
         {data.items.map((item: DataProps, index: number) => (
           <EachBox key={item.title + index}>
             <TitleContainer>
-              <ActName>{item.title}</ActName>
+              <ActName language={language}>{item.title}</ActName>
             </TitleContainer>
             <ActDesc dangerouslySetInnerHTML={{__html: item.content}} />
           </EachBox>

@@ -3,7 +3,6 @@ import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import React, {useEffect} from 'react';
 import {useLocation} from 'react-router-dom';
 import styled from 'styled-components';
-import {Category} from '../../../Component/Blog/BlogCard';
 import Wrapper from '../../../Component/Wrapper/Wrapper';
 import {theme} from '../../../style';
 const Background = styled.div`
@@ -109,7 +108,7 @@ function BlogDetail() {
         <Container>
           <ContentBox>
             <CategoryBox>
-              <Back href="/blog">
+              <Back href="/climate_card">
                 <FontAwesomeIcon
                   icon={faChevronLeft}
                   color="white"

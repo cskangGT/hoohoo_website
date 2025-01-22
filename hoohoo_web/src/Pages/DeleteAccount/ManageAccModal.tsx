@@ -4,7 +4,7 @@ import i18next from 'i18next';
 import React, {useCallback, useEffect, useState} from 'react';
 import styled from 'styled-components';
 import {theme} from '../../style';
-import {ModalBackground} from '../Info/Blog/BlogModal';
+import {ModalBackground} from '../EMMedia/Blog/BlogModal';
 import BaseProgress, {ModalTitle} from './BaseProgress';
 import EmailProgress from './EmailProgress';
 import ReasonProgress from './ReasonProgress';
