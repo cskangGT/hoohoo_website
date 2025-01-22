@@ -1,5 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import styled from 'styled-components';
+import {getNewsList} from '../../api/news.api';
 import PageNav from '../../Component/Blog/PageNav';
 import FootContact from '../../Component/Footer/FootContact';
 import {useLanguage} from '../../Component/hooks/LanguageContext';
@@ -137,10 +138,10 @@ function NewsPage() {
   const fetchData = async () => {
     const data = newsData.data;
     setFetchedList(data);
-    // const response = await getNewsList();
-    // if (response.data) {
-    //   setFetchedList(response.data);
-    // }
+    const response = await getNewsList();
+    if (response.data) {
+      setFetchedList(response.data);
+    }
   };
   const changePage = (num: number) => {
     setCurrentPage(num);
