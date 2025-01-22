@@ -41,7 +41,7 @@ const EachBox = styled.div`
   height: 350px;
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: flex-start;
   justify-content: flex-start;
   color: ${theme.white};
   @media screen and (max-width: 800px) {
@@ -68,6 +68,7 @@ const ActName = styled.h3<{language: string}>`
 const ActDesc = styled.span`
   text-align: left;
   font-size: 1.5rem;
+  border: 1px solid red;
   @media screen and (max-width: 800px) {
     text-align: center;
   }

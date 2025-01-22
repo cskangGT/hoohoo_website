@@ -146,6 +146,9 @@
   "em_team_Intro": {
     "header": "팀 어스메라를<br />소개해요"
   },
+  "Blog": {
+    "guideText": "앱에서 볼 수 있는 기후 카드들을 이곳에서도 만나보실 수 있어요."
+  },
   "strength": {
     "header": "협력의 힘으로 하나되어,<br />함께 성장해요",
     "items": [
@@ -183,42 +186,42 @@
   "teamIntro": [
     {
       "photoPath": "Images/profile_sung.jpeg",
-      "name": "강성훈",
+      "name": "Sung Kang",
       "role": "CEO / Founder <br /> Full-Stack Engineer",
       "contact": "mailto:devceohoony@gmail.com",
       "url": "https://www.linkedin.com/in/sungcoding/"
     },
     {
       "photoPath": "Images/profile_jisan.jpeg",
-      "name": "박지산",
+      "name": "Jisan Park",
       "role": "SWE<br />Front-End Engineer",
       "contact": "mailto:jisanpark94@gmail.com",
       "url": "https://www.linkedin.com/in/jisanpark5309/"
     },
     {
       "photoPath": "Images/profile_jeongwon.jpg",
-      "name": "박정원",
+      "name": "Jeongwon Park",
       "role": "SWE<br />ML Engineer",
       "contact": "mailto:devceohoony@gmail.com",
       "url": "https://www.linkedin.com/in/jwpark44/"
     },
     {
       "photoPath": "Images/profile_jimmy.jpeg",
-      "name": "심녕호",
+      "name": "Jimmy Sim",
       "role": "UI / UX<br />Content Designer",
       "contact": "mailto:devceohoony@gmail.com",
       "url": "https://www.linkedin.com/in/jimmysim93/"
     },
     {
       "photoPath": "Images/profile_daniel.jpeg",
-      "name": "박철진",
+      "name": "Chuljin Park",
       "role": "SWE<br />Back-End Engineer",
       "contact": "mailto:devceohoony@gmail.com",
       "url": "https://www.linkedin.com/in/daniel-park-33b0632b1/"
     },
     {
       "photoPath": "Images/profile_minjun.png",
-      "name": "김민준",
+      "name": "Minjun Kim",
       "role": "ML Team<br />ML Intern",
       "contact": "mailto:devceohoony@gmail.com",
       "url": "https://www.linkedin.com/in/minjunnkim/"

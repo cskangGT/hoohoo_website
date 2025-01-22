@@ -132,7 +132,7 @@ function NewsPage() {
   const [selectedSubCategory, setSelectedSubCategory] = useState<string>('ALL');
   const [fetchedList, setFetchedList] = useState<NewsDataType[]>([]);
   const [selectedNews, setSelectedNews] = useState<NewsDataType | undefined>();
-  const [numTotalData, setNumTotalData] = useState<number>(0);
+  const [numTotalData, setNumTotalData] = useState<number>(1);
 
   const {language} = useLanguage();
   const fetchData = async () => {

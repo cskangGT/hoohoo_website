@@ -1,3 +1,4 @@
+import i18next from 'i18next';
 import React, {useEffect, useRef, useState} from 'react';
 import {useCookies} from 'react-cookie';
 import styled from 'styled-components';
@@ -31,7 +32,6 @@ const SlickBar = styled.div`
   margin: 0;
   padding: 0;
   width: 100%;
-
   margin-top: 20px;
 `;
 
@@ -72,14 +72,14 @@ const Outline = styled.button<OutlineProps>`
   outline: none;
   display: inline-block;
   height: 100%;
-  min-width: 150px;
+
   min-height: 1px;
 
   transition: all 0.2s ease 0s;
   border-radius: 10px;
   &:hover {
-    background-color: ${theme.darkGray};
-    color: ${theme.white};
+    color: ${theme.darkGray};
+    opacity: 1;
   }
   @media screen and (max-width: 800px) {
     height: 30%;
@@ -89,13 +89,14 @@ const OutlineText = styled.h3`
   color: ${theme.darkGray};
   padding: 5px;
   margin: 0;
-  font-size: 16px;
+  font-size: 1rem;
   word-break: keep-all;
+  font-weight: 500;
   &:hover {
-    color: ${theme.white};
+    color: ${theme.darkGray};
   }
   @media screen and (max-width: 700px) {
-    font-size: 14px;
+    font-size: 0.75rem;
   }
 `;
 const Grid = styled.div`
@@ -117,7 +118,25 @@ const Grid = styled.div`
     margin-top: 50px;
   }
 `;
+const UnderLine = styled.div`
+  width: 100%;
+  height: 2px;
+  background-color: ${theme.darkGray};
+`;
+const GuideBox = styled.div`
+  display: flex;
 
+  margin-bottom: 1.5rem;
+`;
+const GuideText = styled.div`
+  background-color: #d9d9d9;
+  color: ${theme.darkGray};
+  font-size: 1.25rem;
+  padding: 0.5rem 1rem;
+  opacity: 0.6;
+  border-radius: 20px;
+  font-weight: 500;
+`;
 const Text = styled.span`
   color: ${theme.darkGray};
   display: flex;
@@ -131,6 +150,7 @@ const Text = styled.span`
 const OFFSET: number = 6;
 
 function Blog() {
+  const data: any = i18next.t('Blog', {returnObjects: true});
   const [currentPage, setCurrentPage] = useState<number>(1);
   const [selectedCategory, setSelectedCategory] = useState<string>('ALL');
   const [fetchedList, setFetchedList] = useState<BlogDataType[]>([]);
@@ -216,6 +236,7 @@ function Blog() {
                         <OutlineText key={index + 'text'}>
                           {language === 'ko' ? item.text.ko : item.text.en}
                         </OutlineText>
+                        {item.value === selectedCategory && <UnderLine />}
                       </Outline>
                     ),
                   )}
@@ -238,6 +259,9 @@ function Blog() {
                   )}
                 </ScrollContainer>
               </SlickBar>
+              <GuideBox>
+                <GuideText>{data.guideText}</GuideText>
+              </GuideBox>
               {fetchedList.length === 0 ? (
                 <Text style={{minHeight: 400}}>No blog found</Text>
               ) : (
