@@ -10,7 +10,6 @@ export async function getNewsList() {
         );
 
 
-        console.log("result", response);
         return {
             data: response.data,
         };
