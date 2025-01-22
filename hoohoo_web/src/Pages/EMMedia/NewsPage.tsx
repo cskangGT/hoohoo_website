@@ -1,12 +1,12 @@
 import React, {useEffect, useState} from 'react';
 import styled from 'styled-components';
-import {getNewsList} from '../../api/news.api';
 import PageNav from '../../Component/Blog/PageNav';
 import FootContact from '../../Component/Footer/FootContact';
 import {useLanguage} from '../../Component/hooks/LanguageContext';
 import Wrapper from '../../Component/Wrapper/Wrapper';
 import {BgImage, theme} from '../../style';
 import NewsCard from './News/NewsCard';
+import newsData from './News/newsData.json';
 import {NewsCategory, NewsDataType} from './News/NewsType';
 const Container = styled.div`
   width: calc(100% - 30px);
@@ -135,10 +135,12 @@ function NewsPage() {
 
   const {language} = useLanguage();
   const fetchData = async () => {
-    const response = await getNewsList();
-    if (response.data) {
-      setFetchedList(response.data);
-    }
+    const data = newsData.data;
+    setFetchedList(data);
+    // const response = await getNewsList();
+    // if (response.data) {
+    //   setFetchedList(response.data);
+    // }
   };
   const changePage = (num: number) => {
     setCurrentPage(num);

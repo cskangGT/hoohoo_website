@@ -9,6 +9,12 @@ const Container = styled.div`
   margin-top: 80px;
 `;
 
+const LoadingBox = styled.div`
+  min-height: 50vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
 function NewsDetailPage() {
   const {id} = useParams<{id: string}>();
   const {language} = useLanguage();
@@ -34,7 +40,9 @@ function NewsDetailPage() {
     <Wrapper>
       <Container>
         {isLoading ? (
-          <div>Loading...</div>
+          <LoadingBox>
+            <div>Loading...</div>
+          </LoadingBox>
         ) : (
           detailData && <NewsContent detailData={detailData} />
         )}
