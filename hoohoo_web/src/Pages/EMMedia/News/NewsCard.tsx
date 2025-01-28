@@ -12,7 +12,7 @@ const Card = styled.div`
   );
   backdrop-filter: blur(20px);
 
-  width: 250px;
+  width: 275px;
   cursor: pointer;
 
   display: flex;

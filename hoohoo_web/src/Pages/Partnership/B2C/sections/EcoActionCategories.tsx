@@ -112,7 +112,7 @@ export default function EcoActionCategories() {
         <>
           <Wrapper>
             <LeftBox>
-              <HeaderText language={language}>{data.title}</HeaderText>
+              <HeaderText language={language}>{data.header}</HeaderText>
               <ContentText>
                 {data?.content
                   .split('<br />')
@@ -154,7 +154,7 @@ export default function EcoActionCategories() {
           <Wrapper>
             <InnerContainer>
               <LeftBox>
-                <HeaderText language={language}>{data.title}</HeaderText>
+                <HeaderText language={language}>{data.header}</HeaderText>
                 <ContentText>
                   {data?.content
                     .split('<br />')

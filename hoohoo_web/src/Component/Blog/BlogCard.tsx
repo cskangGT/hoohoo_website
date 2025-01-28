@@ -11,12 +11,10 @@ const Card = styled.div`
   border-radius: 15px;
   max-width: 350px;
   cursor: pointer;
-
   display: flex;
   flex-direction: column;
   align-items: flex-start;
   justify-content: flex-start;
-  margin-bottom: 1.5rem;
   @media screen and (max-width: 1100px) {
     padding: 10px 12px 14px;
     width: auto;

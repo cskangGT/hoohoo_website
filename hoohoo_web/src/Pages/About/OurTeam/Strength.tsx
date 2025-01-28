@@ -37,7 +37,7 @@ const ItemBox = styled.div`
 `;
 
 const EachBox = styled.div`
-  padding: 0 35px;
+  padding: 0 70px 0px 0px;
   height: 350px;
   display: flex;
   flex-direction: column;

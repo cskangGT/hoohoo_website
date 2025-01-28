@@ -100,8 +100,8 @@ const OutlineText = styled.h3`
   }
 `;
 const Grid = styled.div`
-  grid-column-gap: 0.5rem;
-  grid-row-gap: 0.5rem;
+  grid-column-gap: 2rem;
+  grid-row-gap: 2rem;
   grid-template-rows: auto;
   grid-template-columns: 1fr 1fr 1fr;
   grid-auto-columns: 1fr;
