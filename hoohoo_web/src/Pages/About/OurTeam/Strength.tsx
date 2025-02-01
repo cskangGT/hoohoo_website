@@ -37,11 +37,11 @@ const ItemBox = styled.div`
 `;
 
 const EachBox = styled.div`
-  padding: 0 35px;
+  padding: 0 70px 0px 0px;
   height: 350px;
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: flex-start;
   justify-content: flex-start;
   color: ${theme.white};
   @media screen and (max-width: 800px) {

@@ -71,13 +71,13 @@ const Outline = styled.button<OutlineProps>`
   outline: none;
   display: inline-block;
   height: 100%;
-  min-width: 150px;
+
   min-height: 1px;
   transition: all 0.2s ease 0s;
   border-radius: 10px;
   &:hover {
-    background-color: ${theme.darkGray};
-    color: ${theme.white};
+    color: ${theme.darkGray};
+    opacity: 1;
   }
   @media screen and (max-width: 800px) {
     height: 30%;
@@ -89,7 +89,7 @@ const OutlineText = styled.h3`
   margin: 0;
   font-size: 18px;
   &:hover {
-    color: ${theme.white};
+    color: ${theme.darkGray};
   }
   @media screen and (max-width: 700px) {
     font-size: 14px;
@@ -97,8 +97,8 @@ const OutlineText = styled.h3`
 `;
 const OFFSET = 10;
 const Grid = styled.div`
-  grid-column-gap: 0.5rem;
-  grid-row-gap: 0.5rem;
+  grid-column-gap: 0.2rem;
+  grid-row-gap: 3rem;
   grid-template-rows: auto;
   grid-template-columns: 1fr 1fr 1fr 1fr;
   grid-auto-columns: 1fr;
@@ -132,7 +132,7 @@ function NewsPage() {
   const [selectedSubCategory, setSelectedSubCategory] = useState<string>('ALL');
   const [fetchedList, setFetchedList] = useState<NewsDataType[]>([]);
   const [selectedNews, setSelectedNews] = useState<NewsDataType | undefined>();
-  const [numTotalData, setNumTotalData] = useState<number>(0);
+  const [numTotalData, setNumTotalData] = useState<number>(1);
 
   const {language} = useLanguage();
   const fetchData = async () => {

@@ -3,17 +3,9 @@ import styled from 'styled-components';
 import FootContact from '../../../Component/Footer/FootContact';
 import Wrapper from '../../../Component/Wrapper/Wrapper';
 import {BgImage, theme} from '../../../style';
-import Heros from './Heros';
-import IntroApp from './IntroApp';
-import OurMission from './OurMission';
-import Partners from './Partners';
-import Realtime from './Realtime';
-import TakeSteps from './TakeSteps';
-import VisionIntro from './sections/VisionIntro';
-import VisionSection from './VisionSection';
-import ValueMarquee from './sections/ValueMarquee';
 import ValueEMHeroes from './sections/ValueEMHeroes';
-import ValueUserCount from './sections/ValueUserCount';
+import ValueMarquee from './sections/ValueMarquee';
+import VisionIntro from './sections/VisionIntro';
 const FlexBox = styled.div`
   display: flex;
   flex-direction: column;
@@ -42,22 +34,22 @@ export default function EarthMeraVision() {
   return (
     <>
       <BgImage>
-      <Wrapper>
+        <Wrapper>
+          <ContentBox>
+            <VisionIntro />
+          </ContentBox>
+        </Wrapper>
         <ContentBox>
-          <VisionIntro />
+          <ValueMarquee />
         </ContentBox>
-      </Wrapper>
-      <ContentBox>
-        <ValueMarquee />
-      </ContentBox>
-      <Wrapper>
-        <ContentBox>
-          <ValueEMHeroes />
-        </ContentBox>
-        <ContentBox>
-          <ValueUserCount />
-        </ContentBox>
-      </Wrapper>
+        <Wrapper>
+          <ContentBox>
+            <ValueEMHeroes />
+          </ContentBox>
+          {/* <ContentBox>
+            <ValueUserCount />
+          </ContentBox> */}
+        </Wrapper>
         {/* <ContentBox>
           <IntroApp />
         </ContentBox>

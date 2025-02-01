@@ -10,7 +10,7 @@ export const NewsCategory = {
     ALL: {
         text: {
             ko: "모두 보기",
-            en: "All"
+            en: "View All"
         },
         value: "ALL"
     },

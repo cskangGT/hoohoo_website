@@ -153,11 +153,12 @@ const CardHeader = styled.h2`
   }
 `;
 const CardDesc = styled.h4`
-  font-size: 2rem;
+  font-size: 1.75rem;
   margin: 0px;
   line-height: 1.1;
-  color: #d1d1d1;
+  color: #d1d1d1bc;
   text-align: left;
+  font-weight: 400;
   width: 90%;
   @media screen and (max-width: 850px) {
     font-size: 1.8rem;

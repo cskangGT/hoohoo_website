@@ -6,17 +6,11 @@ import {useLanguage} from '../hooks/LanguageContext';
 import {BlogCategory, BlogCategoryType, BlogDataType} from './BlogCategory';
 
 const Card = styled.div`
-  box-shadow: rgba(0, 0, 0, 0.08) 0px 40px 80px 0px;
-  background: linear-gradient(
-    253deg,
-    rgba(200, 200, 200, 0.1) 10%,
-    rgba(252, 230, 187, 0.3) 30%
-  );
+  background-color: transparent;
   backdrop-filter: blur(20px);
   border-radius: 15px;
-  width: 350px;
+  max-width: 350px;
   cursor: pointer;
-  padding: 1rem;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -25,6 +19,11 @@ const Card = styled.div`
     padding: 10px 12px 14px;
     width: auto;
   }
+`;
+const ImageBox = styled.div`
+  box-shadow: rgba(0, 0, 0, 0.08) 0px 40px 80px 0px;
+  width: 100%;
+  border-radius: 10px;
   &:hover {
     box-shadow:
       inset 0 -3em 3em rgba(0, 0, 0, 0.1),
@@ -37,20 +36,9 @@ const Image = styled.img`
   height: auto;
   border-radius: 10px;
 `;
-const Title = styled.h3`
-  margin-top: 10px;
-  font-size: 22px;
-  color: ${theme.darkGray};
-  margin-bottom: 5px;
-`;
-const Content = styled.h3`
-  margin-top: 0px;
-  color: ${theme.darkGray};
-  font-size: 12px;
-  font-weight: 500;
-`;
+
 const ContainerCD = styled.div`
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
   width: 100%;
   display: flex;
@@ -62,18 +50,14 @@ interface CategoryProps {
 }
 const CategoryBox = styled.div<CategoryProps>`
   letter-spacing: 0.3px;
+  color: ${theme.white};
   font-size: 1.2rem;
   font-weight: 600;
-  line-height: 1.7;
+  line-height: 1.2;
   border-radius: 20px;
   margin-right: 0.5rem;
-  padding: 0.25rem 0.75rem;
+  padding: 0.25rem 1rem;
   background-color: ${props => props.color};
-`;
-const DateBox = styled.div`
-  letter-spacing: 0.3px;
-  font-size: 0.725rem;
-  line-height: 1.7;
 `;
 
 type Props = {
@@ -89,13 +73,13 @@ export function Category(props: CateProps) {
   const {language} = useLanguage();
   const colors: Record<BlogCategoryType, string> = {
     ALL: '#D9EDF8',
-    EARTHMERA_CATEGORY: '#FFADAD',
-    GLOBAL_WARMING: '#FFD6A5',
-    AIR_POLLUTION: '#aae0d4',
-    DESERTIFICATION: '#FDFFB6',
-    ECOSYSTEM_DESTRUCTION: '#f3ffc0',
-    SEA_LEVEL_RISE: '#FFCCFF',
-    OCEAN_TRASH: '#ffd085',
+    EARTHMERA_CATEGORY: '#4229fe',
+    GLOBAL_WARMING: '#fd2020',
+    AIR_POLLUTION: '#3CA6DE',
+    DESERTIFICATION: '#E8BF29',
+    ECOSYSTEM_DESTRUCTION: '#8cab00',
+    SEA_LEVEL_RISE: '#ff5dff',
+    OCEAN_TRASH: '#260000',
   };
 
   const color = colors[props.category] || '#D9EDF8'; // 기본 색상 처리
@@ -122,7 +106,9 @@ function BlogCard(props: Props) {
   };
   return (
     <Card onClick={handleBlog}>
-      <Image src={blogImage.low} />
+      <ImageBox>
+        <Image src={blogImage.low} />
+      </ImageBox>
       {/* <Title>{}</Title> */}
       <ContainerCD>
         <Category category={blogCategory} />

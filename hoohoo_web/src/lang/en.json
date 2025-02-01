@@ -151,8 +151,8 @@
     "content": "Choose an eco-action, capture it. <br />Got more ideas? <br /> Try 'suggest a category'!",
     "bgImage": "Images/home2bg.jpeg",
     "image": "Images/eco_action_categories.png",
-    "highlight": "suggest a category!",
-    "highlightComponent": "<span class='highlight'>suggest a category!</span>"
+    "highlight": "suggest a category",
+    "highlightComponent": "<span class='highlight'>suggest a category</span>"
   },
   "gallery": [
     "Images/2.jpeg",
@@ -267,6 +267,9 @@
         "description": "Coming soon"
       }
     }
+  },
+  "Blog": {
+    "guideText": "The cards displayed in the our app are also showcased here"
   },
   "realtime": {
     "header": "Early sign up heroes:",
