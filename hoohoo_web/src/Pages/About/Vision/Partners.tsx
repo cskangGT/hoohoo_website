@@ -201,7 +201,7 @@ function Partners() {
     item => item.description,
   );
   const handleButtonClick = () => {
-    setIsText(!isText); // 버튼 클릭 시 isText 상태를 반전
+    setIsText(!isText);
   };
   const handleOutline = (index: number) => {
     setSlideIndex(index);
