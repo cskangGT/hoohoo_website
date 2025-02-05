@@ -11,10 +11,10 @@ jobs:
 
     steps:
     - name: Checkout code
-      uses: actions/checkout@v3
+      uses: actions/checkout@v4
 
     - name: Cache node modules
-      uses: actions/cache@v3
+      uses: actions/cache@v4
       with:
         path: ~/.npm
         key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
@@ -32,7 +32,7 @@ jobs:
 
     # dist 디렉터리를 아티팩트로 업로드
     - name: Upload dist directory as artifact
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4
       with:
         name: dist-directory
         path: hoohoo_web/dist/
@@ -44,7 +44,7 @@ jobs:
     steps:
     # 아티팩트로부터 dist 디렉터리 다운로드
     - name: Download dist directory artifact
-      uses: actions/download-artifact@v3
+      uses: actions/download-artifact@v4
       with:
         name: dist-directory
         path: hoohoo_web/dist/
