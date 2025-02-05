@@ -1,17 +1,15 @@
-import React, {useEffect, useState} from 'react';
-import styled from 'styled-components';
-import {theme} from '../../style';
 import {
   faInstagram,
   faLinkedinIn,
-  faPinterestP,
   faTiktok,
-  faYoutube,
 } from '@fortawesome/free-brands-svg-icons';
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import i18next from 'i18next';
+import React, {useEffect, useState} from 'react';
 import {useNavigate} from 'react-router-dom';
+import styled from 'styled-components';
 import ManageAccModal from '../../Pages/DeleteAccount/ManageAccModal';
+import {theme} from '../../style';
 
 const Background = styled.footer`
   background-color: transparent;
@@ -57,7 +55,6 @@ const HeaderColumn = styled.div`
 const Column = styled.div`
   display: flex;
   flex-direction: column;
-  
 `;
 const FooterBottom = styled.div`
   padding: 10px 0;
@@ -223,13 +220,14 @@ function Footer() {
               icon={faLinkedinIn}
               url={'https://www.linkedin.com/company/earthmera/'}
             />
-            <Ibutton 
-              icon={faTiktok}
-              url={'https://www.tiktok.com/@earthmera_global'} />
             <Ibutton
+              icon={faTiktok}
+              url={'https://www.tiktok.com/@earthmera_global'}
+            />
+            {/* <Ibutton
               icon={faYoutube}
               url={'https://www.youtube.com/@Earthmera'}
-            />
+            /> */}
           </IconBox>
         </FooterBottom>
       </Container>
