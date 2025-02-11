@@ -112,7 +112,7 @@
     }
   },
   "footcontact": {
-    "title": "비즈니스 파트너십 또는 기타 문의사항을 원하시면 아래의 버튼을 클릭하세요.",
+    "title": "비즈니스 파트너십 또는 기타 문의사항을 원하시면 문의하기 버튼을 눌러주세요.",
     "button": "문의하기"
   },
   "idealcustomer": {
@@ -547,7 +547,7 @@
       {
         "imagePath": "Images/platform2step3.png",
         "head": "보상 확인",
-        "desc": "에코 액션을 완료하면 EM 코인을 받고,<br />레벨 배지와 메달도 획득할 수 있어요!"
+        "desc": "에코액션을 완료하면<br />EM 코인을 받고, 레벨 배지와<br />메달도 획득할 수 있어요!"
       },
       {
         "imagePath": "Images/platform2step4.png",
@@ -796,12 +796,12 @@
       },
       {
         "title": "친환경 제품",
-        "description": "EarthMera와 함께<br />친환경 제품을 검증하고,<br />지속가능한 미래를 만들어보세요!",
+        "description": "친환경 제품의 검증하고,<br />지속가능한 미래를 만들어보세요!",
         "icon": "Images/partners_card_eco_product.png"
       },
       {
         "title": "친환경 서비스",
-        "description": "행동을 의미 있는 변화로 바꿔보세요.<br />당신의 서비스를 사용자가 저감한<br />CO₂ 양을 확인해보세요!",
+        "description": "당신의 친환경 서비스를 통해,<br />사용자가 저감한 CO₂ 양을 확인해보세요!",
         "icon": "Images/partners_card_eco_service.png"
       },
       {
@@ -811,7 +811,7 @@
       },
       {
         "title": "주변 상점",
-        "description": "당신의 친환경 상점을<br />주변의 가까운 사용자들에게 소개하고,<br /> 쉽게 찾아올 수 있게 만들어보세요!",
+        "description": "당신의 친환경 상점을 주변의<br />가까운 사용자들에게 소개해보세요!",
         "icon": "Images/partners_card_stores.png"
       },
       {
@@ -853,7 +853,7 @@
   },
   "TicketeerSteps": {
     "header": {
-      "text": "친환경 이벤트를 더욱 재미있고<br />",
+      "text": "친환경 이벤트를 더욱<br />재미있고 ",
       "highlight": "의미 있게!",
       "deco": "Images/ticketeer_step_deco.png",
       "underline": "Images/ticketeer_step_underline.png"
