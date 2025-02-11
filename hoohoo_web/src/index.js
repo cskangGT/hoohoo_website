@@ -2,9 +2,6 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import { RouterProvider } from 'react-router-dom';
 import { createGlobalStyle } from 'styled-components';
-import GmarketSansTTfBold from '../public/fonts/GmarketSansTTfBold.ttf';
-import GmarketSansTTfLight from '../public/fonts/GmarketSansTTfLight.ttf';
-import GmarketSansTTfMedium from '../public/fonts/GmarketSansTTfMedium.ttf';
 
 import NanumHumanTTfBold from '../public/fonts/NanumHumanBold.ttf';
 import NanumHumanTTfLight from '../public/fonts/NanumHumanLight.ttf';
@@ -39,15 +36,6 @@ const GlobalStyle = createGlobalStyle`
     @font-face {
       font-family: 'RixYeoljeongdoR';
       src: url(${RixYeoljeongdoR}) format('truetype');
-    }
-    @font-face {
-        font-family: 'Gmarket Sans';
-        src: 
-        url(${GmarketSansTTfMedium}) format('truetype'),
-        url(${GmarketSansTTfBold}) format('truetype'),
-
-        url(${GmarketSansTTfLight}) format('truetype'),
-         
     }
     @font-face {
         font-family: 'Nanum Human';
@@ -94,7 +82,7 @@ const GlobalStyle = createGlobalStyle`
     }
     body {
       margin: 0;
-      font-family:  'Fredoka', 'TmoneyRoundWind', 'Noto Sans',  'TmoneyRoundWind', 'Black Han Sans', 'Permanent Marker';
+      font-family:  'Fredoka', 'TmoneyRoundWind', 'Noto Sans', 'Black Han Sans', 'Permanent Marker';
       font-weight: 400;
       overflow-x: hidden;
       word-break: keep-all;
