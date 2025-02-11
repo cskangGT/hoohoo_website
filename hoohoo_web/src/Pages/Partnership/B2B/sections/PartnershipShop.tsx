@@ -1,10 +1,10 @@
 import i18next from 'i18next';
 import React from 'react';
-import {useLanguage} from '../../../../Component/hooks/LanguageContext';
+import { useLanguage } from '../../../../Component/hooks/LanguageContext';
 import Wrapper from '../../../../Component/Wrapper/Wrapper';
-import {emailTo} from '../../../../util/email';
-import {HomeTransitionButton} from '../../../Home/HomeIntroPage';
-import {ButtonBox} from '../PhotoVideoes';
+import { emailTo } from '../../../../util/email';
+import { HomeTransitionButton } from '../../../Home/HomeIntroPage';
+import { ButtonBox } from '../PhotoVideoes';
 import {
   PartnershipContainer,
   PartnershipDescText,
@@ -28,7 +28,8 @@ function PartnershipShop() {
               dangerouslySetInnerHTML={{__html: data.title}}
             />
             <PartnershipDescText
-              dangerouslySetInnerHTML={{__html: data.description}}
+              language={language}
+              dangerouslySetInnerHTML ={{__html: data.description}}
             />
             <ButtonBox>
               <HomeTransitionButton

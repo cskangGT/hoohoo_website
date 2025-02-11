@@ -1,12 +1,12 @@
 import i18next from 'i18next';
-import React, {useEffect, useState} from 'react';
+import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import LinedHeader from '../../../Component/ContentBox/LinedHeader';
 import Wrapper from '../../../Component/Wrapper/Wrapper';
-import {theme} from '../../../style';
-import {Bg} from '../Vision/sections/VisionIntro';
+import { theme } from '../../../style';
+import { Bg } from '../Vision/sections/VisionIntro';
 export const BackgroundImage = styled(Bg)`
-  margin: 100px 0;
+  margin: 80px 0;
   height: 700px;
   @media screen and (max-width: 700px) {
     align-items: center;

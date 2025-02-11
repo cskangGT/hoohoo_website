@@ -1,12 +1,12 @@
-import {faBars, faCaretDown} from '@fortawesome/free-solid-svg-icons';
-import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
+import { faBars, faCaretDown } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import i18next from 'i18next';
-import React, {useEffect, useState} from 'react';
-import {useTranslation} from 'react-i18next';
-import {useNavigate} from 'react-router-dom';
+import React, { useEffect, useState } from 'react';
+import { useTranslation } from 'react-i18next';
+import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
-import {theme} from '../../style';
-import {useLanguage} from '../hooks/LanguageContext';
+import { theme } from '../../style';
+import { useLanguage } from '../hooks/LanguageContext';
 const Logo = styled.button`
   padding: 15px;
   font-size: 25px;
@@ -19,10 +19,10 @@ const Logo = styled.button`
 
 const LogoText = styled.span<{language: string}>`
   padding-left: 10px;
-  font-family: ${props => (props.language === 'ko' ? 'Jua' : 'Fredoka')};
+  font-family: ${props => (props.language === 'ko' ? 'TmoneyRoundWind' : 'Fredoka')};
   font-weight: 500;
   color: ${theme.darkGray};
-  font-size: 24px;
+  font-size: ${theme.fontSize['2xl']};
 `;
 
 const Bar = styled.nav`
@@ -33,15 +33,7 @@ const Bar = styled.nav`
   z-index: 9999;
   /* backdrop-filter: blur(15px);
   background-color: rgba(0,0,0,0.29); */
-  box-sizing: border-box;
-  width: 100%;
-  display: flex;
-  background-color: #fffefe;
-  justify-content: space-between;
-  align-items: center;
-  padding: 8px 22px;
-  transition: top 0.5s; // 부드러운 애니메이션 효과를 위한 전환
-  &::after {
+  /* &::after {
     content: '';
     position: absolute;
     bottom: 0px; // NavLink 바닥 바로 아래에 위치
@@ -50,7 +42,16 @@ const Bar = styled.nav`
     height: 1px;
     background: #000; // 밑줄 색상
     z-index: 300;
-  }
+  } */
+  box-sizing: border-box;
+  width: 100%;
+  display: flex;
+  background-color: #fffefe;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px 22px;
+  transition: top 0.5s; // 부드러운 애니메이션 효과를 위한 전환
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);  // 자연스러운 그림자 효과 추가
   @media screen and (max-width: 1100px) {
     flex-direction: column;
     align-items: flex-start;
@@ -157,7 +158,7 @@ const NavMenuList = styled.li`
 const NavLink = styled.a`
   text-decoration: none;
   color: ${theme.darkGray};
-  font-size: 18px;
+  font-size: ${theme.fontSize.md};
   padding-left: 10px;
   cursor: pointer;
   position: relative;
@@ -315,9 +316,11 @@ const SubNavLink = styled.a`
   display: flex;
   padding-left: 10px;
   text-align: center;
+  
   cursor: pointer;
+  font-size: ${theme.fontSize.sm};
   @media screen and (max-width: 1100px) {
-    font-size: 14px;
+    font-size: ${theme.fontSize.md};
     padding-left: 0px;
     color: #424242;
   }
@@ -437,15 +440,7 @@ function Nav({isKorean, setIsKorean}: NavProps) {
                           <SubNavLink
                             key={subIndex + 'subLink'}
                             onClick={() => {
-                              if (
-                                subItem.label === 'Contact' ||
-                                subItem.label === '연락처'
-                              ) {
-                                window.location.href =
-                                  'mailto:devceohoony@gmail.com';
-                              } else {
-                                navigate(subItem.link ? subItem.link : '');
-                              }
+                              navigate(subItem.link ? subItem.link : '');
                               isOpen && setIsOpen(false);
                             }}>
                             {subItem.label}
@@ -465,8 +460,12 @@ function Nav({isKorean, setIsKorean}: NavProps) {
                     id={item.link}
                     key={i}
                     onClick={() => {
-                      navigate(item.link ? item.link : '');
-                      isOpen && setIsOpen(false);
+                      if (item.label === 'Contact' || item.label === '연락처') {
+                        window.location.href = 'mailto:devceohoony@gmail.com';
+                      } else {
+                        navigate(item.link ? item.link : '');
+                        isOpen && setIsOpen(false);
+                      }
                     }}>
                     {item.label}
                   </NavLink>

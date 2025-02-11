@@ -1,8 +1,8 @@
-import React, {useEffect} from 'react';
+import React, { useEffect } from 'react';
 import styled from 'styled-components';
 import FootContact from '../../../Component/Footer/FootContact';
 import Wrapper from '../../../Component/Wrapper/Wrapper';
-import {BgImage, theme} from '../../../style';
+import { BgImage, theme } from '../../../style';
 import B2BEcoProducts from './sections/B2BEcoProducts';
 import B2BEcoServices from './sections/B2BEcoServices';
 import B2BIntroSection from './sections/B2BIntroSection';
@@ -14,7 +14,7 @@ const IntroPageSection = styled.section`
   justify-content: center;
   align-items: center;
   width: 100%;
-  height: 1000px;
+  height: 800px;
   @media screen and (max-width: 1200px) {
     height: auto;
   }
@@ -24,6 +24,7 @@ const Container = styled.div`
   align-items: center;
   justify-content: center;
   height: 800px;
+  
   @media screen and (max-width: 800px) {
     height: auto;
   }

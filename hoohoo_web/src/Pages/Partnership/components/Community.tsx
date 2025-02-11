@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import LinedHeader from '../../../Component/ContentBox/LinedHeader';
 import {
@@ -9,8 +9,8 @@ import {
   LeftBox,
   RightBox,
 } from '../../../Component/ContentBox/TwoColBoxesSection';
-import {useLanguage} from '../../../Component/hooks/LanguageContext';
-import {theme} from '../../../style';
+import { useLanguage } from '../../../Component/hooks/LanguageContext';
+import { theme } from '../../../style';
 const MidTitle = styled(Desc)`
   font-weight: 700;
   font-size: 1.3rem;
@@ -60,6 +60,7 @@ export default function Community(props: Props) {
     // 컴포넌트 언마운트 시 이벤트 리스너를 제거합니다.
     return () => window.removeEventListener('resize', handleResize);
   }, []);
+
   return (
     <Container>
       <HorizonContainer style={{position: 'relative'}} rightImage={props.flip}>
@@ -69,9 +70,9 @@ export default function Community(props: Props) {
             style={{color: theme.darkGray, textAlign: isLargeScreen && 'left'}}
           />
           {props.data.midcontent && (
-            <Desc dangerouslySetInnerHTML={{__html: props.data.midcontent}} />
+            <Desc dangerouslySetInnerHTML={{__html: props.data.midcontent}} language={language} />
           )}
-          <Desc dangerouslySetInnerHTML={{__html: props.data.content}} />
+          <Desc dangerouslySetInnerHTML={{__html: props.data.content}} language={language} />
         </RightBox>
         <LeftBox>
           {props.imageComponent ? (

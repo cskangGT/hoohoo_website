@@ -1,8 +1,9 @@
 import React from 'react';
-import {useNavigate} from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
-import {useLanguage} from '../../../Component/hooks/LanguageContext';
-import {NewsDataType} from './NewsType';
+import { useLanguage } from '../../../Component/hooks/LanguageContext';
+import { theme } from '../../../style';
+import { NewsDataType } from './NewsType';
 const Card = styled.div`
   box-shadow: rgba(0, 0, 0, 0.117) 0px 5px 5px 0px;
   background: linear-gradient(
@@ -53,7 +54,7 @@ const DescriptionBox = styled.div`
   justify-content: flex-start;
 `;
 const Title = styled.p`
-  font-size: 14px;
+  font-size: ${theme.fontSize.md};
   font-family: 'Noto Sans';
   font-weight: 600;
   line-height: 1.2;

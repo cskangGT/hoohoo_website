@@ -32,8 +32,7 @@
         ]
       },
       {
-        "label": "정보",
-        "subItems": [{"label": "연락처"}]
+        "label": "문의하기"
       }
     ]
   },
@@ -574,12 +573,12 @@
   },
   "YourImpactSection": {
     "header": "당신의 환경 기여도를<br />확인해보세요!",
-    "content": "에코 액션을 할 때마다 실시간으로 CO₂ 저감량을 확인하고,<br />지금까지 환경에 얼마나 기여했는지 쉽게 확인해보세요!",
+    "content": "에코 액션을 할 때마다 실시간으로<br />CO₂ 저감량을 확인하고, 지금까지<br />환경에 얼마나 기여했는지 쉽게 확인해보세요!",
     "image": "Images/yourimpact.png"
   },
   "B2CEcoProducts": {
     "header": "나만의 친환경 제품을<br />수집해보세요!",
-    "content": "친환경 제품을 재미있는 컬렉션 카드로 만들어보세요.<br />각 카드에는 제품이 환경에 미치는 영향이 담겨 있습니다.<br />나만의 특별한 컬렉션을 완성하는 즐거움을 느껴보세요!",
+    "content": "친환경 제품을 재미있는 컬렉션 카드로 만들어보세요.<br />각 카드에는 제품이 환경에 미치는 영향이 담겨 있습니다. 나만의 특별한 컬렉션을 완성하는<br />즐거움을 느껴보세요!",
     "image": "Images/platform_eco_product.png"
   },
   "B2CEcoServices": {
@@ -610,17 +609,17 @@
   "community": [
     {
       "header": "그룹과 함께 이벤트와<br />챌린지를 즐겨보세요!",
-      "content": "학교, 회사, 지역 커뮤니티와 함께 그룹을<br />만들어 에코 액션에 참여해보세요.<br /><br />AI 기반으로 일일 에코 미션을 만들거나,<br />특정 장소에서 함께할 수 있는 이벤트를 주최할 수 있습니다.<br /><br />그룹 채팅과 포스트를 통해 소통하고, 영감을 나눠보세요!",
+      "content": "학교, 회사, 지역 커뮤니티와 함께 그룹을<br />만들어 에코 액션에 참여해보세요.<br /><br />AI 기반으로 일일 에코 미션을 만들거나,<br />특정 장소에서 함께할 수 있는 이벤트를<br />주최할 수 있습니다.<br /><br />그룹 채팅과 포스트를 통해 소통하고,<br />영감을 나눠보세요!",
       "image": "Images/platform_group.png"
     },
     {
       "header": "그룹 플로깅을 통해,<br />건강도 챙기고,<br />지구도 지켜요!",
-      "content": "그룹과 함께 플로깅 이벤트를 시작해보세요.<br />생분해성 EM Bag을 사용하면 수거한 쓰레기의 환경적 영향을<br />추적할 수 있어 더욱 뜻깊은 활동을 경험 할 수 있어요.<br /><br />EM Bag과 함께 전후 사진을 찍거나 셀카를 촬영하는 재미있는<br />미션을 수행하며, 환경에 긍정적인 변화를 만들어보세요!",
+      "content": "그룹과 함께 플로깅 이벤트를 시작해보세요.<br />생분해성 EM Bag을 사용하면 수거한 쓰레기의 환경적 영향을 추적할 수 있어 더욱 뜻깊은 활동을 경험 할 수 있어요.<br /><br />EM Bag과 함께 전후 사진을 찍거나 셀카를 촬영하는 재미있는 미션을 수행하며, 환경에 긍정적인 변화를 만들어보세요!",
       "image": "Images/platform_health.png"
     },
     {
       "header": "지속 가능한 일상을<br />공유해보세요",
-      "content": "EM People과 EM Heroes은 EarthMera의<br />특별한 포스팅 공간이에요!<br /><br />EM People에서는 친환경 아이디어와<br />지속 가능한 일상을 나누고 소통할 수 있어요!<br /><br />EM Heroes는 완료한 에코 액션을 자랑할 수 있는 공간으로,<br />친환경 성과를 공유하고 다른 사람들이 어떻게 변화를 만들어<br />나가는지 확인할 수 있어요.",
+      "content": "EM People과 EM Heroes은 EarthMera의<br />특별한 포스팅 공간이에요!<br /><br />EM People에서는 친환경 아이디어와<br />지속 가능한 일상을 나누고 소통할 수 있어요!<br /><br />EM Heroes는 완료한 에코 액션을 자랑할 수 있는 공간으로, 친환경 성과를 공유하고 다른 사람들이 어떻게 변화를 만들어 나가는지 확인할 수 있어요.",
       "image": "Images/platform_em_people.png"
     }
   ],
@@ -647,8 +646,8 @@
     "right": "Our Partner brand"
   },
   "PartnershipIntro": {
-    "showcase": "Showcase your",
-    "image": "Images/partnership_circles.png"
+    "showcase": "보여주세요!",
+    "image": "Images/partnership_circles_ko.png"
   },
   "usingb2c": {
     "header": "How EarthMera <br /> does it?",
@@ -713,7 +712,7 @@
     "image": "Images/vision_intro.png",
     "smallImage": "Images/vision_intro_small.png",
     "header": "인식을 행동으로,<br />행동을 지속 가능한 습관으로",
-    "content": "캠페인을 통한 기후 위기의 인식은 누구나 있지만, 행동으로 이어지기는 쉽지 않아요. 저희는 기술을 통해 그 간극을 메워, 친환경 인식을 지속 가능한 실천으로 바꿉니다."
+    "content": "캠페인을 통한 기후 위기의 인식은 누구나 있지만, 행동으로 이어지기는 쉽지 않아요.<br />저희는 기술을 통해 그 간극을 메워, 친환경 인식을 지속 가능한 실천으로 바꿉니다."
   },
   "ourMission": {
     "header": "Our mission",
@@ -817,37 +816,37 @@
       },
       {
         "title": "티켓티어",
-        "description": "친환경 이벤트를 측정 가능한<br />임팩트로 바꿔보세요!",
+        "description": "친환경 이벤트를 측정 가능한 임팩트로 바꿔보세요!",
         "icon": "Images/partners_card_ticketeer.png"
       }
     ]
   },
   "PartnershipCarbonTracking": {
     "title": "당신의 제품의 CO₂<br />저감량을 추적해보세요",
-    "description": "제품을 등록하면, EarthMera AI가 해당 제품과<br />함께한 사용자의 에코 액션을 추적하여<br />CO₂ 저감 데이터를 제공합니다!",
+    "description": "제품을 등록하면, EarthMera AI가 해당 제품과 함께한 사용자의 에코 액션을 추적하여 CO₂ 저감 데이터를 제공합니다!",
     "buttonText": "카테고리 등록<br />문의하기",
     "image": "Images/partnership_category.png",
     "carbonImage": "Images/partnership_carbon.png"
-  },
+  }, 
   "PartnershipEcoBoard": {
     "title": "친환경 사용자들에게<br />당신의 브랜드를 보여주세요",
-    "description": "에코 보드는 친환경 사용자들을 지속 가능성을 추구하는<br />기업, 단체, 제품 등을 손쉽게 연결해주는 공간입니다.<br />당신의 브랜드를 통해 사용자들이 더 나은 친환경<br />라이프스타일을 실현할 수 있도록 함께해주세요.",
+    "description": "에코 보드는 친환경 사용자들을 지속 가능성을 추구하는 기업, 단체, 제품 등을 손쉽게 연결해주는 공간입니다.<br />당신의 브랜드를 통해 사용자들이 더 나은 친환경 라이프스타일을 실현할 수 있도록 함께해주세요.",
     "buttonText": "에코 보드<br />문의하기",
     "image": "Images/partnership_ecoboard.png"
   },
   "PartnershipShop": {
     "title": "내 상점 주변의<br />친환경 소비자와<br />연결해보세요!",
-    "description": "제로 웨이스트나 비건 매장? ‘주변 상점’에 등록하고<br />동네 친환경 핫플로 만들어보세요!<br />친환경 소비자들이 당신의 매장을 더 쉽게 찾아올 수 있어요.<br />고객은 늘어나고, 브랜드 인지도는 자연스럽게 올라갑니다!",
+    "description": "제로 웨이스트나 비건 매장?<br />‘주변 상점’에 등록하고 동네 친환경 핫플로 만들어보세요! 친환경 소비자들이 당신의 매장을 더 쉽게 찾아올 수 있어요.<br />고객은 늘어나고, 브랜드 인지도는 자연스럽게 올라갑니다!",
     "buttonText": "주변 상점 문의하기",
     "image": "Images/partnership_ecoshop.png"
   },
   "TicketeerCarbon": {
-    "header": "모든 티켓 이벤트에서<br />CO₂ 저감 효과를 확인하세요",
-    "content": "티켓티어는 음악 축제, 저탄소 콘서트, 플로깅, 제로 웨이스트 파티와 같은 친환경 이벤트에서 참가자들이 친환경 미션을 완료할 때마다<br />실시간으로 CO₂ 저감량을 보여줘요!<br />또한 환경 데이터를 집계하여 이벤트 성과, 홍보, 마케팅에 유용한<br />인사이트를 제공해요.",
+    "header": "모든 티켓 이벤트에서<br />CO₂ 저감 효과를<br />확인하세요",
+    "content": "티켓티어는 음악 축제, 저탄소 콘서트, 플로깅, 제로 웨이스트 파티와 같은 친환경 이벤트에서 참가자들이 친환경 미션을 완료할 때마다<br />실시간으로 CO₂ 저감량을 보여줘요!<br />또한 환경 데이터를 집계하여 이벤트 성과, 홍보, 마케팅에 유용한 인사이트를 제공해요.",
     "image": "Images/ticketeer_carbontracking.png"
   },
   "TicketeerIntro": {
-    "header": "친환경 이벤트를 측정 가능한<br />임팩트로 바꿔보세요!",
+    "header": "친환경 이벤트를<br />측정 가능한 임팩트로<br />바꿔보세요!",
     "buttonText": "티켓티어 문의하기",
     "image": "Images/ticketeer_intro.png",
     "titleStar": "Images/ticketeer_title_star.png"
@@ -863,12 +862,12 @@
       {
         "imagePath": "Images/ticketeer_step1.png",
         "head": "보상",
-        "desc": "미션 완료에 따라 상품이나 경품 추첨을 제공해<br />동기를 부여해보세요."
+        "desc": "미션 완료에 따라 상품이나 경품 추첨을<br />제공해 동기를 부여해보세요."
       },
       {
         "imagePath": "Images/ticketeer_step2.png",
         "head": "데이터 인사이트",
-        "desc": "주최자는 실시간으로 CO₂ 저감량과 같은 데이터를<br />확인할 수 있으며, 이벤트 종료 후<br />최종 집계된 데이터를 받아볼 수 있어요."
+        "desc": "주최자는 실시간으로 CO₂ 저감량과 같은<br />데이터를 확인할 수 있으며, 이벤트 종료 후 최종 집계된 데이터를 받아볼 수 있어요."
       },
       {
         "imagePath": "Images/ticketeer_step3.png",
@@ -982,13 +981,13 @@
   },
   "B2BEcoServices": {
     "title": "당신의 에코 서비스가 만드는<br />진짜 영향력을 확인해보세요",
-    "description": "에코 서비스를 이용하는 사용자의 에코 액션을 EarthMera AI가<br />인증하고, CO₂ 저감량 데이터를 제공합니다.<br />이 데이터를 바탕으로 에코 서비스 제공 기업은 집계된 CO₂ 저감량을<br />확인하고, 실질적인  환경 기여도를 파악할 수 있습니다.<br />EarthMera와 함께 여러분의 서비스가 만드는 진짜 변화를 확인해보세요.",
+    "description": "에코 서비스를 이용하는 사용자의 에코 액션을 EarthMera AI가 인증하고, CO₂ 저감량 데이터를 제공합니다. 이 데이터를 바탕으로 에코 서비스 제공 기업은 집계된 CO₂ 저감량을 확인하고, 실질적인 환경 기여도를 파악할 수 있습니다.<br />EarthMera와 함께 여러분의 서비스가 만드는 진짜 변화를 확인해보세요.",
     "buttonText": "친환경 서비스<br />문의하기",
     "image": "Images/partner_eco_service.png"
   },
   "B2BEcoProducts": {
     "title": "EarthMera와 함께<br />친환경 제품을 검증해보세요",
-    "description": "EarthMera와 함께 친환경 제품을 검증할 파트너를 찾고 있어요!<br />검증된 제품은 EarthMera의 특별한 친환경 카드로 제작되어,<br />사용자는 지속 가능성 여정을 더 즐겁게 이어갈 수 있고,<br />파트너는 브랜드 신뢰도를 자연스럽게 높일 수 있습니다.",
+    "description": "EarthMera와 함께 친환경 제품을 검증할 파트너를 찾고 있어요! 검증된 제품은 EarthMera의 특별한 친환경 카드로 제작되어, 사용자는 지속 가능성 여정을더 즐겁게 이어갈 수 있고, 파트너는 브랜드 신뢰도를 자연스럽게 높일 수 있습니다.",
     "buttonText": "친환경 제품<br />문의하기",
     "image": "Images/partner_eco_product.png"
   }

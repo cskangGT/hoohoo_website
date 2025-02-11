@@ -1,10 +1,10 @@
 import i18next from 'i18next';
 import React from 'react';
 import Marquee from 'react-fast-marquee';
-import styled, {keyframes} from 'styled-components';
-import {useLanguage} from '../../../../Component/hooks/LanguageContext';
+import styled, { keyframes } from 'styled-components';
+import { useLanguage } from '../../../../Component/hooks/LanguageContext';
 import Wrapper from '../../../../Component/Wrapper/Wrapper';
-import {theme} from '../../../../style';
+import { theme } from '../../../../style';
 const Container = styled.section`
   width: 100%;
   background-color: transparent;
@@ -64,9 +64,9 @@ const Header = styled.h1<{language: string}>`
   font-size: 3rem;
   color: ${theme.darkGray};
   text-align: left;
-  font-family: ${props => (props.language === 'ko' ? 'Jua' : 'Fredoka')};
+  font-family: ${props => (props.language === 'ko' ? 'TmoneyRoundWind' : 'Fredoka')};
   font-weight: 600;
-  padding: 0px 10px;
+  padding: 0px;
   @media screen and (max-width: 1200px) {
     font-size: 2.5rem;
   }
@@ -143,7 +143,8 @@ const CardContainer = styled.div`
 `;
 const CardHeader = styled.h2`
   font-size: 2.2rem;
-  line-height: 1.1;
+  line-height: 1.2;
+  font-weight: 500;
   color: ${theme.darkGray};
   margin-top: 10px;
   margin-bottom: 15px;
@@ -155,9 +156,9 @@ const CardHeader = styled.h2`
     font-size: 1.8rem;
   }
 `;
-const CardDesc = styled.h4`
-  font-size: 1.7rem;
-  line-height: 1.1;
+const CardDesc = styled.h4<{language: string}>`
+  font-size: ${props => (props.language === 'ko' ? '1.5rem' : '1.7rem')};
+  line-height: 1.5;
   font-weight: 400;
   color: #525252;
   text-align: left;
@@ -176,11 +177,12 @@ const IconImage = styled.img`
   object-fit: contain;
 `;
 function ValueCard({data}: CardProps) {
+  const {language} = useLanguage();
   return (
     <CardContainer>
       <IconImage src={data.icon} />
       <CardHeader dangerouslySetInnerHTML={{__html: data.title}}></CardHeader>
-      <CardDesc dangerouslySetInnerHTML={{__html: data.description}}></CardDesc>
+      <CardDesc language={language} dangerouslySetInnerHTML={{__html: data.description}}></CardDesc>
     </CardContainer>
   );
 }

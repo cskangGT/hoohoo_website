@@ -3,13 +3,13 @@ import {
   faLinkedinIn,
   faTiktok,
 } from '@fortawesome/free-brands-svg-icons';
-import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import i18next from 'i18next';
-import React, {useEffect, useState} from 'react';
-import {useNavigate} from 'react-router-dom';
+import React, { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 import ManageAccModal from '../../Pages/DeleteAccount/ManageAccModal';
-import {theme} from '../../style';
+import { theme } from '../../style';
 
 const Background = styled.footer`
   background-color: transparent;
@@ -46,9 +46,8 @@ const Box = styled.div`
 const HeaderColumn = styled.div`
   display: flex;
   flex-direction: column;
-  padding: 0 15px;
+  
   @media (max-width: 800px) {
-    padding: 0px 15px;
     width: calc(100% - 40px);
   }
 `;
@@ -71,11 +70,30 @@ const FooterBottom = styled.div`
 `;
 const FooterTitle = styled.h3`
   color: ${theme.darkGray};
+  padding-left: 15px;
+  font-size: ${theme.fontSize.xl};
+  font-weight: 600;
+  @media (max-width: 800px) {
+    
+  }
 `;
 const BusinessDetail = styled.p`
   font-size: 1rem;
   line-height: 24px;
   color: ${theme.darkGray};
+  padding-left: 15px;
+  @media (max-width: 800px) {
+    
+  }
+`;
+const Copyright = styled.p`
+  font-size: 1rem;
+  line-height: 24px;
+  color: ${theme.darkGray};
+  padding-left: 15px;
+  @media (max-width: 800px) {
+    padding-left: 0px;
+  }
 `;
 const RowBox = styled.div`
   display: flex;
@@ -162,6 +180,7 @@ function Ibutton({icon, url, style}: IbuttonProps) {
 function Footer() {
   const navigate = useNavigate();
   const [isOpen, setIsOpen] = useState<boolean>(false);
+  
   const data: any = i18next.t('Footer', {returnObjects: true});
   useEffect(() => {
     const searchParams = new URLSearchParams(location.search);
@@ -178,7 +197,7 @@ function Footer() {
           <HeaderColumn>
             <FooterTitle>{data.title}</FooterTitle>
             <BusinessDetail>
-              {' '}
+              
               {data.ceo}
               <br /> {data.email} : sung.ceo@earthmera.com
             </BusinessDetail>
@@ -206,9 +225,9 @@ function Footer() {
           </RowBox>
         </Box>
         <FooterBottom>
-          <BusinessDetail style={{paddingLeft: 15}}>
-            Copyright&copy; 2024 EarthMera. All rights reserved.
-          </BusinessDetail>
+          <Copyright>
+            Copyright&copy; {new Date().getFullYear()} EarthMera. All rights reserved.
+          </Copyright>
           <IconBox>
             <Ibutton
               icon={faInstagram}

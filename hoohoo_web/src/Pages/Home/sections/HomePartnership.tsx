@@ -3,8 +3,8 @@ import React from 'react';
 import Marquee from 'react-fast-marquee';
 import styled from 'styled-components';
 import Wrapper from '../../../Component/Wrapper/Wrapper';
-import {theme} from '../../../style';
-import {UpperTitle} from './HomeEnvImpact';
+import { theme } from '../../../style';
+import { UpperTitle } from './HomeEnvImpact';
 const Container = styled.section`
   width: 100%;
   background-color: transparent;
@@ -33,9 +33,10 @@ const Background = styled.div<{backgroundImage: string}>`
 `;
 
 const HeaderText = styled.h2`
-  font-size: 2.5rem;
+  font-size: 2rem;
   line-height: 1.1;
   color: ${theme.white};
+  font-weight: 500;
   margin-top: 0px;
   margin-bottom: 70px;
   padding: 0px 0px;
@@ -114,8 +115,8 @@ type CardProps = {
   };
 };
 const CardContainer = styled.div<{backgroundImage: string}>`
-  width: 500px;
-  height: 250px;
+  width: 400px;
+  height: 240px;
   background-image: url(${props => props.backgroundImage});
   background-size: cover;
   background-position: center;
@@ -140,31 +141,32 @@ const CardContainer = styled.div<{backgroundImage: string}>`
   }
 `;
 const CardHeader = styled.h2`
-  font-size: 2.2rem;
+  font-size: 1.75rem;
   line-height: 1.1;
+  font-weight: 500;
   color: ${theme.white};
   margin: 10px 0px;
   text-align: left;
-  @media screen and (max-width: 850px) {
-    font-size: 2.2rem;
-  }
-  @media screen and (max-width: 500px) {
-    font-size: 1.8rem;
-  }
-`;
-const CardDesc = styled.h4`
-  font-size: 1.75rem;
-  margin: 0px;
-  line-height: 1.1;
-  color: #d1d1d1bc;
-  text-align: left;
-  font-weight: 400;
-  width: 90%;
   @media screen and (max-width: 850px) {
     font-size: 1.8rem;
   }
   @media screen and (max-width: 500px) {
     font-size: 1.5rem;
+  }
+`;
+const CardDesc = styled.h4`
+  font-size: 1.5rem;
+  margin: 0px;
+  line-height: 1.3;
+  color: #d1d1d1bc;
+  text-align: left;
+  font-weight: 400;
+  width: 90%;
+  @media screen and (max-width: 850px) {
+    font-size: 1.5rem;
+  }
+  @media screen and (max-width: 500px) {
+    font-size: 1.25rem;
   }
 `;
 const IconImage = styled.img`

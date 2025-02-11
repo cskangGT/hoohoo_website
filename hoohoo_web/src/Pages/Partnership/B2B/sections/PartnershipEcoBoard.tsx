@@ -1,10 +1,10 @@
 import i18next from 'i18next';
 import React from 'react';
-import {useNavigate} from 'react-router-dom';
-import {useLanguage} from '../../../../Component/hooks/LanguageContext';
-import {emailTo} from '../../../../util/email';
-import {HomeTransitionButton} from '../../../Home/HomeIntroPage';
-import {ButtonBox} from '../PhotoVideoes';
+import { useNavigate } from 'react-router-dom';
+import { useLanguage } from '../../../../Component/hooks/LanguageContext';
+import { emailTo } from '../../../../util/email';
+import { HomeTransitionButton } from '../../../Home/HomeIntroPage';
+import { ButtonBox } from '../PhotoVideoes';
 import {
   PartnershipContainer,
   PartnershipDescText,
@@ -31,6 +31,7 @@ function PartnershipEcoBoard() {
             dangerouslySetInnerHTML={{__html: data.title}}
           />
           <PartnershipDescText
+            language={language}
             dangerouslySetInnerHTML={{__html: data.description}}
           />
           <ButtonBox>

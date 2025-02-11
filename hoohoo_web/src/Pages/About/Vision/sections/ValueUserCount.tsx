@@ -1,9 +1,9 @@
 import i18next from 'i18next';
-import React, {useEffect, useState} from 'react';
+import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
-import {getUserCount} from '../../../../api/userCount';
-import {useLanguage} from '../../../../Component/hooks/LanguageContext';
-import {theme} from '../../../../style';
+import { getUserCount } from '../../../../api/userCount';
+import { useLanguage } from '../../../../Component/hooks/LanguageContext';
+import { theme } from '../../../../style';
 const Background = styled.div<{backgroundImage: string}>`
   width: 100%;
   background-image: url(${props => props.backgroundImage});
@@ -33,7 +33,7 @@ const Header = styled.h1<{language: string}>`
   font-size: 3rem;
   z-index: 2;
   color: ${theme.white};
-  font-family: ${props => (props.language === 'ko' ? 'Jua' : 'Fredoka')};
+  font-family: ${props => (props.language === 'ko' ? 'TmoneyRoundWind' : 'Fredoka')};
   font-weight: 600;
   padding: 0px 10px;
   text-align: center;

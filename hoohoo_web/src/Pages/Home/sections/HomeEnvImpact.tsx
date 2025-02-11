@@ -1,10 +1,10 @@
 import i18next from 'i18next';
 import React from 'react';
-import {useNavigate} from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 import Wrapper from '../../../Component/Wrapper/Wrapper';
-import {theme} from '../../../style';
-import {HomeTransitionButton} from '../HomeIntroPage';
+import { theme } from '../../../style';
+import { HomeTransitionButton } from '../HomeIntroPage';
 const Container = styled.section`
   width: 100%;
   background-color: transparent;
@@ -97,20 +97,21 @@ const ScreenImage = styled.img`
   }
 `;
 export const UpperTitle = styled.p`
-  font-size: 1.5rem;
+  font-size: 1.2rem;
   color: #39b54a;
   @media screen and (max-width: 850px) {
-    font-size: 1.2rem;
+    font-size: 1rem;
     text-align: center;
   }
 `;
 export const HeaderText = styled.h2`
-  font-size: 2rem;
-  line-height: 1.1;
+  font-size: 1.4rem;
+  line-height: 1.4;
   color: ${theme.white};
+  font-weight: 400;
   @media screen and (max-width: 850px) {
     text-align: center;
-    font-size: 1.6rem;
+    font-size: 1.2rem;
   }
 `;
 export const ButtonBox = styled.div`

@@ -1,16 +1,17 @@
 import React from 'react';
 import styled from 'styled-components';
-import {theme} from '../../style';
+import { theme } from '../../style';
+import { useLanguage } from '../hooks/LanguageContext';
 import LinedHeader from './LinedHeader';
 export const Container = styled.div`
-  width: calc(100% - 30px);
+  width: calc(100% );
   display: flex;
-  margin: 100px auto;
+  margin: 100px 0px;
   justify-content: flex-start;
   align-items: center;
   position: relative;
   transition: all 0.2s ease 0s;
-  padding: 3rem 15px;
+  padding: 3rem 0px;
   padding-bottom: 20px;
   @media screen and (max-width: 1000px) {
     margin: 20px auto;
@@ -68,13 +69,14 @@ export const Header = styled.h2`
     font-size: 2.1rem;
   }
 `;
-export const Desc = styled.p`
-  font-size: 1.3rem;
-  line-height: 1.3;
+export const Desc = styled.p<{language?: string}>`
+  font-size: ${props => (props.language === 'ko' ? '1.15rem' : '1.3rem')};
+  font-family: ${props => (props.language === 'ko' ? 'TmoneyRoundWind' : 'Fredoka')};
+  line-height: 1.5;
   width: 100%;
   color: ${theme.darkGray};
   opacity: 0.8;
-  margin: 0 5px;
+  margin: 0px;
   text-align: left;
   z-index: 10;
   word-break: keep-all;
@@ -142,6 +144,7 @@ type Props = {
 };
 
 export default function TwoColBoxesSection(props: Props) {
+  const {language} = useLanguage();
   return (
     <Container style={{marginTop: 60}}>
       <HorizonContainer
@@ -159,7 +162,7 @@ export default function TwoColBoxesSection(props: Props) {
             style={props.headerStyle}
             data={{header: props.data.header, lineImage: props.data.lineImage}}
           />
-          <Desc style={props.descStyle}>{props.data.content}</Desc>
+          <Desc style={props.descStyle} language={language}>{props.data.content}</Desc>
         </RightBox>
       </HorizonContainer>
     </Container>

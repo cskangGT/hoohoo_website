@@ -1,14 +1,14 @@
-import React, {useEffect, useState} from 'react';
+import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
-import {getNewsList} from '../../api/news.api';
+import { getNewsList } from '../../api/news.api';
 import PageNav from '../../Component/Blog/PageNav';
 import FootContact from '../../Component/Footer/FootContact';
-import {useLanguage} from '../../Component/hooks/LanguageContext';
+import { useLanguage } from '../../Component/hooks/LanguageContext';
 import Wrapper from '../../Component/Wrapper/Wrapper';
-import {BgImage, theme} from '../../style';
+import { BgImage, theme } from '../../style';
 import NewsCard from './News/NewsCard';
 import newsData from './News/newsData.json';
-import {NewsCategory, NewsDataType} from './News/NewsType';
+import { NewsCategory, NewsDataType } from './News/NewsType';
 const Container = styled.div`
   width: calc(100% - 30px);
   display: flex;
@@ -87,12 +87,13 @@ const OutlineText = styled.h3`
   color: ${theme.darkGray};
   padding: 5px;
   margin: 0;
-  font-size: 18px;
+  font-size: ${theme.fontSize.md};
+  font-weight: 500;
   &:hover {
     color: ${theme.darkGray};
   }
   @media screen and (max-width: 700px) {
-    font-size: 14px;
+    font-size: ${theme.fontSize.sm};
   }
 `;
 const OFFSET = 10;
@@ -160,9 +161,7 @@ function NewsPage() {
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
-  useEffect(() => {
-    console.log('fetchedList', fetchedList);
-  }, [fetchedList]);
+  
   return (
     <>
       <BgImage bgcolor="white">

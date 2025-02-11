@@ -1,13 +1,13 @@
 import i18next from 'i18next';
 import React from 'react';
-import {useNavigate} from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
-import {useLanguage} from '../../../../Component/hooks/LanguageContext';
+import { useLanguage } from '../../../../Component/hooks/LanguageContext';
 import Wrapper from '../../../../Component/Wrapper/Wrapper';
-import {theme} from '../../../../style';
-import {emailTo} from '../../../../util/email';
-import {HomeTransitionButton} from '../../../Home/HomeIntroPage';
-import {ButtonBox} from '../PhotoVideoes';
+import { theme } from '../../../../style';
+import { emailTo } from '../../../../util/email';
+import { HomeTransitionButton } from '../../../Home/HomeIntroPage';
+import { ButtonBox } from '../PhotoVideoes';
 export const PartnershipContainer = styled.section`
   width: 100%;
   background-color: transparent;
@@ -76,7 +76,7 @@ export const PartnershipRightBox = styled.div`
 `;
 const CarbonImage = styled.img`
   position: absolute;
-  height: 300px;
+  height: 320px;
   top: 0px;
   right: 0px;
   @media screen and (max-width: 850px) {
@@ -86,10 +86,11 @@ const CarbonImage = styled.img`
     top: -50px;
   }
 `;
-export const PartnershipDescText = styled.p`
+export const PartnershipDescText = styled.p<{language: string}>`
   color: ${theme.darkGray};
-  font-size: 1.2rem;
-  line-height: 1.3;
+  font-size: ${props => (props.language === 'ko' ? '1.15rem' : '1.3rem')};
+  font-family: ${props => (props.language === 'ko' ? 'TmoneyRoundWind' : 'Fredoka')};
+  line-height: 1.5;
   width: 80%;
   @media screen and (max-width: 850px) {
     text-align: center;
@@ -100,7 +101,7 @@ export const PartnershipTitleText = styled.h2<{language: string}>`
   color: ${theme.darkGray};
   font-size: 2rem;
   line-height: 1.4;
-  font-family: ${props => (props.language === 'ko' ? 'Jua' : 'Fredoka')};
+  font-family: ${props => (props.language === 'ko' ? 'TmoneyRoundWind' : 'Fredoka')};
   font-weight: 600;
   @media screen and (max-width: 850px) {
     text-align: center;
@@ -133,6 +134,7 @@ function PartnershipCarbonTracking() {
               dangerouslySetInnerHTML={{__html: data.title}}
             />
             <PartnershipDescText
+              language={language}
               dangerouslySetInnerHTML={{__html: data.description}}
             />
             <ButtonBox>

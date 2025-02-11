@@ -1,9 +1,9 @@
 import i18next from 'i18next';
-import React, {useEffect, useState} from 'react';
+import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import LinedHeader from '../../../Component/ContentBox/LinedHeader';
-import {useLanguage} from '../../../Component/hooks/LanguageContext';
-import {theme} from '../../../style';
+import { useLanguage } from '../../../Component/hooks/LanguageContext';
+import { theme } from '../../../style';
 export const ContentBox = styled.div`
   display: flex;
   flex-direction: column;
@@ -53,7 +53,7 @@ const EachBox = styled.div`
 `;
 const ActName = styled.h3<{language: string}>`
   font-size: 3rem;
-  font-family: ${props => (props.language === 'ko' ? 'Jua' : 'Fredoka')};
+  font-family: ${props => (props.language === 'ko' ? 'TmoneyRoundWind' : 'Fredoka')};
   font-weight: 600;
   line-height: 1;
   margin-top: 50px;

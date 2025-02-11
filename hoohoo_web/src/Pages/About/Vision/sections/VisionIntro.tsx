@@ -1,9 +1,9 @@
 import i18next from 'i18next';
-import React, {useEffect, useState} from 'react';
+import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
-import {Desc} from '../../../../Component/ContentBox/TwoColBoxesSection';
-import {useLanguage} from '../../../../Component/hooks/LanguageContext';
-import {slideInFromTop, theme} from '../../../../style';
+import { Desc } from '../../../../Component/ContentBox/TwoColBoxesSection';
+import { useLanguage } from '../../../../Component/hooks/LanguageContext';
+import { slideInFromTop, theme } from '../../../../style';
 export const Bg = styled.div<{image: string}>`
   animation: ${slideInFromTop} 0.7s ease-out forwards;
   width: calc(100%);
@@ -25,7 +25,7 @@ const Header = styled.h1<{language: string}>`
   width: calc(100% - 60px);
   font-size: 3rem;
   color: ${theme.darkGray};
-  font-family: ${props => (props.language === 'ko' ? 'Jua' : 'Fredoka')};
+  font-family: ${props => (props.language === 'ko' ? 'TmoneyRoundWind' : 'Fredoka')};
   font-weight: 600;
 
   @media screen and (max-width: 1200px) {
@@ -48,10 +48,11 @@ const Header = styled.h1<{language: string}>`
 `;
 const ContentText = styled.p`
   color: ${theme.darkGray};
-  font-size: 2rem;
+  font-size: 1.8rem;
 
   line-height: 1.5;
-  max-width: 550px;
+  max-width: 630px;
+  word-break: keep-all;
   @media screen and (max-width: 1200px) {
     font-size: 1.8rem;
   }

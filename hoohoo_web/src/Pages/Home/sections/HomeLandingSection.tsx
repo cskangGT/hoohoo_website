@@ -1,9 +1,9 @@
 import i18next from 'i18next';
 import React from 'react';
 import styled from 'styled-components';
-import {useLanguage} from '../../../Component/hooks/LanguageContext';
+import { useLanguage } from '../../../Component/hooks/LanguageContext';
 import Wrapper from '../../../Component/Wrapper/Wrapper';
-import {slideInFromTop, theme} from '../../../style';
+import { slideInFromTop, theme } from '../../../style';
 import DownloadButtons from '../DownloadButtons';
 const Container = styled.div`
   animation: ${slideInFromTop} 0.7s ease-out forwards;
@@ -50,9 +50,11 @@ const LeftBox = styled.div`
 `;
 const TitleText = styled.h2<{language: string}>`
   padding: 30px 0;
-  font-size: 2.7rem;
+  font-size: 2.5rem;
   line-height: 1.2;
   width: 100%;
+
+  
   color: ${theme.darkGray};
   text-align: left;
   @media screen and (max-width: 1200px) {
@@ -63,8 +65,8 @@ const TitleText = styled.h2<{language: string}>`
     text-align: center;
     font-size: 2.1rem;
   }
-  font-family: ${props => (props.language === 'ko' ? 'Jua' : 'Fredoka')};
-
+  font-family: ${props => (props.language === 'ko' ? 'TmoneyRoundWind' : 'Fredoka')};
+  font-weight: ${props => (props.language === 'ko' ? 800 : 600)};
   margin: 0px;
 `;
 const HeaderBox = styled.div`
