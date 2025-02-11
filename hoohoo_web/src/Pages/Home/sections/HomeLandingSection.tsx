@@ -4,6 +4,7 @@ import styled from 'styled-components';
 import { useLanguage } from '../../../Component/hooks/LanguageContext';
 import Wrapper from '../../../Component/Wrapper/Wrapper';
 import { slideInFromTop, theme } from '../../../style';
+import { PageName } from '../../../util/firebase_custom_event';
 import DownloadButtons from '../DownloadButtons';
 const Container = styled.div`
   animation: ${slideInFromTop} 0.7s ease-out forwards;
@@ -158,7 +159,7 @@ function HomeLandingSection() {
             <Desc dangerouslySetInnerHTML={{__html: data.content}} />
           </HeaderBox>
 
-          <DownloadButtons />
+          <DownloadButtons pageName={PageName.home} />
         </LeftBox>
         <RightBox>
           <Image src={data.image} />

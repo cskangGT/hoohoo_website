@@ -801,7 +801,7 @@
   },
   "HomePartners": {
     "title": "Partners",
-    "description": "EarthMera, in collaboration with diverse partners,<br />is shaping new possibilities for a sustainable future."
+    "description": "EarthMera, in collaboration with diverse partners, is shaping new possibilities for a sustainable future."
   },
   "HomePartnership": {
     "bgImage": "Images/home2bg.jpeg",
@@ -985,7 +985,7 @@
     "bgImage": "Images/home2bg.jpeg",
     "image": "Images/home2Screen.png"
   },
-  "HomeEcoProoducts": {
+  "HomeEcoProducts": {
     "title": "Verify your<br />eco-products and<br />build your unique collection!",
     "uptitle": "For EarthMera Users",
     "buttonText": "Check our platform",

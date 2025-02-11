@@ -1,8 +1,7 @@
 import i18next from 'i18next';
 import React from 'react';
 import styled from 'styled-components';
-import {theme} from '../../style';
-import DownloadButtons from './DownloadButtons';
+import { theme } from '../../style';
 export const iosAppStoreLink =
   'https://apps.apple.com/app/earthmera/id6560118091';
 export const androidAppStoreLink =
@@ -239,7 +238,7 @@ function Download({dropb}: DownloadProps) {
                 : data['earthmera']['subheader']}
             </SubHeader>
             <BannerBtnContainer>
-              <DownloadButtons />
+              {/* <DownloadButtons /> */}
               {/* <BannerBtn href={iosAppStoreLink}>
                 <Img src={data['storeImage']['appstore']}></Img>
               </BannerBtn>

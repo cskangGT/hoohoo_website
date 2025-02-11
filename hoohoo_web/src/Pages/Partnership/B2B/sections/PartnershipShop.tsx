@@ -3,6 +3,7 @@ import React from 'react';
 import { useLanguage } from '../../../../Component/hooks/LanguageContext';
 import Wrapper from '../../../../Component/Wrapper/Wrapper';
 import { emailTo } from '../../../../util/email';
+import { logButtonEvent, PageName } from '../../../../util/firebase_custom_event';
 import { HomeTransitionButton } from '../../../Home/HomeIntroPage';
 import { ButtonBox } from '../PhotoVideoes';
 import {
@@ -34,6 +35,7 @@ function PartnershipShop() {
             <ButtonBox>
               <HomeTransitionButton
                 href={emailTo}
+                onClick={() => logButtonEvent('go_platform in PartnershipShop', PageName.partnership)}
                 dangerouslySetInnerHTML={{
                   __html: data.buttonText,
                 }}></HomeTransitionButton>

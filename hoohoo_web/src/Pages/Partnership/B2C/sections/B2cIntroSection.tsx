@@ -4,6 +4,7 @@ import styled from 'styled-components';
 import { useLanguage } from '../../../../Component/hooks/LanguageContext';
 import Wrapper from '../../../../Component/Wrapper/Wrapper';
 import { slideInFromTop, theme } from '../../../../style';
+import { PageName } from '../../../../util/firebase_custom_event';
 import DownloadButtons from '../../../Home/DownloadButtons';
 const Container = styled.section`
   width: 100%;
@@ -114,7 +115,7 @@ export default function B2cIntroSection() {
               dangerouslySetInnerHTML={{__html: data.title}}
             />
             <ContentText dangerouslySetInnerHTML={{__html: data.content}} />
-            <DownloadButtons />
+            <DownloadButtons pageName={PageName.platform} />
           </InnerContainer>
         </Wrapper>
         <Overlay overlayImage={data.overlay} />

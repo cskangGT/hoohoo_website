@@ -4,6 +4,7 @@ const Wrap = styled.div`
   width: calc(100%);
   max-width: 1200px;
   margin: 0 auto;
+  
   @media screen and (max-width: 1200px) {
     max-width: 1100px;
   }

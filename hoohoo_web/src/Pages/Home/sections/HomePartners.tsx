@@ -27,12 +27,16 @@ const TitleBox = styled.div`
 
 const DescriptionText = styled.h5`
   font-size: ${theme.fontSize['3xl']};
+  width: 65%;
   line-height: ${theme.fontSize['5xl']};
   color: ${theme.darkGray};
   font-weight: 500;
   margin: 0px;
   text-align: center;
   word-break: keep-all;
+  @media screen and (max-width: 800px) {
+    width: 100%;
+  }
 `;
 
 const PartnerText = styled.h5`

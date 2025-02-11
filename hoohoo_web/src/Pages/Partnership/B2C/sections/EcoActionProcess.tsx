@@ -65,7 +65,7 @@ const EachBox = styled.div<{index: number}>`
     flex-direction: column;
   }
   @media screen and (max-width: 500px) {
-    height: 450px;
+    height: auto;
     width: 300px;
   }
 `;

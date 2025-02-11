@@ -1,10 +1,11 @@
 import i18next from 'i18next';
 import React from 'react';
-import {useNavigate} from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 import Wrapper from '../../../Component/Wrapper/Wrapper';
-import {HomeTransitionButton} from '../HomeIntroPage';
-import {ButtonBox, HeaderText, UpperTitle} from './HomeEnvImpact';
+import { logButtonEvent, PageName } from '../../../util/firebase_custom_event';
+import { HomeTransitionButton } from '../HomeIntroPage';
+import { ButtonBox, HeaderText, UpperTitle } from './HomeEnvImpact';
 const Container = styled.section`
   width: 100%;
   background-color: transparent;
@@ -97,6 +98,7 @@ const HomeEcoServices = () => {
   const navigate = useNavigate();
   const data: any = i18next.t('HomeEcoServices', {returnObjects: true});
   function goPlatform() {
+    logButtonEvent('go_platform in HomeEcoServices', PageName.home);
     navigate('/platform');
   }
   return (

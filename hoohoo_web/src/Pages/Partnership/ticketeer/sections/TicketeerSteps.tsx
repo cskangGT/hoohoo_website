@@ -58,7 +58,7 @@ const EachBox = styled.div<{index: number}>`
     flex-direction: column;
   }
   @media screen and (max-width: 500px) {
-    height: 450px;
+    height: auto;
     width: 300px;
   }
 `;
@@ -141,7 +141,7 @@ const Decoration = styled.img`
 
   @media screen and (max-width: 700px) {
     top: -10px;
-    right: -10px;
+    right: -15px;
     width: 30px;
   }
 `;
