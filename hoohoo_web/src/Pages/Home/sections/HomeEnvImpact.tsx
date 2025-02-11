@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 import Wrapper from '../../../Component/Wrapper/Wrapper';
 import { theme } from '../../../style';
+import { logButtonEvent, PageName } from '../../../util/firebase_custom_event';
 import { HomeTransitionButton } from '../HomeIntroPage';
 const Container = styled.section`
   width: 100%;
@@ -128,6 +129,7 @@ export default function HomeEnvImpact() {
   const navigate = useNavigate();
   const data: any = i18next.t('HomeEnvImpact', {returnObjects: true});
   function goPlatform() {
+    logButtonEvent('go_platform in HomeEnvImpact', PageName.home);
     navigate('/platform');
   }
   return (

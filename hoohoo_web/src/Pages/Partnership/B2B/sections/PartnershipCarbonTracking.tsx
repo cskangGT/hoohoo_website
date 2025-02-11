@@ -6,6 +6,7 @@ import { useLanguage } from '../../../../Component/hooks/LanguageContext';
 import Wrapper from '../../../../Component/Wrapper/Wrapper';
 import { theme } from '../../../../style';
 import { emailTo } from '../../../../util/email';
+import { logButtonEvent, PageName } from '../../../../util/firebase_custom_event';
 import { HomeTransitionButton } from '../../../Home/HomeIntroPage';
 import { ButtonBox } from '../PhotoVideoes';
 export const PartnershipContainer = styled.section`
@@ -140,6 +141,7 @@ function PartnershipCarbonTracking() {
             <ButtonBox>
               <HomeTransitionButton
                 href={emailTo}
+                onClick={() => logButtonEvent('go_platform in PartnershipCarbonTracking', PageName.partnership)}
                 dangerouslySetInnerHTML={{
                   __html: data.buttonText,
                 }}></HomeTransitionButton>

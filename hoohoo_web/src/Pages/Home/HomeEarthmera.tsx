@@ -1,11 +1,11 @@
-import React, {useEffect, useRef, useState} from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import styled from 'styled-components';
 
-import {useLocation, useNavigate} from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import FootContact from '../../Component/Footer/FootContact';
-import {BgImage, theme} from '../../style';
-import {ContentBox} from '../About/Vision/EarthMeraVision';
-import HomeEcoProoducts from './sections/HomeEcoProoducts';
+import { BgImage, theme } from '../../style';
+import { ContentBox } from '../About/Vision/EarthMeraVision';
+import HomeEcoProducts from './sections/HomeEcoProducts';
 import HomeEcoServices from './sections/HomeEcoServices';
 import HomeEnvImpact from './sections/HomeEnvImpact';
 import HomeLandingSection from './sections/HomeLandingSection';
@@ -94,7 +94,7 @@ function HomeEarthmera() {
         <HomeEnvImpact></HomeEnvImpact>
       </ContentBox>
       <ContentBox>
-        <HomeEcoProoducts />
+        <HomeEcoProducts />
       </ContentBox>
       <ContentBox>
         <HomeEcoServices />

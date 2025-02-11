@@ -1,8 +1,9 @@
 import { faApple, faGooglePlay } from '@fortawesome/free-brands-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import React from 'react'
+import React from 'react';
 import styled from 'styled-components';
 import { theme } from '../../style';
+import { logButtonEvent } from '../../util/firebase_custom_event';
 import { androidAppStoreLink, iosAppStoreLink } from './Download';
 const Container = styled.div`
     display: flex;
@@ -35,11 +36,13 @@ const ButtonText = styled.p`
   margin-left: 10px;
 `;
 
-function DownloadButtons() {
+function DownloadButtons({pageName}:{pageName: string}) {
     function downloadAppStore() {
+        logButtonEvent('app_store', pageName);
         window.location.href =  iosAppStoreLink;
     }
     function downloadGooglePlay() {
+        logButtonEvent('google_play', pageName);
         window.location.href = androidAppStoreLink;
     }
   return (

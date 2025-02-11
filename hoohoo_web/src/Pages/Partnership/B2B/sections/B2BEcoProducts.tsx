@@ -3,6 +3,7 @@ import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useLanguage } from '../../../../Component/hooks/LanguageContext';
 import { emailTo } from '../../../../util/email';
+import { logButtonEvent, PageName } from '../../../../util/firebase_custom_event';
 import { HomeTransitionButton } from '../../../Home/HomeIntroPage';
 import { ButtonBox } from '../PhotoVideoes';
 import {
@@ -14,7 +15,6 @@ import {
   PartnershipScreenImage,
   PartnershipTitleText,
 } from './PartnershipCarbonTracking';
-
 function B2BEcoProducts() {
   const navigate = useNavigate();
   const data: any = i18next.t('B2BEcoProducts', {returnObjects: true});
@@ -37,6 +37,7 @@ function B2BEcoProducts() {
           <ButtonBox>
             <HomeTransitionButton
               href={emailTo}
+              onClick={() => logButtonEvent('go_platform in B2BEcoProducts', PageName.partnership)}
               dangerouslySetInnerHTML={{
                 __html: data.buttonText,
               }}></HomeTransitionButton>

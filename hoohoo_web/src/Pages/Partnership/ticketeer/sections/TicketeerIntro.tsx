@@ -4,6 +4,7 @@ import styled from 'styled-components';
 import { useLanguage } from '../../../../Component/hooks/LanguageContext';
 import { slideInFromTop, theme } from '../../../../style';
 import { emailTo } from '../../../../util/email';
+import { logButtonEvent, PageName } from '../../../../util/firebase_custom_event';
 import { HomeTransitionButton } from '../../../Home/HomeIntroPage';
 const Container = styled.div`
   animation: ${slideInFromTop} 0.7s ease-out forwards;
@@ -136,7 +137,7 @@ function TicketeerIntro() {
           <StarImage src={data.titleStar} />
         </HeaderBox>
 
-        <HomeTransitionButton href={emailTo}>
+        <HomeTransitionButton href={emailTo} onClick={() => logButtonEvent('ticketeer_intro', PageName.ticketeer)}>
           {data.buttonText}
         </HomeTransitionButton>
       </LeftBox>

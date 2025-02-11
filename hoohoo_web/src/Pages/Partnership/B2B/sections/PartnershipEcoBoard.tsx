@@ -3,6 +3,7 @@ import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useLanguage } from '../../../../Component/hooks/LanguageContext';
 import { emailTo } from '../../../../util/email';
+import { logButtonEvent, PageName } from '../../../../util/firebase_custom_event';
 import { HomeTransitionButton } from '../../../Home/HomeIntroPage';
 import { ButtonBox } from '../PhotoVideoes';
 import {
@@ -37,6 +38,7 @@ function PartnershipEcoBoard() {
           <ButtonBox>
             <HomeTransitionButton
               href={emailTo}
+              onClick={() => logButtonEvent('go_platform in PartnershipEcoBoard', PageName.partnership)}
               dangerouslySetInnerHTML={{
                 __html: data.buttonText,
               }}></HomeTransitionButton>
