@@ -1,10 +1,10 @@
-import React, {useEffect, useState} from 'react';
-import {useNavigate} from 'react-router-dom';
+import React, { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 import BackgroundWithStripe from '../../Component/ContentBox/BackgroundWithStripe';
-import {Header} from '../../Component/ContentBox/TwoColBoxesSection';
-import {theme} from '../../style';
-import {PartnerButton} from '../LandingPage/LandingB2C';
+import { Header } from '../../Component/ContentBox/TwoColBoxesSection';
+import { theme } from '../../style';
+import { PartnerButton } from '../LandingPage/LandingB2C';
 const TitleHeader = styled(Header)`
   color: ${theme.white};
   font-size: 3rem;
@@ -57,17 +57,19 @@ const ButtonBox = styled.div`
   }
 `;
 export const HomeTransitionButton = styled(PartnerButton)`
-  font-family: 'Yanolga Yachae';
-  font-weight: 300;
+  /* font-family: 'Yanolga Yachae'; */
+  font-weight: 400;
   background-color: #00bf63;
   color: white;
-  font-size: 24px;
+  font-size: 1.4rem;
   /* height: 60px; */
   width: 240px;
   align-items: center;
   justify-content: center;
   line-height: 1;
   text-align: center;
+  
+
   padding: 15px 20px;
   /* @media screen and (max-width: 1200px){
       width: 300px;

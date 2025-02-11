@@ -1,9 +1,9 @@
 import i18next from 'i18next';
-import React, {useEffect, useState} from 'react';
+import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
-import {useLanguage} from '../../../../Component/hooks/LanguageContext';
+import { useLanguage } from '../../../../Component/hooks/LanguageContext';
 import Wrapper from '../../../../Component/Wrapper/Wrapper';
-import {slideInFromTop, theme} from '../../../../style';
+import { slideInFromTop, theme } from '../../../../style';
 import DownloadButtons from '../../../Home/DownloadButtons';
 const Container = styled.section`
   width: 100%;
@@ -73,7 +73,7 @@ const Header = styled.h2<{language: string}>`
   line-height: 1.5;
   text-align: center;
   color: ${theme.white};
-  font-family: ${props => (props.language === 'ko' ? 'Jua' : 'Fredoka')};
+  font-family: ${props => (props.language === 'ko' ? 'TmoneyRoundWind' : 'Fredoka')};
   font-weight: 600;
   @media screen and (max-width: 1200px) {
   }

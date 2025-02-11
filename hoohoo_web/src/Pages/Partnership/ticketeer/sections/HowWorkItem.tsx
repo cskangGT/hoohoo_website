@@ -1,6 +1,6 @@
-import React, {useEffect, useState} from 'react';
+import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
-import {theme} from '../../../../style';
+import { theme } from '../../../../style';
 
 const Container = styled.div`
   display: flex;
@@ -60,7 +60,7 @@ const Content = styled.div`
 const Subtitle = styled.h3`
   font-size: 2rem;
   line-height: 1.1;
-  font-weight: bold;
+  font-weight: 500;
   margin: 0 0 10px 0;
   color: ${theme.darkGray};
   @media screen and (max-width: 1100px) {

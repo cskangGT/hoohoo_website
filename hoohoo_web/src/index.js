@@ -1,19 +1,32 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import {RouterProvider} from 'react-router-dom';
-import {createGlobalStyle} from 'styled-components';
+import { RouterProvider } from 'react-router-dom';
+import { createGlobalStyle } from 'styled-components';
+import GmarketSansTTfBold from '../public/fonts/GmarketSansTTfBold.ttf';
+import GmarketSansTTfLight from '../public/fonts/GmarketSansTTfLight.ttf';
+import GmarketSansTTfMedium from '../public/fonts/GmarketSansTTfMedium.ttf';
+
+import NanumHumanTTfBold from '../public/fonts/NanumHumanBold.ttf';
+import NanumHumanTTfLight from '../public/fonts/NanumHumanLight.ttf';
+import NanumHumanTTfRegular from '../public/fonts/NanumHumanRegular.ttf';
 import YanoljaYacheBTtf from '../public/fonts/YanoljaYacheB.ttf';
 import YanoljaYacheBWoff from '../public/fonts/YanoljaYacheB.woff';
 import YanoljaYacheBWoff2 from '../public/fonts/YanoljaYacheB.woff2';
 import YanoljaYacheTtf from '../public/fonts/YanoljaYacheR.ttf';
 import YanoljaYacheWoff from '../public/fonts/YanoljaYacheR.woff';
 import YanoljaYacheWoff2 from '../public/fonts/YanoljaYacheR.woff2';
+
+
+import RixYeoljeongdoR from '../public/fonts/RixYeoljeongdoRegular.ttf';
+import TmoneyRoundWindExtraBold from '../public/fonts/TmoneyRoundWindExtraBold.ttf';
+import TmoneyRoundWindRegular from '../public/fonts/TmoneyRoundWindRegular.ttf';
 import './lang/i18n';
 import Router from './Router';
 
 const GlobalStyle = createGlobalStyle`
     @font-face {
         font-family: 'Yanolga Yachae';
+        
         src: 
         url(${YanoljaYacheTtf}) format('truetype'),
         url(${YanoljaYacheWoff}) format('woff'),
@@ -21,17 +34,72 @@ const GlobalStyle = createGlobalStyle`
          url(${YanoljaYacheBTtf}) format('truetype'),
         url(${YanoljaYacheBWoff}) format('woff'),
          url(${YanoljaYacheBWoff2}) format('woff2'),
+         
     }
+    @font-face {
+      font-family: 'RixYeoljeongdoR';
+      src: url(${RixYeoljeongdoR}) format('truetype');
+    }
+    @font-face {
+        font-family: 'Gmarket Sans';
+        src: 
+        url(${GmarketSansTTfMedium}) format('truetype'),
+        url(${GmarketSansTTfBold}) format('truetype'),
+
+        url(${GmarketSansTTfLight}) format('truetype'),
+         
+    }
+    @font-face {
+        font-family: 'Nanum Human';
+        src: 
+        url(${NanumHumanTTfRegular}) format('truetype'),
+        url(${NanumHumanTTfBold}) format('truetype'),
+
+        url(${NanumHumanTTfLight}) format('truetype'),
+        
+    }
+    /* @font-face {
+      font-family: 'SCDream';
+      src: url(${SCDream}) format('opentype'),
+      url(${SCDream2}) format('opentype'),
+      url(${SCDream3}) format('opentype'),
+      url(${SCDream4}) format('opentype'),
+      url(${SCDream5}) format('opentype'),
+      url(${SCDream6}) format('opentype'),
+      url(${SCDream7}) format('opentype'),
+      url(${SCDream8}) format('opentype'),
+      url(${SCDream9}) format('opentype'),
+
+      
+    } */
+      @font-face {
+        font-family: 'TmoneyRoundWind';
+        src: url(${TmoneyRoundWindRegular}) format('truetype');
+        font-weight: 400;  // Regular 웨이트 지정
+      }
+
+      @font-face {
+        font-family: 'TmoneyRoundWind';
+        src: url(${TmoneyRoundWindExtraBold}) format('truetype');
+        font-weight: 800;  // ExtraBold 웨이트 지정
+      }
+    @font-face {
+    font-family: 'yg-jalnan';
+    src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_four@1.2/JalnanOTF00.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
     :root {
       color-scheme: only light;
     }
     body {
       margin: 0;
-      font-family: 'Yanolga Yachae', 'Noto Sans', 'Fredoka', 'Jua', 'Black Han Sans', 'Permanent Marker';
-      font-weight: 500;
+      font-family:  'Fredoka', 'TmoneyRoundWind', 'Noto Sans',  'TmoneyRoundWind', 'Black Han Sans', 'Permanent Marker';
+      font-weight: 400;
       overflow-x: hidden;
-      user-select: none;
-      -webkit-user-select: none;
+      word-break: keep-all;
+      user-select: auto;
+      -webkit-user-select: auto;
       -webkit-text-fill-color: unset;
     }
     html {

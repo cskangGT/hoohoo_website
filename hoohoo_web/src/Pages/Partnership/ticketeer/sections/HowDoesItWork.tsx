@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 
 import i18next from 'i18next';
-import {useLanguage} from '../../../../Component/hooks/LanguageContext';
+import { useLanguage } from '../../../../Component/hooks/LanguageContext';
 import HowWorkItem from './HowWorkItem';
 const Container = styled.section`
   width: 100%;
@@ -22,7 +22,7 @@ const Header = styled.h2<{language: string}>`
   font-size: 2.5rem;
   line-height: 1.1;
   text-align: left;
-  font-family: ${props => (props.language === 'ko' ? 'Jua' : 'Fredoka')};
+  font-family: ${props => (props.language === 'ko' ? 'TmoneyRoundWind' : 'Fredoka')};
   font-weight: 600;
   @media screen and (max-width: 1100px) {
   }

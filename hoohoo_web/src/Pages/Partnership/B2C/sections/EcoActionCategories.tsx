@@ -1,13 +1,13 @@
 import i18next from 'i18next';
-import React, {useEffect, useState} from 'react';
+import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import {
   Desc,
   Header,
 } from '../../../../Component/ContentBox/TwoColBoxesSection';
-import {useLanguage} from '../../../../Component/hooks/LanguageContext';
+import { useLanguage } from '../../../../Component/hooks/LanguageContext';
 import Wrapper from '../../../../Component/Wrapper/Wrapper';
-import {theme} from '../../../../style';
+import { theme } from '../../../../style';
 const isSmall = window.innerWidth < 1300;
 const Container = styled.div`
   width: 100%;
@@ -35,13 +35,13 @@ const Background = styled.div`
 const InnerContainer = styled.div`
   display: flex;
   flex-direction: row;
-  width: calc(100% - 30px);
-  padding: 0px 15px;
+  width: calc(100% - 0px);
+  padding: 0px 0px;
   height: 100%;
 `;
 const HeaderText = styled(Header)<{language: string}>`
   font-size: 2.5rem;
-  font-family: ${props => (props.language === 'ko' ? 'Jua' : 'Fredoka')};
+  font-family: ${props => (props.language === 'ko' ? 'TmoneyRoundWind' : 'Fredoka')};
   font-weight: 600;
   color: black;
   @media screen and (max-width: 1000px) {
@@ -54,8 +54,8 @@ const LeftBox = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 0 20px;
-  padding-left: 40px;
+  padding: 0 0px;
+  padding-left: 0px;
   justify-content: center;
   @media screen and (max-width: 1000px) {
     width: calc(100% - 20px);

@@ -1,6 +1,6 @@
-import React, {useEffect, useRef, useState} from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import styled from 'styled-components';
-import {useLanguage} from '../hooks/LanguageContext';
+import { useLanguage } from '../hooks/LanguageContext';
 const HeaderContainer = styled.div`
   display: inline-block;
   margin-bottom: 30px;
@@ -12,21 +12,21 @@ const HeaderContainer = styled.div`
 const Header = styled.h2<{language: string}>`
   margin: 0;
   padding: 0;
-  font-size: 2.5rem;
+  font-size: ${props => (props.language === 'ko' ? '2.25rem' : '2.5rem')};
   line-height: 1.1;
   text-align: left;
-  font-family: ${props => (props.language === 'ko' ? 'Jua' : 'Fredoka')};
+  font-family: ${props => (props.language === 'ko' ? 'TmoneyRoundWind' : 'Fredoka')};
   font-weight: 600;
   @media screen and (max-width: 1100px) {
     text-align: center;
   }
   @media screen and (max-width: 700px) {
     text-align: center;
-    font-size: 2.3rem;
+    font-size: ${props => (props.language === 'ko' ? '2rem' : '2.25rem')};
   }
   @media screen and (max-width: 500px) {
     text-align: center;
-    font-size: 1.8rem;
+    font-size: ${props => (props.language === 'ko' ? '1.75rem' : '1.8rem')};
   }
 `;
 const Line = styled.img<{dynamicWidth: number}>`

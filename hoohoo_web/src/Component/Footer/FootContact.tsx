@@ -1,7 +1,7 @@
 import i18next from 'i18next';
 import React from 'react';
 import styled from 'styled-components';
-import {theme} from '../../style';
+import { theme } from '../../style';
 const ContactBox = styled.div`
   background-color: transparent;
   display: flex;
@@ -15,15 +15,17 @@ const ContactColumnBox = styled.div`
 `;
 const ContactText = styled.h3`
   margin: 26px 10px;
-  font-size: 1.3rem;
+  font-size: ${theme.fontSize['xl']};
+  font-weight: 400;
   text-align: center;
+
   color: ${theme.darkGray};
 `;
 
 const LinktoEmail = styled.a`
   text-decoration: none;
-  color: ${theme.darkSky};
-  background-color: ${theme.mainNeon};
+  color: ${theme.white};
+  background-color: ${theme.green};
   height: 50px;
   border-radius: 20px;
   border-color: ${theme.darkSky};
@@ -34,6 +36,7 @@ const LinktoEmail = styled.a`
   align-items: center;
   margin-bottom: 26px;
   border-width: 0px;
+  font-weight: 500;
   &:hover {
     box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2);
   }

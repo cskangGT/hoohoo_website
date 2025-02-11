@@ -1,7 +1,7 @@
 import i18next from 'i18next';
 import React from 'react';
 import styled from 'styled-components';
-import {theme} from '../../../style';
+import { theme } from '../../../style';
 
 const Container = styled.div`
   width: 100%;
@@ -29,6 +29,7 @@ const DescriptionText = styled.h5`
   font-size: ${theme.fontSize['3xl']};
   line-height: ${theme.fontSize['5xl']};
   color: ${theme.darkGray};
+  font-weight: 500;
   margin: 0px;
   text-align: center;
   word-break: keep-all;
@@ -36,7 +37,8 @@ const DescriptionText = styled.h5`
 
 const PartnerText = styled.h5`
   margin: 0px;
-  font-size: ${theme.fontSize['2xl']};
+  font-size: ${theme.fontSize['xl']};
+  font-weight: 400;
   color: ${theme.green};
 `;
 

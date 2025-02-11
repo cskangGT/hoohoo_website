@@ -1,7 +1,7 @@
-import React, {useEffect} from 'react';
+import React, { useEffect } from 'react';
 import styled from 'styled-components';
 import Wrapper from '../../../Component/Wrapper/Wrapper';
-import {BgImage, theme} from '../../../style';
+import { BgImage, theme } from '../../../style';
 import Gallery from './Gallery';
 import Mindset from './Mindset';
 import Strength from './Strength';
@@ -17,7 +17,7 @@ const ContentBox = styled.section`
 `;
 const WhiteBlankGap = styled.div`
   width: 100%;
-  height: 100px;
+  height: 80px;
   background-color: white;
 `;
 function OurTeam() {

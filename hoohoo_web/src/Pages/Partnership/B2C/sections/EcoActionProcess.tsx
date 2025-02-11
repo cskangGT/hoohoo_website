@@ -1,9 +1,9 @@
 import i18next from 'i18next';
 import React from 'react';
 import styled from 'styled-components';
-import {useLanguage} from '../../../../Component/hooks/LanguageContext';
+import { useLanguage } from '../../../../Component/hooks/LanguageContext';
 import Wrapper from '../../../../Component/Wrapper/Wrapper';
-import {theme} from '../../../../style';
+import { theme } from '../../../../style';
 const ContentBox = styled.div`
   display: flex;
   flex-direction: column;
@@ -103,7 +103,7 @@ const Header = styled.h2<{language: string}>`
   font-size: 2.5rem;
   line-height: 1.1;
   text-align: center;
-  font-family: ${props => (props.language === 'ko' ? 'Jua' : 'Fredoka')};
+  font-family: ${props => (props.language === 'ko' ? 'TmoneyRoundWind' : 'Fredoka')};
   font-weight: 600;
   padding-bottom: 30px;
   @media screen and (max-width: 1100px) {
@@ -126,7 +126,7 @@ const HighlightedText = styled.span<{language: string}>`
   line-height: 1;
   border-radius: 10px;
   text-align: left;
-  font-family: ${props => (props.language === 'ko' ? 'Jua' : 'Fredoka')};
+  font-family: ${props => (props.language === 'ko' ? 'TmoneyRoundWind' : 'Fredoka')};
   font-weight: 600;
   padding: 5px;
   @media screen and (max-width: 1100px) {

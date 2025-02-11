@@ -36,8 +36,7 @@
         ]
       },
       {
-        "label": "Info",
-        "subItems": [{"label": "Contact"}]
+        "label": "Contact"
       }
     ]
   },
@@ -812,22 +811,22 @@
     "cards": [
       {
         "title": "Catrgory Registration",
-        "description": "Want to know your<br />products' real-world CO₂ cuts?",
+        "description": "Want to know your products'<br />real-world CO₂ cuts?",
         "icon": "Images/partners_card_co2.png"
       },
       {
         "title": "Eco-Products",
-        "description": "Partner with us to certify<br />eco-products. <br />Strengthen your brand and <br />lead the way in sustainability.",
+        "description": "Strengthen your brand and <br />lead the way in sustainability.",
         "icon": "Images/partners_card_eco_product.png"
       },
       {
         "title": "Eco-Services",
-        "description": "Turn actions into impact.<br />See how your users reduce CO₂<br />with your service.",
+        "description": "Turn actions into impact.<br />See how your users reduce<br />CO₂ with your service.",
         "icon": "Images/partners_card_eco_service.png"
       },
       {
         "title": "Eco-Board",
-        "description": "Connect effortlessly with a community of eco-conscious individuals on EarthMera",
+        "description": "Connect effortlessly with a community of eco-conscious individuals on EarthMera.",
         "icon": "Images/partners_card_ecoboard.png"
       },
       {

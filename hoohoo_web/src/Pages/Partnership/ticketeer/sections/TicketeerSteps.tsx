@@ -1,9 +1,9 @@
 import i18next from 'i18next';
-import React, {useEffect, useRef, useState} from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 
 import styled from 'styled-components';
-import {useLanguage} from '../../../../Component/hooks/LanguageContext';
-import {theme} from '../../../../style';
+import { useLanguage } from '../../../../Component/hooks/LanguageContext';
+import { theme } from '../../../../style';
 const ContentBox = styled.div`
   display: flex;
   flex-direction: column;
@@ -69,10 +69,11 @@ const ActName = styled.h3`
   line-height: 1;
   margin-top: 30px;
 `;
-const ActDesc = styled.span`
+const ActDesc = styled.span<{language: string}>`
   text-align: center;
-  font-size: 1.1rem;
+  font-size: ${props => (props.language === 'ko' ? '1rem' : '1.1rem')};
   line-height: 1.5;
+  
 `;
 const TapeBgImage = styled.img`
   height: 150px;
@@ -99,7 +100,7 @@ const Header = styled.h2<{language: string}>`
   font-size: 2.5rem;
   line-height: 1.1;
   text-align: center;
-  font-family: ${props => (props.language === 'ko' ? 'Jua' : 'Fredoka')};
+  font-family: ${props => (props.language === 'ko' ? 'TmoneyRoundWind' : 'Fredoka')};
   font-weight: 600;
   padding-bottom: 30px;
   @media screen and (max-width: 1100px) {
@@ -170,6 +171,7 @@ function TicketeerSteps() {
       setUnderlineWidth(offsetWidth);
     }
   }, [highlightRef]);
+  
   return (
     <ContentBox>
       <HeaderBox>
@@ -192,7 +194,7 @@ function TicketeerSteps() {
             <Image src={item.imagePath} key={index + 'img'} />
             <TextBox>
               <ActName>{item.head}</ActName>
-              <ActDesc dangerouslySetInnerHTML={{__html: item.desc}} />
+              <ActDesc language={language} dangerouslySetInnerHTML={{__html: item.desc}} />
             </TextBox>
           </EachBox>
         ))}

@@ -1,9 +1,8 @@
 import React from 'react';
-import {useNavigate} from 'react-router-dom';
 import styled from 'styled-components';
-import {theme} from '../../style';
-import {useLanguage} from '../hooks/LanguageContext';
-import {BlogCategory, BlogCategoryType, BlogDataType} from './BlogCategory';
+import { theme } from '../../style';
+import { useLanguage } from '../hooks/LanguageContext';
+import { BlogCategory, BlogCategoryType, BlogDataType } from './BlogCategory';
 
 const Card = styled.div`
   background-color: transparent;
@@ -52,7 +51,7 @@ const CategoryBox = styled.div<CategoryProps>`
   letter-spacing: 0.3px;
   color: ${theme.white};
   font-size: 1.2rem;
-  font-weight: 600;
+  font-weight: 400;
   line-height: 1.2;
   border-radius: 20px;
   margin-right: 0.5rem;
@@ -94,8 +93,7 @@ export function Category(props: CateProps) {
   );
 }
 function BlogCard(props: Props) {
-  const {language} = useLanguage();
-  const navigate = useNavigate();
+  
   if (!props.data || !props.data.blogImage) {
     return null;
   }

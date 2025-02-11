@@ -1,10 +1,10 @@
 import i18next from 'i18next';
 import React from 'react';
 import styled from 'styled-components';
-import {useLanguage} from '../../../../Component/hooks/LanguageContext';
-import {slideInFromTop, theme} from '../../../../style';
-import {emailTo} from '../../../../util/email';
-import {HomeTransitionButton} from '../../../Home/HomeIntroPage';
+import { useLanguage } from '../../../../Component/hooks/LanguageContext';
+import { slideInFromTop, theme } from '../../../../style';
+import { emailTo } from '../../../../util/email';
+import { HomeTransitionButton } from '../../../Home/HomeIntroPage';
 const Container = styled.div`
   animation: ${slideInFromTop} 0.7s ease-out forwards;
   display: flex;
@@ -15,7 +15,7 @@ const Container = styled.div`
   width: 100%;
   /* height: 550px; */
   padding-top: 82px;
-  padding-bottom: 200px;
+  padding-bottom: 100px;
   @media (max-width: 1000px) {
     height: auto;
     flex-direction: column-reverse;
@@ -26,9 +26,9 @@ const Container = styled.div`
   }
 `;
 const Header = styled.h2<{language: string}>`
-  font-size: 2.5rem;
+  font-size: 2.4rem;
   line-height: 1.2;
-  font-family: ${props => (props.language === 'ko' ? 'Jua' : 'Fredoka')};
+  font-family: ${props => (props.language === 'ko' ? 'TmoneyRoundWind' : 'Fredoka')};
   font-weight: 600;
   margin-bottom: 15px;
   @media screen and (max-width: 1000px) {
@@ -48,7 +48,7 @@ const LeftBox = styled.div`
   flex-direction: column;
   justify-content: flex-start;
   align-items: flex-start;
-  padding: 10px;
+  padding: 0px;
   /* background: linear-gradient(170deg, rgba(255, 255, 255, 0.14) 0%, rgba(255, 255, 255, 0.05) 100%); */
   border-radius: 20%;
   margin: auto;
@@ -99,6 +99,7 @@ const RightBox = styled.div`
   display: flex;
   position: relative;
   width: 60%;
+  height: 400px;
   @media screen and (max-width: 1000px) {
     padding: 0 10px;
     width: 90%;
@@ -108,12 +109,15 @@ const RightBox = styled.div`
     padding: 0 10px;
     width: 100%;
     text-align: center;
+    height: 350px;
   }
 `;
 const Image = styled.img`
-  width: 100%;
+
+  
   height: 400px;
   object-fit: cover;
+  position: absolute;
   @media screen and (max-width: 500px) {
     height: 350px;
   }

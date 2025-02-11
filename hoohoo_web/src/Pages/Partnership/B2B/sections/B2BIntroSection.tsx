@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import Wrapper from '../../../../Component/Wrapper/Wrapper';
 import i18next from '../../../../lang/i18n';
-import {slideInFromTop} from '../../../../style';
+import { slideInFromTop } from '../../../../style';
 
 // 공통적으로 사용될 스타일 변수들을 정의합니다.
 const colors = {
@@ -73,7 +73,7 @@ const CircleImage = styled.img`
   @media (max-width: 600px) {
     width: 100%;
     height: auto;
-    padding: 15px;
+    
   }
 `;
 const Circle = styled.div`
@@ -228,10 +228,10 @@ const GreenLine = styled.div`
   }
 `;
 
-const TextInLine = styled.span`
+const ShowcaseText = styled.span<{language: string}>`
   font-size: 2.5rem;
   color: #028d47;
-  font-family: 'Fredoka';
+  font-family: ${props => (props.language === 'ko' ? 'Black Han Sans' : 'Fredoka')};
   z-index: 3;
   line-height: 1.2;
   @media (max-width: 1200px) {
@@ -254,11 +254,12 @@ const TextInLine = styled.span`
 export default function B2BIntroSection() {
   const isMobile = window.innerWidth < 1200;
   const data: any = i18next.t('PartnershipIntro', {returnObjects: true});
+  const language = i18next.language;
   return (
     <Container>
       <Wrapper>
         <InnerContainer>
-          <TextInLine>{data.showcase}</TextInLine>
+          <ShowcaseText language={language}>{data.showcase}</ShowcaseText>
           <CircleBox>
             <CircleImage src={data.image} />
             {/* <Circle color={colors.yellow}>

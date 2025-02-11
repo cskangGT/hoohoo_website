@@ -1,15 +1,14 @@
 import i18next from 'i18next';
-import React, {useEffect, useRef, useState} from 'react';
-import {useCookies} from 'react-cookie';
+import React, { useEffect, useRef, useState } from 'react';
 import styled from 'styled-components';
-import {getBlogList} from '../../../api/blog';
+import { getBlogList } from '../../../api/blog';
 import BlogCard from '../../../Component/Blog/BlogCard';
-import {BlogCategory, BlogDataType} from '../../../Component/Blog/BlogCategory';
+import { BlogCategory, BlogDataType } from '../../../Component/Blog/BlogCategory';
 import PageNav from '../../../Component/Blog/PageNav';
 import FootContact from '../../../Component/Footer/FootContact';
-import {useLanguage} from '../../../Component/hooks/LanguageContext';
+import { useLanguage } from '../../../Component/hooks/LanguageContext';
 import Wrapper from '../../../Component/Wrapper/Wrapper';
-import {BgImage, theme} from '../../../style';
+import { BgImage, theme } from '../../../style';
 import BlogModal from './BlogModal';
 const Container = styled.div`
   width: calc(100% - 30px);
@@ -88,15 +87,15 @@ const Outline = styled.button<OutlineProps>`
 const OutlineText = styled.h3`
   color: ${theme.darkGray};
   padding: 5px;
-  margin: 0;
-  font-size: 1rem;
-  word-break: keep-all;
+  font-size: ${theme.fontSize.md};
   font-weight: 500;
+  margin: 0px;
+  word-break: keep-all;
   &:hover {
     color: ${theme.darkGray};
   }
   @media screen and (max-width: 700px) {
-    font-size: 0.75rem;
+    font-size: ${theme.fontSize.sm};
   }
 `;
 const Grid = styled.div`
@@ -158,15 +157,10 @@ function Blog() {
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const [numTotalData, setNumTotalData] = useState<number>(0);
   const handleOpen = () => setIsOpen(true);
-  const [cookies] = useCookies(['token', 'username']);
-  const [logIn, setLogIn] = useState<boolean>(!!cookies.username);
+  
 
   const scrollContainerRef = useRef<HTMLDivElement>(null);
-  // blogdata.reverse();
-
-  useEffect(() => {
-    setLogIn(!!cookies.username);
-  }, [cookies.username]);
+  
   const fetchData = async (category: string, page: number) => {
     // let filteredData: BlogData[];
     // if (category === list[0]) {
@@ -236,7 +230,7 @@ function Blog() {
                         <OutlineText key={index + 'text'}>
                           {language === 'ko' ? item.text.ko : item.text.en}
                         </OutlineText>
-                        {item.value === selectedCategory && <UnderLine />}
+                        
                       </Outline>
                     ),
                   )}
