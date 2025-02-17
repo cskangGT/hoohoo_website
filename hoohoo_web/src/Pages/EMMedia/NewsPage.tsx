@@ -1,14 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import { getNewsList } from '../../api/news.api';
-import PageNav from '../../Component/Blog/PageNav';
-import FootContact from '../../Component/Footer/FootContact';
-import { useLanguage } from '../../Component/hooks/LanguageContext';
-import Wrapper from '../../Component/Wrapper/Wrapper';
+import PageNav from '../../components/Blog/PageNav';
+import FootContact from '../../components/Footer/FootContact';
+import { useLanguage } from '../../components/hooks/LanguageContext';
+import Wrapper from '../../components/Wrapper/Wrapper';
 import { BgImage, theme } from '../../style';
 import NewsCard from './News/NewsCard';
-import newsData from './News/newsData.json';
-import { NewsCategory, NewsDataType } from './News/NewsType';
+import { HansaengsaNewsCategoryList, NewsCategory, NewsDataType } from './News/NewsType';
 const Container = styled.div`
   width: calc(100% - 30px);
   display: flex;
@@ -25,17 +24,18 @@ const ContentBox = styled.div`
   position: relative;
   width: 100%;
   justify-content: center;
+  margin-top: 20px;
 `;
 const SlickBar = styled.div`
   margin: 0;
   padding: 0;
   width: 100%;
 
-  margin-top: 20px;
+  margin-top: 5px;
 `;
 
 const ScrollContainer = styled.div`
-  margin-bottom: 20px;
+  margin-bottom: 5px;
   padding-bottom: 10px;
   display: flex;
   width: 100%;
@@ -116,7 +116,28 @@ const Grid = styled.div`
     margin-top: 50px;
   }
 `;
+const LoadingContainer = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  
+  margin-top: 50px;
+`;
+const LoadingSpinner = styled.div`
+  width: 40px;
+  height: 40px;
+  border: 3px solid #f3f3f3;
+  border-top: 3px solid ${theme.darkGray};
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  margin-right: 10px;
 
+  @keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
+`;
 const Text = styled.span`
   color: ${theme.darkGray};
   display: flex;
@@ -130,29 +151,39 @@ const Text = styled.span`
 function NewsPage() {
   const [currentPage, setCurrentPage] = useState<number>(1);
   const [selectedCategory, setSelectedCategory] = useState<string>('ALL');
-  const [selectedSubCategory, setSelectedSubCategory] = useState<string>('ALL');
+  const [selectedSubCategory, setSelectedSubCategory] = useState<string>('');
   const [fetchedList, setFetchedList] = useState<NewsDataType[]>([]);
   const [selectedNews, setSelectedNews] = useState<NewsDataType | undefined>();
   const [numTotalData, setNumTotalData] = useState<number>(1);
-
+  const [isLoading, setIsLoading] = useState<boolean>(false);
+  const [lastKey, setLastKey] = useState<string | undefined>('');
   const {language} = useLanguage();
-  const fetchData = async () => {
-    const data = newsData.data;
-    setFetchedList(data);
-    const response = await getNewsList();
+  const fetchData = async (key: string, category?: string) => {
+    setIsLoading(true);
+    const response = await getNewsList(language, key, category);
     if (response.data) {
-      setFetchedList(response.data);
+      setFetchedList(response.data.items);
+      setLastKey(response.data.lastEvaluatedKey);
     }
+    setIsLoading(false);
   };
   const changePage = (num: number) => {
     setCurrentPage(num);
-    fetchData();
+    fetchData(lastKey ?? '', selectedCategory);
   };
 
   const handleSelectCategory = (category: string) => {
     setSelectedCategory(category);
     setCurrentPage(1);
-    fetchData();
+    setSelectedSubCategory('');
+    setLastKey('');
+    fetchData('', '');
+  };
+  const handleSelectSubCategory = (category: string) => {
+    setSelectedSubCategory(category);
+    setCurrentPage(1);
+    setLastKey('');
+    fetchData('', category);
   };
   useEffect(() => {
     handleSelectCategory(selectedCategory);
@@ -203,17 +234,58 @@ function NewsPage() {
                     )} */}
                 </ScrollContainer>
               </SlickBar>
+              <SlickBar>
+                <ScrollContainer>
+                  {Object.values(HansaengsaNewsCategoryList).map(
+                    (
+                      item: {
+                        value: string;
+                        text: {
+                          ko: string;
+                          en: string;
+                        };
+                      },
+                      index: number,
+                    ) => (
+                      <Outline
+                        key={index}
+                        op={item.value}
+                        selectedCategory={selectedSubCategory}
+                        onClick={() => handleSelectSubCategory(item.value)}>
+                        <OutlineText key={index + 'text'}>
+                          {language === 'ko' ? item.text.ko : item.text.en}
+                        </OutlineText>
+                      </Outline>
+                    ),
+                  )}
+                  {/* {logIn && (
+                      <NewBlogBtn onClick={handleOpen}>
+                        <FontAwesomeIcon
+                          icon={faPlus}
+                          style={{paddingRight: 10}}
+                        />
+                        New Blog
+                      </NewBlogBtn>
+                    )} */}
+                </ScrollContainer>
+              </SlickBar>
               {fetchedList.length === 0 ? (
                 <Text style={{minHeight: 400}}>
                   {language === 'ko' ? '아직 뉴스가 없습니다.' : 'No news yet.'}
                 </Text>
               ) : (
-                <>
-                  <Grid>
-                    {' '}
-                    {fetchedList.map((item, index) => (
-                      <NewsCard key={item.id} item={item} />
-                    ))}
+                isLoading ? (
+                  <LoadingContainer>
+                    <LoadingSpinner />
+                  </LoadingContainer>
+                ) : (
+                  <>
+                    <Grid>
+                      {
+                      fetchedList.map((item, index) => (
+                        <NewsCard key={item.idx} item={item} />
+                      ))
+                    }
                   </Grid>
                   <PageNav
                     pages={Math.ceil(numTotalData / OFFSET)}
@@ -221,7 +293,7 @@ function NewsPage() {
                     changePage={changePage}
                   />
                 </>
-              )}
+              ))}
             </ContentBox>
           </Container>
         </Wrapper>

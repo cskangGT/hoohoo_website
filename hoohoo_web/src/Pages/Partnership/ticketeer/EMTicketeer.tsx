@@ -1,8 +1,8 @@
-import React, {useEffect} from 'react';
+import React, { useEffect } from 'react';
 import styled from 'styled-components';
-import FootContact from '../../../Component/Footer/FootContact';
-import Wrapper from '../../../Component/Wrapper/Wrapper';
-import {BgImage, slideInFromTop, theme} from '../../../style';
+import FootContact from '../../../components/Footer/FootContact';
+import Wrapper from '../../../components/Wrapper/Wrapper';
+import { BgImage, slideInFromTop, theme } from '../../../style';
 
 import HowDoesItWork from './sections/HowDoesItWork';
 import TicketeerCarbon from './sections/TicketeerCarbon';

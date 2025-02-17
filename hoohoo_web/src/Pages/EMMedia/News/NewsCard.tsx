@@ -1,7 +1,7 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
-import { useLanguage } from '../../../Component/hooks/LanguageContext';
+import { useLanguage } from '../../../components/hooks/LanguageContext';
 import { theme } from '../../../style';
 import { NewsDataType } from './NewsType';
 const Card = styled.div`
@@ -93,21 +93,30 @@ type Props = {
 };
 function NewsCard({item}: Props) {
   const navigate = useNavigate();
-  const {id, title, url, createdAt, thumbnailImage, description} = item;
+  const {idx, title, url, uploadAt,thumbnailImage, description} = item;
   const {language} = useLanguage();
-  const date = new Date(createdAt);
-  const formattedDate =
-    language === 'ko'
-      ? date.toLocaleDateString('en-CA') // YYYY-MM-DD 형식
-      : date
-          .toLocaleDateString('en-US', {
-            month: '2-digit',
-            day: '2-digit',
-            year: 'numeric',
-          })
-          .replace(/\//g, '-');
+  // const date = new Date(createdAt);
+  // const formattedDate =
+  //   language === 'ko'
+  //     ? date.toLocaleDateString('en-CA') // YYYY-MM-DD 형식
+  //     : date
+  //         .toLocaleDateString('en-US', {
+  //           month: '2-digit',
+  //           day: '2-digit',
+  //           year: 'numeric',
+  //         })
+  //         .replace(/\//g, '-');
   return (
-    <Card onClick={() => navigate(`/news/${id}`)}>
+    <Card onClick={() => navigate(`/news/${idx}`, {
+      state: {
+        idx: idx,
+        title: title,
+        url: url,
+        uploadAt: uploadAt,
+        
+        thumbnailImage: thumbnailImage,
+      }
+    })}>
       {thumbnailImage && (
         <ImageBox>
           <Image src={thumbnailImage} />
@@ -118,7 +127,7 @@ function NewsCard({item}: Props) {
           <Title>{title}</Title>
           {description && <Description>{description}</Description>}
         </DescriptionBox>
-        <DateText>{formattedDate}</DateText>
+        <DateText>{uploadAt}</DateText>
       </TextBox>
     </Card>
   );

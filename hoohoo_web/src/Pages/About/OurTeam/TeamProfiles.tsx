@@ -1,8 +1,8 @@
 import i18next from 'i18next';
-import React, {useEffect, useState} from 'react';
+import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
-import ProfileCard from '../../../Component/ContentBox/ProfileCard';
-import {slideInFromTop, theme} from '../../../style';
+import ProfileCard from '../../../components/ContentBox/ProfileCard';
+import { slideInFromTop, theme } from '../../../style';
 const SectionBox = styled.section`
   padding-bottom: 5rem;
   width: 100%;

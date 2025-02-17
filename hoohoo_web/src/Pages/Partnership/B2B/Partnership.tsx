@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import styled from 'styled-components';
-import FootContact from '../../../Component/Footer/FootContact';
-import Wrapper from '../../../Component/Wrapper/Wrapper';
+import FootContact from '../../../components/Footer/FootContact';
+import Wrapper from '../../../components/Wrapper/Wrapper';
 import { BgImage, theme } from '../../../style';
 import B2BEcoProducts from './sections/B2BEcoProducts';
 import B2BEcoServices from './sections/B2BEcoServices';

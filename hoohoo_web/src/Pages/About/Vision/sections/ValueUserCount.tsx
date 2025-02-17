@@ -2,7 +2,7 @@ import i18next from 'i18next';
 import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import { getUserCount } from '../../../../api/userCount';
-import { useLanguage } from '../../../../Component/hooks/LanguageContext';
+import { useLanguage } from '../../../../components/hooks/LanguageContext';
 import { theme } from '../../../../style';
 const Background = styled.div<{backgroundImage: string}>`
   width: 100%;

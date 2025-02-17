@@ -1,9 +1,9 @@
-import React, {useState} from 'react';
-import {useLocation, useNavigate} from 'react-router-dom';
+import React, { useState } from 'react';
+import { useLocation, useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
-import {theme} from '../../src/style';
+import { theme } from '../../src/style';
 import Footer from './Footer/Footer';
-import {useLanguage} from './hooks/LanguageContext';
+import { useLanguage } from './hooks/LanguageContext';
 import Nav from './Nav/Nav';
 
 const Container = styled.div`
@@ -34,10 +34,10 @@ function Frame({children}: FrameProps) {
   //     navigate('/home');
   //   }
   // }, [location.search]);
-  const [isKorean, setIsKorean] = useState(false);
+  
   return (
     <Container>
-      {show && <Nav setIsKorean={setIsKorean} isKorean={isKorean} />}
+      {show && <Nav />}
       <React.Fragment key={language}>{children}</React.Fragment>
 
       {show && (

@@ -1,9 +1,9 @@
 import i18next from 'i18next';
 import React from 'react';
 import styled from 'styled-components';
-import TwoColBoxesSection from '../../../Component/ContentBox/TwoColBoxesSection';
-import Wrapper from '../../../Component/Wrapper/Wrapper';
-import {slideInFromTop} from '../../../style';
+import TwoColBoxesSection from '../../../components/ContentBox/TwoColBoxesSection';
+import Wrapper from '../../../components/Wrapper/Wrapper';
+import { slideInFromTop } from '../../../style';
 const Bg = styled.div`
   width: calc(100%);
   animation: ${slideInFromTop} 0.7s ease-out forwards;

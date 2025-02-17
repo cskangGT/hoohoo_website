@@ -1,7 +1,7 @@
 import i18next from 'i18next';
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import { useLanguage } from '../../../../Component/hooks/LanguageContext';
+import { useLanguage } from '../../../../components/hooks/LanguageContext';
 import { emailTo } from '../../../../util/email';
 import { logButtonEvent, PageName } from '../../../../util/firebase_custom_event';
 import { HomeTransitionButton } from '../../../Home/HomeIntroPage';

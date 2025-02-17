@@ -1,8 +1,8 @@
 import i18next from 'i18next';
 import React from 'react';
 import styled from 'styled-components';
-import {Desc, RightBox} from '../../../Component/ContentBox/TwoColBoxesSection';
-import {slideInFromTop, theme} from '../../../style';
+import { Desc, RightBox } from '../../../components/ContentBox/TwoColBoxesSection';
+import { slideInFromTop, theme } from '../../../style';
 const Container = styled.div`
   width: 100%;
   animation: ${slideInFromTop} 0.7s ease-out forwards;

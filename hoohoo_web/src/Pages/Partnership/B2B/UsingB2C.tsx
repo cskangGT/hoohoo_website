@@ -1,8 +1,8 @@
 import i18next from 'i18next';
 import React from 'react';
-import Wrapper from '../../../Component/Wrapper/Wrapper';
+import Wrapper from '../../../components/Wrapper/Wrapper';
 import Community from '../components/Community';
-import {Bg} from './ESG';
+import { Bg } from './ESG';
 export default function UsingB2C() {
   const data: any = i18next.t('usingb2c', {returnObjects: true});
   return (

@@ -1,7 +1,7 @@
-import React, {useEffect} from 'react';
+import React, { useEffect } from 'react';
 import styled from 'styled-components';
-import Wrapper from '../../Component/Wrapper/Wrapper';
-import {BgImage} from '../../style';
+import Wrapper from '../../components/Wrapper/Wrapper';
+import { BgImage } from '../../style';
 import Download from '../Home/Download';
 import DropBIntro from './DropBIntro';
 const ContentBox = styled.section`

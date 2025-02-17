@@ -1,14 +1,24 @@
 import axios from "axios";
 
-const lambdaAddress = 'https://h1n75m5fxa.execute-api.us-east-1.amazonaws.com/';
-export async function getNewsList() {
+const lambdaAddress = 'https://vipd2as8d4.execute-api.us-east-1.amazonaws.com/prod';
+export async function getNewsList(language: string, lastKey?: string, subCategory?: string) {
     try {
-        const response = await axios.get(
-            lambdaAddress +
-            `prod/`,
+        let url = lambdaAddress + `/`;
+        if (subCategory) {
+            url += `?category=${subCategory}&limit=12`;
+        } else {
+            url += `?limit=12`;
+        }
+        if (language) {
+            url += `&lang=${language}`;
+        }
+        if (lastKey) {
+            url += `&lastKey=${lastKey}`;
+        }
 
-        );
+        const response = await axios.get(url);
 
+        console.log("response.data", response.data);
 
         return {
             data: response.data,
@@ -17,11 +27,11 @@ export async function getNewsList() {
         return { data: null };
     }
 }
-export async function getNewsDetail(id: number) {
+export async function getNewsDetail(idx: number, language: string) {
     try {
         const response = await axios.get(
             lambdaAddress +
-            `prod/?linkId=${id}`,
+            `/?idx=${idx}&lang=${language}`,
 
         );
 

@@ -1,8 +1,10 @@
 import React, { useEffect, useRef, useState } from 'react';
 import styled from 'styled-components';
 
+import i18next from 'i18next';
 import { useLocation, useNavigate } from 'react-router-dom';
-import FootContact from '../../Component/Footer/FootContact';
+import FootContact from '../../components/Footer/FootContact';
+import OpenGraphMeta from '../../components/opengraph/OpenGraph';
 import { BgImage, theme } from '../../style';
 import { ContentBox } from '../About/Vision/EarthMeraVision';
 import HomeEcoProducts from './sections/HomeEcoProducts';
@@ -54,7 +56,8 @@ function HomeEarthmera() {
   const location = useLocation();
   const navigate = useNavigate();
   const [isOpen, setIsOpen] = useState<boolean>(false);
-
+  
+  const data: any = i18next.t('HomeLandingSection', {returnObjects: true});
   useEffect(() => {
     const searchParams = new URLSearchParams(location.search);
     if (searchParams.get('modal') === 'open') {
@@ -83,8 +86,16 @@ function HomeEarthmera() {
   }, []);
 
   const sectionRef = useRef<HTMLDivElement>(null);
+  const currentLang = i18next.language;
   return (
     <BgImage>
+      <OpenGraphMeta
+        title={currentLang ==='en' ?"EarthMera | Make Eco-Actions Fun and Impactful" : "어스메라 | 친환경 행동을 즐겁고 영향력 있게 만들어요"}
+        description={currentLang ==='en' ?
+          "Join EarthMera and track your eco-friendly actions. Earn rewards while reducing your carbon footprint!" : "어스메라와 함께 친환경 행동을 추적하세요. 탄소 배출을 줄이면서 보상을 받아요!"}
+        image={data.image}
+        url={`https://www.earthmera.com/${currentLang}/`}
+      />
       <BgImage bgcolor={'#F2F2F7 !important'}>
         <IntroContentBox>
           <HomeLandingSection />

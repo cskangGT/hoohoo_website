@@ -1,9 +1,9 @@
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
-import Wrapper from '../../Component/Wrapper/Wrapper';
-import {theme} from '../../style';
+import Wrapper from '../../components/Wrapper/Wrapper';
+import { theme } from '../../style';
 import LandingFormModal from './LandingFormModal';
-import {Container} from './style';
+import { Container } from './style';
 const Background = styled.div`
   background-color: #f1f1f1;
   display: flex;

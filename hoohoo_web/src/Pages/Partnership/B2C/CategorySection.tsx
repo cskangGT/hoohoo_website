@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
-import LinedHeader from '../../../Component/ContentBox/LinedHeader';
-import {theme} from '../../../style';
+import LinedHeader from '../../../components/ContentBox/LinedHeader';
+import { theme } from '../../../style';
 const Container = styled.div`
   display: flex;
   flex-direction: column;

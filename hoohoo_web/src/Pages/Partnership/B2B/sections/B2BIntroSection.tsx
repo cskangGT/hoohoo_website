@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import Wrapper from '../../../../Component/Wrapper/Wrapper';
+import Wrapper from '../../../../components/Wrapper/Wrapper';
 import i18next from '../../../../lang/i18n';
 import { slideInFromTop } from '../../../../style';
 

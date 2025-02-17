@@ -1,7 +1,9 @@
-import queryString from 'query-string';
-import React, { useEffect } from 'react'
+import React, { useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
+import styled, { keyframes } from 'styled-components';
+import { theme } from '../../../style';
 import { androidAppStoreLink, iosAppStoreLink } from '../../Home/Download';
+
 const getDevicePlatform = () => {
     const userAgent = navigator.userAgent;
   
@@ -15,6 +17,37 @@ const getDevicePlatform = () => {
   
     return 'unknown';
   };
+
+const Container = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+`;
+
+const Content = styled.div`
+  text-align: center;
+`;
+
+const spin = keyframes`
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+`;
+
+const Spinner = styled.div`
+  width: 50px;
+  height: 50px;
+  border: 5px solid #f3f3f3;
+  border-top: 5px solid #3498db;
+  border-radius: 50%;
+  animation: ${spin} 1s linear infinite;
+  margin: 0 auto 20px;
+`;
+const RedirectText = styled.h3`
+  font-family: Fredoka;
+  font-weight: 600;
+  font-size: ${theme.fontSize['3xl']};
+`;
 const RedirectPage: React.FC = () => {
     const location = useLocation();
     
@@ -28,6 +61,8 @@ const RedirectPage: React.FC = () => {
     useEffect(() => {
       
       const searchParams = new URLSearchParams(location.search);
+      console.log("searchParams", searchParams);
+      
       console.log('first', searchParams.get('link'))
       
       const appLink = searchParams.toString().slice(5);
@@ -58,10 +93,15 @@ const RedirectPage: React.FC = () => {
     }, [location]);
   
     return (
-      <div>
-        <h1>Redirecting...</h1>
-        <p>If you are not redirected automatically, <a href="#!" onClick={goToStoreLink}>click here</a>.</p>
-      </div>
+      <Container>
+        <Content>
+          <Spinner />
+          <RedirectText>Redirecting...</RedirectText>
+          <p>
+            If you are not redirected automatically, <a href="#!" onClick={goToStoreLink}>click here</a>.
+          </p>
+        </Content>
+      </Container>
     );
   };
 export default RedirectPage

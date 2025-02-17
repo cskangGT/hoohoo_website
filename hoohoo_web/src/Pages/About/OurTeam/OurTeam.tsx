@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import styled from 'styled-components';
-import Wrapper from '../../../Component/Wrapper/Wrapper';
+import Wrapper from '../../../components/Wrapper/Wrapper';
 import { BgImage, theme } from '../../../style';
 import Gallery from './Gallery';
 import Mindset from './Mindset';
@@ -8,7 +8,7 @@ import Strength from './Strength';
 import TeamIntro from './TeamIntro';
 import TeamProfiles from './TeamProfiles';
 
-import FootContact from '../../../Component/Footer/FootContact';
+import FootContact from '../../../components/Footer/FootContact';
 const ContentBox = styled.section`
   padding-top: 20px;
   justify-content: center;

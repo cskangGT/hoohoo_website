@@ -1,8 +1,8 @@
 import i18next from 'i18next';
 import React from 'react';
 import styled from 'styled-components';
-import LinedHeader from '../../../Component/ContentBox/LinedHeader';
-import Wrapper from '../../../Component/Wrapper/Wrapper';
+import LinedHeader from '../../../components/ContentBox/LinedHeader';
+import Wrapper from '../../../components/Wrapper/Wrapper';
 
 const HeaderBox = styled.div`
   padding-top: 60px;
@@ -118,8 +118,8 @@ export default function Solutions() {
   );
 }
 // import React from 'react'
-// import Wrapper from '../../../Component/Wrapper/Wrapper'
-// import LinedHeader from '../../../Component/ContentBox/LinedHeader'
+// import Wrapper from '../../../components/Wrapper/Wrapper'
+// import LinedHeader from '../../../components/ContentBox/LinedHeader'
 // import styled from 'styled-components';
 // import i18next from 'i18next';
 

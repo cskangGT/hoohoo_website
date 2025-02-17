@@ -2,8 +2,8 @@ import i18next from 'i18next';
 import React from 'react';
 import Marquee from 'react-fast-marquee';
 import styled, { keyframes } from 'styled-components';
-import { useLanguage } from '../../../../Component/hooks/LanguageContext';
-import Wrapper from '../../../../Component/Wrapper/Wrapper';
+import { useLanguage } from '../../../../components/hooks/LanguageContext';
+import Wrapper from '../../../../components/Wrapper/Wrapper';
 import { theme } from '../../../../style';
 const Container = styled.section`
   width: 100%;

@@ -1,8 +1,8 @@
 import i18next from 'i18next';
 import React from 'react';
 import styled from 'styled-components';
-import Wrapper from '../../../Component/Wrapper/Wrapper';
-import {theme} from '../../../style';
+import Wrapper from '../../../components/Wrapper/Wrapper';
+import { theme } from '../../../style';
 const Bg = styled.section`
   width: calc(100%);
   height: 900px;

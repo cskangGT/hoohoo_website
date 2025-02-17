@@ -1,7 +1,7 @@
 import i18next from 'i18next';
 import React from 'react';
-import { useLanguage } from '../../../../Component/hooks/LanguageContext';
-import Wrapper from '../../../../Component/Wrapper/Wrapper';
+import { useLanguage } from '../../../../components/hooks/LanguageContext';
+import Wrapper from '../../../../components/Wrapper/Wrapper';
 import { emailTo } from '../../../../util/email';
 import { logButtonEvent, PageName } from '../../../../util/firebase_custom_event';
 import { HomeTransitionButton } from '../../../Home/HomeIntroPage';

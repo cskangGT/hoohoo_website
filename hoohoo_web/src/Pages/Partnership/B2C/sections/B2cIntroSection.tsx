@@ -1,8 +1,8 @@
 import i18next from 'i18next';
 import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
-import { useLanguage } from '../../../../Component/hooks/LanguageContext';
-import Wrapper from '../../../../Component/Wrapper/Wrapper';
+import { useLanguage } from '../../../../components/hooks/LanguageContext';
+import Wrapper from '../../../../components/Wrapper/Wrapper';
 import { slideInFromTop, theme } from '../../../../style';
 import { PageName } from '../../../../util/firebase_custom_event';
 import DownloadButtons from '../../../Home/DownloadButtons';

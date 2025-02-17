@@ -1,7 +1,7 @@
 import i18next from 'i18next';
 import React from 'react';
 import styled from 'styled-components';
-import { useLanguage } from '../../../../Component/hooks/LanguageContext';
+import { useLanguage } from '../../../../components/hooks/LanguageContext';
 import { slideInFromTop, theme } from '../../../../style';
 import { emailTo } from '../../../../util/email';
 import { logButtonEvent, PageName } from '../../../../util/firebase_custom_event';

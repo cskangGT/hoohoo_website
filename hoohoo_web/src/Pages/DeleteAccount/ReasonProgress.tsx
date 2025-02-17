@@ -1,10 +1,10 @@
 import i18next from 'i18next';
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
-import {sendCode} from '../../api/deleteAcc';
-import {theme} from '../../style';
+import { sendCode } from '../../api/deleteAcc';
+import { theme } from '../../style';
 import DeletionCategory from './DeletionCategory';
-import {GreenLongNextButton} from './EmailProgress';
+import { GreenLongNextButton } from './EmailProgress';
 
 const Container = styled.div`
   display: flex;
@@ -148,7 +148,7 @@ function ReasonProgress({
       <ContentContainer>
         <InfoText>{data.ReasonProgress.title}</InfoText>
         <Image
-          src={require('../../../public/Images/delete_account_asset.jpeg')}
+          src={"/Images/delete_account_asset.jpeg"}
         />
         <InfoText>{data.ReasonProgress.content}</InfoText>
         {categories.map((categoryConstant: string) => (

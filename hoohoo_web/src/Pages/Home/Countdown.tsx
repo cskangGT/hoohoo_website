@@ -1,10 +1,10 @@
 import i18next from 'i18next';
 import moment from 'moment-timezone';
-import React, {useEffect, useState} from 'react';
-import {useLocation, useNavigate} from 'react-router-dom';
+import React, { useEffect, useState } from 'react';
+import { useLocation, useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
-import Wrapper from '../../Component/Wrapper/Wrapper';
-import {theme} from '../../style';
+import Wrapper from '../../components/Wrapper/Wrapper';
+import { theme } from '../../style';
 import ManageAccModal from '../DeleteAccount/ManageAccModal';
 import { androidAppStoreLink, iosAppStoreLink } from './Download';
 

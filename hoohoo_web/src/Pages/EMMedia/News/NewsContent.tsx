@@ -1,8 +1,8 @@
 import i18next from 'i18next';
 import React from 'react';
 import styled from 'styled-components';
-import {useLanguage} from '../../../Component/hooks/LanguageContext';
-import {theme} from '../../../style';
+import { useLanguage } from '../../../components/hooks/LanguageContext';
+import { theme } from '../../../style';
 
 const Container = styled.div`
   width: 100%;
@@ -127,20 +127,15 @@ const ListItem = styled.li`
 `;
 
 export type NewsContentDataType = {
-  id: number;
+  idx: number;
   url: string;
   title: string;
-  createdAt: string;
-  data: ContentDataType[];
-};
-type ContentDataType = {
-  id: number;
-  author: string;
   uploadAt: string;
-  blocks: BlockType[];
+  author: string;
+  data: BlockType[];
 };
+
 type BlockType = {
-  id: number;
   title: string;
   content: {
     type: string;
@@ -152,8 +147,10 @@ type NewsContentProps = {
 };
 function NewsContent({detailData}: NewsContentProps) {
   const localizedText: any = i18next.t('NewsContent', {returnObjects: true});
-  const {title, data, url} = detailData;
-  const article = data[0];
+  const {title, data, url,author, uploadAt} = detailData;
+
+
+  
   const {language} = useLanguage();
   const formatDate = (dateString: string) => {
     const now = new Date();
@@ -183,9 +180,9 @@ function NewsContent({detailData}: NewsContentProps) {
         <ProfileBox>
           <ProfileImage src={defaultImage} alt="기본 프로필 이미지" />
           <MetaInfo>
-            <Author>{article.author}</Author>
+            <Author>{author}</Author>
             <DateText>
-              {localizedText.date}: {formatDate(article.uploadAt)}
+              {localizedText.date}: {formatDate(uploadAt)}
             </DateText>
           </MetaInfo>
         </ProfileBox>
@@ -195,12 +192,12 @@ function NewsContent({detailData}: NewsContentProps) {
         </LinkButton>
       </RowEnd>
 
-      {article.blocks.map(block => (
-        <BlockContainer key={block.id}>
+      {data.map(block => (
+        <BlockContainer key={block.title}>
           <BlockTitle>{block.title}</BlockTitle>
           {block.content.map((content, index) => (
             <React.Fragment key={index}>
-              {content.type === 'image' ? (
+              {content.type === 'image' || content.type === 'card' ? (
                 <Image src={content.value} alt="뉴스 이미지" />
               ) : content.type === 'text' ? (
                 <Text>{content.value}</Text>

@@ -1,9 +1,9 @@
 import i18next from 'i18next';
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
-import LinedHeader from '../../../Component/ContentBox/LinedHeader';
-import Wrapper from '../../../Component/Wrapper/Wrapper';
-import {theme} from '../../../style';
+import LinedHeader from '../../../components/ContentBox/LinedHeader';
+import Wrapper from '../../../components/Wrapper/Wrapper';
+import { theme } from '../../../style';
 import PartnerModal from '../PartnerModal';
 
 const Bg = styled.section`

@@ -1,8 +1,8 @@
 import i18next from 'i18next';
-import React, {useEffect, useState} from 'react';
-import {useSwipeable} from 'react-swipeable';
+import React, { useEffect, useState } from 'react';
+import { useSwipeable } from 'react-swipeable';
 import styled from 'styled-components';
-import Slider from '../../../Component/ContentBox/Slider';
+import Slider from '../../../components/ContentBox/Slider';
 
 const SectionContainer = styled.section`
   display: flex;

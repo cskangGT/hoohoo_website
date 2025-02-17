@@ -1,0 +1,9 @@
+User-agent: *
+Allow: /
+Disallow: /en/privacy
+Disallow: /en/terms_of_use
+Disallow: /ko/privacy
+Disallow: /ko/terms_of_use
+
+# Sitemap
+Sitemap: https://www.earthmera.com/sitemap.xml 

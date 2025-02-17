@@ -220,29 +220,17 @@ const LanguageBox = styled.div`
     top: 32px;
   }
 `;
-const LanguageBoxSecond = styled.div<LanguageProps>`
-  margin: 0 30px;
-  display: none;
-  @media screen and (max-width: 1100px) {
-    display: block;
-    position: absolute;
-    right: ${props => (props.isKorean ? 60 : 45)}px;
-    top: 27px;
-  }
-`;
-type LanguageProps = {
-  isKorean: boolean;
-};
 
-const LanguageButton = styled.button<LanguageProps>`
+
+const LanguageButton = styled.button<{isActive: boolean}>`
   font-size: 12px;
   color: ${theme.darkGray};
   background: none;
   border: none;
   cursor: pointer;
   position: relative;
-  opacity: ${props => (props.isKorean ? 1 : 0.5)};
-  padding: 0 ${props => (props.isKorean ? 10 : 'auto')};
+  opacity: ${props => (props.isActive ? 1 : 0.5)};
+  padding: 0 ${props => (props.isActive ? 10 : 'auto')};
   &:hover {
     transition: all 0.3s ease;
     opacity: 1;
@@ -328,10 +316,7 @@ const SubNavLink = styled.a`
     color: ${theme.mainNeon};
   }
 `;
-type NavProps = {
-  isKorean: boolean;
-  setIsKorean: React.Dispatch<React.SetStateAction<boolean>>;
-};
+
 
 type NavItem = {
   label: string;
@@ -354,7 +339,7 @@ export const throttleHelper = (callback: () => void, waitTime: number) => {
     }, waitTime);
   };
 };
-function Nav({isKorean, setIsKorean}: NavProps) {
+function Nav() {
   const navigate = useNavigate();
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const [windowWidth, setWindowWidth] = useState<number>(window.innerWidth);
@@ -371,6 +356,22 @@ function Nav({isKorean, setIsKorean}: NavProps) {
   const changelanguageToEn = () => {
     i18n.changeLanguage('en');
     setLanguage('en');
+  };
+  const handleLanguageChange = (newLang: string) => {
+    // 현재 경로에서 언어 부분 추출
+    const currentPath = location.pathname.replace(/^\/(ko|en)/, '');
+    
+    if (newLang === 'ko') {
+      
+      setLanguage('ko');
+      i18n.changeLanguage('ko');
+      navigate(`/ko${currentPath}`);
+    } else {
+      
+      setLanguage('en');
+      i18n.changeLanguage('en');
+      navigate(`/en${currentPath}`);
+    }
   };
   const [hide, setHide] = useState(false);
   const [pageY, setPageY] = useState(0);
@@ -401,13 +402,18 @@ function Nav({isKorean, setIsKorean}: NavProps) {
       window.removeEventListener('resize', handleResize);
     };
   }, []);
+  const handleLogoClick = () => {
+    if (window.location.pathname === '/ko' || window.location.pathname === '/en') {
+      window.location.reload();
+    } else {
+      navigate(language === 'ko' ? '/ko' : '/en');
+    }
+  };
   return (
     <Bar style={{top: !hide ? '0' : '-100%'}}>
       <Logo
         key="logo_link"
-        onClick={() => {
-          navigate(logo.link);
-        }}>
+        onClick={handleLogoClick}>
         <HeaderLogo key="logo" src={logo.image} />
         <LogoText key="earthmera" language={language}>
           {logo.text}
@@ -420,14 +426,14 @@ function Nav({isKorean, setIsKorean}: NavProps) {
               <LogoIcon
                 key={i + 'hd_icon'}
                 className="hidden-icon"
-                src="Images/icon_image.png"
+                src={logo.image}
               />
               {item.subItems ? (
                 <HoverContainer
                   className="HoverContainer"
                   key={i + 'hoverContainer'}
                   style={{overflow: 'visible'}}>
-                  <NavLink className="NavLink" id={item.link} key={i}>
+                  <NavLink className="NavLink" id={item.link} key={i} href={item.link ? item.link : ''}>
                     {item.label}
                     <FontAwesomeIcon icon={faCaretDown} className="fa-caret" />
                   </NavLink>
@@ -439,8 +445,8 @@ function Nav({isKorean, setIsKorean}: NavProps) {
                         <NavSubList key={subIndex}>
                           <SubNavLink
                             key={subIndex + 'subLink'}
+                            href={subItem.link ? subItem.link : ''}
                             onClick={() => {
-                              navigate(subItem.link ? subItem.link : '');
                               isOpen && setIsOpen(false);
                             }}>
                             {subItem.label}
@@ -459,8 +465,9 @@ function Nav({isKorean, setIsKorean}: NavProps) {
                     className="NavLink"
                     id={item.link}
                     key={i}
+                    href={item.link ? item.link : ''}
                     onClick={() => {
-                      if (item.label === 'Contact' || item.label === '연락처') {
+                      if (item.label === 'Contact' || item.label === '문의하기') {
                         window.location.href = 'mailto:devceohoony@gmail.com';
                       } else {
                         navigate(item.link ? item.link : '');
@@ -477,18 +484,16 @@ function Nav({isKorean, setIsKorean}: NavProps) {
         {!isOpen && (
           <LanguageBox>
             <LanguageButton
-              isKorean={isKorean}
+              isActive={language === 'ko'}
               onClick={() => {
-                setIsKorean(true);
-                changelanguageToKo();
+                handleLanguageChange('ko');
               }}>
               {lang[0]}
             </LanguageButton>
             <LanguageButton
-              isKorean={!isKorean}
+              isActive={language === 'en'}
               onClick={() => {
-                setIsKorean(false);
-                changelanguageToEn();
+                handleLanguageChange('en');
               }}>
               {lang[1]}
             </LanguageButton>
@@ -499,18 +504,16 @@ function Nav({isKorean, setIsKorean}: NavProps) {
       <LanguageOutBox>
         <LanguageBox>
           <LanguageButton
-            isKorean={isKorean}
+            isActive={language === 'ko'}
             onClick={() => {
-              setIsKorean(true);
-              changelanguageToKo();
+              handleLanguageChange('ko');
             }}>
             {lang[0]}
           </LanguageButton>
           <LanguageButton
-            isKorean={!isKorean}
+            isActive={language === 'en'}
             onClick={() => {
-              setIsKorean(false);
-              changelanguageToEn();
+              handleLanguageChange('en');
             }}>
             {lang[1]}
           </LanguageButton>

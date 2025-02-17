@@ -6,9 +6,9 @@ import {
   Image,
   LeftBox,
   RightBox,
-} from '../../../Component/ContentBox/TwoColBoxesSection';
-import Wrapper from '../../../Component/Wrapper/Wrapper';
-import {theme} from '../../../style';
+} from '../../../components/ContentBox/TwoColBoxesSection';
+import Wrapper from '../../../components/Wrapper/Wrapper';
+import { theme } from '../../../style';
 const Bg = styled.div`
   width: calc(100%);
   display: flex;

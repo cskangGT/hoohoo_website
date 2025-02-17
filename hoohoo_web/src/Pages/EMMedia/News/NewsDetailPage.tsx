@@ -1,10 +1,10 @@
-import React, {useEffect, useState} from 'react';
-import {useParams} from 'react-router-dom';
+import React, { useEffect, useState } from 'react';
+import { useLocation } from 'react-router-dom';
 import styled from 'styled-components';
-import {getNewsDetail} from '../../../api/news.api';
-import {useLanguage} from '../../../Component/hooks/LanguageContext';
-import Wrapper from '../../../Component/Wrapper/Wrapper';
-import NewsContent, {NewsContentDataType} from './NewsContent';
+import { getNewsDetail } from '../../../api/news.api';
+import { useLanguage } from '../../../components/hooks/LanguageContext';
+import Wrapper from '../../../components/Wrapper/Wrapper';
+import NewsContent, { NewsContentDataType } from './NewsContent';
 const Container = styled.div`
   margin-top: 80px;
 `;
@@ -16,15 +16,23 @@ const LoadingBox = styled.div`
   align-items: center;
 `;
 function NewsDetailPage() {
-  const {id} = useParams<{id: string}>();
+  const {state} = useLocation();
+  const {idx, title, url, uploadAt} = state;
   const {language} = useLanguage();
   const [detailData, setDetailData] = useState<NewsContentDataType | null>(
-    null,
+    {
+      idx: idx,
+      url: url,
+      title: title,
+      uploadAt: uploadAt,
+      author: '',
+      data: [],
+    }
   );
   const [isLoading, setIsLoading] = useState<boolean>(true);
   useEffect(() => {
     setIsLoading(true);
-    getNewsDetail(Number(id))
+    getNewsDetail(Number(idx), language)
       .then(response => {
         console.log('response', response);
 
@@ -35,7 +43,7 @@ function NewsDetailPage() {
         console.log('error', error);
         setIsLoading(false);
       });
-  }, [id]);
+  }, [idx]);
   return (
     <Wrapper>
       <Container>

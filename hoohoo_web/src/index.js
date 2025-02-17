@@ -1,5 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
+import { HelmetProvider } from 'react-helmet-async';
 import { RouterProvider } from 'react-router-dom';
 import { createGlobalStyle } from 'styled-components';
 
@@ -12,6 +13,7 @@ import YanoljaYacheBWoff2 from '../public/fonts/YanoljaYacheB.woff2';
 import YanoljaYacheTtf from '../public/fonts/YanoljaYacheR.ttf';
 import YanoljaYacheWoff from '../public/fonts/YanoljaYacheR.woff';
 import YanoljaYacheWoff2 from '../public/fonts/YanoljaYacheR.woff2';
+
 
 
 import RixYeoljeongdoR from '../public/fonts/RixYeoljeongdoRegular.ttf';
@@ -107,7 +109,10 @@ const GlobalStyle = createGlobalStyle`
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <GlobalStyle />
-    <RouterProvider router={Router} />
+    <HelmetProvider>
+      <GlobalStyle />
+      
+      <RouterProvider router={Router} />
+    </HelmetProvider>
   </React.StrictMode>,
 );

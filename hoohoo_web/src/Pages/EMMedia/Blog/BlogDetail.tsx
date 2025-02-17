@@ -1,10 +1,10 @@
-import {faChevronLeft} from '@fortawesome/free-solid-svg-icons';
-import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
-import React, {useEffect} from 'react';
-import {useLocation} from 'react-router-dom';
+import { faChevronLeft } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import React, { useEffect } from 'react';
+import { useLocation } from 'react-router-dom';
 import styled from 'styled-components';
-import Wrapper from '../../../Component/Wrapper/Wrapper';
-import {theme} from '../../../style';
+import Wrapper from '../../../components/Wrapper/Wrapper';
+import { theme } from '../../../style';
 const Background = styled.div`
   width: 100%;
   height: 100%;

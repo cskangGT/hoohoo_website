@@ -1,9 +1,9 @@
-import React, {useEffect, useState} from 'react';
+import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
-import {theme} from '../../style';
-import {Container} from './style';
+import { theme } from '../../style';
+import { Container } from './style';
 
-import Wrapper from '../../Component/Wrapper/Wrapper';
+import Wrapper from '../../components/Wrapper/Wrapper';
 import LandingFormModal from './LandingFormModal';
 
 const Background = styled.div`
@@ -137,7 +137,7 @@ const LogoContainer = styled.div`
 function Logo() {
   return (
     <LogoBox>
-      <LogoImage src="Images/earthmera_logo_white_ver.png" />
+      <LogoImage src="/Images/earthmera_logo_white_ver.png" />
       <LogoText>EarthMera</LogoText>
     </LogoBox>
   );

@@ -1,8 +1,8 @@
-import React, {useEffect, useState} from 'react';
-import {useCookies} from 'react-cookie';
+import React, { useEffect, useState } from 'react';
+import { useCookies } from 'react-cookie';
 import styled from 'styled-components';
-import Wrapper from '../../Component/Wrapper/Wrapper';
-import {BgImage, theme} from '../../style';
+import Wrapper from '../../components/Wrapper/Wrapper';
+import { BgImage, theme } from '../../style';
 const SectionContainer = styled.section`
   display: flex;
   box-sizing: border-box;

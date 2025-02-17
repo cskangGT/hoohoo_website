@@ -1,8 +1,9 @@
 export type NewsDataType = {
-    id: number;
+    idx: number;
     url: string;
     title: string;
-    createdAt: string;
+    uploadAt: string;
+    category: string;
     thumbnailImage?: string | null;
     description?: string | null;
 };
@@ -17,8 +18,39 @@ export const NewsCategory = {
     HWANSAENGSA: {
         text: {
             ko: "환생사(환경을 생각하는 사람들)",
-            en: "환생사(People who think about the environment)"
+            en: "The Environmental People"
         },
         value: "HWANSAENGSA"
-    }
+    },
 }
+export const HansaengsaNewsCategoryList = [
+    {
+        text: {
+            ko: "기후 뉴스",
+            en: "Climate News"
+        },
+        value: "climatenews"
+    },
+    {
+        text: {
+            ko: "환경 오염 뉴스",
+            en: "Pollution News"
+        },
+        value: "pllutionnews"
+    },
+    {
+        text: {
+            ko: "사회 뉴스",
+            en: "Social News"
+        },
+        value: "socialnews"
+    },
+    {
+        text: {
+            ko: "지속가능 기술 뉴스",
+            en: "Sustainable Technology News"
+        },
+        value: "technicalnews"
+    },
+
+]
