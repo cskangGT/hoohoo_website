@@ -1,9 +1,9 @@
 import i18next from 'i18next';
-import React, {useEffect, useState} from 'react';
+import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
-import LinedHeader from '../../Component/ContentBox/LinedHeader';
-import Slider from '../../Component/ContentBox/Slider';
-import {theme} from '../../style';
+import LinedHeader from '../../components/ContentBox/LinedHeader';
+import Slider from '../../components/ContentBox/Slider';
+import { theme } from '../../style';
 const SlideSection = styled.section`
   padding-top: 20px;
   justify-content: center;

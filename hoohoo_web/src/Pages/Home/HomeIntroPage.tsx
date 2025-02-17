@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
-import BackgroundWithStripe from '../../Component/ContentBox/BackgroundWithStripe';
-import { Header } from '../../Component/ContentBox/TwoColBoxesSection';
+import BackgroundWithStripe from '../../components/ContentBox/BackgroundWithStripe';
+import { Header } from '../../components/ContentBox/TwoColBoxesSection';
 import { theme } from '../../style';
 import { PartnerButton } from '../LandingPage/LandingB2C';
 const TitleHeader = styled(Header)`

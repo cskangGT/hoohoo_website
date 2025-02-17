@@ -2,12 +2,12 @@ import i18next from 'i18next';
 import React, { useEffect, useRef, useState } from 'react';
 import styled from 'styled-components';
 import { getBlogList } from '../../../api/blog';
-import BlogCard from '../../../Component/Blog/BlogCard';
-import { BlogCategory, BlogDataType } from '../../../Component/Blog/BlogCategory';
-import PageNav from '../../../Component/Blog/PageNav';
-import FootContact from '../../../Component/Footer/FootContact';
-import { useLanguage } from '../../../Component/hooks/LanguageContext';
-import Wrapper from '../../../Component/Wrapper/Wrapper';
+import BlogCard from '../../../components/Blog/BlogCard';
+import { BlogCategory, BlogDataType } from '../../../components/Blog/BlogCategory';
+import PageNav from '../../../components/Blog/PageNav';
+import FootContact from '../../../components/Footer/FootContact';
+import { useLanguage } from '../../../components/hooks/LanguageContext';
+import Wrapper from '../../../components/Wrapper/Wrapper';
 import { BgImage, theme } from '../../../style';
 import BlogModal from './BlogModal';
 const Container = styled.div`

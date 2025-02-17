@@ -1,8 +1,8 @@
 import i18next from 'i18next';
 import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
-import { Desc } from '../../../../Component/ContentBox/TwoColBoxesSection';
-import { useLanguage } from '../../../../Component/hooks/LanguageContext';
+import { Desc } from '../../../../components/ContentBox/TwoColBoxesSection';
+import { useLanguage } from '../../../../components/hooks/LanguageContext';
 import { slideInFromTop, theme } from '../../../../style';
 export const Bg = styled.div<{image: string}>`
   animation: ${slideInFromTop} 0.7s ease-out forwards;

@@ -1,10 +1,10 @@
 import React from 'react';
 import styled from 'styled-components';
-import {Header} from '../../../Component/ContentBox/TwoColBoxesSection';
-import Wrapper from '../../../Component/Wrapper/Wrapper';
-import {theme} from '../../../style';
-import {BackgroundImage} from '../../About/OurTeam/TeamIntro';
-import {VerticalSection} from './IdealCustomer';
+import { Header } from '../../../components/ContentBox/TwoColBoxesSection';
+import Wrapper from '../../../components/Wrapper/Wrapper';
+import { theme } from '../../../style';
+import { BackgroundImage } from '../../About/OurTeam/TeamIntro';
+import { VerticalSection } from './IdealCustomer';
 const SectionHeader = styled(Header)`
   text-align: center;
   line-height: 1.5;

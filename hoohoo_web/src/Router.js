@@ -1,9 +1,9 @@
 import React from 'react';
-import {createBrowserRouter} from 'react-router-dom';
+import { createBrowserRouter, Navigate } from 'react-router-dom';
 import {
   default as ErrorComponent,
   default as NotFound,
-} from './Component/ErrorComponent/ErrorComponent';
+} from './components/ErrorComponent/ErrorComponent';
 import OurTeam from './Pages/About/OurTeam/OurTeam';
 import AdminLogin from './Pages/Admin/AdminLogin';
 import MainDropB from './Pages/DropB/MainDropB';
@@ -22,6 +22,119 @@ import NewsPage from './Pages/EMMedia/NewsPage';
 import SupportingPage from './Pages/Info/Contact/SupportingPage';
 import RedirectPage from './Pages/Info/Redirection/RedirectPage';
 import EMTicketeer from './Pages/Partnership/ticketeer/EMTicketeer';
+const createLocalizedRoutes = (routes) => {
+  return routes.map(route => [
+    {
+      path: `/ko${route.path}`,
+      element: route.element,
+      errorElement: route.errorElement,
+    },
+    {
+      path: `/en${route.path}`,
+      element: route.element,
+      errorElement: route.errorElement,
+    }
+  ]).flat();
+};
+
+const baseRoutes = [
+  {
+    path: '/',
+    element: <HomeEarthmera />,
+    errorElement: <ErrorComponent />,
+  },
+  {
+    path: '/home',
+    element: <HomeEarthmera />,
+    errorElement: <ErrorComponent />,
+  },
+  {
+    path: '/vision',
+    element: <EarthMeraVision />,
+    errorElement: <ErrorComponent />,
+  },
+  {
+    path: '/about_team',
+    element: <OurTeam />,
+    errorElement: <ErrorComponent />,
+  },
+  {
+    path: '/partnership',
+    element: <Partnership />,
+    errorElement: <ErrorComponent />,
+  },
+  {
+    path: '/platform',
+    element: <Platform />,
+    errorElement: <ErrorComponent />,
+  },
+  {
+    path: '/ticketeer',
+    element: <EMTicketeer />,
+    errorElement: <ErrorComponent />,
+  },
+  {
+    path: '/dropb',
+    element: <MainDropB />,
+    errorElement: <ErrorComponent />,
+  },
+  {
+    path: '/climate_card',
+    element: <Blog />,
+    errorElement: <ErrorComponent />,
+  },
+  {
+    path: '/admin',
+    element: <AdminLogin />,
+    errorElement: <ErrorComponent />,
+  },
+  {
+    path: '/climate_card/:id',
+    element: <BlogDetail />,
+    errorElement: <ErrorComponent />,
+  },
+  {
+    path: '/news',
+    element: <NewsPage />,
+    errorElement: <ErrorComponent />,
+  },
+  {
+    path: '/news/:id',
+    element: <NewsDetailPage />,
+    errorElement: <ErrorComponent />,
+  },
+  // {
+  //   path: '/contact',
+  //   element: <ContactPage />,
+  //   errorElement: <ErrorComponent />,
+  // },
+  {
+    path: '/support',
+    element: <SupportingPage />,
+    errorElement: <ErrorComponent />,
+  },
+  {
+    path: '/privacy',
+    element: <Privacy />,
+    errorElement: <ErrorComponent />,
+  },
+  {
+    path: '/terms_of_use',
+    element: <TandC />,
+    errorElement: <ErrorComponent />,
+  },
+  // {
+  //     path: "/submitform",
+  //     element: <EarlySignUp />,
+  //     errorElement: <ErrorComponent />
+  // },{
+  //     path: "/coming_soon",
+  //     element: <ComingSoon />,
+  //     errorElement: <ErrorComponent />
+  // },
+  
+];
+
 const Router = createBrowserRouter([
   {
     path: '/',
@@ -29,103 +142,14 @@ const Router = createBrowserRouter([
     children: [
       {
         path: '/',
-        element: <HomeEarthmera />,
-        errorElement: <ErrorComponent />,
+        element: <Navigate to="/en" replace />,
       },
-      {
-        path: '/home',
-        element: <HomeEarthmera />,
-        errorElement: <ErrorComponent />,
-      },
-      {
-        path: '/vision',
-        element: <EarthMeraVision />,
-        errorElement: <ErrorComponent />,
-      },
-      {
-        path: '/about_team',
-        element: <OurTeam />,
-        errorElement: <ErrorComponent />,
-      },
-      {
-        path: '/partnership',
-        element: <Partnership />,
-        errorElement: <ErrorComponent />,
-      },
-      {
-        path: '/platform',
-        element: <Platform />,
-        errorElement: <ErrorComponent />,
-      },
-      {
-        path: '/ticketeer',
-        element: <EMTicketeer />,
-        errorElement: <ErrorComponent />,
-      },
-      {
-        path: '/dropb',
-        element: <MainDropB />,
-        errorElement: <ErrorComponent />,
-      },
-      {
-        path: '/climate_card',
-        element: <Blog />,
-        errorElement: <ErrorComponent />,
-      },
-      {
-        path: '/admin',
-        element: <AdminLogin />,
-        errorElement: <ErrorComponent />,
-      },
-      {
-        path: '/climate_card/:id',
-        element: <BlogDetail />,
-        errorElement: <ErrorComponent />,
-      },
-      {
-        path: '/news',
-        element: <NewsPage />,
-        errorElement: <ErrorComponent />,
-      },
-      {
-        path: '/news/:id',
-        element: <NewsDetailPage />,
-        errorElement: <ErrorComponent />,
-      },
-      // {
-      //   path: '/contact',
-      //   element: <ContactPage />,
-      //   errorElement: <ErrorComponent />,
-      // },
-      {
-        path: '/support',
-        element: <SupportingPage />,
-        errorElement: <ErrorComponent />,
-      },
-      {
-        path: '/privacy',
-        element: <Privacy />,
-        errorElement: <ErrorComponent />,
-      },
-      {
-        path: '/terms_of_use',
-        element: <TandC />,
-        errorElement: <ErrorComponent />,
-      },
-      // {
-      //     path: "/submitform",
-      //     element: <EarlySignUp />,
-      //     errorElement: <ErrorComponent />
-      // },{
-      //     path: "/coming_soon",
-      //     element: <ComingSoon />,
-      //     errorElement: <ErrorComponent />
-      // },
       {
         path: '/redirect',
         element: <RedirectPage />,
         errorElement: <ErrorComponent />,
       },
+      ...createLocalizedRoutes(baseRoutes)
     ],
     errorElement: <NotFound />,
   },

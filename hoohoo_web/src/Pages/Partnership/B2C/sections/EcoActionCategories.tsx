@@ -4,9 +4,9 @@ import styled from 'styled-components';
 import {
   Desc,
   Header,
-} from '../../../../Component/ContentBox/TwoColBoxesSection';
-import { useLanguage } from '../../../../Component/hooks/LanguageContext';
-import Wrapper from '../../../../Component/Wrapper/Wrapper';
+} from '../../../../components/ContentBox/TwoColBoxesSection';
+import { useLanguage } from '../../../../components/hooks/LanguageContext';
+import Wrapper from '../../../../components/Wrapper/Wrapper';
 import { theme } from '../../../../style';
 const isSmall = window.innerWidth < 1300;
 const Container = styled.div`

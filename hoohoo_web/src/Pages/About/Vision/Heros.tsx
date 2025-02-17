@@ -6,8 +6,8 @@ import {
   Image,
   LeftBox,
   RightBox,
-} from '../../../Component/ContentBox/TwoColBoxesSection';
-import {slideInFromTop, theme} from '../../../style';
+} from '../../../components/ContentBox/TwoColBoxesSection';
+import { slideInFromTop, theme } from '../../../style';
 
 const Container = styled.div`
   width: 100%;

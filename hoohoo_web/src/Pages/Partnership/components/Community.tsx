@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
-import LinedHeader from '../../../Component/ContentBox/LinedHeader';
+import LinedHeader from '../../../components/ContentBox/LinedHeader';
 import {
   Container,
   Desc,
@@ -8,8 +8,8 @@ import {
   Image,
   LeftBox,
   RightBox,
-} from '../../../Component/ContentBox/TwoColBoxesSection';
-import { useLanguage } from '../../../Component/hooks/LanguageContext';
+} from '../../../components/ContentBox/TwoColBoxesSection';
+import { useLanguage } from '../../../components/hooks/LanguageContext';
 import { theme } from '../../../style';
 const MidTitle = styled(Desc)`
   font-weight: 700;

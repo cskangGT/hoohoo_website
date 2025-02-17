@@ -1,8 +1,8 @@
 import i18next from 'i18next';
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
-import LinedHeader from '../../../Component/ContentBox/LinedHeader';
-import {theme} from '../../../style';
+import LinedHeader from '../../../components/ContentBox/LinedHeader';
+import { theme } from '../../../style';
 const Container = styled.div`
   width: 100%;
   display: flex;

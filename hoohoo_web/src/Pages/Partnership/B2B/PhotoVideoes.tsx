@@ -3,10 +3,10 @@ import styled from 'styled-components';
 import {
   LeftBox,
   RightBox,
-} from '../../../Component/ContentBox/TwoColBoxesSection';
-import Wrapper from '../../../Component/Wrapper/Wrapper';
-import {HomeTransitionButton} from '../../Home/HomeIntroPage';
-import {HeaderText} from '../../Home/sections/HomeEnvImpact';
+} from '../../../components/ContentBox/TwoColBoxesSection';
+import Wrapper from '../../../components/Wrapper/Wrapper';
+import { HomeTransitionButton } from '../../Home/HomeIntroPage';
+import { HeaderText } from '../../Home/sections/HomeEnvImpact';
 const Container = styled.div`
   display: flex;
   height: 800px;

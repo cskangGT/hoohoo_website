@@ -1,9 +1,9 @@
 import i18next from 'i18next';
-import React, {useEffect, useState} from 'react';
+import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
-import {Header} from '../../../Component/ContentBox/TwoColBoxesSection';
-import Wrapper from '../../../Component/Wrapper/Wrapper';
-import {BackgroundImage} from '../../About/OurTeam/TeamIntro';
+import { Header } from '../../../components/ContentBox/TwoColBoxesSection';
+import Wrapper from '../../../components/Wrapper/Wrapper';
+import { BackgroundImage } from '../../About/OurTeam/TeamIntro';
 const RetentionHeader = styled(Header)`
   font-family: 'Fredoka';
   text-align: center;

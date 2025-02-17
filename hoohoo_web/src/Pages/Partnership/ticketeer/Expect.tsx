@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import {Header} from '../../../Component/ContentBox/TwoColBoxesSection';
+import { Header } from '../../../components/ContentBox/TwoColBoxesSection';
 const Container = styled.section`
   width: 100%;
   background-color: transparent;

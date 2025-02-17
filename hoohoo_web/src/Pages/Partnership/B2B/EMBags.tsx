@@ -1,9 +1,9 @@
 import React from 'react';
 import styled from 'styled-components';
-import {Header} from '../../../Component/ContentBox/TwoColBoxesSection';
-import Wrapper from '../../../Component/Wrapper/Wrapper';
-import {HomeTransitionButton} from '../../Home/HomeIntroPage';
-import {ButtonBox} from './PhotoVideoes';
+import { Header } from '../../../components/ContentBox/TwoColBoxesSection';
+import Wrapper from '../../../components/Wrapper/Wrapper';
+import { HomeTransitionButton } from '../../Home/HomeIntroPage';
+import { ButtonBox } from './PhotoVideoes';
 const Container = styled.section`
   width: 100%;
   background-color: transparent;

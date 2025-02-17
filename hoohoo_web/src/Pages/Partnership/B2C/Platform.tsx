@@ -1,11 +1,11 @@
-import React, {useEffect, useRef} from 'react';
+import React, { useEffect, useRef } from 'react';
 import styled from 'styled-components';
-import Wrapper from '../../../Component/Wrapper/Wrapper';
-import {BgImage, theme} from '../../../style';
+import Wrapper from '../../../components/Wrapper/Wrapper';
+import { BgImage, theme } from '../../../style';
 
 import i18next from 'i18next';
-import {useLocation} from 'react-router-dom';
-import FootContact from '../../../Component/Footer/FootContact';
+import { useLocation } from 'react-router-dom';
+import FootContact from '../../../components/Footer/FootContact';
 import Community from '../components/Community';
 import B2CEcoProducts from './sections/B2CEcoProducts';
 import B2CEcoServices from './sections/B2CEcoServices';

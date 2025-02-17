@@ -1,10 +1,9 @@
-import React, { useState } from 'react';
-import styled from 'styled-components';
+import { faCircleXmark } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCircleXmark, faX, faXmarkCircle } from '@fortawesome/free-solid-svg-icons';
+import React from 'react';
+import styled from 'styled-components';
+import { BlogDataType } from '../../../components/Blog/BlogCategory';
 import { theme } from '../../../style';
-import { useCookies } from 'react-cookie';
-import { BlogDataType } from '../../../Component/Blog/BlogCategory';
 
 export const ModalBackground = styled.div`
   position: fixed;

@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
-import {Header} from '../../../Component/ContentBox/TwoColBoxesSection';
-import {ContentText} from '../B2B/GetInTouch';
+import { Header } from '../../../components/ContentBox/TwoColBoxesSection';
+import { ContentText } from '../B2B/GetInTouch';
 const Container = styled.section`
   width: 100%;
   background-color: transparent;

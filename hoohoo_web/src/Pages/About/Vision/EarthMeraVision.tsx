@@ -1,8 +1,8 @@
-import React, {useEffect} from 'react';
+import React, { useEffect } from 'react';
 import styled from 'styled-components';
-import FootContact from '../../../Component/Footer/FootContact';
-import Wrapper from '../../../Component/Wrapper/Wrapper';
-import {BgImage, theme} from '../../../style';
+import FootContact from '../../../components/Footer/FootContact';
+import Wrapper from '../../../components/Wrapper/Wrapper';
+import { BgImage, theme } from '../../../style';
 import ValueEMHeroes from './sections/ValueEMHeroes';
 import ValueMarquee from './sections/ValueMarquee';
 import VisionIntro from './sections/VisionIntro';

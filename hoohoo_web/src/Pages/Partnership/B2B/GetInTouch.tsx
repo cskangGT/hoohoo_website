@@ -1,7 +1,7 @@
-import React, {useEffect, useState} from 'react';
+import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
-import {Header} from '../../../Component/ContentBox/TwoColBoxesSection';
-import Wrapper from '../../../Component/Wrapper/Wrapper';
+import { Header } from '../../../components/ContentBox/TwoColBoxesSection';
+import Wrapper from '../../../components/Wrapper/Wrapper';
 const Container = styled.section`
   width: 100%;
   background-color: transparent;

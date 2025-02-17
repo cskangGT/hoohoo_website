@@ -4,35 +4,36 @@
     "data2": {}
   },
   "Nav": {
-    "logo": {"text": "어스메라", "image": "Images/icon_image.png", "link": "/"},
+    "logo": {"text": "어스메라", "image": "/Images/icon_image.png", "link": "/"},
     "lang": ["한", "영"],
 
     "navlist": [
-      {"label": "홈", "link": "/home"},
+      {"label": "홈", "link": "/ko/home"},
       {
         "label": "소개",
         "subItems": [
-          {"label": "EM 비전", "link": "/vision"},
-          {"label": "EM 팀", "link": "/about_team"}
+          {"label": "EM 비전", "link": "/ko/vision"},
+          {"label": "EM 팀", "link": "/ko/about_team"}
         ]
       },
       {
         "label": "우리가 하는 일",
         "subItems": [
-          {"label": "플랫폼", "link": "/platform"},
-          {"label": "파트너십", "link": "/partnership"},
-          {"label": "EM 티켓티어", "link": "/ticketeer"}
+          {"label": "플랫폼", "link": "/ko/platform"},
+          {"label": "파트너십", "link": "/ko/partnership"},
+          {"label": "EM 티켓티어", "link": "/ko/ticketeer"}
         ]
       },
       {
         "label": "EM 미디어",
         "subItems": [
-          {"label": "뉴스", "link": "/news"},
-          {"label": "기후 카드", "link": "/climate_card"}
+          {"label": "뉴스", "link": "/ko/news"},
+          {"label": "기후 카드", "link": "/ko/climate_card"}
         ]
       },
       {
-        "label": "문의하기"
+        "label": "문의하기",
+        "link": "mailto:devceohoony@gmail.com"
       }
     ]
   },
@@ -117,7 +118,7 @@
   },
   "idealcustomer": {
     "header": "What if every ad viewer was your ideal customer?<br />How thrilling!",
-    "img": "Images/contact2pImg.png",
+    "img": "/Images/contact2pImg.png",
     "subheader": "Clear platform vision, quick fulfillment of your needs.",
     "content": "EarthMera offers highly effective mobile-optimized advertising targeting precise consumer segments within the rapidly growing environmental market."
   },
@@ -125,22 +126,22 @@
     "header": "Reach Eco Users for Your Business"
   },
   "retention": {
-    "bgImage": "Images/contactRetentionBg.png",
-    "DesktopImg": "Images/retentionDesktop.png",
-    "mobileImg": "Images/retentionMobile.png",
+    "bgImage": "/Images/contactRetentionBg.png",
+    "DesktopImg": "/Images/retentionDesktop.png",
+    "mobileImg": "/Images/retentionMobile.png",
     "header": "Our retention, Your business advantage"
   },
   "gallery": [
-    "Images/2.jpeg",
-    "Images/4.jpeg",
-    "Images/6.jpeg",
-    "Images/5.jpeg",
-    "Images/11.jpeg",
-    "Images/10.jpeg",
-    "Images/9.jpeg",
-    "Images/8.jpeg",
-    "Images/12.jpeg",
-    "Images/13.jpeg"
+    "/Images/2.jpeg",
+    "/Images/4.jpeg",
+    "/Images/6.jpeg",
+    "/Images/5.jpeg",
+    "/Images/11.jpeg",
+    "/Images/10.jpeg",
+    "/Images/9.jpeg",
+    "/Images/8.jpeg",
+    "/Images/12.jpeg",
+    "/Images/13.jpeg"
   ],
   "em_team_Intro": {
     "header": "팀 어스메라를<br />소개해요"
@@ -184,42 +185,42 @@
   },
   "teamIntro": [
     {
-      "photoPath": "Images/profile_sung.jpeg",
+      "photoPath": "/Images/profile_sung.jpeg",
       "name": "Sung Kang",
       "role": "CEO / Founder <br /> Full-Stack Engineer",
       "contact": "mailto:devceohoony@gmail.com",
       "url": "https://www.linkedin.com/in/sungcoding/"
     },
     {
-      "photoPath": "Images/profile_jisan.jpeg",
+      "photoPath": "/Images/profile_jisan.jpeg",
       "name": "Jisan Park",
       "role": "SWE<br />Front-End Engineer",
       "contact": "mailto:jisanpark94@gmail.com",
       "url": "https://www.linkedin.com/in/jisanpark5309/"
     },
     {
-      "photoPath": "Images/profile_jeongwon.jpg",
+      "photoPath": "/Images/profile_jeongwon.jpg",
       "name": "Jeongwon Park",
       "role": "SWE<br />ML Engineer",
       "contact": "mailto:devceohoony@gmail.com",
       "url": "https://www.linkedin.com/in/jwpark44/"
     },
     {
-      "photoPath": "Images/profile_jimmy.jpeg",
+      "photoPath": "/Images/profile_jimmy.jpeg",
       "name": "Jimmy Sim",
       "role": "UI / UX<br />Content Designer",
       "contact": "mailto:devceohoony@gmail.com",
       "url": "https://www.linkedin.com/in/jimmysim93/"
     },
     {
-      "photoPath": "Images/profile_daniel.jpeg",
+      "photoPath": "/Images/profile_daniel.jpeg",
       "name": "Chuljin Park",
       "role": "SWE<br />Back-End Engineer",
       "contact": "mailto:devceohoony@gmail.com",
       "url": "https://www.linkedin.com/in/daniel-park-33b0632b1/"
     },
     {
-      "photoPath": "Images/profile_minjun.png",
+      "photoPath": "/Images/profile_minjun.png",
       "name": "Minjun Kim",
       "role": "ML Team<br />ML Intern",
       "contact": "mailto:devceohoony@gmail.com",
@@ -232,17 +233,17 @@
     "content": {
       "Users": {
         "header": "Users",
-        "imagePath": "Images/user1.png",
+        "imagePath": "/Images/user1.png",
         "description": "Every click with EarthMera amplifies your contribution to our planet. Capture your eco-actions, earn rewards, and join a community that’s reshaping the world. With every action you take, you’re not just securing points for yourself but ensuring a greener future for the next generation."
       },
       "Partners": {
         "header": "Partners",
-        "imagePath": "Images/partner2.png",
+        "imagePath": "/Images/partner2.png",
         "description": "EarthMera thrives on powerful alliances. We collaborate with brands eager to resonate with eco-conscious audiences, industries aiming to reduce their carbon footprint, and organizations looking to champion green initiatives. Together, we are not just endorsing sustainability; we are mainstreaming it."
       },
       "Government": {
         "header": "Government",
-        "imagePath": "Images/government.png",
+        "imagePath": "/Images/government.png",
         "description": "Coming soon"
       }
     }
@@ -250,39 +251,39 @@
   "realtime": {
     "header": "Early sign up heroes:",
     "content": "Pioneers for a sustainable future!",
-    "image": "Images/realtime.png"
+    "image": "/Images/realtime.png"
   },
   "IntroEarthMera": {
     "fundsData": [
       {
-        "image": "Images/connect.png",
+        "image": "/Images/connect.png",
         "head": "Connect",
         "content": "We find a corporate investor to sponsor your festival."
       },
       {
-        "image": "Images/golive.png",
+        "image": "/Images/golive.png",
         "head": "Go live",
         "content": "Your campaign goes live with Eco-Action through our EarthMera."
       },
       {
-        "image": "Images/donate.png",
+        "image": "/Images/donate.png",
         "head": "Action",
         "content": "Users donate their sweatcoins to hit your fundraising goal."
       },
       {
-        "image": "Images/release.png",
+        "image": "/Images/release.png",
         "head": "Release",
         "content": "When the sweatcoin target is hit, the donor releases the funds."
       }
     ],
     "cardData": [
       {
-        "image": "Images/c2.png",
+        "image": "/Images/c2.png",
         "msg": "Are you a festival organizer?",
         "button": "Connect to EarthMera"
       },
       {
-        "image": "Images/p1.png",
+        "image": "/Images/p1.png",
         "msg": "Are you a sponsor?",
         "button": "Support EarthMera"
       }
@@ -291,12 +292,12 @@
       "first_header": "AI Model",
       "second_header": "with EarthMera",
       "content": "Earthmera offers eco-friendly bio-based plastic bags to participants. Our AI, using computer vision object detection, verifies if the bags are filled as per the assigned missions, promoting environmental responsibility.",
-      "image": "Images/trash_bag.png",
-      "compImage": "Images/model_comp.png"
+      "image": "/Images/trash_bag.png",
+      "compImage": "/Images/model_comp.png"
     },
     "solutionData": {
-      "Imagef": "Images/solution1.png",
-      "Imageb": "Images/solution2.png",
+      "Imagef": "/Images/solution1.png",
+      "Imageb": "/Images/solution2.png",
       "title": "EarthMera's Solution",
       "list": [
         {
@@ -313,7 +314,7 @@
     }
   },
   "b2bvideo": {
-    "video": "Images/Earthmera.mp4",
+    "video": "/Images/Earthmera.mp4",
     "header": "EarthMera <br /> gives you wings.",
     "content": "Ready to make a strong ESG statement?",
     "button": "Get Started"
@@ -323,22 +324,22 @@
     "solutions": [
       {
         "title": "All entertainment businesses that sell tickets.",
-        "image": "Images/b2bsolution1.png",
+        "image": "/Images/b2bsolution1.png",
         "content": "Users can earn rewards and extract data by helping with environmental improvement through the QR code on their tickets during entertainment."
       },
       {
         "title": "Companies that manufactures eco-friendly products.",
-        "image": "Images/b2bsolution2.png",
+        "image": "/Images/b2bsolution2.png",
         "content": "We promote your products in our app and offer user feedback and data reporting."
       },
       {
         "title": "Businesses engaged in ESG management.",
-        "image": "Images/b2bsolution3.png",
+        "image": "/Images/b2bsolution3.png",
         "content": "We offer MD data reporting to companies in ESG management facing challenges in quantifying their product's environmental contributions and ESG compliance level."
       },
       {
         "title": "Other companies need the product statistics.",
-        "image": "Images/b2bsolution4.png",
+        "image": "/Images/b2bsolution4.png",
         "content": "We provide statistical data and consulting services to interested companies through our platform to help them ensure that consumers are using eco-friendly products as intended by the company."
       }
     ]
@@ -367,40 +368,40 @@
   ],
   "download": {
     "earthmera": {
-      "image": "Images/platform1pimage.png",
+      "image": "/Images/platform1pimage.png",
       "header": "Download the EarthMera App",
       "subheader": "Make a change with one tap in EarthMera!"
     },
     "dropb": {
-      "image": "Images/preview1.png",
+      "image": "/Images/preview1.png",
       "header": "Download DropB App",
       "subheader": "Record tags for your day!"
     },
     "storeImage": {
-      "appstore": "Images/appstore.svg",
-      "googleplay": "Images/googleplay.svg"
+      "appstore": "/Images/appstore.svg",
+      "googleplay": "/Images/googleplay.svg"
     }
   },
   "dropbIntro": {
-    "Images/preview1.png": {
+    "/Images/preview1.png": {
       "firstDesc": "Speak, write, and dive-in",
       "secondDesc": "Click to create your own diary with Drop B"
     }
   },
   "landingFestival": {
     "header": "Earthmera",
-    "image": "Images/fest_img.png",
+    "image": "/Images/fest_img.png",
     "firstDesc": "Save up to $324,400 in festival cleaning costs for free",
     "secDesc": "At major festivals, approximately 600 individuals are paid $15 per hour for cleaning during a span of three days. However, we encourage over 400,000 festival attendees to help maintain cleanliness.",
     "button": "Try it Free",
     "highlight": "$324,400",
-    "leftBotImg": "Images/fest_left_bot.png",
-    "rightTopImg": "Images/fest_right_top.png"
+    "leftBotImg": "/Images/fest_left_bot.png",
+    "rightTopImg": "/Images/fest_right_top.png"
   },
   "landingOrganizer": {
     "header": "Earthmera",
-    "image": "Images/4p_picture_and_shape.svg",
-    "decoImage": "Images/orgLeft.svg",
+    "image": "/Images/4p_picture_and_shape.svg",
+    "decoImage": "/Images/orgLeft.svg",
     "firstDesc": "Save up to 10% in the festival budget for free",
     "secDesc": "Even with over 2,000 cleaners, the festival always needed extra assistance. However, we enlighten over 400,000 festival attendees to help maintain cleanliness.",
     "button": "Try it Free"
@@ -410,7 +411,7 @@
     "title": "We're Looking for Eco-Action people.",
     "button": "Partner with Us",
     "content": "Millions of people engage with EarthMera to verify eco-action and get rewarded while capturing.",
-    "image": "Images/ll_image.webp"
+    "image": "/Images/ll_image.webp"
   },
   "partnersWay": {
     "content": [
@@ -432,11 +433,11 @@
     "rich2": "By clicking submit below, you consent to allow EarthMera to store and process the personal information submitted above to provide you the content requested."
   },
   "sketch": {
-    "Images/sketch1.jpeg": {
+    "/Images/sketch1.jpeg": {
       "headerText": "User-centric goal",
       "content": "Providing players with a continuously rewarding experience while discovering new digital worlds at the tap of a button."
     },
-    "Images/sketch2.jpeg": {
+    "/Images/sketch2.jpeg": {
       "headerText": "Partner focus goal",
       "content": "Building the leading play-and-earn solution that drives high user engagement for game publishers and advertisers on a global scale."
     }
@@ -444,7 +445,7 @@
 
   "vision": {
     "header": "EarthMera's Vision",
-    "img": "Images/visionCenter.png",
+    "img": "/Images/visionCenter.png",
     "items1": [
       {
         "title": "Environmental Conservation",
@@ -473,36 +474,36 @@
   "takesteps": {
     "header": "Take it from small steps",
     "first": {
-      "image": "Images/takestep1.png",
+      "image": "/Images/takestep1.png",
       "text": "out of 6 trillion cigarettes, 450 billion are littered on the streets.",
       "number": "75%"
     },
     "second": {
-      "image": "Images/takestep2.png",
+      "image": "/Images/takestep2.png",
       "number": "9%",
       "text": "of the 460 million tons of plastic produced yearly, 353 million tons become waste, with just 9% being recycled."
     },
-    "plus": "Images/takeplus.png",
-    "equal": "Images/takeequal.png",
+    "plus": "/Images/takeplus.png",
+    "equal": "/Images/takeequal.png",
     "third": {
-      "image": "Images/takestep3.png",
+      "image": "/Images/takestep3.png",
       "number": "80%",
       "text": "of the 8.6 million tons of marine debris is plastic."
     },
     "change": {
-      "image": "Images/change.png",
+      "image": "/Images/change.png",
       "number": "Change",
       "text": "the numbers speak, it's time for us to act genuinely. Let's make a significant impact on our planet through our app."
     }
   },
   "bubble": {
-    "image": "Images/dropb_logo.png",
+    "image": "/Images/dropb_logo.png",
     "text_part1": "We are the creator of DropB",
     "text_part2": "Do you want to tag your day? Try DropB!",
-    "close": "Images/close_btn.png"
+    "close": "/Images/close_btn.png"
   },
   "b2c": {
-    "image": "Images/b2c.png",
+    "image": "/Images/b2c.png",
     "header": "So I just get money for using any tumblers and eco-bags?",
     "firstDesc": {
       "part1": "Sign up now,",
@@ -528,63 +529,63 @@
   },
   "platform1p": {
     "header": "The best<br /> eco-friendly platform",
-    "lineImage": "Images/platform1pline.png",
-    "image": "Images/platform1pimage.png",
+    "lineImage": "/Images/platform1pline.png",
+    "image": "/Images/platform1pimage.png",
     "content": "This app lets you earn points for eco-friendly photos, exchange them for rewards, and promotes eco-conscious behavior and community."
   },
   "EcoActionProcess": {
     "steps": [
       {
-        "imagePath": "Images/platform2step1.png",
+        "imagePath": "/Images/platform2step1.png",
         "head": "카테고리 선택",
         "desc": "원하는 에코 액션 카테고리를<br />선택하세요."
       },
       {
-        "imagePath": "Images/platform2step2.png",
+        "imagePath": "/Images/platform2step2.png",
         "head": "에코 액션 촬영",
         "desc": "에코 액션을 사진이나 영상으로<br />손쉽게 촬영하세요."
       },
       {
-        "imagePath": "Images/platform2step3.png",
+        "imagePath": "/Images/platform2step3.png",
         "head": "보상 확인",
         "desc": "에코액션을 완료하면<br />EM 코인을 받고, 레벨 배지와<br />메달도 획득할 수 있어요!"
       },
       {
-        "imagePath": "Images/platform2step4.png",
+        "imagePath": "/Images/platform2step4.png",
         "head": "환경 기여도 확인",
         "desc": "실시간으로 환경 기여도를<br />확인해보세요!"
       }
     ],
     "title": ["에코 액션을 더 ", " 더 ", " 있게 만들어봤어요!"],
     "highlight": ["즐겁고,", "의미"],
-    "bgImage": "Images/platform2bg.jpeg"
+    "bgImage": "/Images/platform2bg.jpeg"
   },
   "Badges": {
     "header": "배지와 메달로<br />에코 액션을 더<br />재미있게 즐겨보세요!",
     "content": "에코 액션을 완료할 때마다 경험치를 쌓아<br />레벨을 올리고, 레벨 배지를 받을 수 있어요.<br />다양한 에코 액션에 따라 특별한 메달도<br />잠금 해제할 수 있습니다!",
 
-    "image": "Images/badges_medals.png"
+    "image": "/Images/badges_medals.png"
   },
   "rewards": {
     "header": "다양한 보상",
     "content": "EarthMera 히어로들을 위해<br />풍성한 보상을 마련했어요.<br />지구를 지키며 EM 코인으로<br />다양한 보상을 교환하는 즐거움을 느껴보세요!",
     "midcontent": "당신의 친환경 행동은 보상받아 마땅해요!",
-    "image": "Images/platform_reward.png"
+    "image": "/Images/platform_reward.png"
   },
   "YourImpactSection": {
     "header": "당신의 환경 기여도를<br />확인해보세요!",
     "content": "에코 액션을 할 때마다 실시간으로<br />CO₂ 저감량을 확인하고, 지금까지<br />환경에 얼마나 기여했는지 쉽게 확인해보세요!",
-    "image": "Images/yourimpact.png"
+    "image": "/Images/yourimpact.png"
   },
   "B2CEcoProducts": {
     "header": "나만의 친환경 제품을<br />수집해보세요!",
     "content": "친환경 제품을 재미있는 컬렉션 카드로 만들어보세요.<br />각 카드에는 제품이 환경에 미치는 영향이 담겨 있습니다. 나만의 특별한 컬렉션을 완성하는<br />즐거움을 느껴보세요!",
-    "image": "Images/platform_eco_product.png"
+    "image": "/Images/platform_eco_product.png"
   },
   "B2CEcoServices": {
     "header": "친환경 서비스를<br />이용해보세요!",
     "content": "내가 몰랐던 친환경 서비스!<br />일상을 더 지속가능하게 바꿀 수 있는<br />서비스들을 쉽게 확인할 수 있어요.<br />지금 바로 시작하고,<br />실시간으로 CO₂ 저감량을 확인해보세요!",
-    "image": "Images/platform_eco_service.png"
+    "image": "/Images/platform_eco_service.png"
   },
   "offer": {
     "header": "What data can we offer?",
@@ -592,17 +593,17 @@
       {
         "compHeader": "Sustainable Usage Monitoring",
         "compContent": "We monitor specific ESG-related indicators such as product lifecycle, Waste reduction, and Energy consumption reduction.",
-        "compImage": "Images/dataoffercomp1.png"
+        "compImage": "/Images/dataoffercomp1.png"
       },
       {
         "compHeader": "Societal Impact Assessment",
         "compContent": "Evaluating the beneficial effects that a product or service provides to society.",
-        "compImage": "Images/dataoffercomp2.png"
+        "compImage": "/Images/dataoffercomp2.png"
       },
       {
         "compHeader": "Data Analysis and Reporting",
         "compContent": "Analyzing collected data to provide a statistical report on the achievement of ESG goals.",
-        "compImage": "Images/dataoffercomp3.png"
+        "compImage": "/Images/dataoffercomp3.png"
       }
     ]
   },
@@ -610,33 +611,33 @@
     {
       "header": "그룹과 함께 이벤트와<br />챌린지를 즐겨보세요!",
       "content": "학교, 회사, 지역 커뮤니티와 함께 그룹을<br />만들어 에코 액션에 참여해보세요.<br /><br />AI 기반으로 일일 에코 미션을 만들거나,<br />특정 장소에서 함께할 수 있는 이벤트를<br />주최할 수 있습니다.<br /><br />그룹 채팅과 포스트를 통해 소통하고,<br />영감을 나눠보세요!",
-      "image": "Images/platform_group.png"
+      "image": "/Images/platform_group.png"
     },
     {
       "header": "그룹 플로깅을 통해,<br />건강도 챙기고,<br />지구도 지켜요!",
       "content": "그룹과 함께 플로깅 이벤트를 시작해보세요.<br />생분해성 EM Bag을 사용하면 수거한 쓰레기의 환경적 영향을 추적할 수 있어 더욱 뜻깊은 활동을 경험 할 수 있어요.<br /><br />EM Bag과 함께 전후 사진을 찍거나 셀카를 촬영하는 재미있는 미션을 수행하며, 환경에 긍정적인 변화를 만들어보세요!",
-      "image": "Images/platform_health.png"
+      "image": "/Images/platform_health.png"
     },
     {
       "header": "지속 가능한 일상을<br />공유해보세요",
       "content": "EM People과 EM Heroes은 EarthMera의<br />특별한 포스팅 공간이에요!<br /><br />EM People에서는 친환경 아이디어와<br />지속 가능한 일상을 나누고 소통할 수 있어요!<br /><br />EM Heroes는 완료한 에코 액션을 자랑할 수 있는 공간으로, 친환경 성과를 공유하고 다른 사람들이 어떻게 변화를 만들어 나가는지 확인할 수 있어요.",
-      "image": "Images/platform_em_people.png"
+      "image": "/Images/platform_em_people.png"
     }
   ],
   "EcoActionCategories": {
     "header": "에코 액션 카테고리",
     "content": "에코 액션을 선택하고 실천해보세요.<br />더 좋은 아이디어가 있나요?<br /> '카테고리 제안하기'를 이용해보세요!",
-    "bgImage": "Images/home2bg.jpeg",
-    "image": "Images/eco_action_categories.png",
+    "bgImage": "/Images/home2bg.jpeg",
+    "image": "/Images/eco_action_categories.png",
     "highlight": "카테고리 제안하기",
     "highlightComponent": "<span class='highlight'>카테고리 제안하기</span>"
   },
   "b2bhowwork": {
-    "bg": "Images/b2b4pbg.png",
+    "bg": "/Images/b2b4pbg.png",
     "header": "How does EarthMera work?",
     "left": "Any Coffee brand",
-    "o": "Images/b2b4po.png",
-    "x": "Images/b2b4px.png",
+    "o": "/Images/b2b4po.png",
+    "x": "/Images/b2b4px.png",
     "mid": [
       "The number of uses",
       "The quantity of waste reduction",
@@ -647,70 +648,70 @@
   },
   "PartnershipIntro": {
     "showcase": "보여주세요!",
-    "image": "Images/partnership_circles_ko.png"
+    "image": "/Images/partnership_circles_ko.png"
   },
   "usingb2c": {
     "header": "How EarthMera <br /> does it?",
     "content": "Our platform enhances users' ability to engage in eco-friendly actions and, through the data accumulated from user eco-actions, we can measure the ESG compliance level of the product.",
-    "image": "Images/b2b5pimage.png",
+    "image": "/Images/b2b5pimage.png",
     "midcontent": "Using Platform Model"
   },
   "esg": {
     "header": "Need better data on your ESG?",
-    "image": "Images/b2b2pimage.png",
+    "image": "/Images/b2b2pimage.png",
     "content": "EarthMera provides a platform to analyze how consumers use your products in line with ESG management, offering diverse and accurate reporting on how they consume and utilize your products."
   },
   "esg1p": {
-    "image": "Images/esg1pimage.png"
+    "image": "/Images/esg1pimage.png"
   },
   "diff": {
     "header": "The difference between regular<br /> and bio-based bags.",
     "items": [
       {
-        "image": "Images/diff1.png",
+        "image": "/Images/diff1.png",
         "title": "Material",
         "content": "Bio bags from renewables, regular bags from oil."
       },
       {
-        "image": "Images/diff2.png",
+        "image": "/Images/diff2.png",
         "title": "Eco-friendliness",
         "content": "Bio bags eco-friendly, degrade naturally; regular bags harm the environment."
       },
       {
-        "image": "Images/diff3.png",
+        "image": "/Images/diff3.png",
         "title": "Biodegradability",
         "content": "Bio bags biodegrade fast, regular bags pollute slow."
       }
     ]
   },
   "bio-based": {
-    "image": "Images/esg2pbg.png",
+    "image": "/Images/esg2pbg.png",
     "header": "We produce<br /> bio-based<br /> plastic bags.",
     "content": "EarthMera's BioBag not only enhances<br />EarthMera AI's object detection rate<br /> but also serves as an eco-friendly <br /> alternative to plastic bags <br />that are currently banned in many countries."
   },
   "bag": {
     "header": "Choose a greener tomorrow <br />with our bio-based plastic bags.",
-    "image": "Images/Bag.png"
+    "image": "/Images/Bag.png"
   },
   "biowork": {
-    "image": "Images/esg4pimg.png",
+    "image": "/Images/esg4pimg.png",
     "header": "How does EarthMera<br /> bio-bag work?",
     "content": "Embedded with a QR code, the EarthMera Bio-bag offers an enhanced AI detection capability that quantifies the bag's contents precisely. This feature ensures not only greater accuracy but also detailed insights into the bag's fill level."
   },
   "esgIntro": {
-    "image": "Images/esg1pbg.png",
-    "leftImage": "Images/esg1pleft.png",
+    "image": "/Images/esg1pbg.png",
+    "leftImage": "/Images/esg1pleft.png",
     "logos": [
-      "Images/esg1plogo1.png",
-      "Images/esg1plogo2.png",
-      "Images/esg1plogo3.png",
-      "Images/esg1plogo4.png"
+      "/Images/esg1plogo1.png",
+      "/Images/esg1plogo2.png",
+      "/Images/esg1plogo3.png",
+      "/Images/esg1plogo4.png"
     ],
     "header": "Introduce EarthMera <br /> bio-bag"
   },
   "VisionIntro": {
-    "image": "Images/vision_intro.png",
-    "smallImage": "Images/vision_intro_small.png",
+    "image": "/Images/vision_intro.png",
+    "smallImage": "/Images/vision_intro_small.png",
     "header": "인식을 행동으로,<br />행동을 지속 가능한 습관으로",
     "content": "캠페인을 통한 기후 위기의 인식은 누구나 있지만, 행동으로 이어지기는 쉽지 않아요.<br />저희는 기술을 통해 그 간극을 메워, 친환경 인식을 지속 가능한 실천으로 바꿉니다."
   },
@@ -721,17 +722,17 @@
       {
         "title": "For individuals",
         "content": "EarthMera supports eco-conscious individuals. Snap eco-friendly moments on our platform, earn rewards, and inspire many others.",
-        "img": "Images/vision3pitem1.png"
+        "img": "/Images/vision3pitem1.png"
       },
       {
         "title": "For businesses",
         "content": "With EarthMera, companies practicing ESG can enhance their social responsibility. We offer precise reporting tailored to their ESG compliance level.",
-        "img": "Images/vision3pitem2.png"
+        "img": "/Images/vision3pitem2.png"
       },
       {
         "title": "For the globe",
         "content": "EarthMera is directly manufacturing bio-based bags to contribute to creating a more sustainable Earth.",
-        "img": "Images/vision3pitem3.png"
+        "img": "/Images/vision3pitem3.png"
       }
     ]
   },
@@ -740,84 +741,84 @@
     "sub": "Objective",
     "subcontent": "Through personalized experiences, enhanced creativity, and improved problem-solving abilities, our Personal AI not only elevates the quality of life but also innovates creative solutions to environmental challenges.",
     "sub2": "Key value",
-    "image": "Images/vision5pimg.png"
+    "image": "/Images/vision5pimg.png"
   },
   "introApp": {
     "header": "Introducing EarthMera",
     "content": "EarthMera is an innovative startup that rewards individuals who protect the environment in small ways in their daily lives. By incentivizing eco-friendly actions on a micro-level, we aim to inspire a growing community dedicated to making the Earth more beautiful.",
-    "image": "Images/vision2pimg.png"
+    "image": "/Images/vision2pimg.png"
   },
   "heros": {
     "header": "Connecting people and cultures",
     "content": "Small eco-friendly actions have the potential to inspire many, just like the butterfly effect. EarthMera will take the lead in shaping a societal culture that values the environment, with the collaboration of one million Earth heroes.",
-    "image": "Images/vision4pimg.png"
+    "image": "/Images/vision4pimg.png"
   },
   "ticket": {
     "header": "Use bio-bags for<br />ticket-selling<br />entertainment",
-    "image": "Images/ticketSellingImg.png",
+    "image": "/Images/ticketSellingImg.png",
     "midcontent": "Encourage attendee cleanup<br />in entertainment spaces.",
     "content": "Utilize individual ticket codes as participant IDs. Distribute eco-bags before the festival, incentivize waste collection during the event, and reward verification. Encourage all attendees to pick up litter, ensuring a cleaner festival. Maximize efficiency and cleanliness at your event."
   },
   "B2cIntroSection": {
     "title": "EarthMera를 통해<br />모든 CO₂ 저감 활동을 추적하세요",
-    "bgImage": "Images/platform_bg.png",
-    "overlay": "Images/platform_bg_overlay.png",
+    "bgImage": "/Images/platform_bg.png",
+    "overlay": "/Images/platform_bg_overlay.png",
     "content": "지금 바로 친환경 여정을 시작해보세요!",
-    "image": "Images/platform1Image.png"
+    "image": "/Images/platform1Image.png"
   },
   "HomePlatformGroup": {
     "title": "그룹을 만들어 함께<br />챌린지와 이벤트를 즐겨보세요,<br />AI 미션으로 더 쉽고 재미있게!",
     "uptitle": "EarthMera 유저",
     "buttonText": "플랫폼 확인하기",
-    "bgImage": "Images/home2bg.jpeg",
-    "image": "Images/home_platform_group.png"
+    "bgImage": "/Images/home2bg.jpeg",
+    "image": "/Images/home_platform_group.png"
   },
   "HomePlatformShare": {
     "title": "당신의 친환경 실천과<br />아이디어를 함께 나누고,<br />소통해보세요!",
     "uptitle": "EarthMera 유저",
     "buttonText": "플랫폼 확인하기",
-    "bgImage": "Images/home2bg.jpeg",
-    "image": "Images/home_platform_share.png"
+    "bgImage": "/Images/home2bg.jpeg",
+    "image": "/Images/home_platform_share.png"
   },
   "HomePartners": {
     "title": "파트너",
     "description": "EarthMera는 다양한 파트너들과 함께 지속가능한<br />미래를 위한 새로운 가능성을 만들어가고 있습니다."
   },
   "HomePartnership": {
-    "bgImage": "Images/home2bg.jpeg",
+    "bgImage": "/Images/home2bg.jpeg",
     "uptitle": "EarthMera 파트너",
     "title": "지금 바로 EarthMera 파트너십 서비스를 확인해보세요!",
-    "cardBackground": "Images/card_background.png",
+    "cardBackground": "/Images/card_background.png",
     "cards": [
       {
         "title": "카테고리 등록",
         "description": "당신의 제품이 실제로 저감하는<br />CO₂ 양이 궁금하신가요?",
-        "icon": "Images/partners_card_co2.png"
+        "icon": "/Images/partners_card_co2.png"
       },
       {
         "title": "친환경 제품",
         "description": "친환경 제품의 검증하고,<br />지속가능한 미래를 만들어보세요!",
-        "icon": "Images/partners_card_eco_product.png"
+        "icon": "/Images/partners_card_eco_product.png"
       },
       {
         "title": "친환경 서비스",
         "description": "당신의 친환경 서비스를 통해,<br />사용자가 저감한 CO₂ 양을 확인해보세요!",
-        "icon": "Images/partners_card_eco_service.png"
+        "icon": "/Images/partners_card_eco_service.png"
       },
       {
         "title": "에코 보드",
         "description": "EarthMera에서<br />친환경을 실천하는 사용자들과<br />손쉽게 연결되어 보세요!",
-        "icon": "Images/partners_card_ecoboard.png"
+        "icon": "/Images/partners_card_ecoboard.png"
       },
       {
         "title": "주변 상점",
         "description": "당신의 친환경 상점을 주변의<br />가까운 사용자들에게 소개해보세요!",
-        "icon": "Images/partners_card_stores.png"
+        "icon": "/Images/partners_card_stores.png"
       },
       {
         "title": "티켓티어",
         "description": "친환경 이벤트를 측정 가능한 임팩트로 바꿔보세요!",
-        "icon": "Images/partners_card_ticketeer.png"
+        "icon": "/Images/partners_card_ticketeer.png"
       }
     ]
   },
@@ -825,52 +826,52 @@
     "title": "당신의 제품의 CO₂<br />저감량을 추적해보세요",
     "description": "제품을 등록하면, EarthMera AI가 해당 제품과 함께한 사용자의 에코 액션을 추적하여 CO₂ 저감 데이터를 제공합니다!",
     "buttonText": "카테고리 등록<br />문의하기",
-    "image": "Images/partnership_category.png",
-    "carbonImage": "Images/partnership_carbon.png"
+    "image": "/Images/partnership_category.png",
+    "carbonImage": "/Images/partnership_carbon.png"
   }, 
   "PartnershipEcoBoard": {
     "title": "친환경 사용자들에게<br />당신의 브랜드를 보여주세요",
     "description": "에코 보드는 친환경 사용자들을 지속 가능성을 추구하는 기업, 단체, 제품 등을 손쉽게 연결해주는 공간입니다.<br />당신의 브랜드를 통해 사용자들이 더 나은 친환경 라이프스타일을 실현할 수 있도록 함께해주세요.",
     "buttonText": "에코 보드<br />문의하기",
-    "image": "Images/partnership_ecoboard.png"
+    "image": "/Images/partnership_ecoboard.png"
   },
   "PartnershipShop": {
     "title": "내 상점 주변의<br />친환경 소비자와<br />연결해보세요!",
     "description": "제로 웨이스트나 비건 매장?<br />‘주변 상점’에 등록하고 동네 친환경 핫플로 만들어보세요! 친환경 소비자들이 당신의 매장을 더 쉽게 찾아올 수 있어요.<br />고객은 늘어나고, 브랜드 인지도는 자연스럽게 올라갑니다!",
     "buttonText": "주변 상점 문의하기",
-    "image": "Images/partnership_ecoshop.png"
+    "image": "/Images/partnership_ecoshop.png"
   },
   "TicketeerCarbon": {
     "header": "모든 티켓 이벤트에서<br />CO₂ 저감 효과를<br />확인하세요",
     "content": "티켓티어는 음악 축제, 저탄소 콘서트, 플로깅, 제로 웨이스트 파티와 같은 친환경 이벤트에서 참가자들이 친환경 미션을 완료할 때마다<br />실시간으로 CO₂ 저감량을 보여줘요!<br />또한 환경 데이터를 집계하여 이벤트 성과, 홍보, 마케팅에 유용한 인사이트를 제공해요.",
-    "image": "Images/ticketeer_carbontracking.png"
+    "image": "/Images/ticketeer_carbontracking.png"
   },
   "TicketeerIntro": {
     "header": "친환경 이벤트를<br />측정 가능한 임팩트로<br />바꿔보세요!",
     "buttonText": "티켓티어 문의하기",
-    "image": "Images/ticketeer_intro.png",
-    "titleStar": "Images/ticketeer_title_star.png"
+    "image": "/Images/ticketeer_intro.png",
+    "titleStar": "/Images/ticketeer_title_star.png"
   },
   "TicketeerSteps": {
     "header": {
       "text": "친환경 이벤트를 더욱<br />재미있고 ",
       "highlight": "의미 있게!",
-      "deco": "Images/ticketeer_step_deco.png",
-      "underline": "Images/ticketeer_step_underline.png"
+      "deco": "/Images/ticketeer_step_deco.png",
+      "underline": "/Images/ticketeer_step_underline.png"
     },
     "steps": [
       {
-        "imagePath": "Images/ticketeer_step1.png",
+        "imagePath": "/Images/ticketeer_step1.png",
         "head": "보상",
         "desc": "미션 완료에 따라 상품이나 경품 추첨을<br />제공해 동기를 부여해보세요."
       },
       {
-        "imagePath": "Images/ticketeer_step2.png",
+        "imagePath": "/Images/ticketeer_step2.png",
         "head": "데이터 인사이트",
         "desc": "주최자는 실시간으로 CO₂ 저감량과 같은<br />데이터를 확인할 수 있으며, 이벤트 종료 후 최종 집계된 데이터를 받아볼 수 있어요."
       },
       {
-        "imagePath": "Images/ticketeer_step3.png",
+        "imagePath": "/Images/ticketeer_step3.png",
         "head": "에코 챔피언십",
         "desc": "참가자들은 실시간 순위를 확인하며<br />재미있게 경쟁을 즐길 수 있어요."
       }
@@ -880,37 +881,37 @@
     "title": "어떻게 진행되나요?",
     "steps": [
       {
-        "image": "Images/ticketeer_howwork1.png",
+        "image": "/Images/ticketeer_howwork1.png",
         "subtitle": "티켓티어 이벤트 설정",
         "description": "EarthMera와 함께 맞춤형 미션과 보상을 설정해보세요!<br />음악 축제, 저탄소 콘서트, 플로깅, 제로 웨이스트 파티 등 이벤트의 목표에 맞는 경험을 설계해 참가자들의 참여를 유도하고 의미 있는 환경적 영향을 만들어낼 수 있어요.",
         "hasNext": true
       },
       {
-        "image": "Images/ticketeer_howwork2.png",
+        "image": "/Images/ticketeer_howwork2.png",
         "subtitle": "이벤트 페이지",
         "hasNext": true,
         "description": "참가자들은 티켓 번호나 주최자가 사전에 제공한 이벤트 코드를 입력해 미션 페이지에 접속할 수 있어요."
       },
       {
-        "image": "Images/ticketeer_howwork3.png",
+        "image": "/Images/ticketeer_howwork3.png",
         "subtitle": "미션 참여",
         "hasNext": true,
         "description": "참가자들은 주최자가 설정한 미션을 수행하며 이벤트를 즐길 수 있어요.<br />각 미션을 완료할 때마다 해당하는 CO₂ 저감량을 확인할 수 있어요."
       },
       {
-        "image": "Images/ticketeer_howwork4.png",
+        "image": "/Images/ticketeer_howwork4.png",
         "subtitle": "보상 받기",
         "hasNext": true,
         "description": "참가자들은 주최자가 설정한 기준을 충족하면 보상을 받을 수 있어요.<br />이는 참가자들의 지속적인 참여를 유도하며, 더 많은 미션을 완료하도록 동기를 부여해 이벤트 경험을 더욱 풍성하게 만들어줘요."
       },
       {
-        "image": "Images/ticketeer_howwork5.png",
+        "image": "/Images/ticketeer_howwork5.png",
         "subtitle": "에코 챔피언십 참여",
         "hasNext": true,
         "description": "모든 미션을 완료한 참가자들은 에코 챔피언십에 참여할 수 있어요. 완료한 미션 수에 따라 순위가 표시되며, 이는 참가자 간의 재밌는 경쟁을 유도해요. 이를 통해, 참가자들이 지속적으로 몰입하며 환경적 성과를 내도록 동기를 부여해요."
       },
       {
-        "image": "Images/ticketeer_howwork6.png",
+        "image": "/Images/ticketeer_howwork6.png",
         "subtitle": "데이터 인사이트 제공",
         "hasNext": false,
         "description": "주최자는 CO₂ 저감량 및 미션 완료 통계와 같은 유용한 데이터 인사이트를 확인할 수 있어요. 이 데이터는 이벤트 성과를 평가하고, 향후 이벤트를 개선하며, 마케팅 및 홍보 전략을 강화하는 데 활용됩니다."
@@ -923,72 +924,72 @@
       {
         "title": "개인",
         "description": "EarthMera는 CO₂ 추적, 보상, 쇼츠 콘텐츠, 그룹 기능 같은 커뮤니티 요소를 통해 개인이 지속 가능한 습관을 형성하도록 도와요",
-        "icon": "Images/value_individual.png"
+        "icon": "/Images/value_individual.png"
       },
       {
         "title": "그룹",
         "description": "EarthMera는 함께하는 즐거움을 선사해요. 그룹 챌린지와 플로깅 이벤트로 다 같이 참여하면, 지속 가능성을 더욱 재미있게 실천할 수 있어요!",
-        "icon": "Images/value_group.png"
+        "icon": "/Images/value_group.png"
       },
       {
         "title": "비지니스",
         "description": "친환경 서비스·제품·이벤트를 제공하는 기업이 CO₂ 저감 데이터를 활용해 마케팅 효과를 높이고, ESG 활동을 강화할 수 있도록 지원해요!",
-        "icon": "Images/value_business.png"
+        "icon": "/Images/value_business.png"
       },
       {
         "title": "공공 부문",
         "description": "학생 봉사, 지자체 플로깅, 지역 축제 등 다양한 공공활동에 CO₂ 저감 데이터를 활용해, 정책과 교육을 한층 더 발전시킬 수 있도록 도와요!",
-        "icon": "Images/value_government.png"
+        "icon": "/Images/value_government.png"
       }
     ]
   },
   "ValueEMHeroes": {
     "header": "EarthMera 히어로",
     "content": "작은 친환경 행동이라도 나비효과처럼 많은 사람들에게 긍정적인 변화를 가져올 수 있어요! <br />EarthMera는 100만 명의 ‘EarthMera 히어로’들과 함께, 환경을 소중히 여기는 사회 문화를 이끌어가겠습니다.",
-    "image": "Images/value_emheroes.jpg"
+    "image": "/Images/value_emheroes.jpg"
   },
   "ValueUserCount": {
     "title": "전 세계의 EarthMera 히어로들!",
-    "bgImage": "Images/value_sky.jpg",
-    "userIcon": "Images/value_user.png",
+    "bgImage": "/Images/value_sky.jpg",
+    "userIcon": "/Images/value_user.png",
     "content": "함께, 더 푸른 미래를 만들어가요!"
   },
   "HomeLandingSection": {
     "title": "지구를 지키는 행동,<br />모두 이곳<br />EarthMera에서!",
     "content": "지금 바로 CO₂ 저감 여정을 시작하고,<br />의미 있는 변화를 만들어보세요!",
-    "image": "Images/home_intro.png"
+    "image": "/Images/home_intro.png"
   },
   "HomeEnvImpact": {
     "title": "친환경 활동을 완료하고,<br />보상을 받으며 환경 기여도를<br />실시간으로 확인하세요!",
     "uptitle": "EarthMera 유저",
     "buttonText": "플랫폼 확인하기",
-    "bgImage": "Images/home2bg.jpeg",
-    "image": "Images/home2Screen.png"
+    "bgImage": "/Images/home2bg.jpeg",
+    "image": "/Images/home2Screen.png"
   },
   "HomeEcoProducts": {
     "title": "친환경 제품을 인증하고,<br />나만의 특별한 친환경 카드<br />컬렉션을 만들어보세요!",
     "uptitle": "EarthMera 유저",
     "buttonText": "플랫폼 확인하기",
-    "bgImage": "Images/home2bg.jpeg",
-    "image": "Images/home_eco_product.png"
+    "bgImage": "/Images/home2bg.jpeg",
+    "image": "/Images/home_eco_product.png"
   },
   "HomeEcoServices": {
     "title": "좋아하는 에코 서비스를 이용하며<br />얼마나 CO₂를 줄이고 있는지<br />확인해보세요!",
     "uptitle": "EarthMera 유저",
     "buttonText": "플랫폼 확인하기",
-    "bgImage": "Images/home2bg.jpeg",
-    "image": "Images/home_eco_service.png"
+    "bgImage": "/Images/home2bg.jpeg",
+    "image": "/Images/home_eco_service.png"
   },
   "B2BEcoServices": {
     "title": "당신의 에코 서비스가 만드는<br />진짜 영향력을 확인해보세요",
     "description": "에코 서비스를 이용하는 사용자의 에코 액션을 EarthMera AI가 인증하고, CO₂ 저감량 데이터를 제공합니다. 이 데이터를 바탕으로 에코 서비스 제공 기업은 집계된 CO₂ 저감량을 확인하고, 실질적인 환경 기여도를 파악할 수 있습니다.<br />EarthMera와 함께 여러분의 서비스가 만드는 진짜 변화를 확인해보세요.",
     "buttonText": "친환경 서비스<br />문의하기",
-    "image": "Images/partner_eco_service.png"
+    "image": "/Images/partner_eco_service.png"
   },
   "B2BEcoProducts": {
     "title": "EarthMera와 함께<br />친환경 제품을 검증해보세요",
     "description": "EarthMera와 함께 친환경 제품을 검증할 파트너를 찾고 있어요! 검증된 제품은 EarthMera의 특별한 친환경 카드로 제작되어, 사용자는 지속 가능성 여정을더 즐겁게 이어갈 수 있고, 파트너는 브랜드 신뢰도를 자연스럽게 높일 수 있습니다.",
     "buttonText": "친환경 제품<br />문의하기",
-    "image": "Images/partner_eco_product.png"
+    "image": "/Images/partner_eco_product.png"
   }
 }

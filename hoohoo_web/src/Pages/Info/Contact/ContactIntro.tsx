@@ -1,9 +1,9 @@
 import i18next from 'i18next';
-import React, {useEffect, useState} from 'react';
+import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
-import LinedHeader from '../../../Component/ContentBox/LinedHeader';
-import Wrapper from '../../../Component/Wrapper/Wrapper';
-import {theme} from '../../../style';
+import LinedHeader from '../../../components/ContentBox/LinedHeader';
+import Wrapper from '../../../components/Wrapper/Wrapper';
+import { theme } from '../../../style';
 import {
   BackgroundImage,
   IntroHeaderTextContainer,
@@ -25,7 +25,7 @@ export default function ContactIntro() {
     return () => window.removeEventListener('resize', handleResize);
   }, []);
   return (
-    <BackgroundImage image="Images/contactBgImg.png">
+    <BackgroundImage image="/Images/contactBgImg.png">
       <Wrapper>
         <Header>
           <LinedHeader

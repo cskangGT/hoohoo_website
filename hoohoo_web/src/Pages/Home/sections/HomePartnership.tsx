@@ -2,7 +2,7 @@ import i18next from 'i18next';
 import React from 'react';
 import Marquee from 'react-fast-marquee';
 import styled from 'styled-components';
-import Wrapper from '../../../Component/Wrapper/Wrapper';
+import Wrapper from '../../../components/Wrapper/Wrapper';
 import { theme } from '../../../style';
 import { UpperTitle } from './HomeEnvImpact';
 const Container = styled.section`

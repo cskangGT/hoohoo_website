@@ -1,8 +1,8 @@
 import i18next from 'i18next';
 import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
-import LinedHeader from '../../../Component/ContentBox/LinedHeader';
-import { useLanguage } from '../../../Component/hooks/LanguageContext';
+import LinedHeader from '../../../components/ContentBox/LinedHeader';
+import { useLanguage } from '../../../components/hooks/LanguageContext';
 import { theme } from '../../../style';
 import { ContentBox } from './Strength';
 

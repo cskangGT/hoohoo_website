@@ -1,8 +1,8 @@
 import i18next from 'i18next';
 import React from 'react';
 import styled from 'styled-components';
-import { useLanguage } from '../../../../Component/hooks/LanguageContext';
-import Wrapper from '../../../../Component/Wrapper/Wrapper';
+import { useLanguage } from '../../../../components/hooks/LanguageContext';
+import Wrapper from '../../../../components/Wrapper/Wrapper';
 import { theme } from '../../../../style';
 const ContentBox = styled.div`
   display: flex;

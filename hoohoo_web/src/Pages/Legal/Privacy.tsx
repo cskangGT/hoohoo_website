@@ -1,8 +1,8 @@
 import DOMPurify from 'dompurify';
-import React, {useEffect} from 'react';
+import React, { useEffect } from 'react';
 import styled from 'styled-components';
-import Wrapper from '../../Component/Wrapper/Wrapper';
-import {theme} from '../../style';
+import Wrapper from '../../components/Wrapper/Wrapper';
+import { theme } from '../../style';
 const Background = styled.div`
   width: 100%;
   height: 100%;

@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 
 import i18next from 'i18next';
-import { useLanguage } from '../../../../Component/hooks/LanguageContext';
+import { useLanguage } from '../../../../components/hooks/LanguageContext';
 import HowWorkItem from './HowWorkItem';
 const Container = styled.section`
   width: 100%;

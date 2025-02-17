@@ -1,8 +1,8 @@
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
-import Bubble from '../../Component/Bubble';
+import Bubble from '../../components/Bubble';
 
-import {slideInFromTop} from '../../style';
+import { slideInFromTop } from '../../style';
 import LandingB2C from '../LandingPage/LandingB2C';
 const SectionContainer = styled.section`
   animation: ${slideInFromTop} 0.7s ease-out forwards;

@@ -1,9 +1,9 @@
 import i18next from 'i18next';
-import React, {useEffect, useState} from 'react';
-import {useSwipeable} from 'react-swipeable';
+import React, { useEffect, useState } from 'react';
+import { useSwipeable } from 'react-swipeable';
 import styled from 'styled-components';
-import Slider from '../../Component/ContentBox/Slider';
-import {slideInFromTop, theme} from '../../style';
+import Slider from '../../components/ContentBox/Slider';
+import { slideInFromTop, theme } from '../../style';
 
 const SectionContainer = styled.section`
   animation: ${slideInFromTop} 0.7s ease-out forwards;
