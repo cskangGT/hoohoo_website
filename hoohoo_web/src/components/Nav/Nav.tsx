@@ -344,7 +344,7 @@ function Nav() {
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const [windowWidth, setWindowWidth] = useState<number>(window.innerWidth);
   const {i18n} = useTranslation();
-  const data: Props = i18next.t('Nav', {returnObjects: true});
+  const data: any = i18next.t('Nav', {returnObjects: true});
   const navItems: NavItem[] = data['navlist'];
   const lang: string[] = data['lang'];
   const logo: any = data['logo'];
@@ -433,7 +433,7 @@ function Nav() {
                   className="HoverContainer"
                   key={i + 'hoverContainer'}
                   style={{overflow: 'visible'}}>
-                  <NavLink className="NavLink" id={item.link} key={i} href={item.link ? item.link : ''}>
+                  <NavLink className="NavLink" id={item.link} key={i} href={item.link}>
                     {item.label}
                     <FontAwesomeIcon icon={faCaretDown} className="fa-caret" />
                   </NavLink>

@@ -5,7 +5,7 @@ import styled from 'styled-components';
 import Wrapper from '../../../components/Wrapper/Wrapper';
 import { theme } from '../../../style';
 import { logButtonEvent, PageName } from '../../../util/firebase_custom_event';
-import { HomeTransitionButton } from '../HomeIntroPage';
+import { HomeTransitionButton } from '../styles';
 const Container = styled.section`
   width: 100%;
   background-color: transparent;

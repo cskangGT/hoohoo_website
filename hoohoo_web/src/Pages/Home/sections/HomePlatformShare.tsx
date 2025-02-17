@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 import Wrapper from '../../../components/Wrapper/Wrapper';
 import { logButtonEvent, PageName } from '../../../util/firebase_custom_event';
-import { HomeTransitionButton } from '../HomeIntroPage';
+import { HomeTransitionButton } from '../styles';
 import { ButtonBox, HeaderText, UpperTitle } from './HomeEnvImpact';
 const Container = styled.section`
   width: 100%;

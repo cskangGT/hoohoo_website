@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import { Header } from '../../../components/ContentBox/TwoColBoxesSection';
 import Wrapper from '../../../components/Wrapper/Wrapper';
-import { HomeTransitionButton } from '../../Home/HomeIntroPage';
+import { HomeTransitionButton } from '../../Home/styles';
 import { ButtonBox } from './PhotoVideoes';
 const Container = styled.section`
   width: 100%;

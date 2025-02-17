@@ -83,7 +83,7 @@ function SlideContent({array}: SlideContentProps) {
   return (
     <Slide key={array[0].name}>
       {array.map((value, index) => (
-        <ProfileCard item={value} />
+        <ProfileCard key={value.name} item={value} />
       ))}
     </Slide>
   );
@@ -91,7 +91,7 @@ function SlideContent({array}: SlideContentProps) {
 
 function TeamProfiles() {
   const numProfileInSlide: number = 3;
-  const data: Profile[] = i18next.t('teamIntro', {returnObjects: true});
+  const data: any = i18next.t('teamIntro', {returnObjects: true});
   const groupedData = [];
   for (let i = 0; i < data.length; i += numProfileInSlide) {
     groupedData.push(data.slice(i, i + numProfileInSlide));
@@ -120,7 +120,7 @@ function TeamProfiles() {
         </HeaderBox>
         <ProfileRow>
           {groupedData.map((value, index) => (
-            <SlideContent array={value} />
+            <SlideContent key={index} array={value} />
           ))}
         </ProfileRow>
         {/* <React.Fragment>

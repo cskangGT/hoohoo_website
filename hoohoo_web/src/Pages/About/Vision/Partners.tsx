@@ -194,11 +194,11 @@ type SubDataType = {
 function Partners() {
   const [slideIndex, setSlideIndex] = useState<number>(0);
   const [isText, setIsText] = useState<boolean>(false);
-  const data: Data = i18next.t('partners', {returnObjects: true});
+  const data: any = i18next.t('partners', {returnObjects: true});
 
-  const imagePaths = Object.values(data.content).map(item => item.imagePath);
+  const imagePaths = Object.values(data.content).map((item: any) => item.imagePath);
   const desc: string[] = Object.values(data.content).map(
-    item => item.description,
+    (item: any) => item.description,
   );
   const handleButtonClick = () => {
     setIsText(!isText);
@@ -216,7 +216,7 @@ function Partners() {
         <HorizonContainer>
           <SlickBar>
             <LongBar>
-              {data.list.map((item, index) => (
+              {data.list.map((item: string, index: number) => (
                 <Outline
                   key={index}
                   op={index}

@@ -2,7 +2,7 @@ import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 import Wrapper from '../../components/Wrapper/Wrapper';
-import { HomeTransitionButton } from './HomeIntroPage';
+import { HomeTransitionButton } from './styles';
 import { ButtonBox, HeaderText, UpperTitle } from './sections/HomeEnvImpact';
 const Container = styled.section`
   width: 100%;

@@ -5,8 +5,8 @@ import {
   RightBox,
 } from '../../../components/ContentBox/TwoColBoxesSection';
 import Wrapper from '../../../components/Wrapper/Wrapper';
-import { HomeTransitionButton } from '../../Home/HomeIntroPage';
 import { HeaderText } from '../../Home/sections/HomeEnvImpact';
+import { HomeTransitionButton } from '../../Home/styles';
 const Container = styled.div`
   display: flex;
   height: 800px;
