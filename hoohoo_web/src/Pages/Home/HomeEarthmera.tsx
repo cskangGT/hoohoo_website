@@ -87,6 +87,8 @@ function HomeEarthmera() {
 
   const sectionRef = useRef<HTMLDivElement>(null);
   const currentLang = i18next.language;
+  console.log("currentLang", currentLang);
+  
   return (
     <BgImage>
       <OpenGraphMeta
@@ -94,7 +96,8 @@ function HomeEarthmera() {
         description={currentLang ==='en' ?
           "Join EarthMera and track your eco-friendly actions. Earn rewards while reducing your carbon footprint!" : "어스메라와 함께 친환경 행동을 추적하세요. 탄소 배출을 줄이면서 보상을 받아요!"}
         image={data.image}
-        url={`https://www.earthmera.com/${currentLang}/`}
+        url={`https://www.earthmera.com/${currentLang === 'en' ? 'en' : 'ko'}/`}
+        locale={currentLang === 'en' ? 'en_US' : 'ko_KR'}
       />
       <BgImage bgcolor={'#F2F2F7 !important'}>
         <IntroContentBox>

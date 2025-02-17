@@ -22,6 +22,7 @@ const OpenGraphMeta: React.FC<OpenGraphMetaProps> = ({
     <Helmet>
       {/* 기본 메타태그 */}
       <title>{title}</title>
+      <link rel="canonical" href={url} />
       <meta name="description" content={description} />
 
       {/* Open Graph 메타태그 */}
