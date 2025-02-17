@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import { useLanguage } from '../../../../components/hooks/LanguageContext';
 import { emailTo } from '../../../../util/email';
 import { logButtonEvent, PageName } from '../../../../util/firebase_custom_event';
-import { HomeTransitionButton } from '../../../Home/HomeIntroPage';
+import { HomeTransitionButton } from '../../../Home/styles';
 import { ButtonBox } from '../PhotoVideoes';
 import {
   PartnershipContainer,

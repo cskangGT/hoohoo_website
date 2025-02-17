@@ -5,7 +5,7 @@ import { useLanguage } from '../../../../components/hooks/LanguageContext';
 import { slideInFromTop, theme } from '../../../../style';
 import { emailTo } from '../../../../util/email';
 import { logButtonEvent, PageName } from '../../../../util/firebase_custom_event';
-import { HomeTransitionButton } from '../../../Home/HomeIntroPage';
+import { HomeTransitionButton } from '../../../Home/styles';
 const Container = styled.div`
   animation: ${slideInFromTop} 0.7s ease-out forwards;
   display: flex;

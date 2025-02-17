@@ -160,7 +160,7 @@ const SlideContent: React.FC<{
   );
 };
 const DropBIntro: React.FC = () => {
-  const data: DataStructure = i18next.t('dropbIntro', {returnObjects: true});
+  const data: any = i18next.t('dropbIntro', {returnObjects: true});
   const [currentSlide, setCurrentSlide] = useState<number>(0);
   const slides = Object.keys(data);
   const handleLeftClick = () => {

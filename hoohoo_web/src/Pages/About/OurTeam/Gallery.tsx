@@ -88,7 +88,7 @@ const SlideContent: React.FC<{imagePaths: string[]}> = ({imagePaths}) => {
 };
 const Gallery: React.FC = () => {
   const [currentSlide, setCurrentSlide] = useState<number>(0);
-  const slides: string[] = i18next.t('gallery', {returnObjects: true});
+  const slides: string[] = (i18next.t('gallery', {returnObjects: true}) as string[]) || [];
   const [isPaused, setIsPaused] = useState(false);
 
   const handlers = useSwipeable({

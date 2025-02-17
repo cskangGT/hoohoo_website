@@ -7,7 +7,7 @@ import Wrapper from '../../../../components/Wrapper/Wrapper';
 import { theme } from '../../../../style';
 import { emailTo } from '../../../../util/email';
 import { logButtonEvent, PageName } from '../../../../util/firebase_custom_event';
-import { HomeTransitionButton } from '../../../Home/HomeIntroPage';
+import { HomeTransitionButton } from '../../../Home/styles';
 import { ButtonBox } from '../PhotoVideoes';
 export const PartnershipContainer = styled.section`
   width: 100%;

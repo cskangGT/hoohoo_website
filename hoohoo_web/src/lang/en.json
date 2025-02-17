@@ -7,12 +7,12 @@
     "logo": {
       "text": "EarthMera",
       "image": "/Images/icon_image.png",
-      "link": "/"
+      "link": "/en/"
     },
     "lang": ["KOR", "ENG"],
 
     "navlist": [
-      {"label": "Home", "link": "/home"},
+      {"label": "Home", "link": "/en/home"},
       {
         "label": "About",
         "subItems": [
