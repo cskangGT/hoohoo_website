@@ -108,8 +108,8 @@ function HomeEarthmera() {
           ? "어스메라와 함께 친환경 행동을 추적하세요. 탄소 배출을 줄이면서 보상을 받아요!"
           : "Join EarthMera and track your eco-friendly actions. Earn rewards while reducing your carbon footprint!"
         }
-        image={data.image}
-        url={`https://www.earthmera.com/${language}/`}
+        image={'https://www.earthmera.com/Images/home_intro.png'}
+        url={`https://www.earthmera.com/${language || 'en'}/`}
         locale={language === 'ko' ? 'ko_KR' : 'en_US'}
       />
       <BgImage bgcolor={'#F2F2F7 !important'}>
