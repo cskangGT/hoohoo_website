@@ -32,6 +32,9 @@ export const LanguageProvider: React.FC<{children: React.ReactNode}> = ({
   const toggleLanguage = () => {
     const newLang = language === 'ko' ? 'en' : 'ko';
     const currentPath = location.pathname.replace(/^\/(ko|en)/, '');
+    console.log("currentPath", currentPath);
+    
+    console.log("location.state", location.state);
     
     setLanguage(newLang);
     i18n.changeLanguage(newLang);

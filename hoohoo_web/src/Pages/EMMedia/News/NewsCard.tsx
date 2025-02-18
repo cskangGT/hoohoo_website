@@ -106,17 +106,22 @@ function NewsCard({item}: Props) {
   //           year: 'numeric',
   //         })
   //         .replace(/\//g, '-');
-  return (
-    <Card onClick={() => navigate(`/news/${idx}`, {
-      state: {
-        idx: idx,
+  const handleClick = () => {
+    // 한글 영어 구분해서 페이지 이동 
+    
+      navigate(`/${language}/news/${idx}`, {
+        state: {
+          idx: idx,
         title: title,
         url: url,
         uploadAt: uploadAt,
         
         thumbnailImage: thumbnailImage,
       }
-    })}>
+    });
+  }
+  return (
+    <Card onClick={handleClick}>
       {thumbnailImage && (
         <ImageBox>
           <Image src={thumbnailImage} />

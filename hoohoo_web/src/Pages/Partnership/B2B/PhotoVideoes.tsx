@@ -110,6 +110,15 @@ export default function PhotoVideoes() {
       return (index > 0 ? ' ' : '') + word;
     }
   });
+  const handleEmailClick = (e: React.MouseEvent) => {
+    e.preventDefault();
+    const emailAddress = 'support@earthmera.com';
+    window.location.href = `mailto:${emailAddress}`;
+    
+    setTimeout(() => {
+      window.open(`https://mail.google.com/mail/?view=cm&fs=1&to=${emailAddress}`, '_blank');
+    }, 300);
+  };
   return (
     <Wrapper>
       <Container>
@@ -117,7 +126,7 @@ export default function PhotoVideoes() {
           <Header>{headerWords}</Header>
           <ContentText dangerouslySetInnerHTML={{__html: data.content}} />
           <ButtonBox>
-            <HomeTransitionButton href="mailto:devceohoony@gmail.com">
+            <HomeTransitionButton onClick={handleEmailClick}>
               {data.buttonText}
             </HomeTransitionButton>
           </ButtonBox>

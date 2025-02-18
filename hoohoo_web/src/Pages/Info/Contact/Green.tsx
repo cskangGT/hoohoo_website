@@ -44,13 +44,23 @@ export default function Green() {
     subheader: " Let's make the Earth greener together.",
     button: 'Contact Us',
   };
+  const handleEmailClick = (e: React.MouseEvent) => {
+    e.preventDefault();
+    const emailAddress = 'support@earthmera.com';
+    window.location.href = `mailto:${emailAddress}`;
+    
+    // 폴백(fallback) 처리
+    setTimeout(() => {
+      window.open(`https://mail.google.com/mail/?view=cm&fs=1&to=${emailAddress}`, '_blank');
+    }, 300);
+  };
   return (
     <Bg image={data.bgImage}>
       <Wrapper>
         <VerticalSection>
           <SectionHeader dangerouslySetInnerHTML={{__html: data.header}} />
           <SubHeader>{data.subheader}</SubHeader>
-          <Button href={'mailto:devceohoony@gmail.com'}>{data.button}</Button>
+          <Button onClick={handleEmailClick}>{data.button}</Button>
         </VerticalSection>
       </Wrapper>
     </Bg>

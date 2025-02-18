@@ -2,6 +2,7 @@ import i18next from 'i18next';
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
+import { useLanguage } from '../../../components/hooks/LanguageContext';
 import Wrapper from '../../../components/Wrapper/Wrapper';
 import { logButtonEvent, PageName } from '../../../util/firebase_custom_event';
 import { HomeTransitionButton } from '../styles';
@@ -89,10 +90,11 @@ const ScreenImage = styled.img`
 `;
 function HomePlatformShare() {
   const navigate = useNavigate();
+  const {language} = useLanguage();
   const data: any = i18next.t('HomePlatformShare', {returnObjects: true});
   function goPlatform() {
     logButtonEvent('go_platform in HomePlatformShare', PageName.home);
-    navigate('/platform');
+    navigate(`/${language}/platform`);
   }
   return (
     <Container>

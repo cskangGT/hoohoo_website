@@ -1,9 +1,10 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
+import { useLanguage } from '../../components/hooks/LanguageContext';
 import Wrapper from '../../components/Wrapper/Wrapper';
-import { HomeTransitionButton } from './styles';
 import { ButtonBox, HeaderText, UpperTitle } from './sections/HomeEnvImpact';
+import { HomeTransitionButton } from './styles';
 const Container = styled.section`
   width: 100%;
   background-color: transparent;
@@ -91,6 +92,7 @@ const ScreenImage = styled.img`
 `;
 function HomePartnershipEcoBoard() {
   const navigate = useNavigate();
+  const {language} = useLanguage();
   const data = {
     title:
       'Connect effortlessly with<br />a community of eco-conscious<br />individuals on EarthMera',
@@ -100,7 +102,7 @@ function HomePartnershipEcoBoard() {
     image: 'Images/home2EcoBoard.png',
   };
   function goPartnership() {
-    navigate('/partnership');
+    navigate(`/${language}/partnership`);
   }
   return (
     <Container>

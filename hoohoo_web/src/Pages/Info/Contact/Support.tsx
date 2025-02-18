@@ -45,13 +45,23 @@ export default function Support() {
       "Your feedback and questions are important to us.<br />You can also email us directly at <a href='mailto:support@earthmera.com'>support@earthmera.com</a>.",
     button: 'Contact Support',
   };
+  const handleEmailClick = (e: React.MouseEvent) => {
+    e.preventDefault();
+    const emailAddress = 'support@earthmera.com';
+    window.location.href = `mailto:${emailAddress}?subject=Support`;
+    
+    // 폴백(fallback) 처리
+    setTimeout(() => {
+      window.open(`https://mail.google.com/mail/?view=cm&fs=1&to=${emailAddress}`, '_blank');
+    }, 300);
+  };
   return (
     <Bg image={data.bgImage}>
       <Wrapper>
         <VerticalSection>
           <SectionHeader dangerouslySetInnerHTML={{__html: data.header}} />
           <SubHeader dangerouslySetInnerHTML={{__html: data.subheader}} />
-          <Button href={'mailto:support@earthmera.com?subject=Support'}>
+          <Button onClick={handleEmailClick}>
             {data.button}
           </Button>
         </VerticalSection>

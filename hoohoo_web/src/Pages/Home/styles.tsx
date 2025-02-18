@@ -36,7 +36,7 @@ export const HomeTransitionButton = styled(PartnerButton)`
   justify-content: center;
   line-height: 1;
   text-align: center;
-  
+  cursor: pointer;
 
   padding: 15px 20px;
   /* @media screen and (max-width: 1200px){

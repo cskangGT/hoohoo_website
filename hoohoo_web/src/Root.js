@@ -61,7 +61,6 @@ function Root() {
         {/* <div style={{backgroundColor: 'transparent'}}> */}
         <HrefLangMeta />
         <Frame>
-          
           <Outlet />
         </Frame>
         <ToastContainer />

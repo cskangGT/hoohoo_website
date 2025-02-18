@@ -1,9 +1,10 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
+import { useLanguage } from '../../components/hooks/LanguageContext';
 import Wrapper from '../../components/Wrapper/Wrapper';
-import { HomeTransitionButton } from './styles';
 import { ButtonBox, HeaderText, UpperTitle } from './sections/HomeEnvImpact';
+import { HomeTransitionButton } from './styles';
 const Container = styled.section`
   width: 100%;
   background-color: transparent;
@@ -90,6 +91,7 @@ const ScreenImage = styled.img`
 
 export default function HomeTicketeer() {
   const navigate = useNavigate();
+  const {language} = useLanguage();
   const data = {
     bgImage: 'Images/home2bg.jpeg',
     image: 'Images/home4Image.png',
@@ -99,7 +101,7 @@ export default function HomeTicketeer() {
     buttonText: 'Check EM Ticketeer',
   };
   function goTicketeer() {
-    navigate('/ticketeer');
+    navigate(`/${language}/ticketeer`);
   }
   return (
     <Container>

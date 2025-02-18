@@ -63,19 +63,19 @@ const LogoImage = styled.img`
 
 const HomePartners = () => {
   const logoImage = [
-    'Images/logo/partner_logo1.png',
-    'Images/logo/partner_logo2.png',
-    'Images/logo/partner_logo3.png',
-    'Images/logo/partner_logo4.png',
-    'Images/logo/partner_logo5.png',
+    '/Images/logo/partner_logo1.png',
+    '/Images/logo/partner_logo2.png',
+    '/Images/logo/partner_logo3.png',
+    '/Images/logo/partner_logo4.png',
+    '/Images/logo/partner_logo5.png',
   ];
   const logoSecondLine = [
-    'Images/logo/partner_logo6.png',
-    'Images/logo/partner_logo7.png',
-    'Images/logo/partner_logo8.png',
-    'Images/logo/partner_logo9.png',
-    'Images/logo/partner_logo10.png',
-    'Images/logo/partner_logo11.png',
+    '/Images/logo/partner_logo6.png',
+    '/Images/logo/partner_logo7.png',
+    '/Images/logo/partner_logo8.png',
+    '/Images/logo/partner_logo9.png',
+    '/Images/logo/partner_logo10.png',
+    '/Images/logo/partner_logo11.png',
   ];
   const allLogos = [...logoImage, ...logoSecondLine];
 

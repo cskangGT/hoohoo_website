@@ -6,6 +6,7 @@ import Wrapper from '../../../components/Wrapper/Wrapper';
 import { logButtonEvent, PageName } from '../../../util/firebase_custom_event';
 import { HomeTransitionButton } from '../styles';
 import { ButtonBox, HeaderText, UpperTitle } from './HomeEnvImpact';
+import { useLanguage } from '../../../components/hooks/LanguageContext';
 const Container = styled.section`
   width: 100%;
   background-color: transparent;
@@ -99,10 +100,11 @@ const RightBox = styled.div`
 `;
 const HomeEcoProducts = () => {
   const navigate = useNavigate();
+  const {language} = useLanguage();
   const data: any = i18next.t('HomeEcoProducts', {returnObjects: true});
   function goPlatform() {
     logButtonEvent('go_platform in HomeEcoProducts', PageName.home);
-    navigate('/platform');
+    navigate(`/${language}/platform`);
   }
   return (
     <Container>

@@ -104,7 +104,7 @@ export default function AskTicketeer() {
           <RightBot src={data.rightBot} />
         </TextBox>
         <ButtonBox>
-          <Button href="mailto:devceohoony@gmail.com">{data.buttonText}</Button>
+          <Button href="mailto:support@earthmera.com">{data.buttonText}</Button>
         </ButtonBox>
       </LeftBox>
       <RightBox>

@@ -3,7 +3,6 @@ import React from 'react';
 import styled from 'styled-components';
 import { useLanguage } from '../../../../components/hooks/LanguageContext';
 import { slideInFromTop, theme } from '../../../../style';
-import { emailTo } from '../../../../util/email';
 import { logButtonEvent, PageName } from '../../../../util/firebase_custom_event';
 import { HomeTransitionButton } from '../../../Home/styles';
 const Container = styled.div`
@@ -126,6 +125,15 @@ const Image = styled.img`
 function TicketeerIntro() {
   const data: any = i18next.t('TicketeerIntro', {returnObjects: true});
   const {language} = useLanguage();
+  const handleEmailClick = (e: React.MouseEvent) => {
+    e.preventDefault();
+    const emailAddress = 'support@earthmera.com';
+    window.location.href = `mailto:${emailAddress}`;
+    logButtonEvent('ask_partnership in TicketeerIntro', PageName.ticketeer);
+    setTimeout(() => {
+      window.open(`https://mail.google.com/mail/?view=cm&fs=1&to=${emailAddress}`, '_blank');
+    }, 300);
+  };
   return (
     <Container>
       <LeftBox>
@@ -137,7 +145,7 @@ function TicketeerIntro() {
           <StarImage src={data.titleStar} />
         </HeaderBox>
 
-        <HomeTransitionButton href={emailTo} onClick={() => logButtonEvent('ticketeer_intro', PageName.ticketeer)}>
+        <HomeTransitionButton onClick={handleEmailClick}>
           {data.buttonText}
         </HomeTransitionButton>
       </LeftBox>

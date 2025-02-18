@@ -121,6 +121,17 @@ export default function EMBags() {
     tailText:
       'Made from bio-based materials and designed with a QR code, these EM-bags are used by users for clean-up, collecting trash efficiently.',
   };
+  const handleEmailClick = (e: React.MouseEvent) => {
+    e.preventDefault();
+    const emailAddress = 'support@earthmera.com';
+    window.location.href = `mailto:${emailAddress}`;
+    
+    // 폴백(fallback) 처리  
+    setTimeout(() => {
+      window.open(`https://mail.google.com/mail/?view=cm&fs=1&to=${emailAddress}`, '_blank');
+    }, 300);
+  };
+  
   return (
     <Container>
       <Background>
@@ -141,7 +152,7 @@ export default function EMBags() {
                 )}
               </ContentText>
               <ButtonBox>
-                <Button href="mailto:devceohoony@gmail.com">
+                <Button onClick={handleEmailClick}>
                   {data.buttonText}
                 </Button>
               </ButtonBox>

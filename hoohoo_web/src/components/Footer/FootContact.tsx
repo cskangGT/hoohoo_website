@@ -2,6 +2,7 @@ import i18next from 'i18next';
 import React from 'react';
 import styled from 'styled-components';
 import { theme } from '../../style';
+import { logButtonEvent, PageName } from '../../util/firebase_custom_event';
 const ContactBox = styled.div`
   background-color: transparent;
   display: flex;
@@ -34,6 +35,7 @@ const LinktoEmail = styled.a`
   display: flex;
   justify-content: center;
   align-items: center;
+  cursor: pointer;
   margin-bottom: 26px;
   border-width: 0px;
   font-weight: 500;
@@ -42,13 +44,23 @@ const LinktoEmail = styled.a`
   }
 `;
 export default function FootContact() {
+  const handleEmailClick = (e: React.MouseEvent) => {
+    e.preventDefault();
+    const emailAddress = 'support@earthmera.com';
+    window.location.href = `mailto:${emailAddress}`;
+    logButtonEvent('contact_us', PageName.home);
+    // 폴백(fallback) 처리
+    setTimeout(() => {
+      window.open(`https://mail.google.com/mail/?view=cm&fs=1&to=${emailAddress}`, '_blank');
+    }, 300);
+  };
   const data: any = i18next.t('footcontact', {returnObjects: true});
   return (
     <ContactBox id="contact" key="contact">
       <ContactColumnBox>
         <ContactText>{data.title}</ContactText>
         <LinktoEmail
-          href="mailto:devceohoony@gmail.com"
+          onClick={handleEmailClick}
           data-l10n-id="footer_contactus">
           {data.button}
         </LinktoEmail>
