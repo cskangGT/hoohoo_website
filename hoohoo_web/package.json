@@ -42,7 +42,7 @@
   },
   "scripts": {
     "start": "webpack serve --config webpack/webpack.dev.js",
-    "build": "webpack --config webpack/webpack.prod.js",
+    "build": "rm -rf build && webpack --config webpack/webpack.prod.js && mkdir -p build && cp public/index.html build/ && react-snap",
     "start:dev": "webpack serve --open --config webpack/webpack.dev.js",
     "build:dev": "webpack --config webpack/webpack.dev.js",
     "start:prod": "webpack serve --open --config webpack/webpack.prod.js",
@@ -68,6 +68,17 @@
       "last 1 safari version"
     ]
   },
+  "reactSnap": {
+    "include": [
+      "/",
+      "/en",
+      "/ko"
+    ],
+    "excluded": [
+      "/en/privacy",
+      "/ko/privacy"
+    ]
+  },
   "devDependencies": {
     "@babel/core": "^7.23.2",
     "@babel/preset-env": "^7.23.2",
@@ -89,6 +100,7 @@
     "prettier-plugin-organize-imports": "^4.1.0",
     "progress-webpack-plugin": "^1.0.16",
     "raw-loader": "^4.0.2",
+    "react-snap": "^1.23.0",
     "style-loader": "^3.3.3",
     "ts-loader": "^9.5.0",
     "url-loader": "^4.1.1",
