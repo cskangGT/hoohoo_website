@@ -1,8 +1,7 @@
-import React, { useEffect, useRef, useState } from 'react';
-import styled from 'styled-components';
-
 import i18next from 'i18next';
+import React, { useEffect, useRef, useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
+import styled from 'styled-components';
 import FootContact from '../../components/Footer/FootContact';
 import { useLanguage } from '../../components/hooks/LanguageContext';
 import OpenGraphMeta from '../../components/opengraph/OpenGraph';
@@ -71,17 +70,26 @@ function HomeEarthmera() {
     window.scrollTo(0, 0);
     const hash = decodeURIComponent(location.hash.replace('#', ''));
     if (hash) {
+      
+      
       // const [pageWithHash, query] = hash.split('?');
       // const page = pageWithHash.split('#')[0]; // 페이지 이름 추출
       // const params = new URLSearchParams(query);
       const [page, query] = hash.split('#?');
       const params = new URLSearchParams(query);
       const link = params.toString();
-
-      if (link) {
-        navigate(`/${page}?${link}`);
+      if (page.includes('redirect')) {
+        if (link) {
+          navigate(`/${page}?${link}`);
+        } else {  
+          navigate(`/${page}`);
+        }
       } else {
-        navigate(`/${page}`);
+        if (link) {
+          navigate(`/${language}/${page}?${link}`);
+        } else {  
+          navigate(`/${language}/${page}`);
+        }
       }
     }
   }, []);

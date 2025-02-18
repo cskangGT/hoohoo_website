@@ -5,13 +5,13 @@
 
   <!-- 홈 페이지 -->
   <url>
-    <loc>https://www.earthmera.com/ko</loc>
+    <loc>https://www.earthmera.com/ko/</loc>
     <lastmod>2024-02-18</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>https://www.earthmera.com/en</loc>
+    <loc>https://www.earthmera.com/en/</loc>
     <lastmod>2024-02-18</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
