@@ -186,7 +186,8 @@ function NewsPage() {
     fetchData('', category);
   };
   useEffect(() => {
-    handleSelectCategory(selectedCategory);
+    fetchData('', '');
+    
   }, []);
 
   useEffect(() => {
@@ -269,16 +270,16 @@ function NewsPage() {
                     )} */}
                 </ScrollContainer>
               </SlickBar>
-              {fetchedList.length === 0 ? (
-                <Text style={{minHeight: 400}}>
-                  {language === 'ko' ? '아직 뉴스가 없습니다.' : 'No news yet.'}
-                </Text>
-              ) : (
-                isLoading ? (
+              {isLoading ? (
                   <LoadingContainer>
                     <LoadingSpinner />
                   </LoadingContainer>
-                ) : (
+                ) :fetchedList.length === 0 ? (
+                <Text style={{minHeight: 400}}>
+                  {language === 'ko' ? '아직 뉴스가 없습니다.' : 'No news yet.'}
+                </Text>
+              ) : 
+                (
                   <>
                     <Grid>
                       {
@@ -293,7 +294,7 @@ function NewsPage() {
                     changePage={changePage}
                   />
                 </>
-              ))}
+              )}
             </ContentBox>
           </Container>
         </Wrapper>

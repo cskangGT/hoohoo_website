@@ -3,7 +3,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import i18next from 'i18next';
 import React, { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 import { theme } from '../../style';
 import { useLanguage } from '../hooks/LanguageContext';
@@ -344,33 +344,28 @@ function Nav() {
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const [windowWidth, setWindowWidth] = useState<number>(window.innerWidth);
   const {i18n} = useTranslation();
+  const location = useLocation();
   const data: any = i18next.t('Nav', {returnObjects: true});
   const navItems: NavItem[] = data['navlist'];
   const lang: string[] = data['lang'];
   const logo: any = data['logo'];
   const {language, setLanguage} = useLanguage();
-  const changelanguageToKo = () => {
-    i18n.changeLanguage('ko');
-    setLanguage('ko');
-  };
-  const changelanguageToEn = () => {
-    i18n.changeLanguage('en');
-    setLanguage('en');
-  };
+  
   const handleLanguageChange = (newLang: string) => {
     // 현재 경로에서 언어 부분 추출
     const currentPath = location.pathname.replace(/^\/(ko|en)/, '');
     
+    const state = location.state;
+    
     if (newLang === 'ko') {
-      
       setLanguage('ko');
       i18n.changeLanguage('ko');
-      navigate(`/ko${currentPath}`);
+      navigate(`/ko${currentPath}`, state ? {state: {...state}} : {});
     } else {
       
       setLanguage('en');
       i18n.changeLanguage('en');
-      navigate(`/en${currentPath}`);
+      navigate(`/en${currentPath}`, state ? {state: {...state}} : {});
     }
   };
   const [hide, setHide] = useState(false);
@@ -409,6 +404,16 @@ function Nav() {
       navigate(language === 'ko' ? '/ko' : '/en');
     }
   };
+  const handleEmailClick = (e: React.MouseEvent) => {
+    e.preventDefault();
+    const emailAddress = 'support@earthmera.com';
+    window.location.href = `mailto:${emailAddress}`;
+    
+    // 폴백(fallback) 처리
+    setTimeout(() => {
+      window.open(`https://mail.google.com/mail/?view=cm&fs=1&to=${emailAddress}`, '_blank');
+    }, 300);
+  };  
   return (
     <Bar style={{top: !hide ? '0' : '-100%'}}>
       <Logo
@@ -465,12 +470,13 @@ function Nav() {
                     className="NavLink"
                     id={item.link}
                     key={i}
-                    href={item.link ? item.link : ''}
-                    onClick={() => {
+                    href={item.label === 'Contact' || item.label === '문의하기' ? '' : item.link ? item.link : ''}
+                    onClick={(e) => {
                       if (item.label === 'Contact' || item.label === '문의하기') {
-                        window.location.href = 'mailto:devceohoony@gmail.com';
+                        // window.location.href = 'mailto:support@earthmera.com';
+                        handleEmailClick(e);
                       } else {
-                        navigate(item.link ? item.link : '');
+
                         isOpen && setIsOpen(false);
                       }
                     }}>

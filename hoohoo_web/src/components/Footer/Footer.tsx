@@ -10,6 +10,7 @@ import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 import ManageAccModal from '../../Pages/DeleteAccount/ManageAccModal';
 import { theme } from '../../style';
+import { useLanguage } from '../hooks/LanguageContext';
 
 const Background = styled.footer`
   background-color: transparent;
@@ -187,9 +188,10 @@ function Footer() {
     if (searchParams.get('modal') === 'open') {
       setIsOpen(true);
     } else if (searchParams.get('support') === 'yes') {
-      navigate('/support');
+      navigate(`/${language}/support`);
     }
   }, [location.search]);
+  const {language} = useLanguage();
   return (
     <Background>
       <Container>
@@ -199,22 +201,22 @@ function Footer() {
             <BusinessDetail>
               
               {data.ceo}
-              <br /> {data.email} : sung.ceo@earthmera.com
+              <br /> {data.email} : support@earthmera.com
             </BusinessDetail>
           </HeaderColumn>
 
           <RowBox>
             <Buttons
               text1={data.menuButtons.about}
-              action1={() => navigate(`/about_team`)}
+              action1={() => navigate(`/${language}/about_team`)}
               text2={data.menuButtons.partnership}
-              action2={() => navigate(`/partnership`)}
+              action2={() => navigate(`/${language}/partnership`)}
             />
             <Buttons
               text1={data.menuButtons.terms}
-              action1={() => navigate('/terms_of_use')}
+              action1={() => navigate(`/${language}/terms_of_use`)}
               text2={data.menuButtons.privacy}
-              action2={() => navigate(`/privacy`)}
+              action2={() => navigate(`/${language}/privacy`)}
             />
             <Buttons
               text1={data.menuButtons.manage}

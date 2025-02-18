@@ -1,2 +1,2 @@
-export const email = "devceohoony@gmail.com"
+export const email = "support@earthmera.com"
 export const emailTo = `mailto:${email}`;

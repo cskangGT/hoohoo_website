@@ -2,6 +2,7 @@ import i18next from 'i18next';
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
+import { useLanguage } from '../../../components/hooks/LanguageContext';
 import Wrapper from '../../../components/Wrapper/Wrapper';
 import { theme } from '../../../style';
 import { logButtonEvent, PageName } from '../../../util/firebase_custom_event';
@@ -127,10 +128,11 @@ export const ButtonBox = styled.div`
 
 export default function HomeEnvImpact() {
   const navigate = useNavigate();
+  const {language} = useLanguage();
   const data: any = i18next.t('HomeEnvImpact', {returnObjects: true});
   function goPlatform() {
     logButtonEvent('go_platform in HomeEnvImpact', PageName.home);
-    navigate('/platform');
+    navigate(`/${language}/platform`);
   }
   return (
     <Container>

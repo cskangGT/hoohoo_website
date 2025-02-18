@@ -5,7 +5,6 @@ import styled from 'styled-components';
 import { useLanguage } from '../../../../components/hooks/LanguageContext';
 import Wrapper from '../../../../components/Wrapper/Wrapper';
 import { theme } from '../../../../style';
-import { emailTo } from '../../../../util/email';
 import { logButtonEvent, PageName } from '../../../../util/firebase_custom_event';
 import { HomeTransitionButton } from '../../../Home/styles';
 import { ButtonBox } from '../PhotoVideoes';
@@ -124,7 +123,16 @@ function PartnershipCarbonTracking() {
     returnObjects: true,
   });
   const {language} = useLanguage();
-  function goPlatform() {}
+  const handleEmailClick = (e: React.MouseEvent) => {
+    e.preventDefault();
+    const emailAddress = 'support@earthmera.com';
+    window.location.href = `mailto:${emailAddress}`;
+    logButtonEvent('ask_partnership in PartnershipCarbonTracking', PageName.partnership);
+    // 폴백(fallback) 처리
+    setTimeout(() => {
+      window.open(`https://mail.google.com/mail/?view=cm&fs=1&to=${emailAddress}`, '_blank');
+    }, 300);
+  };
   return (
     <PartnershipContainer>
       <Wrapper>
@@ -140,8 +148,7 @@ function PartnershipCarbonTracking() {
             />
             <ButtonBox>
               <HomeTransitionButton
-                href={emailTo}
-                onClick={() => logButtonEvent('go_platform in PartnershipCarbonTracking', PageName.partnership)}
+                onClick={handleEmailClick}
                 dangerouslySetInnerHTML={{
                   __html: data.buttonText,
                 }}></HomeTransitionButton>

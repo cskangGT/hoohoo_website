@@ -178,7 +178,7 @@ const IconImage = styled.img`
 `;
 function PartnersCard({data}: CardProps) {
   return (
-    <CardContainer backgroundImage={'Images/card_background.png'}>
+    <CardContainer backgroundImage={'/Images/card_background.png'}>
       <CardHeader dangerouslySetInnerHTML={{__html: data.title}}></CardHeader>
       <CardDesc dangerouslySetInnerHTML={{__html: data.description}}></CardDesc>
       <IconImage src={data.icon} />
