@@ -149,6 +149,16 @@ const Router = createBrowserRouter([
         element: <RedirectPage />,
         errorElement: <ErrorComponent />,
       },
+      {
+        path: '/privacy',
+        element: <Privacy />,
+        errorElement: <ErrorComponent />,
+      },
+      {
+        path: '/terms_of_use',
+        element: <TandC />,
+        errorElement: <ErrorComponent />,
+      },
       ...createLocalizedRoutes(baseRoutes)
     ],
     errorElement: <NotFound />,
