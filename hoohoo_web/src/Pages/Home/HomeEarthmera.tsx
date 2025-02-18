@@ -92,17 +92,17 @@ function HomeEarthmera() {
   return (
     <BgImage>
       <OpenGraphMeta
-        title={language === 'en' 
-          ? "EarthMera | Make Eco-Actions Fun and Impactful" 
-          : "어스메라 | 친환경 행동을 즐겁고 영향력 있게 만들어요"
+        title={language === 'ko' 
+          ? "어스메라 | 친환경 행동을 즐겁고 영향력 있게 만들어요"
+          : "EarthMera | Make Eco-Actions Fun and Impactful"
         }
-        description={language === 'en'
-          ? "Join EarthMera and track your eco-friendly actions. Earn rewards while reducing your carbon footprint!"
-          : "어스메라와 함께 친환경 행동을 추적하세요. 탄소 배출을 줄이면서 보상을 받아요!"
+        description={language === 'ko'
+          ? "어스메라와 함께 친환경 행동을 추적하세요. 탄소 배출을 줄이면서 보상을 받아요!"
+          : "Join EarthMera and track your eco-friendly actions. Earn rewards while reducing your carbon footprint!"
         }
         image={data.image}
         url={`https://www.earthmera.com/${language}/`}
-        locale={language === 'en' ? 'en_US' : 'ko_KR'}
+        locale={language === 'ko' ? 'ko_KR' : 'en_US'}
       />
       <BgImage bgcolor={'#F2F2F7 !important'}>
         <IntroContentBox>
