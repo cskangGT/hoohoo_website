@@ -342,31 +342,7 @@
     "content": "Ready to make a strong ESG statement?",
     "button": "Get Started"
   },
-  "b2csolutions": {
-    "header": "Who can use EarthMera solutions?",
-    "solutions": [
-      {
-        "title": "All entertainment businesses that sell tickets.",
-        "image": "/Images/b2bsolution1.png",
-        "content": "Users can earn rewards and extract data by helping with environmental improvement through the QR code on their tickets during entertainment."
-      },
-      {
-        "title": "Companies that manufactures eco-friendly products.",
-        "image": "/Images/b2bsolution2.png",
-        "content": "We promote your products in our app and offer user feedback and data reporting."
-      },
-      {
-        "title": "Businesses engaged in ESG management.",
-        "image": "/Images/b2bsolution3.png",
-        "content": "We offer MD data reporting to companies in ESG management facing challenges in quantifying their product's environmental contributions and ESG compliance level."
-      },
-      {
-        "title": "Other companies need the product statistics.",
-        "image": "/Images/b2bsolution4.png",
-        "content": "We provide statistical data and consulting services to interested companies through our platform to help them ensure that consumers are using eco-friendly products as intended by the company."
-      }
-    ]
-  },
+
   "video_youtube": [
     {
       "video": "https://www.youtube.com/embed/B4BQuJaPLkM?si=-g1Kg6-xSGR4ZVAu",
@@ -602,12 +578,12 @@
   "B2CEcoProducts": {
     "header": "Collect Your<br />Eco-Products",
     "content": "Turn your eco-friendly products into fun collectible cards. Each card shows how your products make an impact. Enjoy the excitement of building your unique collection!",
-    "image": "/Images/platform_eco_product.png"
+    "image": "/Images/platform_eco_product.webp"
   },
   "B2CEcoServices": {
     "header": "Explore Eco-Services",
     "content": "Explore eco-friendly services you might not have known about and see how easy it is to make your daily life more sustainable.<br />Start using these services today and track your CO₂ reduction in real-time as you take steps toward a greener future!",
-    "image": "/Images/partner_eco_service.png"
+    "image": "/Images/platform_eco_service.webp"
   },
   "offer": {
     "header": "What data can we offer?",
@@ -846,20 +822,20 @@
     "title": "Track the CO₂ reductions<br />of your products",
     "description": "Register your products, and EarthMera AI will track the eco-friendly actions taken with them, providing you with accurate CO₂ reduction data.",
     "buttonText": "Ask about<br />Category Registration",
-    "image": "/Images/partnership_category.png",
+    "image": "/Images/partnership_category.webp",
     "carbonImage": "/Images/partnership_carbon.png"
   },
   "PartnershipEcoBoard": {
     "title": "Boost your Brand<br />with Eco-Board",
     "description": "EcoBoard connects you with sustainable brands and eco-conscious organizations, offering easy access to information that inspires a greener lifestyle.",
     "buttonText": "Ask about Eco-Board",
-    "image": "/Images/partnership_ecoboard.png"
+    "image": "/Images/partnership_ecoboard.webp"
   },
   "PartnershipShop": {
     "title": "Get Found by<br />Eco-Shoppers Nearby",
     "description": "List your zero-waste or vegan store on EarthMera and make it easy for eco-conscious shoppers to find you. Users can see your store's location nearby and connect with your sustainable brand, helping you grow your customer base and increase visibility.",
     "buttonText": "Ask about ads",
-    "image": "/Images/partnership_ecoshop.png"
+    "image": "/Images/partnership_ecoshop.webp"
   },
   "TicketeerCarbon": {
     "header": "Track CO₂ Reduction<br />at Any Ticketed Event",
@@ -869,7 +845,7 @@
   "TicketeerIntro": {
     "header": "Turn your eco-events<br />into measurable impact",
     "buttonText": "Ask about Ticketeer",
-    "image": "/Images/ticketeer_intro.png",
+    "image": "/Images/ticketeer_intro.webp",
     "titleStar": "/Images/ticketeer_title_star.png"
   },
   "TicketeerSteps": {
@@ -881,17 +857,17 @@
     },
     "steps": [
       {
-        "imagePath": "/Images/ticketeer_step1.png",
+        "imagePath": "/Images/ticketeer_step1.webp",
         "head": "Rewards",
         "desc": "Offer prizes or a lucky draw based on mission completion to boost motivation."
       },
       {
-        "imagePath": "/Images/ticketeer_step2.png",
+        "imagePath": "/Images/ticketeer_step2.webp",
         "head": "Data Insights",
         "desc": "Organizers can monitor CO₂ reduction and trash collected in real-time, with final data available after the event."
       },
       {
-        "imagePath": "/Images/ticketeer_step3.png",
+        "imagePath": "/Images/ticketeer_step3.webp",
         "head": "Eco Championship",
         "desc": "Participants can track their real-time rankings, adding fun and friendly competition."
       }
@@ -901,37 +877,37 @@
     "title": "How Does it work?",
     "steps": [
       {
-        "image": "/Images/ticketeer_howwork1.png",
+        "image": "/Images/ticketeer_howwork1.webp",
         "subtitle": "Create Ticketeer Event",
         "description": "Work with EarthMera to set up custom missions and rewards that align with the goals of your event, whether it's a music festival, low-carbon concert, plogging, or zero-waste party. Tailor the experience to engage participants and drive meaningful environmental impact.",
         "hasNext": true
       },
       {
-        "image": "/Images/ticketeer_howwork2.png",
+        "image": "/Images/ticketeer_howwork2.webp",
         "subtitle": "Participants Access the Mission Page",
         "hasNext": true,
         "description": "Participants can enter the event mission page by entering their ticket number or the event code provided by the organizer in advance."
       },
       {
-        "image": "/Images/ticketeer_howwork3.png",
+        "image": "/Images/ticketeer_howwork3.webp",
         "subtitle": "Participants Access the Mission Page",
         "hasNext": true,
         "description": "Participants will enjoy the event while completing missions set by the organizer. As they complete each mission, the corresponding CO₂ reduction is tracked and recorded for each participant."
       },
       {
-        "image": "/Images/ticketeer_howwork4.png",
+        "image": "/Images/ticketeer_howwork4.webp",
         "subtitle": "Participants Earn Rewards",
         "hasNext": true,
         "description": "Participants will earn rewards by meeting the criteria set by the organizer. This motivates them to stay engaged and complete more missions, enhancing their overall event experience."
       },
       {
-        "image": "/Images/ticketeer_howwork5.png",
+        "image": "/Images/ticketeer_howwork5.webp",
         "subtitle": "Participants Can Join the Eco Championship",
         "hasNext": true,
         "description": "After completing all missions, participants can join the Eco Championship. Based on how many missions they've completed, a ranking will be displayed, fostering friendly competition. This not only adds excitement to the event but also provides motivation for participants to keep engaging and performing at their best."
       },
       {
-        "image": "/Images/ticketeer_howwork6.png",
+        "image": "/Images/ticketeer_howwork6.webp",
         "subtitle": "Event Organizers Gain Data Insights",
         "hasNext": false,
         "description": "Organizers can access valuable data insights, such as CO₂ reduction and mission completion statistics, in real time. This data helps evaluate event performance, improve future events, and drive marketing and promotional strategies."
@@ -984,7 +960,7 @@
     "uptitle": "For EarthMera Users",
     "buttonText": "Check our platform",
     "bgImage": "/Images/home2bg.jpeg",
-    "image": "/Images/home2Screen.png"
+    "image": "/Images/home2Screen.webp"
   },
   "HomeEcoProducts": {
     "title": "Verify your<br />eco-products and<br />build your unique collection!",
@@ -1004,12 +980,12 @@
     "title": "Track the Real Impact of<br />Your Eco-Service",
     "description": "EarthMera AI tracks user actions and calculates CO₂ reductions, helping eco-services showcase their real impact. Partner with us to demonstrate how your business contributes to a sustainable future and inspires meaningful change.",
     "buttonText": "Ask about<br />Eco-Services",
-    "image": "/Images/partner_eco_service.png"
+    "image": "/Images/partner_eco_service.webp"
   },
   "B2BEcoProducts": {
     "title": "Certify Eco-Products<br />with EarthMera",
     "description": "EarthMera is looking for partners to certify eco-friendly products. Once certified, these products are turned into collectible cards, making sustainability fun and engaging while enhancing your brand's credibility.",
     "buttonText": "Ask about<br />Eco-Products",
-    "image": "/Images/partner_eco_product.png"
+    "image": "/Images/partner_eco_product.webp"
   }
 }

@@ -99,7 +99,7 @@ const RightBox = styled.div`
   display: flex;
   position: relative;
   width: 60%;
-  height: 400px;
+  height: 500px;
   @media screen and (max-width: 1000px) {
     padding: 0 10px;
     width: 90%;
@@ -115,11 +115,14 @@ const RightBox = styled.div`
 const Image = styled.img`
 
   
-  height: 400px;
-  object-fit: cover;
+  height: 500px;
+  width: 100%;
+  object-fit: contain;
   position: absolute;
   @media screen and (max-width: 500px) {
-    height: 350px;
+    height: 400px;
+    width: 110%;
+    left: -5%;
   }
 `;
 function TicketeerIntro() {
