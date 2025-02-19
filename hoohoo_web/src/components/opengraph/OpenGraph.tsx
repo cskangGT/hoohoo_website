@@ -1,5 +1,6 @@
 import React from 'react';
 import { Helmet } from 'react-helmet-async';
+import { useLanguage } from '../hooks/LanguageContext';
 
 interface OpenGraphMetaProps {
   title: string;
@@ -18,10 +19,11 @@ const OpenGraphMeta: React.FC<OpenGraphMetaProps> = ({
   locale = 'en_US',
   siteName = 'EarthMera',
 }) => {
+  const {language} = useLanguage();
   return (
     <Helmet>
       {/* 기본 메타태그 */}
-      <link rel="canonical" href={url} />
+      <link rel="canonical" hrefLang={language}  href={url} />
       <meta name="description" content={description} />
 
       {/* Open Graph 메타태그 */}

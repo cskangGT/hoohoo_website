@@ -3,6 +3,8 @@ const CopyWebpackPlugin = require('copy-webpack-plugin');
 const ProgressPlugin = require('progress-webpack-plugin');
 const Dotenv = require('dotenv-webpack');
 const path = require('path');
+const PrerenderSPAPlugin = require('prerender-spa-plugin');
+const Renderer = PrerenderSPAPlugin.PuppeteerRenderer;
 module.exports = {
   entry: './src/index.js',
 
@@ -19,7 +21,8 @@ module.exports = {
     compress: true,
     historyApiFallback: true,
     hot: true,
-
+    host: '0.0.0.0',
+    allowedHosts: 'all',
     open: true,
     port: 3000,
     static: {
@@ -57,6 +60,17 @@ module.exports = {
     new HtmlWebpackPlugin({
       template: './public/index.html',
       filename: 'index.html',
+    }),
+    new PrerenderSPAPlugin({
+      // 빌드 산출물이 생성되는 폴더
+      staticDir: path.join(__dirname, 'dist'),
+      // 프리렌더할 라우트 목록
+      routes: ['/', '/ko/', '/en/'],
+
+      renderer: new Renderer({
+        headless: true,
+        renderAfterDocumentEvent: 'render-event' // SPA가 렌더 완료 후 이벤트
+      })
     }),
     new CopyWebpackPlugin({
       patterns: [{from: './public/Images', to: 'Images'}],
