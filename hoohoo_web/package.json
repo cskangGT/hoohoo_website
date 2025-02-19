@@ -71,8 +71,8 @@
   "reactSnap": {
     "include": [
       "/",
-      "/en",
-      "/ko"
+      "/en/",
+      "/ko/"
     ],
     "excluded": [
       "/en/privacy",
