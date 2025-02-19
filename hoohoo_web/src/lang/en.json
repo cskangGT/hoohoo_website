@@ -956,9 +956,9 @@
     "image": "/Images/home_intro.png",
     "opengraph" : {
       "siteName": "EarthMera",
-      "title" : "Every eco-action, all here.",
+      "title" : "EarthMera | Every eco-action, all here.",
       "description" : "Start your carbon-reducing journey today and make a real impact!",
-      "image" : "https://www.earthmera.com/Images/opengraph_home.png",
+      "image" : "https://www.earthmera.com/Images/opengraph_.png",
       "url": "https://www.earthmera.com/en/",
       "locale": "en_US"
     }

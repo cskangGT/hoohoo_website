@@ -7,11 +7,11 @@ import 'react-toastify/dist/ReactToastify.css';
 import { analytics } from './\bfirebase';
 import Frame from './components/Frame';
 import { LanguageProvider } from './components/hooks/LanguageContext';
-import HrefLangMeta from './HrefLangMeta';
+import OpenGraphMeta from './components/opengraph/OpenGraph';
 
 function usePageTracking() {
   const location = useLocation();
-
+  
   useEffect(() => {
     logEvent(analytics, 'page_view', {
       page_path: location.pathname,
@@ -23,7 +23,7 @@ function usePageTracking() {
 function Root() {
   const location = useLocation();
   const navigate = useNavigate();
-  
+  const data = i18next.t('HomeLandingSection', {returnObjects: true});
   useEffect(() => {
     const pathParts = location.pathname.split('/');
     const currentLang = pathParts[1];
@@ -59,7 +59,15 @@ function Root() {
     <LanguageProvider>
       <CookiesProvider>
         {/* <div style={{backgroundColor: 'transparent'}}> */}
-        <HrefLangMeta />
+        {/* <HrefLangMeta /> */}
+        <OpenGraphMeta
+        title={data.opengraph.title}
+        description={data.opengraph.description}
+        image={data.opengraph.image}
+        url={data.opengraph.url}
+        locale={data.opengraph.locale}
+        siteName={data.opengraph.siteName}
+      />
         <Frame>
           <Outlet />
         </Frame>

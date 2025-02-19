@@ -96,6 +96,7 @@
     "fork-ts-checker-webpack-plugin": "^9.0.2",
     "html-webpack-plugin": "^5.5.3",
     "node": "^20.7.0",
+    "prerender-spa-plugin": "^3.4.0",
     "prettier": "3.3.3",
     "prettier-plugin-organize-imports": "^4.1.0",
     "progress-webpack-plugin": "^1.0.16",

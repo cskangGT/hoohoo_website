@@ -96,7 +96,10 @@ function HomeEarthmera() {
 
   const sectionRef = useRef<HTMLDivElement>(null);
   
-  
+  useEffect(() => {
+    const event = new Event('render-event');
+    document.dispatchEvent(event);
+  }, []);
   return (
     <BgImage>
       <OpenGraphMeta
