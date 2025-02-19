@@ -15,6 +15,25 @@ module.exports = smp.wrap(
     cache: {
       type: 'filesystem',
     },
+    devServer: {
+      compress: true,
+      historyApiFallback: {
+        rewrites: [
+          { from: /^\/ko\//, to: '/ko/index.html' },
+          { from: /^\/en\//, to: '/en/index.html' },
+          { from: /./, to: '/index.html' }
+        ]
+      },
+      hot: true,
+      
+      allowedHosts: 'all',
+      host: '0.0.0.0',
+      open: true,
+      port: 3000,
+      static: {
+        directory: path.join(__dirname, '../dist'),
+      },
+    },
     module: {
       rules: [
         {

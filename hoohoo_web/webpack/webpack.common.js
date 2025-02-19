@@ -3,8 +3,7 @@ const CopyWebpackPlugin = require('copy-webpack-plugin');
 const ProgressPlugin = require('progress-webpack-plugin');
 const Dotenv = require('dotenv-webpack');
 const path = require('path');
-const PrerenderSPAPlugin = require('prerender-spa-plugin');
-const Renderer = PrerenderSPAPlugin.PuppeteerRenderer;
+
 module.exports = {
   entry: './src/index.js',
 
@@ -21,8 +20,6 @@ module.exports = {
     compress: true,
     historyApiFallback: true,
     hot: true,
-    host: '0.0.0.0',
-    allowedHosts: 'all',
     open: true,
     port: 3000,
     static: {
@@ -59,18 +56,33 @@ module.exports = {
   plugins: [
     new HtmlWebpackPlugin({
       template: './public/index.html',
-      filename: 'index.html',
+      filename: 'en/index.html',
+      templateParameters: {
+        lang: 'en',
+        title: 'EarthMera | Every eco-action, all here.',
+        description: 'Start your carbon-reducing journey today and make a real impact!',
+        ogLocale: 'en_US'
+      }
     }),
-    new PrerenderSPAPlugin({
-      // 빌드 산출물이 생성되는 폴더
-      staticDir: path.join(__dirname, 'dist'),
-      // 프리렌더할 라우트 목록
-      routes: ['/', '/ko/', '/en/'],
-
-      renderer: new Renderer({
-        headless: true,
-        renderAfterDocumentEvent: 'render-event' // SPA가 렌더 완료 후 이벤트
-      })
+    new HtmlWebpackPlugin({
+      template: './public/index.html',
+      filename: 'ko/index.html',
+      templateParameters: {
+        lang: 'ko',
+        title: 'EarthMera | 모든 친환경 활동, 여기 다 있습니다.',
+        description: '오늘부터 탄소 저감 여정을 시작하고 실질적인 변화를 만들어보세요!',
+        ogLocale: 'ko_KR'
+      }
+    }),
+    new HtmlWebpackPlugin({
+      template: './public/index.html',
+      filename: 'index.html',
+      templateParameters: {
+        lang: 'en',
+        title: 'EarthMera | Every eco-action, all here.',
+        description: 'Start your carbon-reducing journey today and make a real impact!',
+        ogLocale: 'en_US'
+      }
     }),
     new CopyWebpackPlugin({
       patterns: [{from: './public/Images', to: 'Images'}],
