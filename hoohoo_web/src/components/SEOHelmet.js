@@ -36,10 +36,11 @@ const SEOHelmet = ({language}) => {
   };
 
   // 현재 경로에서 언어 부분 제거 (/ko/about -> /about)
-  const pathWithoutLang = currentPath.replace(/^\/(ko|en)/, '');
+  // const pathWithoutLang = currentPath.replace(/^\/(ko|en)/, '');
+  // console.log('pathWithoutLang', pathWithoutLang);
 
   // 현재 페이지에 대한 메타 정보 반환, 없으면 기본값 사용
-  const meta = (pageMeta[pathWithoutLang] || defaultMeta)[language];
+  const meta = defaultMeta[language];
 
   return (
     <Helmet>
@@ -56,7 +57,7 @@ const SEOHelmet = ({language}) => {
       />
       <meta
         property="og:url"
-        content={`https://www.earthmera.com${currentPath}`}
+        content={`https://www.earthmera.com${language}`}
       />
       <meta property="og:type" content="website" />
       <meta
