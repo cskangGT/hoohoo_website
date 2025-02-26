@@ -51,7 +51,7 @@ const IntroContentBox = styled.div`
   -webkit-overflow-scrolling: touch;
 `;
 
-function HomeEarthmera({language}: {language: string}) {
+function HomeEarthmera() {
   const location = useLocation();
   const navigate = useNavigate();
   const [isOpen, setIsOpen] = useState<boolean>(false);

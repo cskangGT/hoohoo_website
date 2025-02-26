@@ -1,14 +1,7 @@
 import React from 'react';
 import {Helmet} from 'react-helmet-async';
-import {useLocation} from 'react-router-dom';
 
 const SEOHelmet = ({language}) => {
-  const location = useLocation();
-  const currentPath = location.pathname;
-
-  // 언어 확인 (URL에서 추출)
-  const currentLanguage = currentPath.startsWith('/ko') ? 'ko' : 'en';
-
   // 기본 메타 정보
   const defaultMeta = {
     ko: {
@@ -46,7 +39,7 @@ const SEOHelmet = ({language}) => {
   const pathWithoutLang = currentPath.replace(/^\/(ko|en)/, '');
 
   // 현재 페이지에 대한 메타 정보 반환, 없으면 기본값 사용
-  const meta = (pageMeta[pathWithoutLang] || defaultMeta)[currentLanguage];
+  const meta = (pageMeta[pathWithoutLang] || defaultMeta)[language];
 
   return (
     <Helmet>
@@ -68,7 +61,7 @@ const SEOHelmet = ({language}) => {
       <meta property="og:type" content="website" />
       <meta
         property="og:locale"
-        content={meta.locale || (currentLanguage === 'ko' ? 'ko_KR' : 'en_US')}
+        content={meta.locale || (language === 'ko' ? 'ko_KR' : 'en_US')}
       />
       <meta property="og:site_name" content="EarthMera" />
 
