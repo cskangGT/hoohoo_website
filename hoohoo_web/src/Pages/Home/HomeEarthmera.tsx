@@ -4,7 +4,6 @@ import {useLocation, useNavigate} from 'react-router-dom';
 import styled from 'styled-components';
 import FootContact from '../../components/Footer/FootContact';
 import {useLanguage} from '../../components/hooks/LanguageContext';
-import OpenGraphMeta from '../../components/opengraph/OpenGraph';
 import {BgImage, theme} from '../../style';
 import {ContentBox} from '../About/Vision/EarthMeraVision';
 import HomeEcoProducts from './sections/HomeEcoProducts';
@@ -122,76 +121,51 @@ function HomeEarthmera({language}: {language: string}) {
     document.dispatchEvent(event);
   }, []);
   return (
-    <>
-      {language === 'ko' ? (
-        <OpenGraphMeta
-          title={'어스메라 | 지구를 지키는 행동, 모두 이곳에서'}
-          description={
-            '지금 바로 CO₂ 저감 여정을 시작하고, 의미 있는 변화를 만들어보세요.'
-          }
-          image={'https://www.earthmera.com/Images/opengraph_image.png'}
-          url={'https://www.earthmera.com/ko/'}
-          locale={'ko_KR'}
-          siteName={'EarthMera'}
-        />
-      ) : (
-        <OpenGraphMeta
-          title={'EarthMera | Every eco-action, all here.'}
-          description={
-            'Start your carbon-reducing journey today and make a real impact!'
-          }
-          image={'https://www.earthmera.com/Images/opengraph_image.png'}
-          url={'https://www.earthmera.com/en/'}
-          locale={'en_US'}
-          siteName={'EarthMera'}
-        />
-      )}
-      <BgImage>
-        <BgImage bgcolor={'#F2F2F7 !important'}>
-          <IntroContentBox>
-            <HomeLandingSection />
-          </IntroContentBox>
-        </BgImage>
-        <ContentBox>
-          <HomeEnvImpact></HomeEnvImpact>
-        </ContentBox>
-        <ContentBox id="eco-products">
-          <HomeEcoProducts />
-        </ContentBox>
-        <ContentBox id="eco-services">
-          <HomeEcoServices />
-        </ContentBox>
-        <ContentBox>
-          <HomePlatformGroup />
-        </ContentBox>
+    <BgImage>
+      <BgImage bgcolor={'#F2F2F7 !important'}>
+        <IntroContentBox>
+          <HomeLandingSection />
+        </IntroContentBox>
+      </BgImage>
+      <ContentBox>
+        <HomeEnvImpact></HomeEnvImpact>
+      </ContentBox>
+      <ContentBox id="eco-products">
+        <HomeEcoProducts />
+      </ContentBox>
+      <ContentBox id="eco-services">
+        <HomeEcoServices />
+      </ContentBox>
+      <ContentBox>
+        <HomePlatformGroup />
+      </ContentBox>
 
-        <ContentBox>
-          <HomePlatformShare />
-        </ContentBox>
-        <ContentBox>
-          <HomePartnership />
-        </ContentBox>
+      <ContentBox>
+        <HomePlatformShare />
+      </ContentBox>
+      <ContentBox>
+        <HomePartnership />
+      </ContentBox>
 
-        <Wrap>
-          <ContentBox>
-            <HomePartners />
-          </ContentBox>
-        </Wrap>
-        {/* <IntroSection /> */}
-        {/* <IntroEarth /> */}
-        {/* <ContentBox key="video" id="video">
+      <Wrap>
+        <ContentBox>
+          <HomePartners />
+        </ContentBox>
+      </Wrap>
+      {/* <IntroSection /> */}
+      {/* <IntroEarth /> */}
+      {/* <ContentBox key="video" id="video">
           <VideoSection />
         </ContentBox> */}
-        {/* <ContentBox ref={sectionRef} id="download" key="download">
+      {/* <ContentBox ref={sectionRef} id="download" key="download">
           <Download dropb={false} />
         </ContentBox> */}
 
-        <hr style={{color: theme.darkGray, margin: 0, width: '100%'}} />
-        <Wrap>
-          <FootContact />
-        </Wrap>
-      </BgImage>
-    </>
+      <hr style={{color: theme.darkGray, margin: 0, width: '100%'}} />
+      <Wrap>
+        <FootContact />
+      </Wrap>
+    </BgImage>
   );
 }
 export default HomeEarthmera;
