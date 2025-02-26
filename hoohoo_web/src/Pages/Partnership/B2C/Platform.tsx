@@ -1,10 +1,10 @@
-import React, { useEffect, useRef } from 'react';
+import React, {useEffect, useRef} from 'react';
 import styled from 'styled-components';
 import Wrapper from '../../../components/Wrapper/Wrapper';
-import { BgImage, theme } from '../../../style';
+import {BgImage, theme} from '../../../style';
 
 import i18next from 'i18next';
-import { useLocation } from 'react-router-dom';
+import {useLocation} from 'react-router-dom';
 import FootContact from '../../../components/Footer/FootContact';
 import Community from '../components/Community';
 import B2CEcoProducts from './sections/B2CEcoProducts';
@@ -124,7 +124,12 @@ function Platform() {
             <Rewards />
           </ShortContentBox>
           <ShortContentBox>
-            <Community data={data[0]} index={0} imageHeight={800} />
+            <Community
+              data={data[0]}
+              index={0}
+              imageWidth={'90%'}
+              imageHeight={600}
+            />
           </ShortContentBox>
           <ShortContentBox>
             <HealthSection />

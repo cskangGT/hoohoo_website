@@ -4,7 +4,7 @@ import styled from 'styled-components';
 import Community from '../../components/Community';
 
 const Image = styled.img`
-  width: 100%;
+  width: 90%;
 `;
 function LifeStyleSection() {
   const data: any = i18next.t('community', {returnObjects: true});

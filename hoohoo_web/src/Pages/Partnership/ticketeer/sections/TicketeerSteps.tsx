@@ -1,9 +1,9 @@
 import i18next from 'i18next';
-import React, { useEffect, useRef, useState } from 'react';
+import React, {useEffect, useRef, useState} from 'react';
 
 import styled from 'styled-components';
-import { useLanguage } from '../../../../components/hooks/LanguageContext';
-import { theme } from '../../../../style';
+import {useLanguage} from '../../../../components/hooks/LanguageContext';
+import {theme} from '../../../../style';
 const ContentBox = styled.div`
   display: flex;
   flex-direction: column;
@@ -39,7 +39,7 @@ const EachBox = styled.div<{index: number}>`
   padding: 0 35px;
   height: 500px;
   display: flex;
-  border: 1px solid red;
+
   flex-direction: ${props =>
     props.index === 0 || props.index === 2 ? 'column-reverse' : 'column'};
   align-items: center;
@@ -59,7 +59,8 @@ const EachBox = styled.div<{index: number}>`
   }
   @media screen and (max-width: 500px) {
     height: auto;
-    width: 300px;
+    width: calc(100% - 40px);
+    padding: 0px 20px;
   }
 `;
 const ActName = styled.h3`
@@ -69,11 +70,10 @@ const ActName = styled.h3`
   line-height: 1;
   margin-top: 30px;
 `;
-const ActDesc = styled.span<{language: string}>`
+const ActDesc = styled.p<{language: string}>`
   text-align: center;
   font-size: ${props => (props.language === 'ko' ? '1rem' : '1.1rem')};
   line-height: 1.5;
-  
 `;
 const TapeBgImage = styled.img`
   height: 150px;
@@ -100,7 +100,8 @@ const Header = styled.h2<{language: string}>`
   font-size: 2.5rem;
   line-height: 1.1;
   text-align: center;
-  font-family: ${props => (props.language === 'ko' ? 'TmoneyRoundWind' : 'Fredoka')};
+  font-family: ${props =>
+    props.language === 'ko' ? 'TmoneyRoundWind' : 'Fredoka'};
   font-weight: 600;
   padding-bottom: 30px;
   @media screen and (max-width: 1100px) {
@@ -171,7 +172,7 @@ function TicketeerSteps() {
       setUnderlineWidth(offsetWidth);
     }
   }, [highlightRef]);
-  
+
   return (
     <ContentBox>
       <HeaderBox>
@@ -194,7 +195,10 @@ function TicketeerSteps() {
             <Image src={item.imagePath} key={index + 'img'} />
             <TextBox>
               <ActName>{item.head}</ActName>
-              <ActDesc language={language} dangerouslySetInnerHTML={{__html: item.desc}} />
+              <ActDesc
+                language={language}
+                dangerouslySetInnerHTML={{__html: item.desc}}
+              />
             </TextBox>
           </EachBox>
         ))}

@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from 'react';
+import React, {useEffect, useState} from 'react';
 import styled from 'styled-components';
-import { theme } from '../../../../style';
+import {theme} from '../../../../style';
 
 const Container = styled.div`
   display: flex;
@@ -17,7 +17,9 @@ const Container = styled.div`
     column-gap: 20px;
   }
   @media screen and (max-width: 500px) {
-    column-gap: 10px;
+    width: calc(100% - 40px);
+    padding: 0px 20px;
+    column-gap: 16px;
   }
 `;
 const NumberContainer = styled.div`
@@ -38,6 +40,11 @@ const NumberCircle = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
+  @media screen and (max-width: 500px) {
+    width: 40px;
+    font-size: 1rem;
+    height: 40px;
+  }
 `;
 
 const VerticalLine = styled.div<{hasNext: boolean}>`
@@ -59,17 +66,19 @@ const Content = styled.div`
 
 const Subtitle = styled.h3`
   font-size: 2rem;
-  line-height: 1.1;
   font-weight: 500;
-  margin: 0 0 10px 0;
+  padding-top: 10px;
+  margin: 0 0 60px 0;
   color: ${theme.darkGray};
   @media screen and (max-width: 1100px) {
   }
   @media screen and (max-width: 700px) {
     font-size: 1.5rem;
+    margin: 0 0 60px 0;
   }
   @media screen and (max-width: 500px) {
     font-size: 1.2rem;
+    margin: 0 0 40px 0;
   }
 `;
 
@@ -77,7 +86,7 @@ const Description = styled.p`
   font-size: 1.3rem;
   line-height: 1.3;
   color: ${theme.darkGray};
-  width: 100%;
+  width: 80%;
   margin: 0;
   font-weight: 300;
   word-break: keep-all;

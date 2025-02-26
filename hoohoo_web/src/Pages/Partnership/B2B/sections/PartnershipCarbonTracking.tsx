@@ -1,13 +1,13 @@
 import i18next from 'i18next';
 import React from 'react';
-import { useNavigate } from 'react-router-dom';
+import {useNavigate} from 'react-router-dom';
 import styled from 'styled-components';
-import { useLanguage } from '../../../../components/hooks/LanguageContext';
+import {useLanguage} from '../../../../components/hooks/LanguageContext';
 import Wrapper from '../../../../components/Wrapper/Wrapper';
-import { theme } from '../../../../style';
-import { logButtonEvent, PageName } from '../../../../util/firebase_custom_event';
-import { HomeTransitionButton } from '../../../Home/styles';
-import { ButtonBox } from '../PhotoVideoes';
+import {theme} from '../../../../style';
+import {logButtonEvent, PageName} from '../../../../util/firebase_custom_event';
+import {HomeTransitionButton} from '../../../Home/styles';
+import {ButtonBox} from '../PhotoVideoes';
 export const PartnershipContainer = styled.section`
   width: 100%;
   background-color: transparent;
@@ -89,7 +89,8 @@ const CarbonImage = styled.img`
 export const PartnershipDescText = styled.p<{language: string}>`
   color: ${theme.darkGray};
   font-size: ${props => (props.language === 'ko' ? '1.15rem' : '1.3rem')};
-  font-family: ${props => (props.language === 'ko' ? 'TmoneyRoundWind' : 'Fredoka')};
+  font-family: ${props =>
+    props.language === 'ko' ? 'TmoneyRoundWind' : 'Fredoka'};
   line-height: 1.5;
   width: 80%;
   @media screen and (max-width: 850px) {
@@ -101,7 +102,8 @@ export const PartnershipTitleText = styled.h2<{language: string}>`
   color: ${theme.darkGray};
   font-size: 2rem;
   line-height: 1.4;
-  font-family: ${props => (props.language === 'ko' ? 'TmoneyRoundWind' : 'Fredoka')};
+  font-family: ${props =>
+    props.language === 'ko' ? 'TmoneyRoundWind' : 'Fredoka'};
   font-weight: 600;
   @media screen and (max-width: 850px) {
     text-align: center;
@@ -127,10 +129,16 @@ function PartnershipCarbonTracking() {
     e.preventDefault();
     const emailAddress = 'support@earthmera.com';
     window.location.href = `mailto:${emailAddress}`;
-    logButtonEvent('ask_partnership in PartnershipCarbonTracking', PageName.partnership);
+    logButtonEvent(
+      'ask_partnership in PartnershipCarbonTracking',
+      PageName.partnership,
+    );
     // 폴백(fallback) 처리
     setTimeout(() => {
-      window.open(`https://mail.google.com/mail/?view=cm&fs=1&to=${emailAddress}`, '_blank');
+      window.open(
+        `https://mail.google.com/mail/?view=cm&fs=1&to=${emailAddress}`,
+        '_blank',
+      );
     }, 300);
   };
   return (

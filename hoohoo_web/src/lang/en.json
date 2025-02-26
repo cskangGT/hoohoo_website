@@ -895,7 +895,7 @@
         "description": "Participants will enjoy the event while completing missions set by the organizer. As they complete each mission, the corresponding CO₂ reduction is tracked and recorded for each participant."
       },
       {
-        "image": "/Images/ticketeer_howwork4.webp",
+        "image": "/Images/ticketeer_howwork4.png",
         "subtitle": "Participants Earn Rewards",
         "hasNext": true,
         "description": "Participants will earn rewards by meeting the criteria set by the organizer. This motivates them to stay engaged and complete more missions, enhancing their overall event experience."
@@ -954,11 +954,11 @@
     "title": "Every action to<br />Protect the planet<br />All in one place",
     "content": "Start your carbon-reducing journey today<br />and make a real impact!",
     "image": "/Images/home_intro.png",
-    "opengraph" : {
+    "opengraph": {
       "siteName": "EarthMera",
-      "title" : "EarthMera | Every eco-action, all here.",
-      "description" : "Start your carbon-reducing journey today and make a real impact!",
-      "image" : "https://www.earthmera.com/Images/opengraph_.png",
+      "title": "EarthMera | Every eco-action, all here.",
+      "description": "Start your carbon-reducing journey today and make a real impact!",
+      "image": "https://www.earthmera.com/Images/opengraph_.png",
       "url": "https://www.earthmera.com/en/",
       "locale": "en_US"
     }

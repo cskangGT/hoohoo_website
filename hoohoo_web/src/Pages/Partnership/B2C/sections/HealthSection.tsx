@@ -10,7 +10,7 @@ const Image = styled.img`
 `;
 function HealthSection() {
   const data: any = i18next.t('community', {returnObjects: true});
-  return <Community data={data[1]} index={1} imageWidth={'100%'}></Community>;
+  return <Community data={data[1]} index={1} imageWidth={'80%'}></Community>;
 }
 
 export default HealthSection;
