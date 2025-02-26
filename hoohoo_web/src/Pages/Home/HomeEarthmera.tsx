@@ -1,12 +1,11 @@
 import i18next from 'i18next';
-import React, { useEffect, useRef, useState } from 'react';
-import { useLocation, useNavigate } from 'react-router-dom';
+import React, {useEffect, useRef, useState} from 'react';
+import {useLocation, useNavigate} from 'react-router-dom';
 import styled from 'styled-components';
 import FootContact from '../../components/Footer/FootContact';
-import { useLanguage } from '../../components/hooks/LanguageContext';
-import OpenGraphMeta from '../../components/opengraph/OpenGraph';
-import { BgImage, theme } from '../../style';
-import { ContentBox } from '../About/Vision/EarthMeraVision';
+import {useLanguage} from '../../components/hooks/LanguageContext';
+import {BgImage, theme} from '../../style';
+import {ContentBox} from '../About/Vision/EarthMeraVision';
 import HomeEcoProducts from './sections/HomeEcoProducts';
 import HomeEcoServices from './sections/HomeEcoServices';
 import HomeEnvImpact from './sections/HomeEnvImpact';
@@ -52,26 +51,47 @@ const IntroContentBox = styled.div`
   -webkit-overflow-scrolling: touch;
 `;
 
-function HomeEarthmera() {
+function HomeEarthmera({language}: {language: string}) {
   const location = useLocation();
   const navigate = useNavigate();
   const [isOpen, setIsOpen] = useState<boolean>(false);
-  const {language} = useLanguage();
+  const {language: currentLanguage} = useLanguage();
   const data: any = i18next.t('HomeLandingSection', {returnObjects: true});
   useEffect(() => {
-    const searchParams = new URLSearchParams(location.search);
-    if (searchParams.get('modal') === 'open') {
-      setIsOpen(true);
-    } else if (searchParams.get('support') === 'yes') {
-      navigate(`/${language}/support`);
-    }
+    const timer = setTimeout(() => {
+      const searchParams = new URLSearchParams(location.search);
+      if (searchParams.get('modal') === 'open') {
+        setIsOpen(true);
+      } else if (searchParams.get('support') === 'yes') {
+        navigate(`/${currentLanguage}/support`);
+      } else if (searchParams.get('sc')) {
+        const section = searchParams.get('sc');
+        if (section) {
+          let element;
+          switch (section) {
+            case 'es':
+              element = document.getElementById('eco-services');
+              break;
+            case 'ep':
+              element = document.getElementById('eco-products');
+              break;
+            default:
+              window.scrollTo(0, 0);
+              return;
+          }
+          if (element) {
+            element.scrollIntoView({behavior: 'smooth', block: 'start'});
+          }
+        }
+      }
+    }, 100); // 100ms 지연
+
+    return () => clearTimeout(timer); // 클린업 함수
   }, [location.search]);
   useEffect(() => {
     window.scrollTo(0, 0);
     const hash = decodeURIComponent(location.hash.replace('#', ''));
     if (hash) {
-      
-      
       // const [pageWithHash, query] = hash.split('?');
       // const page = pageWithHash.split('#')[0]; // 페이지 이름 추출
       // const params = new URLSearchParams(query);
@@ -81,35 +101,27 @@ function HomeEarthmera() {
       if (page.includes('redirect')) {
         if (link) {
           navigate(`/${page}?${link}`);
-        } else {  
+        } else {
           navigate(`/${page}`);
         }
       } else {
         if (link) {
-          navigate(`/${language}/${page}?${link}`);
-        } else {  
-          navigate(`/${language}/${page}`);
+          navigate(`/${currentLanguage}/${page}?${link}`);
+        } else {
+          navigate(`/${currentLanguage}/${page}`);
         }
       }
     }
   }, []);
 
   const sectionRef = useRef<HTMLDivElement>(null);
-  
+
   useEffect(() => {
     const event = new Event('render-event');
     document.dispatchEvent(event);
   }, []);
   return (
     <BgImage>
-      <OpenGraphMeta
-        title={data.opengraph.title}
-        description={data.opengraph.description}
-        image={data.opengraph.image}
-        url={data.opengraph.url}
-        locale={data.opengraph.locale}
-        siteName={data.opengraph.siteName}
-      />
       <BgImage bgcolor={'#F2F2F7 !important'}>
         <IntroContentBox>
           <HomeLandingSection />
@@ -118,10 +130,10 @@ function HomeEarthmera() {
       <ContentBox>
         <HomeEnvImpact></HomeEnvImpact>
       </ContentBox>
-      <ContentBox>
+      <ContentBox id="eco-products">
         <HomeEcoProducts />
       </ContentBox>
-      <ContentBox>
+      <ContentBox id="eco-services">
         <HomeEcoServices />
       </ContentBox>
       <ContentBox>
