@@ -30,7 +30,7 @@ const Circle = styled.div`
 export default function Badges() {
   const data: any = i18next.t('Badges', {returnObjects: true});
   return (
-    <Community data={data} flip={false}>
+    <Community data={data} flip={false} imageWidth={'70%'}>
       <Circle />
     </Community>
   );

@@ -4,7 +4,11 @@
     "data2": {}
   },
   "Nav": {
-    "logo": {"text": "어스메라", "image": "/Images/icon_image.png", "link": "/ko/"},
+    "logo": {
+      "text": "어스메라",
+      "image": "/Images/icon_image.png",
+      "link": "/ko/"
+    },
     "lang": ["한", "영"],
 
     "navlist": [
@@ -803,7 +807,7 @@
     "buttonText": "카테고리 등록<br />문의하기",
     "image": "/Images/partnership_category.webp",
     "carbonImage": "/Images/partnership_carbon.png"
-  }, 
+  },
   "PartnershipEcoBoard": {
     "title": "친환경 사용자들에게<br />당신의 브랜드를 보여주세요",
     "description": "에코 보드는 친환경 사용자들을 지속 가능성을 추구하는 기업, 단체, 제품 등을 손쉽게 연결해주는 공간입니다.<br />당신의 브랜드를 통해 사용자들이 더 나은 친환경 라이프스타일을 실현할 수 있도록 함께해주세요.",
@@ -874,7 +878,7 @@
         "description": "참가자들은 주최자가 설정한 미션을 수행하며 이벤트를 즐길 수 있어요.<br />각 미션을 완료할 때마다 해당하는 CO₂ 저감량을 확인할 수 있어요."
       },
       {
-        "image": "/Images/ticketeer_howwork4.webp",
+        "image": "/Images/ticketeer_howwork4.png",
         "subtitle": "보상 받기",
         "hasNext": true,
         "description": "참가자들은 주최자가 설정한 기준을 충족하면 보상을 받을 수 있어요.<br />이는 참가자들의 지속적인 참여를 유도하며, 더 많은 미션을 완료하도록 동기를 부여해 이벤트 경험을 더욱 풍성하게 만들어줘요."
@@ -933,11 +937,11 @@
     "title": "지구를 지키는 행동,<br />모두 이곳<br />EarthMera에서!",
     "content": "지금 바로 CO₂ 저감 여정을 시작하고,<br />의미 있는 변화를 만들어보세요!",
     "image": "/Images/home_intro.png",
-    "opengraph" : {
+    "opengraph": {
       "siteName": "EarthMera",
-      "title" : "어스메라 | 지구를 지키는 행동, 모두 이곳에서",
-      "description" : "지금 바로 CO₂ 저감 여정을 시작하고, 의미 있는 변화를 만들어보세요.",
-      "image" : "https://www.earthmera.com/Images/opengraph_.png",
+      "title": "어스메라 | 지구를 지키는 행동, 모두 이곳에서",
+      "description": "지금 바로 CO₂ 저감 여정을 시작하고, 의미 있는 변화를 만들어보세요.",
+      "image": "https://www.earthmera.com/Images/opengraph_.png",
       "url": "https://www.earthmera.com/ko/",
       "locale": "ko_KR"
     }

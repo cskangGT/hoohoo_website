@@ -4,7 +4,7 @@ import Community from '../../components/Community';
 
 function YourImpactSection() {
   const data: any = i18next.t('YourImpactSection', {returnObjects: true});
-  return <Community data={data} flip={false} />;
+  return <Community data={data} flip={false} imageWidth={'70%'} />;
 }
 
 export default YourImpactSection;
