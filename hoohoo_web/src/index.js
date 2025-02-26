@@ -1,8 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import { HelmetProvider } from 'react-helmet-async';
-import { RouterProvider } from 'react-router-dom';
-import { createGlobalStyle } from 'styled-components';
+import {HelmetProvider} from 'react-helmet-async';
+import {RouterProvider} from 'react-router-dom';
+import {createGlobalStyle} from 'styled-components';
 
 import NanumHumanTTfBold from '../public/fonts/NanumHumanBold.ttf';
 import NanumHumanTTfLight from '../public/fonts/NanumHumanLight.ttf';
@@ -13,8 +13,6 @@ import YanoljaYacheBWoff2 from '../public/fonts/YanoljaYacheB.woff2';
 import YanoljaYacheTtf from '../public/fonts/YanoljaYacheR.ttf';
 import YanoljaYacheWoff from '../public/fonts/YanoljaYacheR.woff';
 import YanoljaYacheWoff2 from '../public/fonts/YanoljaYacheR.woff2';
-
-
 
 import RixYeoljeongdoR from '../public/fonts/RixYeoljeongdoRegular.ttf';
 import TmoneyRoundWindExtraBold from '../public/fonts/TmoneyRoundWindExtraBold.ttf';
@@ -114,18 +112,17 @@ if (container.hasChildNodes()) {
   ReactDOM.hydrateRoot(
     container,
     <HelmetProvider>
-      <Provider store={store}>
-        <RouterProvider router={Router} />
-      </Provider>
-    </HelmetProvider>
+      <GlobalStyle />
+      <RouterProvider router={Router} />
+    </HelmetProvider>,
   );
 } else {
   root.render(
     <React.StrictMode>
-    <HelmetProvider>
-      <GlobalStyle />
-      <RouterProvider router={Router} />
-    </HelmetProvider>
-  </React.StrictMode>
+      <HelmetProvider>
+        <GlobalStyle />
+        <RouterProvider router={Router} />
+      </HelmetProvider>
+    </React.StrictMode>,
   );
 }

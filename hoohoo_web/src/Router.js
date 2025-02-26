@@ -1,5 +1,5 @@
 import React from 'react';
-import { createBrowserRouter, Navigate } from 'react-router-dom';
+import {createBrowserRouter, Navigate} from 'react-router-dom';
 import {
   default as ErrorComponent,
   default as NotFound,
@@ -16,25 +16,39 @@ import Partnership from './Pages/Partnership/B2B/Partnership';
 import Platform from './Pages/Partnership/B2C/Platform';
 import Root from './Root';
 
+import SEOHelmet from './components/SEOHelmet';
 import EarthMeraVision from './Pages/About/Vision/EarthMeraVision';
 import NewsDetailPage from './Pages/EMMedia/News/NewsDetailPage';
 import NewsPage from './Pages/EMMedia/NewsPage';
 import SupportingPage from './Pages/Info/Contact/SupportingPage';
 import RedirectPage from './Pages/Info/Redirection/RedirectPage';
 import EMTicketeer from './Pages/Partnership/ticketeer/EMTicketeer';
-const createLocalizedRoutes = (routes) => {
-  return routes.map(route => [
-    {
-      path: `/ko${route.path}`,
-      element: route.element,
-      errorElement: route.errorElement,
-    },
-    {
-      path: `/en${route.path}`,
-      element: route.element,
-      errorElement: route.errorElement,
-    }
-  ]).flat();
+
+const createLocalizedRoutes = routes => {
+  return routes
+    .map(route => [
+      {
+        path: `/ko${route.path}`,
+        element: (
+          <>
+            <SEOHelmet language="ko" />
+            {React.cloneElement(route.element, {language: 'ko'})}
+          </>
+        ),
+        errorElement: route.errorElement,
+      },
+      {
+        path: `/en${route.path}`,
+        element: (
+          <>
+            <SEOHelmet language="en" />
+            {React.cloneElement(route.element, {language: 'en'})}
+          </>
+        ),
+        errorElement: route.errorElement,
+      },
+    ])
+    .flat();
 };
 
 const baseRoutes = [
@@ -132,7 +146,6 @@ const baseRoutes = [
   //     element: <ComingSoon />,
   //     errorElement: <ErrorComponent />
   // },
-  
 ];
 
 const Router = createBrowserRouter([
@@ -159,7 +172,7 @@ const Router = createBrowserRouter([
         element: <TandC />,
         errorElement: <ErrorComponent />,
       },
-      ...createLocalizedRoutes(baseRoutes)
+      ...createLocalizedRoutes(baseRoutes),
     ],
     errorElement: <NotFound />,
   },
