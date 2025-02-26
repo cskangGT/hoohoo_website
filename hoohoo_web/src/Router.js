@@ -32,7 +32,7 @@ const createLocalizedRoutes = routes => {
         element: (
           <>
             <SEOHelmet language="ko" />
-            {React.cloneElement(route.element, {language: 'ko'})}
+            {route.element}
           </>
         ),
         errorElement: route.errorElement,
@@ -42,7 +42,7 @@ const createLocalizedRoutes = routes => {
         element: (
           <>
             <SEOHelmet language="en" />
-            {React.cloneElement(route.element, {language: 'en'})}
+            {route.element}
           </>
         ),
         errorElement: route.errorElement,
@@ -54,7 +54,7 @@ const createLocalizedRoutes = routes => {
 const baseRoutes = [
   {
     path: '/',
-    element: <HomeEarthmera />,
+    element: <HomeEarthmera language="" />,
     errorElement: <ErrorComponent />,
   },
   {
@@ -154,7 +154,7 @@ const Router = createBrowserRouter([
     element: <Root />,
     children: [
       {
-        path: '/',
+        path: '',
         element: <Navigate to="/en" replace />,
       },
       {
