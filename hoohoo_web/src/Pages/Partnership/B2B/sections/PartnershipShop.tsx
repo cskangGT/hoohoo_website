@@ -1,10 +1,11 @@
 import i18next from 'i18next';
 import React from 'react';
-import { useLanguage } from '../../../../components/hooks/LanguageContext';
+import styled from 'styled-components';
+import {useLanguage} from '../../../../components/hooks/LanguageContext';
 import Wrapper from '../../../../components/Wrapper/Wrapper';
-import { logButtonEvent, PageName } from '../../../../util/firebase_custom_event';
-import { HomeTransitionButton } from '../../../Home/styles';
-import { ButtonBox } from '../PhotoVideoes';
+import {logButtonEvent, PageName} from '../../../../util/firebase_custom_event';
+import {HomeTransitionButton} from '../../../Home/styles';
+import {ButtonBox} from '../PhotoVideoes';
 import {
   PartnershipContainer,
   PartnershipDescText,
@@ -14,6 +15,15 @@ import {
   PartnershipScreenImage,
   PartnershipTitleText,
 } from './PartnershipCarbonTracking';
+const PartnershipShopScreenImage = styled(PartnershipScreenImage)`
+  width: 90%;
+  @media screen and (max-width: 1200px) {
+    width: 70%;
+  }
+  @media screen and (max-width: 850px) {
+    width: 80%;
+  }
+`;
 
 function PartnershipShop() {
   const data: any = i18next.t('PartnershipShop', {returnObjects: true});
@@ -25,9 +35,12 @@ function PartnershipShop() {
     logButtonEvent('go_platform in PartnershipShop', PageName.partnership);
     // 폴백(fallback) 처리
     setTimeout(() => {
-      window.open(`https://mail.google.com/mail/?view=cm&fs=1&to=${emailAddress}`, '_blank');
+      window.open(
+        `https://mail.google.com/mail/?view=cm&fs=1&to=${emailAddress}`,
+        '_blank',
+      );
     }, 300);
-  };  
+  };
   return (
     <PartnershipContainer>
       <Wrapper>
@@ -39,7 +52,7 @@ function PartnershipShop() {
             />
             <PartnershipDescText
               language={language}
-              dangerouslySetInnerHTML ={{__html: data.description}}
+              dangerouslySetInnerHTML={{__html: data.description}}
             />
             <ButtonBox>
               <HomeTransitionButton
@@ -50,7 +63,7 @@ function PartnershipShop() {
             </ButtonBox>
           </PartnershipLeftBox>
           <PartnershipRightBox>
-            <PartnershipScreenImage src={data.image} />
+            <PartnershipShopScreenImage src={data.image} />
           </PartnershipRightBox>
         </PartnershipInnerContainer>
       </Wrapper>

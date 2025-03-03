@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import styled from 'styled-components';
 import FootContact from '../../../components/Footer/FootContact';
 import Wrapper from '../../../components/Wrapper/Wrapper';
@@ -31,6 +31,9 @@ const Container = styled.div`
 `;
 
 function Partnership() {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
   return (
     <>
       <BgImage>

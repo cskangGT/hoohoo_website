@@ -513,7 +513,7 @@ function Nav() {
             </NavMenuList>
           );
         })}
-        {!isOpen && (
+        {/* {!isOpen && (
           <LanguageBox>
             <LanguageButton
               isActive={language === 'ko'}
@@ -530,10 +530,10 @@ function Nav() {
               {lang[1]}
             </LanguageButton>
           </LanguageBox>
-        )}
+        )} */}
       </NavbarMenu>
 
-      <LanguageOutBox>
+      {/* <LanguageOutBox>
         <LanguageBox>
           <LanguageButton
             isActive={language === 'ko'}
@@ -550,7 +550,7 @@ function Nav() {
             {lang[1]}
           </LanguageButton>
         </LanguageBox>
-      </LanguageOutBox>
+      </LanguageOutBox> */}
 
       <MenuToogleButton onClick={() => setIsOpen(!isOpen)} isOpen={isOpen}>
         <FontAwesomeIcon icon={faBars} />

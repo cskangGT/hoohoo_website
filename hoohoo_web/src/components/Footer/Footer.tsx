@@ -3,14 +3,14 @@ import {
   faLinkedinIn,
   faTiktok,
 } from '@fortawesome/free-brands-svg-icons';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import i18next from 'i18next';
-import React, { useEffect, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import React, {useEffect, useState} from 'react';
+import {useNavigate} from 'react-router-dom';
 import styled from 'styled-components';
 import ManageAccModal from '../../Pages/DeleteAccount/ManageAccModal';
-import { theme } from '../../style';
-import { useLanguage } from '../hooks/LanguageContext';
+import {theme} from '../../style';
+import {useLanguage} from '../hooks/LanguageContext';
 
 const Background = styled.footer`
   background-color: transparent;
@@ -47,7 +47,7 @@ const Box = styled.div`
 const HeaderColumn = styled.div`
   display: flex;
   flex-direction: column;
-  
+
   @media (max-width: 800px) {
     width: calc(100% - 40px);
   }
@@ -75,7 +75,6 @@ const FooterTitle = styled.h3`
   font-size: ${theme.fontSize.xl};
   font-weight: 600;
   @media (max-width: 800px) {
-    
   }
 `;
 const BusinessDetail = styled.p`
@@ -84,7 +83,6 @@ const BusinessDetail = styled.p`
   color: ${theme.darkGray};
   padding-left: 15px;
   @media (max-width: 800px) {
-    
   }
 `;
 const Copyright = styled.p`
@@ -181,7 +179,7 @@ function Ibutton({icon, url, style}: IbuttonProps) {
 function Footer() {
   const navigate = useNavigate();
   const [isOpen, setIsOpen] = useState<boolean>(false);
-  
+
   const data: any = i18next.t('Footer', {returnObjects: true});
   useEffect(() => {
     const searchParams = new URLSearchParams(location.search);
@@ -199,7 +197,6 @@ function Footer() {
           <HeaderColumn>
             <FooterTitle>{data.title}</FooterTitle>
             <BusinessDetail>
-              
               {data.ceo}
               <br /> {data.email} : support@earthmera.com
             </BusinessDetail>
@@ -210,7 +207,13 @@ function Footer() {
               text1={data.menuButtons.about}
               action1={() => navigate(`/${language}/about_team`)}
               text2={data.menuButtons.partnership}
-              action2={() => navigate(`/${language}/partnership`)}
+              action2={() => {
+                console.log(
+                  '`/${language}/partnership`',
+                  `/${language}/partnership`,
+                );
+                navigate(`/${language}/partnership`);
+              }}
             />
             <Buttons
               text1={data.menuButtons.terms}
@@ -228,7 +231,8 @@ function Footer() {
         </Box>
         <FooterBottom>
           <Copyright>
-            Copyright&copy; {new Date().getFullYear()} EarthMera. All rights reserved.
+            Copyright&copy; {new Date().getFullYear()} EarthMera. All rights
+            reserved.
           </Copyright>
           <IconBox>
             <Ibutton
