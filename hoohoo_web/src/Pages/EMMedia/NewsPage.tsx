@@ -1,13 +1,16 @@
-import React, { useEffect, useState } from 'react';
+import React, {useEffect, useState} from 'react';
 import styled from 'styled-components';
-import { getNewsList } from '../../api/news.api';
-import PageNav from '../../components/Blog/PageNav';
+import {getNewsList} from '../../api/news.api';
 import FootContact from '../../components/Footer/FootContact';
-import { useLanguage } from '../../components/hooks/LanguageContext';
+import {useLanguage} from '../../components/hooks/LanguageContext';
 import Wrapper from '../../components/Wrapper/Wrapper';
-import { BgImage, theme } from '../../style';
+import {BgImage, theme} from '../../style';
 import NewsCard from './News/NewsCard';
-import { HansaengsaNewsCategoryList, NewsCategory, NewsDataType } from './News/NewsType';
+import {
+  HansaengsaNewsCategoryList,
+  NewsCategory,
+  NewsDataType,
+} from './News/NewsType';
 const Container = styled.div`
   width: calc(100% - 30px);
   display: flex;
@@ -63,6 +66,12 @@ interface OutlineProps {
   op: string;
   selectedCategory: string;
 }
+const Line = styled.div`
+  width: 100%;
+  height: 2px;
+  background-color: ${theme.darkGray};
+  border-radius: 2px;
+`;
 const Outline = styled.button<OutlineProps>`
   opacity: ${props => (props.op === props.selectedCategory ? 1 : 0.3)};
   background: none;
@@ -83,7 +92,41 @@ const Outline = styled.button<OutlineProps>`
     height: 30%;
   }
 `;
+const SubOutline = styled.button<OutlineProps>`
+  opacity: ${props => (props.op === props.selectedCategory ? 1 : 0.3)};
+
+  background: none;
+  border: none;
+  margin-right: 10px;
+  outline: none;
+  display: inline-block;
+  height: 100%;
+
+  min-height: 1px;
+  transition: all 0.2s ease 0s;
+  border-radius: 10px;
+  &:hover {
+    color: ${theme.darkGray};
+    opacity: 1;
+  }
+  @media screen and (max-width: 800px) {
+    height: 30%;
+  }
+`;
 const OutlineText = styled.h3`
+  color: ${theme.darkGray};
+  padding: 5px;
+  margin: 0;
+  font-size: ${theme.fontSize['xl']};
+  font-weight: 500;
+  &:hover {
+    color: ${theme.darkGray};
+  }
+  @media screen and (max-width: 700px) {
+    font-size: ${theme.fontSize.sm};
+  }
+`;
+const SubOutlineText = styled.h3`
   color: ${theme.darkGray};
   padding: 5px;
   margin: 0;
@@ -121,7 +164,7 @@ const LoadingContainer = styled.div`
   justify-content: center;
   align-items: center;
   height: 100%;
-  
+
   margin-top: 50px;
 `;
 const LoadingSpinner = styled.div`
@@ -134,8 +177,12 @@ const LoadingSpinner = styled.div`
   margin-right: 10px;
 
   @keyframes spin {
-    0% { transform: rotate(0deg); }
-    100% { transform: rotate(360deg); }
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
   }
 `;
 const Text = styled.span`
@@ -161,6 +208,8 @@ function NewsPage() {
   const fetchData = async (key: string, category?: string) => {
     setIsLoading(true);
     const response = await getNewsList(language, key, category);
+    console.log('response', response);
+
     if (response.data) {
       setFetchedList(response.data.items);
       setLastKey(response.data.lastEvaluatedKey);
@@ -187,13 +236,12 @@ function NewsPage() {
   };
   useEffect(() => {
     fetchData('', '');
-    
   }, []);
 
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
-  
+
   return (
     <>
       <BgImage bgcolor="white">
@@ -221,6 +269,7 @@ function NewsPage() {
                         <OutlineText key={index + 'text'}>
                           {language === 'ko' ? item.text.ko : item.text.en}
                         </OutlineText>
+                        {/* {selectedCategory === item.value && <Line />} */}
                       </Outline>
                     ),
                   )}
@@ -248,15 +297,15 @@ function NewsPage() {
                       },
                       index: number,
                     ) => (
-                      <Outline
+                      <SubOutline
                         key={index}
                         op={item.value}
                         selectedCategory={selectedSubCategory}
                         onClick={() => handleSelectSubCategory(item.value)}>
-                        <OutlineText key={index + 'text'}>
+                        <SubOutlineText key={index + 'outlineText'}>
                           {language === 'ko' ? item.text.ko : item.text.en}
-                        </OutlineText>
-                      </Outline>
+                        </SubOutlineText>
+                      </SubOutline>
                     ),
                   )}
                   {/* {logIn && (
@@ -271,28 +320,25 @@ function NewsPage() {
                 </ScrollContainer>
               </SlickBar>
               {isLoading ? (
-                  <LoadingContainer>
-                    <LoadingSpinner />
-                  </LoadingContainer>
-                ) :fetchedList.length === 0 ? (
+                <LoadingContainer>
+                  <LoadingSpinner />
+                </LoadingContainer>
+              ) : fetchedList.length === 0 ? (
                 <Text style={{minHeight: 400}}>
                   {language === 'ko' ? '아직 뉴스가 없습니다.' : 'No news yet.'}
                 </Text>
-              ) : 
-                (
-                  <>
-                    <Grid>
-                      {
-                      fetchedList.map((item, index) => (
-                        <NewsCard key={item.idx} item={item} />
-                      ))
-                    }
+              ) : (
+                <>
+                  <Grid>
+                    {fetchedList.map((item, index) => (
+                      <NewsCard key={item.idx} item={item} />
+                    ))}
                   </Grid>
-                  <PageNav
+                  {/* <PageNav
                     pages={Math.ceil(numTotalData / OFFSET)}
                     currentPage={currentPage}
                     changePage={changePage}
-                  />
+                  /> */}
                 </>
               )}
             </ContentBox>

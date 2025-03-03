@@ -1,14 +1,15 @@
 import i18next from 'i18next';
 import React from 'react';
 import Marquee from 'react-fast-marquee';
-import styled, { keyframes } from 'styled-components';
-import { useLanguage } from '../../../../components/hooks/LanguageContext';
+import styled, {keyframes} from 'styled-components';
+import {useLanguage} from '../../../../components/hooks/LanguageContext';
 import Wrapper from '../../../../components/Wrapper/Wrapper';
-import { theme } from '../../../../style';
+import {theme} from '../../../../style';
 const Container = styled.section`
   width: 100%;
   background-color: transparent;
   height: auto;
+
   @media screen and (max-width: 850px) {
     height: auto;
   }
@@ -24,6 +25,7 @@ const Background = styled.div<{backgroundImage: string}>`
   height: auto;
   justify-content: center;
   align-items: center;
+  overflow: visible;
   z-index: 1;
   padding-top: 75px;
   padding-bottom: 100px;
@@ -64,7 +66,9 @@ const Header = styled.h1<{language: string}>`
   font-size: 3rem;
   color: ${theme.darkGray};
   text-align: left;
-  font-family: ${props => (props.language === 'ko' ? 'TmoneyRoundWind' : 'Fredoka')};
+
+  font-family: ${props =>
+    props.language === 'ko' ? 'TmoneyRoundWind' : 'Fredoka'};
   font-weight: 600;
   padding: 0px;
   @media screen and (max-width: 1200px) {
@@ -86,7 +90,7 @@ const Header = styled.h1<{language: string}>`
 `;
 const CardBox = styled.div`
   width: 100%;
-  overflow: hidden;
+  overflow: visible;
   position: relative;
 `;
 function ValueMarquee() {
@@ -101,7 +105,7 @@ function ValueMarquee() {
           </HeaderBox>
         </Wrapper>
         <CardBox>
-          <Marquee speed={80}>
+          <Marquee speed={80} style={{overflow: 'visible'}}>
             {data.cards.map((_card: any, index: number) => (
               <ValueCard key={index} data={_card} />
             ))}
@@ -125,29 +129,43 @@ const CardContainer = styled.div`
   background-color: #ebebeb;
   position: relative;
   border-radius: 40px;
+  display: flex;
   flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  padding: 30px;
+
+  padding: 50px 40px 30px 40px;
+  box-shadow:
+    0px 10px 20px rgba(0, 0, 0, 0.1),
+    0px 6px 6px rgba(0, 0, 0, 0.05),
+    inset 0px 1px 1px rgba(255, 255, 255, 0.8);
   margin-right: 24px;
+  transition: all 0.3s ease;
+
   @media screen and (max-width: 850px) {
     height: 230px;
     width: 460px;
+    padding: 40px 30px 25px 30px;
     margin-right: 20px;
   }
+
   @media screen and (max-width: 500px) {
     height: 250px;
-    width: 360px;
+    width: 300px;
+    padding: 30px 25px 20px 25px;
     margin-right: 16px;
+  }
+
+  @media screen and (max-width: 400px) {
+    width: 260px;
+    height: 230px;
   }
 `;
 const CardHeader = styled.h2`
-  font-size: 2.2rem;
+  font-size: 1.75rem;
   line-height: 1.2;
   font-weight: 500;
   color: ${theme.darkGray};
-  margin-top: 10px;
-  margin-bottom: 15px;
+  margin-top: 30px;
+  margin-bottom: 10px;
   text-align: left;
   @media screen and (max-width: 850px) {
     font-size: 2rem;
@@ -157,8 +175,8 @@ const CardHeader = styled.h2`
   }
 `;
 const CardDesc = styled.h4<{language: string}>`
-  font-size: ${props => (props.language === 'ko' ? '1.5rem' : '1.7rem')};
-  line-height: 1.5;
+  font-size: ${props => (props.language === 'ko' ? '1.25rem' : '1.25rem')};
+  line-height: 1.7;
   font-weight: 400;
   color: #525252;
   text-align: left;
@@ -171,8 +189,26 @@ const CardDesc = styled.h4<{language: string}>`
     font-size: 1.3rem;
   }
 `;
+const IconBox = styled.div`
+  width: 110px;
+  height: 110px;
+  background-color: #f2f2f2;
+  border-radius: 10px;
+  display: inline-block;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  backdrop-filter: blur(10px);
+  box-shadow: 
+    /* 외부 그림자 */
+    0px 4px 8px 0px rgba(0, 0, 0, 0.15),
+    /* 내부 그림자 - 위쪽과 왼쪽은 밝게 */ inset 2px 2px 5px 0px
+      rgba(255, 255, 255, 0.5),
+    /* 내부 그림자 - 아래쪽과 오른쪽은 어둡게 */ inset -2px -2px 5px 0px
+      rgba(0, 0, 0, 0.1);
+`;
 const IconImage = styled.img`
-  width: 100px;
+  width: 80px;
   height: 80px;
   object-fit: contain;
 `;
@@ -180,9 +216,13 @@ function ValueCard({data}: CardProps) {
   const {language} = useLanguage();
   return (
     <CardContainer>
-      <IconImage src={data.icon} />
+      <IconBox>
+        <IconImage src={data.icon} />
+      </IconBox>
       <CardHeader dangerouslySetInnerHTML={{__html: data.title}}></CardHeader>
-      <CardDesc language={language} dangerouslySetInnerHTML={{__html: data.description}}></CardDesc>
+      <CardDesc
+        language={language}
+        dangerouslySetInnerHTML={{__html: data.description}}></CardDesc>
     </CardContainer>
   );
 }

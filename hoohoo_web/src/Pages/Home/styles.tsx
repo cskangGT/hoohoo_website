@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { theme } from '../../style';
+import {theme} from '../../style';
 
 export const PartnerButton = styled.a`
   font-size: 26px;
@@ -30,11 +30,12 @@ export const HomeTransitionButton = styled(PartnerButton)`
   background-color: #00bf63;
   color: white;
   font-size: 1.4rem;
+
   /* height: 60px; */
   width: 240px;
   align-items: center;
   justify-content: center;
-  line-height: 1;
+  line-height: 1.2;
   text-align: center;
   cursor: pointer;
 

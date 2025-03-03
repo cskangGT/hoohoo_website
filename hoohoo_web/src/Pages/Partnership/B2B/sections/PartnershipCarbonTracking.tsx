@@ -65,6 +65,7 @@ export const PartnershipRightBox = styled.div`
   width: 50%;
 
   position: relative;
+  justify-content: center;
   display: flex;
   @media screen and (max-width: 1200px) {
   }
@@ -167,7 +168,7 @@ function PartnershipCarbonTracking() {
           </PartnershipRightBox>
         </PartnershipInnerContainer>
       </Wrapper>
-      <CarbonImage src={data.carbonImage} />
+      {/* <CarbonImage src={data.carbonImage} /> */}
     </PartnershipContainer>
   );
 }

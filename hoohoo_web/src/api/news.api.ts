@@ -5,9 +5,9 @@ export async function getNewsList(language: string, lastKey?: string, subCategor
     try {
         let url = lambdaAddress + `/`;
         if (subCategory) {
-            url += `?category=${subCategory}&limit=12`;
+            url += `?category=${subCategory}&limit=30`;
         } else {
-            url += `?limit=12`;
+            url += `?limit=30`;
         }
         if (language) {
             url += `&lang=${language}`;

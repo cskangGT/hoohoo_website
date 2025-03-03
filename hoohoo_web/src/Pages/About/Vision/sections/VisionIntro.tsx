@@ -1,9 +1,9 @@
 import i18next from 'i18next';
-import React, { useEffect, useState } from 'react';
+import React, {useEffect, useState} from 'react';
 import styled from 'styled-components';
-import { Desc } from '../../../../components/ContentBox/TwoColBoxesSection';
-import { useLanguage } from '../../../../components/hooks/LanguageContext';
-import { slideInFromTop, theme } from '../../../../style';
+import {Desc} from '../../../../components/ContentBox/TwoColBoxesSection';
+import {useLanguage} from '../../../../components/hooks/LanguageContext';
+import {slideInFromTop, theme} from '../../../../style';
 export const Bg = styled.div<{image: string}>`
   animation: ${slideInFromTop} 0.7s ease-out forwards;
   width: calc(100%);
@@ -22,10 +22,11 @@ export const Bg = styled.div<{image: string}>`
   }
 `;
 const Header = styled.h1<{language: string}>`
-  width: calc(100% - 60px);
+  width: calc(100% - 55px);
   font-size: 3rem;
   color: ${theme.darkGray};
-  font-family: ${props => (props.language === 'ko' ? 'TmoneyRoundWind' : 'Fredoka')};
+  font-family: ${props =>
+    props.language === 'ko' ? 'TmoneyRoundWind' : 'Fredoka'};
   font-weight: 600;
 
   @media screen and (max-width: 1200px) {
@@ -36,11 +37,11 @@ const Header = styled.h1<{language: string}>`
   }
   @media screen and (max-width: 800px) {
     font-size: 2.1rem;
-    padding: 0px 30px;
+    padding: 0px 25px 0px 30px;
   }
   @media screen and (max-width: 600px) {
     font-size: 1.8rem;
-    padding: 0px 30px;
+    padding: 0px 25px 0px 30px;
   }
   @media screen and (max-width: 400px) {
     font-size: 1.8rem;
@@ -65,12 +66,12 @@ const ContentText = styled.p`
   }
   @media screen and (max-width: 600px) {
     font-size: 1.4rem;
-    padding: 0px 30px;
-    width: calc(100% - 60px);
+    padding: 0px 30px 0px 25px;
+    width: calc(100% - 55px);
   }
   @media screen and (max-width: 400px) {
     font-size: 1.4rem;
-    width: calc(100% - 60px);
+    width: calc(100% - 55px);
   }
 `;
 const ImageBox = styled.div`

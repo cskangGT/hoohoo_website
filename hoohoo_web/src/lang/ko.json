@@ -692,7 +692,7 @@
     "image": "/Images/vision_intro.png",
     "smallImage": "/Images/vision_intro_small.png",
     "header": "인식을 행동으로,<br />행동을 지속 가능한 습관으로",
-    "content": "캠페인을 통한 기후 위기의 인식은 누구나 있지만, 행동으로 이어지기는 쉽지 않아요.<br />저희는 기술을 통해 그 간극을 메워, 친환경 인식을 지속 가능한 실천으로 바꿉니다."
+    "content": "캠페인을 통한 기후 위기의 인식은 누구나 있지만, 행동으로 이어지기는 쉽지 않아요.<br />저희는 기술을 통해 그 간극을 메워,<br />친환경 인식을 지속 가능한 실천으로 바꿉니다."
   },
   "ourMission": {
     "header": "Our mission",
@@ -781,12 +781,12 @@
       },
       {
         "title": "친환경 서비스",
-        "description": "당신의 친환경 서비스를 통해,<br />사용자가 저감한 CO₂ 양을 확인해보세요!",
+        "description": "당신의 친환경 서비스를 통해,<br />사용자가 저감한 CO₂ 양을<br />확인해보세요!",
         "icon": "/Images/partners_card_eco_service.png"
       },
       {
         "title": "에코 보드",
-        "description": "EarthMera에서<br />친환경을 실천하는 사용자들과<br />손쉽게 연결되어 보세요!",
+        "description": "EarthMera에서 친환경을<br />실천하는 사용자들과<br />손쉽게 연결되어 보세요!",
         "icon": "/Images/partners_card_ecoboard.png"
       },
       {
@@ -796,7 +796,7 @@
       },
       {
         "title": "티켓티어",
-        "description": "친환경 이벤트를 측정 가능한 임팩트로 바꿔보세요!",
+        "description": "친환경 이벤트를 측정 가능한<br />임팩트로 바꿔보세요!",
         "icon": "/Images/partners_card_ticketeer.png"
       }
     ]
@@ -804,20 +804,20 @@
   "PartnershipCarbonTracking": {
     "title": "당신의 제품의 CO₂<br />저감량을 추적해보세요",
     "description": "제품을 등록하면, EarthMera AI가 해당 제품과 함께한 사용자의 에코 액션을 추적하여 CO₂ 저감 데이터를 제공합니다!",
-    "buttonText": "카테고리 등록<br />문의하기",
+    "buttonText": "카테고리 등록<br />협업 문의하기",
     "image": "/Images/partnership_category.webp",
     "carbonImage": "/Images/partnership_carbon.png"
   },
   "PartnershipEcoBoard": {
     "title": "친환경 사용자들에게<br />당신의 브랜드를 보여주세요",
     "description": "에코 보드는 친환경 사용자들을 지속 가능성을 추구하는 기업, 단체, 제품 등을 손쉽게 연결해주는 공간입니다.<br />당신의 브랜드를 통해 사용자들이 더 나은 친환경 라이프스타일을 실현할 수 있도록 함께해주세요.",
-    "buttonText": "에코 보드<br />문의하기",
+    "buttonText": "에코 보드<br />협업 문의하기",
     "image": "/Images/partnership_ecoboard.webp"
   },
   "PartnershipShop": {
     "title": "내 상점 주변의<br />친환경 소비자와<br />연결해보세요!",
     "description": "제로 웨이스트나 비건 매장?<br />‘주변 상점’에 등록하고 동네 친환경 핫플로 만들어보세요! 친환경 소비자들이 당신의 매장을 더 쉽게 찾아올 수 있어요.<br />고객은 늘어나고, 브랜드 인지도는 자연스럽게 올라갑니다!",
-    "buttonText": "주변 상점 문의하기",
+    "buttonText": "주변 상점<br />협업 문의하기",
     "image": "/Images/partnership_ecoshop.webp"
   },
   "TicketeerCarbon": {
@@ -970,13 +970,13 @@
   "B2BEcoServices": {
     "title": "당신의 에코 서비스가 만드는<br />진짜 영향력을 확인해보세요",
     "description": "에코 서비스를 이용하는 사용자의 에코 액션을 EarthMera AI가 인증하고, CO₂ 저감량 데이터를 제공합니다. 이 데이터를 바탕으로 에코 서비스 제공 기업은 집계된 CO₂ 저감량을 확인하고, 실질적인 환경 기여도를 파악할 수 있습니다.<br />EarthMera와 함께 여러분의 서비스가 만드는 진짜 변화를 확인해보세요.",
-    "buttonText": "친환경 서비스<br />문의하기",
+    "buttonText": "에코 서비스<br />협업 문의하기",
     "image": "/Images/partner_eco_service.webp"
   },
   "B2BEcoProducts": {
     "title": "EarthMera와 함께<br />친환경 제품을 검증해보세요",
     "description": "EarthMera와 함께 친환경 제품을 검증할 파트너를 찾고 있어요! 검증된 제품은 EarthMera의 특별한 친환경 카드로 제작되어, 사용자는 지속 가능성 여정을더 즐겁게 이어갈 수 있고, 파트너는 브랜드 신뢰도를 자연스럽게 높일 수 있습니다.",
-    "buttonText": "친환경 제품<br />문의하기",
+    "buttonText": "친환경 제품<br />협업 문의하기",
     "image": "/Images/partner_eco_product.webp"
   }
 }

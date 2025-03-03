@@ -793,7 +793,7 @@
       },
       {
         "title": "Eco-Products",
-        "description": "Strengthen your brand and <br />lead the way in sustainability.",
+        "description": "Strengthen your brand and<br />lead the way in sustainability.",
         "icon": "/Images/partners_card_eco_product.png"
       },
       {
@@ -803,7 +803,7 @@
       },
       {
         "title": "Eco-Board",
-        "description": "Connect effortlessly with a community of eco-conscious individuals on EarthMera.",
+        "description": "Effortlessly connect<br />with eco-conscious individuals<br />on EarthMera.",
         "icon": "/Images/partners_card_ecoboard.png"
       },
       {
@@ -813,7 +813,7 @@
       },
       {
         "title": "Ticketeer",
-        "description": "Turn your eco-events<br />into measurable impact",
+        "description": "Turn your eco-events<br />into measurable impact.",
         "icon": "/Images/partners_card_ticketeer.png"
       }
     ]
@@ -828,13 +828,13 @@
   "PartnershipEcoBoard": {
     "title": "Boost your Brand<br />with Eco-Board",
     "description": "EcoBoard connects you with sustainable brands and eco-conscious organizations, offering easy access to information that inspires a greener lifestyle.",
-    "buttonText": "Ask about Eco-Board",
+    "buttonText": "Ask about<br />Eco-Board",
     "image": "/Images/partnership_ecoboard.webp"
   },
   "PartnershipShop": {
     "title": "Get Found by<br />Eco-Shoppers Nearby",
     "description": "List your zero-waste or vegan store on EarthMera and make it easy for eco-conscious shoppers to find you. Users can see your store's location nearby and connect with your sustainable brand, helping you grow your customer base and increase visibility.",
-    "buttonText": "Ask about ads",
+    "buttonText": "Ask about<br />Nearby Stores",
     "image": "/Images/partnership_ecoshop.webp"
   },
   "TicketeerCarbon": {
@@ -844,7 +844,7 @@
   },
   "TicketeerIntro": {
     "header": "Turn your eco-events<br />into measurable impact",
-    "buttonText": "Ask about Ticketeer",
+    "buttonText": "Ask about<br />Ticketeer",
     "image": "/Images/ticketeer_intro.webp",
     "titleStar": "/Images/ticketeer_title_star.png"
   },

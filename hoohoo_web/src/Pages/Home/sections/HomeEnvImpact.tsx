@@ -1,12 +1,12 @@
 import i18next from 'i18next';
 import React from 'react';
-import { useNavigate } from 'react-router-dom';
+import {useNavigate} from 'react-router-dom';
 import styled from 'styled-components';
-import { useLanguage } from '../../../components/hooks/LanguageContext';
+import {useLanguage} from '../../../components/hooks/LanguageContext';
 import Wrapper from '../../../components/Wrapper/Wrapper';
-import { theme } from '../../../style';
-import { logButtonEvent, PageName } from '../../../util/firebase_custom_event';
-import { HomeTransitionButton } from '../styles';
+import {theme} from '../../../style';
+import {logButtonEvent, PageName} from '../../../util/firebase_custom_event';
+import {HomeTransitionButton} from '../styles';
 const Container = styled.section`
   width: 100%;
   background-color: transparent;
@@ -108,7 +108,7 @@ export const UpperTitle = styled.p`
 `;
 export const HeaderText = styled.h2`
   font-size: 1.4rem;
-  line-height: 1.4;
+  line-height: 1.5;
   color: ${theme.white};
   font-weight: 400;
   @media screen and (max-width: 850px) {
