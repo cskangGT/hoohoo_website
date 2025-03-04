@@ -198,7 +198,7 @@ const IconBox = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  backdrop-filter: blur(10px);
+
   box-shadow: 
     /* 외부 그림자 */
     0px 4px 8px 0px rgba(0, 0, 0, 0.15),

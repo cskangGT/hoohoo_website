@@ -4,19 +4,19 @@ import {HelmetProvider} from 'react-helmet-async';
 import {RouterProvider} from 'react-router-dom';
 import {createGlobalStyle} from 'styled-components';
 
+import {GoogleOAuthProvider} from '@react-oauth/google';
 import NanumHumanTTfBold from '../public/fonts/NanumHumanBold.ttf';
 import NanumHumanTTfLight from '../public/fonts/NanumHumanLight.ttf';
 import NanumHumanTTfRegular from '../public/fonts/NanumHumanRegular.ttf';
+import RixYeoljeongdoR from '../public/fonts/RixYeoljeongdoRegular.ttf';
+import TmoneyRoundWindExtraBold from '../public/fonts/TmoneyRoundWindExtraBold.ttf';
+import TmoneyRoundWindRegular from '../public/fonts/TmoneyRoundWindRegular.ttf';
 import YanoljaYacheBTtf from '../public/fonts/YanoljaYacheB.ttf';
 import YanoljaYacheBWoff from '../public/fonts/YanoljaYacheB.woff';
 import YanoljaYacheBWoff2 from '../public/fonts/YanoljaYacheB.woff2';
 import YanoljaYacheTtf from '../public/fonts/YanoljaYacheR.ttf';
 import YanoljaYacheWoff from '../public/fonts/YanoljaYacheR.woff';
 import YanoljaYacheWoff2 from '../public/fonts/YanoljaYacheR.woff2';
-
-import RixYeoljeongdoR from '../public/fonts/RixYeoljeongdoRegular.ttf';
-import TmoneyRoundWindExtraBold from '../public/fonts/TmoneyRoundWindExtraBold.ttf';
-import TmoneyRoundWindRegular from '../public/fonts/TmoneyRoundWindRegular.ttf';
 import './lang/i18n';
 import Router from './Router';
 
@@ -65,12 +65,13 @@ const GlobalStyle = createGlobalStyle`
         src: url(${TmoneyRoundWindRegular}) format('truetype');
         font-weight: 400;  // Regular 웨이트 지정
       }
-
+      
       @font-face {
         font-family: 'TmoneyRoundWind';
         src: url(${TmoneyRoundWindExtraBold}) format('truetype');
         font-weight: 800;  // ExtraBold 웨이트 지정
       }
+      
     @font-face {
     font-family: 'yg-jalnan';
     src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_four@1.2/JalnanOTF00.woff') format('woff');
@@ -82,7 +83,7 @@ const GlobalStyle = createGlobalStyle`
     }
     body {
       margin: 0;
-      font-family:  'Fredoka', 'TmoneyRoundWind', 'Noto Sans', 'Black Han Sans', 'Permanent Marker';
+      font-family:  'Fredoka', 'TmoneyRoundWind', 'Inter', 'Noto Sans', 'Black Han Sans', 'Permanent Marker';
       font-weight: 400;
       overflow-x: hidden;
       word-break: keep-all;
@@ -108,21 +109,16 @@ const GlobalStyle = createGlobalStyle`
 const container = document.getElementById('root');
 const root = ReactDOM.createRoot(container);
 
-if (container.hasChildNodes()) {
-  ReactDOM.hydrateRoot(
-    container,
+root.render(
+  <React.StrictMode>
     <HelmetProvider>
-      <GlobalStyle />
-      <RouterProvider router={Router} />
-    </HelmetProvider>,
-  );
-} else {
-  root.render(
-    <React.StrictMode>
-      <HelmetProvider>
+      <GoogleOAuthProvider
+        clientId={
+          '1441892786-rh1h7vnt7ua7tlece7jts1ca6kasi1uh.apps.googleusercontent.com'
+        }>
         <GlobalStyle />
         <RouterProvider router={Router} />
-      </HelmetProvider>
-    </React.StrictMode>,
-  );
-}
+      </GoogleOAuthProvider>
+    </HelmetProvider>
+  </React.StrictMode>,
+);

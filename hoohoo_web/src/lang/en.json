@@ -37,7 +37,11 @@
       },
       {
         "label": "Contact",
-        "link": "mailto:support@earthmera.com"
+        "email": "mailto:support@earthmera.com"
+      },
+      {
+        "label": "Login",
+        "link": "/en/login"
       }
     ]
   },

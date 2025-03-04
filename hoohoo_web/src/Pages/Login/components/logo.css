@@ -1,0 +1,88 @@
+/* 기존 CSS를 수정한 버전 */
+.gsi-material-button {
+  -moz-user-select: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+  -webkit-appearance: none;
+
+  /* 배경, 테두리 */
+  background-color: #ffffff; /* 버튼 배경색 */
+  background-image: none;
+  border: 1px solid transparent;
+  border-radius: 8px; /* 모서리 둥글기 (이미지처럼 좀 더 둥글게) */
+  box-sizing: border-box;
+
+  /* 텍스트, 폰트 등 */
+  color: #1f1f1f;
+  font-family: 'Inter', arial, sans-serif;
+  font-size: 14px;
+  letter-spacing: 0.25px;
+  font-weight: 600; /* 글자 두께 (가독성 향상) */
+
+  /* 크기, 내부 여백, 기타 */
+  cursor: pointer;
+  height: 44px; /* 높이를 조금 키워서 여유있게 */
+  padding: 0 16px; /* 좌우 패딩 늘림 */
+  outline: none;
+  overflow: hidden;
+  position: relative;
+  text-align: center;
+  transition:
+    background-color 0.218s,
+    border-color 0.218s,
+    box-shadow 0.218s;
+  vertical-align: middle;
+  white-space: nowrap;
+  width: auto;
+  max-width: 400px;
+  min-width: min-content;
+}
+
+/* 아이콘 영역 */
+.gsi-material-button .gsi-material-button-icon {
+  height: 20px;
+  width: 20px;
+  min-width: 20px;
+  margin-right: 12px;
+}
+
+/* 버튼 내부 콘텐츠 전체 Wrapper */
+.gsi-material-button .gsi-material-button-content-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+
+/* 텍스트 영역 */
+.gsi-material-button .gsi-material-button-contents {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  vertical-align: top;
+}
+
+/* 클릭·포커스 시 나타나는 시각적 효과(레이어) */
+.gsi-material-button .gsi-material-button-state {
+  transition: opacity 0.218s;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  opacity: 0;
+}
+
+/* 비활성화 스타일 */
+.gsi-material-button:disabled {
+  cursor: default;
+  background-color: #ffffff61;
+  border-color: #1f1f1f1f;
+}
+.gsi-material-button:disabled .gsi-material-button-contents,
+.gsi-material-button:disabled .gsi-material-button-icon {
+  opacity: 38%;
+}

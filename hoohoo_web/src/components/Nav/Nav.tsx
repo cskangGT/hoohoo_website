@@ -322,6 +322,7 @@ type NavItem = {
   label: string;
   link?: string;
   subItems?: NavItem[];
+  email?: string;
 };
 type Props = {
   navlist: NavItem[];
@@ -440,6 +441,8 @@ function Nav() {
       </Logo>
       <NavbarMenu isOpen={isOpen}>
         {navItems.map((item, i) => {
+          console.log('item.subItems', item.subItems);
+
           return (
             <NavMenuList key={i}>
               <LogoIcon
@@ -486,20 +489,11 @@ function Nav() {
                   style={{overflow: 'visible'}}>
                   <NavLink
                     className="NavLink"
-                    id={item.link}
+                    id={item.link + 'NavLink' + i}
                     key={i}
-                    href={
-                      item.label === 'Contact' || item.label === '문의하기'
-                        ? ''
-                        : item.link
-                          ? item.link
-                          : ''
-                    }
+                    href={item.link ? item.link : undefined}
                     onClick={e => {
-                      if (
-                        item.label === 'Contact' ||
-                        item.label === '문의하기'
-                      ) {
+                      if (item.email) {
                         // window.location.href = 'mailto:support@earthmera.com';
                         handleEmailClick(e);
                       } else {
@@ -513,6 +507,7 @@ function Nav() {
             </NavMenuList>
           );
         })}
+
         {/* {!isOpen && (
           <LanguageBox>
             <LanguageButton

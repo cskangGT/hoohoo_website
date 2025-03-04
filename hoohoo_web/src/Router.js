@@ -22,6 +22,7 @@ import NewsDetailPage from './Pages/EMMedia/News/NewsDetailPage';
 import NewsPage from './Pages/EMMedia/NewsPage';
 import SupportingPage from './Pages/Info/Contact/SupportingPage';
 import RedirectPage from './Pages/Info/Redirection/RedirectPage';
+import Login from './Pages/Login/Login';
 import EMTicketeer from './Pages/Partnership/ticketeer/EMTicketeer';
 
 const createLocalizedRoutes = routes => {
@@ -135,6 +136,11 @@ const baseRoutes = [
   {
     path: '/terms_of_use',
     element: <TandC />,
+    errorElement: <ErrorComponent />,
+  },
+  {
+    path: '/login',
+    element: <Login />,
     errorElement: <ErrorComponent />,
   },
   // {
