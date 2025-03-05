@@ -1,16 +1,17 @@
 import i18next from 'i18next';
 import React from 'react';
 import styled from 'styled-components';
-import { theme } from '../../../style';
+import {theme} from '../../../style';
 
 const Container = styled.div`
   width: 100%;
-  padding: 0px 0px 70px 0px;
+  padding: 0px 0px 100px 0px;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   row-gap: 80px;
+  margin-bottom: 100px;
 `;
 
 const TitleBox = styled.div`
@@ -41,7 +42,7 @@ const DescriptionText = styled.h5`
 
 const PartnerText = styled.h5`
   margin: 0px;
-  font-size: ${theme.fontSize['xl']};
+  font-size: ${theme.fontSize.md};
   font-weight: 400;
   color: ${theme.green};
 `;

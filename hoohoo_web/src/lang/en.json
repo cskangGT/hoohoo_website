@@ -995,5 +995,13 @@
     "description": "EarthMera is looking for partners to certify eco-friendly products. Once certified, these products are turned into collectible cards, making sustainability fun and engaging while enhancing your brand's credibility.",
     "buttonText": "Ask about<br />Eco-Products",
     "image": "/Images/partner_eco_product.webp"
+  },
+  "EcoActionTestimony": {
+    "tag": "Testimonials",
+    "title": "Eco-Actions that inspire",
+    "subtitle": "Impact that lasts",
+    "description": "See how real users are making a difference!<br />One action at a time",
+    "buttonText": "Explore Eco-Actions",
+    "backButtonText": "Go back"
   }
 }
