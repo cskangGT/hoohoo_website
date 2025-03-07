@@ -38,6 +38,10 @@
       {
         "label": "문의하기",
         "email": "mailto:support@earthmera.com"
+      },
+      {
+        "label": "로그인",
+        "link": "/login"
       }
     ]
   },
@@ -987,6 +991,15 @@
     "continueWithGoogle": "Google 로그인",
     "continueWithApple": "Apple 로그인",
     "continueWithKakao": "카카오 로그인"
+  },
+  "Signup": {
+    "title": "어스메라 계정을 만들어봐요!",
+    "email": "이메일 주소",
+    "password": "비밀번호",
+    "emailLiner": "이메일로 가입하기",
+    "signupWithGoogle": "구글로 가입하기",
+    "signupWithApple": "Apple로 가입하기",
+    "signupWithKakao": "카카오로 가입하기"
   },
   "APIErrorCase": {
     "error": {

@@ -38,6 +38,10 @@
       {
         "label": "Contact",
         "email": "mailto:support@earthmera.com"
+      },
+      {
+        "label": "Login",
+        "link": "/login"
       }
     ]
   },
@@ -1004,6 +1008,15 @@
     "continueWithGoogle": "Continue with Google",
     "continueWithApple": "Continue with Apple",
     "continueWithKakao": "Continue with Kakao"
+  },
+  "Signup": {
+    "title": "Let's create an account",
+    "email": "Email address",
+    "password": "Password",
+    "emailLiner": "Or with email",
+    "signupWithGoogle": "Sign up with Google",
+    "signupWithApple": "Sign up with Apple",
+    "signupWithKakao": "Sign up with Kakao"
   },
   "APIErrorCase": {
     "error": {

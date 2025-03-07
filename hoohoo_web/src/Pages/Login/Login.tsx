@@ -1,5 +1,12 @@
+import {
+  FormControl,
+  IconButton,
+  InputAdornment,
+  InputLabel,
+  OutlinedInput,
+} from '@mui/material';
+import TextField from '@mui/material/TextField';
 import {useGoogleLogin} from '@react-oauth/google';
-
 import i18next from 'i18next';
 import React, {useState} from 'react';
 import {IoEyeOffSharp, IoEyeSharp} from 'react-icons/io5';
@@ -8,6 +15,7 @@ import styled from 'styled-components';
 import Wrapper from '../../components/Wrapper/Wrapper';
 import {theme} from '../../style';
 import GoogleLogo from './components/GoogleLogo';
+import LineDivider from './components/LineDivider';
 
 const Container = styled.div`
   width: 100%;
@@ -63,6 +71,12 @@ const PasswordInput = styled.input`
   border: 1px solid ${theme.gray};
 
   font-size: ${theme.fontSize.md};
+`;
+const TextFieldContainer = styled.div`
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: ${theme.spacing.md};
 `;
 const PasswordContainer = styled.div`
   position: relative;
@@ -195,15 +209,6 @@ const Login = () => {
     console.log('로그인 시도:', userId, password);
   };
   const handleAppleLogin = async () => {
-    //     https://appleid.apple.com/auth/authorize?
-    // response_type=code
-    // &client_id=YOUR_SERVICE_ID
-    // &redirect_uri=YOUR_REDIRECT_URI
-    // &scope=name email
-    // &response_mode=form_post
-
-    console.log('sign in with apple');
-
     (window as any)?.AppleID?.auth?.init({
       clientId: 'earthmera.web',
       scope: 'email',
@@ -218,10 +223,6 @@ const Login = () => {
     } catch (error) {
       console.log(error);
     }
-    // const SERVICE_ID = 'earthmera.web';
-    // const REDIRECT_URI = 'http://www.earthmera.com/oauth/callback/apple';
-    // const link = `https://appleid.apple.com/auth/authorize?client_id=${SERVICE_ID}&redirect_uri=${REDIRECT_URI}&response_type=code&scope=email&response_mode=form_post`;
-    // window.location.href = link;
   };
   const handleKakaoLogin = () => {
     const REST_API_KEY = '3646b1cf0a0594f198c66529c902ff1d';
@@ -238,34 +239,61 @@ const Login = () => {
             <InnerBox>
               <TitleText>{localizedTexts.title}</TitleText>
               <form onSubmit={handleLogin}>
-                <TextInput
-                  placeholder={localizedTexts.email}
-                  type="text"
-                  value={userId}
-                  onChange={e => setUserId(e.target.value)}
-                  required
-                />
-                <PasswordContainer>
-                  <PasswordInput
-                    placeholder={localizedTexts.password}
-                    type={showPassword ? 'text' : 'password'}
-                    value={password}
-                    onChange={e => setPassword(e.target.value)}
+                <TextFieldContainer>
+                  <TextField
+                    label={localizedTexts.email}
+                    type="text"
+                    value={userId}
+                    onChange={e => setUserId(e.target.value)}
                     required
+                    sx={{
+                      '& .MuiOutlinedInput-root': {
+                        borderRadius: '8px',
+                      },
+                    }}
                   />
-                  <EyeIcon onClick={() => setShowPassword(!showPassword)}>
-                    {showPassword ? (
-                      <IoEyeSharp size={20} color={theme.gray} />
-                    ) : (
-                      <IoEyeOffSharp size={20} color={theme.gray} />
-                    )}
-                  </EyeIcon>
-                </PasswordContainer>
+                  <FormControl
+                    sx={{
+                      width: '100%',
+                      '& .MuiOutlinedInput-root': {
+                        borderRadius: '8px',
+                      },
+                    }}
+                    variant="outlined">
+                    <InputLabel htmlFor="outlined-adornment-password">
+                      {localizedTexts.password}
+                    </InputLabel>
+                    <OutlinedInput
+                      id="outlined-adornment-password"
+                      label={localizedTexts.password}
+                      type={showPassword ? 'text' : 'password'}
+                      endAdornment={
+                        <InputAdornment position="end">
+                          <IconButton
+                            aria-label={
+                              showPassword
+                                ? 'hide the password'
+                                : 'display the password'
+                            }
+                            onClick={() => setShowPassword(!showPassword)}
+                            edge="end">
+                            {showPassword ? (
+                              <IoEyeOffSharp size={20} color={theme.gray} />
+                            ) : (
+                              <IoEyeSharp size={20} color={theme.gray} />
+                            )}
+                          </IconButton>
+                        </InputAdornment>
+                      }
+                      value={password}
+                      onChange={e => setPassword(e.target.value)}
+                      required
+                    />
+                  </FormControl>
+                </TextFieldContainer>
                 <LoginButton type="submit">{localizedTexts.title}</LoginButton>
                 <ForgotPassword>{localizedTexts.forgotPassword}</ForgotPassword>
-                <Divider>
-                  <span>Or</span>
-                </Divider>
+                <LineDivider text={'or'} />
 
                 <SocialLoginContainer>
                   <SocialButton onClick={googleLogin}>
