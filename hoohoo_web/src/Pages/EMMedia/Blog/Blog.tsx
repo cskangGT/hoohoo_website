@@ -1,14 +1,17 @@
 import i18next from 'i18next';
-import React, { useEffect, useRef, useState } from 'react';
+import React, {useEffect, useRef, useState} from 'react';
 import styled from 'styled-components';
-import { getBlogList } from '../../../api/blog';
+import {getBlogList} from '../../../api/blog';
 import BlogCard from '../../../components/Blog/BlogCard';
-import { BlogCategory, BlogDataType } from '../../../components/Blog/BlogCategory';
+import {
+  BlogCategory,
+  BlogDataType,
+} from '../../../components/Blog/BlogCategory';
 import PageNav from '../../../components/Blog/PageNav';
 import FootContact from '../../../components/Footer/FootContact';
-import { useLanguage } from '../../../components/hooks/LanguageContext';
+import {useLanguage} from '../../../components/hooks/LanguageContext';
 import Wrapper from '../../../components/Wrapper/Wrapper';
-import { BgImage, theme } from '../../../style';
+import {BgImage, theme} from '../../../style';
 import BlogModal from './BlogModal';
 const Container = styled.div`
   width: calc(100% - 30px);
@@ -157,10 +160,9 @@ function Blog() {
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const [numTotalData, setNumTotalData] = useState<number>(0);
   const handleOpen = () => setIsOpen(true);
-  
 
   const scrollContainerRef = useRef<HTMLDivElement>(null);
-  
+
   const fetchData = async (category: string, page: number) => {
     // let filteredData: BlogData[];
     // if (category === list[0]) {
@@ -230,7 +232,6 @@ function Blog() {
                         <OutlineText key={index + 'text'}>
                           {language === 'ko' ? item.text.ko : item.text.en}
                         </OutlineText>
-                        
                       </Outline>
                     ),
                   )}

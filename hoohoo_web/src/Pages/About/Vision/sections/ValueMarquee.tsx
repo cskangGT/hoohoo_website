@@ -1,7 +1,7 @@
 import i18next from 'i18next';
 import React from 'react';
 import Marquee from 'react-fast-marquee';
-import styled, {keyframes} from 'styled-components';
+import styled from 'styled-components';
 import {useLanguage} from '../../../../components/hooks/LanguageContext';
 import Wrapper from '../../../../components/Wrapper/Wrapper';
 import {theme} from '../../../../style';
@@ -51,14 +51,6 @@ const HeaderBox = styled.div`
   align-items: center;
   width: 100%;
   margin-bottom: 70px;
-`;
-const marquee = keyframes`
-  0% {
-    transform: translateX(100%);
-  }
-  100% {
-    transform: translateX(-100%);
-  }
 `;
 
 const Header = styled.h1<{language: string}>`
@@ -138,6 +130,7 @@ const CardContainer = styled.div`
     0px 6px 6px rgba(0, 0, 0, 0.05),
     inset 0px 1px 1px rgba(255, 255, 255, 0.8);
   margin-right: 24px;
+  position: relative;
   transition: all 0.3s ease;
 
   @media screen and (max-width: 850px) {

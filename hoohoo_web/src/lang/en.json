@@ -1020,5 +1020,13 @@
     "loadingTitle": "Back to Login Page",
     "kakao": "Kakao",
     "apple": "Apple"
+  },
+  "EcoActionTestimony": {
+    "tag": "Testimonials",
+    "title": "Eco-Actions that inspire",
+    "subtitle": "Impact that lasts",
+    "description": "See how real users are making a difference!<br />One action at a time",
+    "buttonText": "Explore Eco-Actions",
+    "backButtonText": "Go back"
   }
 }

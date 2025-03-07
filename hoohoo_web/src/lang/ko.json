@@ -1003,5 +1003,13 @@
     "loadingTitle": "로그인 페이지로 돌아가기",
     "kakao": "카카오",
     "apple": "Apple"
+  },
+  "EcoActionTestimony": {
+    "tag": "실제 친환경 행동",
+    "title": "친환경 행동들이 모이면,",
+    "subtitle": "더 큰 변화를 만듭니다",
+    "description": "실제 사용자들이 어떻게 변화를 만들어가는지 확인해보세요!<br />한 번의 행동이 모여 큰 변화를 만듭니다.",
+    "buttonText": "친환경 행동 보러가기",
+    "backButtonText": "뒤로 가기"
   }
 }

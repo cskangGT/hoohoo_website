@@ -26,7 +26,7 @@ const Background = styled.footer`
 const Container = styled.div`
   max-width: 980px;
   display: block;
-  padding: 0 22px;
+  padding: 40px 22px;
   margin: 0 auto;
   @media screen and (max-width: 700px) {
     margin: 0 0;
