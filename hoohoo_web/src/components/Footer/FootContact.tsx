@@ -1,18 +1,20 @@
 import i18next from 'i18next';
 import React from 'react';
 import styled from 'styled-components';
-import { theme } from '../../style';
-import { logButtonEvent, PageName } from '../../util/firebase_custom_event';
+import {theme} from '../../style';
+import {logButtonEvent, PageName} from '../../util/firebase_custom_event';
 const ContactBox = styled.div`
   background-color: transparent;
   display: flex;
   justify-content: center;
   padding: 0 10px;
+  margin: 40px 0px;
 `;
 const ContactColumnBox = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+  row-gap: 10px;
 `;
 const ContactText = styled.h3`
   margin: 26px 10px;
@@ -51,7 +53,10 @@ export default function FootContact() {
     logButtonEvent('contact_us', PageName.home);
     // 폴백(fallback) 처리
     setTimeout(() => {
-      window.open(`https://mail.google.com/mail/?view=cm&fs=1&to=${emailAddress}`, '_blank');
+      window.open(
+        `https://mail.google.com/mail/?view=cm&fs=1&to=${emailAddress}`,
+        '_blank',
+      );
     }, 300);
   };
   const data: any = i18next.t('footcontact', {returnObjects: true});
@@ -59,9 +64,7 @@ export default function FootContact() {
     <ContactBox id="contact" key="contact">
       <ContactColumnBox>
         <ContactText>{data.title}</ContactText>
-        <LinktoEmail
-          onClick={handleEmailClick}
-          data-l10n-id="footer_contactus">
+        <LinktoEmail onClick={handleEmailClick} data-l10n-id="footer_contactus">
           {data.button}
         </LinktoEmail>
       </ContactColumnBox>

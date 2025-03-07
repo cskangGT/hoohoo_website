@@ -6,6 +6,7 @@ import FootContact from '../../components/Footer/FootContact';
 import {useLanguage} from '../../components/hooks/LanguageContext';
 import {BgImage, theme} from '../../style';
 import {ContentBox} from '../About/Vision/EarthMeraVision';
+import EcoActionTestimony from './sections/EcoActionTestimony';
 import HomeEcoProducts from './sections/HomeEcoProducts';
 import HomeEcoServices from './sections/HomeEcoServices';
 import HomeEnvImpact from './sections/HomeEnvImpact';
@@ -152,15 +153,9 @@ function HomeEarthmera() {
           <HomePartners />
         </ContentBox>
       </Wrap>
-      {/* <IntroSection /> */}
-      {/* <IntroEarth /> */}
-      {/* <ContentBox key="video" id="video">
-          <VideoSection />
-        </ContentBox> */}
-      {/* <ContentBox ref={sectionRef} id="download" key="download">
-          <Download dropb={false} />
-        </ContentBox> */}
-
+      <ContentBox>
+        <EcoActionTestimony />
+      </ContentBox>
       <hr style={{color: theme.darkGray, margin: 0, width: '100%'}} />
       <Wrap>
         <FootContact />
