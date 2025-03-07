@@ -38,10 +38,6 @@
       {
         "label": "Contact",
         "email": "mailto:support@earthmera.com"
-      },
-      {
-        "label": "Login",
-        "link": "/en/login"
       }
     ]
   },
@@ -999,5 +995,30 @@
     "description": "EarthMera is looking for partners to certify eco-friendly products. Once certified, these products are turned into collectible cards, making sustainability fun and engaging while enhancing your brand's credibility.",
     "buttonText": "Ask about<br />Eco-Products",
     "image": "/Images/partner_eco_product.webp"
+  },
+  "Login": {
+    "title": "Login",
+    "email": "Email",
+    "password": "Password",
+    "forgotPassword": "Forgot Password?",
+    "continueWithGoogle": "Continue with Google",
+    "continueWithApple": "Continue with Apple",
+    "continueWithKakao": "Continue with Kakao"
+  },
+  "APIErrorCase": {
+    "error": {
+      "errorTitle": "Error",
+      "GeneralErrorText": "An error occurred.\nPlease try again."
+    }
+  },
+  "OAuthCallback": {
+    "title": ["Logging in with", ""],
+    "message": "Please wait for seconds",
+    "retryButton": "Back to Login Page",
+    "errorTitle": "Error",
+    "errorMessage": "An error occurred. Please try again.",
+    "loadingTitle": "Back to Login Page",
+    "kakao": "Kakao",
+    "apple": "Apple"
   }
 }

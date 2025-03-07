@@ -91,6 +91,8 @@ function HomeEarthmera() {
   useEffect(() => {
     window.scrollTo(0, 0);
     const hash = decodeURIComponent(location.hash.replace('#', ''));
+    console.log('hash', hash);
+
     if (hash) {
       // const [pageWithHash, query] = hash.split('?');
       // const page = pageWithHash.split('#')[0]; // 페이지 이름 추출
@@ -106,6 +108,8 @@ function HomeEarthmera() {
         }
       } else {
         if (link) {
+          console.log('link', link);
+
           navigate(`/${currentLanguage}/${page}?${link}`);
         } else {
           navigate(`/${currentLanguage}/${page}`);

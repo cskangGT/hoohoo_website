@@ -1,17 +1,18 @@
-import { logEvent } from 'firebase/analytics';
-import React, { useEffect } from 'react';
-import { CookiesProvider } from 'react-cookie';
-import { Outlet, useLocation, useNavigate } from 'react-router-dom';
-import { ToastContainer } from 'react-toastify';
+import {logEvent} from 'firebase/analytics';
+import React, {useEffect} from 'react';
+import {CookiesProvider} from 'react-cookie';
+import {Outlet, useLocation, useNavigate} from 'react-router-dom';
+import {ToastContainer} from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import { analytics } from './\bfirebase';
+import {analytics} from './\bfirebase';
 import Frame from './components/Frame';
-import { LanguageProvider } from './components/hooks/LanguageContext';
+import {LanguageProvider} from './components/hooks/LanguageContext';
 import HrefLangMeta from './HrefLangMeta';
+import {noFrameRoutes} from './Router';
 
 function usePageTracking() {
   const location = useLocation();
-  
+
   useEffect(() => {
     logEvent(analytics, 'page_view', {
       page_path: location.pathname,
@@ -26,11 +27,11 @@ function Root() {
   useEffect(() => {
     const pathParts = location.pathname.split('/');
     const currentLang = pathParts[1];
-    
-    if (location.pathname === '/redirect') {
+
+    if (noFrameRoutes.some(route => location.pathname.startsWith(route.path))) {
       return;
     }
-    
+
     if (!['ko', 'en'].includes(currentLang)) {
       const newPath = `/en${location.pathname}`;
       navigate(newPath, {replace: true});
@@ -38,10 +39,9 @@ function Root() {
   }, [location.pathname]);
   useEffect(() => {
     window.scrollTo(0, 0);
-    
+
     const hash = decodeURIComponent(location.hash.replace('#', ''));
     if (hash) {
-      
       const [page, query] = hash.split('#?');
       const params = new URLSearchParams(query);
       const link = params.toString();
@@ -59,7 +59,7 @@ function Root() {
       <CookiesProvider>
         {/* <div style={{backgroundColor: 'transparent'}}> */}
         <HrefLangMeta />
-       
+
         <Frame>
           <Outlet />
         </Frame>

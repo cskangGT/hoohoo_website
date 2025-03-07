@@ -15,7 +15,7 @@
   /* 텍스트, 폰트 등 */
   color: #1f1f1f;
   font-family: 'Inter', arial, sans-serif;
-  font-size: 14px;
+  font-size: 0.875rem;
   letter-spacing: 0.25px;
   font-weight: 600; /* 글자 두께 (가독성 향상) */
 
@@ -43,7 +43,7 @@
   height: 20px;
   width: 20px;
   min-width: 20px;
-  margin-right: 12px;
+  margin-right: 8px;
 }
 
 /* 버튼 내부 콘텐츠 전체 Wrapper */

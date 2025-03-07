@@ -1,9 +1,8 @@
-import React, { useState } from 'react';
-import { useLocation, useNavigate } from 'react-router-dom';
+import React from 'react';
 import styled from 'styled-components';
-import { theme } from '../../src/style';
+import {theme} from '../../src/style';
 import Footer from './Footer/Footer';
-import { useLanguage } from './hooks/LanguageContext';
+import {useLanguage} from './hooks/LanguageContext';
 import Nav from './Nav/Nav';
 
 const Container = styled.div`
@@ -22,30 +21,17 @@ type FrameProps = {
 };
 
 function Frame({children}: FrameProps) {
-  const [show, setShow] = useState<boolean>(true);
-  const location = useLocation();
   const {language} = useLanguage();
-  const navigate = useNavigate();
-  // useEffect(() => {
-  //   const searchParams = new URLSearchParams(location.search);
 
-  //   if (searchParams.get('home') === 'yes') {
-  //     setShow(true);
-  //     navigate('/home');
-  //   }
-  // }, [location.search]);
-  
   return (
     <Container>
-      {show && <Nav />}
+      {<Nav />}
       <React.Fragment key={language}>{children}</React.Fragment>
 
-      {show && (
-        <>
-          <hr style={{color: theme.darkGray, margin: 0}} />
-          <Footer />
-        </>
-      )}
+      <>
+        <hr style={{color: theme.darkGray, margin: 0}} />
+        <Footer />
+      </>
     </Container>
   );
 }
