@@ -22,6 +22,10 @@ import NewsDetailPage from './Pages/EMMedia/News/NewsDetailPage';
 import NewsPage from './Pages/EMMedia/NewsPage';
 import SupportingPage from './Pages/Info/Contact/SupportingPage';
 import RedirectPage from './Pages/Info/Redirection/RedirectPage';
+import Login from './Pages/Login/Login';
+import AppleCallback from './Pages/Login/oauth/AppleCallback';
+import KakaoCallback from './Pages/Login/oauth/KakaoCallback';
+import Signup from './Pages/Login/Signup';
 import EMTicketeer from './Pages/Partnership/ticketeer/EMTicketeer';
 
 const createLocalizedRoutes = routes => {
@@ -137,18 +141,41 @@ const baseRoutes = [
     element: <TandC />,
     errorElement: <ErrorComponent />,
   },
-  // {
-  //     path: "/submitform",
-  //     element: <EarlySignUp />,
-  //     errorElement: <ErrorComponent />
-  // },{
-  //     path: "/coming_soon",
-  //     element: <ComingSoon />,
-  //     errorElement: <ErrorComponent />
-  // },
+];
+
+// 프레임 없이 표시할 경로들을 위한 배열 생성
+export const noFrameRoutes = [
+  {
+    path: '/redirect',
+    element: <RedirectPage />,
+    errorElement: <ErrorComponent />,
+  },
+
+  {
+    path: '/oauth/kakao',
+    element: <KakaoCallback />,
+    errorElement: <ErrorComponent />,
+  },
+  {
+    path: '/oauth/callback/apple',
+    element: <AppleCallback />,
+    errorElement: <ErrorComponent />,
+  },
+  {
+    path: '/login',
+    element: <Login />,
+    errorElement: <ErrorComponent />,
+  },
+  {
+    path: '/signup',
+    element: <Signup />,
+    errorElement: <ErrorComponent />,
+  },
 ];
 
 const Router = createBrowserRouter([
+  // 프레임 없는 경로들을 최상위 레벨에 배치
+  ...noFrameRoutes,
   {
     path: '/',
     element: <Root />,
@@ -156,11 +183,6 @@ const Router = createBrowserRouter([
       {
         path: '',
         element: <Navigate to="/en" replace />,
-      },
-      {
-        path: '/redirect',
-        element: <RedirectPage />,
-        errorElement: <ErrorComponent />,
       },
       {
         path: '/privacy',
@@ -172,6 +194,7 @@ const Router = createBrowserRouter([
         element: <TandC />,
         errorElement: <ErrorComponent />,
       },
+      // noFrameRoutes에 있는 경로들은 여기서 제거
       ...createLocalizedRoutes(baseRoutes),
     ],
     errorElement: <NotFound />,

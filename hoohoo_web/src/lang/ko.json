@@ -37,7 +37,7 @@
       },
       {
         "label": "문의하기",
-        "link": "mailto:support@earthmera.com"
+        "email": "mailto:support@earthmera.com"
       }
     ]
   },
@@ -978,6 +978,31 @@
     "description": "EarthMera와 함께 친환경 제품을 검증할 파트너를 찾고 있어요! 검증된 제품은 EarthMera의 특별한 친환경 카드로 제작되어, 사용자는 지속 가능성 여정을더 즐겁게 이어갈 수 있고, 파트너는 브랜드 신뢰도를 자연스럽게 높일 수 있습니다.",
     "buttonText": "친환경 제품<br />협업 문의하기",
     "image": "/Images/partner_eco_product.webp"
+  },
+  "Login": {
+    "title": "로그인",
+    "email": "이메일",
+    "password": "비밀번호",
+    "forgotPassword": "비밀번호를 잊으셨나요?",
+    "continueWithGoogle": "Google 로그인",
+    "continueWithApple": "Apple 로그인",
+    "continueWithKakao": "카카오 로그인"
+  },
+  "APIErrorCase": {
+    "error": {
+      "errorTitle": "오류",
+      "GeneralErrorText": "오류가 발생했습니다.\n다시 시도해주세요."
+    }
+  },
+  "OAuthCallback": {
+    "title": ["", " 로그인 처리 중..."],
+    "message": "잠시만 기다려 주세요.",
+    "retryButton": "로그인 페이지로 돌아가기",
+    "errorTitle": "로그인 오류",
+    "errorMessage": "오류가 발생했습니다. 다시 시도해주세요.",
+    "loadingTitle": "로그인 페이지로 돌아가기",
+    "kakao": "카카오",
+    "apple": "Apple"
   },
   "EcoActionTestimony": {
     "tag": "실제 친환경 행동",

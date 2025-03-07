@@ -1,10 +1,10 @@
 import i18next from 'i18next';
 import React from 'react';
 import styled from 'styled-components';
-import { useLanguage } from '../../../components/hooks/LanguageContext';
+import {useLanguage} from '../../../components/hooks/LanguageContext';
 import Wrapper from '../../../components/Wrapper/Wrapper';
-import { slideInFromTop, theme } from '../../../style';
-import { PageName } from '../../../util/firebase_custom_event';
+import {slideInFromTop, theme} from '../../../style';
+import {PageName} from '../../../util/firebase_custom_event';
 import DownloadButtons from '../DownloadButtons';
 const Container = styled.div`
   animation: ${slideInFromTop} 0.7s ease-out forwards;
@@ -14,7 +14,7 @@ const Container = styled.div`
   align-items: center;
   position: relative;
   width: 100%;
-  height: 800px;
+  height: 900px;
 
   @media (max-width: 1200px) {
     height: auto;
@@ -51,11 +51,10 @@ const LeftBox = styled.div`
 `;
 const TitleText = styled.h2<{language: string}>`
   padding: 30px 0;
-  font-size: 2.5rem;
+  font-size: 2.75rem;
   line-height: 1.2;
   width: 100%;
 
-  
   color: ${theme.darkGray};
   text-align: left;
   @media screen and (max-width: 1200px) {
@@ -66,7 +65,8 @@ const TitleText = styled.h2<{language: string}>`
     text-align: center;
     font-size: 2.1rem;
   }
-  font-family: ${props => (props.language === 'ko' ? 'TmoneyRoundWind' : 'Fredoka')};
+  font-family: ${props =>
+    props.language === 'ko' ? 'TmoneyRoundWind' : 'Fredoka'};
   font-weight: ${props => (props.language === 'ko' ? 800 : 600)};
   margin: 0px;
 `;
@@ -84,7 +84,7 @@ const HeaderBox = styled.div`
 `;
 
 const Desc = styled.p`
-  font-size: 1.3rem;
+  font-size: 1.5rem;
   line-height: 1.3;
   width: 100%;
   color: ${theme.darkGray};
@@ -124,7 +124,7 @@ const Image = styled.img`
   z-index: 9;
   position: absolute;
   height: 650px;
-  transform: translateY(-30%);
+  transform: translateY(-35%);
   @media screen and (max-width: 1200px) {
     position: relative;
     transform: translateY(0%);

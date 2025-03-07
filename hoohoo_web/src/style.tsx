@@ -31,6 +31,18 @@ export const theme: {
   green: string;
   blue: string;
   red: string;
+  spacing: {
+    xs: string /** 4px */;
+    sm: string /** 8px */;
+    rg: string /** 12px */;
+    md: string /** 16px */;
+    xm: string /** 20px */;
+    lg: string /** 24px */;
+    xl: string /** 32px */;
+    '2xl': string /** 40px */;
+    '3xl': string /** 48px */;
+    '4xl': string /** 56px */;
+  };
   fontSize: {
     xs: string;
     sm: string;
@@ -74,7 +86,28 @@ export const theme: {
     '5xl': '3rem' /** 48px */,
     '6xl': '3.75rem' /** 60px */,
   },
-
+  spacing: {
+    /** 4px */
+    xs: '4px',
+    /** 8px */
+    sm: '8px',
+    /** 12px */
+    rg: '12px',
+    /** 16px */
+    md: '16px',
+    /** 20px */
+    xm: '20px',
+    /** 24px */
+    lg: '24px',
+    /** 32px */
+    xl: '32px',
+    /** 40px */
+    '2xl': '40px',
+    /** 48px */
+    '3xl': '48px',
+    /** 56px */
+    '4xl': '56px',
+  },
   weightBold: 700,
   weightMedium: 500,
   weightRegular: 400,
@@ -82,6 +115,7 @@ export const theme: {
   lineHeightRegular: 27,
   lineHeightMicro: 18,
 };
+
 export const LineDivider = styled.div`
   width: 100%;
   height: 2px;
