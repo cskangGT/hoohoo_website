@@ -205,11 +205,11 @@ const Login = () => {
     console.log('sign in with apple');
 
     (window as any)?.AppleID?.auth?.init({
-      clientId: 'com.app.earthmera',
+      clientId: 'earthmera.web',
       scope: 'email',
       redirectURI: 'https://www.earthmera.com/oauth/callback/apple',
-      state: 'state',
-      nonce: 'nonce',
+      state: '1234567890',
+      nonce: '1234567890',
       usePopup: true,
     });
     try {
