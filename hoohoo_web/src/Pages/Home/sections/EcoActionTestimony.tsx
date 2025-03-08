@@ -77,6 +77,10 @@ const Title = styled.h2`
   @media screen and (max-width: 850px) {
     font-size: 2rem;
   }
+  @media screen and (max-width: 500px) {
+    font-size: 1.75rem;
+    margin-bottom: 0px;
+  }
 `;
 
 const Subtitle = styled.h3`
@@ -89,18 +93,26 @@ const Subtitle = styled.h3`
   @media screen and (max-width: 850px) {
     font-size: 2rem;
   }
+  @media screen and (max-width: 500px) {
+    font-size: 1.75rem;
+  }
 `;
 
 const Description = styled.p`
-  font-size: 1.2rem;
+  font-size: 1.25rem;
   text-align: center;
-  margin: 3rem 0px;
+  margin: 3rem 10px;
   max-width: 800px;
 
   font-weight: 600;
   letter-spacing: 0.1em;
   @media screen and (max-width: 850px) {
     font-size: 1rem;
+    letter-spacing: 0.05em;
+  }
+  @media screen and (max-width: 500px) {
+    font-size: 1rem;
+    letter-spacing: 0.05em;
   }
 `;
 
