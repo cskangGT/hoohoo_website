@@ -105,17 +105,19 @@ const WidgetContent = styled.div<{textColor?: string}>`
   font-size: ${theme.fontSize['2xl']};
 
   word-break: break-word;
+  overflow: hidden;
+  border-radius: 30px;
   white-space: normal;
 `;
 
 const WidgetImage = styled.img`
-  width: calc(100% + 20px);
-  height: calc(100% + 20px);
+  width: calc(100%);
+  height: calc(100%);
   position: absolute;
-  top: -10px;
-  left: -10px;
-  right: -10px;
-  bottom: -10px;
+  top: 0px;
+  left: 0px;
+  right: 0px;
+  bottom: 0px;
   object-fit: cover;
 `;
 
@@ -139,7 +141,7 @@ const DeleteButton = styled.button`
   align-items: center;
   justify-content: center;
   cursor: pointer;
-  z-index: 10;
+  z-index: 102;
   font-size: 16px;
   line-height: 1;
 `;
@@ -180,12 +182,6 @@ function WidgetItem({
       ) : (
         widget.description
       )}
-      {isEditMode && (
-        <DeleteButton
-          onClick={() => onDeleteWidget && onDeleteWidget(widget.id)}>
-          <FaMinusCircle size={30} color="white" />
-        </DeleteButton>
-      )}
     </WidgetContent>
   );
 
@@ -221,6 +217,12 @@ function WidgetItem({
         </WidgetLink>
       ) : (
         content
+      )}
+      {isEditMode && (
+        <DeleteButton
+          onClick={() => onDeleteWidget && onDeleteWidget(widget.id)}>
+          <FaMinusCircle size={30} color="white" />
+        </DeleteButton>
       )}
     </WidgetItemContainer>
   );

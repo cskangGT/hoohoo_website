@@ -69,6 +69,7 @@ function ProfileCreateWidgetPage() {
     const result = await uploadImageToS3(compressedImage, true, uriKey);
     if (result) {
       console.log('result', result);
+      setIsSelected(true);
       setImage(result);
     }
     // const compressedImage = await compressImage(file, 1080);
@@ -162,7 +163,7 @@ function ProfileCreateWidgetPage() {
           <ColorOption
             color="transparent"
             onClick={() => handleColorClick('transparent')}
-            selected={selectedColor === 'transparent' && !hasBorder}
+            selected={selectedColor === 'transparent' && !hasBorder && !image}
             dashed
             isSelected={isSelected}
           />
