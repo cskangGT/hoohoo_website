@@ -2,9 +2,6 @@ import React from 'react';
 
 import styled from 'styled-components';
 import {theme} from '../../../style';
-import {androidAppStoreLink, iosAppStoreLink} from '../../Home/Download';
-import {getDevicePlatform} from '../../Info/Redirection/RedirectPage';
-import {PROFILE_SCREEN_WIDTH} from '../pages/ProfileLinkPage';
 import {
   ProfileWidgetItemType,
   ProfileWidgetTypeEnum,
@@ -26,7 +23,6 @@ const Container = styled.div`
   position: relative;
 `;
 const BlurredContainer = styled.div`
-  opacity: 0.5;
   position: absolute;
   top: 0;
   left: 0;
@@ -36,28 +32,38 @@ const BlurredWidgetGrid = styled(WidgetGrid)`
   margin-top: 24px;
   margin-bottom: 100px;
 `;
+const WIDTH = window.innerWidth > 600 ? 600 : window.innerWidth;
 const BlurOverlay = styled.div`
   position: absolute;
-  top: 0;
-  left: -50px;
-  right: -50px;
-  width: ${PROFILE_SCREEN_WIDTH}px;
-  height: 100%;
-  cursor: pointer;
+  top: -10px;
+  left: -36px;
+  right: -36px;
+  opacity: 1;
+  width: ${WIDTH}px;
+  height: 105%;
+
   background: linear-gradient(
     180deg,
     rgba(30, 30, 30, 0.6) 0%,
     rgba(75, 75, 75, 0.9) 48.5%,
     rgba(45, 45, 45, 0) 78.32%
   );
-
+  backdrop-filter: blur(2px);
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   z-index: 10;
+  row-gap: ${theme.spacing.xm};
 `;
-
+const VacantText = styled.p`
+  color: ${theme.white};
+  font-size: ${theme.fontSize.xl};
+  font-weight: 400;
+  text-align: center;
+  margin: 0 20px;
+  line-height: 1.5;
+`;
 const OverlayText = styled.p`
   color: ${theme.white};
   font-size: ${theme.fontSize.xl};
@@ -65,6 +71,18 @@ const OverlayText = styled.p`
   text-align: center;
   margin: 0 20px;
   line-height: 1.5;
+`;
+const OverlayButton = styled.button`
+  background-color: transparent;
+
+  cursor: pointer;
+  padding: ${theme.spacing.sm} ${theme.spacing.lg};
+  border: 1px solid ${theme.white};
+  border-radius: 20px;
+  color: ${theme.white};
+  font-size: ${theme.fontSize.xl};
+  font-weight: 400;
+  text-align: center;
 `;
 const AbEMWidget: ProfileWidgetItemType[] = [
   {
@@ -151,10 +169,11 @@ type ProfileWidgetGridProps = {
 };
 function ProfileWidgetGrid({widgets, isMyLink}: ProfileWidgetGridProps) {
   function linktoApp() {
-    const platform = getDevicePlatform();
-    const appStoreLink =
-      platform === 'iOS' ? iosAppStoreLink : androidAppStoreLink;
-    window.open(appStoreLink, '_blank');
+    // const platform = getDevicePlatform();
+    // const appStoreLink =
+    //   platform === 'iOS' ? iosAppStoreLink : androidAppStoreLink;
+    const link = 'https://www.earthmera.com/redirect?link=earthmera://';
+    window.open(link, '_blank');
   }
   return (
     <Container>
@@ -165,13 +184,13 @@ function ProfileWidgetGrid({widgets, isMyLink}: ProfileWidgetGridProps) {
             ))
           : !isMyLink && (
               <>
-                <OverlayText>No widgets found</OverlayText>
+                <VacantText>No widgets found</VacantText>
               </>
             )}
       </WidgetGrid>
       {isMyLink && (
         <BlurredContainer>
-          <WidgetGrid>
+          <WidgetGrid style={{opacity: 0.5}}>
             {AbEMWidget.slice(0, 5).map(widget => (
               <WidgetItem key={widget.id} widget={widget} />
             ))}
@@ -182,11 +201,13 @@ function ProfileWidgetGrid({widgets, isMyLink}: ProfileWidgetGridProps) {
             ))}
             <BlurOverlay>
               <OverlayText
-                onClick={linktoApp}
                 dangerouslySetInnerHTML={{
                   __html: `Link your EarthMera app<br />to unlock this feature!`,
                 }}
               />
+              <OverlayButton onClick={linktoApp}>
+                Open EarthMera App
+              </OverlayButton>
             </BlurOverlay>
           </BlurredWidgetGrid>
         </BlurredContainer>

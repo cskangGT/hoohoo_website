@@ -6,7 +6,6 @@ import {theme} from '../../../style';
 import TopHeaderBackButtonWrapperView from '../components/TopHeaderBackButtonWrapperView';
 import WidgetItem from '../components/WidgetItem';
 import {ProfileWidgetItemSize} from '../types/WidgetItemType';
-import {PROFILE_SCREEN_WIDTH} from './ProfileLinkPage';
 const COLOR_OPTIONS = {
   RED: '#E74C3C',
   YELLOW: '#FDB52F',
@@ -181,7 +180,8 @@ const StyleOptions = styled.div`
   align-items: center;
   justify-content: space-between;
 `;
-const WIDGET_WIDTH = (PROFILE_SCREEN_WIDTH - 24 * 2 - 60 - 40) / 4;
+const WIDTH = window.innerWidth > 600 ? 600 : window.innerWidth;
+const WIDGET_WIDTH = (WIDTH - 24 * 2 - 60 - 40) / 4;
 const StyleOption = styled.div<{selected: boolean; shape: string}>`
   width: 100px;
   height: 100px;

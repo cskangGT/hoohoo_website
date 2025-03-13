@@ -65,7 +65,8 @@ function ProfileLinkPage() {
   const localizedTexts: any = i18next.t('ProfileLinkPage', {
     returnObjects: true,
   });
-
+  const [resizedWidth, setResizedWidth] =
+    useState<number>(PROFILE_SCREEN_WIDTH);
   const {user, isAuthenticated} = useUserStore();
   const [userData, setUserData] = useState<UserData>({
     name: '',
@@ -77,7 +78,15 @@ function ProfileLinkPage() {
   const {nameTag} = useParams();
   const [isMyLink, setIsMyLink] = useState<boolean>(true);
   const [widgets, setWidgets] = useState<ProfileWidgetItemType[]>([]);
-
+  useEffect(() => {
+    const handleResize = () => {
+      setResizedWidth(window.innerWidth > 600 ? 600 : window.innerWidth);
+    };
+    window.addEventListener('resize', handleResize);
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  }, []);
   useEffect(() => {
     console.log('user', user);
 
@@ -89,7 +98,6 @@ function ProfileLinkPage() {
     };
     fetchUserData();
   }, []);
-  // 예시 위젯 데이터
 
   useEffect(() => {
     setIsMyLink(user.nameTag === nameTag && isAuthenticated);

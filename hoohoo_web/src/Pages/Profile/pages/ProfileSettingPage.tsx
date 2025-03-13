@@ -187,8 +187,8 @@ function ProfileSettingPage() {
         <ProfileHeader>
           <ProfileImage src={user.profileImage || defaultProfileImage} />
           <ProfileNameContainer>
-            <ProfileName>{user?.username || '엄마의 밥상'}</ProfileName>
-            <ProfileTag>@{user?.nameTag || 'unniecloset'}</ProfileTag>
+            <ProfileName>{user?.username}</ProfileName>
+            <ProfileTag>@{user?.nameTag}</ProfileTag>
           </ProfileNameContainer>
         </ProfileHeader>
 
@@ -211,12 +211,12 @@ function ProfileSettingPage() {
         </ButtonGroup>
 
         <MenuList>
-          <MenuItem onClick={() => navigate('/profile/settings/url')}>
+          <MenuItem onClick={() => {}}>
             <MenuText>{localizedTexts.changeURL}</MenuText>
             <FaChevronRight size={20} color="#888" />
           </MenuItem>
           <Divider />
-          <MenuItem onClick={() => navigate('/profile/settings/password')}>
+          <MenuItem onClick={() => {}}>
             <MenuText>{localizedTexts.changePassword}</MenuText>
             <FaChevronRight size={20} color="#888" />
           </MenuItem>

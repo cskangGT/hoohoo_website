@@ -37,6 +37,7 @@ import EMTicketeer from './Pages/Partnership/ticketeer/EMTicketeer';
 import ProfileCreateWidgetPage from './Pages/Profile/pages/ProfileCreateWidgetPage';
 import ProfileLinkPage from './Pages/Profile/pages/ProfileLinkPage';
 import ProfileSettingPage from './Pages/Profile/pages/ProfileSettingPage';
+import ProfileSyncPage from './Pages/Profile/pages/ProfileSyncPage';
 import Root from './Root';
 
 const createLocalizedRoutes = routes => {
@@ -253,6 +254,11 @@ export const noFrameRoutes = [
   {
     path: '/profile/create-widget',
     element: <ProfileCreateWidgetPage />,
+    errorElement: <ErrorComponent />,
+  },
+  {
+    path: '/profile/settings/sync',
+    element: <ProfileSyncPage />,
     errorElement: <ErrorComponent />,
   },
 ];
