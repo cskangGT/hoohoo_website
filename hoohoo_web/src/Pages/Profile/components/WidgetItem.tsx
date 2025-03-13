@@ -105,8 +105,8 @@ const WidgetContent = styled.div<{
 
   color: ${props => props.textColor || 'white'};
   margin: auto;
+  border-radius: 30px;
 
-  overflow: hidden;
   font-size: ${props =>
     props.size === 'BIG' ? theme.fontSize.lg : theme.fontSize.rg};
   overflow: hidden;
@@ -128,8 +128,13 @@ const WidgetTextContent = styled.p<{size: ProfileWidgetItemSize}>`
   word-break: break-word;
   text-overflow: ellipsis;
   white-space: normal;
-  -webkit-line-clamp: ${props => (props.size === 'BIG' ? 5 : 1)};
+  font-size: ${theme.fontSize.md};
+  -webkit-line-clamp: ${props => (props.size === 'BIG' ? 6 : 2)};
   -webkit-box-orient: vertical;
+  @media screen and (max-width: 600px) {
+    font-size: ${theme.fontSize.rg};
+    -webkit-line-clamp: ${props => (props.size === 'BIG' ? 5 : 1)};
+  }
 `;
 const WidgetImage = styled.img`
   width: calc(100%);
