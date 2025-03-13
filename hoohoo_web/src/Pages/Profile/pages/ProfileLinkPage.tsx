@@ -40,7 +40,21 @@ const ProfileName = styled.h1`
   font-weight: 600;
   margin: 5px 0;
 `;
-
+const VacantContainer = styled.div`
+  width: 100%;
+  height: ${window.innerHeight - 100}px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
+const VacantText = styled.p`
+  color: ${theme.white};
+  font-size: ${theme.fontSize.xl};
+  font-weight: 400;
+  text-align: center;
+  margin: 0 20px;
+  line-height: 1.5;
+`;
 const ProfileTag = styled.p`
   color: #888;
   font-size: ${theme.fontSize.md};
@@ -66,6 +80,7 @@ function ProfileLinkPage() {
     returnObjects: true,
   });
   const [isEditMode, setIsEditMode] = useState<boolean>(false);
+  const [noProfileData, setNoProfileData] = useState<boolean>(false);
   const [resizedWidth, setResizedWidth] =
     useState<number>(PROFILE_SCREEN_WIDTH);
   const {user, isAuthenticated} = useUserStore();
@@ -77,7 +92,7 @@ function ProfileLinkPage() {
     carbonSaving: 0,
   });
   const {nameTag} = useParams();
-  const [isMyLink, setIsMyLink] = useState<boolean>(true);
+  const [isMyLink, setIsMyLink] = useState<boolean>(false);
   const [widgets, setWidgets] = useState<ProfileWidgetItemType[]>([]);
   useEffect(() => {
     const handleResize = () => {
@@ -94,8 +109,12 @@ function ProfileLinkPage() {
     const fetchUserData = async () => {
       const response = await getUserLinkProfile(nameTag || '');
       console.log('response', response);
-      setWidgets(response.widgets);
-      setUserData(response);
+      if (response.result) {
+        setWidgets(response.data.widgets ?? []);
+        setUserData(response.data);
+      } else {
+        setNoProfileData(true);
+      }
     };
     fetchUserData();
   }, []);
@@ -107,26 +126,32 @@ function ProfileLinkPage() {
   return (
     <MobileViewFrame>
       <ProfileTopHeader isMyLink={isMyLink} nameTag={nameTag || ''} />
-      <ProfileContainer>
-        <Logo>
-          <ProfileImage
-            src={userData.profileImage || defaultProfileImage}
-            size={resizedWidth * 0.2}
-          />
-        </Logo>
-        <ProfileName>{userData.name}</ProfileName>
-        <ProfileTag>@{nameTag}</ProfileTag>
-        {/* <CarbonSaving>
-          {localizedTexts.carbon[0]} 1032{localizedTexts.carbon[1]}
-        </CarbonSaving> */}
+      {noProfileData ? (
+        <VacantContainer>
+          <VacantText>No profile data</VacantText>
+        </VacantContainer>
+      ) : (
+        <ProfileContainer>
+          <Logo>
+            <ProfileImage
+              src={userData.profileImage || defaultProfileImage}
+              size={resizedWidth * 0.2}
+            />
+          </Logo>
+          <ProfileName>{userData.name}</ProfileName>
+          <ProfileTag>@{nameTag}</ProfileTag>
+          {/* <CarbonSaving>
+        {localizedTexts.carbon[0]} 1032{localizedTexts.carbon[1]}
+      </CarbonSaving> */}
 
-        <ProfileWidgetGrid
-          widgets={widgets}
-          isMyLink={isMyLink}
-          isEditMode={isEditMode}
-          setWidgets={setWidgets}
-        />
-      </ProfileContainer>
+          <ProfileWidgetGrid
+            widgets={widgets}
+            isMyLink={isMyLink}
+            isEditMode={isEditMode}
+            setWidgets={setWidgets}
+          />
+        </ProfileContainer>
+      )}
       {isMyLink && (
         <FixedBottomEditView
           isEditMode={isEditMode}

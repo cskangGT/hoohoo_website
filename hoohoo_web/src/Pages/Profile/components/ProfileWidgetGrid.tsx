@@ -218,7 +218,7 @@ function ProfileWidgetGrid({
       {isMyLink && (
         <>
           <BlurredContainer>
-            {widgets.length === 0 && (
+            {widgets?.length === 0 && (
               <BlurredWidgetGrid>
                 <WidgetGrid style={{opacity: 0.5}}>
                   {AbEMWidget.slice(0, 5).map(widget => (
