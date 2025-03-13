@@ -7,7 +7,7 @@ export const getUserLinkProfile = async (nameTag: string) => {
         const response = await axios.get(APIAddress + `myProfile/web/profile/?nameTag=${nameTag}`,
             { withCredentials: true });
 
-        return response.data;
+        return { data: response.data, result: true };
     } catch (error: any) {
         return { result: false, status: error?.response?.status };
     }
