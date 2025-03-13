@@ -69,10 +69,11 @@ const ItemContainer = styled.div<{selected: boolean}>`
   min-width: 180px;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
   border-radius: 16px;
-  border: 1px solid ${props => (props.selected ? theme.darkGray : theme.gray)};
+  border: ${props => (props.selected ? '2px' : '1px')} solid
+    ${props => (props.selected ? theme.darkGray : theme.gray)};
   overflow: hidden;
   background-color: #efefef;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
@@ -133,10 +134,7 @@ const ItemDescription = styled.p`
 `;
 const ContinueButtonContainer = styled.div`
   width: calc(100% - ${theme.spacing.md} * 2);
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  right: 0;
+
   padding: ${theme.spacing['3xl']} ${theme.spacing.md};
   background-color: white;
   display: flex;
@@ -144,6 +142,10 @@ const ContinueButtonContainer = styled.div`
   align-items: center;
   @media screen and (max-width: 900px) {
     padding: ${theme.spacing.md};
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
   }
 `;
 const ContinueButton = styled.button`

@@ -193,7 +193,7 @@ function ProfileSettingPage() {
         </ProfileHeader>
 
         <ButtonGroup>
-          <ProfileButton onClick={() => fileInputRef.current?.click()}>
+          <ProfileButton>
             <ProfileImageInput
               type="file"
               id="setting_profileImageInput"
@@ -202,7 +202,9 @@ function ProfileSettingPage() {
               onChange={handleProfileImageChange}
               ref={fileInputRef}
             />
-            <label htmlFor="setting_profileImageInput">
+            <label
+              htmlFor="setting_profileImageInput"
+              style={{cursor: 'pointer', width: '100%', display: 'block'}}>
               {localizedTexts.changeProfilePicture}
             </label>
           </ProfileButton>

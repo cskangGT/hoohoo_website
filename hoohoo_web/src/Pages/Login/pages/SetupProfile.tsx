@@ -97,10 +97,7 @@ const DescriptionText = styled.p`
 
 const ContinueButtonContainer = styled.div`
   width: calc(100% - ${theme.spacing.md} * 2);
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  right: 0;
+
   padding: ${theme.spacing['3xl']} ${theme.spacing.md};
   background-color: white;
   display: flex;
@@ -108,6 +105,10 @@ const ContinueButtonContainer = styled.div`
   align-items: center;
   @media screen and (max-width: 900px) {
     padding: ${theme.spacing.md};
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
   }
 `;
 const ContinueButton = styled.button`
@@ -217,11 +218,6 @@ function SetupProfile() {
       if (result) {
         setProfileImage(result);
       }
-      const reader = new FileReader();
-      reader.onload = e => {
-        setProfileImage(e.target?.result as string);
-      };
-      reader.readAsDataURL(file);
     }
   };
   const handleSubmit = async () => {

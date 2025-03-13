@@ -27,12 +27,12 @@ const LoginContainer = styled.div`
   align-items: center;
 `;
 const ImageBox = styled.div`
-  height: calc(100% - ${theme.spacing.xl} * 2);
+  height: calc(100% - ${theme.spacing.md} * 2);
 
-  width: 100%;
+  width: 80%;
   border-top-left-radius: 10px;
   border-bottom-left-radius: 10px;
-  padding: ${theme.spacing.xl};
+  padding: ${theme.spacing.md};
   background-color: ${theme.darkGray};
   @media screen and (max-width: 1000px) {
     display: none;
@@ -41,6 +41,8 @@ const ImageBox = styled.div`
 const Image = styled.img`
   width: 100%;
   height: 100%;
+  border-top-left-radius: 10px;
+  border-bottom-left-radius: 10px;
   object-fit: cover;
 `;
 const InnerBox = styled.div`
@@ -59,20 +61,20 @@ const InnerBox = styled.div`
 const ContentOuterBox = styled.div`
   /* width: calc(50% - ${theme.spacing.xl} * 2); */
   width: calc(60% - 200px);
-  border-radius: 8px;
-  padding: 30px 100px;
+  padding: 30px 350px 30px 150px;
   /* padding: ${theme.spacing.xl}; */
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: flex-end;
-  max-width: 700px;
+  max-width: 400px;
   min-width: 350px;
   @media screen and (max-width: 1400px) {
     display: block;
     width: calc(60% - 100px);
     max-width: auto;
     padding: 20px 50px;
+    padding: 20px 100px 20px 100px;
   }
   @media screen and (max-width: 1000px) {
     display: block;
@@ -275,6 +277,12 @@ const SignInText = styled.p`
     margin-top: ${theme.spacing.xl};
   }
 `;
+const PowerByImage = styled.img`
+  width: 120px;
+  height: 100%;
+  object-fit: contain;
+  margin-top: ${theme.spacing['3xl']};
+`;
 const SignInLink = styled.span`
   color: ${theme.darkGray};
   font-weight: 400;
@@ -353,7 +361,7 @@ function PreSignup() {
       sessionStorage.setItem('storedNameTag', link);
       setTimeout(() => {
         navigate('/signup', {state: {link}});
-      }, 1500);
+      }, 1200);
       return;
     } else {
       setError({...error, alreadyExists: true});
@@ -515,6 +523,7 @@ function PreSignup() {
                 {localizedTexts.signin}
               </SignInLink>
             </SignInText>
+            <PowerByImage src={'/Images/pow.png'} />
           </InnerBox>
         </ContentOuterBox>
       </LoginContainer>

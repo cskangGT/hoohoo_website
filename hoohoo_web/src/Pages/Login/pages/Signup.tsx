@@ -14,7 +14,12 @@ import {FaCheckCircle} from 'react-icons/fa';
 import {IoEyeOffSharp, IoEyeSharp} from 'react-icons/io5';
 import {useLocation, useNavigate} from 'react-router-dom';
 import styled from 'styled-components';
-import {redirectUri, sendGoogleLogin} from '../../../api/login/auth';
+import {
+  getAPIKey,
+  redirectUri,
+  sendAppleLogin,
+  sendGoogleLogin,
+} from '../../../api/login/auth';
 import {checkEmail} from '../../../api/login/signup.api';
 import {useSignup} from '../../../context/SignupContext';
 import {useUserStore} from '../../../storage/userStore';
@@ -216,6 +221,23 @@ const Signup = () => {
     try {
       const res = await (window as any)?.AppleID?.auth?.signIn();
       console.log(res);
+      if (res?.id_token && res?.code) {
+        const response = await sendAppleLogin(
+          res.code,
+          res.id_token,
+          usernameTag,
+        );
+        if (response.result) {
+          setUser(response.data.user);
+          sessionStorage.removeItem('storedNameTag');
+          getAPIKey();
+          if (response.data?.user?.isNeedsQuestionnaire) {
+            navigate('/setup/select-goal', {replace: true});
+          } else {
+            navigate(`/zigu/${response.data.user.nameTag}`, {replace: true});
+          }
+        }
+      }
     } catch (error) {
       console.log(error);
     }

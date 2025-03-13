@@ -53,7 +53,7 @@ const SelectGoalContainer = styled.div`
   justify-content: center;
   align-items: center;
   gap: ${theme.spacing.md};
-  margin: ${theme.spacing.md} 0px 80px 0px;
+  margin: 50px 0px 80px 0px;
   @media screen and (max-width: 900px) {
     flex-direction: column;
   }
@@ -63,7 +63,8 @@ const ItemContainer = styled.div<{selected: boolean}>`
   max-width: 350px;
   min-width: 280px;
   border-radius: 16px;
-  border: 1px solid ${props => (props.selected ? theme.darkGray : theme.gray)};
+  border: ${props => (props.selected ? '2px' : '1px')} solid
+    ${props => (props.selected ? theme.darkGray : theme.gray)};
   overflow: hidden;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   cursor: pointer;
@@ -109,7 +110,7 @@ const ContentContainer = styled.div`
 `;
 
 const ItemTitle = styled.h3`
-  font-size: ${theme.fontSize.xl};
+  font-size: ${theme.fontSize.lg};
   font-weight: 600;
   color: ${theme.darkGray};
   margin-bottom: ${theme.spacing.sm};
@@ -118,13 +119,11 @@ const ItemTitle = styled.h3`
 const ItemDescription = styled.p`
   font-size: ${theme.fontSize.rg};
   color: ${theme.inActiveGray};
+  font-weight: 400;
 `;
 const ContinueButtonContainer = styled.div`
   width: calc(100% - ${theme.spacing.md} * 2);
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  right: 0;
+
   padding: ${theme.spacing['xl']} ${theme.spacing.md};
   background-color: white;
   display: flex;
@@ -132,6 +131,10 @@ const ContinueButtonContainer = styled.div`
   align-items: center;
   @media screen and (max-width: 900px) {
     padding: ${theme.spacing.md};
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
   }
 `;
 const ContinueButton = styled.button`
@@ -185,7 +188,7 @@ function SelectGoalItem({
       </ImageContainer>
       <ContentContainer>
         <ItemTitle>{title}</ItemTitle>
-        <ItemDescription>{description}</ItemDescription>
+        <ItemDescription dangerouslySetInnerHTML={{__html: description}} />
       </ContentContainer>
     </ItemContainer>
   );
