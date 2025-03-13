@@ -4,29 +4,40 @@ import {
   default as ErrorComponent,
   default as NotFound,
 } from './components/ErrorComponent/ErrorComponent';
+import SEOHelmet from './components/SEOHelmet';
+import i18n from './lang/i18n';
 import OurTeam from './Pages/About/OurTeam/OurTeam';
+import EarthMeraVision from './Pages/About/Vision/EarthMeraVision';
 import AdminLogin from './Pages/Admin/AdminLogin';
 import MainDropB from './Pages/DropB/MainDropB';
 import Blog from './Pages/EMMedia/Blog/Blog';
 import BlogDetail from './Pages/EMMedia/Blog/BlogDetail';
-import HomeEarthmera from './Pages/Home/HomeEarthmera';
-import Privacy from './Pages/Legal/Privacy';
-import TandC from './Pages/Legal/T&C';
-import Partnership from './Pages/Partnership/B2B/Partnership';
-import Platform from './Pages/Partnership/B2C/Platform';
-import Root from './Root';
-
-import SEOHelmet from './components/SEOHelmet';
-import EarthMeraVision from './Pages/About/Vision/EarthMeraVision';
 import NewsDetailPage from './Pages/EMMedia/News/NewsDetailPage';
 import NewsPage from './Pages/EMMedia/NewsPage';
+import HomeEarthmera from './Pages/Home/HomeEarthmera';
 import SupportingPage from './Pages/Info/Contact/SupportingPage';
 import RedirectPage from './Pages/Info/Redirection/RedirectPage';
-import Login from './Pages/Login/Login';
+import Privacy from './Pages/Legal/Privacy';
+import TandC from './Pages/Legal/T&C';
 import AppleCallback from './Pages/Login/oauth/AppleCallback';
+import GoogleCallback from './Pages/Login/oauth/GoogleCallback';
 import KakaoCallback from './Pages/Login/oauth/KakaoCallback';
-import Signup from './Pages/Login/Signup';
+import Login from './Pages/Login/pages/Login';
+import PreSignup from './Pages/Login/pages/PreSignup';
+import SelectGoal from './Pages/Login/pages/SelectGoal';
+import SelectPurpose from './Pages/Login/pages/SelectPurpose';
+import SetupProfile from './Pages/Login/pages/SetupProfile';
+import Signup from './Pages/Login/pages/Signup';
+import VerifyEmail from './Pages/Login/pages/VerifyEmail';
+import QuestionnaireLayout from './Pages/Login/QuestionnaireLayout';
+import SignupLayout from './Pages/Login/SignupLayout';
+import Partnership from './Pages/Partnership/B2B/Partnership';
+import Platform from './Pages/Partnership/B2C/Platform';
 import EMTicketeer from './Pages/Partnership/ticketeer/EMTicketeer';
+import ProfileCreateWidgetPage from './Pages/Profile/pages/ProfileCreateWidgetPage';
+import ProfileLinkPage from './Pages/Profile/pages/ProfileLinkPage';
+import ProfileSettingPage from './Pages/Profile/pages/ProfileSettingPage';
+import Root from './Root';
 
 const createLocalizedRoutes = routes => {
   return routes
@@ -40,6 +51,13 @@ const createLocalizedRoutes = routes => {
           </>
         ),
         errorElement: route.errorElement,
+        loader: ({params}) => {
+          // i18n 언어 설정을 한국어로 변경
+
+          i18n.changeLanguage('ko');
+
+          return null;
+        },
       },
       {
         path: `/en${route.path}`,
@@ -50,6 +68,11 @@ const createLocalizedRoutes = routes => {
           </>
         ),
         errorElement: route.errorElement,
+        loader: ({params}) => {
+          // i18n 언어 설정을 영어로 변경
+          i18n.changeLanguage('en');
+          return null;
+        },
       },
     ])
     .flat();
@@ -143,14 +166,65 @@ const baseRoutes = [
   },
 ];
 
-// 프레임 없이 표시할 경로들을 위한 배열 생성
+// 회원가입 관련 라우트를 별도로 분리
+const signupRoutes = [
+  {
+    path: '/signup',
+    element: <SignupLayout />,
+    children: [
+      {
+        path: '',
+        element: <Signup />,
+        errorElement: <ErrorComponent />,
+      },
+      {
+        path: 'verify-email',
+        element: <VerifyEmail />,
+        errorElement: <ErrorComponent />,
+      },
+    ],
+  },
+];
+const setupRoutes = [
+  {
+    path: '/setup',
+    element: <QuestionnaireLayout />,
+    children: [
+      {
+        path: 'select-goal',
+        element: <SelectGoal />,
+        errorElement: <ErrorComponent />,
+      },
+      {
+        path: 'select-purpose',
+        element: <SelectPurpose />,
+        errorElement: <ErrorComponent />,
+      },
+      {
+        path: 'profile',
+        element: <SetupProfile />,
+        errorElement: <ErrorComponent />,
+      },
+    ],
+  },
+];
+
 export const noFrameRoutes = [
+  {
+    path: '/login',
+    element: <Login />,
+    errorElement: <ErrorComponent />,
+  },
+  {
+    path: '/pre-signup',
+    element: <PreSignup />,
+    errorElement: <ErrorComponent />,
+  },
   {
     path: '/redirect',
     element: <RedirectPage />,
     errorElement: <ErrorComponent />,
   },
-
   {
     path: '/oauth/kakao',
     element: <KakaoCallback />,
@@ -162,19 +236,32 @@ export const noFrameRoutes = [
     errorElement: <ErrorComponent />,
   },
   {
-    path: '/login',
-    element: <Login />,
+    path: '/oauth/google',
+    element: <GoogleCallback />,
     errorElement: <ErrorComponent />,
   },
   {
-    path: '/signup',
-    element: <Signup />,
+    path: '/zigu/:nameTag',
+    element: <ProfileLinkPage />,
+    errorElement: <ErrorComponent />,
+  },
+  {
+    path: '/profile/settings',
+    element: <ProfileSettingPage />,
+    errorElement: <ErrorComponent />,
+  },
+  {
+    path: '/profile/create-widget',
+    element: <ProfileCreateWidgetPage />,
     errorElement: <ErrorComponent />,
   },
 ];
 
 const Router = createBrowserRouter([
-  // 프레임 없는 경로들을 최상위 레벨에 배치
+  ...signupRoutes,
+  ...setupRoutes,
+
+  // 프레임 없는 경로들
   ...noFrameRoutes,
   {
     path: '/',

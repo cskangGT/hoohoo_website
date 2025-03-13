@@ -10,7 +10,7 @@
       "link": "/en/"
     },
     "lang": ["KOR", "ENG"],
-
+    "jigu": "Zigu Link",
     "navlist": [
       {"label": "Home", "link": "/en/home"},
       {
@@ -38,10 +38,6 @@
       {
         "label": "Contact",
         "email": "mailto:support@earthmera.com"
-      },
-      {
-        "label": "Login",
-        "link": "/login"
       }
     ]
   },
@@ -1001,22 +997,163 @@
     "image": "/Images/partner_eco_product.webp"
   },
   "Login": {
-    "title": "Login",
-    "email": "Email",
+    "title": "Welcome back!",
+    "new": "New to Zigu link? ",
+    "signup": "Sign up",
+    "email": "Email Address",
     "password": "Password",
-    "forgotPassword": "Forgot Password?",
+    "login": "Sign in",
+    "forgotPassword": "Forgot password or email?",
     "continueWithGoogle": "Continue with Google",
     "continueWithApple": "Continue with Apple",
-    "continueWithKakao": "Continue with Kakao"
+    "continueWithKakao": "Continue with Kakao",
+    "errorText": {
+      "invalidEmail": "Invalid email. Please double-check your email.",
+      "noAccount": "No account found for this email. Please sign up first."
+    }
   },
   "Signup": {
     "title": "Let's create an account",
     "email": "Email address",
     "password": "Password",
+    "signupLiner": "Sign up with",
+    "linkAvailable": ["", " is available!"],
     "emailLiner": "Or with email",
     "signupWithGoogle": "Sign up with Google",
     "signupWithApple": "Sign up with Apple",
-    "signupWithKakao": "Sign up with Kakao"
+    "signupWithKakao": "Sign up with Kakao",
+    "continue": "Continue",
+    "errorText": {
+      "alreadyExists": "This email is already in use. Please try another one.",
+      "invalidEmail": "Invalid email. Please double-check your email.",
+      "invalidPassword": "Password must be 8-15 characters long, include uppercase and lowercase letters, numbers, and special characters."
+    }
+  },
+  "PreSignup": {
+    "title": "Sign up to Zigu Link",
+    "description": "Share your eco-journey, inspire change, and connect with a like-minded community. 🌍",
+    "linkTitle": "Claim your free Link in Bio!",
+    "link": ["earthmera.com/zigu/", "username"],
+    "next": "Next",
+    "alreadyAccount": "Already have an account?  ",
+    "signin": "Sign in",
+    "guideText": [
+      "By continuing, you agree to our ",
+      " and acknowledge that you understand the ",
+      "."
+    ],
+    "errorText": {
+      "alreadyExists": "This link is already taken. Please try another one.",
+      "invalidLetters": "Usernames can only include alphabet letters, numbers, underscores ( _ ) and periods ( . )",
+      "startsEndsWithPeriod": "Usernames cannot start and end with a period.",
+      "limitExceeded": "Usernames must be between 3 and 20 characters"
+    },
+    "terms": "Terms of Service",
+    "privacy": "Privacy Policy"
+  },
+  "VerifyEmail": {
+    "title": "Enter your code",
+    "description": ["We Sent a temporary sign up code to ", "."],
+    "placeholder": "Enter code",
+    "resend": "Resend code",
+    "continue": "Continue",
+    "invalidCode": "Invalid code. Please try again."
+  },
+  "SelectGoal": {
+    "title": "What’s your goal with Zigu Link?",
+    "description": "Pick what fits you best, It’ll make your Zigu Link even better!",
+    "continue": "Continue",
+    "goals": [
+      {
+        "title": "Influencer",
+        "description": "Pick what fits you best, It'll make your Zigu Link even better!",
+        "image": "/Images/q_influencer.jpeg",
+        "value": "INFLUENCER"
+      },
+      {
+        "title": "Business",
+        "description": "Pick what fits you best, It'll make your Zigu Link even better!",
+        "image": "/Images/q_business.jpeg",
+        "value": "BUSINESS"
+      },
+      {
+        "title": "Personal",
+        "description": "Pick what fits you best, It'll make your Zigu Link even better!",
+        "image": "/Images/q_personal.jpeg",
+        "value": "PERSONAL"
+      }
+    ]
+  },
+  "SelectPurpose": {
+    "title": "How do you want to use Zigu Link?",
+    "description": "Pick what fits you best, It’ll make your Zigu Link even better!<br />Select all that apply.",
+    "continue": "Continue",
+    "errorText": {
+      "purposeNotSelected": "Purpose is not selected"
+    },
+    "purposeList": [
+      {
+        "title": "E-commerce",
+        "description": "Selling physical or digital products",
+        "image": "/Images/ecommerce.png",
+        "value": "E-COMMERCE"
+      },
+      {
+        "title": "Personal Use",
+        "description": "Sharing my eco-journey",
+        "image": "/Images/personal.png",
+        "value": "PERSONAL_USE"
+      },
+      {
+        "title": "Portfolio",
+        "description": "Highlighting my work or projects",
+        "image": "/Images/portfolio.png",
+        "value": "PORTFOLIO"
+      },
+      {
+        "title": "Community",
+        "description": "Inspiring others to go green",
+        "image": "/Images/community.png",
+        "value": "COMMUNITY"
+      },
+      {
+        "title": "Digital Business Card",
+        "description": "Showcasing my professional profile",
+        "image": "/Images/card.png",
+        "value": "DIGITAL_BUSINESS_CARD"
+      },
+      {
+        "title": "Affiliate",
+        "description": "Promoting products or services",
+        "image": "/Images/affiliate.png",
+        "value": "AFFILIATE"
+      },
+      {
+        "title": "Event",
+        "description": "Hosting or promoting events",
+        "image": "/Images/event.png",
+        "value": "EVENT"
+      }
+    ]
+  },
+  "SetupProfile": {
+    "title": "Set up your awesome profile!",
+    "button": "Perfect!",
+    "placeholder": "Enter your profile name",
+    "description": "For the best look, we recommend a 600x600 size image!",
+    "errorText": {
+      "error": "An error occurred. Please try again.",
+      "enterProfile": "Please enter your profile name",
+      "alreadyExists": "This link is already taken. Please try another one.",
+      "invalidLetters": "Usernames can only include alphabet letters, numbers, underscores ( _ ) and periods ( . )",
+      "startsEndsWithPeriod": "Usernames cannot start and end with a period.",
+      "limitExceeded": "Profile name must be between 3 and 20 characters"
+    },
+    "name": "Profile name"
+  },
+  "KakaoCallback": {
+    "noAccount": "No account found. Please sign up first.",
+    "error": "An error occurred. Please try again."
   },
   "APIErrorCase": {
     "error": {
@@ -1041,5 +1178,21 @@
     "description": "See how real users are making a difference!<br />One action at a time",
     "buttonText": "Explore Eco-Actions",
     "backButtonText": "Go back"
+  },
+  "ProfileLinkPage": {
+    "carbon": ["Carbon Saving ", "g"],
+    "edit": "Edit",
+    "add": "Add",
+    "linkGuide": "Link your EarthMera app <br />to unlock this feature!",
+    "customize": "Customize your profile freely with your favorite link, colors, and shapes,make it truly yours!"
+  },
+  "ProfileSettingPage": {
+    "title": "Profile Settings",
+    "changeProfilePicture": "Change Profile Picture",
+    "changeProfileName": "Change Profile Name",
+    "changePassword": "Change Password",
+    "syncEarthMeraID": "Sync EarthMera ID",
+    "changeURL": "Change URL",
+    "logout": "Log out"
   }
 }

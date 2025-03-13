@@ -1,13 +1,11 @@
 import {logEvent} from 'firebase/analytics';
 import React, {useEffect} from 'react';
-import {CookiesProvider} from 'react-cookie';
 import {Outlet, useLocation, useNavigate} from 'react-router-dom';
-import {ToastContainer} from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+
 import {analytics} from './\bfirebase';
 import Frame from './components/Frame';
-import {LanguageProvider} from './components/hooks/LanguageContext';
 import HrefLangMeta from './HrefLangMeta';
+import i18n from './lang/i18n';
 import {noFrameRoutes} from './Router';
 
 function usePageTracking() {
@@ -24,6 +22,7 @@ function usePageTracking() {
 function Root() {
   const location = useLocation();
   const navigate = useNavigate();
+
   useEffect(() => {
     const pathParts = location.pathname.split('/');
     const currentLang = pathParts[1];
@@ -31,12 +30,19 @@ function Root() {
     if (noFrameRoutes.some(route => location.pathname.startsWith(route.path))) {
       return;
     }
+    console.log('currentLang', currentLang);
 
     if (!['ko', 'en'].includes(currentLang)) {
       const newPath = `/en${location.pathname}`;
+
       navigate(newPath, {replace: true});
+    } else {
+      if (i18n.language !== currentLang) {
+        i18n.changeLanguage(currentLang);
+      }
     }
-  }, [location.pathname]);
+  }, []);
+
   useEffect(() => {
     window.scrollTo(0, 0);
 
@@ -55,18 +61,13 @@ function Root() {
   }, []);
   usePageTracking();
   return (
-    <LanguageProvider>
-      <CookiesProvider>
-        {/* <div style={{backgroundColor: 'transparent'}}> */}
-        <HrefLangMeta />
+    <>
+      <HrefLangMeta />
 
-        <Frame>
-          <Outlet />
-        </Frame>
-        <ToastContainer />
-        {/* </div> */}
-      </CookiesProvider>
-    </LanguageProvider>
+      <Frame>
+        <Outlet />
+      </Frame>
+    </>
   );
 }
 

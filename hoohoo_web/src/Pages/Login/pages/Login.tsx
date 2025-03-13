@@ -8,14 +8,25 @@ import {
 import TextField from '@mui/material/TextField';
 import {useGoogleLogin} from '@react-oauth/google';
 import i18next from 'i18next';
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import {IoEyeOffSharp, IoEyeSharp} from 'react-icons/io5';
 import {useNavigate} from 'react-router-dom';
 import styled from 'styled-components';
-import Wrapper from '../../components/Wrapper/Wrapper';
-import {theme} from '../../style';
-import GoogleLogo from './components/GoogleLogo';
-import LineDivider from './components/LineDivider';
+
+import {
+  getAPIKey,
+  redirectUri,
+  sendGoogleLogin,
+  validateLogin,
+} from '../../../api/login/auth';
+import {useLanguage} from '../../../components/hooks/LanguageContext';
+import Wrapper from '../../../components/Wrapper/Wrapper';
+import {useUserStore} from '../../../storage/userStore';
+import {theme} from '../../../style';
+import {isValidEmail} from '../../../util/validation';
+import EarthMeraLogo from '../components/EarthMeraLogo';
+import GoogleLogo from '../components/GoogleLogo';
+import LineDivider from '../components/LineDivider';
 
 const Container = styled.div`
   width: 100%;
@@ -33,7 +44,6 @@ const LoginContainer = styled.div`
   justify-content: center;
 `;
 const LoginWrapperBox = styled.div`
-  margin-top: 64px;
   width: 400px;
   display: block;
   @media screen and (max-width: 500px) {
@@ -47,64 +57,33 @@ const InnerBox = styled.div`
   border-radius: 8px;
   padding: ${theme.spacing.xl};
 `;
-const TitleText = styled.h2`
-  font-size: ${theme.fontSize.xl};
+const TitleText = styled.h2<{language: string}>`
+  font-size: ${theme.fontSize['3xl']};
   line-height: 30px;
-  font-weight: 700;
+  font-weight: 600;
   color: ${theme.darkGray};
+  text-align: center;
   margin-top: 0px;
+  margin-bottom: ${theme.spacing.rg};
+  font-family: ${props => (props.language === 'ko' ? 'Inter' : 'Fredoka')};
+`;
+const NewUserText = styled.h4<{language: string}>`
+  font-size: ${theme.fontSize.rg};
+  color: ${theme.gray};
+  text-align: center;
   margin-bottom: ${theme.spacing.lg};
-  font-family: Inter;
+  font-family: ${props => (props.language === 'ko' ? 'Inter' : 'Fredoka')};
+  font-weight: 400;
 `;
-const TextInput = styled.input`
-  width: calc(100% - ${theme.spacing.md} * 2);
-  padding: ${theme.spacing.md};
-  border-radius: 4px;
-  border: 1px solid ${theme.gray};
-  margin-bottom: ${theme.spacing.md};
-  font-size: ${theme.fontSize.md};
-`;
-const PasswordInput = styled.input`
-  width: calc(100% - ${theme.spacing.md} * 2);
-  padding: ${theme.spacing.md};
-  border-radius: 4px;
-  border: 1px solid ${theme.gray};
-
-  font-size: ${theme.fontSize.md};
+const SignupText = styled.span`
+  cursor: pointer;
+  text-decoration: underline;
 `;
 const TextFieldContainer = styled.div`
   width: 100%;
   display: flex;
   flex-direction: column;
   gap: ${theme.spacing.md};
-`;
-const PasswordContainer = styled.div`
-  position: relative;
-  width: 100%;
-  display: flex;
-
-  justify-content: center;
-  align-items: center;
-  margin-bottom: ${theme.spacing.md};
-`;
-const Divider = styled.div`
-  display: flex;
-  align-items: center;
-  margin: ${theme.spacing.lg} 0;
-
-  &::before,
-  &::after {
-    content: '';
-    flex: 1;
-    border-bottom: 1px solid rgba(13, 12, 34, 0.05);
-  }
-
-  span {
-    margin: 0 ${theme.spacing.sm};
-    color: #6e6d7a;
-    opacity: 0.5;
-    font-size: ${theme.fontSize.sm};
-  }
 `;
 const SocialLoginContainer = styled.div`
   display: flex;
@@ -153,11 +132,17 @@ const EyeIcon = styled.div`
 
   color: ${theme.gray};
 `;
-
+const LogoBox = styled.div`
+  margin-bottom: ${theme.spacing['xl']};
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  align-items: center;
+`;
 const LoginButton = styled.button`
   width: 100%;
   padding: ${theme.spacing.md};
-  background-color: ${theme.green};
+  background-color: ${theme.darkGray};
   color: white;
   border: none;
   border-radius: 4px;
@@ -178,44 +163,101 @@ const KakaoButton = styled(SocialButton)`
   }
 `;
 const ForgotPassword = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
+const ForgotPasswordButton = styled.button`
   text-align: center;
-  margin-top: ${theme.spacing.sm};
+  margin: 0px;
+  padding: 0px;
+
   font-size: ${theme.fontSize.sm};
-  color: ${theme.blue};
+  color: ${theme.gray};
+  border: none;
+  background-color: transparent;
+  text-decoration: underline;
   cursor: pointer;
-  margin-bottom: ${theme.spacing.md};
+
   &:hover {
     text-decoration: underline;
   }
 `;
-
 const Login = () => {
   const localizedTexts: any = i18next.t('Login', {
     returnObjects: true,
   });
+  const {language} = useLanguage();
+
+  const {setUser, user} = useUserStore();
+  useEffect(() => {
+    if (user?.nameTag) {
+      console.log('user', user);
+
+      navigate(`/zigu/${user.nameTag}`);
+    }
+  }, []);
   const navigate = useNavigate();
-  const [userId, setUserId] = useState('');
-  const [password, setPassword] = useState('');
+  const [email, setEmail] = useState<string>('');
+  const [password, setPassword] = useState<string>('');
   const [showPassword, setShowPassword] = useState(false);
-  const googleLogin = useGoogleLogin({
-    onSuccess: tokenResponse => console.log(tokenResponse),
-    onError: error => console.log(error),
+  const [error, setError] = useState({
+    invalidEmail: false,
+    wrongPassword: false,
+  });
+  const handleGoogleLogin = useGoogleLogin({
+    onSuccess: async tokenResponse => {
+      const response = await sendGoogleLogin(tokenResponse.code);
+      if (response.result) {
+        getAPIKey();
+        setUser(response.data.user);
+        if (response.data?.user?.isNeedsQuestionnaire) {
+          navigate('/setup/select-goal');
+        }
+      } else {
+        if (response.status === 400) {
+          alert(localizedTexts.errorText.noAccount);
+        }
+      }
+    },
+
     flow: 'auth-code',
   });
-  const handleLogin = (e: React.FormEvent) => {
+  const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
     // 로그인 로직 구현
-    navigate('/signup');
-    console.log('로그인 시도:', userId, password);
+    console.log('email', email);
+    console.log('password', password);
+
+    if (email.length === 0 || password.length === 0) {
+      return;
+    }
+    if (!isValidEmail(email)) {
+      setError({...error, invalidEmail: true});
+      return;
+    }
+    const response = await validateLogin(email, password);
+    if (response.result) {
+      getAPIKey();
+      setUser(response.data.user);
+      if (response.data?.user?.isNeedsQuestionnaire) {
+        navigate('/setup/select-goal');
+      } else {
+        navigate(`/zigu/${response.data.user.nameTag}`);
+      }
+    } else {
+      setError({...error, wrongPassword: true});
+    }
+    console.log('로그인 시도:', email, password);
   };
   const handleAppleLogin = async () => {
     (window as any)?.AppleID?.auth?.init({
       clientId: 'earthmera.web',
       scope: 'email',
-      redirectURI: 'https://www.earthmera.com/oauth/callback/apple',
+      redirectURI: `${redirectUri}/oauth/callback/apple`,
       state: '1234567890',
       nonce: '1234567890',
-      usePopup: true,
+      usePopup: false,
     });
     try {
       const res = await (window as any)?.AppleID?.auth?.signIn();
@@ -226,26 +268,36 @@ const Login = () => {
   };
   const handleKakaoLogin = () => {
     const REST_API_KEY = '3646b1cf0a0594f198c66529c902ff1d';
-    const REDIRECT_URI = 'http://localhost:3000/oauth/kakao';
+    const REDIRECT_URI = `${redirectUri}/oauth/kakao`;
     const link = `https://kauth.kakao.com/oauth/authorize?client_id=${REST_API_KEY}&redirect_uri=${REDIRECT_URI}&response_type=code`;
 
     window.location.href = link;
   };
+  console.log('user', user);
+
   return (
     <Container>
       <Wrapper>
         <LoginContainer>
           <LoginWrapperBox>
             <InnerBox>
-              <TitleText>{localizedTexts.title}</TitleText>
+              <LogoBox onClick={() => navigate('/')}>
+                <EarthMeraLogo size={70} />
+              </LogoBox>
+              <TitleText language={language}>{localizedTexts.title}</TitleText>
+              <NewUserText language={language}>
+                {localizedTexts.new}
+                <SignupText onClick={() => navigate('/signup')}>
+                  {localizedTexts.signup}
+                </SignupText>
+              </NewUserText>
               <form onSubmit={handleLogin}>
                 <TextFieldContainer>
                   <TextField
                     label={localizedTexts.email}
                     type="text"
-                    value={userId}
-                    onChange={e => setUserId(e.target.value)}
-                    required
+                    value={email}
+                    onChange={e => setEmail(e.target.value)}
                     sx={{
                       '& .MuiOutlinedInput-root': {
                         borderRadius: '8px',
@@ -291,12 +343,16 @@ const Login = () => {
                     />
                   </FormControl>
                 </TextFieldContainer>
-                <LoginButton type="submit">{localizedTexts.title}</LoginButton>
-                <ForgotPassword>{localizedTexts.forgotPassword}</ForgotPassword>
+                <LoginButton type="submit">{localizedTexts.login}</LoginButton>
+                <ForgotPassword>
+                  <ForgotPasswordButton onClick={() => {}}>
+                    {localizedTexts.forgotPassword}
+                  </ForgotPasswordButton>
+                </ForgotPassword>
                 <LineDivider text={'or'} />
 
                 <SocialLoginContainer>
-                  <SocialButton onClick={googleLogin}>
+                  <SocialButton onClick={handleGoogleLogin}>
                     <GoogleLogo text={localizedTexts.continueWithGoogle} />
                   </SocialButton>
 

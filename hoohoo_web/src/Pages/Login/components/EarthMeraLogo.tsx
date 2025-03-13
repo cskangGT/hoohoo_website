@@ -9,7 +9,7 @@ const LogoContainer = styled.div`
   border-radius: 10px;
 `;
 function EarthMeraLogo({size}: {size: number}) {
-  const ratio = 4 / 7;
+  const ratio = 5 / 7;
   return (
     <LogoContainer style={{width: size, height: size}}>
       <img

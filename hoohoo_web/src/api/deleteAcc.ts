@@ -1,10 +1,42 @@
-import {APIAddress} from '../style';
+import { APIAddress } from '../style';
+export async function validateCode(code: string, email: string) {
+  try {
+    const response = await fetch(
+      APIAddress +
+      `webAccess/accountDeletion/${encodeURIComponent(email)}/checkCode/?code=${code}`,
+      {
+        method: 'GET',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      },
+    );
+    const responseData = await response.json();
 
+    if (!responseData.verified) {
+      if (response.status === 401) {
+        return { verified: false, blockedAccess: false, error: false };
+      } else if (response.status === 429) {
+        return { verified: false, blockedAccess: true, error: false };
+      }
+      return { verified: false, blockedAccess: false, error: true };
+    } else {
+      return {
+        verified: true,
+        blockedAccess: false,
+        error: false,
+      };
+    }
+  } catch (error) {
+    console.error('Error sending validation code to server:', error);
+    return { verified: false, blockedAccess: false, error: true };
+  }
+}
 export async function sendCode(email: string) {
   try {
     const response = await fetch(
       APIAddress +
-        `webAccess/accountDeletion/${encodeURIComponent(email)}/sendCode`,
+      `webAccess/accountDeletion/${encodeURIComponent(email)}/sendCode`,
       {
         method: 'GET',
         headers: {
@@ -17,7 +49,7 @@ export async function sendCode(email: string) {
       isRegistered: result.isRegistered,
     };
   } catch {
-    return {isRegistered: false};
+    return { isRegistered: false };
   }
 }
 
@@ -33,7 +65,7 @@ export async function deleteAccountAPI(
     };
     const response = await fetch(
       APIAddress +
-        `webAccess/accountDeletion/${encodeURIComponent(email)}/detail/`,
+      `webAccess/accountDeletion/${encodeURIComponent(email)}/detail/`,
       {
         method: 'POST',
         headers: {
@@ -45,7 +77,7 @@ export async function deleteAccountAPI(
     const result = await response.json();
     return result;
   } catch {
-    return {result: false};
+    return { result: false };
   }
 }
 export async function lookupEmail(email: string) {
@@ -65,14 +97,14 @@ export async function lookupEmail(email: string) {
       isRegistered: isRegistered,
     };
   } catch {
-    return {isRegistered: false};
+    return { isRegistered: false };
   }
 }
 export async function getAccStatus(email: string) {
   try {
     const response = await fetch(
       APIAddress +
-        `webAccess/accountDeletion/${encodeURIComponent(email)}/status/`,
+      `webAccess/accountDeletion/${encodeURIComponent(email)}/status/`,
       {
         method: 'GET',
         headers: {
@@ -83,6 +115,6 @@ export async function getAccStatus(email: string) {
     const result = await response.json();
     return result;
   } catch {
-    return {canDelete: false};
+    return { canDelete: false };
   }
 }

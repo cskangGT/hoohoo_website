@@ -1,5 +1,11 @@
 import styled, {keyframes} from 'styled-components';
 
+export const __DEV__ = false;
+
+export const APIAddress: string = __DEV__
+  ? `https://dev.earthmera.com/`
+  : `https://app.earthmera.com/`;
+
 export const slideInFromTop = keyframes`
   from {
     transform: translateY(-20%);
@@ -28,6 +34,7 @@ export const theme: {
   darkSky: string;
   darkWhite: string;
   gray: string;
+  inActiveGray: string;
   green: string;
   blue: string;
   red: string;
@@ -46,6 +53,7 @@ export const theme: {
   fontSize: {
     xs: string;
     sm: string;
+    rg: string;
     md: string;
     lg: string;
     xl: string;
@@ -70,13 +78,14 @@ export const theme: {
 
   darkWhite: '#EBEBEB',
   gray: '#C4C1C1',
+  inActiveGray: '#6e6d7a',
   green: '#00bf63',
   blue: '#2D8BBA',
   red: '#EB4949',
   fontSize: {
-    // 설명 보이게 하기 위해 추가
-    xs: '0.75rem' /** 12px */,
-    sm: '0.875rem' /** 14px */,
+    xs: '0.625rem' /** 10px */,
+    sm: '0.75rem' /** 12px */,
+    rg: '0.875rem' /** 14px */,
     md: '1rem' /** 16px */,
     lg: '1.125rem' /** 18px */,
     xl: '1.25rem' /** 20px */,
@@ -116,10 +125,10 @@ export const theme: {
   lineHeightMicro: 18,
 };
 
+export const defaultProfileImage = `https://d186i0w5f8obzu.cloudfront.net/profile/default/default_profile_image.jpeg`;
+
 export const LineDivider = styled.div`
   width: 100%;
   height: 2px;
   background-color: white;
 `;
-export const IP: string = 'app.earthmera.com';
-export const APIAddress: string = `https://${IP}/`;
