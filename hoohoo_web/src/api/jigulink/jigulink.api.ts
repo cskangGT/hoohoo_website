@@ -30,3 +30,11 @@ export const createWidget = async (widgetData: {
         return { result: false, status: error?.response?.status };
     }
 }
+export const deleteWidget = async (widgetId: number) => {
+    try {
+        const response = await clientAxios.delete(APIAddress + `myProfile/web/widget/${widgetId}/`, { withCredentials: true });
+        return { result: true, data: response.data };
+    } catch (error: any) {
+        return { result: false, status: error?.response?.status };
+    }
+}

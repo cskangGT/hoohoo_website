@@ -35,31 +35,45 @@ export const uploadImageToS3 = async (imagePaths: File, isMedia: boolean, pathKe
     let keyId = sessionStorage.getItem("AWS_ACCESS_KEY_ID");
 
     if (!accessKey || !keyId) {
-        const credentials = await getAPIKey();
-        console.log("credentials", credentials);
-        if (credentials.result) {
-            accessKey = credentials.data.AWS_SECRET_ACCESS_KEY;
-            keyId = credentials.data.AWS_ACCESS_KEY_ID;
-        } else {
-            alert("AWS 설정 오류");
+        try {
+            const credentials = await getAPIKey();
+            if (credentials.result) {
+                accessKey = credentials.data.AWS_SECRET_ACCESS_KEY;
+                keyId = credentials.data.AWS_ACCESS_KEY_ID;
+
+            } else {
+                alert("AWS 설정 오류");
+                return "";
+            }
+        } catch (error) {
+            console.error("API 키 가져오기 실패:", error);
+            alert("AWS 인증 정보를 가져오는 중 오류가 발생했습니다.");
             return "";
         }
-
     }
+
+    // 키가 확보된 후에만 client 생성 및 업로드 진행
+    if (!accessKey || !keyId) {
+        console.error("AWS 인증 정보가 없습니다.");
+        return "";
+    }
+
     const client = new S3Client({
         region: AWS_S3_REGION_NAME,
         credentials: {
-            accessKeyId: keyId || "",
-            secretAccessKey: accessKey || "",
+            accessKeyId: keyId,
+            secretAccessKey: accessKey,
         },
         useAccelerateEndpoint: true,
     });
+
     const headCommand = new PutObjectCommand({
         Bucket: isMedia ? AWS_MEDIA_STORAGE_BUCKET_NAME : AWS_DATA_STORAGE_BUCKET_NAME,
         Key: pathKey,
         Body: new Uint8Array(await imagePaths?.arrayBuffer()),
         ContentType: imagePaths.type,
     });
+
     try {
         await client.send(headCommand);
         console.log("Successfully uploaded", pathKey);

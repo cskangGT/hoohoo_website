@@ -1,4 +1,5 @@
 import React from 'react';
+import {FaMinusCircle} from 'react-icons/fa';
 import styled, {css} from 'styled-components';
 import {theme} from '../../../style';
 
@@ -42,7 +43,7 @@ const WidgetItemContainer = styled.div<{
   display: flex;
   align-items: center;
   justify-content: center;
-  overflow: hidden;
+
   background-color: ${props => props.bgColor || 'transparent'};
   border: ${props =>
     props.hasBorder ? `1px solid ${theme.mainNeon}` : '1px solid transparent'};
@@ -97,16 +98,19 @@ const WidgetContent = styled.div<{textColor?: string}>`
   height: calc(100% - 20px);
   display: flex;
   flex-direction: column;
+  position: relative;
   align-items: center;
   justify-content: center;
   color: ${props => props.textColor || 'white'};
   font-size: ${theme.fontSize['2xl']};
-  overflow: hidden;
+
+  word-break: break-word;
+  white-space: normal;
 `;
 
 const WidgetImage = styled.img`
-  width: 100%;
-  height: 100%;
+  width: calc(100% + 20px);
+  height: calc(100% + 20px);
   position: absolute;
   top: -10px;
   left: -10px;
@@ -124,19 +128,40 @@ const WidgetLink = styled.a`
   align-items: center;
   justify-content: center;
 `;
+const DeleteButton = styled.button`
+  position: absolute;
+  top: -5px;
+  left: -5px;
+  background-color: transparent;
+  padding: 0px;
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 10;
+  font-size: 16px;
+  line-height: 1;
+`;
 
 type WidgetItemProps = {
   widget: ProfileWidgetItemType;
+  isEditMode?: boolean;
+  onDeleteWidget?: (id: number) => void;
 };
 
-function WidgetItem({widget}: WidgetItemProps) {
+function WidgetItem({
+  widget,
+  isEditMode = false,
+  onDeleteWidget,
+}: WidgetItemProps) {
   const isGroup = Array.isArray(widget);
 
   if (isGroup) {
     return (
       <WidgetItemContainer key={widget.id} size={widget.sizeType}>
         {widget.map(item => (
-          <WidgetItem key={item.id} widget={item} />
+          <WidgetItem key={item.id} widget={item} isEditMode={isEditMode} />
         ))}
       </WidgetItemContainer>
     );
@@ -150,8 +175,17 @@ function WidgetItem({widget}: WidgetItemProps) {
 
   const content = (
     <WidgetContent style={{color: textColor}}>
-      {widget.bgType === 'IMAGE' && <WidgetImage src={widget.bgImageUrl} />}
-      {widget.description}
+      {widget.bgType === 'IMAGE' ? (
+        <WidgetImage src={widget.bgImageUrl} />
+      ) : (
+        widget.description
+      )}
+      {isEditMode && (
+        <DeleteButton
+          onClick={() => onDeleteWidget && onDeleteWidget(widget.id)}>
+          <FaMinusCircle size={30} color="white" />
+        </DeleteButton>
+      )}
     </WidgetContent>
   );
 
