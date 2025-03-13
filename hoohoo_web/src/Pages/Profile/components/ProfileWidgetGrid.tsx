@@ -72,6 +72,13 @@ const OverlayText = styled.p`
   margin: 0 20px;
   line-height: 1.5;
 `;
+const VacantContainer = styled.div`
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
 const OverlayButton = styled.button`
   background-color: transparent;
 
@@ -182,10 +189,10 @@ function ProfileWidgetGrid({widgets, isMyLink}: ProfileWidgetGridProps) {
           ? widgets.map(widget => (
               <WidgetItem key={widget.id} widget={widget} />
             ))
-          : !isMyLink && (
-              <>
+          : isMyLink && (
+              <VacantContainer>
                 <VacantText>No widgets found</VacantText>
-              </>
+              </VacantContainer>
             )}
       </WidgetGrid>
       {isMyLink && (

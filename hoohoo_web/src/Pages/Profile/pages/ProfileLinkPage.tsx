@@ -110,7 +110,7 @@ function ProfileLinkPage() {
         <Logo>
           <ProfileImage
             src={userData.profileImage || defaultProfileImage}
-            size={PROFILE_SCREEN_WIDTH * 0.2}
+            size={resizedWidth * 0.2}
           />
         </Logo>
         <ProfileName>{userData.name}</ProfileName>

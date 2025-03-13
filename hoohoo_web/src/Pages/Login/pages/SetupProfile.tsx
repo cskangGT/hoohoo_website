@@ -82,10 +82,16 @@ const ProfileNameText = styled.p`
 const ProfileImageInput = styled.input`
   display: none;
 `;
+const PreviewProfileImage = styled.img`
+  width: 150px;
+  height: 150px;
+  object-fit: cover;
+`;
 const ProfileImage = styled.img`
   width: 150px;
   height: 150px;
   object-fit: cover;
+  border-radius: 50%;
 `;
 const DescriptionText = styled.p`
   font-size: ${theme.fontSize.md};
@@ -212,7 +218,7 @@ function SetupProfile() {
     const file = event.target.files?.[0];
     if (file) {
       const compressedImage = await compressImage(file, 1080);
-      const uriKey = generateUniqueKey(PROFILE_PREFIX + `/`, 'png');
+      const uriKey = generateUniqueKey(PROFILE_PREFIX, 'png');
       const result = await uploadImageToS3(compressedImage, true, uriKey);
       console.log('result', result);
       if (result) {
@@ -281,7 +287,11 @@ function SetupProfile() {
               ref={fileInputRef}
             />
             <label htmlFor="profileImageInput">
-              <ProfileImage src={profileImage || '/Images/setup_profile.png'} />
+              {!!profileImage ? (
+                <ProfileImage src={profileImage} />
+              ) : (
+                <PreviewProfileImage src={'/Images/setup_profile.png'} />
+              )}
             </label>
           </ProfileImageContainer>
           <ProfileNameContainer>
