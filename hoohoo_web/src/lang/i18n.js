@@ -15,9 +15,11 @@ const resources = {
 
 i18n.use(initReactI18next).init({
   resources,
-  lng: 'en',
+  lng: sessionStorage.getItem('language'),
   debug: true,
   defaultNS: 'translation',
+  fallbackLng: 'en',
+  supportedLngs: ['en', 'ko'],
   ns: 'translation',
   keySeparator: false,
   interpolation: {
@@ -26,6 +28,11 @@ i18n.use(initReactI18next).init({
   react: {
     useSuspense: false,
   },
+});
+
+i18n.on('languageChanged', language => {
+  console.log('languageChanged', language);
+  sessionStorage.setItem('language', language);
 });
 
 export default i18n;

@@ -1,10 +1,12 @@
+import {GoogleOAuthProvider} from '@react-oauth/google';
 import React from 'react';
+import {CookiesProvider} from 'react-cookie';
 import ReactDOM from 'react-dom/client';
 import {HelmetProvider} from 'react-helmet-async';
 import {RouterProvider} from 'react-router-dom';
+import {ToastContainer} from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import {createGlobalStyle} from 'styled-components';
-
-import {GoogleOAuthProvider} from '@react-oauth/google';
 import NanumHumanTTfBold from '../public/fonts/NanumHumanBold.ttf';
 import NanumHumanTTfLight from '../public/fonts/NanumHumanLight.ttf';
 import NanumHumanTTfRegular from '../public/fonts/NanumHumanRegular.ttf';
@@ -17,6 +19,7 @@ import YanoljaYacheBWoff2 from '../public/fonts/YanoljaYacheB.woff2';
 import YanoljaYacheTtf from '../public/fonts/YanoljaYacheR.ttf';
 import YanoljaYacheWoff from '../public/fonts/YanoljaYacheR.woff';
 import YanoljaYacheWoff2 from '../public/fonts/YanoljaYacheR.woff2';
+import {LanguageProvider} from './components/hooks/LanguageContext';
 import './lang/i18n';
 import Router from './Router';
 
@@ -110,15 +113,18 @@ const container = document.getElementById('root');
 const root = ReactDOM.createRoot(container);
 
 root.render(
-  <React.StrictMode>
-    <HelmetProvider>
+  <HelmetProvider>
+    <CookiesProvider>
       <GoogleOAuthProvider
         clientId={
           '1441892786-rh1h7vnt7ua7tlece7jts1ca6kasi1uh.apps.googleusercontent.com'
         }>
         <GlobalStyle />
-        <RouterProvider router={Router} />
+        <LanguageProvider>
+          <RouterProvider router={Router} />
+          <ToastContainer />
+        </LanguageProvider>
       </GoogleOAuthProvider>
-    </HelmetProvider>
-  </React.StrictMode>,
+    </CookiesProvider>
+  </HelmetProvider>,
 );

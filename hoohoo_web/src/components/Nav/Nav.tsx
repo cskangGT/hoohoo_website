@@ -81,7 +81,8 @@ const NavbarMenu = styled.ul<NavBarProps>`
     height: auto;
     flex-direction: column;
     align-items: center;
-    width: 100%;
+    justify-content: center;
+    width: calc(100% + 16px);
     transition: all 0.3s ease;
     display: ${props => (props.isOpen ? 'flex' : 'none')};
   }
@@ -98,7 +99,7 @@ const HoverContainer = styled.div`
   color: ${theme.darkGray};
   position: relative;
   @media screen and (max-width: 1100px) {
-    margin-left: 10px;
+    margin: 0px 10px;
     align-items: center;
     justify-content: center;
   }
@@ -129,6 +130,9 @@ const NavMenuList = styled.li`
     opacity: 0;
     transition: all 0.5s ease;
   }
+  .hidden {
+    opacity: 0;
+  }
   &:hover {
     border-radius: 5px;
     .NavLink::after {
@@ -154,7 +158,7 @@ const NavMenuList = styled.li`
   @media screen and (max-width: 1100px) {
     align-items: start;
     text-align: center;
-    width: 100%;
+    width: calc(100% - 30px);
   }
 `;
 const NavLink = styled.a`
@@ -179,6 +183,9 @@ const NavLink = styled.a`
     height: 2px;
     background: #000; // 밑줄 색상
     transition: width 0.3s ease-in-out;
+  }
+  @media screen and (max-width: 1100px) {
+    padding: 0px 5px;
   }
 `;
 const NavRight = styled.div`
@@ -317,7 +324,19 @@ const SubNavLink = styled.a`
     color: ${theme.mainNeon};
   }
 `;
-
+const EMLinkBox = styled.div`
+  padding: ${theme.spacing.md};
+  border-radius: 10px;
+  background-color: ${theme.green};
+  color: white;
+  font-size: ${theme.fontSize.md};
+  font-weight: 500;
+  margin-left: ${theme.spacing.lg};
+  cursor: pointer;
+  @media screen and (max-width: 1100px) {
+    margin-left: 0;
+  }
+`;
 type NavItem = {
   label: string;
   link?: string;
@@ -346,10 +365,10 @@ function Nav() {
   const [windowWidth, setWindowWidth] = useState<number>(window.innerWidth);
   const {i18n} = useTranslation();
   const location = useLocation();
-  const data: any = i18next.t('Nav', {returnObjects: true});
-  const navItems: NavItem[] = data['navlist'];
-  const lang: string[] = data['lang'];
-  const logo: any = data['logo'];
+  const localizedTexts: any = i18next.t('Nav', {returnObjects: true});
+  const navItems: NavItem[] = localizedTexts['navlist'];
+  const lang: string[] = localizedTexts['lang'];
+  const logo: any = localizedTexts['logo'];
   const {language, setLanguage} = useLanguage();
 
   const handleLanguageChange = (newLang: string) => {
@@ -441,8 +460,6 @@ function Nav() {
       </Logo>
       <NavbarMenu isOpen={isOpen}>
         {navItems.map((item, i) => {
-          console.log('item.subItems', item.subItems);
-
           return (
             <NavMenuList key={i}>
               <LogoIcon
@@ -504,10 +521,22 @@ function Nav() {
                   </NavLink>
                 </HoverContainer>
               )}
+              {windowWidth < 1100 && (
+                <LogoIcon
+                  key={i + 'hd_icon'}
+                  className="hidden"
+                  src={logo.image}
+                />
+              )}
             </NavMenuList>
           );
         })}
-
+        <EMLinkBox
+          onClick={() => {
+            navigate('/pre-signup');
+          }}>
+          {localizedTexts.jigu}
+        </EMLinkBox>
         {/* {!isOpen && (
           <LanguageBox>
             <LanguageButton

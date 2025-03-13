@@ -3,6 +3,8 @@ const dotenv = require('dotenv');
 const {merge} = require('webpack-merge');
 const common = require('./webpack.common.js');
 const path = require('path');
+const fs = require('fs');
+
 const SpeedMeasurePlugin = require('speed-measure-webpack-plugin');
 const smp = new SpeedMeasurePlugin();
 
@@ -17,15 +19,23 @@ module.exports = smp.wrap(
     },
     devServer: {
       compress: true,
+      https: {
+        key: fs.readFileSync(
+          path.resolve(__dirname, '../ssl/localhost+2-key.pem'),
+        ),
+        cert: fs.readFileSync(
+          path.resolve(__dirname, '../ssl/localhost+2.pem'),
+        ),
+      },
       historyApiFallback: {
         rewrites: [
-          { from: /^\/ko\//, to: '/ko/index.html' },
-          { from: /^\/en\//, to: '/en/index.html' },
-          { from: /./, to: '/index.html' }
-        ]
+          {from: /^\/ko\//, to: '/ko/index.html'},
+          {from: /^\/en\//, to: '/en/index.html'},
+          {from: /./, to: '/index.html'},
+        ],
       },
       hot: true,
-      
+
       allowedHosts: 'all',
       host: '0.0.0.0',
       open: true,

@@ -1,11 +1,9 @@
-import React, { createContext, useContext, useEffect, useState } from 'react';
-import { useLocation, useNavigate } from 'react-router-dom';
-import i18n from '../../lang/i18n';
+import i18next from 'i18next';
+import React, {createContext, useContext, useEffect, useState} from 'react';
 
 type LanguageContextType = {
   language: string;
   setLanguage: (language: string) => void;
-  toggleLanguage: () => void;
 };
 
 const LanguageContext = createContext<LanguageContextType | undefined>(
@@ -16,32 +14,11 @@ export const LanguageProvider: React.FC<{children: React.ReactNode}> = ({
   children,
 }) => {
   const [language, setLanguage] = useState('en');
-  const location = useLocation();
-  const navigate = useNavigate();
-  
   useEffect(() => {
-    const pathParts = location.pathname.split('/');
-    const currentLang = pathParts[1];
-    
-    if (['ko', 'en'].includes(currentLang)) {
-      setLanguage(currentLang);
-      i18n.changeLanguage(currentLang);
-    }
-  }, [location.pathname]);
-
-  const toggleLanguage = () => {
-    const newLang = language === 'ko' ? 'en' : 'ko';
-    const currentPath = location.pathname.replace(/^\/(ko|en)/, '');
-    console.log("currentPath", currentPath);
-    
-    console.log("location.state", location.state);
-    
-    setLanguage(newLang);
-    i18n.changeLanguage(newLang);
-    navigate(`/${newLang}${currentPath}`);
-  };
+    setLanguage(i18next.language);
+  }, [i18next.language]);
   return (
-    <LanguageContext.Provider value={{language, setLanguage, toggleLanguage}}>
+    <LanguageContext.Provider value={{language, setLanguage}}>
       {children}
     </LanguageContext.Provider>
   );

@@ -1,36 +1,58 @@
 import React, {useEffect, useState} from 'react';
 import {useNavigate} from 'react-router-dom';
-import {kakaoLogin} from '../../../api/auth';
+
+import i18next from 'i18next';
+import {getAPIKey, sendKakaoLogin} from '../../../api/login/auth';
+import {useUserStore} from '../../../storage/userStore';
 import OAuthCallback from './OAuthCallback';
 
 function KakaoCallback() {
-  const [loading, setLoading] = useState(true);
+  const localizedText: any = i18next.t('KakaoCallback', {
+    returnObjects: true,
+  });
+  const {setUser} = useUserStore();
+  const [loading, setLoading] = useState(false);
 
   const navigate = useNavigate();
-
+  const code = new URLSearchParams(window.location.search).get('code');
   useEffect(() => {
-    const code = new URLSearchParams(window.location.search).get('code');
-    console.log('code', code);
-
     if (!code) {
-      setLoading(false);
       return;
     }
-
+    setLoading(true);
+    const storedNameTag = sessionStorage.getItem('storedNameTag');
+    console.log('storedNameTag in Kakao', storedNameTag);
     // 백엔드에 인증 코드 전송
-    kakaoLogin(code)
+    sendKakaoLogin(code, storedNameTag || '')
       .then(response => {
-        // 로그인 성공 처리
-        localStorage.setItem('token', response.data.token);
-        navigate('/login');
+        console.log('response', response);
+
+        if (response.result) {
+          getAPIKey();
+          setUser(response?.data?.user);
+          sessionStorage.removeItem('storedNameTag');
+
+          if (response.data?.user?.isNeedsQuestionnaire) {
+            navigate('/setup/select-goal', {replace: true});
+          } else {
+            navigate(`/zigu/${response.data.user.nameTag}`, {replace: true});
+          }
+        } else if (response.status === 400) {
+          alert(localizedText.noAccount);
+          navigate('/pre-signup');
+        } else {
+          alert(localizedText.error);
+          navigate('/login');
+        }
       })
       .catch(err => {
         console.error(err);
+        alert(localizedText.error);
       })
       .finally(() => {
         setLoading(false);
       });
-  }, [navigate]);
+  }, []);
 
   return <OAuthCallback provider="kakao" isLoading={loading} />;
 }

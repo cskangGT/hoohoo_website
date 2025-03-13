@@ -1,8 +1,8 @@
+import i18next from 'i18next';
 import React from 'react';
 import styled from 'styled-components';
 import {theme} from '../../src/style';
 import Footer from './Footer/Footer';
-import {useLanguage} from './hooks/LanguageContext';
 import Nav from './Nav/Nav';
 
 const Container = styled.div`
@@ -21,12 +21,10 @@ type FrameProps = {
 };
 
 function Frame({children}: FrameProps) {
-  const {language} = useLanguage();
-
   return (
     <Container>
-      {<Nav />}
-      <React.Fragment key={language}>{children}</React.Fragment>
+      <Nav />
+      <React.Fragment key={i18next.language}>{children}</React.Fragment>
 
       <>
         <hr style={{color: theme.darkGray, margin: 0}} />
