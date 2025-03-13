@@ -65,6 +65,7 @@ function ProfileLinkPage() {
   const localizedTexts: any = i18next.t('ProfileLinkPage', {
     returnObjects: true,
   });
+  const [isEditMode, setIsEditMode] = useState<boolean>(false);
   const [resizedWidth, setResizedWidth] =
     useState<number>(PROFILE_SCREEN_WIDTH);
   const {user, isAuthenticated} = useUserStore();
@@ -119,9 +120,19 @@ function ProfileLinkPage() {
           {localizedTexts.carbon[0]} 1032{localizedTexts.carbon[1]}
         </CarbonSaving> */}
 
-        <ProfileWidgetGrid widgets={widgets} isMyLink={isMyLink} />
+        <ProfileWidgetGrid
+          widgets={widgets}
+          isMyLink={isMyLink}
+          isEditMode={isEditMode}
+          setWidgets={setWidgets}
+        />
       </ProfileContainer>
-      {isMyLink && <FixedBottomEditView />}
+      {isMyLink && (
+        <FixedBottomEditView
+          isEditMode={isEditMode}
+          setIsEditMode={setIsEditMode}
+        />
+      )}
     </MobileViewFrame>
   );
 }

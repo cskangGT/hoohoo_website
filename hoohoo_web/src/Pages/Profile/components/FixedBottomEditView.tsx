@@ -30,22 +30,28 @@ const ActionButtonContainer = styled.div`
   align-items: flex-end;
   justify-content: flex-end;
 `;
-const ActionButton = styled.button`
+const ActionButton = styled.button<{isLongButton?: boolean}>`
   background-color: ${theme.mainNeon};
   color: ${theme.darkGray};
-
-  padding: ${theme.spacing.sm} ${theme.spacing.md};
+  padding: ${theme.spacing.sm}
+    ${props => (props.isLongButton ? theme.spacing['3xl'] : theme.spacing.md)};
   border-radius: 50px;
   border: none;
   cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 8px;
+  gap: ${theme.spacing.sm};
   font-weight: bold;
 `;
 
-function FixedBottomEditView() {
+function FixedBottomEditView({
+  isEditMode,
+  setIsEditMode,
+}: {
+  isEditMode: boolean;
+  setIsEditMode: (isEditMode: boolean) => void;
+}) {
   const navigate = useNavigate();
   function handleCreateWidget() {
     navigate('/profile/create-widget');
@@ -53,10 +59,16 @@ function FixedBottomEditView() {
   return (
     <FixedBottomEditViewContainer>
       <ActionButtonContainer>
-        <ActionButton onClick={handleCreateWidget}>
-          <LuPlus size={16} /> Add
+        {!isEditMode && (
+          <ActionButton onClick={handleCreateWidget}>
+            <LuPlus size={16} /> Add
+          </ActionButton>
+        )}
+        <ActionButton
+          onClick={() => setIsEditMode(!isEditMode)}
+          isLongButton={isEditMode}>
+          {isEditMode ? 'Done' : 'Edit'}
         </ActionButton>
-        <ActionButton>Edit</ActionButton>
       </ActionButtonContainer>
     </FixedBottomEditViewContainer>
   );

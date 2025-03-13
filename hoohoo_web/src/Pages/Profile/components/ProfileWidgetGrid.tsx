@@ -1,6 +1,8 @@
 import React from 'react';
 
+import {toast} from 'react-toastify';
 import styled from 'styled-components';
+import {deleteWidget} from '../../../api/jigulink/jigulink.api';
 import {theme} from '../../../style';
 import {
   ProfileWidgetItemType,
@@ -22,12 +24,7 @@ const Container = styled.div`
   width: 100%;
   position: relative;
 `;
-const BlurredContainer = styled.div`
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-`;
+const BlurredContainer = styled.div``;
 const BlurredWidgetGrid = styled(WidgetGrid)`
   margin-top: 24px;
   margin-bottom: 100px;
@@ -173,8 +170,15 @@ const AbEMWidget: ProfileWidgetItemType[] = [
 type ProfileWidgetGridProps = {
   widgets: ProfileWidgetItemType[];
   isMyLink: boolean;
+  isEditMode: boolean;
+  setWidgets: React.Dispatch<React.SetStateAction<ProfileWidgetItemType[]>>;
 };
-function ProfileWidgetGrid({widgets, isMyLink}: ProfileWidgetGridProps) {
+function ProfileWidgetGrid({
+  widgets,
+  isMyLink,
+  isEditMode,
+  setWidgets,
+}: ProfileWidgetGridProps) {
   function linktoApp() {
     // const platform = getDevicePlatform();
     // const appStoreLink =
@@ -182,26 +186,48 @@ function ProfileWidgetGrid({widgets, isMyLink}: ProfileWidgetGridProps) {
     const link = 'https://www.earthmera.com/redirect?link=earthmera://';
     window.open(link, '_blank');
   }
+  async function onDeleteWidget(id: number) {
+    const response = await deleteWidget(id);
+    if (response.result) {
+      toast.success('delete widget success');
+      setWidgets((prev: ProfileWidgetItemType[]) => {
+        return prev.filter((widget: ProfileWidgetItemType) => widget.id !== id);
+      });
+    } else {
+      toast.error('delete widget failed');
+    }
+  }
   return (
     <Container>
       <WidgetGrid>
         {widgets?.length > 0
           ? widgets.map(widget => (
-              <WidgetItem key={widget.id} widget={widget} />
+              <WidgetItem
+                key={widget.id}
+                widget={widget}
+                isEditMode={isEditMode}
+                onDeleteWidget={onDeleteWidget}
+              />
             ))
-          : isMyLink && (
+          : !isMyLink && (
               <VacantContainer>
                 <VacantText>No widgets found</VacantText>
               </VacantContainer>
             )}
       </WidgetGrid>
       {isMyLink && (
-        <BlurredContainer>
-          <WidgetGrid style={{opacity: 0.5}}>
-            {AbEMWidget.slice(0, 5).map(widget => (
-              <WidgetItem key={widget.id} widget={widget} />
-            ))}
-          </WidgetGrid>
+        <>
+          <BlurredContainer>
+            {widgets.length === 0 && (
+              <BlurredWidgetGrid>
+                <WidgetGrid style={{opacity: 0.5}}>
+                  {AbEMWidget.slice(0, 5).map(widget => (
+                    <WidgetItem key={widget.id} widget={widget} />
+                  ))}
+                </WidgetGrid>
+              </BlurredWidgetGrid>
+            )}
+          </BlurredContainer>
           <BlurredWidgetGrid>
             {AbEMWidget.slice(5).map(widget => (
               <WidgetItem key={widget.id} widget={widget} />
@@ -217,7 +243,7 @@ function ProfileWidgetGrid({widgets, isMyLink}: ProfileWidgetGridProps) {
               </OverlayButton>
             </BlurOverlay>
           </BlurredWidgetGrid>
-        </BlurredContainer>
+        </>
       )}
     </Container>
   );

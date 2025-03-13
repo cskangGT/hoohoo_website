@@ -8,5 +8,6 @@ export const AWS_NERF_BUCKET_NAME = "nerf-pipeline-bucket";
 export const AWS_DATA_STORAGE_BUCKET_NAME = "earthmera-data-storage";
 export const AWS_MEDIA_STORAGE_BUCKET_NAME = "earthmera-media-storage";
 export const PROFILE_PREFIX = "profile/";
+export const WIDGET_PREFIX = "widget_images/";
 export const mediaCloudFrontHeader = `https://d186i0w5f8obzu.cloudfront.net/`;
 export const dataCloudFrontHeader = `https://dl7i560a8p8pi.cloudfront.net/`;

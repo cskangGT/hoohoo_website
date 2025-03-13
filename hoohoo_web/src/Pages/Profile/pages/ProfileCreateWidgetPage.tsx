@@ -3,6 +3,12 @@ import {useNavigate} from 'react-router-dom';
 import styled from 'styled-components';
 import {createWidget} from '../../../api/jigulink/jigulink.api';
 import {theme} from '../../../style';
+import {
+  compressImage,
+  generateUniqueKey,
+  uploadImageToS3,
+} from '../../../util/MediaUtil';
+import {WIDGET_PREFIX} from '../../../util/S3Config';
 import TopHeaderBackButtonWrapperView from '../components/TopHeaderBackButtonWrapperView';
 import WidgetItem from '../components/WidgetItem';
 import {ProfileWidgetItemSize} from '../types/WidgetItemType';
@@ -18,13 +24,14 @@ function ProfileCreateWidgetPage() {
   const [selectedStyle, setSelectedStyle] =
     useState<ProfileWidgetItemSize>('BIG');
   const [selectedColor, setSelectedColor] = useState<string>('transparent');
-  const [hasBorder, setHasBorder] = useState<boolean>(true);
+  const [hasBorder, setHasBorder] = useState<boolean>(false);
   const [isSelected, setIsSelected] = useState<boolean>(false);
   const [image, setImage] = useState<string>('');
   const [description, setDescription] = useState<string>('');
   const [linkURL, setLinkURL] = useState<string>('');
   function handleColorClick(color: string) {
     setIsSelected(true);
+    setImage('');
     if (color === 'BORDER') {
       setHasBorder(true);
       setSelectedColor('transparent');
@@ -39,7 +46,7 @@ function ProfileCreateWidgetPage() {
   const handleAddWidget = async () => {
     const widgetData = {
       sizeType: selectedStyle,
-      bgType: 'COLOR',
+      bgType: image ? 'IMAGE' : 'COLOR',
       bgColor: selectedColor,
       bgImageUrl: image,
       hasBorder: hasBorder,
@@ -51,20 +58,46 @@ function ProfileCreateWidgetPage() {
       navigate(-1);
     }
   };
+  const handleProfileImageChange = async (
+    event: React.ChangeEvent<HTMLInputElement>,
+  ) => {
+    const file = event.target.files?.[0];
+    if (!file) return;
+
+    const compressedImage = await compressImage(file, 1080);
+    const uriKey = generateUniqueKey(WIDGET_PREFIX, 'png');
+    const result = await uploadImageToS3(compressedImage, true, uriKey);
+    if (result) {
+      console.log('result', result);
+      setImage(result);
+    }
+    // const compressedImage = await compressImage(file, 1080);
+    //   const uriKey = generateUniqueKey(PROFILE_PREFIX + `/`, 'png');
+    //   const result = await uploadImageToS3(compressedImage, true, uriKey);
+    //   console.log('result', result);
+    //   if (result) {
+    //     setProfileImage(result);
+    //   }
+  };
   return (
     <TopHeaderBackButtonWrapperView>
       <Container>
         <PreviewContainer>
-          <WidgetItem
-            widget={{
-              id: 0,
-              sizeType: selectedStyle,
-              bgType: 'COLOR',
-              bgColor: selectedColor,
-              hasBorder: hasBorder,
-              description: description,
-            }}
-          />
+          {!isSelected ? (
+            <PreviewText>Preview widget</PreviewText>
+          ) : (
+            <WidgetItem
+              widget={{
+                id: 0,
+                sizeType: selectedStyle,
+                bgType: image ? 'IMAGE' : 'COLOR',
+                bgColor: selectedColor,
+                bgImageUrl: image,
+                hasBorder: hasBorder,
+                description: description,
+              }}
+            />
+          )}
         </PreviewContainer>
         {/* 스타일 섹션 */}
         <SectionTitle>Style</SectionTitle>
@@ -133,7 +166,19 @@ function ProfileCreateWidgetPage() {
             dashed
             isSelected={isSelected}
           />
-          <ImageButton>Image</ImageButton>
+          <ImageButton
+            onClick={() =>
+              document.getElementById('widget_profileImageInput')?.click()
+            }>
+            <ProfileImageInput
+              type="file"
+              id="widget_profileImageInput"
+              accept="image/*"
+              multiple={false}
+              onChange={handleProfileImageChange}
+            />
+            <span>Image</span>
+          </ImageButton>
         </ColorOptions>
 
         <SectionTitle>Link</SectionTitle>
@@ -143,10 +188,15 @@ function ProfileCreateWidgetPage() {
           onChange={e => setLinkURL(e.target.value)}
         />
 
-        <SectionTitle>Text</SectionTitle>
+        <SectionTitle inActive={!!image}>Text</SectionTitle>
         <InputField
-          placeholder="Please enter the widget text"
+          placeholder={
+            !!image
+              ? "If you add an image, the text can't be displayed."
+              : 'Please enter the widget text'
+          }
           value={description}
+          disabled={!!image}
           onChange={e => setDescription(e.target.value)}
         />
 
@@ -155,7 +205,12 @@ function ProfileCreateWidgetPage() {
     </TopHeaderBackButtonWrapperView>
   );
 }
-
+const PreviewText = styled.div`
+  color: ${theme.inActiveGray};
+  font-size: ${theme.fontSize.md};
+  margin: ${theme.spacing.xm} 0px;
+  text-align: center;
+`;
 // 스타일 컴포넌트
 const Container = styled.div`
   width: calc(100% - ${theme.spacing.lg} * 2);
@@ -166,8 +221,8 @@ const Container = styled.div`
   gap: ${theme.spacing.md};
 `;
 
-const SectionTitle = styled.h2`
-  color: ${theme.mainNeon};
+const SectionTitle = styled.h2<{inActive?: boolean}>`
+  color: ${props => (props.inActive ? theme.inActiveGray : theme.mainNeon)};
   font-size: ${theme.fontSize.xl};
   font-weight: 400;
   margin-bottom: 10px;
@@ -219,6 +274,7 @@ const ColorOptions = styled.div`
   display: flex;
   gap: 15px;
   align-items: center;
+  justify-content: space-between;
 `;
 
 const ColorOption = styled.div<{
@@ -263,6 +319,15 @@ const InputField = styled.input`
   background-color: transparent;
   color: white;
   font-size: ${theme.fontSize.md};
+  &:focus {
+    outline: none;
+    border: 1px solid ${theme.mainNeon};
+  }
+`;
+const GuideText = styled.p`
+  color: ${theme.gray};
+  font-size: ${theme.fontSize.md};
+  margin-bottom: ${theme.spacing.md};
 `;
 const PreviewContainer = styled.div`
   width: 100%;
@@ -283,5 +348,7 @@ const UploadButton = styled.button`
   margin-top: 20px;
   cursor: pointer;
 `;
-
+const ProfileImageInput = styled.input`
+  display: none;
+`;
 export default ProfileCreateWidgetPage;
