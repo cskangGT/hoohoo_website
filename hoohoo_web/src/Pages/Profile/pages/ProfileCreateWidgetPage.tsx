@@ -290,6 +290,10 @@ const ColorOption = styled.div<{
   border-radius: 50%;
   background-color: ${props => props.color};
   cursor: pointer;
+  @media (max-width: 600px) {
+    width: 20px;
+    height: 20px;
+  }
   ${props =>
     props.border && {
       border: `2px solid ${theme.mainNeon};`,
