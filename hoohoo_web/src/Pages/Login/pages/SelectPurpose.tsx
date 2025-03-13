@@ -57,7 +57,7 @@ const SelectPurposeContainer = styled.div`
   flex-wrap: wrap;
   justify-content: center;
   align-items: stretch;
-  gap: ${theme.spacing.md};
+  gap: ${theme.spacing.xl};
   margin: ${theme.spacing.md} 0px ${theme.spacing['2xl']} 0px;
   @media screen and (max-width: 600px) {
     margin: ${theme.spacing.md} 0px 100px 0px;
@@ -81,8 +81,8 @@ const ItemContainer = styled.div<{selected: boolean}>`
   transition:
     transform 0.2s,
     box-shadow 0.2s;
-  padding: ${theme.spacing.md};
-  gap: ${theme.spacing.md};
+  padding: ${theme.spacing.xl} ${theme.spacing.md};
+  gap: ${theme.spacing.xm};
   @media screen and (max-width: 1200px) {
     max-width: 250px;
   }

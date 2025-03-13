@@ -28,7 +28,7 @@ const PADDING_WIDTH = WIDTH * 0.06;
 const CELL_CONTAINER_WIDTH = WIDTH - 2 * PADDING_WIDTH;
 const CELL_SIZE =
   ((CELL_CONTAINER_WIDTH - CONTAINER_GAP) / 2 - CONTAINER_GAP * 2) / 3;
-const ITEM_WIDTH = CELL_SIZE * 3 + CONTAINER_GAP * 2 - 2;
+const ITEM_WIDTH = CELL_SIZE * 3 + CONTAINER_GAP * 2 - 4;
 const ITEM_HEIGHT = CELL_SIZE;
 const LONG_ITEM_WIDTH = CELL_CONTAINER_WIDTH;
 const BIG_ITEM_HEIGHT = ITEM_WIDTH;
@@ -44,8 +44,8 @@ const WidgetItemContainer = styled.div<{
   justify-content: center;
   overflow: hidden;
   background-color: ${props => props.bgColor || 'transparent'};
-  border: 1px solid
-    ${props => (props.hasBorder ? theme.mainNeon : 'transparent')};
+  border: ${props =>
+    props.hasBorder ? `1px solid ${theme.mainNeon}` : '1px solid transparent'};
   ${props =>
     props.isClickable &&
     css`

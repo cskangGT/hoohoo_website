@@ -2,7 +2,7 @@ import React, {useEffect, useState} from 'react';
 import {useNavigate} from 'react-router-dom';
 
 import i18next from 'i18next';
-import {getAPIKey, sendKakaoLogin} from '../../../api/login/auth';
+import {sendKakaoLogin} from '../../../api/login/auth';
 import {useUserStore} from '../../../storage/userStore';
 import OAuthCallback from './OAuthCallback';
 
@@ -28,7 +28,7 @@ function KakaoCallback() {
         console.log('response', response);
 
         if (response.result) {
-          getAPIKey();
+          // getAPIKey();
           setUser(response?.data?.user);
           sessionStorage.removeItem('storedNameTag');
 
