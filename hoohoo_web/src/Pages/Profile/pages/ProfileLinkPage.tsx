@@ -94,7 +94,7 @@ function ProfileLinkPage() {
     const fetchUserData = async () => {
       const response = await getUserLinkProfile(nameTag || '');
       console.log('response', response);
-      setWidgets(response.widgets);
+      setWidgets(response?.widgets ?? []);
       setUserData(response);
     };
     fetchUserData();
