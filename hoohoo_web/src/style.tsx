@@ -1,6 +1,6 @@
 import styled, {keyframes} from 'styled-components';
 
-export const __DEV__ = true;
+export const __DEV__ = false;
 
 export const APIAddress: string = __DEV__
   ? `https://dev.earthmera.com/`
