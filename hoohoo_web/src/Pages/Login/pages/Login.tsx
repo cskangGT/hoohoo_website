@@ -70,7 +70,7 @@ const TitleText = styled.h2<{language: string}>`
 `;
 const NewUserText = styled.h4<{language: string}>`
   font-size: ${theme.fontSize.rg};
-  color: ${theme.gray};
+  color: ${theme.inActiveGray};
   text-align: center;
   margin-bottom: ${theme.spacing.lg};
   font-family: ${props => (props.language === 'ko' ? 'Inter' : 'Fredoka')};
@@ -124,15 +124,7 @@ const SocialInnerBox = styled.div`
   font-weight: 600;
   font-family: Inter;
 `;
-const EyeIcon = styled.div`
-  position: absolute;
-  right: ${theme.spacing.md};
-  height: 20px;
-  width: 20px;
-  cursor: pointer;
 
-  color: ${theme.gray};
-`;
 const LogoBox = styled.div`
   margin-bottom: ${theme.spacing['xl']};
   display: flex;
@@ -173,8 +165,8 @@ const ForgotPasswordButton = styled.button`
   margin: 0px;
   padding: 0px;
 
-  font-size: ${theme.fontSize.sm};
-  color: ${theme.gray};
+  font-size: ${theme.fontSize.rg};
+  color: ${theme.inActiveGray};
   border: none;
   background-color: transparent;
   text-decoration: underline;

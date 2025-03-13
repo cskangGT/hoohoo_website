@@ -91,25 +91,46 @@ const WidgetAppNavImage = styled.img`
   height: ${ITEM_WIDTH * 0.625}px;
   object-fit: contain;
 `;
-const WidgetContent = styled.div<{textColor?: string}>`
+const WidgetContent = styled.div<{
+  textColor?: string;
+  size: ProfileWidgetItemSize;
+}>`
   text-align: center;
   padding: 10px;
   width: calc(100% - 20px);
   height: calc(100% - 20px);
-  display: flex;
+
   flex-direction: column;
   position: relative;
+
+  color: ${props => props.textColor || 'white'};
+  margin: auto;
+
+  overflow: hidden;
+  font-size: ${props =>
+    props.size === 'BIG' ? theme.fontSize.lg : theme.fontSize.rg};
+  overflow: hidden;
+`;
+const WidgetTextContentContainer = styled.div`
+  width: calc(100% - 20px);
+  height: calc(100% - 20px);
+  padding: 10px;
+  display: flex;
   align-items: center;
   justify-content: center;
-  color: ${props => props.textColor || 'white'};
-  font-size: ${theme.fontSize['2xl']};
-
-  word-break: break-word;
-  overflow: hidden;
-  border-radius: 30px;
-  white-space: normal;
 `;
-
+const WidgetTextContent = styled.p<{size: ProfileWidgetItemSize}>`
+  margin: 0px;
+  height: auto;
+  text-align: center;
+  overflow: hidden;
+  display: -webkit-box;
+  word-break: break-word;
+  text-overflow: ellipsis;
+  white-space: normal;
+  -webkit-line-clamp: ${props => (props.size === 'BIG' ? 5 : 1)};
+  -webkit-box-orient: vertical;
+`;
 const WidgetImage = styled.img`
   width: calc(100%);
   height: calc(100%);
@@ -175,15 +196,18 @@ function WidgetItem({
       ? getTextColor(widget.bgColor)
       : 'white';
 
-  const content = (
-    <WidgetContent style={{color: textColor}}>
-      {widget.bgType === 'IMAGE' ? (
+  const content =
+    widget.bgType === 'IMAGE' ? (
+      <WidgetContent style={{color: textColor}} size={widget.sizeType}>
         <WidgetImage src={widget.bgImageUrl} />
-      ) : (
-        widget.description
-      )}
-    </WidgetContent>
-  );
+      </WidgetContent>
+    ) : (
+      <WidgetTextContentContainer>
+        <WidgetTextContent style={{color: textColor}} size={widget.sizeType}>
+          {widget.description}
+        </WidgetTextContent>
+      </WidgetTextContentContainer>
+    );
 
   return (
     <WidgetItemContainer
