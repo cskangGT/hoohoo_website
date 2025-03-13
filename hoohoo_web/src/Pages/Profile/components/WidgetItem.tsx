@@ -43,7 +43,7 @@ const WidgetItemContainer = styled.div<{
   display: flex;
   align-items: center;
   justify-content: center;
-
+  position: relative;
   background-color: ${props => props.bgColor || 'transparent'};
   border: ${props =>
     props.hasBorder ? `1px solid ${theme.mainNeon}` : '1px solid transparent'};
