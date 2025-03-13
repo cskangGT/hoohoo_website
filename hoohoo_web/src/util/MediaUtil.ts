@@ -6,6 +6,7 @@ import {
 } from "@aws-sdk/client-s3";
 import imageCompression from "browser-image-compression";
 import { v4 as uuidv4 } from "uuid";
+import { getAPIKey } from "../api/login/auth";
 import {
     AWS_DATA_STORAGE_BUCKET_NAME,
     AWS_MEDIA_STORAGE_BUCKET_NAME,
@@ -30,9 +31,21 @@ export const compressImage = async (imageFile: File, maxSize: number) => {
 
 
 export const uploadImageToS3 = async (imagePaths: File, isMedia: boolean, pathKey: string) => {
-    const accessKey = sessionStorage.getItem("AWS_SECRET_ACCESS_KEY");
-    const keyId = sessionStorage.getItem("AWS_ACCESS_KEY_ID");
+    let accessKey = sessionStorage.getItem("AWS_SECRET_ACCESS_KEY");
+    let keyId = sessionStorage.getItem("AWS_ACCESS_KEY_ID");
 
+    if (!accessKey || !keyId) {
+        const credentials = await getAPIKey();
+        console.log("credentials", credentials);
+        if (credentials.result) {
+            accessKey = credentials.data.AWS_SECRET_ACCESS_KEY;
+            keyId = credentials.data.AWS_ACCESS_KEY_ID;
+        } else {
+            alert("AWS 설정 오류");
+            return "";
+        }
+
+    }
     const client = new S3Client({
         region: AWS_S3_REGION_NAME,
         credentials: {

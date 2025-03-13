@@ -1065,20 +1065,20 @@
     "continue": "Continue",
     "goals": [
       {
-        "title": "Influencer",
-        "description": "Pick what fits you best, It'll make your Zigu Link even better!",
+        "title": "The legit eco expert!",
+        "description": "You’re a true sustainability pro,<br />leading the way with real expertise. 🌿",
         "image": "/Images/q_influencer.jpeg",
         "value": "INFLUENCER"
       },
       {
-        "title": "Business",
-        "description": "Pick what fits you best, It'll make your Zigu Link even better!",
+        "title": "The GOAT of green business!",
+        "description": "Leading the eco industry and<br />making a real impact. 💼",
         "image": "/Images/q_business.jpeg",
         "value": "BUSINESS"
       },
       {
-        "title": "Personal",
-        "description": "Pick what fits you best, It'll make your Zigu Link even better!",
+        "title": "The eco-conscious user!",
+        "description": "You care about the planet and make eco-friendly choices every day. 🌱",
         "image": "/Images/q_personal.jpeg",
         "value": "PERSONAL"
       }
@@ -1093,46 +1093,46 @@
     },
     "purposeList": [
       {
-        "title": "E-commerce",
-        "description": "Selling physical or digital products",
+        "title": "Eco-commerce",
+        "description": "Selling sustainable products",
         "image": "/Images/ecommerce.png",
-        "value": "E-COMMERCE"
+        "value": "ECO-COMMERCE"
       },
       {
-        "title": "Personal Use",
-        "description": "Sharing my eco-journey",
+        "title": "Green Lifestyle",
+        "description": "Sharing my sustainability lifestyle",
         "image": "/Images/personal.png",
-        "value": "PERSONAL_USE"
+        "value": "GREEN_LIFESTYLE"
       },
       {
-        "title": "Portfolio",
-        "description": "Highlighting my work or projects",
+        "title": "Eco Portfolio",
+        "description": "Showcasing my environmental projects",
         "image": "/Images/portfolio.png",
-        "value": "PORTFOLIO"
+        "value": "ECO_PORTFOLIO"
       },
       {
-        "title": "Community",
-        "description": "Inspiring others to go green",
+        "title": "Green Community",
+        "description": "Inspiring and educating others",
         "image": "/Images/community.png",
-        "value": "COMMUNITY"
+        "value": "GREEN_COMMUNITY"
       },
       {
-        "title": "Digital Business Card",
-        "description": "Showcasing my professional profile",
+        "title": "Eco Business Card",
+        "description": "Showcasing my eco-focused profile",
         "image": "/Images/card.png",
-        "value": "DIGITAL_BUSINESS_CARD"
+        "value": "ECO_BUSINESS_CARD"
       },
       {
-        "title": "Affiliate",
-        "description": "Promoting products or services",
+        "title": "Sustainable Affiliate",
+        "description": "Promoting eco products or services",
         "image": "/Images/affiliate.png",
-        "value": "AFFILIATE"
+        "value": "SUSTAINABLE_AFFILIATE"
       },
       {
-        "title": "Event",
-        "description": "Hosting or promoting events",
+        "title": "Eco Events",
+        "description": "Hosting or promoting eco-events",
         "image": "/Images/event.png",
-        "value": "EVENT"
+        "value": "ECO_EVENT"
       }
     ]
   },

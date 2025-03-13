@@ -13,7 +13,7 @@ function EarthMeraLogo({size}: {size: number}) {
   return (
     <LogoContainer style={{width: size, height: size}}>
       <img
-        src={'/Images/icon_image.png'}
+        src={'/Images/G9.png'}
         style={{width: size * ratio, height: size * ratio}}
         alt="EarthMera Logo"
       />

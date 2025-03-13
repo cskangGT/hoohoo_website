@@ -16,6 +16,7 @@ import styled from 'styled-components';
 import {
   getAPIKey,
   redirectUri,
+  sendAppleLogin,
   sendGoogleLogin,
   validateLogin,
 } from '../../../api/login/auth';
@@ -213,6 +214,8 @@ const Login = () => {
         setUser(response.data.user);
         if (response.data?.user?.isNeedsQuestionnaire) {
           navigate('/setup/select-goal');
+        } else {
+          navigate(`/zigu/${response.data.user.nameTag}`);
         }
       } else {
         if (response.status === 400) {
@@ -257,11 +260,24 @@ const Login = () => {
       redirectURI: `${redirectUri}/oauth/callback/apple`,
       state: '1234567890',
       nonce: '1234567890',
-      usePopup: false,
+      usePopup: true,
     });
     try {
       const res = await (window as any)?.AppleID?.auth?.signIn();
       console.log(res);
+      console.log(res);
+      if (res?.id_token && res?.code) {
+        const response = await sendAppleLogin(res.code, res.id_token);
+        if (response.result) {
+          setUser(response.data.user);
+          getAPIKey();
+          if (response.data?.user?.isNeedsQuestionnaire) {
+            navigate('/setup/select-goal', {replace: true});
+          } else {
+            navigate(`/zigu/${response.data.user.nameTag}`, {replace: true});
+          }
+        }
+      }
     } catch (error) {
       console.log(error);
     }

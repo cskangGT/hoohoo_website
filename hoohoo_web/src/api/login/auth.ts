@@ -159,6 +159,8 @@ export const getAPIKey = async () => {
         const response = await clientAxios.get('myProfile/web/fetchAPIKey/', {
             withCredentials: true,
         });
+        console.log("response.data", response.data);
+
         if (response.status >= 200 && response.status < 300) {
             if (response.data.data) {
                 for (const item of response.data.data) {
@@ -167,6 +169,7 @@ export const getAPIKey = async () => {
                     sessionStorage.setItem(key, value);
                 }
             }
+            return { result: true, data: response.data.data };
         }
         return { result: false, status: response.status };
     } catch (e: any) {
