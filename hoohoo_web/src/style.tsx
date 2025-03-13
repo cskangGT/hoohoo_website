@@ -1,6 +1,6 @@
 import styled, {keyframes} from 'styled-components';
 
-export const __DEV__ = false;
+export const __DEV__ = window.location.hostname === 'localhost';
 
 export const APIAddress: string = __DEV__
   ? `https://dev.earthmera.com/`
