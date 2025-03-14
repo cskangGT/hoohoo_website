@@ -29,6 +29,23 @@ export const compressImage = async (imageFile: File, maxSize: number) => {
     return compressedFile;
 };
 
+export const checkAWSKey = async () => {
+    const accessKey = sessionStorage.getItem("AWS_SECRET_ACCESS_KEY");
+    const keyId = sessionStorage.getItem("AWS_ACCESS_KEY_ID");
+
+    if (!accessKey || !keyId) {
+        const credentials = await getAPIKey();
+        if (credentials.result) {
+            const awsSecretAccessKey = credentials.data.AWS_SECRET_ACCESS_KEY;
+            const awsAccessKeyId = credentials.data.AWS_ACCESS_KEY_ID;
+
+            return { accessKey: awsSecretAccessKey, keyId: awsAccessKeyId };
+        } else {
+            return { accessKey: "", keyId: "" };
+        }
+    }
+    return { accessKey, keyId };
+}
 
 export const uploadImageToS3 = async (imagePaths: File, isMedia: boolean, pathKey: string) => {
     let accessKey = sessionStorage.getItem("AWS_SECRET_ACCESS_KEY");

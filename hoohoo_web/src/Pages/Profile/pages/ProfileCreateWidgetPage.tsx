@@ -1,9 +1,11 @@
 import React, {useState} from 'react';
 import {useNavigate} from 'react-router-dom';
+import {toast} from 'react-toastify';
 import styled from 'styled-components';
 import {createWidget} from '../../../api/jigulink/jigulink.api';
 import {theme} from '../../../style';
 import {
+  checkAWSKey,
   compressImage,
   generateUniqueKey,
   uploadImageToS3,
@@ -66,12 +68,20 @@ function ProfileCreateWidgetPage() {
 
     const compressedImage = await compressImage(file, 1080);
     const uriKey = generateUniqueKey(WIDGET_PREFIX, 'png');
-    const result = await uploadImageToS3(compressedImage, true, uriKey);
-    if (result) {
-      console.log('result', result);
-      setIsSelected(true);
-      setImage(result);
+    const {accessKey, keyId} = await checkAWSKey();
+    if (!accessKey || !keyId) {
+      toast.error('Failed to upload image');
+      return;
+    } else {
+      const result = await uploadImageToS3(compressedImage, true, uriKey);
+
+      if (result) {
+        console.log('result', result);
+        setIsSelected(true);
+        setImage(result);
+      }
     }
+
     // const compressedImage = await compressImage(file, 1080);
     //   const uriKey = generateUniqueKey(PROFILE_PREFIX + `/`, 'png');
     //   const result = await uploadImageToS3(compressedImage, true, uriKey);
