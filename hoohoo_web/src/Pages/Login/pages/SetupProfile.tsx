@@ -3,6 +3,7 @@ import CircularProgress from '@mui/material/CircularProgress';
 import i18next from 'i18next';
 import React, {useEffect, useRef, useState} from 'react';
 import {useNavigate} from 'react-router-dom';
+import {toast} from 'react-toastify';
 import styled from 'styled-components';
 import {updateUserProfile} from '../../../api/jigulink/user.api';
 import {sendQuestionnaire} from '../../../api/login/signup.api';
@@ -11,6 +12,7 @@ import {useQuestionnaire} from '../../../context/QuestionnaireContext';
 import {useUserStore} from '../../../storage/userStore';
 import {theme} from '../../../style';
 import {
+  checkAWSKey,
   compressImage,
   generateUniqueKey,
   uploadImageToS3,
@@ -219,10 +221,16 @@ function SetupProfile() {
     if (file) {
       const compressedImage = await compressImage(file, 1080);
       const uriKey = generateUniqueKey(PROFILE_PREFIX, 'png');
-      const result = await uploadImageToS3(compressedImage, true, uriKey);
-      console.log('result', result);
-      if (result) {
-        setProfileImage(result);
+      const response = await checkAWSKey();
+      if (response.result) {
+        const result = await uploadImageToS3(compressedImage, true, uriKey);
+        console.log('result', result);
+        if (result) {
+          setProfileImage(result);
+        }
+      } else {
+        toast.error('Failed to upload image');
+        return;
       }
     }
   };

@@ -29,6 +29,27 @@ export const compressImage = async (imageFile: File, maxSize: number) => {
     return compressedFile;
 };
 
+export const checkAWSKey = async () => {
+    const accessKey = sessionStorage.getItem("AWS_SECRET_ACCESS_KEY");
+    const keyId = sessionStorage.getItem("AWS_ACCESS_KEY_ID");
+    console.log("accessKey || !keyId1111", accessKey, keyId);
+
+    if (!accessKey || !keyId) {
+        const credentials = await getAPIKey();
+        if (credentials.result) {
+            const awsSecretAccessKey = credentials.data.AWS_SECRET_ACCESS_KEY;
+            const awsAccessKeyId = credentials.data.AWS_ACCESS_KEY_ID;
+            console.log("accessKey || !keyId333", accessKey, keyId);
+            return { result: true, accessKey: awsSecretAccessKey, keyId: awsAccessKeyId };
+        } else {
+            return { result: false, accessKey: "", keyId: "" };
+        }
+
+
+    }
+    console.log("accessKey || !keyId222", accessKey, keyId);
+    return { result: true, accessKey, keyId };
+}
 
 export const uploadImageToS3 = async (imagePaths: File, isMedia: boolean, pathKey: string) => {
     let accessKey = sessionStorage.getItem("AWS_SECRET_ACCESS_KEY");
@@ -38,9 +59,9 @@ export const uploadImageToS3 = async (imagePaths: File, isMedia: boolean, pathKe
         try {
             const credentials = await getAPIKey();
             if (credentials.result) {
-                accessKey = credentials.data.AWS_SECRET_ACCESS_KEY;
-                keyId = credentials.data.AWS_ACCESS_KEY_ID;
+                console.log("credentials", credentials);
 
+                return uploadImage(imagePaths, isMedia, pathKey, credentials.data.AWS_SECRET_ACCESS_KEY, credentials.data.AWS_ACCESS_KEY_ID);
             } else {
                 alert("AWS 설정 오류");
                 return "";
@@ -50,13 +71,23 @@ export const uploadImageToS3 = async (imagePaths: File, isMedia: boolean, pathKe
             alert("AWS 인증 정보를 가져오는 중 오류가 발생했습니다.");
             return "";
         }
+    } else {
+        if (!accessKey || !keyId) {
+            console.error("AWS 인증 정보가 없습니다.");
+            return "";
+        }
+
+        return uploadImage(imagePaths, isMedia, pathKey, accessKey, keyId);
     }
 
     // 키가 확보된 후에만 client 생성 및 업로드 진행
-    if (!accessKey || !keyId) {
-        console.error("AWS 인증 정보가 없습니다.");
-        return "";
-    }
+
+};
+const uploadImage = async (imagePaths: File, isMedia: boolean, pathKey: string, accessKey: string, keyId: string) => {
+
+    console.log("accessKey", accessKey);
+    console.log("keyId", keyId);
+
 
     const client = new S3Client({
         region: AWS_S3_REGION_NAME,
@@ -64,7 +95,7 @@ export const uploadImageToS3 = async (imagePaths: File, isMedia: boolean, pathKe
             accessKeyId: keyId,
             secretAccessKey: accessKey,
         },
-        useAccelerateEndpoint: true,
+        useAccelerateEndpoint: false,
     });
 
     const headCommand = new PutObjectCommand({
@@ -82,7 +113,8 @@ export const uploadImageToS3 = async (imagePaths: File, isMedia: boolean, pathKe
         console.error("Error uploading file", error);
         return "";
     }
-};
+}
+
 
 export const deleteImageToS3 = async (isMedia: boolean, pathKey: string) => {
     const accessKey = sessionStorage.getItem("AWS_SECRET_ACCESS_KEY");

@@ -9,6 +9,7 @@ import i18next from '../../../lang/i18n';
 import {useUserStore} from '../../../storage/userStore';
 import {defaultProfileImage, theme} from '../../../style';
 import {
+  checkAWSKey,
   compressImage,
   generateUniqueKey,
   uploadImageToS3,
@@ -163,16 +164,23 @@ function ProfileSettingPage() {
 
     const compressedImage = await compressImage(file, 1080);
     const uriKey = generateUniqueKey(PROFILE_PREFIX, 'png');
-    const result = await uploadImageToS3(compressedImage, true, uriKey);
-    if (result) {
-      console.log('result', result);
-      const response = await updateUserProfile({
-        profileImage: result,
-      });
-      if (response.result) {
-        setUser({...user, profileImage: result});
+    const {accessKey, keyId} = await checkAWSKey();
+    if (!accessKey || !keyId) {
+      toast.error('Failed to upload image');
+      return;
+    } else {
+      const result = await uploadImageToS3(compressedImage, true, uriKey);
+      if (result) {
+        console.log('result', result);
+        const response = await updateUserProfile({
+          profileImage: result,
+        });
+        if (response.result) {
+          setUser({...user, profileImage: result});
+        }
       }
     }
+
     // const compressedImage = await compressImage(file, 1080);
     //   const uriKey = generateUniqueKey(PROFILE_PREFIX + `/`, 'png');
     //   const result = await uploadImageToS3(compressedImage, true, uriKey);
