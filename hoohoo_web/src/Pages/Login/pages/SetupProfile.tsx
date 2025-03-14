@@ -221,16 +221,16 @@ function SetupProfile() {
     if (file) {
       const compressedImage = await compressImage(file, 1080);
       const uriKey = generateUniqueKey(PROFILE_PREFIX, 'png');
-      const {accessKey, keyId} = await checkAWSKey();
-      if (!accessKey || !keyId) {
-        toast.error('Failed to upload image');
-        return;
-      } else {
+      const response = await checkAWSKey();
+      if (response.result) {
         const result = await uploadImageToS3(compressedImage, true, uriKey);
         console.log('result', result);
         if (result) {
           setProfileImage(result);
         }
+      } else {
+        toast.error('Failed to upload image');
+        return;
       }
     }
   };
