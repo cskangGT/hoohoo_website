@@ -13,7 +13,8 @@ import MainDropB from './Pages/DropB/MainDropB';
 import Blog from './Pages/EMMedia/Blog/Blog';
 import BlogDetail from './Pages/EMMedia/Blog/BlogDetail';
 import NewsDetailPage from './Pages/EMMedia/News/NewsDetailPage';
-import NewsPage from './Pages/EMMedia/NewsPage';
+import NewsPage from './Pages/EMMedia/News/NewsPage';
+import Testimonials from './Pages/EMMedia/Testimonials/Testimonials';
 import HomeEarthmera from './Pages/Home/HomeEarthmera';
 import SupportingPage from './Pages/Info/Contact/SupportingPage';
 import RedirectPage from './Pages/Info/Redirection/RedirectPage';
@@ -163,6 +164,11 @@ const baseRoutes = [
   {
     path: '/terms_of_use',
     element: <TandC />,
+    errorElement: <ErrorComponent />,
+  },
+  {
+    path: '/testimonials',
+    element: <Testimonials />,
     errorElement: <ErrorComponent />,
   },
 ];

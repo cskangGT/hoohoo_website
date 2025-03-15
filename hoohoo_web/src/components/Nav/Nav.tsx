@@ -83,8 +83,17 @@ const NavbarMenu = styled.ul<NavBarProps>`
     align-items: center;
     justify-content: center;
     width: calc(100% + 16px);
-    transition: all 0.3s ease;
-    display: ${props => (props.isOpen ? 'flex' : 'none')};
+
+    // 애니메이션 관련 속성 수정
+    max-height: ${props => (props.isOpen ? '1000px' : '0')};
+    opacity: ${props => (props.isOpen ? '1' : '0')};
+    overflow: hidden;
+    transition:
+      max-height 0.5s ease-in-out,
+      opacity 0.3s ease-in-out;
+    transform: ${props =>
+      props.isOpen ? 'translateY(0)' : 'translateY(-20px)'};
+    display: flex; // display: none 제거하고 항상 flex로 설정
   }
 `;
 const LogoIcon = styled.img`
@@ -531,12 +540,12 @@ function Nav() {
             </NavMenuList>
           );
         })}
-        <EMLinkBox
+        {/* <EMLinkBox
           onClick={() => {
             navigate('/pre-signup');
           }}>
           {localizedTexts.jigu}
-        </EMLinkBox>
+        </EMLinkBox> */}
         {/* {!isOpen && (
           <LanguageBox>
             <LanguageButton
