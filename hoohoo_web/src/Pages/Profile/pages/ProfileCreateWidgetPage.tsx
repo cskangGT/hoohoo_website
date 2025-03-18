@@ -50,7 +50,6 @@ function ProfileCreateWidgetPage() {
   }
   const handleAddWidget = async () => {
     const newCoordinate = calculateNewWidgetCoordinate(selectedStyle);
-    console.log('newCoordinate', newCoordinate);
 
     const widgetData = {
       sizeType: selectedStyle,
@@ -60,7 +59,7 @@ function ProfileCreateWidgetPage() {
       hasBorder: hasBorder,
       linkUrl: linkURL,
       description: description,
-      coordinate: newCoordinate,
+      coordinate: {x: newCoordinate.x * 3, y: newCoordinate.y},
     };
     const response = await createWidget(widgetData);
     if (response.result) {

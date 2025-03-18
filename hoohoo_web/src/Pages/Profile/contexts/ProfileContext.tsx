@@ -70,93 +70,7 @@ export const ProfileProvider: React.FC<ProfileProviderProps> = ({
     ProfileWidgetItemType[]
   >([]);
   const [currentWidgets, setCurrentWidgets] = useState<ProfileWidgetItemType[]>(
-    [
-      {
-        id: 1,
-        sizeType: 'BIG',
-        bgType: 'COLOR',
-        bgColor: 'transparent',
-        hasBorder: true,
-        description: '안녕하세요. 환경 지키미 지미입니다.',
-        coordinate: {x: 0, y: 0},
-      },
-      {
-        id: 2322,
-        sizeType: 'SMALL',
-        bgType: 'COLOR',
-        bgColor: 'transparent',
-        hasBorder: true,
-        description: 'Jisan!!',
-        coordinate: {x: 1, y: 0},
-      },
-      {
-        id: 232,
-        sizeType: 'SMALL',
-        bgType: 'COLOR',
-        bgColor: 'transparent',
-        hasBorder: true,
-        description: 'Jisan!!',
-        coordinate: {x: 1, y: 1},
-      },
-      {
-        id: 32,
-        sizeType: 'SMALL',
-        description: 'Customize',
-        bgType: 'COLOR',
-        bgColor: 'transparent',
-        hasBorder: true,
-        coordinate: {x: 1, y: 2},
-      },
-      {
-        id: 1222,
-        sizeType: 'SMALL',
-        description: 'Customize',
-        bgType: 'COLOR',
-        bgColor: 'transparent',
-        hasBorder: true,
-        coordinate: {x: 0, y: 3},
-      },
-      {
-        id: 4,
-        sizeType: 'LONG',
-
-        bgType: 'COLOR',
-        description: '에코액션!',
-        bgColor: 'transparent',
-        hasBorder: true,
-        coordinate: {x: 0, y: 4},
-      },
-      {
-        id: 5,
-        sizeType: 'LONG',
-
-        bgType: 'COLOR',
-        description: '환경 지켜!',
-        bgColor: 'transparent',
-        hasBorder: true,
-        coordinate: {x: 0, y: 5},
-      },
-      {
-        id: 2,
-        sizeType: 'BIG',
-        bgType: 'COLOR',
-        bgColor: 'transparent',
-        hasBorder: true,
-        description:
-          'Customize your profile freely with your favorite link, colors, and shapes, make it truly yours! ',
-        coordinate: {x: 0, y: 7},
-      },
-      {
-        id: 3,
-        sizeType: 'LONG',
-
-        bgType: 'COLOR',
-        bgColor: 'transparent',
-        description: '환경 지켜!!',
-        hasBorder: true,
-        coordinate: {x: 0, y: 6},
-      },
-    ],
+    [],
   );
   const [lastSavedWidgets, setLastSavedWidgets] = useState<
     ProfileWidgetItemType[]
@@ -220,7 +134,7 @@ export const ProfileProvider: React.FC<ProfileProviderProps> = ({
             }),
           );
           setOriginalWidgets(newWidgets);
-          //   setCurrentWidgets(response.data.widgets);
+          setCurrentWidgets(newWidgets);
           setLastSavedWidgets(newWidgets);
         }
 
