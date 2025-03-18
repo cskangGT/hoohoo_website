@@ -6,11 +6,10 @@ import FootContact from '../../components/Footer/FootContact';
 import {useLanguage} from '../../components/hooks/LanguageContext';
 import {BgImage, theme} from '../../style';
 import {ContentBox} from '../About/Vision/EarthMeraVision';
-import EcoActionTestimony from './sections/EcoActionTestimony';
 import HomeEcoProducts from './sections/HomeEcoProducts';
 import HomeEcoServices from './sections/HomeEcoServices';
 import HomeEnvImpact from './sections/HomeEnvImpact';
-import HomeLandingSection from './sections/HomeLandingSection';
+import HomeLandingEcoAction from './sections/HomeLandingEcoAction';
 import HomePartners from './sections/HomePartners';
 import HomePartnership from './sections/HomePartnership';
 import HomePlatformGroup from './sections/HomePlatformGroup';
@@ -127,11 +126,11 @@ function HomeEarthmera() {
   }, []);
   return (
     <BgImage>
-      <BgImage bgcolor={'#F2F2F7 !important'}>
-        <IntroContentBox>
-          <HomeLandingSection />
-        </IntroContentBox>
-      </BgImage>
+      <IntroContentBox>
+        <HomeLandingEcoAction />
+        {/* <HomeLandingSection /> */}
+      </IntroContentBox>
+
       <ContentBox>
         <HomeEnvImpact></HomeEnvImpact>
       </ContentBox>
@@ -157,9 +156,7 @@ function HomeEarthmera() {
           <HomePartners />
         </ContentBox>
       </Wrap>
-      <ContentBox>
-        <EcoActionTestimony />
-      </ContentBox>
+      <ContentBox></ContentBox>
       <hr style={{color: theme.darkGray, margin: 0, width: '100%'}} />
       <Wrap>
         <FootContact />

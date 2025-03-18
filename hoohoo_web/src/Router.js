@@ -13,7 +13,8 @@ import MainDropB from './Pages/DropB/MainDropB';
 import Blog from './Pages/EMMedia/Blog/Blog';
 import BlogDetail from './Pages/EMMedia/Blog/BlogDetail';
 import NewsDetailPage from './Pages/EMMedia/News/NewsDetailPage';
-import NewsPage from './Pages/EMMedia/NewsPage';
+import NewsPage from './Pages/EMMedia/News/NewsPage';
+import Testimonials from './Pages/EMMedia/Testimonials/Testimonials';
 import HomeEarthmera from './Pages/Home/HomeEarthmera';
 import SupportingPage from './Pages/Info/Contact/SupportingPage';
 import RedirectPage from './Pages/Info/Redirection/RedirectPage';
@@ -165,6 +166,11 @@ const baseRoutes = [
     element: <TandC />,
     errorElement: <ErrorComponent />,
   },
+  {
+    path: '/testimonials',
+    element: <Testimonials />,
+    errorElement: <ErrorComponent />,
+  },
 ];
 
 // 회원가입 관련 라우트를 별도로 분리
@@ -242,7 +248,7 @@ export const noFrameRoutes = [
     errorElement: <ErrorComponent />,
   },
   {
-    path: '/zigu/:nameTag',
+    path: '/zigu/:nameTag?',
     element: <ProfileLinkPage />,
     errorElement: <ErrorComponent />,
   },

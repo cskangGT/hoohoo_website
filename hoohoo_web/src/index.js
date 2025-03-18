@@ -7,6 +7,9 @@ import {RouterProvider} from 'react-router-dom';
 import {ToastContainer} from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import {createGlobalStyle} from 'styled-components';
+import HakgyoansimDunggeunmisoTTFBold from '../public/fonts/HakgyoansimDunggeunmisoTTFB.ttf';
+import HakgyoansimDunggeunmisoTTFRegular from '../public/fonts/HakgyoansimDunggeunmisoTTFR.ttf';
+import HaloDek from '../public/fonts/HaloDek.ttf';
 import NanumHumanTTfBold from '../public/fonts/NanumHumanBold.ttf';
 import NanumHumanTTfLight from '../public/fonts/NanumHumanLight.ttf';
 import NanumHumanTTfRegular from '../public/fonts/NanumHumanRegular.ttf';
@@ -49,6 +52,13 @@ const GlobalStyle = createGlobalStyle`
         url(${NanumHumanTTfLight}) format('truetype'),
         
     }
+    @font-face {
+      font-family: 'HakgyoansimDunggeunmiso';
+      src: url(${HakgyoansimDunggeunmisoTTFRegular}) format('truetype'),
+      url(${HakgyoansimDunggeunmisoTTFBold}) format('truetype'),
+      
+    }
+   
     /* @font-face {
       font-family: 'SCDream';
       src: url(${SCDream}) format('opentype'),
@@ -74,13 +84,16 @@ const GlobalStyle = createGlobalStyle`
         src: url(${TmoneyRoundWindExtraBold}) format('truetype');
         font-weight: 800;  // ExtraBold 웨이트 지정
       }
-      
-    @font-face {
-    font-family: 'yg-jalnan';
-    src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_four@1.2/JalnanOTF00.woff') format('woff');
-    font-weight: normal;
-    font-style: normal;
-}
+      @font-face {
+        font-family: 'HaloDek';
+        src: url(${HaloDek}) format('truetype');
+      }
+      @font-face {
+        font-family: 'yg-jalnan';
+        src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_four@1.2/JalnanOTF00.woff') format('woff');
+        font-weight: normal;
+        font-style: normal;
+      }
     :root {
       color-scheme: only light;
     }

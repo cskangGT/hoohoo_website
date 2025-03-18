@@ -23,16 +23,18 @@
       {
         "label": "우리가 하는 일",
         "subItems": [
-          {"label": "플랫폼", "link": "/ko/platform"},
-          {"label": "파트너십", "link": "/ko/partnership"},
+          {"label": "어스메라", "link": "/ko/platform"},
+
           {"label": "EM 티켓티어", "link": "/ko/ticketeer"}
         ]
       },
+      {"label": "파트너십", "link": "/ko/partnership"},
       {
         "label": "EM 미디어",
         "subItems": [
           {"label": "뉴스", "link": "/ko/news"},
-          {"label": "기후 카드", "link": "/ko/climate_card"}
+          {"label": "기후 카드", "link": "/ko/climate_card"},
+          {"label": "Eco-Actions", "link": "/ko/testimonials"}
         ]
       },
       {
@@ -1157,10 +1159,26 @@
   },
   "EcoActionTestimony": {
     "tag": "실제 친환경 행동",
-    "title": "친환경 행동들이 모이면,",
-    "subtitle": "더 큰 변화를 만듭니다",
-    "description": "실제 사용자들이 어떻게 변화를 만들어가는지 확인해보세요!<br />한 번의 행동이 모여 큰 변화를 만듭니다.",
+    "title": "See our impact,<br />shape the future🚀",
+
+    "description": "매일 이뤄지고 있는 10,000개의 에코액션,<br />지금 함께해보세요",
     "buttonText": "친환경 행동 보러가기",
     "backButtonText": "뒤로 가기"
+  },
+  "ProfileLinkPage": {
+    "carbon": ["Carbon Saving ", "g"],
+    "edit": "Edit",
+    "add": "Add",
+    "linkGuide": "Link your EarthMera app <br />to unlock this feature!",
+    "customize": "Customize your profile freely with your favorite link, colors, and shapes,make it truly yours!"
+  },
+  "ProfileSettingPage": {
+    "title": "Profile Settings",
+    "changeProfilePicture": "Change Profile Picture",
+    "changeProfileName": "Change Profile Name",
+    "changePassword": "Change Password",
+    "syncEarthMeraID": "Sync EarthMera ID",
+    "changeURL": "Change URL",
+    "logout": "Log out"
   }
 }

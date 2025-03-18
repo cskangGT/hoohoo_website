@@ -1,13 +1,13 @@
 import React from 'react';
 
-import {toast} from 'react-toastify';
 import styled from 'styled-components';
-import {deleteWidget} from '../../../api/jigulink/jigulink.api';
 import {theme} from '../../../style';
+import {useProfile} from '../contexts/ProfileContext';
 import {
   ProfileWidgetItemType,
   ProfileWidgetTypeEnum,
 } from '../types/WidgetItemType';
+import MainProfileGrid from './MainProfileGrid';
 import WidgetItem from './WidgetItem';
 
 const WidgetGrid = styled.div`
@@ -96,6 +96,7 @@ const AbEMWidget: ProfileWidgetItemType[] = [
     bgColor: 'transparent',
     hasBorder: true,
     description: '',
+    coordinate: {x: 0, y: 0},
   },
   {
     id: 2,
@@ -105,6 +106,7 @@ const AbEMWidget: ProfileWidgetItemType[] = [
     hasBorder: false,
     description:
       'Customize your profile freely with your favorite link, colors, and shapes, make it truly yours! ',
+    coordinate: {x: 0, y: 0},
   },
   {
     id: 3,
@@ -113,6 +115,7 @@ const AbEMWidget: ProfileWidgetItemType[] = [
     bgType: 'COLOR',
     bgColor: 'transparent',
     hasBorder: true,
+    coordinate: {x: 0, y: 0},
   },
   {
     id: 4,
@@ -121,6 +124,7 @@ const AbEMWidget: ProfileWidgetItemType[] = [
     bgType: 'COLOR',
     bgColor: 'transparent',
     hasBorder: true,
+    coordinate: {x: 0, y: 0},
   },
   {
     id: 5,
@@ -129,6 +133,7 @@ const AbEMWidget: ProfileWidgetItemType[] = [
     bgType: 'COLOR',
     bgColor: 'transparent',
     hasBorder: true,
+    coordinate: {x: 0, y: 0},
   },
   {
     id: 10,
@@ -138,6 +143,7 @@ const AbEMWidget: ProfileWidgetItemType[] = [
     type: ProfileWidgetTypeEnum.AppRank,
     hasBorder: true,
     description: '',
+    coordinate: {x: 0, y: 0},
   },
   {
     id: 11,
@@ -146,6 +152,7 @@ const AbEMWidget: ProfileWidgetItemType[] = [
     bgColor: 'transparent',
     type: ProfileWidgetTypeEnum.AppRecycle,
     hasBorder: true,
+    coordinate: {x: 0, y: 0},
     description: '',
   },
   {
@@ -155,6 +162,7 @@ const AbEMWidget: ProfileWidgetItemType[] = [
     bgColor: 'transparent',
     type: ProfileWidgetTypeEnum.AppGroup,
     hasBorder: true,
+    coordinate: {x: 0, y: 0},
     description: '',
   },
   {
@@ -164,21 +172,13 @@ const AbEMWidget: ProfileWidgetItemType[] = [
     bgColor: 'transparent',
     type: ProfileWidgetTypeEnum.AppShop,
     hasBorder: true,
+    coordinate: {x: 0, y: 0},
     description: '',
   },
 ];
-type ProfileWidgetGridProps = {
-  widgets: ProfileWidgetItemType[];
-  isMyLink: boolean;
-  isEditMode: boolean;
-  setWidgets: React.Dispatch<React.SetStateAction<ProfileWidgetItemType[]>>;
-};
-function ProfileWidgetGrid({
-  widgets,
-  isMyLink,
-  isEditMode,
-  setWidgets,
-}: ProfileWidgetGridProps) {
+
+function ProfileWidgetGrid() {
+  const {currentWidgets, isMyLink} = useProfile();
   function linktoApp() {
     // const platform = getDevicePlatform();
     // const appStoreLink =
@@ -186,39 +186,15 @@ function ProfileWidgetGrid({
     const link = 'https://www.earthmera.com/redirect?link=earthmera://';
     window.open(link, '_blank');
   }
-  async function onDeleteWidget(id: number) {
-    const response = await deleteWidget(id);
-    if (response.result) {
-      toast.success('delete widget success');
-      setWidgets((prev: ProfileWidgetItemType[]) => {
-        return prev.filter((widget: ProfileWidgetItemType) => widget.id !== id);
-      });
-    } else {
-      toast.error('delete widget failed');
-    }
-  }
+
   return (
     <Container>
-      <WidgetGrid>
-        {widgets?.length > 0
-          ? widgets.map(widget => (
-              <WidgetItem
-                key={widget.id}
-                widget={widget}
-                isEditMode={isEditMode}
-                onDeleteWidget={onDeleteWidget}
-              />
-            ))
-          : !isMyLink && (
-              <VacantContainer>
-                <VacantText>No widgets found</VacantText>
-              </VacantContainer>
-            )}
-      </WidgetGrid>
+      <MainProfileGrid />
+
       {isMyLink && (
         <>
           <BlurredContainer>
-            {widgets?.length === 0 && (
+            {currentWidgets?.length === 0 && (
               <BlurredWidgetGrid>
                 <WidgetGrid style={{opacity: 0.5}}>
                   {AbEMWidget.slice(0, 5).map(widget => (

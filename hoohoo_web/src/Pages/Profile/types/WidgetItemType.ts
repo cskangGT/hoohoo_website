@@ -1,3 +1,4 @@
+export type ProfileWidget = Array<ProfileWidgetItemType>;
 export type ProfileWidgetItemType = {
     id: number;
     sizeType: ProfileWidgetItemSize;
@@ -8,8 +9,10 @@ export type ProfileWidgetItemType = {
     hasBorder?: boolean;
     description?: string;
     linkUrl?: string;
-    order?: number;
-    groupOrder?: number | null;
+    coordinate: {
+        x: number;
+        y: number;
+    };
 };
 export type ProfileWidgetBgType = 'IMAGE' | 'COLOR';
 export type ProfileWidgetItemSize = 'BIG' | 'SMALL' | 'LONG';

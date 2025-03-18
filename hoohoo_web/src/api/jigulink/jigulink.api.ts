@@ -1,4 +1,5 @@
 import axios from 'axios';
+import { ProfileWidgetItemType } from '../../Pages/Profile/types/WidgetItemType';
 import { APIAddress } from '../../style';
 import { clientAxios } from '../login/auth';
 
@@ -20,6 +21,7 @@ export const createWidget = async (widgetData: {
     bgImageUrl: string;
     linkUrl: string;
     description: string;
+    coordinate: { x: number; y: number };
 }) => {
     try {
         const response = await clientAxios.post(APIAddress + `myProfile/web/widget/`, widgetData, { withCredentials: true });
@@ -38,3 +40,15 @@ export const deleteWidget = async (widgetId: number) => {
         return { result: false, status: error?.response?.status };
     }
 }
+export const updateWidgets = async (widgets: ProfileWidgetItemType[], deletedWidgetIds: number[]) => {
+    try {
+        const body = {
+            widgets,
+            deletedWidgetIds
+        }
+        const response = await clientAxios.put(APIAddress + `myProfile/web/widgets/`, body, { withCredentials: true });
+        return { result: true, data: response.data };
+    } catch (error: any) {
+        return { result: false, status: error?.response?.status };
+    }
+};
