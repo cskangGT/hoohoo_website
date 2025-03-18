@@ -1,7 +1,7 @@
-import React, {useEffect, useState} from 'react';
+import React, {useEffect} from 'react';
 import {useParams} from 'react-router-dom';
 import styled from 'styled-components';
-import {getUserLinkProfile} from '../../../api/jigulink/jigulink.api';
+import useWindowResize from '../../../components/hooks/useWindowResize';
 import i18next from '../../../lang/i18n';
 import {useUserStore} from '../../../storage/userStore';
 import {defaultProfileImage, theme} from '../../../style';
@@ -9,8 +9,9 @@ import FixedBottomEditView from '../components/FixedBottomEditView';
 import MobileViewFrame from '../components/MobileViewFrame';
 import ProfileTopHeader from '../components/ProfileTopHeader';
 import ProfileWidgetGrid from '../components/ProfileWidgetGrid';
+import {ProfileProvider, useProfile} from '../contexts/ProfileContext';
+import ProfileEditWidgetPage from './ProfileEditWidgetPage';
 
-import {ProfileWidgetItemType} from '../types/WidgetItemType';
 export const PROFILE_SCREEN_WIDTH =
   window.innerWidth > 600 ? 600 : window.innerWidth;
 export const PADDING_WIDTH = PROFILE_SCREEN_WIDTH * 0.06;
@@ -68,95 +69,69 @@ const CarbonSaving = styled.p`
   margin: 5px 0 25px 0;
 `;
 
-type UserData = {
-  name: string;
-  nameTag: string;
-  profileImage: string;
-  bio: string;
-  carbonSaving: number;
-};
 function ProfileLinkPage() {
+  const nameTag = useParams()?.nameTag;
+
+  return (
+    <ProfileProvider nameTag={nameTag}>
+      <ProfileLink />
+    </ProfileProvider>
+  );
+}
+function ProfileLink() {
   const localizedTexts: any = i18next.t('ProfileLinkPage', {
     returnObjects: true,
   });
-  const [isEditMode, setIsEditMode] = useState<boolean>(false);
-  const [noProfileData, setNoProfileData] = useState<boolean>(false);
-  const [resizedWidth, setResizedWidth] =
-    useState<number>(PROFILE_SCREEN_WIDTH);
   const {user, isAuthenticated} = useUserStore();
-  const [userData, setUserData] = useState<UserData>({
-    name: '',
-    nameTag: '',
-    profileImage: '',
-    bio: '',
-    carbonSaving: 0,
+  const {
+    fetchUserProfile,
+    noProfileData,
+    userData,
+    currentWidgets,
+    isMyLink,
+    isEditingItem,
+    isEditing,
+    setIsEditing,
+  } = useProfile();
+  const nameTag = useParams()?.nameTag;
+
+  const resizedWidth = useWindowResize({
+    maxWidth: 600,
   });
-  const {nameTag} = useParams();
-  const [isMyLink, setIsMyLink] = useState<boolean>(false);
-  const [widgets, setWidgets] = useState<ProfileWidgetItemType[]>([]);
   useEffect(() => {
-    const handleResize = () => {
-      setResizedWidth(window.innerWidth > 600 ? 600 : window.innerWidth);
-    };
-    window.addEventListener('resize', handleResize);
-    return () => {
-      window.removeEventListener('resize', handleResize);
-    };
+    fetchUserProfile(nameTag);
   }, []);
-  useEffect(() => {
-    console.log('user', user);
-
-    const fetchUserData = async () => {
-      const response = await getUserLinkProfile(nameTag || '');
-      console.log('response', response);
-      if (response.result) {
-        setWidgets(response.data.widgets ?? []);
-        setUserData(response.data);
-      } else {
-        setNoProfileData(true);
-      }
-    };
-    fetchUserData();
-  }, []);
-
-  useEffect(() => {
-    setIsMyLink(user.nameTag === nameTag && isAuthenticated);
-  }, [user, nameTag, isAuthenticated]);
 
   return (
     <MobileViewFrame>
-      <ProfileTopHeader isMyLink={isMyLink} nameTag={nameTag || ''} />
-      {noProfileData ? (
-        <VacantContainer>
-          <VacantText>No profile data</VacantText>
-        </VacantContainer>
+      {isEditingItem ? (
+        <ProfileEditWidgetPage />
       ) : (
-        <ProfileContainer>
-          <Logo>
-            <ProfileImage
-              src={userData.profileImage || defaultProfileImage}
-              size={resizedWidth * 0.2}
-            />
-          </Logo>
-          <ProfileName>{userData.name}</ProfileName>
-          <ProfileTag>@{nameTag}</ProfileTag>
-          {/* <CarbonSaving>
+        <>
+          <ProfileTopHeader isMyLink={isMyLink} nameTag={nameTag || ''} />
+          {noProfileData ? (
+            <VacantContainer>
+              <VacantText>No profile exists</VacantText>
+            </VacantContainer>
+          ) : (
+            <ProfileContainer>
+              <Logo>
+                <ProfileImage
+                  src={userData.profileImage || defaultProfileImage}
+                  size={resizedWidth * 0.2}
+                />
+              </Logo>
+              <ProfileName>{userData.name}</ProfileName>
+              <ProfileTag>@{nameTag}</ProfileTag>
+              {/* <CarbonSaving>
         {localizedTexts.carbon[0]} 1032{localizedTexts.carbon[1]}
       </CarbonSaving> */}
 
-          <ProfileWidgetGrid
-            widgets={widgets}
-            isMyLink={isMyLink}
-            isEditMode={isEditMode}
-            setWidgets={setWidgets}
-          />
-        </ProfileContainer>
-      )}
-      {isMyLink && (
-        <FixedBottomEditView
-          isEditMode={isEditMode}
-          setIsEditMode={setIsEditMode}
-        />
+              <ProfileWidgetGrid />
+            </ProfileContainer>
+          )}
+          {isMyLink && <FixedBottomEditView />}
+        </>
       )}
     </MobileViewFrame>
   );

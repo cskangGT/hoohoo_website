@@ -1,5 +1,6 @@
 import { create } from 'zustand';
 import { persist } from 'zustand/middleware';
+import { ProfileWidgetItemType } from '../Pages/Profile/types/WidgetItemType';
 import { defaultProfileImage } from '../style';
 
 interface UserData {
@@ -11,9 +12,11 @@ interface UserData {
 
 interface UserState {
     user: UserData;
+    myWidgets: ProfileWidgetItemType[];
     isAuthenticated: boolean;
     setUser: (user: UserData) => void;
     logout: () => void;
+    setMyWidgets: (widgets: ProfileWidgetItemType[]) => void;
 }
 
 const initialUser: UserData = {
@@ -26,6 +29,7 @@ export const useUserStore = create<UserState>()(
     persist(
         (set) => ({
             user: initialUser,
+            myWidgets: [],
             isAuthenticated: false,
             setUser: (user) => set({
                 user: {
@@ -36,6 +40,9 @@ export const useUserStore = create<UserState>()(
                     profileImage: user.profileImage || defaultProfileImage
                 },
                 isAuthenticated: true
+            }),
+            setMyWidgets: (widgets: ProfileWidgetItemType[]) => set({
+                myWidgets: widgets
             }),
             logout: () => set({
                 user: initialUser, isAuthenticated: false

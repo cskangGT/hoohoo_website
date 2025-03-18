@@ -248,7 +248,7 @@ export const noFrameRoutes = [
     errorElement: <ErrorComponent />,
   },
   {
-    path: '/zigu/:nameTag',
+    path: '/zigu/:nameTag?',
     element: <ProfileLinkPage />,
     errorElement: <ErrorComponent />,
   },

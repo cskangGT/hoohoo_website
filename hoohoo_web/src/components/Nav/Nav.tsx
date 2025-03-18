@@ -540,12 +540,12 @@ function Nav() {
             </NavMenuList>
           );
         })}
-        {/* <EMLinkBox
+        <EMLinkBox
           onClick={() => {
             navigate('/pre-signup');
           }}>
           {localizedTexts.jigu}
-        </EMLinkBox> */}
+        </EMLinkBox>
         {/* {!isOpen && (
           <LanguageBox>
             <LanguageButton

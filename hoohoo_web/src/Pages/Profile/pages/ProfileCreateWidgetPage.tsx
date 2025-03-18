@@ -3,6 +3,7 @@ import {useNavigate} from 'react-router-dom';
 import {toast} from 'react-toastify';
 import styled from 'styled-components';
 import {createWidget} from '../../../api/jigulink/jigulink.api';
+import {useUserStore} from '../../../storage/userStore';
 import {theme} from '../../../style';
 import {
   checkAWSKey,
@@ -14,6 +15,7 @@ import {WIDGET_PREFIX} from '../../../util/S3Config';
 import TopHeaderBackButtonWrapperView from '../components/TopHeaderBackButtonWrapperView';
 import WidgetItem from '../components/WidgetItem';
 import {ProfileWidgetItemSize} from '../types/WidgetItemType';
+import {calculateNewWidgetCoordinate} from '../util/util';
 const COLOR_OPTIONS = {
   RED: '#E74C3C',
   YELLOW: '#FDB52F',
@@ -23,6 +25,7 @@ const COLOR_OPTIONS = {
 };
 function ProfileCreateWidgetPage() {
   const navigate = useNavigate();
+  const {myWidgets} = useUserStore();
   const [selectedStyle, setSelectedStyle] =
     useState<ProfileWidgetItemSize>('BIG');
   const [selectedColor, setSelectedColor] = useState<string>('transparent');
@@ -46,6 +49,9 @@ function ProfileCreateWidgetPage() {
     }
   }
   const handleAddWidget = async () => {
+    const newCoordinate = calculateNewWidgetCoordinate(selectedStyle);
+    console.log('newCoordinate', newCoordinate);
+
     const widgetData = {
       sizeType: selectedStyle,
       bgType: image ? 'IMAGE' : 'COLOR',
@@ -54,6 +60,7 @@ function ProfileCreateWidgetPage() {
       hasBorder: hasBorder,
       linkUrl: linkURL,
       description: description,
+      coordinate: newCoordinate,
     };
     const response = await createWidget(widgetData);
     if (response.result) {
@@ -106,6 +113,7 @@ function ProfileCreateWidgetPage() {
                 bgImageUrl: image,
                 hasBorder: hasBorder,
                 description: description,
+                coordinate: {x: 0, y: 0},
               }}
             />
           )}

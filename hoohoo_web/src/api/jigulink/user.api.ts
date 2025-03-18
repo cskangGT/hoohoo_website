@@ -17,3 +17,11 @@ export const updateUserProfile = async (data: { name?: string; profileImage?: st
         return { result: false, status: error?.response?.status };
     }
 };
+export const getSyncUserId = async () => {
+    try {
+        const response = await clientAxios.get('myprofile/web/userId/');
+        return { result: true, data: response.data };
+    } catch (error: any) {
+        return { result: false, status: error?.response?.status };
+    }
+};
