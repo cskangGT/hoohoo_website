@@ -237,16 +237,21 @@ function SetupProfile() {
   const handleSubmit = async () => {
     clearValidation();
     setIsLoading(true);
-    const validCharsRegex = /^[a-zA-Z0-9_.]+$/;
-    const startsWithSpecial = /^[.]|\.$/;
+
+    // 한국어, 영어, 숫자, 밑줄, 마침표만 허용하는 정규식
+    const validCharsRegex = /^[a-zA-Z0-9가-힣ㄱ-ㅎㅏ-ㅣ_.]+$/;
+    const startsOrEndsWithSpecial = /^[.]|[.]$/;
+
     console.log('name', name);
 
-    if (name.length > 20 || name.length < 3) {
+    if (name.length > 20 || name.length < 2) {
       setError({...error, limitExceeded: true});
       setHasError(true);
       setIsLoading(false);
       return;
     }
+
+    // 유효한 문자만 포함되어 있는지 체크
     if (!validCharsRegex.test(name)) {
       setError({...error, invalidLetters: true});
       setHasError(true);
@@ -254,7 +259,8 @@ function SetupProfile() {
       return;
     }
 
-    if (startsWithSpecial.test(name)) {
+    // 시작이나 끝에 마침표가 있는지 체크
+    if (startsOrEndsWithSpecial.test(name)) {
       setError({...error, startsEndsWithPeriod: true});
       setHasError(true);
       setIsLoading(false);

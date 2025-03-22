@@ -100,3 +100,24 @@ export function calculateNewWidgetCoordinate(
     }
     return { x: 0, y: maxY };
 }
+export function getOrdinalSuffix(number: number): string {
+
+
+    const lastDigit = number % 10;
+    const lastTwoDigits = number % 100;
+
+    if (lastTwoDigits >= 11 && lastTwoDigits <= 13) {
+        return `${'th'}`;
+    }
+
+    switch (lastDigit) {
+        case 1:
+            return `${'st'}`;
+        case 2:
+            return `${'nd'}`;
+        case 3:
+            return `${'rd'}`;
+        default:
+            return `${'th'}`;
+    }
+}

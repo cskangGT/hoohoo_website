@@ -119,7 +119,7 @@ function VerifyEmail() {
   const localizedTexts: any = i18next.t('VerifyEmail', {
     returnObjects: true,
   });
-  const [isError, setIsError] = useState<boolean>(true);
+  const [isError, setIsError] = useState<boolean>(false);
   const [code, setCode] = useState<string>('');
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [resent, setResent] = useState<boolean>(false);

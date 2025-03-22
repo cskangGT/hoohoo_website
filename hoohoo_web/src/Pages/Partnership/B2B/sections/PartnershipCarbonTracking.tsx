@@ -160,7 +160,8 @@ function PartnershipCarbonTracking() {
                 onClick={handleEmailClick}
                 dangerouslySetInnerHTML={{
                   __html: data.buttonText,
-                }}></HomeTransitionButton>
+                }}
+              />
             </ButtonBox>
           </PartnershipLeftBox>
           <PartnershipRightBox>

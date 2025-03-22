@@ -51,7 +51,7 @@ const DescriptionText = styled.p`
   text-align: center;
 `;
 const SelectPurposeContainer = styled.div`
-  width: 100%;
+  width: 102%;
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;

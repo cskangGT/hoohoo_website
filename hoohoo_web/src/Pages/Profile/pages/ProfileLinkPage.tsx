@@ -111,7 +111,11 @@ function ProfileLink() {
           <ProfileTopHeader isMyLink={isMyLink} nameTag={nameTag || ''} />
           {noProfileData ? (
             <VacantContainer>
-              <VacantText>No profile exists</VacantText>
+              <VacantText>
+                {localizedTexts.noProfileData[0]}
+                {`"${nameTag}"`}
+                {localizedTexts.noProfileData[1]}
+              </VacantText>
             </VacantContainer>
           ) : (
             <ProfileContainer>

@@ -15,7 +15,7 @@ interface ProfileContextType {
   originalWidgets: ProfileWidgetItemType[];
   currentWidgets: ProfileWidgetItemType[];
   lastSavedWidgets: ProfileWidgetItemType[];
-  deletedWidgetIds: number[];
+  deletedWidgetItems: ProfileWidgetItemType[];
   // 상태 플래그
   isEditing: boolean;
   hasChanges: boolean;
@@ -26,7 +26,7 @@ interface ProfileContextType {
   selectedItem: ProfileWidgetItemType | null;
   // 사용자 데이터
   userData: UserData;
-
+  isSyncedWithEM: boolean;
   // 액션 함수들
   setUserData: (userData: UserData) => void;
   startEditing: () => void;
@@ -38,7 +38,9 @@ interface ProfileContextType {
   updateWidgets: (updatedWidgets: ProfileWidgetItemType[]) => void;
   fetchUserProfile: (nameTag?: string) => Promise<void>;
   setIsEditing: (isEditing: boolean) => void;
-  setDeletedWidgetIds: React.Dispatch<React.SetStateAction<number[]>>;
+  setDeletedWidgetItems: React.Dispatch<
+    React.SetStateAction<ProfileWidgetItemType[]>
+  >;
   setIsEditingItem: (isEditingItem: boolean) => void;
   setSelectedItem: (selectedItem: ProfileWidgetItemType | null) => void;
 }
@@ -57,8 +59,13 @@ type UserData = {
   nameTag: string;
   profileImage: string;
   bio: string;
-  carbonSaving: number;
+
   widgets?: ProfileWidgetItemType[];
+  linkedUserInfo?: {
+    name: string;
+    userId: string;
+    profileImage: string;
+  };
 };
 
 export const ProfileProvider: React.FC<ProfileProviderProps> = ({
@@ -80,7 +87,9 @@ export const ProfileProvider: React.FC<ProfileProviderProps> = ({
   const [isEditing, setIsEditing] = useState<boolean>(false);
   const [hasChanges, setHasChanges] = useState<boolean>(false);
   const [isLoading, setIsLoading] = useState<boolean>(false);
-  const [deletedWidgetIds, setDeletedWidgetIds] = useState<number[]>([]);
+  const [deletedWidgetItems, setDeletedWidgetItems] = useState<
+    ProfileWidgetItemType[]
+  >([]);
   const [noProfileData, setNoProfileData] = useState<boolean>(false);
   const [isEditingItem, setIsEditingItem] = useState<boolean>(false);
   // 사용자 데이터
@@ -89,13 +98,13 @@ export const ProfileProvider: React.FC<ProfileProviderProps> = ({
     nameTag: '',
     profileImage: '',
     bio: '',
-    carbonSaving: 0,
   });
   const [selectedItem, setSelectedItem] =
     useState<ProfileWidgetItemType | null>(null);
-  // 사용자 인증 정보
-  const {user, isAuthenticated} = useUserStore();
+  // 로그인 사용자 인증 정보
+  const {user, isAuthenticated, setLinkedUserInfo} = useUserStore();
   const [isMyLink, setIsMyLink] = useState<boolean>(false);
+  const [isSyncedWithEM, setIsSyncedWithEM] = useState<boolean>(false);
 
   // 사용자 인증 정보 변경 시 isMyLink 업데이트
   useEffect(() => {
@@ -119,10 +128,14 @@ export const ProfileProvider: React.FC<ProfileProviderProps> = ({
       const response = await getUserLinkProfile(targetNameTag!);
 
       if (response.result) {
+        console.log('response.data', response.data);
+
         setUserData({
           ...response.data,
           name: response.data.name ? response.data.name.split('#')[0] : '',
         });
+        setLinkedUserInfo(response.data.linkedUserInfo);
+        setIsSyncedWithEM(response.data.linkedUserInfo ? true : false);
         if (response.data.widgets) {
           const newWidgets = response.data.widgets.map(
             (widget: ProfileWidgetItemType) => ({
@@ -181,12 +194,13 @@ export const ProfileProvider: React.FC<ProfileProviderProps> = ({
     isEditing,
     hasChanges,
     isLoading,
-    deletedWidgetIds,
+    deletedWidgetItems,
     noProfileData,
     isMyLink,
     userData,
     selectedItem,
     isEditingItem,
+    isSyncedWithEM,
     setUserData,
     setIsMyLink,
     startEditing,
@@ -197,7 +211,7 @@ export const ProfileProvider: React.FC<ProfileProviderProps> = ({
     resetWidgets,
     fetchUserProfile,
     setIsEditing,
-    setDeletedWidgetIds,
+    setDeletedWidgetItems,
     setSelectedItem,
   };
 

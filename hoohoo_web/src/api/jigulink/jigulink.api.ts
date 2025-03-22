@@ -16,6 +16,11 @@ export const getUserLinkProfile = async (nameTag: string) => {
 
 export const createWidget = async (widgetData: {
     sizeType: string;
+    isEmWidget: boolean;
+    emWidgetType: string;
+    coordinate: { x: number; y: number };
+} | {
+    sizeType: string;
     bgType: string;
     bgColor: string;
     bgImageUrl: string;
@@ -40,13 +45,13 @@ export const deleteWidget = async (widgetId: number) => {
         return { result: false, status: error?.response?.status };
     }
 }
-export const updateWidgets = async (widgets: ProfileWidgetItemType[], deletedWidgetIds: number[]) => {
+export const updateWidgets = async (widgets: ProfileWidgetItemType[], deletedWidgetItems: ProfileWidgetItemType[]) => {
     try {
         const body = {
             widgets,
-            deletedWidgetIds
+            deletedWidgetIds: deletedWidgetItems
         }
-        const response = await clientAxios.put(APIAddress + `myProfile/web/widgets/`, body, { withCredentials: true });
+        const response = await clientAxios.put(APIAddress + `myProfile/web/widget/`, body, { withCredentials: true });
         return { result: true, data: response.data };
     } catch (error: any) {
         return { result: false, status: error?.response?.status };

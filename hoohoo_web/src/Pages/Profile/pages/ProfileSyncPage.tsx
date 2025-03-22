@@ -1,9 +1,9 @@
-import React, {useEffect, useState} from 'react';
-import QRCode from 'react-qr-code';
+import React from 'react';
 import styled from 'styled-components';
-import {getSyncUserId} from '../../../api/jigulink/user.api';
 import {useUserStore} from '../../../storage/userStore';
-import {defaultProfileImage, theme} from '../../../style';
+import {theme} from '../../../style';
+import GoSyncView from '../components/GoSyncView';
+import SyncedUser from '../components/SyncedUser';
 import TopHeaderBackButtonWrapperView from '../components/TopHeaderBackButtonWrapperView';
 const Container = styled.div``;
 
@@ -78,52 +78,14 @@ const MobileQRCodeText = styled.p`
   text-decoration: underline;
 `;
 function ProfileSyncPage() {
-  const {user} = useUserStore();
-  const [deepLinkUrl, setDeepLinkUrl] = useState<string>('');
-  const [isMobile, setIsMobile] = useState<boolean>(false);
-  useEffect(() => {
-    const fetchQRCode = async () => {
-      // 모바일 환경인지 확인
-      const mobile = window.innerWidth < 600;
-      setIsMobile(mobile);
-      const response = await getSyncUserId();
-      if (response.result) {
-        console.log('response.data.uuid', response.data.uuid);
-
-        const linkUrl = `https://www.earthmera.com/redirect?link=earthmera://emsync?uuid=${response.data.uuid}`;
-        setDeepLinkUrl(linkUrl);
-      }
-    };
-    fetchQRCode();
-  }, []);
+  const {linkedUserInfo} = useUserStore();
 
   return (
     <TopHeaderBackButtonWrapperView>
-      <ProfileHeader>
-        <ProfileImage src={user.profileImage || defaultProfileImage} />
-        <ProfileNameContainer>
-          <ProfileName>{user?.username}</ProfileName>
-          <ProfileTag>@{user?.nameTag}</ProfileTag>
-        </ProfileNameContainer>
-      </ProfileHeader>
-      <QRCodeBox>
-        {
-          <QRCode
-            value={deepLinkUrl}
-            size={200}
-            viewBox={`0 0 256 256`}
-            bgColor={theme.white}
-          />
-        }
-      </QRCodeBox>
-      <QRCodeText>
-        Scan with your camera and <br />
-        Tap ‘Sync’ in the EarthMera app
-      </QRCodeText>
-      {isMobile && (
-        <MobileQRCodeText onClick={() => window.open(deepLinkUrl, '_blank')}>
-          Click Here
-        </MobileQRCodeText>
+      {linkedUserInfo ? (
+        <SyncedUser linkedUserInfo={linkedUserInfo} />
+      ) : (
+        <GoSyncView />
       )}
     </TopHeaderBackButtonWrapperView>
   );

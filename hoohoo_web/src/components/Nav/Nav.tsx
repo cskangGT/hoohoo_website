@@ -379,7 +379,6 @@ function Nav() {
   const lang: string[] = localizedTexts['lang'];
   const logo: any = localizedTexts['logo'];
   const {language, setLanguage} = useLanguage();
-
   const handleLanguageChange = (newLang: string) => {
     // 현재 경로에서 언어 부분 추출
     const currentPath = location.pathname.replace(/^\/(ko|en)/, '');

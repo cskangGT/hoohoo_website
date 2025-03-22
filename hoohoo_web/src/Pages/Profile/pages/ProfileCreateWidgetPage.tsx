@@ -1,7 +1,14 @@
+import i18next from 'i18next';
 import React, {useState} from 'react';
-import {useNavigate} from 'react-router-dom';
+import {FaChevronDown, FaChevronUp} from 'react-icons/fa';
+import {useLocation, useNavigate} from 'react-router-dom';
 import {toast} from 'react-toastify';
 import styled from 'styled-components';
+import 'swiper/css';
+import 'swiper/css/navigation';
+import 'swiper/css/pagination';
+import {Navigation, Pagination} from 'swiper/modules';
+import {Swiper, SwiperSlide} from 'swiper/react';
 import {createWidget} from '../../../api/jigulink/jigulink.api';
 import {useUserStore} from '../../../storage/userStore';
 import {theme} from '../../../style';
@@ -14,8 +21,15 @@ import {
 import {WIDGET_PREFIX} from '../../../util/S3Config';
 import TopHeaderBackButtonWrapperView from '../components/TopHeaderBackButtonWrapperView';
 import WidgetItem from '../components/WidgetItem';
-import {ProfileWidgetItemSize} from '../types/WidgetItemType';
+import {
+  ProfileEMWidgetType,
+  ProfileWidgetItemSize,
+} from '../types/WidgetItemType';
+import {EMWidgetImage, getEMWidgetData} from '../util/EMWidgetData';
 import {calculateNewWidgetCoordinate} from '../util/util';
+
+const WIDTH = window.innerWidth > 600 ? 600 : window.innerWidth;
+const WIDGET_WIDTH = (WIDTH - 24 * 2 - 60 - 40) / 4;
 const COLOR_OPTIONS = {
   RED: '#E74C3C',
   YELLOW: '#FDB52F',
@@ -23,7 +37,88 @@ const COLOR_OPTIONS = {
   GREEN: '#3EAC4D',
   BLUE: '#6586F2',
 };
+const StyledSwiper = styled(Swiper)`
+  height: ${WIDTH * 0.6}px; // 원하는 높이 설정
+
+  .swiper-slide {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+`;
+const StyledSwiperContainer = styled.div`
+  .swiper-pagination-bullet {
+    background-color: #cccccc;
+    opacity: 0.5;
+    width: 10px;
+    height: 10px;
+  }
+
+  .swiper-pagination-bullet-active {
+    background-color: ${theme.mainNeon};
+    opacity: 1;
+  }
+`;
+
+const DropdownMenu = styled.div`
+  background-color: #000;
+  border-radius: 15px;
+  overflow: hidden;
+  margin-bottom: ${theme.spacing.md};
+  border: 1px solid #333;
+`;
+
+const DropdownHeader = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px 20px;
+
+  cursor: pointer;
+  font-size: ${theme.fontSize.lg};
+  font-weight: 400;
+`;
+
+const DropdownContent = styled.div<{isOpen: boolean}>`
+  display: ${props => (props.isOpen ? 'block' : 'none')};
+`;
+
+const MenuItem = styled.div`
+  display: flex;
+  align-items: center;
+  padding: 16px 20px;
+  border-top: 1px solid #333;
+  cursor: pointer;
+
+  &:hover {
+    background-color: #222;
+  }
+`;
+
+const MenuIcon = styled.div`
+  margin-right: 15px;
+  color: ${theme.mainNeon};
+`;
+const AssetContainer = styled.div`
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 10px;
+`;
+const MenuText = styled.div`
+  font-size: ${theme.fontSize.md};
+`;
+const AssetIcon = styled.img`
+  width: 20px;
+  height: 20px;
+`;
 function ProfileCreateWidgetPage() {
+  const localizedTexts: any = i18next.t('ProfileCreateWidgetPage', {
+    returnObjects: true,
+  });
+  const {state} = useLocation();
+  const isSyncedWithEM = state?.isSyncedWithEM;
   const navigate = useNavigate();
   const {myWidgets} = useUserStore();
   const [selectedStyle, setSelectedStyle] =
@@ -34,9 +129,59 @@ function ProfileCreateWidgetPage() {
   const [image, setImage] = useState<string>('');
   const [description, setDescription] = useState<string>('');
   const [linkURL, setLinkURL] = useState<string>('');
+  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+  const [selectedAsset, setSelectedAsset] =
+    useState<ProfileEMWidgetType | null>(null);
+
+  const styleOptions: {value: ProfileWidgetItemSize; label: string}[] = [
+    {value: 'BIG', label: '큰 위젯'},
+    {value: 'LONG', label: '긴 위젯'},
+    {value: 'SMALL', label: '작은 위젯'},
+  ];
+  const emWidgetData = getEMWidgetData();
+  const assetOptions = [
+    {
+      value: 'LEADERBOARD',
+      icon: <AssetIcon src={EMWidgetImage.LEADERBOARD} />,
+      label: localizedTexts.widgetList['LEADERBOARD'],
+    },
+
+    {
+      value: 'MY_ITEMS',
+      icon: <AssetIcon src={EMWidgetImage.MY_ITEMS} />,
+      label: localizedTexts.widgetList['MY_ITEMS'],
+    },
+    {
+      value: 'ACHIEVEMENT',
+      icon: <AssetIcon src={EMWidgetImage.ACHIEVEMENT} />,
+      label: localizedTexts.widgetList['ACHIEVEMENT'],
+    },
+    {
+      value: 'GROUPS',
+      icon: <AssetIcon src={EMWidgetImage.GROUPS} />,
+      label: localizedTexts.widgetList['GROUPS'],
+    },
+    {
+      value: 'MY_STORE',
+      icon: <AssetIcon src={EMWidgetImage.MY_STORE} />,
+      label: localizedTexts.widgetList['MY_STORE'],
+    },
+    {
+      value: 'CO2_SAVED',
+      icon: <AssetIcon src={EMWidgetImage.CO2_SAVED} />,
+      label: localizedTexts.widgetList['CO2_SAVED'],
+    },
+    {
+      value: 'MY_GALLERY',
+      icon: <AssetIcon src={EMWidgetImage.MY_GALLERY} />,
+      label: localizedTexts.widgetList['MY_GALLERY'],
+    },
+  ];
+
   function handleColorClick(color: string) {
     setIsSelected(true);
     setImage('');
+    setSelectedAsset(null);
     if (color === 'BORDER') {
       setHasBorder(true);
       setSelectedColor('transparent');
@@ -48,9 +193,20 @@ function ProfileCreateWidgetPage() {
       setSelectedColor(color);
     }
   }
-  const handleAddWidget = async () => {
-    const newCoordinate = calculateNewWidgetCoordinate(selectedStyle);
 
+  const handleAddWidget = async () => {
+    if (!isSelected) {
+      toast.error(localizedTexts.toast.selectColor);
+      return;
+    }
+    const newCoordinate = calculateNewWidgetCoordinate(selectedStyle);
+    const isEmWidget = !!selectedAsset;
+    const emWidgetData = {
+      sizeType: selectedStyle,
+      isEmWidget: isEmWidget,
+      emWidgetType: selectedAsset as ProfileEMWidgetType,
+      coordinate: {x: newCoordinate.x * 3, y: newCoordinate.y},
+    };
     const widgetData = {
       sizeType: selectedStyle,
       bgType: image ? 'IMAGE' : 'COLOR',
@@ -61,7 +217,7 @@ function ProfileCreateWidgetPage() {
       description: description,
       coordinate: {x: newCoordinate.x * 3, y: newCoordinate.y},
     };
-    const response = await createWidget(widgetData);
+    const response = await createWidget(isEmWidget ? emWidgetData : widgetData);
     if (response.result) {
       navigate(-1);
     }
@@ -76,7 +232,7 @@ function ProfileCreateWidgetPage() {
     const uriKey = generateUniqueKey(WIDGET_PREFIX, 'png');
     const {accessKey, keyId} = await checkAWSKey();
     if (!accessKey || !keyId) {
-      toast.error('Failed to upload image');
+      toast.error(localizedTexts.toast.failedToUploadImage);
       return;
     } else {
       const result = await uploadImageToS3(compressedImage, true, uriKey);
@@ -96,46 +252,104 @@ function ProfileCreateWidgetPage() {
     //     setProfileImage(result);
     //   }
   };
+
+  const handleAssetSelect = (value: string) => {
+    setIsSelected(true);
+    setImage('');
+    setHasBorder(false);
+    setSelectedColor('#383838');
+
+    setSelectedAsset(value as ProfileEMWidgetType);
+    setIsDropdownOpen(false);
+  };
+  console.log('selectedAsset', selectedAsset);
+
   return (
     <TopHeaderBackButtonWrapperView>
       <Container>
-        <PreviewContainer>
-          {!isSelected ? (
-            <PreviewText>Preview widget</PreviewText>
-          ) : (
-            <WidgetItem
-              widget={{
-                id: 0,
-                sizeType: selectedStyle,
-                bgType: image ? 'IMAGE' : 'COLOR',
-                bgColor: selectedColor,
-                bgImageUrl: image,
-                hasBorder: hasBorder,
-                description: description,
-                coordinate: {x: 0, y: 0},
-              }}
-            />
-          )}
-        </PreviewContainer>
+        {/* 에셋 드롭다운 추가 */}
+
         {/* 스타일 섹션 */}
         <SectionTitle>Style</SectionTitle>
-        <StyleOptions>
-          <StyleOption
-            selected={selectedStyle === 'BIG'}
-            shape="BIG"
-            onClick={() => setSelectedStyle('BIG')}
-          />
-          <StyleOption
-            selected={selectedStyle === 'LONG'}
-            shape="LONG"
-            onClick={() => setSelectedStyle('LONG')}
-          />
-          <StyleOption
-            selected={selectedStyle === 'SMALL'}
-            shape="SMALL"
-            onClick={() => setSelectedStyle('SMALL')}
-          />
-        </StyleOptions>
+        <StyledSwiperContainer>
+          <StyledSwiper
+            modules={[Pagination, Navigation]}
+            spaceBetween={30}
+            slidesPerView={1}
+            pagination={{clickable: true}}
+            navigation={false}
+            onSlideChange={swiper => {
+              setSelectedStyle(styleOptions[swiper.activeIndex].value);
+            }}
+            initialSlide={styleOptions.findIndex(
+              option => option.value === selectedStyle,
+            )}>
+            {styleOptions.map(option => (
+              <SwiperSlide key={option.value}>
+                <ScaledWidgetContainer>
+                  <WidgetItem
+                    widget={{
+                      id: 0,
+                      sizeType: option.value,
+                      bgType: image ? 'IMAGE' : 'COLOR',
+                      bgColor: isSelected ? selectedColor : '#bcbcbccd',
+                      bgImageUrl: image,
+                      hasBorder: hasBorder,
+                      description: description,
+                      coordinate: {x: 0, y: 0},
+                      emWidgetType: selectedAsset as ProfileEMWidgetType,
+                      isEmWidget: !!selectedAsset,
+                      widgetData: {
+                        level: 4,
+                        numBadges: 2,
+                        numMedals: 3,
+                        equippedMedals: [
+                          {
+                            medalTitle: 'ECO_ACTION_TUMBLER',
+                            medalLevel: 2,
+                          },
+                          {
+                            medalTitle: 'ECO_ACTION_CARBON_REDUCTION',
+                            medalLevel: 3,
+                          },
+                          {
+                            medalTitle: 'REWARD_REDEEM_MEDAL',
+                            medalLevel: 4,
+                          },
+                        ],
+                        equippedBadge: 'LITTLE_BY_LITTLE',
+                        annualCarbonReduction: 1370,
+                        annualEcoActionCount: 100,
+                        treeEffect: 3,
+                        ecoActionCount: 700,
+                        userRank: 17,
+                        lastMonthRank: 18,
+                        higherRankInfo: {
+                          gap: 39,
+                          ecoActionCount: 739,
+                        },
+                        lowerRankInfo: {
+                          gap: 25,
+                          ecoActionCount: 675,
+                        },
+                        thumbnails: [
+                          'https://picsum.photos/200/300',
+                          'https://picsum.photos/200/300',
+                          'https://picsum.photos/200/300',
+                          'https://picsum.photos/200/300',
+                          'https://picsum.photos/200/300',
+                          'https://picsum.photos/200/300',
+                          'https://picsum.photos/200/300',
+                          'https://picsum.photos/200/300',
+                        ],
+                      },
+                    }}
+                  />
+                </ScaledWidgetContainer>
+              </SwiperSlide>
+            ))}
+          </StyledSwiper>
+        </StyledSwiperContainer>
 
         {/* 채우기 섹션 */}
         <SectionTitle>Fill</SectionTitle>
@@ -195,30 +409,71 @@ function ProfileCreateWidgetPage() {
               multiple={false}
               onChange={handleProfileImageChange}
             />
-            <span>Image</span>
+            <span>{localizedTexts.image}</span>
           </ImageButton>
         </ColorOptions>
 
-        <SectionTitle>Link</SectionTitle>
+        <SectionTitle>{localizedTexts.url}</SectionTitle>
         <InputField
           placeholder="https://"
           value={linkURL}
+          disabled={!!selectedAsset}
           onChange={e => setLinkURL(e.target.value)}
         />
 
-        <SectionTitle inActive={!!image}>Text</SectionTitle>
+        <SectionTitle inActive={!!image}>{localizedTexts.text}</SectionTitle>
         <InputField
           placeholder={
             !!image
-              ? "If you add an image, the text can't be displayed."
-              : 'Please enter the widget text'
+              ? localizedTexts.placeholder.image
+              : localizedTexts.placeholder.text
           }
           value={description}
-          disabled={!!image}
+          disabled={!!image || !!selectedAsset}
           onChange={e => setDescription(e.target.value)}
         />
+        {isSyncedWithEM && (
+          <>
+            <SectionTitle>{localizedTexts.asset}</SectionTitle>
+            <DropdownMenu>
+              <DropdownHeader
+                onClick={() => setIsDropdownOpen(!isDropdownOpen)}>
+                <span>
+                  {selectedAsset ? (
+                    <AssetContainer>
+                      {
+                        assetOptions.find(
+                          asset => asset.value === selectedAsset,
+                        )?.icon
+                      }
+                      {
+                        emWidgetData[selectedAsset as ProfileEMWidgetType]
+                          ?.title
+                      }
+                    </AssetContainer>
+                  ) : (
+                    localizedTexts.asset
+                  )}
+                </span>
+                {isDropdownOpen ? <FaChevronUp /> : <FaChevronDown />}
+              </DropdownHeader>
+              <DropdownContent isOpen={isDropdownOpen}>
+                {assetOptions.map(asset => (
+                  <MenuItem
+                    key={asset.value}
+                    onClick={() => handleAssetSelect(asset.value)}>
+                    <MenuIcon>{asset.icon}</MenuIcon>
+                    <MenuText>{asset.label}</MenuText>
+                  </MenuItem>
+                ))}
+              </DropdownContent>
+            </DropdownMenu>
+          </>
+        )}
 
-        <UploadButton onClick={handleAddWidget}>Add</UploadButton>
+        <UploadButton onClick={handleAddWidget}>
+          {localizedTexts.button}
+        </UploadButton>
       </Container>
     </TopHeaderBackButtonWrapperView>
   );
@@ -246,46 +501,15 @@ const SectionTitle = styled.h2<{inActive?: boolean}>`
   margin-bottom: 10px;
 `;
 
-const StyleOptions = styled.div`
+const ScaledWidgetContainer = styled.div`
+  transform: scale(0.8);
+  transform-origin: center;
   display: flex;
-  gap: 30px;
+  flex-direction: column;
+  justify-content: center;
   width: 100%;
+  height: ${WIDTH * 0.6}px;
   align-items: center;
-  justify-content: space-between;
-`;
-const WIDTH = window.innerWidth > 600 ? 600 : window.innerWidth;
-const WIDGET_WIDTH = (WIDTH - 24 * 2 - 60 - 40) / 4;
-const StyleOption = styled.div<{selected: boolean; shape: string}>`
-  width: 100px;
-  height: 100px;
-  ${props => {
-    switch (props.shape) {
-      case 'BIG':
-        return `
-            width: ${WIDGET_WIDTH}px;
-            height: ${WIDGET_WIDTH}px;
-            border-radius: 10px;
-          `;
-      case 'LONG':
-        return `
-            width: ${WIDGET_WIDTH * 2}px;
-            height: ${WIDGET_WIDTH / 3}px;
-            border-radius: 30px;
-          `;
-      case 'SMALL':
-        return `
-            width: ${WIDGET_WIDTH}px;
-            height: ${WIDGET_WIDTH / 3}px;
-            border-radius: 30px;
-          `;
-      default:
-        return '';
-    }
-  }}
-
-  border: 2px solid ${props => (props.selected ? theme.mainNeon : theme.white)};
-
-  cursor: pointer;
 `;
 
 const ColorOptions = styled.div`

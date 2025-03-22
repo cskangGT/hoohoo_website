@@ -1,13 +1,10 @@
-import {
-  faInstagram,
-  faLinkedinIn,
-  faTiktok,
-} from '@fortawesome/free-brands-svg-icons';
+import {faInstagram, faLinkedinIn} from '@fortawesome/free-brands-svg-icons';
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import i18next from 'i18next';
 import React, {useEffect, useState} from 'react';
-import {useNavigate} from 'react-router-dom';
+import {useLocation, useNavigate} from 'react-router-dom';
 import styled from 'styled-components';
+import i18n from '../../lang/i18n';
 import ManageAccModal from '../../Pages/DeleteAccount/ManageAccModal';
 import {theme} from '../../style';
 import {useLanguage} from '../hooks/LanguageContext';
@@ -179,7 +176,24 @@ function Ibutton({icon, url, style}: IbuttonProps) {
 function Footer() {
   const navigate = useNavigate();
   const [isOpen, setIsOpen] = useState<boolean>(false);
+  const {language, setLanguage} = useLanguage();
+  const location = useLocation();
+  const handleLanguageChange = (newLang: string) => {
+    // 현재 경로에서 언어 부분 추출
+    const currentPath = location.pathname.replace(/^\/(ko|en)/, '');
 
+    const state = location?.state;
+
+    if (newLang === 'ko') {
+      setLanguage('ko');
+      i18n.changeLanguage('ko');
+      navigate(`/ko${currentPath}`, state ? {state: {...state}} : {});
+    } else {
+      setLanguage('en');
+      i18n.changeLanguage('en');
+      navigate(`/en${currentPath}`, state ? {state: {...state}} : {});
+    }
+  };
   const data: any = i18next.t('Footer', {returnObjects: true});
   useEffect(() => {
     const searchParams = new URLSearchParams(location.search);
@@ -189,7 +203,7 @@ function Footer() {
       navigate(`/${language}/support`);
     }
   }, [location.search]);
-  const {language} = useLanguage();
+
   return (
     <Background>
       <Container>
@@ -245,10 +259,10 @@ function Footer() {
               icon={faLinkedinIn}
               url={'https://www.linkedin.com/company/earthmera/'}
             />
-            <Ibutton
+            {/* <Ibutton
               icon={faTiktok}
               url={'https://www.tiktok.com/@earthmera_global'}
-            />
+            /> */}
             {/* <Ibutton
               icon={faYoutube}
               url={'https://www.youtube.com/@Earthmera'}

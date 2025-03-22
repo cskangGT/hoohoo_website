@@ -152,6 +152,51 @@
   "em_team_Intro": {
     "header": "팀 어스메라를<br />소개해요"
   },
+
+  "Util": {
+    "UserBadgeType": {
+      "LITTLE_BY_LITTLE": "티끌 모아 태산",
+      "EARLY_HERO": "Early Hero",
+      "PEOPLE_CARE_ENV": "환생사",
+      "STUDENT_CLIMATE_ACTION": "대기행",
+      "FIRST_GREEN_LEAVES": "시작이 반이다",
+      "GREEN_SPARKS_FLY": "초록물결",
+      "ANYWHERE_GREEN": "어디서든 친환경",
+      "LINK_BETWEEN_US": "너와 나의 연결고리",
+      "LOCAL_ECO_ADVOCATE": "동네 환경 지킴이",
+      "PURSUING_GREENER_TOMORROW": "내일을 푸르게",
+      "WALKING_ON_EGGSHELLS": "살얼음 위를 걷기",
+      "MAY_EARTHMERA_BE_WITH_YOU": "EarthMera 기운이 당신과 함께",
+      "NO_PLANET_FOR_OLD_WAYS": "옛 방식을 버리고",
+      "BITE_THE_BULLET": "개천에서 용난다",
+      "BEYOND_WORLD": "세계를 넘어",
+      "FEEL_THE_TAILWIND": "순풍을 느껴라",
+      "I_LOVE_EM": "I ♥ EM",
+      "IN_HARMONY_WITH_NATURE": "자연과의 조화",
+      "EARTH_HERO": "EarthHero"
+    },
+    "AchievementType": {
+      "ECO_ACTION_TUMBLER": "일회용 컵 종결자",
+      "ECO_ACTION_CAFE_REUSABLE_CUP": "카페 머그 스타",
+      "ECO_ACTION_ECO_FRIENDLY_PRODUCTS": "친환경 소비자",
+      "ECO_ACTION_DISPOSING_TRASH": "쓰레기 덩크왕",
+      "ECO_ACTION_RECYCLING": "재활용의 귀재",
+      "ECO_ACTION_TRANSPORTATION": "에코 라이더",
+      "ECO_ACTION_EM_BAG": "EM Bag 히어로",
+      "ECO_ACTION_SUSTAINABLE_STRAW": "빨대 지킴이",
+      "ECO_ACTION_LABEL_OFF": "라벨제거 리더",
+      "ECO_ACTION_REUSABLE_CONTAINER": "용기있는 자",
+      "ECO_ACTION_ECO_BAG": "에코백 러버",
+      "ECO_ACTION_REUSE": "분리배출의 달인",
+      "ECO_ACTION_NO_LEFTOVERS": "Zero Waste Hero",
+      "GROUP_CHALLENGE_REWARD_MEDAL": "무한도전인",
+      "GROUP_EVENT_REWARD_MEDAL": "이벤트 전문가",
+      "ECO_ACTION_CARBON_REDUCTION": "CO₂ 다이어터",
+      "GROUP_PLOGGING_ECO_PLOGGER": "친환경 플로거",
+      "REWARD_REDEEM_MEDAL": "보물 사냥꾼",
+      "EM_POST_UPLOAD_MEDAL": "친환경 인플루언서"
+    }
+  },
   "Blog": {
     "guideText": "앱에서 볼 수 있는 기후 카드들을 이곳에서도 만나보실 수 있어요."
   },
@@ -983,7 +1028,7 @@
   },
   "Login": {
     "title": "환영합니다!",
-    "new": "지구링크 처음이신가요?",
+    "new": "지구링크에 처음이신가요? ",
     "signup": "가입하기",
     "email": "이메일",
     "password": "비밀번호",
@@ -998,121 +1043,131 @@
       "noAccount": "해당 이메일로 가입된 계정을 찾을 수 없습니다. 먼저 가입해주세요."
     }
   },
+
   "VerifyEmail": {
-    "title": "코드를 입력해주세요.",
-    "description": [
-      "이메일로 임시 가입 코드를 보냈어요. 코드를 입력해주세요.",
-      "."
-    ],
-    "placeholder": "인증코드 입력",
-    "resend": "인증코드 재전송",
-    "continue": "계속하기",
+    "title": "코드를 입력해주세요",
+    "description": ["", "으로 임시 가입 코드를 보냈어요."],
+    "placeholder": "코드 입력하기",
+    "resend": "다시 보내기",
+    "continue": "계정 생성하기",
     "invalidCode": "올바르지 않은 코드입니다. 다시 시도해주세요."
   },
   "SelectGoal": {
-    "title": "What’s your goal with Zigu Link?",
-    "description": "Pick what fits you best, It’ll make your Zigu Link even better!",
-    "continue": "Continue",
+    "title": "ZIGU 링크를 통해 어떤 걸 해보고 싶으신가요?",
+    "description": "당신에게 어울리는 항목을 선택해주세요. ZIGU가 당신을 더 잘 이해하는데 도움이 돼요!",
+    "continue": "다음",
     "goals": [
       {
-        "title": "The legit eco expert!",
-        "description": "You’re a true sustainability pro,<br />leading the way with real expertise. 🌿",
+        "title": "찐! 환경 마스터",
+        "description": "진정한 지속가능성 전문가로, 누구보다<br />환경 문제에 앞장서고 있어요. 🌿",
         "image": "/Images/q_influencer.jpeg",
         "value": "INFLUENCER"
       },
       {
-        "title": "The GOAT of green business!",
-        "description": "Leading the eco industry and<br />making a real impact. 💼",
+        "title": "그린 비즈니스의 진정한 레전드!",
+        "description": "환경 산업을 이끌며, 진정한 임팩트를<br />만들어내고 있어요. 💼",
         "image": "/Images/q_business.jpeg",
         "value": "BUSINESS"
       },
       {
-        "title": "The eco-conscious user!",
-        "description": "You care about the planet and make eco-friendly choices every day. 🌱",
+        "title": "지구를 생각하는 친환경 실천가!",
+        "description": "매일 지구를 위한 친환경 선택과 실천을 하고 있어요.🌱",
         "image": "/Images/q_personal.jpeg",
         "value": "PERSONAL"
       }
     ]
   },
   "SelectPurpose": {
-    "title": "How do you want to use Zigu Link?",
-    "description": "Pick what fits you best, It’ll make your Zigu Link even better!<br />Select all that apply.",
-    "continue": "Continue",
+    "title": "ZIGU 링크를 어떻게 활용하고 싶으신가요?",
+    "description": "선택한 목적에 맞게 ZIGU 링크가, 더 나답게 완성돼요!",
+    "continue": "다음",
     "errorText": {
-      "purposeNotSelected": "Purpose is not selected"
+      "purposeNotSelected": "보기중 하나이상을 선택해주세요."
     },
     "purposeList": [
       {
-        "title": "Eco-commerce",
-        "description": "Selling sustainable products",
+        "title": "친환경 쇼핑몰 운영",
+        "description": "지속가능한 제품 판매",
         "image": "/Images/ecommerce.png",
         "value": "ECO-COMMERCE"
       },
       {
-        "title": "Green Lifestyle",
-        "description": "Sharing my sustainability lifestyle",
+        "title": "그린 라이프스타일",
+        "description": "지속가능한 라이프스타일 공유",
         "image": "/Images/personal.png",
         "value": "GREEN_LIFESTYLE"
       },
       {
-        "title": "Eco Portfolio",
-        "description": "Showcasing my environmental projects",
+        "title": "에코 포트폴리오",
+        "description": "환경 프로젝트 소개",
         "image": "/Images/portfolio.png",
         "value": "ECO_PORTFOLIO"
       },
       {
-        "title": "Green Community",
-        "description": "Inspiring and educating others",
+        "title": "그린 커뮤니티",
+        "description": "사람들에게 영감을 주고 환경 교육하기",
         "image": "/Images/community.png",
         "value": "GREEN_COMMUNITY"
       },
       {
-        "title": "Eco Business Card",
-        "description": "Showcasing my eco-focused profile",
+        "title": "명함",
+        "description": "친환경 중심의 프로필 소개",
         "image": "/Images/card.png",
         "value": "ECO_BUSINESS_CARD"
       },
       {
-        "title": "Sustainable Affiliate",
-        "description": "Promoting eco products or services",
+        "title": "친환경 제휴",
+        "description": "친환경 제품 또는 서비스 홍보",
         "image": "/Images/affiliate.png",
         "value": "SUSTAINABLE_AFFILIATE"
       },
       {
-        "title": "Eco Events",
-        "description": "Hosting or promoting eco-events",
+        "title": "친환경 이벤트",
+        "description": "친환경 행사 주최 또는 홍보",
         "image": "/Images/event.png",
         "value": "ECO_EVENT"
       }
     ]
   },
   "SetupProfile": {
-    "title": "Set up your awesome profile!",
-    "button": "Perfect!",
-    "placeholder": "Enter your profile name",
-    "description": "For the best look, we recommend a 600x600 size image!",
+    "title": "멋진 프로필을 설정해보세요!",
+    "button": "완벽해요!",
+    "placeholder": "프로필 이름 입력해주세요",
+    "description": "더 예쁘게 보이려면 600x600 사이즈 이미지를 추천드려요!",
     "errorText": {
-      "error": "An error occurred. Please try again.",
-      "enterProfile": "Please enter your profile name",
-      "enterProfileError": "Profile name must be 3-20 characters long"
+      "error": "오류가 발생했어요. 다시 시도해주세요.",
+      "enterProfile": "프로필 이름을 입력해주세요.",
+      "alreadyExists": "이미 사용 중인 이름이에요. 다른 이름을 사용해주세요.",
+      "invalidLetters": "이름은 영문자, 한글, 숫자, 밑줄( _ )과 점( . )만 포함할 수 있어요.",
+      "startsEndsWithPeriod": "이름은 마침표나 공백으로 시작하거나 끝날 수 없어요.",
+      "limitExceeded": "이름은 2~20자 사이여야 해요."
     },
-    "name": "Profile name"
+    "name": "프로필 이름"
   },
   "KakaoCallback": {
-    "noAccount": "계정을 찾을 수 없습니다. 먼저 가입해주세요.",
-    "error": "오류가 발생했습니다. 다시 시도해주세요."
+    "noAccount": "계정을 찾을 수 없어요. 먼저 가입해주세요.",
+    "error": "오류가 발생했어요. 다시 시도해주세요."
   },
+  "APIErrorCase": {
+    "error": {
+      "errorTitle": "오류",
+      "GeneralErrorText": "오류가 발생했어요.\n다시 시도해주세요."
+    }
+  },
+
   "Signup": {
-    "title": "어스메라 계정을 만들어봐요!",
+    "title": "계정을 만들어볼까요?",
     "email": "이메일 주소",
     "password": "비밀번호",
-    "signupLiner": "지구링크 가입하기",
+    "signupLiner": "가입하기",
     "linkAvailable": ["", "는 사용 가능해요!"],
-    "emailLiner": "이메일로 가입하기",
+    "emailLiner": "이메일",
+
     "signupWithGoogle": "구글로 가입하기",
     "signupWithApple": "Apple로 가입하기",
     "signupWithKakao": "카카오로 가입하기",
     "createAccount": "계정 생성하기",
+    "continue": "계정 생성하기",
     "errorText": {
       "alreadyExists": "이미 사용중인 이메일입니다. 다른 이메일을 사용해주세요.",
       "invalidEmail": "이메일이 올바르지 않습니다. 다시 확인해주세요.",
@@ -1120,17 +1175,17 @@
     }
   },
   "PreSignup": {
-    "title": "지구링크 가입하기!",
-    "description": "지구링크를 통해 지구링크 계정을 만들어보세요!",
-    "linkTitle": "지구링크 가입하기!",
+    "title": "ZIGU Link 가입하기!",
+    "description": "친환경 여정을 나누고, 변화를 만들어보세요.<br />환경을 생각하는 사람들과 함께할 수 있어요!",
+    "linkTitle": "지금 무료로 바이오 링크 만들기!",
     "link": ["earthmera.com/zigu/", "username"],
     "next": "다음",
     "alreadyAccount": "이미 계정이 있으신가요?  ",
-    "signin": "로그인",
+    "signin": "로그인하기",
     "guideText": [
-      "지구링크를 이용하시면 지구링크의 ",
+      "계속 진행하면 이용약관에 동의하며, ",
       "과 ",
-      "를 동의하시는 것으로 간주합니다."
+      "을 이해했음을 인정하는 것으로 간주됩니다."
     ],
     "errorText": {
       "alreadyExists": "이미 사용중인 링크입니다. 다른 링크를 사용해주세요.",
@@ -1141,12 +1196,7 @@
     "terms": "이용약관",
     "privacy": "개인정보처리방침"
   },
-  "APIErrorCase": {
-    "error": {
-      "errorTitle": "오류",
-      "GeneralErrorText": "오류가 발생했습니다.\n다시 시도해주세요."
-    }
-  },
+
   "OAuthCallback": {
     "title": ["", " 로그인 처리 중..."],
     "message": "잠시만 기다려 주세요.",
@@ -1167,18 +1217,78 @@
   },
   "ProfileLinkPage": {
     "carbon": ["Carbon Saving ", "g"],
-    "edit": "Edit",
-    "add": "Add",
-    "linkGuide": "Link your EarthMera app <br />to unlock this feature!",
-    "customize": "Customize your profile freely with your favorite link, colors, and shapes,make it truly yours!"
+    "edit": "수정",
+    "add": "추가",
+    "customize": "링크, 색상, 모양까지 내 취향대로! ZIGU를 자유롭게 꾸며보세요.",
+    "done": "완료",
+    "noProfileData": ["", " 프로필이 존재하지 않아요."],
+    "copyMyLink": "프로필의 URL이 복사되었어요.",
+    "copyMyLinkButton": "URL 복사하기",
+    "loginButton": "로그인",
+    "suggestSync": "EarthMera를 연동하고<br />다양한 에셋을 사용해보세요!",
+    "openEarthMeraApp": "EarthMera 앱 열기",
+    "synced": [" ", " 연동되었어요"]
   },
   "ProfileSettingPage": {
-    "title": "Profile Settings",
-    "changeProfilePicture": "Change Profile Picture",
-    "changeProfileName": "Change Profile Name",
-    "changePassword": "Change Password",
-    "syncEarthMeraID": "Sync EarthMera ID",
-    "changeURL": "Change URL",
-    "logout": "Log out"
+    "title": "프로필 설정",
+    "changeProfilePicture": "프로필 사진 변경",
+    "changeProfileName": "프로필 이름 변경",
+    "changePassword": "비밀번호 변경",
+    "syncEarthMeraID": "지구링크에서 어스메라 연동하기",
+    "changeURL": "URL 변경",
+    "logout": "로그아웃",
+    "notSupported": "이 기능은 아직 지원되지 않아요."
+  },
+  "ProfileCreateWidgetPage": {
+    "title": "프로필 위젯 만들기",
+    "button": "추가",
+    "description": "원하는 스타일과 색상을 선택하고, 프로필 위젯을 만들어보세요!",
+    "toast": {
+      "success": "프로필 위젯이 추가되었어요.",
+      "error": "프로필 위젯 추가에 문제가 생겼어요. 다시 시도해주세요.",
+      "failedToUploadImage": "이미지 업로드에 실패했어요. 다시 시도해주세요.",
+      "selectColor": "색상을 선택해주세요."
+    },
+    "image": "이미지",
+    "preview": "위젯 미리보기",
+    "style": "스타일",
+    "fill": "채우기",
+    "url": "URL",
+    "text": "텍스트",
+    "save": "저장하기",
+    "placeholder": {
+      "url": "https://",
+      "text": "텍스트를 입력해주세요.",
+      "image": "이미지를 추가하면 텍스트를 표시할 수 없어요."
+    },
+    "asset": "EarthMera 에셋",
+    "widgetList": {
+      "LEADERBOARD": "리더보드",
+      "MY_ITEMS": "내 아이템",
+      "ACHIEVEMENT": "업적",
+      "GROUPS": "그룹",
+      "MY_STORE": "내 스토어",
+      "CO2_SAVED": "CO₂ 저감량",
+      "MY_GALLERY": "내 갤러리"
+    }
+  },
+  "CarbonWidgetContent": {
+    "ecoActionCount": ["에코액션 ", "회"],
+    "annualCabonReduction": ["총 탄소저감량", "kg CO₂"],
+    "treeEffect": ["나무를 ", " 그루 심었어요"]
+  },
+  "LeaderboardWidgetContent": {
+    "lastMonthRank": ["지난 달 순위 ", ""]
+  },
+  "AchievementWidgetContent": {
+    "badge": "배지",
+    "medal": "메달"
+  },
+  "ProfileSyncPage": {
+    "title": "연동된 계정",
+    "button": "EarthMera와 연동하기",
+    "description": "어스메라 계정을 연동하면 CO₂ 저감량, 그룹, <br />배지, 메달로 더 다채로운 바이오 링크를 <br />만들 수 있어요.",
+
+    "synced": ["연동된 계정", ""]
   }
 }

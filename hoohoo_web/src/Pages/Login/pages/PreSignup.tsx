@@ -96,11 +96,13 @@ const ContentOuterBox = styled.div`
 const TitleText = styled.h2<{language: string}>`
   font-size: ${theme.fontSize['3xl']};
   line-height: 30px;
-  font-weight: 600;
+  font-weight: 700;
   color: ${theme.darkGray};
+
   margin-top: 0px;
   margin-bottom: ${theme.spacing.lg};
-  font-family: ${props => (props.language === 'ko' ? 'Inter' : 'Fredoka')};
+  font-family: ${props =>
+    props.language === 'ko' ? 'TmoneyRoundWind' : 'Fredoka'};
   @media screen and (max-width: 600px) {
     text-align: center;
   }
@@ -167,7 +169,7 @@ const LoginButton = styled.button`
   margin-bottom: ${theme.spacing.md};
 `;
 const LogoBox = styled.button`
-  margin-bottom: ${theme.spacing['3xl']};
+  margin-bottom: ${theme.spacing.lg};
   padding: 0px;
   background-color: transparent;
   border: none;
@@ -402,10 +404,14 @@ function PreSignup() {
         <ContentOuterBox>
           <InnerBox>
             <LogoBox onClick={handleLogoClick}>
-              <EarthMeraLogo size={70} />
+              <EarthMeraLogo size={100} />
             </LogoBox>
             <TitleText language={language}>{localizedTexts.title}</TitleText>
-            <DescriptionText>{localizedTexts.description}</DescriptionText>
+            <DescriptionText
+              dangerouslySetInnerHTML={{
+                __html: localizedTexts.description,
+              }}
+            />
 
             <LinkContainer>
               <LinkTitleText>{localizedTexts.linkTitle}</LinkTitleText>

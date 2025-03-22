@@ -1,8 +1,10 @@
+import i18next from 'i18next';
 import React from 'react';
 import {LuSettings} from 'react-icons/lu';
 import {useNavigate} from 'react-router-dom';
 import {toast} from 'react-toastify';
 import styled from 'styled-components';
+import {useUserStore} from '../../../storage/userStore';
 import {theme} from '../../../style';
 import {myLink} from '../../../util/links';
 const TopHeaderContainer = styled.div`
@@ -22,7 +24,7 @@ const TopHeaderRight = styled.div`
 `;
 const CopyButton = styled.button`
   border-radius: 10px;
-  padding: 2px ${theme.spacing.sm};
+  padding: 4px ${theme.spacing.rg};
   border: 1px solid ${theme.white};
   background-color: transparent;
   cursor: pointer;
@@ -41,6 +43,21 @@ const SettingButton = styled.button`
   cursor: pointer;
   color: ${theme.white};
 `;
+const LogoButton = styled.button`
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+  color: ${theme.white};
+  display: flex;
+  align-items: center;
+  justify-content: center;
+`;
+const LogoImage = styled.img`
+  width: 40px;
+  height: 40px;
+
+  object-fit: cover;
+`;
 function ProfileTopHeader({
   isMyLink,
   nameTag,
@@ -48,25 +65,51 @@ function ProfileTopHeader({
   isMyLink: boolean;
   nameTag: string;
 }) {
+  const localizedTexts: any = i18next.t('ProfileLinkPage', {
+    returnObjects: true,
+  });
+  const {user, isAuthenticated} = useUserStore();
   const navigate = useNavigate();
   function handleCopyMyLink() {
     navigator.clipboard.writeText(myLink + nameTag);
-    toast.success('Copied to clipboard');
+    toast.success(localizedTexts.copyMyLink);
   }
   function handleSetting() {
     navigate('/profile/settings');
   }
+  function handleLogin() {
+    navigate('/login');
+  }
+  function handleLogo() {
+    if (isAuthenticated) {
+      const link = '/zigu/' + user?.nameTag;
+      console.log('link', link);
+
+      navigate(link);
+    } else {
+      navigate('/login');
+    }
+  }
   return (
     <TopHeaderContainer>
-      <TopHeaderLeft></TopHeaderLeft>
-      {isMyLink && (
-        <TopHeaderRight>
-          {<CopyButton onClick={handleCopyMyLink}>Copy My URL</CopyButton>}
-          <SettingButton onClick={handleSetting}>
-            <LuSettings size={22} color={theme.white} />
-          </SettingButton>
-        </TopHeaderRight>
-      )}
+      <TopHeaderLeft>
+        <LogoButton onClick={handleLogo}>
+          <LogoImage src={'/Images/zigulink.png'} />
+        </LogoButton>
+      </TopHeaderLeft>
+      <TopHeaderRight>
+        {isMyLink && (
+          <>
+            <CopyButton onClick={handleCopyMyLink}>
+              {localizedTexts.copyMyLinkButton}
+            </CopyButton>
+
+            <SettingButton onClick={handleSetting}>
+              <LuSettings size={22} color={theme.white} />
+            </SettingButton>
+          </>
+        )}
+      </TopHeaderRight>
     </TopHeaderContainer>
   );
 }

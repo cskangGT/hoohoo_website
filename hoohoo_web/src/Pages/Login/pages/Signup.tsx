@@ -53,7 +53,7 @@ const LoginWrapperBox = styled.div`
   }
 `;
 const LogoBox = styled.div`
-  margin-bottom: ${theme.spacing['3xl']};
+  margin-bottom: ${theme.spacing.lg};
 `;
 const InnerBox = styled.div`
   width: calc(100%);
@@ -196,6 +196,8 @@ const Signup = () => {
         setUser(response.data.user);
         if (response.data?.user?.isNeedsQuestionnaire) {
           navigate('/setup/select-goal');
+        } else {
+          navigate(`/zigu/${response.data.user.nameTag}`);
         }
       } else {
         if (response.status === 400) {
@@ -282,7 +284,7 @@ const Signup = () => {
         <LoginWrapperBox>
           <InnerBox>
             <LogoBox>
-              <EarthMeraLogo size={50} />
+              <EarthMeraLogo size={100} />
             </LogoBox>
             {usernameTag && (
               <LinkBox>

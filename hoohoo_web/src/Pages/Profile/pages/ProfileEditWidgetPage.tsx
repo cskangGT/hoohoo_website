@@ -1,3 +1,4 @@
+import i18next from 'i18next';
 import React, {useState} from 'react';
 import {LuArrowLeft} from 'react-icons/lu';
 import {toast} from 'react-toastify';
@@ -25,6 +26,9 @@ const COLOR_OPTIONS = {
   BLUE: '#6586F2',
 };
 function ProfileEditWidgetPage() {
+  const localizedTexts: any = i18next.t('ProfileCreateWidgetPage', {
+    returnObjects: true,
+  });
   const {
     selectedItem,
     setSelectedItem,
@@ -149,7 +153,7 @@ function ProfileEditWidgetPage() {
           </PreviewContainer>
 
           {/* 채우기 섹션 */}
-          <SectionTitle>Fill</SectionTitle>
+          <SectionTitle>{localizedTexts.fill}</SectionTitle>
           <ColorOptions>
             <ColorOption
               color={COLOR_OPTIONS.RED}
@@ -206,30 +210,32 @@ function ProfileEditWidgetPage() {
                 multiple={false}
                 onChange={handleProfileImageChange}
               />
-              <span>Image</span>
+              <span>{localizedTexts.image}</span>
             </ImageButton>
           </ColorOptions>
 
-          <SectionTitle>Link</SectionTitle>
+          <SectionTitle>{localizedTexts.url}</SectionTitle>
           <InputField
             placeholder="https://"
             value={linkURL}
             onChange={e => setLinkURL(e.target.value)}
           />
 
-          <SectionTitle inActive={!!image}>Text</SectionTitle>
+          <SectionTitle inActive={!!image}>{localizedTexts.text}</SectionTitle>
           <InputField
             placeholder={
               !!image
-                ? "If you add an image, the text can't be displayed."
-                : 'Please enter the widget text'
+                ? localizedTexts.placeholder.image
+                : localizedTexts.placeholder.text
             }
             value={description}
             disabled={!!image}
             onChange={e => setDescription(e.target.value)}
           />
 
-          <UploadButton onClick={handleSaveEditWidget}>Save</UploadButton>
+          <UploadButton onClick={handleSaveEditWidget}>
+            {localizedTexts.save}
+          </UploadButton>
         </Container>
       </ProfileContainer>
     </MobileViewFrame>
