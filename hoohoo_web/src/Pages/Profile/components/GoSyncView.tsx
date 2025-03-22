@@ -109,9 +109,9 @@ function GoSyncView() {
 
         console.log('response.data.uuid', response.data.webUserId);
 
-        const linkUrl = `https://earthmera.com/redirect?link=earthmera://emsync?webUserId=${response.data.webUserId}&name=${encodeURIComponent('지산')}&profileImage=${encodeURIComponent(
-          user?.profileImage || '',
-        )}`;
+        const linkUrl = `https://earthmera.com/redirect?link=earthmera://emsync?webUserId=${response.data.webUserId}&name=${encodeURIComponent(
+          user?.username || '',
+        )}&profileImage=${encodeURIComponent(user?.profileImage || '')}`;
         setDeepLinkUrl(linkUrl);
       }
     };
