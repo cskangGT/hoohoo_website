@@ -10,13 +10,13 @@ import {theme} from '../../../style';
 import {useProfile} from '../contexts/ProfileContext';
 import {ProfileWidgetItemType} from '../types/WidgetItemType';
 const Container = styled.div`
-  position: absolute;
-  bottom: 0;
+  position: fixed;
+  bottom: 0px;
   left: 0;
   right: 0;
   display: flex;
   width: 100%;
-
+  padding-bottom: env(safe-area-inset-bottom);
   justify-content: center;
 `;
 const FixedBottomEditViewContainer = styled.div`
@@ -33,6 +33,7 @@ const FixedBottomEditViewContainer = styled.div`
   flex-direction: row;
   justify-content: flex-end;
   padding: ${theme.spacing.xm} ${theme.spacing.md};
+  padding-bottom: 30px;
   gap: ${theme.spacing.sm};
 `;
 const ActionButtonContainer = styled.div`
@@ -182,9 +183,11 @@ function FixedBottomEditView() {
               <ActionButton onClick={handleCreateWidget}>
                 <LuPlus size={16} />
               </ActionButton>
-              <ActionButton onClick={startEditing}>
-                {localizedTexts.edit}
-              </ActionButton>
+              {currentWidgets.length > 0 && (
+                <ActionButton onClick={startEditing}>
+                  {localizedTexts.edit}
+                </ActionButton>
+              )}
             </>
           )}
         </ActionButtonContainer>

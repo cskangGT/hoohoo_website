@@ -223,12 +223,14 @@ const Signup = () => {
     try {
       const res = await (window as any)?.AppleID?.auth?.signIn();
       console.log(res);
-      if (res?.id_token && res?.code) {
+      if (res?.authorization?.id_token && res?.authorization?.code) {
         const response = await sendAppleLogin(
-          res.code,
-          res.id_token,
+          res.authorization.code,
+          res.authorization.id_token,
           usernameTag,
         );
+        console.log('response', response);
+
         if (response.result) {
           setUser(response.data.user);
           sessionStorage.removeItem('storedNameTag');
