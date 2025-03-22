@@ -17,7 +17,7 @@ const Logo = styled.button`
   cursor: pointer;
   background-color: transparent;
 `;
-
+const changeWidth = 1400;
 const LogoText = styled.span<{language: string}>`
   padding-left: 10px;
   font-family: ${props =>
@@ -54,7 +54,7 @@ const Bar = styled.nav`
   padding: 8px 22px;
   transition: top 0.5s; // 부드러운 애니메이션 효과를 위한 전환
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); // 자연스러운 그림자 효과 추가
-  @media screen and (max-width: 1100px) {
+  @media screen and (max-width: ${changeWidth}px) {
     flex-direction: column;
     align-items: flex-start;
     padding: 8px 22px;
@@ -77,7 +77,7 @@ const NavbarMenu = styled.ul<NavBarProps>`
   padding-left: 0;
   align-items: center;
   justify-content: center;
-  @media screen and (max-width: 1100px) {
+  @media screen and (max-width: ${changeWidth}px) {
     height: auto;
     flex-direction: column;
     align-items: center;
@@ -107,7 +107,7 @@ const HoverContainer = styled.div`
   cursor: pointer;
   color: ${theme.darkGray};
   position: relative;
-  @media screen and (max-width: 1100px) {
+  @media screen and (max-width: ${changeWidth}px) {
     margin: 0px 10px;
     align-items: center;
     justify-content: center;
@@ -164,7 +164,7 @@ const NavMenuList = styled.li`
       transition: all 0.5s ease;
     }
   }
-  @media screen and (max-width: 1100px) {
+  @media screen and (max-width: ${changeWidth}px) {
     align-items: start;
     text-align: center;
     width: calc(100% - 30px);
@@ -193,7 +193,7 @@ const NavLink = styled.a`
     background: #000; // 밑줄 색상
     transition: width 0.3s ease-in-out;
   }
-  @media screen and (max-width: 1100px) {
+  @media screen and (max-width: ${changeWidth}px) {
     padding: 0px 5px;
   }
 `;
@@ -220,7 +220,7 @@ const MenuToogleButton = styled.button<IsOpen>`
   font-size: 24px;
   color: ${props => (props.isOpen ? theme.mainNeon : theme.darkGray)};
   display: none;
-  @media screen and (max-width: 1100px) {
+  @media screen and (max-width: ${changeWidth}px) {
     display: block;
   }
   &:hover {
@@ -232,7 +232,7 @@ const LanguageBox = styled.div`
   margin: 0 30px;
   display: block;
 
-  @media screen and (max-width: 1100px) {
+  @media screen and (max-width: ${changeWidth}px) {
     position: absolute;
     right: 40px;
     top: 32px;
@@ -280,7 +280,7 @@ const ContainerSubItems = styled.div`
   background-color: #fffefe;
   transition: top 0.5s ease;
   box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
-  @media screen and (max-width: 1100px) {
+  @media screen and (max-width: ${changeWidth}px) {
     padding: 0;
     backdrop-filter: none;
     background-color: transparent;
@@ -294,7 +294,7 @@ const HoverLinks = styled.ul`
   padding: 0;
 
   text-decoration: none;
-  @media screen and (max-width: 1100px) {
+  @media screen and (max-width: ${changeWidth}px) {
     padding-top: 7px;
   }
 `;
@@ -305,13 +305,13 @@ const NavSubList = styled.li`
   padding-right: 15px;
   align-items: center;
   justify-content: center;
-  @media screen and (max-width: 1100px) {
+  @media screen and (max-width: ${changeWidth}px) {
     padding: 7px 7px;
   }
 `;
 const LanguageOutBox = styled.div`
   display: none;
-  @media screen and (max-width: 1100px) {
+  @media screen and (max-width: ${changeWidth}px) {
     display: block;
   }
 `;
@@ -324,7 +324,7 @@ const SubNavLink = styled.a`
 
   cursor: pointer;
   font-size: ${theme.fontSize.sm};
-  @media screen and (max-width: 1100px) {
+  @media screen and (max-width: ${changeWidth}px) {
     font-size: ${theme.fontSize.md};
     padding-left: 0px;
     color: #424242;
@@ -342,7 +342,7 @@ const EMLinkBox = styled.div`
   font-weight: 500;
   margin-left: ${theme.spacing.lg};
   cursor: pointer;
-  @media screen and (max-width: 1100px) {
+  @media screen and (max-width: ${changeWidth}px) {
     margin-left: 0;
   }
 `;
@@ -539,13 +539,13 @@ function Nav() {
             </NavMenuList>
           );
         })}
-        {/* <EMLinkBox
+        <EMLinkBox
           onClick={() => {
             navigate('/pre-signup');
           }}>
           {localizedTexts.jigu}
-        </EMLinkBox> */}
-        {/* {!isOpen && (
+        </EMLinkBox>
+        {!isOpen && (
           <LanguageBox>
             <LanguageButton
               isActive={language === 'ko'}
@@ -562,10 +562,10 @@ function Nav() {
               {lang[1]}
             </LanguageButton>
           </LanguageBox>
-        )} */}
+        )}
       </NavbarMenu>
 
-      {/* <LanguageOutBox>
+      <LanguageOutBox>
         <LanguageBox>
           <LanguageButton
             isActive={language === 'ko'}
@@ -582,7 +582,7 @@ function Nav() {
             {lang[1]}
           </LanguageButton>
         </LanguageBox>
-      </LanguageOutBox> */}
+      </LanguageOutBox>
 
       <MenuToogleButton onClick={() => setIsOpen(!isOpen)} isOpen={isOpen}>
         <FontAwesomeIcon icon={faBars} />
