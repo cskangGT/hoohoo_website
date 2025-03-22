@@ -71,6 +71,7 @@ const CarbonSaving = styled.p`
 
 function ProfileLinkPage() {
   const nameTag = useParams()?.nameTag;
+  console.log('nameTag', nameTag);
 
   return (
     <ProfileProvider nameTag={nameTag}>
@@ -94,6 +95,7 @@ function ProfileLink() {
     setIsEditing,
   } = useProfile();
   const nameTag = useParams()?.nameTag;
+  console.log('user', user);
 
   const resizedWidth = useWindowResize({
     maxWidth: 600,

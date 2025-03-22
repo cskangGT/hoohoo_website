@@ -69,6 +69,8 @@ function SyncedUser({linkedUserInfo}: LinkedUserInfoProps) {
   const localizedTexts: any = i18next.t('ProfileSyncPage', {
     returnObjects: true,
   });
+  console.log('linkedUserInfo', linkedUserInfo);
+
   return (
     <Container>
       <Title>{localizedTexts.title}</Title>

@@ -68,7 +68,7 @@ const TitleContainer = styled.div`
   display: flex;
 
   transform: translateY(0px);
-  padding-bottom: 100px;
+  padding-bottom: 80px;
 `;
 const Title = styled.h2`
   font-size: 2.5rem;

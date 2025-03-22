@@ -495,19 +495,19 @@ function WidgetItem({
             <PiDotsSixVerticalBold size={20} color="white" />
           </ItemHolderBox>
           <EditBox>
+            {!widgetItem.isEmWidget && (
+              <>
+                <EditButton className="widget-button" onClick={handleEditClick}>
+                  <FaPencil size={14} color="white" />
+                </EditButton>
+                <Divider />
+              </>
+            )}
             <DeleteButton
               className="widget-button"
               onClick={() => onDeleteWidget && onDeleteWidget(widgetItem)}>
               <FaTimes size={16} color="white" />
             </DeleteButton>
-            {!widgetItem.isEmWidget && (
-              <>
-                <Divider />
-                <EditButton className="widget-button" onClick={handleEditClick}>
-                  <FaPencil size={14} color="white" />
-                </EditButton>
-              </>
-            )}
           </EditBox>
         </>
       )}

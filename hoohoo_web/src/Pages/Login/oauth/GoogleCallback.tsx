@@ -27,6 +27,7 @@ function GoogleCallback() {
       const response = await sendGoogleLogin(code, storedNameTag || '');
       if (response.result) {
         getAPIKey();
+
         setUser(response.data.user);
         if (response.data?.user?.isNeedsQuestionnaire) {
           navigate('/setup/select-goal', {replace: true});

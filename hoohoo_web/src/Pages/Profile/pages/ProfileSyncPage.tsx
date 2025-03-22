@@ -78,11 +78,12 @@ const MobileQRCodeText = styled.p`
   text-decoration: underline;
 `;
 function ProfileSyncPage() {
-  const {linkedUserInfo} = useUserStore();
+  const {linkedUserInfo, isSyncedWithEM} = useUserStore();
+  console.log('isSyncedWithEM', isSyncedWithEM);
 
   return (
     <TopHeaderBackButtonWrapperView>
-      {linkedUserInfo ? (
+      {isSyncedWithEM ? (
         <SyncedUser linkedUserInfo={linkedUserInfo} />
       ) : (
         <GoSyncView />
