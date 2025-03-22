@@ -10,12 +10,13 @@ import {theme} from '../../../style';
 import {useProfile} from '../contexts/ProfileContext';
 import {ProfileWidgetItemType} from '../types/WidgetItemType';
 const Container = styled.div`
-  position: fixed;
+  position: absolute;
   bottom: 0px;
   left: 0;
   right: 0;
   display: flex;
   width: 100%;
+  z-index: 100;
   padding-bottom: env(safe-area-inset-bottom);
   justify-content: center;
 `;
@@ -41,11 +42,13 @@ const ActionButtonContainer = styled.div`
   flex-direction: column-reverse;
   gap: ${theme.spacing.sm};
   align-items: flex-end;
+  z-index: 103;
   justify-content: flex-end;
 `;
 
 const SyncTagView = styled.div`
   position: absolute;
+
   align-self: center;
   bottom: 30px;
   display: flex;
@@ -60,7 +63,7 @@ const SyncTagView = styled.div`
   line-height: 1.2;
   font-family: Inter;
   border-radius: 30px;
-  z-index: 100;
+  z-index: 102;
   border: 1px solid ${theme.mainNeon};
   display: flex;
   align-items: center;
@@ -101,6 +104,7 @@ const ActionButton = styled.button<{$isLongButton?: boolean}>`
   justify-content: center;
   gap: ${theme.spacing.sm};
   font-weight: bold;
+  z-index: 103;
   @media (max-width: 600px) {
     height: 50px;
     padding: ${theme.spacing.sm} 8px;

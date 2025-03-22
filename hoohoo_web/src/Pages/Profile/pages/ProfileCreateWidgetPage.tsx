@@ -238,6 +238,7 @@ function ProfileCreateWidgetPage() {
       const result = await uploadImageToS3(compressedImage, true, uriKey);
 
       if (result) {
+        setSelectedColor('transparent');
         console.log('result', result);
         setIsSelected(true);
         setImage(result);
@@ -352,7 +353,7 @@ function ProfileCreateWidgetPage() {
         </StyledSwiperContainer>
 
         {/* 채우기 섹션 */}
-        <SectionTitle>Fill</SectionTitle>
+        <SectionTitle>{localizedTexts.fill}</SectionTitle>
         <ColorOptions>
           <ColorOption
             color={COLOR_OPTIONS.RED}
