@@ -61,11 +61,11 @@ const QRCodeBox = styled.div`
 const QRCodeText = styled.p`
   font-size: ${theme.fontSize.lg};
   font-family: Inter;
-  width: 80%;
+  width: 100%;
   color: ${theme.white};
   opacity: 0.8;
   text-align: center;
-  line-height: 1.5;
+  line-height: 2;
 `;
 const MobileQRCodeText = styled.p`
   font-size: ${theme.fontSize.lg};
@@ -109,7 +109,9 @@ function GoSyncView() {
 
         console.log('response.data.uuid', response.data.webUserId);
 
-        const linkUrl = `https://www.earthmera.com/redirect?link=earthmera://emsync?webUserId=${response.data.webUserId}&name=${user?.username}&profileImage=${user?.profileImage}`;
+        const linkUrl = `https://earthmera.com/redirect?link=earthmera://emsync?webUserId=${response.data.webUserId}&name=${encodeURIComponent('지산')}&profileImage=${encodeURIComponent(
+          user?.profileImage || '',
+        )}`;
         setDeepLinkUrl(linkUrl);
       }
     };
@@ -125,22 +127,23 @@ function GoSyncView() {
           <ProfileTag>@{user?.nameTag}</ProfileTag>
         </ProfileNameContainer>
       </ProfileHeader>
-      {!isMobile && deepLinkUrl ? (
-        <QRCodeBox>
-          {
-            <QRCode
-              value={deepLinkUrl}
-              size={200}
-              viewBox={`0 0 256 256`}
-              bgColor={theme.white}
-            />
-          }
-        </QRCodeBox>
-      ) : (
-        <SyncButton onClick={() => window.open(deepLinkUrl, '_blank')}>
-          {localizedTexts.button}
-        </SyncButton>
-      )}
+      {deepLinkUrl &&
+        (!isMobile ? (
+          <QRCodeBox>
+            {
+              <QRCode
+                value={deepLinkUrl}
+                size={200}
+                viewBox={`0 0 256 256`}
+                bgColor={theme.white}
+              />
+            }
+          </QRCodeBox>
+        ) : (
+          <SyncButton onClick={() => window.open(deepLinkUrl, '_blank')}>
+            {localizedTexts.button}
+          </SyncButton>
+        ))}
 
       <QRCodeText
         dangerouslySetInnerHTML={{

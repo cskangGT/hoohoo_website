@@ -59,6 +59,35 @@ const StyledSwiperContainer = styled.div`
     background-color: ${theme.mainNeon};
     opacity: 1;
   }
+
+  /* 이전/다음 화살표 크기 및 색상 설정 */
+  .swiper-button-prev,
+  .swiper-button-next {
+    width: 20px;
+    height: 20px;
+    color: ${theme.mainNeon};
+
+    /* 화살표 아이콘 크기 조정 */
+    &::after {
+      font-size: 20px;
+      font-weight: bold;
+    }
+  }
+
+  /* 이전 화살표 위치 조정 (필요시) */
+  .swiper-button-prev {
+    left: -5px;
+  }
+
+  /* 다음 화살표 위치 조정 (필요시) */
+  .swiper-button-next {
+    right: -5px;
+  }
+
+  /* 비활성화된 화살표 스타일 */
+  .swiper-button-disabled {
+    opacity: 0.3;
+  }
 `;
 
 const DropdownMenu = styled.div`
@@ -271,14 +300,14 @@ function ProfileCreateWidgetPage() {
         {/* 에셋 드롭다운 추가 */}
 
         {/* 스타일 섹션 */}
-        <SectionTitle>Style</SectionTitle>
+        <SectionTitle>{localizedTexts.style}</SectionTitle>
         <StyledSwiperContainer>
           <StyledSwiper
             modules={[Pagination, Navigation]}
             spaceBetween={30}
             slidesPerView={1}
             pagination={{clickable: true}}
-            navigation={false}
+            navigation={true}
             onSlideChange={swiper => {
               setSelectedStyle(styleOptions[swiper.activeIndex].value);
             }}
@@ -472,7 +501,7 @@ function ProfileCreateWidgetPage() {
           </>
         )}
 
-        <UploadButton onClick={handleAddWidget}>
+        <UploadButton onClick={handleAddWidget} disabled={!isSelected}>
           {localizedTexts.button}
         </UploadButton>
       </Container>
@@ -583,12 +612,13 @@ const PreviewContainer = styled.div`
   justify-content: center;
   align-items: center;
 `;
-const UploadButton = styled.button`
+const UploadButton = styled.button<{disabled?: boolean}>`
   width: calc(100%);
   padding: ${theme.spacing.rg} 0px;
   border-radius: 50px;
   border: none;
-  background-color: #dddddd;
+  background-color: #f1f1f1;
+  opacity: ${props => (props.disabled ? '0.5' : '1')};
   color: black;
   font-size: ${theme.fontSize.lg};
   font-weight: bold;

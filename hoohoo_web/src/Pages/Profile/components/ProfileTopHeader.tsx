@@ -68,6 +68,7 @@ function ProfileTopHeader({
   const localizedTexts: any = i18next.t('ProfileLinkPage', {
     returnObjects: true,
   });
+
   const {user, isAuthenticated} = useUserStore();
   const navigate = useNavigate();
   function handleCopyMyLink() {
@@ -75,7 +76,7 @@ function ProfileTopHeader({
     toast.success(localizedTexts.copyMyLink);
   }
   function handleSetting() {
-    navigate('/profile/settings');
+    navigate('/profile/settings', {});
   }
   function handleLogin() {
     navigate('/login');

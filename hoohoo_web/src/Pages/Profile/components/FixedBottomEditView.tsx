@@ -19,9 +19,11 @@ const Container = styled.div`
   z-index: 100;
   padding-bottom: env(safe-area-inset-bottom);
   justify-content: center;
+  @media (max-width: 600px) {
+    position: fixed;
+  }
 `;
 const FixedBottomEditViewContainer = styled.div`
-  padding: ${theme.spacing.sm};
   width: 100%;
   background: linear-gradient(
     to bottom,

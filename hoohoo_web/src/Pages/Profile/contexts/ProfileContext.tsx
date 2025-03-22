@@ -102,7 +102,7 @@ export const ProfileProvider: React.FC<ProfileProviderProps> = ({
   const [selectedItem, setSelectedItem] =
     useState<ProfileWidgetItemType | null>(null);
   // 로그인 사용자 인증 정보
-  const {user, isAuthenticated, setLinkedUserInfo} = useUserStore();
+  const {user, isAuthenticated, setProfileImage} = useUserStore();
   const [isMyLink, setIsMyLink] = useState<boolean>(false);
   const [isSyncedWithEM, setIsSyncedWithEM] = useState<boolean>(false);
 
@@ -125,6 +125,8 @@ export const ProfileProvider: React.FC<ProfileProviderProps> = ({
       }
 
       const targetNameTag = profileNameTag || nameTag;
+      console.log('targetNameTag', targetNameTag);
+
       const response = await getUserLinkProfile(targetNameTag!);
 
       if (response.result) {
@@ -134,8 +136,10 @@ export const ProfileProvider: React.FC<ProfileProviderProps> = ({
           ...response.data,
           name: response.data.name ? response.data.name.split('#')[0] : '',
         });
-        setLinkedUserInfo(response.data.linkedUserInfo);
-        setIsSyncedWithEM(response.data.linkedUserInfo ? true : false);
+
+        if (user.nameTag === targetNameTag) {
+          setProfileImage(response.data.profileImage);
+        }
         if (response.data.widgets) {
           const newWidgets = response.data.widgets.map(
             (widget: ProfileWidgetItemType) => ({
@@ -146,6 +150,8 @@ export const ProfileProvider: React.FC<ProfileProviderProps> = ({
               },
             }),
           );
+          console.log('newWidgets', newWidgets);
+
           setOriginalWidgets(newWidgets);
           setCurrentWidgets(newWidgets);
           setLastSavedWidgets(newWidgets);

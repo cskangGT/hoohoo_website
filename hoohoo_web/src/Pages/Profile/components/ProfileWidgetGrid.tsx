@@ -222,39 +222,41 @@ function ProfileWidgetGrid() {
           <CircularProgress />
         </CircularProgressContainer>
       ) : (
-        isMyLink && (
-          <>
-            <MainProfileGrid />
-            <BlurredContainer>
-              {currentWidgets?.length === 0 && (
+        <>
+          <MainProfileGrid />
+          {isMyLink && (
+            <>
+              <BlurredContainer>
+                {currentWidgets?.length === 0 && (
+                  <BlurredWidgetGrid>
+                    <WidgetGrid style={{opacity: 0.5}}>
+                      {AbEMWidget.slice(0, 5).map(widget => (
+                        <WidgetItem key={widget.id} widget={widget} />
+                      ))}
+                    </WidgetGrid>
+                  </BlurredWidgetGrid>
+                )}
+              </BlurredContainer>
+              {!isSyncedWithEM && (
                 <BlurredWidgetGrid>
-                  <WidgetGrid style={{opacity: 0.5}}>
-                    {AbEMWidget.slice(0, 5).map(widget => (
-                      <WidgetItem key={widget.id} widget={widget} />
-                    ))}
-                  </WidgetGrid>
+                  {AbEMWidget.slice(5).map(widget => (
+                    <WidgetItem key={widget.id} widget={widget} />
+                  ))}
+                  <BlurOverlay>
+                    <OverlayText
+                      dangerouslySetInnerHTML={{
+                        __html: localizedTexts.suggestSync,
+                      }}
+                    />
+                    <OverlayButton onClick={linktoApp}>
+                      {localizedTexts.openEarthMeraApp}
+                    </OverlayButton>
+                  </BlurOverlay>
                 </BlurredWidgetGrid>
               )}
-            </BlurredContainer>
-            {!isSyncedWithEM && (
-              <BlurredWidgetGrid>
-                {AbEMWidget.slice(5).map(widget => (
-                  <WidgetItem key={widget.id} widget={widget} />
-                ))}
-                <BlurOverlay>
-                  <OverlayText
-                    dangerouslySetInnerHTML={{
-                      __html: localizedTexts.suggestSync,
-                    }}
-                  />
-                  <OverlayButton onClick={linktoApp}>
-                    {localizedTexts.openEarthMeraApp}
-                  </OverlayButton>
-                </BlurOverlay>
-              </BlurredWidgetGrid>
-            )}
-          </>
-        )
+            </>
+          )}
+        </>
       )}
     </Container>
   );

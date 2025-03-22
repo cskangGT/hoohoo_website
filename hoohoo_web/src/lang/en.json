@@ -1300,7 +1300,7 @@
   "ProfileSyncPage": {
     "title": "Synced Account",
     "button": "Go sync with EarthMera",
-    "description": "Connect your EarthMera to create a richer bio link with your CO₂ reduction, groups, badges, and medals.",
+    "description": "Connect your EarthMera to create<br />a richer bio link with your CO₂ reduction,<br />groups, badges, and medals.",
 
     "synced": ["Synced Account ", ""]
   }

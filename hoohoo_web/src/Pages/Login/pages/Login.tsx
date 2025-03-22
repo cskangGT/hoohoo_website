@@ -203,6 +203,7 @@ const Login = () => {
       const response = await sendGoogleLogin(tokenResponse.code);
       if (response.result) {
         getAPIKey();
+
         setUser(response.data.user);
         if (response.data?.user?.isNeedsQuestionnaire) {
           navigate('/setup/select-goal');
