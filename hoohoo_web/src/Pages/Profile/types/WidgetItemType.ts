@@ -9,10 +9,48 @@ export type ProfileWidgetItemType = {
     hasBorder?: boolean;
     description?: string;
     linkUrl?: string;
+    isEmWidget?: boolean;
+    emWidgetType?: ProfileEMWidgetType;
+    widgetData?: {
+        level?: number;
+        numBadges?: number;
+        numMedals?: number;
+        equippedMedals?: MedalType[];
+        equippedBadge?: string;
+        annualEcoActionCount?: number;
+        annualCarbonReduction?: number;
+        treeEffect?: number;
+        userRank?: number;
+        lastMonthRank?: number;
+        higherRankInfo?: {
+            gap: number;
+            ecoActionCount: number;
+        };
+        lowerRankInfo?: {
+            gap: number;
+            ecoActionCount: number;
+        };
+        ecoActionCount?: number;
+
+        thumbnails?: string[];
+    };
     coordinate: {
         x: number;
         y: number;
     };
+};
+export type MedalType = {
+    medalTitle: string;
+    medalLevel: number;
+}
+export enum ProfileEMWidgetType {
+    Leaderboard = 'LEADERBOARD',
+    MyItems = 'MY_ITEMS',
+    Achievement = 'ACHIEVEMENT',
+    Groups = 'GROUPS',
+    MyStore = 'MY_STORE',
+    CO2Saved = 'CO2_SAVED',
+    MyGallery = 'MY_GALLERY',
 };
 export type ProfileWidgetBgType = 'IMAGE' | 'COLOR';
 export type ProfileWidgetItemSize = 'BIG' | 'SMALL' | 'LONG';

@@ -10,13 +10,22 @@ interface UserData {
     profileImage?: string;
 }
 
+interface LinkedUserInfo {
+    userId: string;
+    name: string;
+    profileImage: string;
+}
+
 interface UserState {
     user: UserData;
+    linkedUserInfo: LinkedUserInfo;
     myWidgets: ProfileWidgetItemType[];
     isAuthenticated: boolean;
+    isSyncedWithEM: boolean;
     setUser: (user: UserData) => void;
     logout: () => void;
     setMyWidgets: (widgets: ProfileWidgetItemType[]) => void;
+    setLinkedUserInfo: (linkedUserInfo: LinkedUserInfo) => void;
 }
 
 const initialUser: UserData = {
@@ -24,13 +33,21 @@ const initialUser: UserData = {
     email: '',
     nameTag: '',
     profileImage: '',
+
 };
 export const useUserStore = create<UserState>()(
     persist(
         (set) => ({
             user: initialUser,
+            linkedUserInfo: {
+                userId: '',
+                name: '',
+                profileImage: ''
+            },
             myWidgets: [],
             isAuthenticated: false,
+            isSyncedWithEM: false,
+
             setUser: (user) => set({
                 user: {
                     ...user,
@@ -39,13 +56,17 @@ export const useUserStore = create<UserState>()(
                         : user.username,
                     profileImage: user.profileImage || defaultProfileImage
                 },
-                isAuthenticated: true
+                isAuthenticated: true,
+
+            }),
+            setLinkedUserInfo: (linkedUserInfo: LinkedUserInfo) => set({
+                linkedUserInfo: linkedUserInfo
             }),
             setMyWidgets: (widgets: ProfileWidgetItemType[]) => set({
                 myWidgets: widgets
             }),
             logout: () => set({
-                user: initialUser, isAuthenticated: false
+                user: initialUser, isAuthenticated: false, isSyncedWithEM: false
             }),
         }),
         {

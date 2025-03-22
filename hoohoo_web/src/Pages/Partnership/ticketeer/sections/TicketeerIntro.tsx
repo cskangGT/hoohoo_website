@@ -1,10 +1,10 @@
 import i18next from 'i18next';
 import React from 'react';
 import styled from 'styled-components';
-import { useLanguage } from '../../../../components/hooks/LanguageContext';
-import { slideInFromTop, theme } from '../../../../style';
-import { logButtonEvent, PageName } from '../../../../util/firebase_custom_event';
-import { HomeTransitionButton } from '../../../Home/styles';
+import {useLanguage} from '../../../../components/hooks/LanguageContext';
+import {slideInFromTop, theme} from '../../../../style';
+import {logButtonEvent, PageName} from '../../../../util/firebase_custom_event';
+import {HomeTransitionButton} from '../../../Home/styles';
 const Container = styled.div`
   animation: ${slideInFromTop} 0.7s ease-out forwards;
   display: flex;
@@ -28,7 +28,8 @@ const Container = styled.div`
 const Header = styled.h2<{language: string}>`
   font-size: 2.4rem;
   line-height: 1.2;
-  font-family: ${props => (props.language === 'ko' ? 'TmoneyRoundWind' : 'Fredoka')};
+  font-family: ${props =>
+    props.language === 'ko' ? 'TmoneyRoundWind' : 'Fredoka'};
   font-weight: 600;
   margin-bottom: 15px;
   @media screen and (max-width: 1000px) {
@@ -113,8 +114,6 @@ const RightBox = styled.div`
   }
 `;
 const Image = styled.img`
-
-  
   height: 500px;
   width: 100%;
   object-fit: contain;
@@ -134,7 +133,10 @@ function TicketeerIntro() {
     window.location.href = `mailto:${emailAddress}`;
     logButtonEvent('ask_partnership in TicketeerIntro', PageName.ticketeer);
     setTimeout(() => {
-      window.open(`https://mail.google.com/mail/?view=cm&fs=1&to=${emailAddress}`, '_blank');
+      window.open(
+        `https://mail.google.com/mail/?view=cm&fs=1&to=${emailAddress}`,
+        '_blank',
+      );
     }, 300);
   };
   return (
@@ -148,9 +150,10 @@ function TicketeerIntro() {
           <StarImage src={data.titleStar} />
         </HeaderBox>
 
-        <HomeTransitionButton onClick={handleEmailClick}>
-          {data.buttonText}
-        </HomeTransitionButton>
+        <HomeTransitionButton
+          onClick={handleEmailClick}
+          dangerouslySetInnerHTML={{__html: data.buttonText}}
+        />
       </LeftBox>
       <RightBox>
         <Image src={data.image} />

@@ -114,6 +114,50 @@
       "manage": "Manage Account"
     }
   },
+  "Util": {
+    "UserBadgeType": {
+      "LITTLE_BY_LITTLE": "티끌 모아 태산",
+      "EARLY_HERO": "Early Hero",
+      "PEOPLE_CARE_ENV": "환생사",
+      "STUDENT_CLIMATE_ACTION": "대기행",
+      "FIRST_GREEN_LEAVES": "시작이 반이다",
+      "GREEN_SPARKS_FLY": "초록물결",
+      "ANYWHERE_GREEN": "어디서든 친환경",
+      "LINK_BETWEEN_US": "너와 나의 연결고리",
+      "LOCAL_ECO_ADVOCATE": "동네 환경 지킴이",
+      "PURSUING_GREENER_TOMORROW": "내일을 푸르게",
+      "WALKING_ON_EGGSHELLS": "살얼음 위를 걷기",
+      "MAY_EARTHMERA_BE_WITH_YOU": "EarthMera 기운이 당신과 함께",
+      "NO_PLANET_FOR_OLD_WAYS": "옛 방식을 버리고",
+      "BITE_THE_BULLET": "개천에서 용난다",
+      "BEYOND_WORLD": "세계를 넘어",
+      "FEEL_THE_TAILWIND": "순풍을 느껴라",
+      "I_LOVE_EM": "I ♥ EM",
+      "IN_HARMONY_WITH_NATURE": "자연과의 조화",
+      "EARTH_HERO": "EarthHero"
+    },
+    "AchievementType": {
+      "ECO_ACTION_TUMBLER": "일회용 컵 종결자",
+      "ECO_ACTION_CAFE_REUSABLE_CUP": "카페 머그 스타",
+      "ECO_ACTION_ECO_FRIENDLY_PRODUCTS": "친환경 소비자",
+      "ECO_ACTION_DISPOSING_TRASH": "쓰레기 덩크왕",
+      "ECO_ACTION_RECYCLING": "재활용의 귀재",
+      "ECO_ACTION_TRANSPORTATION": "에코 라이더",
+      "ECO_ACTION_EM_BAG": "EM Bag 히어로",
+      "ECO_ACTION_SUSTAINABLE_STRAW": "빨대 지킴이",
+      "ECO_ACTION_LABEL_OFF": "라벨제거 리더",
+      "ECO_ACTION_REUSABLE_CONTAINER": "용기있는 자",
+      "ECO_ACTION_ECO_BAG": "에코백 러버",
+      "ECO_ACTION_REUSE": "분리배출의 달인",
+      "ECO_ACTION_NO_LEFTOVERS": "Zero Waste Hero",
+      "GROUP_CHALLENGE_REWARD_MEDAL": "무한도전인",
+      "GROUP_EVENT_REWARD_MEDAL": "이벤트 전문가",
+      "ECO_ACTION_CARBON_REDUCTION": "CO₂ 다이어터",
+      "GROUP_PLOGGING_ECO_PLOGGER": "친환경 플로거",
+      "REWARD_REDEEM_MEDAL": "보물 사냥꾼",
+      "EM_POST_UPLOAD_MEDAL": "친환경 인플루언서"
+    }
+  },
   "footcontact": {
     "title": "Interested in partnering with us or have any questions?",
     "button": "Contact Us"
@@ -1147,11 +1191,11 @@
     "description": "For the best look, we recommend a 600x600 size image!",
     "errorText": {
       "error": "An error occurred. Please try again.",
-      "enterProfile": "Please enter your profile name",
-      "alreadyExists": "This link is already taken. Please try another one.",
-      "invalidLetters": "Usernames can only include alphabet letters, numbers, underscores ( _ ) and periods ( . )",
-      "startsEndsWithPeriod": "Usernames cannot start and end with a period.",
-      "limitExceeded": "Profile name must be between 3 and 20 characters"
+      "enterProfile": "Please enter your profile name.",
+      "alreadyExists": "This profile name is already taken. Please try another one.",
+      "invalidLetters": "Profile names can only include English letters, Korean characters, numbers, underscores ( _ ) and periods ( . ).",
+      "startsEndsWithPeriod": "Profile names cannot start or end with a period or space.",
+      "limitExceeded": "Profile name must be between 2 and 20 characters."
     },
     "name": "Profile name"
   },
@@ -1187,8 +1231,16 @@
     "carbon": ["Carbon Saving ", "g"],
     "edit": "Edit",
     "add": "Add",
-    "linkGuide": "Link your EarthMera app <br />to unlock this feature!",
-    "customize": "Customize your profile freely with your favorite link, colors, and shapes,make it truly yours!"
+
+    "customize": "Customize your profile freely with your favorite link, colors, and shapes,make it truly yours!",
+    "done": "Done",
+    "noProfileData": ["", " Profile doesn't exist"],
+    "copyMyLink": "Profile URL copied",
+    "copyMyLinkButton": "Copy My URL",
+    "loginButton": "Login",
+    "suggestSync": "Sync your EarthMera app<br />to unlock this feature!",
+    "openEarthMeraApp": "Open EarthMera App",
+    "synced": ["Synced with ", ""]
   },
   "ProfileSettingPage": {
     "title": "Profile Settings",
@@ -1197,6 +1249,59 @@
     "changePassword": "Change Password",
     "syncEarthMeraID": "Sync EarthMera ID",
     "changeURL": "Change URL",
-    "logout": "Log out"
+    "logout": "Log out",
+    "notSupported": "This feature is not supported yet."
+  },
+  "ProfileCreateWidgetPage": {
+    "title": "Create your profile widget",
+    "button": "Add",
+    "description": "Choose your favorite style and color, and create your profile widget!",
+    "toast": {
+      "success": "Profile widget added",
+      "error": "Failed to add profile widget",
+      "failedToUploadImage": "Failed to upload image",
+      "selectColor": "Please fill a widget color"
+    },
+    "save": "Save",
+    "preview": "Widget Preview",
+    "style": "Style",
+    "image": "Image",
+    "fill": "Fill",
+    "url": "URL",
+    "text": "Text",
+    "placeholder": {
+      "url": "https://",
+      "text": "Please enter the widget text",
+      "image": "If you add an image, the text can't be displayed."
+    },
+    "asset": "EarthMera Asset",
+    "widgetList": {
+      "LEADERBOARD": "Leaderboard",
+      "MY_ITEMS": "Items",
+      "ACHIEVEMENT": "Achievement",
+      "GROUPS": "Groups",
+      "MY_STORE": "Store",
+      "CO2_SAVED": "CO₂ Saved",
+      "MY_GALLERY": "Gallery"
+    }
+  },
+  "CarbonWidgetContent": {
+    "ecoActionCount": ["Eco-Action ", " times"],
+    "annualCabonReduction": ["Total Saved", "kg CO₂"],
+    "treeEffect": ["", "trees planted"]
+  },
+  "LeaderboardWidgetContent": {
+    "lastMonthRank": ["Last month rank ", ""]
+  },
+  "AchievementWidgetContent": {
+    "badge": "Badge",
+    "medal": "Medal"
+  },
+  "ProfileSyncPage": {
+    "title": "Synced Account",
+    "button": "Go sync with EarthMera",
+    "description": "Connect your EarthMera to create<br />a richer bio link with your CO₂ reduction, groups, badges, and medals.",
+
+    "synced": ["Synced Account ", ""]
   }
 }

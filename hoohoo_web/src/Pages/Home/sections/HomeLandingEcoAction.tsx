@@ -1,5 +1,5 @@
 import i18next from 'i18next';
-import React, {useMemo, useState} from 'react';
+import React, {useMemo} from 'react';
 import Marquee from 'react-fast-marquee';
 import {useNavigate} from 'react-router-dom';
 import styled from 'styled-components';
@@ -22,13 +22,13 @@ const Container = styled.div`
   min-height: 90vh;
 
   padding-top: 60px;
-  margin-bottom: 150px;
+  margin-bottom: 0px;
   position: relative;
   overflow: hidden;
   background-color: transparent;
   max-width: 1500px;
   @media screen and (max-width: 600px) {
-    margin-bottom: 100px;
+    margin-bottom: 50px;
     min-height: 90vh;
   }
 `;
@@ -340,8 +340,6 @@ export const EcoActionMarqueeImageItem = ({
   );
 };
 const HomeLandingEcoAction = () => {
-  const [isMarqueeActive, setIsMarqueeActive] = useState(false);
-
   const navigate = useNavigate();
   const resizedWidth = useWindowResize({maxWidth: 1400});
   const localizedTexts: any = i18next.t('EcoActionTestimony', {
@@ -365,7 +363,7 @@ const HomeLandingEcoAction = () => {
   });
 
   const handleButtonClick = () => {
-    navigate(`/${i18next.language}/testimonials`);
+    navigate(`/${i18next.language}/testimonials`, {state: {canComeBack: true}});
   };
 
   const visibleColumns = useMemo(() => {
@@ -378,7 +376,7 @@ const HomeLandingEcoAction = () => {
         images: limitedImages,
       };
     });
-  }, [isMarqueeActive, columns, columnCounts]);
+  }, [columns, columnCounts]);
 
   return (
     <>
@@ -390,7 +388,7 @@ const HomeLandingEcoAction = () => {
               key={colIndex}
               openMediaModal={() => {}}
               colIndex={colIndex}
-              isMarqueeActive={isMarqueeActive}
+              isMarqueeActive={false}
               isOdd={column.isOdd}
               column={column}
               resizedWidth={resizedWidth}

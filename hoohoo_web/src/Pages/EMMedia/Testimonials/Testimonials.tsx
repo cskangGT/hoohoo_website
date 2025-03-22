@@ -1,5 +1,6 @@
 import i18next from 'i18next';
 import React, {useEffect, useState} from 'react';
+import {useLocation, useNavigate} from 'react-router-dom';
 import styled from 'styled-components';
 import {EcoActionData} from '../../../../public/Images/EcoActionData';
 import useWindowResize from '../../../components/hooks/useWindowResize';
@@ -69,7 +70,7 @@ const ImageCollage = styled.div`
 `;
 const AbsCloseButtonContainer = styled.div`
   position: absolute;
-  bottom: 40px;
+  bottom: 100px;
   width: 50%;
   max-width: 300px;
   display: flex;
@@ -108,7 +109,9 @@ function Testimonials() {
   const [selectedMedia, setSelectedMedia] = useState<MediaDataType | null>(
     null,
   );
-
+  const navigate = useNavigate();
+  const {state} = useLocation();
+  const canComeBack = state?.canComeBack;
   const mixed = shuffleArray([...EcoActionData]);
 
   const resizedWidth = useWindowResize({maxWidth: 1400});
@@ -138,6 +141,9 @@ function Testimonials() {
     setSelectedMedia(media);
   };
 
+  const handleCloseButtonClick = () => {
+    navigate(-1);
+  };
   return (
     <BgImage>
       <IntroContentBox>
@@ -157,13 +163,13 @@ function Testimonials() {
           </ImageCollage>
           <TopGradientOverlay />
           <BottomGradientOverlay />
-          {/* {
+          {canComeBack && (
             <AbsCloseButtonContainer>
               <AbsCloseButton onClick={handleCloseButtonClick}>
                 {localizedTexts.backButtonText}
               </AbsCloseButton>
             </AbsCloseButtonContainer>
-          } */}
+          )}
           <MediaModal
             isOpen={isMediaModalOpen}
             setIsOpen={setIsMediaModalOpen}

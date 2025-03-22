@@ -1,9 +1,12 @@
 import React from 'react';
 
+import {CircularProgress} from '@mui/material';
+import i18next from 'i18next';
 import styled from 'styled-components';
 import {theme} from '../../../style';
 import {useProfile} from '../contexts/ProfileContext';
 import {
+  ProfileEMWidgetType,
   ProfileWidgetItemType,
   ProfileWidgetTypeEnum,
 } from '../types/WidgetItemType';
@@ -14,7 +17,7 @@ const WidgetGrid = styled.div`
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  gap: 24px;
+  gap: 16px;
   width: 100%;
 
   justify-content: space-between;
@@ -28,6 +31,15 @@ const BlurredContainer = styled.div``;
 const BlurredWidgetGrid = styled(WidgetGrid)`
   margin-top: 24px;
   margin-bottom: 100px;
+  gap: 16px;
+`;
+const CircularProgressContainer = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  width: 100%;
+  flex: 1;
 `;
 const WIDTH = window.innerWidth > 600 ? 600 : window.innerWidth;
 const BlurOverlay = styled.div`
@@ -36,7 +48,7 @@ const BlurOverlay = styled.div`
   left: -36px;
   right: -36px;
   opacity: 1;
-  width: ${WIDTH}px;
+  /* width: ${WIDTH}px; */
   height: 105%;
 
   background: linear-gradient(
@@ -141,7 +153,14 @@ const AbEMWidget: ProfileWidgetItemType[] = [
     bgType: 'COLOR',
     bgColor: 'transparent',
     type: ProfileWidgetTypeEnum.AppRank,
-    hasBorder: true,
+    isEmWidget: true,
+    emWidgetType: ProfileEMWidgetType.CO2Saved,
+    widgetData: {
+      annualEcoActionCount: 50,
+      annualCarbonReduction: 1020,
+      treeEffect: 10,
+    },
+    hasBorder: false,
     description: '',
     coordinate: {x: 0, y: 0},
   },
@@ -151,7 +170,9 @@ const AbEMWidget: ProfileWidgetItemType[] = [
     bgType: 'COLOR',
     bgColor: 'transparent',
     type: ProfileWidgetTypeEnum.AppRecycle,
-    hasBorder: true,
+    isEmWidget: true,
+    emWidgetType: ProfileEMWidgetType.MyItems,
+    hasBorder: false,
     coordinate: {x: 0, y: 0},
     description: '',
   },
@@ -161,7 +182,9 @@ const AbEMWidget: ProfileWidgetItemType[] = [
     bgType: 'COLOR',
     bgColor: 'transparent',
     type: ProfileWidgetTypeEnum.AppGroup,
-    hasBorder: true,
+    isEmWidget: true,
+    emWidgetType: ProfileEMWidgetType.Groups,
+    hasBorder: false,
     coordinate: {x: 0, y: 0},
     description: '',
   },
@@ -171,14 +194,19 @@ const AbEMWidget: ProfileWidgetItemType[] = [
     bgType: 'COLOR',
     bgColor: 'transparent',
     type: ProfileWidgetTypeEnum.AppShop,
-    hasBorder: true,
+    isEmWidget: true,
+    emWidgetType: ProfileEMWidgetType.MyStore,
+    hasBorder: false,
     coordinate: {x: 0, y: 0},
     description: '',
   },
 ];
 
 function ProfileWidgetGrid() {
-  const {currentWidgets, isMyLink} = useProfile();
+  const localizedTexts: any = i18next.t('ProfileLinkPage', {
+    returnObjects: true,
+  });
+  const {currentWidgets, isMyLink, isLoading, isSyncedWithEM} = useProfile();
   function linktoApp() {
     // const platform = getDevicePlatform();
     // const appStoreLink =
@@ -189,37 +217,44 @@ function ProfileWidgetGrid() {
 
   return (
     <Container>
-      <MainProfileGrid />
-
-      {isMyLink && (
-        <>
-          <BlurredContainer>
-            {currentWidgets?.length === 0 && (
+      {isLoading ? (
+        <CircularProgressContainer>
+          <CircularProgress />
+        </CircularProgressContainer>
+      ) : (
+        isMyLink && (
+          <>
+            <MainProfileGrid />
+            <BlurredContainer>
+              {currentWidgets?.length === 0 && (
+                <BlurredWidgetGrid>
+                  <WidgetGrid style={{opacity: 0.5}}>
+                    {AbEMWidget.slice(0, 5).map(widget => (
+                      <WidgetItem key={widget.id} widget={widget} />
+                    ))}
+                  </WidgetGrid>
+                </BlurredWidgetGrid>
+              )}
+            </BlurredContainer>
+            {!isSyncedWithEM && (
               <BlurredWidgetGrid>
-                <WidgetGrid style={{opacity: 0.5}}>
-                  {AbEMWidget.slice(0, 5).map(widget => (
-                    <WidgetItem key={widget.id} widget={widget} />
-                  ))}
-                </WidgetGrid>
+                {AbEMWidget.slice(5).map(widget => (
+                  <WidgetItem key={widget.id} widget={widget} />
+                ))}
+                <BlurOverlay>
+                  <OverlayText
+                    dangerouslySetInnerHTML={{
+                      __html: localizedTexts.suggestSync,
+                    }}
+                  />
+                  <OverlayButton onClick={linktoApp}>
+                    {localizedTexts.openEarthMeraApp}
+                  </OverlayButton>
+                </BlurOverlay>
               </BlurredWidgetGrid>
             )}
-          </BlurredContainer>
-          <BlurredWidgetGrid>
-            {AbEMWidget.slice(5).map(widget => (
-              <WidgetItem key={widget.id} widget={widget} />
-            ))}
-            <BlurOverlay>
-              <OverlayText
-                dangerouslySetInnerHTML={{
-                  __html: `Link your EarthMera app<br />to unlock this feature!`,
-                }}
-              />
-              <OverlayButton onClick={linktoApp}>
-                Open EarthMera App
-              </OverlayButton>
-            </BlurOverlay>
-          </BlurredWidgetGrid>
-        </>
+          </>
+        )
       )}
     </Container>
   );

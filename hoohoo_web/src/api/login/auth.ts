@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { useUserStore } from '../../storage/userStore';
 import { __DEV__, APIAddress } from '../../style';
-export const ServerAPIVersion = __DEV__ ? 'v1.7.0' : 'v1.7.0';
+export const ServerAPIVersion = __DEV__ ? 'v1.7.1' : 'v1.7.1';
 export const clientAxios = axios.create({
     baseURL: APIAddress,
     withCredentials: true,
@@ -25,8 +25,7 @@ clientAxios.interceptors.response.use(
             // 로그인 페이지로 리다이렉트
             window.location.href = '/login';
 
-            // 선택적: 사용자에게 알림
-            alert('세션이 만료되었습니다. 다시 로그인해주세요.');
+
         }
         return Promise.reject(error);
     }

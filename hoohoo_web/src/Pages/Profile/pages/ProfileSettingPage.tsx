@@ -1,4 +1,4 @@
-import React, {useEffect, useRef} from 'react';
+import React, {useRef} from 'react';
 import {FaChevronRight} from 'react-icons/fa';
 import {useNavigate} from 'react-router-dom';
 import {toast} from 'react-toastify';
@@ -82,7 +82,7 @@ const ButtonGroup = styled.div`
   padding: 0 20px;
 `;
 
-const ProfileButton = styled.button`
+const ProfileButton = styled.button<{inactive?: boolean}>`
   flex: 1;
   border: 1px solid ${theme.white};
   background-color: transparent;
@@ -93,6 +93,7 @@ const ProfileButton = styled.button`
   cursor: pointer;
   font-family: Inter;
   font-size: ${theme.fontSize.md};
+  opacity: ${props => (props.inactive ? 0.5 : 1)};
 `;
 const Divider = styled.div`
   width: calc(100% - 40px);
@@ -107,12 +108,12 @@ const MenuList = styled.div`
   margin-top: 20px;
 `;
 
-const MenuItem = styled.div`
+const MenuItem = styled.div<{disabled?: boolean}>`
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 20px;
-
+  opacity: ${props => (props.disabled ? 0.5 : 1)};
   cursor: pointer;
 `;
 const ProfileImageInput = styled.input`
@@ -137,14 +138,6 @@ function ProfileSettingPage() {
   const {user, logout, isAuthenticated, setUser} = useUserStore();
 
   const navigate = useNavigate();
-
-  useEffect(() => {
-    console.log('isAuthenticated', isAuthenticated);
-
-    // if (!isAuthenticated) {
-    //   navigate('/login');
-    // }
-  }, [isAuthenticated, navigate]);
 
   const handleLogout = async () => {
     const response = await logoutProfile();
@@ -201,7 +194,7 @@ function ProfileSettingPage() {
         </ProfileHeader>
 
         <ButtonGroup>
-          <ProfileButton>
+          <ProfileButton inactive={false}>
             <ProfileImageInput
               type="file"
               id="setting_profileImageInput"
@@ -217,16 +210,30 @@ function ProfileSettingPage() {
             </label>
           </ProfileButton>
 
-          <ProfileButton>{localizedTexts.changeProfileName}</ProfileButton>
+          <ProfileButton
+            onClick={() => {
+              toast.info(localizedTexts.notSupported);
+            }}
+            inactive={true}>
+            {localizedTexts.changeProfileName}
+          </ProfileButton>
         </ButtonGroup>
 
         <MenuList>
-          <MenuItem onClick={() => {}}>
+          <MenuItem
+            onClick={() => {
+              toast.info(localizedTexts.notSupported);
+            }}
+            disabled={true}>
             <MenuText>{localizedTexts.changeURL}</MenuText>
             <FaChevronRight size={20} color="#888" />
           </MenuItem>
           <Divider />
-          <MenuItem onClick={() => {}}>
+          <MenuItem
+            onClick={() => {
+              toast.info(localizedTexts.notSupported);
+            }}
+            disabled={true}>
             <MenuText>{localizedTexts.changePassword}</MenuText>
             <FaChevronRight size={20} color="#888" />
           </MenuItem>

@@ -1,11 +1,10 @@
 import React from 'react';
 import styled from 'styled-components';
-import {theme} from '../../../style';
 const LogoContainer = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: ${theme.darkGray};
+
   border-radius: 10px;
 `;
 function EarthMeraLogo({size}: {size: number}) {

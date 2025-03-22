@@ -5,10 +5,15 @@ import {PiDotsSixVerticalBold} from 'react-icons/pi';
 import styled, {css} from 'styled-components';
 import {theme} from '../../../style';
 import {
+  ProfileEMWidgetType,
   ProfileWidgetItemSize,
   ProfileWidgetItemType,
-  ProfileWidgetTypeEnum,
 } from '../types/WidgetItemType';
+import {getEMWidgetData} from '../util/EMWidgetData';
+import AchievementWidgetContent from './AchievementWidgetContent';
+import CarbonWidgetContent from './CarbonWidgetContent';
+import GalleryWidgetContent from './GalleryWidgetContent';
+import LeaderboardWidgetContent from './LeaderboardWidgetContent';
 
 const WIDTH = window.innerWidth > 600 ? 600 : window.innerWidth;
 
@@ -85,11 +90,59 @@ const WidgetItemContainer = styled.div<{
     }
   }}
 `;
-const WidgetAppNavImage = styled.img`
-  width: ${ITEM_WIDTH * 0.625}px;
-  height: ${ITEM_WIDTH * 0.625}px;
+const WidgetAppNavImage = styled.img<{
+  smallImage: boolean;
+  isLongItem: boolean;
+}>`
+  width: ${props =>
+    props.smallImage ? ITEM_HEIGHT * 0.6 : ITEM_WIDTH * 0.55}px;
+  height: ${props =>
+    props.smallImage ? ITEM_HEIGHT * 0.6 : ITEM_WIDTH * 0.55}px;
   object-fit: contain;
+  ${props =>
+    props.isLongItem &&
+    css`
+      position: absolute;
+      left: ${theme.spacing.lg};
+    `}
 `;
+const WidgetAppNavImageContainer = styled.div<{
+  smallImage: boolean;
+  isLongItem: boolean;
+}>`
+  width: 100%;
+  height: 100%;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: ${props =>
+    !props.isLongItem && props.smallImage ? 'flex-start' : 'center'};
+  gap: ${theme.spacing.rg};
+  flex-direction: ${props => (props.smallImage ? 'row' : 'column')};
+  margin-left: ${props =>
+    !props.isLongItem && props.smallImage ? theme.spacing.lg : '0px'};
+`;
+
+const WidgetAppNavImageText = styled.p<{
+  smallImage: boolean;
+  isLongItem: boolean;
+}>`
+  text-align: center;
+  font-size: ${props =>
+    props.smallImage ? theme.fontSize.lg : theme.fontSize.lg};
+  letter-spacing: 0.05rem;
+  color: ${theme.white};
+  font-weight: 600;
+  margin: 0px;
+  ${props =>
+    props.smallImage &&
+    !props.isLongItem &&
+    css`
+      width: calc(100% - ${theme.spacing.lg});
+      padding-right: ${theme.spacing.lg};
+    `}
+`;
+
 const WidgetContent = styled.div<{
   textColor?: string;
   size: ProfileWidgetItemSize;
@@ -213,20 +266,171 @@ const DeleteButton = styled.button`
 type WidgetItemProps = {
   widget: ProfileWidgetItemType | ProfileWidgetItemType[];
   isEditMode?: boolean;
-  onDeleteWidget?: (id: number) => void;
+  onDeleteWidget?: (item: ProfileWidgetItemType) => void;
   onEditWidget?: (item: ProfileWidgetItemType) => void;
+  userInfo?: {
+    userId: string;
+    name: string;
+    profileImage: string;
+  };
 };
+const NavigateLink = (
+  type: ProfileEMWidgetType,
+  userInfo: {userId: string; name: string; profileImage: string},
+) => {
+  const emWidgetData = getEMWidgetData();
+  switch (type) {
+    case ProfileEMWidgetType.CO2Saved:
+      return emWidgetData[type].link + '?userId=' + userInfo.userId;
+    case ProfileEMWidgetType.MyItems:
+      return emWidgetData[type].link + '?userId=' + userInfo.userId;
+    case ProfileEMWidgetType.Achievement:
+      return (
+        emWidgetData[type].link +
+        '?userId=' +
+        userInfo.userId +
+        '&name=' +
+        userInfo.name +
+        '&profileImage=' +
+        userInfo.profileImage
+      );
+    case ProfileEMWidgetType.Leaderboard:
+      return emWidgetData[type].link + '?userId=' + userInfo.userId;
+    case ProfileEMWidgetType.Groups:
+      return emWidgetData[type].link + '?userId=' + userInfo.userId;
+    case ProfileEMWidgetType.MyStore:
+      return emWidgetData[type].link + '?userId=' + userInfo.userId;
+    case ProfileEMWidgetType.MyGallery:
+      return (
+        emWidgetData[type].link + '?userId=' + userInfo.userId + '&initTab=2'
+      );
+    default:
+      return '';
+  }
+};
+
+function EMWidgetContent({
+  widgetItem,
+  userInfo,
+}: {
+  widgetItem: ProfileWidgetItemType;
+  userInfo?: {userId: string; name: string; profileImage: string};
+}) {
+  const emWidgetData = getEMWidgetData();
+  const isSmallImage = widgetItem.sizeType !== 'BIG';
+  const isLongItem = widgetItem.sizeType === 'LONG';
+
+  const link = userInfo
+    ? emWidgetData[widgetItem?.emWidgetType as ProfileEMWidgetType].link +
+      '?userId=' +
+      userInfo.userId
+    : '';
+
+  if (widgetItem.emWidgetType === ProfileEMWidgetType.CO2Saved) {
+    return (
+      <WidgetLink href={link} target="_blank" rel="appopener">
+        <CarbonWidgetContent
+          width={ITEM_WIDTH}
+          sizeType={widgetItem.sizeType}
+          annualEcoActionCount={
+            widgetItem.widgetData?.annualEcoActionCount || 0
+          }
+          annualCarbonReduction={
+            widgetItem.widgetData?.annualCarbonReduction || 0
+          }
+          treeEffect={widgetItem.widgetData?.treeEffect || 0}
+        />
+      </WidgetLink>
+    );
+    // CO2Saved 위젯 구현
+  } else if (widgetItem.emWidgetType === ProfileEMWidgetType.Achievement) {
+    return (
+      <WidgetLink href={link} target="_blank" rel="appopener">
+        <AchievementWidgetContent
+          width={ITEM_WIDTH}
+          sizeType={widgetItem.sizeType}
+          level={widgetItem.widgetData?.level || 0}
+          numBadges={widgetItem.widgetData?.numBadges || 0}
+          numMedals={widgetItem.widgetData?.numMedals || 0}
+          equippedMedals={widgetItem.widgetData?.equippedMedals || []}
+          equippedBadge={widgetItem.widgetData?.equippedBadge || ''}
+        />
+      </WidgetLink>
+    );
+  } else if (widgetItem.emWidgetType === ProfileEMWidgetType.Leaderboard) {
+    return (
+      <WidgetLink href={link} target="_blank" rel="appopener">
+        <LeaderboardWidgetContent
+          width={ITEM_WIDTH}
+          sizeType={widgetItem.sizeType}
+          ecoActionCount={widgetItem.widgetData?.ecoActionCount || 0}
+          higherRankInfo={
+            widgetItem.widgetData?.higherRankInfo || {
+              gap: 0,
+              ecoActionCount: 0,
+            }
+          }
+          lowerRankInfo={
+            widgetItem.widgetData?.lowerRankInfo || {
+              gap: 0,
+              ecoActionCount: 0,
+            }
+          }
+          lastMonthRank={widgetItem.widgetData?.lastMonthRank || 0}
+          userRank={widgetItem.widgetData?.userRank || 0}
+        />
+      </WidgetLink>
+    );
+  } else if (widgetItem.emWidgetType === ProfileEMWidgetType.MyGallery) {
+    return (
+      <WidgetLink href={link} target="_blank" rel="appopener">
+        <GalleryWidgetContent
+          width={ITEM_WIDTH}
+          cellHeight={ITEM_HEIGHT}
+          sizeType={widgetItem.sizeType}
+          thumbnails={widgetItem.widgetData?.thumbnails || []}
+        />
+      </WidgetLink>
+    );
+  } else {
+    return (
+      <WidgetLink href={link} target="_blank" rel="appopener">
+        <WidgetAppNavImageContainer
+          smallImage={isSmallImage}
+          isLongItem={isLongItem}>
+          <WidgetAppNavImage
+            smallImage={isSmallImage}
+            isLongItem={isLongItem}
+            src={
+              emWidgetData[widgetItem?.emWidgetType as ProfileEMWidgetType]
+                .image
+            }
+          />
+          <WidgetAppNavImageText
+            smallImage={isSmallImage}
+            isLongItem={isLongItem}>
+            {
+              emWidgetData[widgetItem?.emWidgetType as ProfileEMWidgetType]
+                .title
+            }
+          </WidgetAppNavImageText>
+        </WidgetAppNavImageContainer>
+      </WidgetLink>
+    );
+  }
+}
 
 function WidgetItem({
   widget,
   isEditMode = false,
   onDeleteWidget,
   onEditWidget,
+  userInfo,
 }: WidgetItemProps) {
   const widgetItem = widget as ProfileWidgetItemType;
-  const hasNavType = !!(widgetItem as ProfileWidgetItemType).type;
+  const hasEMWidgetType = !!(widgetItem as ProfileWidgetItemType)?.emWidgetType;
   const hasLink = !!widgetItem?.linkUrl;
-  const isClickable = isEditMode ? false : hasLink || hasNavType;
+  const isClickable = isEditMode ? false : hasLink || hasEMWidgetType;
 
   const textColor =
     widgetItem.bgType === 'COLOR' && widgetItem.bgColor
@@ -253,36 +457,27 @@ function WidgetItem({
   const handleEditClick = (e: React.MouseEvent) => {
     e.stopPropagation(); // 이벤트 버블링 방지
     console.log('Edit button clicked', widgetItem);
-    if (onEditWidget) {
+    if (onEditWidget && !widgetItem.isEmWidget) {
       onEditWidget(widgetItem);
     }
   };
+
   return (
     <WidgetItemContainer
-      key={widgetItem.id}
+      key={(widgetItem.isEmWidget ? 'em_' : 'custom_') + widgetItem.id}
       $size={widgetItem.sizeType}
       $isEditMode={isEditMode}
       $hasBorder={widgetItem?.hasBorder}
       $bgColor={
-        widgetItem.bgType === 'COLOR' ? widgetItem.bgColor : 'transparent'
+        hasEMWidgetType
+          ? '#383838'
+          : widgetItem.bgType === 'COLOR'
+            ? widgetItem.bgColor
+            : 'transparent'
       }
       $isClickable={isClickable}>
-      {hasNavType ? (
-        <WidgetLink target="_blank" rel="appopener">
-          <WidgetAppNavImage
-            src={
-              widgetItem.type === ProfileWidgetTypeEnum.AppGroup
-                ? '/Images/profile_widget_people.png'
-                : widgetItem.type === ProfileWidgetTypeEnum.AppRank
-                  ? '/Images/profile_widget_trophy.png'
-                  : widgetItem.type === ProfileWidgetTypeEnum.AppRecycle
-                    ? '/Images/profile_widget_recycle.png'
-                    : widgetItem.type === ProfileWidgetTypeEnum.AppShop
-                      ? '/Images/profile_widget_shop.png'
-                      : ''
-            }
-          />
-        </WidgetLink>
+      {widgetItem.isEmWidget && hasEMWidgetType ? (
+        <EMWidgetContent widgetItem={widgetItem} userInfo={userInfo} />
       ) : isClickable ? (
         <WidgetLink
           href={widgetItem.linkUrl}
@@ -302,13 +497,17 @@ function WidgetItem({
           <EditBox>
             <DeleteButton
               className="widget-button"
-              onClick={() => onDeleteWidget && onDeleteWidget(widgetItem.id)}>
+              onClick={() => onDeleteWidget && onDeleteWidget(widgetItem)}>
               <FaTimes size={16} color="white" />
             </DeleteButton>
-            <Divider />
-            <EditButton className="widget-button" onClick={handleEditClick}>
-              <FaPencil size={14} color="white" />
-            </EditButton>
+            {!widgetItem.isEmWidget && (
+              <>
+                <Divider />
+                <EditButton className="widget-button" onClick={handleEditClick}>
+                  <FaPencil size={14} color="white" />
+                </EditButton>
+              </>
+            )}
           </EditBox>
         </>
       )}

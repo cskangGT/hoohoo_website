@@ -59,9 +59,9 @@ function makeLayoutItem(
     : item.coordinate?.x || 0;
 
   const y = item.coordinate?.y || 0;
-
+  const id = item.isEmWidget ? 'em_' + item.id : 'custom_' + item.id;
   return {
-    i: String(item.id), // 고유 key
+    i: id, // 고유 key
     x: x,
     y: y,
     w,
@@ -78,9 +78,10 @@ export default function MainProfileGrid() {
     setCurrentWidgets,
     isEditing,
     isMyLink,
-    setDeletedWidgetIds,
+    setDeletedWidgetItems,
     setSelectedItem,
     setIsEditingItem,
+    userData,
   } = useProfile();
   const isInitialRenderRef = useRef(true);
 
@@ -95,17 +96,17 @@ export default function MainProfileGrid() {
         makeLayoutItem(widgetItem, isInitialRenderRef.current),
     );
   }, [currentWidgets]);
-  async function onDeleteWidget(id: number) {
+  async function onDeleteWidget(item: ProfileWidgetItemType) {
     setCurrentWidgets((prev: ProfileWidgetItemType[]) => {
       const newWidgets = prev.filter((widget: ProfileWidgetItemType) => {
         if (Array.isArray(widget)) {
-          return widget.some(w => w.id !== id);
+          return widget.some(w => w.id !== item.id);
         }
-        return widget.id !== id;
+        return widget.id !== item.id;
       });
       return newWidgets;
     });
-    setDeletedWidgetIds(prev => [...prev, id]);
+    setDeletedWidgetItems(prev => [...prev, item]);
   }
   /** onLayoutChange 콜백 - 위젯 위치 변경 시 저장 */
   const handleLayoutChange = (currentLayout: Layout[]) => {
@@ -153,7 +154,9 @@ export default function MainProfileGrid() {
       compactType={'vertical'}
       preventCollision={false}>
       {currentWidgets.map((widgetItem: ProfileWidgetItemType) => {
-        const keyStr = String(widgetItem.id);
+        const keyStr = String(
+          (widgetItem.isEmWidget ? 'em_' : 'custom_') + widgetItem.id,
+        );
 
         return (
           <div
@@ -164,6 +167,7 @@ export default function MainProfileGrid() {
               isEditMode={isEditing}
               onDeleteWidget={onDeleteWidget}
               onEditWidget={onEditWidget}
+              userInfo={userData?.linkedUserInfo}
             />
           </div>
         );
