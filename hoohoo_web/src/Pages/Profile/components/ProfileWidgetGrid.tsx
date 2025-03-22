@@ -62,7 +62,7 @@ const BlurOverlay = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  z-index: 10;
+
   row-gap: ${theme.spacing.xm};
 `;
 const VacantText = styled.p`
