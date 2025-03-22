@@ -239,8 +239,8 @@ function SetupProfile() {
     setIsLoading(true);
 
     // 한국어, 영어, 숫자, 밑줄, 마침표만 허용하는 정규식
-    const validCharsRegex = /^[a-zA-Z0-9가-힣ㄱ-ㅎㅏ-ㅣ_.]+$/;
-    const startsOrEndsWithSpecial = /^[.]|[.]$/;
+    const validCharsRegex = /^[a-zA-Z0-9가-힣ㄱ-ㅎㅏ-ㅣ_. ]+$/;
+    const startsOrEndsWithSpecial = /^[ .]|[. ]$/;
 
     console.log('name', name);
 

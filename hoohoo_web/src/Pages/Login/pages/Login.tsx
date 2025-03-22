@@ -258,8 +258,12 @@ const Login = () => {
       const res = await (window as any)?.AppleID?.auth?.signIn();
       console.log(res);
       console.log(res);
-      if (res?.id_token && res?.code) {
-        const response = await sendAppleLogin(res.code, res.id_token);
+      if (res?.authorization?.id_token && res?.authorization?.code) {
+        const response = await sendAppleLogin(
+          res.authorization.code,
+          res.authorization.id_token,
+        );
+        console.log('response', response);
         if (response.result) {
           setUser(response.data.user);
           getAPIKey();
