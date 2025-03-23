@@ -1310,5 +1310,11 @@
     "description": "Connect your EarthMera to create<br />a richer bio link with your CO₂ reduction,<br />groups, badges, and medals.",
 
     "synced": ["Synced Account ", ""]
+  },
+  "ErrorComponent": {
+    "title": "Page not found",
+    "description": "The page you are looking for does not exist.<br />Please check the URL or try again.",
+    "button": "Go back to the previous page",
+    "button2": "Go to the home page"
   }
 }
