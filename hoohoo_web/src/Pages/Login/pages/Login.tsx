@@ -199,6 +199,7 @@ const Login = () => {
     wrongPassword: false,
   });
   const handleGoogleLogin = useGoogleLogin({
+    redirect_uri: 'postmessage',
     onSuccess: async tokenResponse => {
       const response = await sendGoogleLogin(tokenResponse.code);
       if (response.result) {
@@ -213,6 +214,7 @@ const Login = () => {
       } else {
         if (response.status === 400) {
           alert(localizedTexts.errorText.noAccount);
+          navigate('/pre-signup');
         }
       }
     },
@@ -222,8 +224,6 @@ const Login = () => {
   const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
     // 로그인 로직 구현
-    console.log('email', email);
-    console.log('password', password);
 
     if (email.length === 0 || password.length === 0) {
       return;
@@ -244,7 +244,6 @@ const Login = () => {
     } else {
       setError({...error, wrongPassword: true});
     }
-    console.log('로그인 시도:', email, password);
   };
   const handleAppleLogin = async () => {
     (window as any)?.AppleID?.auth?.init({

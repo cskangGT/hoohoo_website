@@ -193,6 +193,7 @@ const Signup = () => {
 
       if (response.result) {
         sessionStorage.removeItem('storedNameTag');
+        getAPIKey();
         setUser(response.data.user);
         if (response.data?.user?.isNeedsQuestionnaire) {
           navigate('/setup/select-goal');
@@ -201,9 +202,13 @@ const Signup = () => {
         }
       } else {
         if (response.status === 400) {
-          alert('link is not found');
+          alert(localizedTexts.errorText.linkNotfound);
+          sessionStorage.removeItem('storedNameTag');
+          navigate('/pre-signup');
         } else {
-          alert('error occured');
+          alert(localizedTexts.errorText.errorOccured);
+          sessionStorage.removeItem('storedNameTag');
+          navigate('/pre-signup');
         }
       }
     },

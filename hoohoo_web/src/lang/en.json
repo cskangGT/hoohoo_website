@@ -1074,7 +1074,9 @@
     "errorText": {
       "alreadyExists": "This email is already in use. Please try another one.",
       "invalidEmail": "Invalid email. Please double-check your email.",
-      "invalidPassword": "Password must be 8-15 characters long, include uppercase and lowercase letters, numbers, and special characters."
+      "invalidPassword": "Password must be 8-15 characters long, include uppercase and lowercase letters, numbers, and special characters.",
+      "linkNotfound": "The link is not found. Please try again.",
+      "errorOccured": "An error occurred. Please try again."
     }
   },
   "PreSignup": {

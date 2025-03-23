@@ -73,7 +73,13 @@ export const useUserStore = create<UserState>()(
                 myWidgets: widgets
             }),
             logout: () => set({
-                user: initialUser, isAuthenticated: false, isSyncedWithEM: false
+                user: initialUser, isAuthenticated: false, isSyncedWithEM: false,
+                linkedUserInfo: {
+                    userId: '',
+                    name: '',
+                    profileImage: ''
+                },
+                myWidgets: []
             }),
         }),
         {
