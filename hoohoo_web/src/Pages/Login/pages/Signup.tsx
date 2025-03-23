@@ -193,6 +193,7 @@ const Signup = () => {
 
       if (response.result) {
         sessionStorage.removeItem('storedNameTag');
+        getAPIKey();
         setUser(response.data.user);
         if (response.data?.user?.isNeedsQuestionnaire) {
           navigate('/setup/select-goal');
@@ -200,10 +201,14 @@ const Signup = () => {
           navigate(`/zigu/${response.data.user.nameTag}`);
         }
       } else {
-        if (response.status === 400) {
-          alert('link is not found');
+        if (response.status === 409) {
+          alert(localizedTexts.errorText.alreadyAccount);
+          sessionStorage.removeItem('storedNameTag');
+          navigate('/pre-signup');
         } else {
-          alert('error occured');
+          alert(localizedTexts.errorText.errorOccured);
+          sessionStorage.removeItem('storedNameTag');
+          navigate('/pre-signup');
         }
       }
     },
@@ -239,6 +244,16 @@ const Signup = () => {
             navigate('/setup/select-goal', {replace: true});
           } else {
             navigate(`/zigu/${response.data.user.nameTag}`, {replace: true});
+          }
+        } else {
+          if (response.status === 409) {
+            alert(localizedTexts.errorText.alreadyAccount);
+            sessionStorage.removeItem('storedNameTag');
+            navigate('/login');
+          } else {
+            alert(localizedTexts.errorText.errorOccured);
+            sessionStorage.removeItem('storedNameTag');
+            navigate('/pre-signup');
           }
         }
       }
@@ -304,7 +319,7 @@ const Signup = () => {
               <GoogleLogo text={localizedTexts.signupWithGoogle} />
             </SocialButton>
 
-            {/* <SocialButton onClick={handleAppleLogin}>
+            <SocialButton onClick={handleAppleLogin}>
               <SocialInnerBox>
                 <svg
                   width="24"
@@ -318,7 +333,7 @@ const Signup = () => {
                 </svg>
                 <span>{localizedTexts.signupWithApple}</span>
               </SocialInnerBox>
-            </SocialButton> */}
+            </SocialButton>
 
             <KakaoButton onClick={handleKakaoLogin}>
               <SocialInnerBox>

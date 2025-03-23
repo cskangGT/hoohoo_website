@@ -17,12 +17,14 @@ function KakaoCallback() {
   const code = new URLSearchParams(window.location.search).get('code');
   useEffect(() => {
     if (!code) {
+      alert(localizedText.error);
       return;
     }
     setLoading(true);
     const storedNameTag = sessionStorage.getItem('storedNameTag');
     console.log('storedNameTag in Kakao', storedNameTag);
     // 백엔드에 인증 코드 전송
+
     sendKakaoLogin(code, storedNameTag || '')
       .then(response => {
         console.log('response', response);
@@ -37,12 +39,16 @@ function KakaoCallback() {
           } else {
             navigate(`/zigu/${response.data.user.nameTag}`, {replace: true});
           }
-        } else if (response.status === 400) {
-          alert(localizedText.noAccount);
-          navigate('/pre-signup');
+        } else if (response.status === 409) {
+          alert(
+            storedNameTag
+              ? localizedText.hasAccount
+              : localizedText.anotherMethod,
+          );
+          navigate('/login');
         } else {
           alert(localizedText.error);
-          navigate('/login');
+          navigate('/pre-signup');
         }
       })
       .catch(err => {

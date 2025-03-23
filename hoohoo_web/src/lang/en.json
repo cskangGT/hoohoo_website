@@ -1057,7 +1057,10 @@
     "continueWithKakao": "Continue with Kakao",
     "errorText": {
       "invalidEmail": "Invalid email. Please double-check your email.",
-      "noAccount": "No account found for this email. Please sign up first."
+      "noAccount": "No account found for this email. Please sign up first.",
+      "wrongPassword": "Wrong password. Please try again.",
+      "anotherMethod": "Please try another method to login.",
+      "errorOccured": "An error occurred. Please try again."
     }
   },
   "Signup": {
@@ -1073,8 +1076,11 @@
     "continue": "Continue",
     "errorText": {
       "alreadyExists": "This email is already in use. Please try another one.",
+      "alreadyAccount": "This email is already in use.",
       "invalidEmail": "Invalid email. Please double-check your email.",
-      "invalidPassword": "Password must be 8-15 characters long, include uppercase and lowercase letters, numbers, and special characters."
+      "invalidPassword": "Password must be 8-15 characters long, include uppercase and lowercase letters, numbers, and special characters.",
+      "linkNotfound": "The link is not found. Please try again.",
+      "errorOccured": "An error occurred. Please try again."
     }
   },
   "PreSignup": {
@@ -1200,7 +1206,8 @@
     "name": "Profile name"
   },
   "KakaoCallback": {
-    "noAccount": "No account found. Please sign up first.",
+    "hasAccount": "This email is already in use.",
+    "anotherMethod": "Please try another method to login.",
     "error": "An error occurred. Please try again."
   },
   "APIErrorCase": {

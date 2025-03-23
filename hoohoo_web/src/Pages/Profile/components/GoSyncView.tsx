@@ -115,8 +115,10 @@ function GoSyncView() {
         setDeepLinkUrl(linkUrl);
       }
     };
-    !linkedUserInfo && fetchQRCode();
-  }, []);
+    console.log('!linkedUserInfo', !linkedUserInfo);
+
+    !linkedUserInfo.userId && fetchQRCode();
+  }, [linkedUserInfo]);
 
   return (
     <>

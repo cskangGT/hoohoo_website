@@ -58,6 +58,13 @@ const InnerBox = styled.div`
   border-radius: 8px;
   padding: ${theme.spacing.xl};
 `;
+const ErrorText = styled.p`
+  color: ${theme.red};
+  font-size: ${theme.fontSize.rg};
+  font-weight: 400;
+  margin: 0px;
+  margin-left: ${theme.spacing.rg};
+`;
 const TitleText = styled.h2<{language: string}>`
   font-size: ${theme.fontSize['3xl']};
   line-height: 30px;
@@ -199,6 +206,7 @@ const Login = () => {
     wrongPassword: false,
   });
   const handleGoogleLogin = useGoogleLogin({
+    redirect_uri: 'postmessage',
     onSuccess: async tokenResponse => {
       const response = await sendGoogleLogin(tokenResponse.code);
       if (response.result) {
@@ -213,6 +221,11 @@ const Login = () => {
       } else {
         if (response.status === 400) {
           alert(localizedTexts.errorText.noAccount);
+          navigate('/pre-signup');
+        } else if (response.status === 409) {
+          alert(localizedTexts.errorText.anotherMethod);
+        } else {
+          alert(localizedTexts.errorText.errorOccured);
         }
       }
     },
@@ -222,8 +235,6 @@ const Login = () => {
   const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
     // 로그인 로직 구현
-    console.log('email', email);
-    console.log('password', password);
 
     if (email.length === 0 || password.length === 0) {
       return;
@@ -242,9 +253,14 @@ const Login = () => {
         navigate(`/zigu/${response.data.user.nameTag}`);
       }
     } else {
-      setError({...error, wrongPassword: true});
+      if (response.status === 400) {
+        setError({...error, wrongPassword: true});
+      } else if (response.status === 409) {
+        alert(localizedTexts.errorText.anotherMethod);
+      } else {
+        alert(localizedTexts.errorText.errorOccured);
+      }
     }
-    console.log('로그인 시도:', email, password);
   };
   const handleAppleLogin = async () => {
     (window as any)?.AppleID?.auth?.init({
@@ -272,6 +288,15 @@ const Login = () => {
             navigate('/setup/select-goal', {replace: true});
           } else {
             navigate(`/zigu/${response.data.user.nameTag}`, {replace: true});
+          }
+        } else {
+          if (response.status === 400) {
+            alert(localizedTexts.errorText.noAccount);
+            navigate('/pre-signup');
+          } else if (response.status === 409) {
+            alert(localizedTexts.errorText.anotherMethod);
+          } else {
+            alert(localizedTexts.errorText.errorOccured);
           }
         }
       }
@@ -356,6 +381,14 @@ const Login = () => {
                     />
                   </FormControl>
                 </TextFieldContainer>
+                {error.wrongPassword && (
+                  <ErrorText>
+                    {localizedTexts.errorText.wrongPassword}
+                  </ErrorText>
+                )}
+                {error.invalidEmail && (
+                  <ErrorText>{localizedTexts.errorText.invalidEmail}</ErrorText>
+                )}
                 <LoginButton type="submit">{localizedTexts.login}</LoginButton>
                 <ForgotPassword>
                   <ForgotPasswordButton onClick={() => {}}>
@@ -369,7 +402,7 @@ const Login = () => {
                     <GoogleLogo text={localizedTexts.continueWithGoogle} />
                   </SocialButton>
 
-                  {/* <SocialButton onClick={handleAppleLogin}>
+                  <SocialButton onClick={handleAppleLogin}>
                     <SocialInnerBox>
                       <svg
                         width="24"
@@ -383,7 +416,7 @@ const Login = () => {
                       </svg>
                       <span>{localizedTexts.continueWithApple}</span>
                     </SocialInnerBox>
-                  </SocialButton> */}
+                  </SocialButton>
 
                   <KakaoButton onClick={handleKakaoLogin}>
                     <SocialInnerBox>

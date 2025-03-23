@@ -1,9 +1,7 @@
 import React from 'react';
 
 import {CircularProgress} from '@mui/material';
-import i18next from 'i18next';
 import styled from 'styled-components';
-import {theme} from '../../../style';
 import {useProfile} from '../contexts/ProfileContext';
 import {
   ProfileEMWidgetType,
@@ -12,6 +10,7 @@ import {
 } from '../types/WidgetItemType';
 import MainProfileGrid from './MainProfileGrid';
 import WidgetItem from './WidgetItem';
+import ZiguLinkToApp from './ZiguLinkToApp';
 
 const WidgetGrid = styled.div`
   display: flex;
@@ -42,65 +41,8 @@ const CircularProgressContainer = styled.div`
   flex: 1;
 `;
 const WIDTH = window.innerWidth > 600 ? 600 : window.innerWidth;
-const BlurOverlay = styled.div`
-  position: absolute;
-  top: -10px;
-  left: -36px;
-  right: -36px;
-  opacity: 1;
-  /* width: ${WIDTH}px; */
-  height: 105%;
 
-  background: linear-gradient(
-    180deg,
-    rgba(30, 30, 30, 0.6) 0%,
-    rgba(75, 75, 75, 0.9) 48.5%,
-    rgba(45, 45, 45, 0) 78.32%
-  );
-  backdrop-filter: blur(2px);
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-
-  row-gap: ${theme.spacing.xm};
-`;
-const VacantText = styled.p`
-  color: ${theme.white};
-  font-size: ${theme.fontSize.xl};
-  font-weight: 400;
-  text-align: center;
-  margin: 0 20px;
-  line-height: 1.5;
-`;
-const OverlayText = styled.p`
-  color: ${theme.white};
-  font-size: ${theme.fontSize.xl};
-  font-weight: 400;
-  text-align: center;
-  margin: 0 20px;
-  line-height: 1.5;
-`;
-const VacantContainer = styled.div`
-  width: 100%;
-  height: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-`;
-const OverlayButton = styled.button`
-  background-color: transparent;
-
-  cursor: pointer;
-  padding: ${theme.spacing.sm} ${theme.spacing.lg};
-  border: 1px solid ${theme.white};
-  border-radius: 20px;
-  color: ${theme.white};
-  font-size: ${theme.fontSize.xl};
-  font-weight: 400;
-  text-align: center;
-`;
-const AbEMWidget: ProfileWidgetItemType[] = [
+export const AbEMWidget: ProfileWidgetItemType[] = [
   {
     id: 1,
     sizeType: 'BIG',
@@ -203,17 +145,7 @@ const AbEMWidget: ProfileWidgetItemType[] = [
 ];
 
 function ProfileWidgetGrid() {
-  const localizedTexts: any = i18next.t('ProfileLinkPage', {
-    returnObjects: true,
-  });
   const {currentWidgets, isMyLink, isLoading, isSyncedWithEM} = useProfile();
-  function linktoApp() {
-    // const platform = getDevicePlatform();
-    // const appStoreLink =
-    //   platform === 'iOS' ? iosAppStoreLink : androidAppStoreLink;
-    const link = 'https://www.earthmera.com/redirect?link=earthmera://';
-    window.open(link, '_blank');
-  }
 
   return (
     <Container>
@@ -237,23 +169,7 @@ function ProfileWidgetGrid() {
                   </BlurredWidgetGrid>
                 )}
               </BlurredContainer>
-              {!isSyncedWithEM && (
-                <BlurredWidgetGrid>
-                  {AbEMWidget.slice(5).map(widget => (
-                    <WidgetItem key={widget.id} widget={widget} />
-                  ))}
-                  <BlurOverlay>
-                    <OverlayText
-                      dangerouslySetInnerHTML={{
-                        __html: localizedTexts.suggestSync,
-                      }}
-                    />
-                    <OverlayButton onClick={linktoApp}>
-                      {localizedTexts.openEarthMeraApp}
-                    </OverlayButton>
-                  </BlurOverlay>
-                </BlurredWidgetGrid>
-              )}
+              {!isSyncedWithEM && <ZiguLinkToApp />}
             </>
           )}
         </>
