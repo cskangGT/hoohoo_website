@@ -74,6 +74,7 @@ function makeLayoutItem(
 export default function MainProfileGrid() {
   const {
     currentWidgets,
+
     setIsEditing,
     setCurrentWidgets,
     isEditing,
@@ -106,6 +107,7 @@ export default function MainProfileGrid() {
       });
       return newWidgets;
     });
+
     setDeletedWidgetItems(prev => [...prev, item]);
   }
   /** onLayoutChange 콜백 - 위젯 위치 변경 시 저장 */
@@ -116,9 +118,10 @@ export default function MainProfileGrid() {
     // (A) currentLayout의 각 아이템 -> widgets의 item 매핑
     setCurrentWidgets(prevWidgets => {
       return prevWidgets.map(widget => {
-        const found = currentLayout.find(l => l.i === String(widget.id));
+        const found = currentLayout.find(
+          l => l.i === (widget.isEmWidget ? 'em_' : 'custom_') + widget.id,
+        );
         if (found) {
-          // (B) widget.coordinate 갱신
           return {
             ...widget,
             coordinate: {

@@ -111,7 +111,7 @@ const ActionButton = styled.button<{$isLongButton?: boolean}>`
     height: 50px;
     padding: ${theme.spacing.sm} 8px;
     width: 50px;
-    border-radius: 20px;
+    border-radius: 25px;
   }
   @media (max-width: 400px) {
     height: 40px;
@@ -125,35 +125,37 @@ function FixedBottomEditView() {
   const localizedTexts: any = i18next.t('ProfileLinkPage', {
     returnObjects: true,
   });
-  const {setMyWidgets} = useUserStore();
+  const {isSyncedWithEM, setMyWidgets} = useUserStore();
 
   const navigate = useNavigate();
   const {
     startEditing,
     setIsEditing,
     currentWidgets,
+    originalWidgets,
     deletedWidgetItems,
     isEditing,
-    isSyncedWithEM,
+
     setDeletedWidgetItems,
     setOriginalWidgets,
     isMyLink,
     userData,
   } = useProfile();
+
   function handleCreateWidget() {
     setMyWidgets(currentWidgets);
-    navigate('/profile/create-widget', {
-      state: {
-        isSyncedWithEM: isSyncedWithEM,
-      },
-    });
+    navigate('/profile/create-widget');
   }
   function handleGoSync() {
     navigate('/profile/settings/sync');
   }
   const handleDone = async () => {
-    // 수정하는 api
     if (deletedWidgetItems.length === 0 && currentWidgets.length === 0) {
+      setIsEditing(false);
+      return;
+    }
+    if (JSON.stringify(currentWidgets) === JSON.stringify(originalWidgets)) {
+      setIsEditing(false);
       return;
     }
     const updatedWidgets = currentWidgets.map(
@@ -165,6 +167,8 @@ function FixedBottomEditView() {
         },
       }),
     );
+    console.log('updatedWidgets', updatedWidgets);
+
     const response = await updateWidgets(updatedWidgets, deletedWidgetItems);
     if (response.result) {
       toast.success('Successfully updated');

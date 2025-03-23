@@ -1,7 +1,7 @@
 import i18next from 'i18next';
 import React, {useState} from 'react';
 import {FaChevronDown, FaChevronUp} from 'react-icons/fa';
-import {useLocation, useNavigate} from 'react-router-dom';
+import {useNavigate} from 'react-router-dom';
 import {toast} from 'react-toastify';
 import styled from 'styled-components';
 import 'swiper/css';
@@ -146,10 +146,10 @@ function ProfileCreateWidgetPage() {
   const localizedTexts: any = i18next.t('ProfileCreateWidgetPage', {
     returnObjects: true,
   });
-  const {state} = useLocation();
-  const isSyncedWithEM = state?.isSyncedWithEM;
+
+  const {isSyncedWithEM} = useUserStore();
   const navigate = useNavigate();
-  const {myWidgets} = useUserStore();
+
   const [selectedStyle, setSelectedStyle] =
     useState<ProfileWidgetItemSize>('BIG');
   const [selectedColor, setSelectedColor] = useState<string>('transparent');
@@ -293,7 +293,11 @@ function ProfileCreateWidgetPage() {
     setIsDropdownOpen(false);
   };
   console.log('selectedAsset', selectedAsset);
-
+  const handleLinkURLBlur = () => {
+    if (!linkURL.startsWith('http')) {
+      setLinkURL('https://' + linkURL);
+    }
+  };
   return (
     <TopHeaderBackButtonWrapperView>
       <Container>
@@ -448,6 +452,7 @@ function ProfileCreateWidgetPage() {
           placeholder="https://"
           value={linkURL}
           disabled={!!selectedAsset}
+          onBlur={handleLinkURLBlur}
           onChange={e => setLinkURL(e.target.value)}
         />
 
