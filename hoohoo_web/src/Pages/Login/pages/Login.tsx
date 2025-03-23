@@ -58,6 +58,13 @@ const InnerBox = styled.div`
   border-radius: 8px;
   padding: ${theme.spacing.xl};
 `;
+const ErrorText = styled.p`
+  color: ${theme.red};
+  font-size: ${theme.fontSize.rg};
+  font-weight: 400;
+  margin: 0px;
+  margin-left: ${theme.spacing.rg};
+`;
 const TitleText = styled.h2<{language: string}>`
   font-size: ${theme.fontSize['3xl']};
   line-height: 30px;
@@ -215,6 +222,10 @@ const Login = () => {
         if (response.status === 400) {
           alert(localizedTexts.errorText.noAccount);
           navigate('/pre-signup');
+        } else if (response.status === 409) {
+          alert(localizedTexts.errorText.anotherMethod);
+        } else {
+          alert(localizedTexts.errorText.errorOccured);
         }
       }
     },
@@ -242,7 +253,13 @@ const Login = () => {
         navigate(`/zigu/${response.data.user.nameTag}`);
       }
     } else {
-      setError({...error, wrongPassword: true});
+      if (response.status === 400) {
+        setError({...error, wrongPassword: true});
+      } else if (response.status === 409) {
+        alert(localizedTexts.errorText.anotherMethod);
+      } else {
+        alert(localizedTexts.errorText.errorOccured);
+      }
     }
   };
   const handleAppleLogin = async () => {
@@ -271,6 +288,15 @@ const Login = () => {
             navigate('/setup/select-goal', {replace: true});
           } else {
             navigate(`/zigu/${response.data.user.nameTag}`, {replace: true});
+          }
+        } else {
+          if (response.status === 400) {
+            alert(localizedTexts.errorText.noAccount);
+            navigate('/pre-signup');
+          } else if (response.status === 409) {
+            alert(localizedTexts.errorText.anotherMethod);
+          } else {
+            alert(localizedTexts.errorText.errorOccured);
           }
         }
       }
@@ -355,6 +381,14 @@ const Login = () => {
                     />
                   </FormControl>
                 </TextFieldContainer>
+                {error.wrongPassword && (
+                  <ErrorText>
+                    {localizedTexts.errorText.wrongPassword}
+                  </ErrorText>
+                )}
+                {error.invalidEmail && (
+                  <ErrorText>{localizedTexts.errorText.invalidEmail}</ErrorText>
+                )}
                 <LoginButton type="submit">{localizedTexts.login}</LoginButton>
                 <ForgotPassword>
                   <ForgotPasswordButton onClick={() => {}}>

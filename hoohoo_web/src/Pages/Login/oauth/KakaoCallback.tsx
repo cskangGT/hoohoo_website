@@ -39,12 +39,16 @@ function KakaoCallback() {
           } else {
             navigate(`/zigu/${response.data.user.nameTag}`, {replace: true});
           }
-        } else if (response.status === 400) {
-          alert(localizedText.noAccount);
-          navigate('/pre-signup');
+        } else if (response.status === 409) {
+          alert(
+            storedNameTag
+              ? localizedText.hasAccount
+              : localizedText.anotherMethod,
+          );
+          navigate('/login');
         } else {
           alert(localizedText.error);
-          navigate('/login');
+          navigate('/pre-signup');
         }
       })
       .catch(err => {

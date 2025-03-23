@@ -201,8 +201,8 @@ const Signup = () => {
           navigate(`/zigu/${response.data.user.nameTag}`);
         }
       } else {
-        if (response.status === 400) {
-          alert(localizedTexts.errorText.linkNotfound);
+        if (response.status === 409) {
+          alert(localizedTexts.errorText.alreadyAccount);
           sessionStorage.removeItem('storedNameTag');
           navigate('/pre-signup');
         } else {
@@ -244,6 +244,16 @@ const Signup = () => {
             navigate('/setup/select-goal', {replace: true});
           } else {
             navigate(`/zigu/${response.data.user.nameTag}`, {replace: true});
+          }
+        } else {
+          if (response.status === 409) {
+            alert(localizedTexts.errorText.alreadyAccount);
+            sessionStorage.removeItem('storedNameTag');
+            navigate('/login');
+          } else {
+            alert(localizedTexts.errorText.errorOccured);
+            sessionStorage.removeItem('storedNameTag');
+            navigate('/pre-signup');
           }
         }
       }
