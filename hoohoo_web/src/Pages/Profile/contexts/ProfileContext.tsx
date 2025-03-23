@@ -26,7 +26,7 @@ interface ProfileContextType {
   selectedItem: ProfileWidgetItemType | null;
   // 사용자 데이터
   userData: UserData;
-  isSyncedWithEM: boolean;
+
   // 액션 함수들
   setUserData: (userData: UserData) => void;
   startEditing: () => void;
@@ -102,9 +102,9 @@ export const ProfileProvider: React.FC<ProfileProviderProps> = ({
   const [selectedItem, setSelectedItem] =
     useState<ProfileWidgetItemType | null>(null);
   // 로그인 사용자 인증 정보
-  const {user, isAuthenticated, setProfileImage} = useUserStore();
+  const {user, isAuthenticated, setLinkedUserInfo, setProfileImage} =
+    useUserStore();
   const [isMyLink, setIsMyLink] = useState<boolean>(false);
-  const [isSyncedWithEM, setIsSyncedWithEM] = useState<boolean>(false);
 
   // 사용자 인증 정보 변경 시 isMyLink 업데이트
   useEffect(() => {
@@ -139,6 +139,12 @@ export const ProfileProvider: React.FC<ProfileProviderProps> = ({
 
         if (user.nameTag === targetNameTag) {
           setProfileImage(response.data.profileImage);
+          response.data.linkedUserInfo &&
+            setLinkedUserInfo({
+              userId: response.data.linkedUserInfo.userId,
+              name: response.data.linkedUserInfo.name,
+              profileImage: response.data.linkedUserInfo.profileImage,
+            });
         }
         if (response.data.widgets) {
           const newWidgets = response.data.widgets.map(
@@ -206,7 +212,6 @@ export const ProfileProvider: React.FC<ProfileProviderProps> = ({
     userData,
     selectedItem,
     isEditingItem,
-    isSyncedWithEM,
     setUserData,
     setIsMyLink,
     startEditing,

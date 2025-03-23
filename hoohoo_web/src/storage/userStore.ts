@@ -66,8 +66,11 @@ export const useUserStore = create<UserState>()(
                     profileImage: profileImage
                 }
             })),
-            setLinkedUserInfo: (linkedUserInfo: LinkedUserInfo) => set({
-                linkedUserInfo: linkedUserInfo
+            setLinkedUserInfo: (linkedUserInfo: LinkedUserInfo) => set((state) => {
+                return {
+                    linkedUserInfo: linkedUserInfo,
+                    isSyncedWithEM: linkedUserInfo.userId !== ''
+                }
             }),
             setMyWidgets: (widgets: ProfileWidgetItemType[]) => set({
                 myWidgets: widgets

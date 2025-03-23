@@ -2,6 +2,7 @@ import React from 'react';
 
 import {CircularProgress} from '@mui/material';
 import styled from 'styled-components';
+import {useUserStore} from '../../../storage/userStore';
 import {useProfile} from '../contexts/ProfileContext';
 import {
   ProfileEMWidgetType,
@@ -145,7 +146,8 @@ export const AbEMWidget: ProfileWidgetItemType[] = [
 ];
 
 function ProfileWidgetGrid() {
-  const {currentWidgets, isMyLink, isLoading, isSyncedWithEM} = useProfile();
+  const {currentWidgets, isMyLink, isLoading} = useProfile();
+  const {isSyncedWithEM} = useUserStore();
 
   return (
     <Container>
