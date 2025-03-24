@@ -9,7 +9,7 @@ interface MobileViewFrameProps {
 
 const OuterContainer = styled.div`
   width: 100%;
-  height: 100vh;
+  height: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -27,8 +27,9 @@ const OuterContainer = styled.div`
 const MobileContainer = styled.div`
   width: 100%;
   max-width: 600px;
-  height: 100vh;
-  max-height: 100vh;
+  height: 100%;
+  min-height: 100vh;
+
   margin: 0 auto;
   background-color: ${'#1e1e1e'};
   border-radius: 0;
