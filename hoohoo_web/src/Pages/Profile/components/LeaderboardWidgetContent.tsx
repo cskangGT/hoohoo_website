@@ -144,10 +144,20 @@ const RankUp = styled.div<{big?: boolean}>`
   `}
   @media (max-width: 600px) {
     font-size: ${theme.fontSize.rg};
+    ${props =>
+      props.big &&
+      `
+        padding: 6px 10px;
+      `}
   }
   @media (max-width: 400px) {
     font-size: ${theme.fontSize.sm};
-    border-radius: 16px;
+
+    ${props =>
+      props.big &&
+      `
+        padding: 4px 10px;
+      `}
   }
 `;
 
@@ -170,10 +180,19 @@ const RankDown = styled.div<{big?: boolean}>`
   `}
   @media (max-width: 600px) {
     font-size: ${theme.fontSize.rg};
+    ${props =>
+      props.big &&
+      `
+        padding: 6px 10px;
+      `}
   }
   @media (max-width: 400px) {
     font-size: ${theme.fontSize.sm};
-    border-radius: 16px;
+    ${props =>
+      props.big &&
+      `
+        padding: 4px 10px;
+      `}
   }
 `;
 
@@ -212,6 +231,18 @@ const PreviousRankText = styled.div`
   span {
     font-weight: 500;
     font-size: ${theme.fontSize['xl']};
+  }
+  @media (max-width: 600px) {
+    font-size: ${theme.fontSize.md};
+    span {
+      font-size: ${theme.fontSize['xl']};
+    }
+  }
+  @media (max-width: 400px) {
+    font-size: ${theme.fontSize.rg};
+    span {
+      font-size: ${theme.fontSize['xl']};
+    }
   }
 `;
 
