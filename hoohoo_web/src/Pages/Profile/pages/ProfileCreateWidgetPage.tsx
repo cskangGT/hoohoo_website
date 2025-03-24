@@ -103,12 +103,15 @@ const DropdownHeader = styled.div`
   justify-content: space-between;
   align-items: center;
   padding: 16px 20px;
-
+  color: ${theme.white};
   cursor: pointer;
   font-size: ${theme.fontSize.lg};
   font-weight: 400;
 `;
-
+const PlaceholderText = styled.span`
+  color: ${theme.gray};
+  opacity: 0.5;
+`;
 const DropdownContent = styled.div<{isOpen: boolean}>`
   display: ${props => (props.isOpen ? 'block' : 'none')};
 `;
@@ -294,7 +297,7 @@ function ProfileCreateWidgetPage() {
   };
   console.log('selectedAsset', selectedAsset);
   const handleLinkURLBlur = () => {
-    if (!linkURL.startsWith('http')) {
+    if (linkURL && !linkURL.startsWith('http')) {
       setLinkURL('https://' + linkURL);
     }
   };
@@ -487,7 +490,9 @@ function ProfileCreateWidgetPage() {
                       }
                     </AssetContainer>
                   ) : (
-                    localizedTexts.asset
+                    <PlaceholderText>
+                      {localizedTexts.placeholder.asset}
+                    </PlaceholderText>
                   )}
                 </span>
                 {isDropdownOpen ? <FaChevronUp /> : <FaChevronDown />}

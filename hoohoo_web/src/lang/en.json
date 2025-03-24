@@ -1280,7 +1280,8 @@
     "placeholder": {
       "url": "https://",
       "text": "Please enter the widget text",
-      "image": "If you add an image, the text can't be displayed."
+      "image": "If you add an image, the text can't be displayed.",
+      "asset": "Select an asset"
     },
     "asset": "EarthMera Asset",
     "widgetList": {

@@ -135,7 +135,7 @@ root.render(
         <GlobalStyle />
         <LanguageProvider>
           <RouterProvider router={Router} />
-          <ToastContainer />
+          <ToastContainer autoClose={1000} />
         </LanguageProvider>
       </GoogleOAuthProvider>
     </CookiesProvider>
