@@ -60,10 +60,10 @@ const CO2Title = styled.div`
   font-weight: 500;
   line-height: 1.2;
   @media (max-width: 500px) {
-    font-size: ${theme.fontSize.lg};
+    font-size: ${theme.fontSize.md};
   }
   @media (max-width: 400px) {
-    font-size: ${theme.fontSize.rg};
+    font-size: ${theme.fontSize.md};
   }
 `;
 
@@ -118,7 +118,7 @@ const CO2TreesText = styled.div`
   color: ${theme.mainNeon};
   margin-bottom: 12px;
   @media (max-width: 500px) {
-    font-size: ${theme.fontSize.lg};
+    font-size: ${theme.fontSize.md};
   }
   @media (max-width: 400px) {
     font-size: ${theme.fontSize.rg};

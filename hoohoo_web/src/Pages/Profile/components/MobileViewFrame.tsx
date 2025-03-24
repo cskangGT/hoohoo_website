@@ -28,7 +28,7 @@ const MobileContainer = styled.div`
   width: 100%;
   max-width: 600px;
   height: 100%;
-  min-height: 100vh;
+  min-height: ${window.innerHeight}px;
 
   margin: 0 auto;
   background-color: ${'#1e1e1e'};
