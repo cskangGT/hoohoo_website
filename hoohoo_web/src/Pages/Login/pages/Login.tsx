@@ -413,7 +413,7 @@ const Login = () => {
                     <GoogleLogo text={localizedTexts.continueWithGoogle} />
                   </SocialButton>
 
-                  <SocialButton onClick={handleAppleLogin}>
+                  {/* <SocialButton onClick={handleAppleLogin}>
                     <SocialInnerBox>
                       <svg
                         width="24"
@@ -427,7 +427,7 @@ const Login = () => {
                       </svg>
                       <span>{localizedTexts.continueWithApple}</span>
                     </SocialInnerBox>
-                  </SocialButton>
+                  </SocialButton> */}
 
                   <KakaoButton onClick={handleKakaoLogin}>
                     <SocialInnerBox>
