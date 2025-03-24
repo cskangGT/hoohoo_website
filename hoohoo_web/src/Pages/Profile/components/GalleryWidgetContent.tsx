@@ -69,7 +69,7 @@ const GalleryGrid = styled.div<{big?: boolean; long?: boolean}>`
     `
     display: flex;
     flex-direction: row;
-    justify-content: space-evenly;
+    justify-content: space-between;
     align-items: center;
     overflow-x: auto;
     gap: 8px;
@@ -85,7 +85,7 @@ const GalleryGrid = styled.div<{big?: boolean; long?: boolean}>`
 const GalleryScroll = styled.div`
   display: flex;
   flex-direction: row;
-  justify-content: space-evenly;
+  justify-content: space-between;
   width: 100%;
   height: 100%;
 
@@ -108,13 +108,13 @@ const GalleryImageWrapper = styled.div<{
   position: relative;
   overflow: hidden;
 
-  border-radius: 30px;
+  border-radius: 16px;
   ${props =>
     props.small &&
     `
     width: 100%;
     aspect-ratio: 1/1;
-    border-radius: 30px;
+    border-radius: 16px;
   `}
 
   ${props =>
@@ -124,6 +124,7 @@ const GalleryImageWrapper = styled.div<{
     border-radius: 12px;
     width: ${props.cellHeight - 24}px;
     height: ${props.cellHeight - 24}px;
+
   `}
   @media (max-width: 600px) {
     border-radius: 15px;

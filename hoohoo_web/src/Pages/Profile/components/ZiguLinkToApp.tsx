@@ -43,7 +43,7 @@ const BlurOverlay = styled.div`
 
 const OverlayText = styled.p`
   color: ${theme.white};
-  font-size: ${theme.fontSize.xl};
+  font-size: ${theme.fontSize.lg};
   font-weight: 400;
   text-align: center;
   margin: 0 20px;
@@ -57,7 +57,7 @@ const OverlayButton = styled.button`
   border: 1px solid ${theme.white};
   border-radius: 20px;
   color: ${theme.white};
-  font-size: ${theme.fontSize.xl};
+  font-size: ${theme.fontSize.lg};
   font-weight: 400;
   text-align: center;
 `;

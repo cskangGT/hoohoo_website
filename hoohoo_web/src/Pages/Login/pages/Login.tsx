@@ -190,11 +190,21 @@ const Login = () => {
   const {language} = useLanguage();
 
   const {setUser, user} = useUserStore();
+
+  const navigateNameTag = (nameTag: string) => {
+    const redirectAfterAuth = sessionStorage.getItem('redirectAfterAuth');
+    if (redirectAfterAuth) {
+      sessionStorage.removeItem('redirectAfterAuth');
+      navigate(redirectAfterAuth, {replace: true});
+    } else {
+      navigate(`/zigu/${nameTag}`, {replace: true});
+    }
+  };
   useEffect(() => {
     if (user?.nameTag) {
       console.log('user', user);
 
-      navigate(`/zigu/${user.nameTag}`);
+      navigateNameTag(user.nameTag);
     }
   }, []);
   const navigate = useNavigate();
@@ -205,6 +215,7 @@ const Login = () => {
     invalidEmail: false,
     wrongPassword: false,
   });
+
   const handleGoogleLogin = useGoogleLogin({
     redirect_uri: 'postmessage',
     onSuccess: async tokenResponse => {
@@ -216,7 +227,7 @@ const Login = () => {
         if (response.data?.user?.isNeedsQuestionnaire) {
           navigate('/setup/select-goal');
         } else {
-          navigate(`/zigu/${response.data.user.nameTag}`);
+          navigateNameTag(response.data.user.nameTag);
         }
       } else {
         if (response.status === 400) {
@@ -250,7 +261,7 @@ const Login = () => {
       if (response.data?.user?.isNeedsQuestionnaire) {
         navigate('/setup/select-goal');
       } else {
-        navigate(`/zigu/${response.data.user.nameTag}`);
+        navigateNameTag(response.data.user.nameTag);
       }
     } else {
       if (response.status === 400) {
@@ -287,7 +298,7 @@ const Login = () => {
           if (response.data?.user?.isNeedsQuestionnaire) {
             navigate('/setup/select-goal', {replace: true});
           } else {
-            navigate(`/zigu/${response.data.user.nameTag}`, {replace: true});
+            navigateNameTag(response.data.user.nameTag);
           }
         } else {
           if (response.status === 400) {

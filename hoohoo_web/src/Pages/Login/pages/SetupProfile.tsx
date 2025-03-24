@@ -209,7 +209,13 @@ function SetupProfile() {
     // const response = {result: true};
     const response = await sendQuestionnaire(data);
     if (response.result) {
-      navigate('/zigu/' + user?.nameTag);
+      const redirectAfterAuth = sessionStorage.getItem('redirectAfterAuth');
+      if (redirectAfterAuth) {
+        sessionStorage.removeItem('redirectAfterAuth');
+        navigate(redirectAfterAuth, {replace: true});
+      } else {
+        navigate(`/zigu/${user?.nameTag}`, {replace: true});
+      }
     } else {
       alert(localizedTexts.errorText.error);
     }

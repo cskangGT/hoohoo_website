@@ -4,14 +4,14 @@ import styled from 'styled-components';
 import {theme} from '../../style';
 
 const Container = styled.div`
-  width: 100%;
+  width: calc(100% - 40px);
   min-height: 100vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   background-color: ${theme.white}; // 어두운 배경 (테마에 맞게 조정)
-  padding: 20px;
+  padding: 0px 20px;
   text-align: center;
 `;
 
@@ -40,7 +40,16 @@ const ErrorTitle = styled.h2`
   color: ${theme.darkGray};
   margin: 10px 0 20px;
 `;
-
+const ButtonContainer = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+  flex-direction: row;
+  @media screen and (max-width: 500px) {
+    flex-direction: column;
+  }
+`;
 const ErrorMessage = styled.p`
   font-size: 18px;
   width: 100%;
@@ -59,10 +68,11 @@ const ReturnButton = styled.button`
   font-size: 16px;
   font-weight: 500;
   cursor: pointer;
+  width: 160px;
   transition:
     background-color 0.2s ease,
     transform 0.1s ease;
-
+  box-shadow: 0 0px 0px 1px rgba(0, 0, 0, 0.3);
   &:hover {
     background-color: ${theme.darkWhite || '#2ec4b6'};
     transform: translateY(-2px);
@@ -77,8 +87,9 @@ const OutlineButton = styled(ReturnButton)`
   background-color: transparent;
   border: 2px solid ${theme.darkGray};
   color: ${theme.darkGray};
+  width: 160px;
   margin-right: 12px;
-
+  box-shadow: 0 0px 0px 1px rgba(0, 0, 0, 0.3);
   &:hover {
     background-color: rgba(46, 196, 182, 0.1);
   }
@@ -112,10 +123,10 @@ function ErrorComponent() {
         dangerouslySetInnerHTML={{__html: localizedTexts.description}}
       />
 
-      <div>
+      <ButtonContainer>
         <OutlineButton onClick={goBack}>{localizedTexts.button}</OutlineButton>
         <ReturnButton onClick={goHome}>{localizedTexts.button2}</ReturnButton>
-      </div>
+      </ButtonContainer>
     </Container>
   );
 }

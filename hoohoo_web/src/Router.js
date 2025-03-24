@@ -38,6 +38,7 @@ import EMTicketeer from './Pages/Partnership/ticketeer/EMTicketeer';
 import ProfileCreateWidgetPage from './Pages/Profile/pages/ProfileCreateWidgetPage';
 import ProfileLinkPage from './Pages/Profile/pages/ProfileLinkPage';
 import ProfileSettingPage from './Pages/Profile/pages/ProfileSettingPage';
+import ProfileSyncFromAppPage from './Pages/Profile/pages/ProfileSyncFromAppPage';
 import ProfileSyncPage from './Pages/Profile/pages/ProfileSyncPage';
 import Root from './Root';
 
@@ -265,6 +266,11 @@ export const noFrameRoutes = [
   {
     path: '/profile/settings/sync',
     element: <ProfileSyncPage />,
+    errorElement: <ErrorComponent />,
+  },
+  {
+    path: '/profile/settings/sync-earthmera',
+    element: <ProfileSyncFromAppPage />,
     errorElement: <ErrorComponent />,
   },
 ];
