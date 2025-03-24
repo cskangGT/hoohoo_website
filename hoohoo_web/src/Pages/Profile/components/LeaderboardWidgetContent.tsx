@@ -183,7 +183,7 @@ const RankDown = styled.div<{big?: boolean}>`
     ${props =>
       props.big &&
       `
-        padding: 6px 10px;
+        padding: 4px 10px;
       `}
   }
   @media (max-width: 400px) {
@@ -233,15 +233,15 @@ const PreviousRankText = styled.div`
     font-size: ${theme.fontSize['xl']};
   }
   @media (max-width: 600px) {
-    font-size: ${theme.fontSize.md};
+    font-size: ${theme.fontSize.rg};
     span {
-      font-size: ${theme.fontSize['xl']};
+      font-size: ${theme.fontSize['lg']};
     }
   }
   @media (max-width: 400px) {
     font-size: ${theme.fontSize.rg};
     span {
-      font-size: ${theme.fontSize['xl']};
+      font-size: ${theme.fontSize['md']};
     }
   }
 `;
@@ -256,7 +256,7 @@ const CurrentRankSection = styled.div`
   padding: 10px;
   width: calc(100% - 20px);
   @media (max-width: 600px) {
-    padding: 6px 8px;
+    padding: 4px 8px;
     width: calc(100% - 16px);
   }
   @media (max-width: 400px) {
