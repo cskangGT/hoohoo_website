@@ -1264,7 +1264,8 @@
     "placeholder": {
       "url": "https://",
       "text": "텍스트를 입력해주세요.",
-      "image": "이미지를 추가하면 텍스트를 표시할 수 없어요."
+      "image": "이미지를 추가하면 텍스트를 표시할 수 없어요.",
+      "asset": "에셋을 선택해주세요."
     },
     "asset": "EarthMera 에셋",
     "widgetList": {
