@@ -25,3 +25,14 @@ export const getSyncUserId = async () => {
         return { result: false, status: error?.response?.status };
     }
 };
+
+export const syncEMUser = async (userId: string) => {
+    try {
+        const response = await clientAxios.post('myProfile/web/sync/', {
+            appUserId: userId,
+        });
+        return { result: true, data: response.data };
+    } catch (error: any) {
+        return { result: false, status: error?.response?.status };
+    }
+};

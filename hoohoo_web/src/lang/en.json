@@ -1241,6 +1241,7 @@
 
     "customize": "Customize your profile freely with your favorite link, colors, and shapes,make it truly yours!",
     "done": "Done",
+    "syncedWithEM": "EarthMera synced!<br />Make your ZIGU stand out with EarthMera assets!",
     "noProfileData": ["", " Profile doesn't exist"],
     "copyMyLink": "Profile URL copied",
     "copyMyLinkButton": "Copy My URL",
@@ -1314,7 +1315,22 @@
   "ErrorComponent": {
     "title": "Page not found",
     "description": "The page you are looking for does not exist.<br />Please check the URL or try again.",
-    "button": "Go back to the previous page",
-    "button2": "Go to the home page"
+    "button": "Go back",
+    "button2": "Home page"
+  },
+  "ProfileSyncFromAppPage": {
+    "loading": {
+      "title": "Syncing with EarthMera",
+      "description": "Please wait for seconds",
+      "button": "Go back to Login"
+    },
+    "alreadySynced": "This account is already synced with EarthMera.",
+    "title": "Sync ZIGU to EarthMera app",
+    "description": "Sync your EarthMera account to create a more powerful bio link that highlights your eco impact!",
+    "button": "Sync",
+    "cancel": "Cancel",
+    "successToast": "ZIGU synced successfully",
+    "errorToast": "Failed to sync ZIGU",
+    "question": ["Would you like to sync “", "” with EarthMera?"]
   }
 }

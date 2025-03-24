@@ -156,7 +156,7 @@ const RankUp = styled.div<{big?: boolean}>`
     ${props =>
       props.big &&
       `
-        padding: 4px 10px;
+        padding: 6px 10px;
       `}
   }
 `;
@@ -183,7 +183,7 @@ const RankDown = styled.div<{big?: boolean}>`
     ${props =>
       props.big &&
       `
-        padding: 4px 10px;
+        padding: 6px 10px;
       `}
   }
   @media (max-width: 400px) {
@@ -191,7 +191,7 @@ const RankDown = styled.div<{big?: boolean}>`
     ${props =>
       props.big &&
       `
-        padding: 4px 10px;
+        padding: 6px 10px;
       `}
   }
 `;
@@ -260,7 +260,7 @@ const CurrentRankSection = styled.div`
     width: calc(100% - 16px);
   }
   @media (max-width: 400px) {
-    padding: 4px 8px;
+    padding: 8px 8px;
     width: calc(100% - 16px);
     border-radius: 12px;
   }

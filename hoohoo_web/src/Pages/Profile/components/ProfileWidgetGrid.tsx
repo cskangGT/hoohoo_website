@@ -1,8 +1,10 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 
 import {CircularProgress} from '@mui/material';
 import styled from 'styled-components';
+import i18next from '../../../lang/i18n';
 import {useUserStore} from '../../../storage/userStore';
+import {theme} from '../../../style';
 import {useProfile} from '../contexts/ProfileContext';
 import {
   ProfileEMWidgetType,
@@ -26,8 +28,24 @@ const WidgetGrid = styled.div`
 const Container = styled.div`
   width: 100%;
   position: relative;
+  margin-bottom: 100px;
 `;
-const BlurredContainer = styled.div``;
+const BlurredContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+`;
+const SyncedContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: 100px 0px;
+  text-align: center;
+  font-size: ${theme.fontSize.md};
+  font-weight: 400;
+  color: ${theme.gray};
+`;
+
 const BlurredWidgetGrid = styled(WidgetGrid)`
   margin-top: 24px;
   margin-bottom: 100px;
@@ -146,9 +164,15 @@ export const AbEMWidget: ProfileWidgetItemType[] = [
 ];
 
 function ProfileWidgetGrid() {
+  const localizedTexts: any = i18next.t('ProfileLinkPage', {
+    returnObjects: true,
+  });
   const {currentWidgets, isMyLink, isLoading} = useProfile();
   const {isSyncedWithEM} = useUserStore();
-
+  const [hasEMWidget, setHasEMWidget] = useState(false);
+  useEffect(() => {
+    setHasEMWidget(currentWidgets?.some(widget => widget.isEmWidget));
+  }, [currentWidgets]);
   return (
     <Container>
       {isLoading ? (
@@ -159,8 +183,8 @@ function ProfileWidgetGrid() {
         <>
           <MainProfileGrid />
           {isMyLink && (
-            <>
-              <BlurredContainer>
+            <BlurredContainer>
+              <>
                 {currentWidgets?.length === 0 && (
                   <BlurredWidgetGrid>
                     <WidgetGrid style={{opacity: 0.5}}>
@@ -170,9 +194,19 @@ function ProfileWidgetGrid() {
                     </WidgetGrid>
                   </BlurredWidgetGrid>
                 )}
-              </BlurredContainer>
-              {!isSyncedWithEM && <ZiguLinkToApp />}
-            </>
+              </>
+              {!isSyncedWithEM ? (
+                <ZiguLinkToApp />
+              ) : (
+                !hasEMWidget && (
+                  <SyncedContainer
+                    dangerouslySetInnerHTML={{
+                      __html: localizedTexts.syncedWithEM,
+                    }}
+                  />
+                )
+              )}
+            </BlurredContainer>
           )}
         </>
       )}

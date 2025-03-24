@@ -37,7 +37,14 @@ function KakaoCallback() {
           if (response.data?.user?.isNeedsQuestionnaire) {
             navigate('/setup/select-goal', {replace: true});
           } else {
-            navigate(`/zigu/${response.data.user.nameTag}`, {replace: true});
+            const redirectAfterAuth =
+              sessionStorage.getItem('redirectAfterAuth');
+            if (redirectAfterAuth) {
+              sessionStorage.removeItem('redirectAfterAuth');
+              navigate(redirectAfterAuth, {replace: true});
+            } else {
+              navigate(`/zigu/${response.data.user.nameTag}`, {replace: true});
+            }
           }
         } else if (response.status === 409) {
           alert(
