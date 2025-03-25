@@ -1,11 +1,11 @@
 import i18next from 'i18next';
-import React, {useEffect, useState} from 'react';
-import {useLocation, useNavigate} from 'react-router-dom';
+import React, { useEffect, useState } from 'react';
+import { useLocation, useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
-import {EcoActionData} from '../../../../public/Images/EcoActionData';
+import { EcoActionData } from '../../../../public/Images/EcoActionData';
 import useWindowResize from '../../../components/hooks/useWindowResize';
-import {BgImage, theme} from '../../../style';
-import {EcoActionMarqueeImageItem} from '../../Home/sections/HomeLandingEcoAction';
+import { BgImage, theme } from '../../../style';
+import { EcoActionMarqueeImageItem } from '../../Home/sections/HomeLandingEcoAction';
 import MediaModal from '../../Home/sections/MediaModal';
 const Container = styled.div`
   width: 100%;
@@ -70,7 +70,7 @@ const ImageCollage = styled.div`
 `;
 const AbsCloseButtonContainer = styled.div`
   position: absolute;
-  bottom: 100px;
+  bottom: 170px;
   width: 50%;
   max-width: 300px;
   display: flex;

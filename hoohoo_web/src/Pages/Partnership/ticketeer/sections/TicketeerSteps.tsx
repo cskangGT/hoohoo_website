@@ -1,9 +1,9 @@
 import i18next from 'i18next';
-import React, {useEffect, useRef, useState} from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 
 import styled from 'styled-components';
-import {useLanguage} from '../../../../components/hooks/LanguageContext';
-import {theme} from '../../../../style';
+import { useLanguage } from '../../../../components/hooks/LanguageContext';
+import { theme } from '../../../../style';
 const ContentBox = styled.div`
   display: flex;
   flex-direction: column;
@@ -14,13 +14,14 @@ const ContentBox = styled.div`
 const ImageBox = styled.div`
   align-items: center;
   justify-content: center;
-  margin-top: 30px;
+  margin-top: 50px;
   width: 100%;
   position: relative;
   column-gap: 20px;
   grid-template-rows: auto;
   grid-template-columns: 1fr 1fr 1fr;
   display: grid;
+  
   @media screen and (max-width: 1000px) {
     height: auto;
     grid-template-columns: auto;
@@ -74,6 +75,8 @@ const ActDesc = styled.p<{language: string}>`
   text-align: center;
   font-size: ${props => (props.language === 'ko' ? '1rem' : '1.1rem')};
   line-height: 1.5;
+  margin: 0px;
+  padding: 0px;
 `;
 const TapeBgImage = styled.img`
   height: 150px;
@@ -103,7 +106,7 @@ const Header = styled.h2<{language: string}>`
   font-family: ${props =>
     props.language === 'ko' ? 'TmoneyRoundWind' : 'Fredoka'};
   font-weight: 600;
-  padding-bottom: 30px;
+  padding-bottom: 0px;
   @media screen and (max-width: 1100px) {
   }
   @media screen and (max-width: 700px) {
