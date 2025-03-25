@@ -1,11 +1,11 @@
 import i18next from 'i18next';
-import React, {useMemo} from 'react';
+import React, { useMemo } from 'react';
 import Marquee from 'react-fast-marquee';
-import {useNavigate} from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
-import {EcoActionData} from '../../../../public/Images/EcoActionData';
+import { EcoActionData } from '../../../../public/Images/EcoActionData';
 import useWindowResize from '../../../components/hooks/useWindowResize';
-import {theme} from '../../../style';
+import { theme } from '../../../style';
 const gap = 16;
 const numColumns = 9;
 const mediumNumColumns = 7;
@@ -21,7 +21,7 @@ const Container = styled.div`
   justify-content: flex-end;
   min-height: 90vh;
 
-  padding-top: 60px;
+  padding-top: 80px;
   margin-bottom: 0px;
   position: relative;
   overflow: hidden;
@@ -29,20 +29,21 @@ const Container = styled.div`
   max-width: 1500px;
   @media screen and (max-width: 600px) {
     margin-bottom: 50px;
+
     min-height: 90vh;
   }
 `;
 const TopGradientOverlay = styled.div`
   position: absolute;
   width: 100%;
-  height: 300px;
+  height: 400px;
   z-index: 1;
   top: 0px;
   margin-top: 0px;
   background: linear-gradient(
     to bottom,
     #00bf63 0%,
-    rgba(255, 255, 255, 0) 300px
+    rgba(255, 255, 255, 0) 400px
   );
 `;
 
@@ -88,20 +89,6 @@ const Title = styled.h2`
   }
 `;
 
-const Subtitle = styled.h3`
-  font-size: 2.5rem;
-  color: #888;
-  font-weight: 600;
-  margin: 0px;
-
-  text-align: center;
-  @media screen and (max-width: 850px) {
-    font-size: 2rem;
-  }
-  @media screen and (max-width: 500px) {
-    font-size: 1.75rem;
-  }
-`;
 
 const Description = styled.p<{language: string}>`
   font-size: 1.25rem;
@@ -139,16 +126,7 @@ const Button = styled.button`
   }
 `;
 
-const TestimonialTag = styled.div`
-  background-color: white;
-  color: ${theme.green};
-  border: 1px solid ${theme.green};
-  border-radius: 50px;
-  padding: 8px 20px;
-  font-size: 0.9rem;
 
-  margin-top: 40px;
-`;
 
 const ImageCollage = styled.div`
   display: flex;
@@ -156,7 +134,7 @@ const ImageCollage = styled.div`
   z-index: 3;
 
   position: absolute;
-  top: -30px;
+  top: -10px;
   align-items: flex-start;
 
   column-gap: ${gap}px;
@@ -169,10 +147,16 @@ const ImageColumn = styled.div<{isOdd: boolean}>`
   display: flex;
   flex-direction: column;
   align-items: center;
-  transform: translateY(${props => (props.isOdd ? '0' : '-80px')});
+  transform: translateY(${props => (props.isOdd ? '0' : '-60px')});
   row-gap: ${gap}px;
   height: auto;
-  padding-top: 20px;
+  padding-top: 140px;
+  @media screen and (max-width: 500px) {
+    transform: translateY(${props => (props.isOdd ? '0' : '-60px')});
+  }
+  
+  
+  
 `;
 const ImageButton = styled.button`
   background-color: transparent;

@@ -1,12 +1,12 @@
-import {faBars, faCaretDown} from '@fortawesome/free-solid-svg-icons';
-import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
+import { faBars, faCaretDown } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import i18next from 'i18next';
-import React, {useEffect, useState} from 'react';
-import {useTranslation} from 'react-i18next';
-import {useLocation, useNavigate} from 'react-router-dom';
+import React, { useEffect, useState } from 'react';
+import { useTranslation } from 'react-i18next';
+import { useLocation, useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
-import {theme} from '../../style';
-import {useLanguage} from '../hooks/LanguageContext';
+import { theme } from '../../style';
+import { useLanguage } from '../hooks/LanguageContext';
 const Logo = styled.button`
   padding: 15px;
   font-size: 25px;
@@ -531,7 +531,7 @@ function Nav() {
               )}
               {windowWidth < 1100 && (
                 <LogoIcon
-                  key={i + 'hd_icon'}
+                  key={i + 'hd_icon2'}
                   className="hidden"
                   src={logo.image}
                 />
