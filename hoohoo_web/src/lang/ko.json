@@ -1258,6 +1258,7 @@
       "failedToUploadImage": "이미지 업로드에 실패했어요. 다시 시도해주세요.",
       "selectColor": "색상을 선택해주세요."
     },
+    "close": "닫기",
     "image": "이미지",
     "preview": "위젯 미리보기",
     "style": "스타일",

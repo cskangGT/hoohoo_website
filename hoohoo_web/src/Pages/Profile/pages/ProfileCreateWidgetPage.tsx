@@ -1,33 +1,37 @@
 import i18next from 'i18next';
-import React, {useState} from 'react';
-import {FaChevronDown, FaChevronUp} from 'react-icons/fa';
-import {useNavigate} from 'react-router-dom';
-import {toast} from 'react-toastify';
+import { ColorPicker, IColor, useColor } from 'react-color-palette';
+import 'react-color-palette/css';
+
+import React, { useState } from 'react';
+import 'react-color-palette/css';
+import { FaChevronDown, FaChevronUp } from 'react-icons/fa';
+import { useNavigate } from 'react-router-dom';
+import { toast } from 'react-toastify';
 import styled from 'styled-components';
 import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
-import {Navigation, Pagination} from 'swiper/modules';
-import {Swiper, SwiperSlide} from 'swiper/react';
-import {createWidget} from '../../../api/jigulink/jigulink.api';
-import {useUserStore} from '../../../storage/userStore';
-import {theme} from '../../../style';
+import { Navigation, Pagination } from 'swiper/modules';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import { createWidget } from '../../../api/jigulink/jigulink.api';
+import { useUserStore } from '../../../storage/userStore';
+import { theme } from '../../../style';
 import {
   checkAWSKey,
   compressImage,
   generateUniqueKey,
   uploadImageToS3,
 } from '../../../util/MediaUtil';
-import {WIDGET_PREFIX} from '../../../util/S3Config';
+import { WIDGET_PREFIX } from '../../../util/S3Config';
 import TopHeaderBackButtonWrapperView from '../components/TopHeaderBackButtonWrapperView';
 import WidgetItem from '../components/WidgetItem';
-import {useProfile} from '../contexts/ProfileContext';
+import { useProfile } from '../contexts/ProfileContext';
 import {
   ProfileEMWidgetType,
   ProfileWidgetItemSize,
 } from '../types/WidgetItemType';
-import {EMWidgetImage, getEMWidgetData} from '../util/EMWidgetData';
-import {calculateNewWidgetCoordinate} from '../util/util';
+import { EMWidgetImage, getEMWidgetData } from '../util/EMWidgetData';
+import { calculateNewWidgetCoordinate } from '../util/util';
 
 const WIDTH = window.innerWidth > 600 ? 600 : window.innerWidth;
 const WIDGET_WIDTH = (WIDTH - 24 * 2 - 60 - 40) / 4;
@@ -37,7 +41,10 @@ const COLOR_OPTIONS = {
   ORANGE: '#FF6A00',
   GREEN: '#3EAC4D',
   BLUE: '#6586F2',
+  RAINBOW:
+    'linear-gradient(to right, red, orange, yellow, green, blue, indigo, violet)',
 };
+
 const StyledSwiper = styled(Swiper)`
   height: ${WIDTH * 0.6}px; // 원하는 높이 설정
 
@@ -146,6 +153,59 @@ const AssetIcon = styled.img`
   width: 20px;
   height: 20px;
 `;
+
+// 모달 오버레이 스타일
+const ModalOverlay = styled.div`
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+`;
+
+// 모달 컨테이너 스타일
+const ModalContainer = styled.div`
+  background: #121212;
+  padding: 20px;
+
+  width: 80%;
+
+  z-index: 1002;
+  max-width: 300px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  gap: 40px;
+  border-radius: 20px;
+  /* ColorPicker 스타일 오버라이드 */
+  .sketch-picker {
+    box-shadow: none !important;
+  }
+`;
+const CloseButton = styled.div`
+  position: absolute;
+  top: 10px;
+  right: 10px;
+`;
+const ApplyButton = styled.button`
+  background-color: ${theme.white};
+  margin-top: ${theme.spacing.md};
+  border: none;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: 1;
+  font-size: ${theme.fontSize.md};
+  color: ${theme.darkGray};
+  text-align: center;
+  padding: ${theme.spacing.rg} ${theme.spacing.md};
+  border-radius: 20px;
+  cursor: pointer;
+`;
 function ProfileCreateWidgetPage() {
   const localizedTexts: any = i18next.t('ProfileCreateWidgetPage', {
     returnObjects: true,
@@ -157,8 +217,12 @@ function ProfileCreateWidgetPage() {
 
   const [selectedStyle, setSelectedStyle] =
     useState<ProfileWidgetItemSize>('BIG');
+
   const [selectedColor, setSelectedColor] = useState<string>('transparent');
   const [hasBorder, setHasBorder] = useState<boolean>(false);
+  const [isRainbow, setIsRainbow] = useState<boolean>(false);
+  const [color, setColor] = useColor('rgba(0, 0, 0, 1)');
+  const [showColorPicker, setShowColorPicker] = useState<boolean>(false);
   const [isSelected, setIsSelected] = useState<boolean>(false);
   const [image, setImage] = useState<string>('');
   const [description, setDescription] = useState<string>('');
@@ -216,6 +280,7 @@ function ProfileCreateWidgetPage() {
     setIsSelected(true);
     setImage('');
     setSelectedAsset(null);
+    setIsRainbow(false);
     if (color === 'BORDER') {
       setHasBorder(true);
       setSelectedColor('transparent');
@@ -253,9 +318,9 @@ function ProfileCreateWidgetPage() {
     };
     const response = await createWidget(isEmWidget ? emWidgetData : widgetData);
     if (response.result) {
-      setMyWidgets([...myWidgets, response.data]);
-      setCurrentWidgets(prev => [...prev, response.data]);
-      setOriginalWidgets(prev => [...prev, response.data]);
+      setMyWidgets([...myWidgets, {...response.data, coordinate: {x: newCoordinate.x, y: newCoordinate.y}}]);
+      setCurrentWidgets(prev => [...prev,  {...response.data, coordinate: {x: newCoordinate.x, y: newCoordinate.y}}]);
+      setOriginalWidgets(prev => [...prev,  {...response.data, coordinate: {x: newCoordinate.x, y: newCoordinate.y}}]);
       navigate('/zigu/' + user?.nameTag, {
         replace: true,
         state: {
@@ -263,6 +328,22 @@ function ProfileCreateWidgetPage() {
         },
       });
     }
+  };
+
+  const handleRainbowClick = (completedColor: IColor) => {
+    setIsSelected(true);
+    setImage('');
+    setSelectedAsset(null);
+    setHasBorder(false);
+    console.log('color.hex', completedColor);
+    setIsRainbow(true);
+    setSelectedColor(completedColor.hex);
+  };
+
+  const handleColorPickerClose = (e: React.MouseEvent<HTMLDivElement>) => {
+    e.stopPropagation();
+    e.preventDefault();
+    setShowColorPicker(false);
   };
   const handleProfileImageChange = async (
     event: React.ChangeEvent<HTMLInputElement>,
@@ -305,12 +386,12 @@ function ProfileCreateWidgetPage() {
     setSelectedAsset(value as ProfileEMWidgetType);
     setIsDropdownOpen(false);
   };
-  console.log('selectedAsset', selectedAsset);
   const handleLinkURLBlur = () => {
     if (linkURL && !linkURL.startsWith('http')) {
       setLinkURL('https://' + linkURL);
     }
   };
+
   return (
     <TopHeaderBackButtonWrapperView>
       <Container>
@@ -432,6 +513,12 @@ function ProfileCreateWidgetPage() {
             isSelected={isSelected}
           />
           <ColorOption
+            color={COLOR_OPTIONS.RAINBOW}
+            onClick={() => setShowColorPicker(true)}
+            selected={isRainbow}
+            isSelected={isSelected}
+          />
+          <ColorOption
             color={'transparent'}
             onClick={() => handleColorClick('BORDER')}
             selected={selectedColor === 'transparent' && hasBorder}
@@ -524,6 +611,25 @@ function ProfileCreateWidgetPage() {
         <UploadButton onClick={handleAddWidget} disabled={!isSelected}>
           {localizedTexts.button}
         </UploadButton>
+        {showColorPicker && (
+          <ModalOverlay onClick={handleColorPickerClose}>
+            <ModalContainer onClick={e => e.stopPropagation()}>
+              {/* <CloseButton onClick={() => setShowColorPicker(false)}>
+                <FaTimes size={20} color={theme.white} />
+              </CloseButton> */}
+              <ColorPicker
+                color={color}
+                onChange={setColor}
+                hideInput={['hsv']}
+                onChangeComplete={handleRainbowClick}
+              />
+
+              <ApplyButton onClick={() => setShowColorPicker(false)}>
+                {localizedTexts.close}
+              </ApplyButton>
+            </ModalContainer>
+          </ModalOverlay>
+        )}
       </Container>
     </TopHeaderBackButtonWrapperView>
   );
@@ -537,7 +643,7 @@ const PreviewText = styled.div`
 // 스타일 컴포넌트
 const Container = styled.div`
   width: calc(100% - ${theme.spacing.lg} * 2);
-
+  position: relative;
   padding: ${theme.spacing.lg};
   display: flex;
   flex-direction: column;
@@ -564,7 +670,7 @@ const ScaledWidgetContainer = styled.div`
 
 const ColorOptions = styled.div`
   display: flex;
-  gap: 15px;
+
   align-items: center;
   justify-content: space-between;
 `;
@@ -579,11 +685,23 @@ const ColorOption = styled.div<{
   width: 40px;
   height: 40px;
   border-radius: 50%;
-  background-color: ${props => props.color};
+  background: ${props => props.color};
   cursor: pointer;
   @media (max-width: 600px) {
+    width: 30px;
+    height: 30px;
+  }
+  @media (max-width: 500px) {
+    width: 25px;
+    height: 25px;
+  }
+  @media (max-width: 400px) {
     width: 20px;
     height: 20px;
+  }
+  @media (max-width: 300px) {
+    width: 15px;
+    height: 15px;
   }
   ${props =>
     props.border && {
@@ -595,7 +713,11 @@ const ColorOption = styled.div<{
       border: `2px dashed ${theme.mainNeon};`,
       opacity: props.isSelected ? '1' : '0.5',
     }}
-  ${props => props.isSelected && `opacity: ${props.selected ? '1' : '0.5'}`}
+  ${props =>
+    props.isSelected &&
+    `
+  
+  opacity: ${props.selected ? '1' : '0.5'}`}
 `;
 
 const ImageButton = styled.button`
@@ -619,18 +741,6 @@ const InputField = styled.input`
     outline: none;
     border: 1px solid ${theme.mainNeon};
   }
-`;
-const GuideText = styled.p`
-  color: ${theme.gray};
-  font-size: ${theme.fontSize.md};
-  margin-bottom: ${theme.spacing.md};
-`;
-const PreviewContainer = styled.div`
-  width: 100%;
-  height: 30%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
 `;
 const UploadButton = styled.button<{disabled?: boolean}>`
   width: calc(100%);

@@ -1,5 +1,6 @@
 import i18next from 'i18next';
 import React, {useState} from 'react';
+import {ColorPicker, IColor, useColor} from 'react-color-palette';
 import {LuArrowLeft} from 'react-icons/lu';
 import {toast} from 'react-toastify';
 import styled from 'styled-components';
@@ -24,6 +25,8 @@ const COLOR_OPTIONS = {
   ORANGE: '#FF6A00',
   GREEN: '#3EAC4D',
   BLUE: '#6586F2',
+  RAINBOW:
+    'linear-gradient(to right, red, orange, yellow, green, blue, indigo, violet)',
 };
 function ProfileEditWidgetPage() {
   const localizedTexts: any = i18next.t('ProfileCreateWidgetPage', {
@@ -36,9 +39,12 @@ function ProfileEditWidgetPage() {
     currentWidgets,
     setCurrentWidgets,
   } = useProfile();
+  const [color, setColor] = useColor('rgba(0, 0, 0, 1)');
+  const [showColorPicker, setShowColorPicker] = useState<boolean>(false);
   const [selectedStyle, setSelectedStyle] = useState<ProfileWidgetItemSize>(
     selectedItem?.sizeType || 'BIG',
   );
+  const [isRainbow, setIsRainbow] = useState<boolean>(false);
   const [selectedColor, setSelectedColor] = useState<string>(
     selectedItem?.bgColor || 'transparent',
   );
@@ -54,6 +60,7 @@ function ProfileEditWidgetPage() {
   function handleColorClick(color: string) {
     setIsSelected(true);
     setImage('');
+    setIsRainbow(false);
     if (color === 'BORDER') {
       setHasBorder(true);
       setSelectedColor('transparent');
@@ -118,6 +125,23 @@ function ProfileEditWidgetPage() {
     //     setProfileImage(result);
     //   }
   };
+
+  const handleRainbowClick = (completedColor: IColor) => {
+    setIsSelected(true);
+    setImage('');
+    setIsRainbow(true);
+    setHasBorder(false);
+    console.log('color.hex', completedColor);
+
+    setSelectedColor(completedColor.hex);
+  };
+
+  const handleColorPickerClose = (e: React.MouseEvent<HTMLDivElement>) => {
+    e.stopPropagation();
+    e.preventDefault();
+    setShowColorPicker(false);
+  };
+
   const handleBackButtonClick = () => {
     setIsEditingItem(false);
     setSelectedItem(null);
@@ -186,6 +210,12 @@ function ProfileEditWidgetPage() {
               isSelected={isSelected}
             />
             <ColorOption
+              color={COLOR_OPTIONS.RAINBOW}
+              onClick={() => setShowColorPicker(true)}
+              selected={isRainbow}
+              isSelected={isSelected}
+            />
+            <ColorOption
               color={'transparent'}
               onClick={() => handleColorClick('BORDER')}
               selected={selectedColor === 'transparent' && hasBorder}
@@ -236,6 +266,25 @@ function ProfileEditWidgetPage() {
           <UploadButton onClick={handleSaveEditWidget}>
             {localizedTexts.save}
           </UploadButton>
+          {showColorPicker && (
+            <ModalOverlay onClick={handleColorPickerClose}>
+              <ModalContainer onClick={e => e.stopPropagation()}>
+                {/* <CloseButton onClick={() => setShowColorPicker(false)}>
+                <FaTimes size={20} color={theme.white} />
+              </CloseButton> */}
+                <ColorPicker
+                  color={color}
+                  onChange={setColor}
+                  hideInput={['hsv']}
+                  onChangeComplete={handleRainbowClick}
+                />
+
+                <ApplyButton onClick={() => setShowColorPicker(false)}>
+                  {localizedTexts.close}
+                </ApplyButton>
+              </ModalContainer>
+            </ModalOverlay>
+          )}
         </Container>
       </ProfileContainer>
     </MobileViewFrame>
@@ -250,7 +299,7 @@ const PreviewText = styled.div`
 // 스타일 컴포넌트
 const Container = styled.div`
   width: calc(100% - ${theme.spacing.lg} * 2);
-
+  position: relative;
   padding: ${theme.spacing.lg};
   display: flex;
   flex-direction: column;
@@ -312,7 +361,57 @@ const ColorOptions = styled.div`
   align-items: center;
   justify-content: space-between;
 `;
+// 모달 오버레이 스타일
+const ModalOverlay = styled.div`
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+`;
 
+// 모달 컨테이너 스타일
+const ModalContainer = styled.div`
+  background: ${theme.darkGray};
+  padding: 20px;
+  border-radius: 12px;
+  width: 80%;
+
+  z-index: 1002;
+  max-width: 300px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  gap: 40px;
+  /* ColorPicker 스타일 오버라이드 */
+  .sketch-picker {
+    box-shadow: none !important;
+  }
+`;
+const CloseButton = styled.div`
+  position: absolute;
+  top: 10px;
+  right: 10px;
+`;
+const ApplyButton = styled.button`
+  background-color: ${theme.white};
+  margin-top: ${theme.spacing.md};
+  border: none;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: 1;
+  font-size: ${theme.fontSize.md};
+  color: ${theme.darkGray};
+  text-align: center;
+  padding: ${theme.spacing.rg} ${theme.spacing.md};
+  border-radius: 5px;
+  cursor: pointer;
+`;
 const ColorOption = styled.div<{
   color: string;
   selected?: boolean;
@@ -323,11 +422,23 @@ const ColorOption = styled.div<{
   width: 40px;
   height: 40px;
   border-radius: 50%;
-  background-color: ${props => props.color};
+  background: ${props => props.color};
   cursor: pointer;
   @media (max-width: 600px) {
+    width: 30px;
+    height: 30px;
+  }
+  @media (max-width: 500px) {
+    width: 25px;
+    height: 25px;
+  }
+  @media (max-width: 400px) {
     width: 20px;
     height: 20px;
+  }
+  @media (max-width: 300px) {
+    width: 15px;
+    height: 15px;
   }
   ${props =>
     props.border && {
