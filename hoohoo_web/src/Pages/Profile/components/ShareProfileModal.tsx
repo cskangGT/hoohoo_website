@@ -1,13 +1,13 @@
 import i18next from 'i18next';
-import {LuCopy} from 'react-icons/lu';
+import { LuCopy } from 'react-icons/lu';
 
 import React from 'react';
-import {MdClose, MdOutlineIosShare} from 'react-icons/md';
-import {toast} from 'react-toastify';
+import { MdClose, MdOutlineIosShare } from 'react-icons/md';
+import { toast } from 'react-toastify';
 import styled from 'styled-components';
-import {theme} from '../../../style';
-import {myLink} from '../../../util/links';
-import {useProfile} from '../contexts/ProfileContext';
+import { theme } from '../../../style';
+import { myLink } from '../../../util/links';
+import { useProfile } from '../contexts/ProfileContext';
 
 const ShareModal = styled.div`
   position: fixed;

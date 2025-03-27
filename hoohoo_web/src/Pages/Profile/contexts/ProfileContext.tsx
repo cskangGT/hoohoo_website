@@ -5,9 +5,9 @@ import React, {
   useEffect,
   useState,
 } from 'react';
-import {getUserLinkProfile} from '../../../api/jigulink/jigulink.api';
-import {useUserStore} from '../../../storage/userStore';
-import {ProfileWidgetItemType} from '../types/WidgetItemType';
+import { getUserLinkProfile } from '../../../api/jigulink/jigulink.api';
+import { useUserStore } from '../../../storage/userStore';
+import { ProfileWidgetItemType } from '../types/WidgetItemType';
 
 // Context에서 제공할 값들의 타입 정의
 interface ProfileContextType {
@@ -90,6 +90,7 @@ export const ProfileProvider: React.FC<ProfileProviderProps> = ({
   // 상태 플래그
   const [isEditing, setIsEditing] = useState<boolean>(false);
   const [hasChanges, setHasChanges] = useState<boolean>(false);
+  const [firstLoad, setFirstLoad] = useState<boolean>(true);
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [deletedWidgetItems, setDeletedWidgetItems] = useState<
     ProfileWidgetItemType[]
@@ -120,7 +121,11 @@ export const ProfileProvider: React.FC<ProfileProviderProps> = ({
   // 사용자 프로필 데이터 가져오기
   const fetchUserProfile = async (profileNameTag?: string) => {
     if (isEditing) return;
-    setIsLoading(true);
+    if (firstLoad) {
+      setIsLoading(true);
+      setFirstLoad(false);
+    }
+
     try {
       if (!profileNameTag && !nameTag) {
         setNoProfileData(true);
@@ -168,6 +173,7 @@ export const ProfileProvider: React.FC<ProfileProviderProps> = ({
         }
 
         setNoProfileData(false);
+        
       } else {
         setNoProfileData(true);
       }

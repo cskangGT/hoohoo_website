@@ -19,7 +19,7 @@ const Container = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: flex-end;
-  min-height: ${window.innerHeight * 0.95}px;
+  min-height: ${window.innerHeight }px;
 
   padding-top: 80px;
   margin-bottom: 0px;
@@ -30,7 +30,7 @@ const Container = styled.div`
   @media screen and (max-width: 600px) {
     margin-bottom: 50px;
 
-    min-height: ${window.innerHeight * 0.95}px;
+    min-height: ${window.innerHeight }px;
   }
 `;
 const TopGradientOverlay = styled.div`
