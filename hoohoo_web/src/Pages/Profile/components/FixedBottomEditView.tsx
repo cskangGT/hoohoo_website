@@ -91,11 +91,10 @@ const EMLogoImage = styled.img`
   object-fit: contain;
 `;
 
-const ActionButton = styled.button<{$isLongButton?: boolean}>`
-  background-color: ${theme.mainNeon};
+const ActionButton = styled.button<{$isDone?: boolean}>`
+  background-color: ${props => (props.$isDone ? theme.white : theme.mainNeon)};
   color: ${theme.darkGray};
-  padding: ${theme.spacing.sm}
-    ${props => (props.$isLongButton ? theme.spacing['3xl'] : theme.spacing.md)};
+  padding: ${theme.spacing.sm} ${theme.spacing.md};
   border-radius: 25px;
   height: 50px;
   width: 50px;
@@ -143,11 +142,11 @@ function FixedBottomEditView() {
   } = useProfile();
 
   function handleCreateWidget() {
-    setMyWidgets(currentWidgets);
-    navigate('/profile/create-widget');
+    setMyWidgets(originalWidgets);
+    navigate('/zigu/' + userData?.nameTag + '/create-widget');
   }
   function handleGoSync() {
-    navigate('/profile/settings/sync');
+    navigate('/zigu/' + userData?.nameTag + '/settings/sync');
   }
   const handleDone = async () => {
     if (deletedWidgetItems.length === 0 && currentWidgets.length === 0) {
@@ -173,6 +172,7 @@ function FixedBottomEditView() {
     if (response.result) {
       toast.success('Successfully updated');
       setDeletedWidgetItems([]);
+      setMyWidgets(currentWidgets);
       setOriginalWidgets(currentWidgets);
       setIsEditing(false);
     } else {
@@ -185,19 +185,19 @@ function FixedBottomEditView() {
       <FixedBottomEditViewContainer>
         <ActionButtonContainer>
           {isEditing ? (
-            <ActionButton $isLongButton onClick={handleDone}>
-              {localizedTexts.done}
-            </ActionButton>
-          ) : (
             <>
+              <ActionButton $isDone onClick={handleDone}>
+                {localizedTexts.done}
+              </ActionButton>
               <ActionButton onClick={handleCreateWidget}>
                 <LuPlus size={16} />
               </ActionButton>
-              {currentWidgets.length > 0 && (
-                <ActionButton onClick={startEditing}>
-                  {localizedTexts.edit}
-                </ActionButton>
-              )}
+            </>
+          ) : (
+            <>
+              <ActionButton onClick={startEditing}>
+                {localizedTexts.edit}
+              </ActionButton>
             </>
           )}
         </ActionButtonContainer>

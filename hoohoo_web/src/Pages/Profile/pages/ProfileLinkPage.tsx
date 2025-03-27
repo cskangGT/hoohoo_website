@@ -1,5 +1,5 @@
 import React, {useEffect} from 'react';
-import {useParams} from 'react-router-dom';
+import {useLocation, useNavigate, useParams} from 'react-router-dom';
 import styled from 'styled-components';
 import useWindowResize from '../../../components/hooks/useWindowResize';
 import i18next from '../../../lang/i18n';
@@ -9,7 +9,7 @@ import FixedBottomEditView from '../components/FixedBottomEditView';
 import MobileViewFrame from '../components/MobileViewFrame';
 import ProfileTopHeader from '../components/ProfileTopHeader';
 import ProfileWidgetGrid from '../components/ProfileWidgetGrid';
-import {ProfileProvider, useProfile} from '../contexts/ProfileContext';
+import {useProfile} from '../contexts/ProfileContext';
 import ProfileEditWidgetPage from './ProfileEditWidgetPage';
 
 export const PROFILE_SCREEN_WIDTH =
@@ -70,19 +70,10 @@ const CarbonSaving = styled.p`
 `;
 
 function ProfileLinkPage() {
-  const nameTag = useParams()?.nameTag;
-  console.log('nameTag', nameTag);
-
-  return (
-    <ProfileProvider nameTag={nameTag}>
-      <ProfileLink />
-    </ProfileProvider>
-  );
-}
-function ProfileLink() {
   const localizedTexts: any = i18next.t('ProfileLinkPage', {
     returnObjects: true,
   });
+  const keepEditing = useLocation().state?.keepEditing;
   const {user, isAuthenticated} = useUserStore();
   const {
     fetchUserProfile,
@@ -95,14 +86,26 @@ function ProfileLink() {
     setIsEditing,
   } = useProfile();
   const nameTag = useParams()?.nameTag;
+  const navigate = useNavigate();
   console.log('user', user);
 
   const resizedWidth = useWindowResize({
     maxWidth: 600,
   });
+
   useEffect(() => {
-    fetchUserProfile(nameTag);
+    !keepEditing && fetchUserProfile(nameTag);
   }, []);
+
+  useEffect(() => {
+    if (keepEditing) {
+      // state 사용 후 현재 URL로 state 없이 replace
+      navigate(location.pathname, {
+        replace: true,
+        state: {},
+      });
+    }
+  }, [keepEditing]);
 
   return (
     <MobileViewFrame>
@@ -129,9 +132,6 @@ function ProfileLink() {
               </Logo>
               <ProfileName>{userData.name}</ProfileName>
               <ProfileTag>@{nameTag}</ProfileTag>
-              {/* <CarbonSaving>
-        {localizedTexts.carbon[0]} 1032{localizedTexts.carbon[1]}
-      </CarbonSaving> */}
 
               <ProfileWidgetGrid />
             </ProfileContainer>

@@ -21,6 +21,7 @@ import {
 import {WIDGET_PREFIX} from '../../../util/S3Config';
 import TopHeaderBackButtonWrapperView from '../components/TopHeaderBackButtonWrapperView';
 import WidgetItem from '../components/WidgetItem';
+import {useProfile} from '../contexts/ProfileContext';
 import {
   ProfileEMWidgetType,
   ProfileWidgetItemSize,
@@ -150,7 +151,8 @@ function ProfileCreateWidgetPage() {
     returnObjects: true,
   });
 
-  const {isSyncedWithEM} = useUserStore();
+  const {isSyncedWithEM, user, setMyWidgets, myWidgets} = useUserStore();
+  const {setCurrentWidgets, setOriginalWidgets} = useProfile();
   const navigate = useNavigate();
 
   const [selectedStyle, setSelectedStyle] =
@@ -251,7 +253,15 @@ function ProfileCreateWidgetPage() {
     };
     const response = await createWidget(isEmWidget ? emWidgetData : widgetData);
     if (response.result) {
-      navigate(-1);
+      setMyWidgets([...myWidgets, response.data]);
+      setCurrentWidgets(prev => [...prev, response.data]);
+      setOriginalWidgets(prev => [...prev, response.data]);
+      navigate('/zigu/' + user?.nameTag, {
+        replace: true,
+        state: {
+          keepEditing: true,
+        },
+      });
     }
   };
   const handleProfileImageChange = async (

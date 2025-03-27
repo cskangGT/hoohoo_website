@@ -1,7 +1,6 @@
 import React from 'react';
 import {FaTimes} from 'react-icons/fa';
 import {FaPencil} from 'react-icons/fa6';
-import {PiDotsSixVerticalBold} from 'react-icons/pi';
 import styled, {css} from 'styled-components';
 import {theme} from '../../../style';
 import {
@@ -491,9 +490,9 @@ function WidgetItem({
 
       {isEditMode && (
         <>
-          <ItemHolderBox>
+          {/* <ItemHolderBox>
             <PiDotsSixVerticalBold size={20} color="white" />
-          </ItemHolderBox>
+          </ItemHolderBox> */}
           <EditBox>
             {!widgetItem.isEmWidget && (
               <>

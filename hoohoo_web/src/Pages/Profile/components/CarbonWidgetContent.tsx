@@ -10,7 +10,8 @@ const CO2Container = styled.div<{small?: boolean; long?: boolean}>`
   align-items: center;
   width: 100%;
   height: 100%;
-  padding: ${props => (props.small ? '0 8px' : '0 16px')};
+  padding: ${props =>
+    props.small ? `0 ${theme.spacing.xl}` : `0 ${theme.spacing.xl}`};
 
   border-radius: 12px;
   position: relative;
@@ -20,6 +21,15 @@ const CO2Container = styled.div<{small?: boolean; long?: boolean}>`
     `
     justify-content: flex-start;
   `}
+
+  @media (max-width: 500px) {
+    padding: ${props =>
+      props.small ? `0 ${theme.spacing.md}` : `0 ${theme.spacing.lg}`};
+  }
+  @media (max-width: 400px) {
+    padding: ${props =>
+      props.small ? `0 ${theme.spacing.md}` : `0 ${theme.spacing.lg}`};
+  }
 `;
 
 const CO2BigContainer = styled.div`
@@ -87,9 +97,15 @@ const FootprintIconBig = styled.img<{width: number}>`
 const CO2ValueContainer = styled.div`
   display: flex;
 
-  margin-left: 12px;
+  margin-left: 16px;
   align-items: baseline;
   font-family: Inter;
+  @media (max-width: 500px) {
+    margin-left: 8px;
+  }
+  @media (max-width: 400px) {
+    margin-left: 4px;
+  }
 `;
 
 const CO2Value = styled.div<{small?: boolean}>`
@@ -97,6 +113,12 @@ const CO2Value = styled.div<{small?: boolean}>`
   line-height: 1.2;
   font-weight: bold;
   color: ${theme.white};
+  @media (max-width: 500px) {
+    font-size: ${theme.fontSize.lg};
+  }
+  @media (max-width: 400px) {
+    font-size: ${theme.fontSize.md};
+  }
 `;
 
 const CO2Unit = styled.div<{small?: boolean}>`
@@ -104,6 +126,14 @@ const CO2Unit = styled.div<{small?: boolean}>`
   color: ${theme.white};
   line-height: 1.2;
   margin-left: 4px;
+  @media (max-width: 500px) {
+    font-size: ${theme.fontSize.lg};
+    margin-left: 2px;
+  }
+  @media (max-width: 400px) {
+    font-size: ${theme.fontSize.md};
+    margin-left: 2px;
+  }
 `;
 
 const CO2Text = styled.div`
