@@ -170,15 +170,16 @@ const ModalOverlay = styled.div`
 
 // 모달 컨테이너 스타일
 const ModalContainer = styled.div`
-  background: ${theme.darkGray};
+  background: #121212;
   padding: 20px;
-  border-radius: 12px;
+
   width: 80%;
 
   z-index: 1002;
   max-width: 300px;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
   gap: 40px;
+  border-radius: 20px;
   /* ColorPicker 스타일 오버라이드 */
   .sketch-picker {
     box-shadow: none !important;
@@ -202,7 +203,7 @@ const ApplyButton = styled.button`
   color: ${theme.darkGray};
   text-align: center;
   padding: ${theme.spacing.rg} ${theme.spacing.md};
-  border-radius: 5px;
+  border-radius: 20px;
   cursor: pointer;
 `;
 function ProfileCreateWidgetPage() {
@@ -740,18 +741,6 @@ const InputField = styled.input`
     outline: none;
     border: 1px solid ${theme.mainNeon};
   }
-`;
-const GuideText = styled.p`
-  color: ${theme.gray};
-  font-size: ${theme.fontSize.md};
-  margin-bottom: ${theme.spacing.md};
-`;
-const PreviewContainer = styled.div`
-  width: 100%;
-  height: 30%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
 `;
 const UploadButton = styled.button<{disabled?: boolean}>`
   width: calc(100%);
