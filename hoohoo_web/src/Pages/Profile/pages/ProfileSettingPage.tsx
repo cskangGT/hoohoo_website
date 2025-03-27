@@ -242,7 +242,10 @@ function ProfileSettingPage() {
             <FaChevronRight size={20} color="#888" />
           </MenuItem>
           <Divider />
-          <MenuItem onClick={() => navigate('/profile/settings/sync')}>
+          <MenuItem
+            onClick={() =>
+              navigate('/zigu/' + user?.nameTag + '/settings/sync')
+            }>
             <MenuText>{localizedTexts.syncEarthMeraID}</MenuText>
             <FaChevronRight size={20} color="#888" />
           </MenuItem>

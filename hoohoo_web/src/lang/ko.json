@@ -1232,7 +1232,11 @@
     "loginButton": "로그인",
     "suggestSync": "EarthMera를 연동하고<br />다양한 에셋을 사용해보세요!",
     "openEarthMeraApp": "EarthMera 앱 열기",
-    "synced": [" ", " 연동되었어요"]
+    "synced": [" ", " 연동되었어요"],
+    "shareZIGU": ["ZIGU에서 ", "를 만나보세요"],
+    "share": "ZIGU 공유하기",
+    "copyLink": "링크 복사하기",
+    "shareTitle": "공유하기"
   },
   "ProfileSettingPage": {
     "title": "프로필 설정",

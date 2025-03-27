@@ -1,12 +1,13 @@
 import i18next from 'i18next';
 import React from 'react';
 import {LuSettings} from 'react-icons/lu';
+import {RiShare2Line} from 'react-icons/ri';
 import {useNavigate} from 'react-router-dom';
-import {toast} from 'react-toastify';
 import styled from 'styled-components';
 import {useUserStore} from '../../../storage/userStore';
 import {theme} from '../../../style';
-import {myLink} from '../../../util/links';
+import {useProfile} from '../contexts/ProfileContext';
+import ShareProfileModal from './ShareProfileModal';
 const TopHeaderContainer = styled.div`
   width: calc(100% - ${theme.spacing.xm} * 2);
   height: 60px;
@@ -20,7 +21,7 @@ const TopHeaderRight = styled.div`
   display: flex;
   flex-direction: row;
   align-items: center;
-  gap: ${theme.spacing.sm};
+  gap: ${theme.spacing.rg};
 `;
 const CopyButton = styled.button`
   border-radius: 10px;
@@ -33,7 +34,8 @@ const CopyButton = styled.button`
   font-family: Inter;
   font-weight: 300;
 `;
-const SettingButton = styled.button`
+
+const IconButton = styled.button`
   padding: 0px 5px;
   display: flex;
   align-items: center;
@@ -65,22 +67,19 @@ function ProfileTopHeader({
   isMyLink: boolean;
   nameTag: string;
 }) {
+  const {userData} = useProfile();
+  const [isShareModalOpen, setIsShareModalOpen] = React.useState(false);
   const localizedTexts: any = i18next.t('ProfileLinkPage', {
     returnObjects: true,
   });
 
   const {user, isAuthenticated} = useUserStore();
   const navigate = useNavigate();
-  function handleCopyMyLink() {
-    navigator.clipboard.writeText(myLink + nameTag);
-    toast.success(localizedTexts.copyMyLink);
-  }
+
   function handleSetting() {
-    navigate('/profile/settings', {});
+    navigate('/zigu/' + user?.nameTag + '/settings');
   }
-  function handleLogin() {
-    navigate('/login');
-  }
+
   function handleLogo() {
     if (isAuthenticated) {
       const link = '/zigu/' + user?.nameTag;
@@ -91,27 +90,41 @@ function ProfileTopHeader({
       navigate('/login');
     }
   }
-  return (
-    <TopHeaderContainer>
-      <TopHeaderLeft>
-        <LogoButton onClick={handleLogo}>
-          <LogoImage src={'/Images/zigulink.png'} />
-        </LogoButton>
-      </TopHeaderLeft>
-      <TopHeaderRight>
-        {isMyLink && (
-          <>
-            <CopyButton onClick={handleCopyMyLink}>
-              {localizedTexts.copyMyLinkButton}
-            </CopyButton>
+  function handleShare() {
+    setIsShareModalOpen(true);
+  }
 
-            <SettingButton onClick={handleSetting}>
-              <LuSettings size={22} color={theme.white} />
-            </SettingButton>
-          </>
-        )}
-      </TopHeaderRight>
-    </TopHeaderContainer>
+  function handleCloseModal() {
+    setIsShareModalOpen(false);
+  }
+
+  return (
+    <>
+      <TopHeaderContainer>
+        <TopHeaderLeft>
+          <LogoButton onClick={handleLogo}>
+            <LogoImage src={'/Images/zigulink.png'} />
+          </LogoButton>
+        </TopHeaderLeft>
+        <TopHeaderRight>
+          {isMyLink && (
+            <>
+              <IconButton onClick={handleShare}>
+                <RiShare2Line size={22} color={theme.white} />
+              </IconButton>
+              <IconButton onClick={handleSetting}>
+                <LuSettings size={22} color={theme.white} />
+              </IconButton>
+            </>
+          )}
+        </TopHeaderRight>
+      </TopHeaderContainer>
+
+      <ShareProfileModal
+        isShareModalOpen={isShareModalOpen}
+        handleCloseModal={handleCloseModal}
+      />
+    </>
   );
 }
 

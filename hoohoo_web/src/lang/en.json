@@ -1248,7 +1248,11 @@
     "loginButton": "Login",
     "suggestSync": "Sync your EarthMera app<br />to unlock this feature!",
     "openEarthMeraApp": "Open EarthMera App",
-    "synced": ["Synced with ", ""]
+    "synced": ["Synced with ", ""],
+    "shareZIGU": ["Join ", " on ZIGU"],
+    "share": "Share this ZIGU",
+    "copyLink": "Copy link",
+    "shareTitle": "Share"
   },
   "ProfileSettingPage": {
     "title": "Profile Settings",

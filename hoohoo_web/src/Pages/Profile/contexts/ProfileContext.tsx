@@ -34,7 +34,9 @@ interface ProfileContextType {
   setCurrentWidgets: React.Dispatch<
     React.SetStateAction<ProfileWidgetItemType[]>
   >;
-  setOriginalWidgets: (originalWidgets: ProfileWidgetItemType[]) => void;
+  setOriginalWidgets: React.Dispatch<
+    React.SetStateAction<ProfileWidgetItemType[]>
+  >;
   updateWidgets: (updatedWidgets: ProfileWidgetItemType[]) => void;
   fetchUserProfile: (nameTag?: string) => Promise<void>;
   setIsEditing: (isEditing: boolean) => void;
@@ -72,6 +74,8 @@ export const ProfileProvider: React.FC<ProfileProviderProps> = ({
   children,
   nameTag,
 }) => {
+  console.log('nameTag', nameTag);
+
   // 위젯 데이터 상태
   const [originalWidgets, setOriginalWidgets] = useState<
     ProfileWidgetItemType[]
@@ -115,8 +119,8 @@ export const ProfileProvider: React.FC<ProfileProviderProps> = ({
 
   // 사용자 프로필 데이터 가져오기
   const fetchUserProfile = async (profileNameTag?: string) => {
+    if (isEditing) return;
     setIsLoading(true);
-
     try {
       if (!profileNameTag && !nameTag) {
         setNoProfileData(true);

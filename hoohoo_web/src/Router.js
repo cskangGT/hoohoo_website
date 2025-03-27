@@ -35,6 +35,7 @@ import SignupLayout from './Pages/Login/SignupLayout';
 import Partnership from './Pages/Partnership/B2B/Partnership';
 import Platform from './Pages/Partnership/B2C/Platform';
 import EMTicketeer from './Pages/Partnership/ticketeer/EMTicketeer';
+import Profile from './Pages/Profile/pages/Profile';
 import ProfileCreateWidgetPage from './Pages/Profile/pages/ProfileCreateWidgetPage';
 import ProfileLinkPage from './Pages/Profile/pages/ProfileLinkPage';
 import ProfileSettingPage from './Pages/Profile/pages/ProfileSettingPage';
@@ -249,29 +250,35 @@ export const noFrameRoutes = [
     errorElement: <ErrorComponent />,
   },
   {
-    path: '/zigu/:nameTag?',
-    element: <ProfileLinkPage />,
+    path: '/zigu',
+    element: <Profile />,
     errorElement: <ErrorComponent />,
-  },
-  {
-    path: '/profile/settings',
-    element: <ProfileSettingPage />,
-    errorElement: <ErrorComponent />,
-  },
-  {
-    path: '/profile/create-widget',
-    element: <ProfileCreateWidgetPage />,
-    errorElement: <ErrorComponent />,
-  },
-  {
-    path: '/profile/settings/sync',
-    element: <ProfileSyncPage />,
-    errorElement: <ErrorComponent />,
-  },
-  {
-    path: '/profile/settings/sync-earthmera',
-    element: <ProfileSyncFromAppPage />,
-    errorElement: <ErrorComponent />,
+    children: [
+      {
+        path: ':nameTag',
+        element: <ProfileLinkPage />,
+      },
+      {
+        path: ':nameTag/settings',
+        element: <ProfileSettingPage />,
+        errorElement: <ErrorComponent />,
+      },
+      {
+        path: ':nameTag/create-widget',
+        element: <ProfileCreateWidgetPage />,
+        errorElement: <ErrorComponent />,
+      },
+      {
+        path: ':nameTag/settings/sync',
+        element: <ProfileSyncPage />,
+        errorElement: <ErrorComponent />,
+      },
+      {
+        path: ':nameTag/settings/sync-earthmera',
+        element: <ProfileSyncFromAppPage />,
+        errorElement: <ErrorComponent />,
+      },
+    ],
   },
 ];
 
