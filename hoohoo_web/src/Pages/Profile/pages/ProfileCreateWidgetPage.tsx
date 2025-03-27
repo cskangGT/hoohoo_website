@@ -1,37 +1,37 @@
 import i18next from 'i18next';
-import {ColorPicker, IColor, useColor} from 'react-color-palette';
+import { ColorPicker, IColor, useColor } from 'react-color-palette';
 import 'react-color-palette/css';
 
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 import 'react-color-palette/css';
-import {FaChevronDown, FaChevronUp} from 'react-icons/fa';
-import {useNavigate} from 'react-router-dom';
-import {toast} from 'react-toastify';
+import { FaChevronDown, FaChevronUp } from 'react-icons/fa';
+import { useNavigate } from 'react-router-dom';
+import { toast } from 'react-toastify';
 import styled from 'styled-components';
 import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
-import {Navigation, Pagination} from 'swiper/modules';
-import {Swiper, SwiperSlide} from 'swiper/react';
-import {createWidget} from '../../../api/jigulink/jigulink.api';
-import {useUserStore} from '../../../storage/userStore';
-import {theme} from '../../../style';
+import { Navigation, Pagination } from 'swiper/modules';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import { createWidget } from '../../../api/jigulink/jigulink.api';
+import { useUserStore } from '../../../storage/userStore';
+import { theme } from '../../../style';
 import {
   checkAWSKey,
   compressImage,
   generateUniqueKey,
   uploadImageToS3,
 } from '../../../util/MediaUtil';
-import {WIDGET_PREFIX} from '../../../util/S3Config';
+import { WIDGET_PREFIX } from '../../../util/S3Config';
 import TopHeaderBackButtonWrapperView from '../components/TopHeaderBackButtonWrapperView';
 import WidgetItem from '../components/WidgetItem';
-import {useProfile} from '../contexts/ProfileContext';
+import { useProfile } from '../contexts/ProfileContext';
 import {
   ProfileEMWidgetType,
   ProfileWidgetItemSize,
 } from '../types/WidgetItemType';
-import {EMWidgetImage, getEMWidgetData} from '../util/EMWidgetData';
-import {calculateNewWidgetCoordinate} from '../util/util';
+import { EMWidgetImage, getEMWidgetData } from '../util/EMWidgetData';
+import { calculateNewWidgetCoordinate } from '../util/util';
 
 const WIDTH = window.innerWidth > 600 ? 600 : window.innerWidth;
 const WIDGET_WIDTH = (WIDTH - 24 * 2 - 60 - 40) / 4;
@@ -318,9 +318,9 @@ function ProfileCreateWidgetPage() {
     };
     const response = await createWidget(isEmWidget ? emWidgetData : widgetData);
     if (response.result) {
-      setMyWidgets([...myWidgets, response.data]);
-      setCurrentWidgets(prev => [...prev, response.data]);
-      setOriginalWidgets(prev => [...prev, response.data]);
+      setMyWidgets([...myWidgets, {...response.data, coordinate: {x: newCoordinate.x, y: newCoordinate.y}}]);
+      setCurrentWidgets(prev => [...prev,  {...response.data, coordinate: {x: newCoordinate.x, y: newCoordinate.y}}]);
+      setOriginalWidgets(prev => [...prev,  {...response.data, coordinate: {x: newCoordinate.x, y: newCoordinate.y}}]);
       navigate('/zigu/' + user?.nameTag, {
         replace: true,
         state: {
