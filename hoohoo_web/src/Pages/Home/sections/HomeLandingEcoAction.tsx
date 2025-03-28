@@ -19,7 +19,7 @@ const Container = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: flex-end;
-  min-height: ${window.innerHeight }px;
+  height: 100%;
 
   padding-top: 80px;
   margin-bottom: 0px;
@@ -30,7 +30,7 @@ const Container = styled.div`
   @media screen and (max-width: 600px) {
     margin-bottom: 50px;
 
-    min-height: ${window.innerHeight }px;
+    /* min-height: ${window.innerHeight }px; */
   }
 `;
 const TopGradientOverlay = styled.div`
@@ -58,7 +58,7 @@ const MarqueeContainer = styled.div<{resizedWidth: number}>`
     );
   }
 `;
-const TitleContainer = styled.div`
+const TitleContainer = styled.div<{resizedWidth: number}>`
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -69,7 +69,16 @@ const TitleContainer = styled.div`
   display: flex;
 
   transform: translateY(0px);
+  
   padding-bottom: 80px;
+  padding-top: calc((${maxWidth}px - ${gap * (numColumns + 1)}px) / ${numColumns} * 5/4 * 2 + 16px + 80px);
+  
+
+  @media screen and (max-width: 550px) {
+    padding-top: calc(
+      (${maxWidth}px - ${gap * (mobileNumColumns - 1)}px) / ${mobileNumColumns}* 5/4 * 2+ 16px + 80px
+    );
+  }
 `;
 const Title = styled.h2`
   font-size: 2.5rem;
@@ -380,7 +389,7 @@ const HomeLandingEcoAction = () => {
           ))}
         </ImageCollage>
 
-        <TitleContainer>
+        <TitleContainer resizedWidth={resizedWidth}>
           {/* <TestimonialTag>{localizedTexts.tag}</TestimonialTag> */}
 
           <Title dangerouslySetInnerHTML={{__html: localizedTexts.title}} />
