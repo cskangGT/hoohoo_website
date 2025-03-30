@@ -1,5 +1,6 @@
 import React, { useEffect, useMemo, useRef } from 'react';
 import RGL, { Layout, WidthProvider } from 'react-grid-layout';
+import { useNavigate } from 'react-router-dom';
 import { useProfile } from '../contexts/ProfileContext';
 import {
   ProfileWidgetItemSize,
@@ -72,6 +73,7 @@ function makeLayoutItem(
 }
 
 export default function MainProfileGrid() {
+  const navigate = useNavigate();
   const {
     currentWidgets,
 
@@ -137,6 +139,13 @@ export default function MainProfileGrid() {
   const onEditWidget = (item: ProfileWidgetItemType) => {
     setSelectedItem(item);
     setIsEditingItem(true);
+    console.log("userData?.nameTag", userData?.nameTag);
+    
+    navigate('/zigu/' + userData?.nameTag + '/set-widget', {
+      state: {
+        isEditMode: true,
+      },
+    });
   };
   const cellSize = (CELL_CONTAINER_WIDTH - (6 - 1) * CONTAINER_GAP) / 6;
 

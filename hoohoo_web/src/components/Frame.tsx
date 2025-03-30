@@ -1,7 +1,8 @@
 import i18next from 'i18next';
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
-import {theme} from '../../src/style';
+import { theme } from '../../src/style';
+import Bubble from './Bubble';
 import Footer from './Footer/Footer';
 import Nav from './Nav/Nav';
 
@@ -21,14 +22,16 @@ type FrameProps = {
 };
 
 function Frame({children}: FrameProps) {
+  const [isBubble, setIsBubble] = useState(true);
   return (
     <Container>
       <Nav />
       <React.Fragment key={i18next.language}>{children}</React.Fragment>
-
+      {isBubble && <Bubble setIsBubble={setIsBubble} />}
       <>
         <hr style={{color: theme.darkGray, margin: 0}} />
         <Footer />
+
       </>
     </Container>
   );

@@ -1,15 +1,18 @@
 import i18next from 'i18next';
 
-import React, { useEffect, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import React, {useEffect, useState} from 'react';
+import {useNavigate} from 'react-router-dom';
 import styled from 'styled-components';
 
 import Wrapper from '../../../components/Wrapper/Wrapper';
 
-import useWindowResize from '../../../components/hooks/useWindowResize';
-import { useQuestionnaire } from '../../../context/QuestionnaireContext';
-import { useUserStore } from '../../../storage/userStore';
-import { theme } from '../../../style';
+import {useQuestionnaire} from '../../../context/QuestionnaireContext';
+import {useUserStore} from '../../../storage/userStore';
+import {theme} from '../../../style';
+import {
+  QuestionaireDescriptionText,
+  QuestionaireTitleText,
+} from '../components/styles';
 const Container = styled.div`
   width: 100%;
 
@@ -35,24 +38,7 @@ const InnerWrapper = styled.div`
   align-items: center;
   position: relative;
 `;
-const TitleText = styled.h2`
-  font-size: ${theme.fontSize['3xl']};
-  font-weight: 600;
-  color: ${theme.darkGray};
-  text-align: center;
-  margin-bottom: 0px;
-  @media screen and (max-width: 500px) {
-    font-size: ${theme.fontSize['2xl']};
-    margin-top: 30px;
-  }
-`;
-const DescriptionText = styled.p`
-  font-size: ${theme.fontSize.md};
-  font-weight: 400;
-  color: ${theme.inActiveGray};
-  margin: ${theme.spacing['2xl']};
-  text-align: center;
-`;
+
 const SelectPurposeContainer = styled.div`
   width: 102%;
   display: flex;
@@ -218,10 +204,10 @@ function SelectPurposeItem({
 }
 
 function SelectPurpose() {
-  const resizedWidth = useWindowResize();
   const {user} = useUserStore();
   const navigate = useNavigate();
-  const {setProgress, updateQuestionnaireData, updateTemplateList} = useQuestionnaire();
+  const {setProgress, updateQuestionnaireData, updateTemplateList} =
+    useQuestionnaire();
   const [selectedPurpose, setSelectedPurpose] = useState<GoalItem[]>([]);
   const localizedTexts: any = i18next.t('SelectPurpose', {
     returnObjects: true,
@@ -234,14 +220,18 @@ function SelectPurpose() {
       purposes: selectedPurpose.map(item => item.value),
     });
     //selectedPurpose에서 template를 추출해서 넣어서 세팅
-    const templateList = selectedPurpose
-      .flatMap(item => {
-        const templates = localizedTexts.purposeList.find((purpose: GoalItem) => purpose.value === item.value)?.template || [];
-        return templates.map((template: { value: string; image: string }) => template);
-      });
+    const templateList = selectedPurpose.flatMap(item => {
+      const templates =
+        localizedTexts.purposeList.find(
+          (purpose: GoalItem) => purpose.value === item.value,
+        )?.template || [];
+      return templates.map(
+        (template: {value: string; image: string}) => template,
+      );
+    });
 
     updateTemplateList([...templateList, ...localizedTexts.freeStyle]);
-    
+
     navigate('/setup/select-template');
   };
   const handleSelectPurpose = (goalItem: GoalItem) => {
@@ -254,11 +244,9 @@ function SelectPurpose() {
   return (
     <Container>
       <Wrapper>
-        
         <InnerWrapper>
-        
-          <TitleText>{localizedTexts.title}</TitleText>
-          <DescriptionText
+          <QuestionaireTitleText>{localizedTexts.title}</QuestionaireTitleText>
+          <QuestionaireDescriptionText
             dangerouslySetInnerHTML={{
               __html: localizedTexts.description,
             }}
@@ -271,7 +259,9 @@ function SelectPurpose() {
                 title={goalItem.title}
                 description={goalItem.description}
                 image={goalItem.image}
-                selected={selectedPurpose.some(item => item.value === goalItem.value)}
+                selected={selectedPurpose.some(
+                  item => item.value === goalItem.value,
+                )}
                 onClick={() => handleSelectPurpose(goalItem)}
               />
             ))}

@@ -1,17 +1,17 @@
 import i18next from 'i18next';
 import React from 'react';
-import {FaCheck} from 'react-icons/fa6';
+import { FaCheck } from 'react-icons/fa6';
 
-import {FiEdit} from 'react-icons/fi';
-import {LuPlus} from 'react-icons/lu';
-import {useNavigate} from 'react-router-dom';
-import {toast} from 'react-toastify';
+import { FiEdit } from 'react-icons/fi';
+import { LuPlus } from 'react-icons/lu';
+import { useNavigate } from 'react-router-dom';
+import { toast } from 'react-toastify';
 import styled from 'styled-components';
-import {updateWidgets} from '../../../api/jigulink/jigulink.api';
-import {useUserStore} from '../../../storage/userStore';
-import {theme} from '../../../style';
-import {useProfile} from '../contexts/ProfileContext';
-import {ProfileWidgetItemType} from '../types/WidgetItemType';
+import { updateWidgets } from '../../../api/jigulink/jigulink.api';
+import { useUserStore } from '../../../storage/userStore';
+import { theme } from '../../../style';
+import { useProfile } from '../contexts/ProfileContext';
+import { ProfileWidgetItemType } from '../types/WidgetItemType';
 const Container = styled.div`
   position: absolute;
   bottom: 0px;
@@ -146,7 +146,11 @@ function FixedBottomEditView() {
 
   function handleCreateWidget() {
     setMyWidgets(originalWidgets);
-    navigate('/zigu/' + userData?.nameTag + '/create-widget');
+    navigate('/zigu/' + userData?.nameTag + '/set-widget', {
+      state: {
+        isEditMode: false,
+      },
+    });
   }
   function handleGoSync() {
     navigate('/zigu/' + userData?.nameTag + '/settings/sync');

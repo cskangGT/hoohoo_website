@@ -1,53 +1,45 @@
+
 name: CI/CD Pipeline
 
 on:
   push:
     branches:
       - main
-
 jobs:
   build:
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        project: [hoohoo_web, zigu_web]
 
     steps:
-    - name: Checkout code
-      uses: actions/checkout@v4
+    - uses: actions/checkout@v4
 
-    - name: Cache node modules
-      uses: actions/cache@v4
-      with:
-        path: ~/.npm
-        key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
-        restore-keys: |
-          ${{ runner.os }}-node-
-
-    - name: Install dependencies and build
+    - name: Install and build ${{ matrix.project }}
       run: |
-        cd hoohoo_web
+        cd ${{ matrix.project }}
         npm ci
         npm run build:prod
 
-    - name: List contents of dist directory
-      run: ls -la hoohoo_web/dist/
-
-    # dist 디렉터리를 아티팩트로 업로드
-    - name: Upload dist directory as artifact
+    - name: Upload dist for ${{ matrix.project }}
       uses: actions/upload-artifact@v4
       with:
-        name: dist-directory
-        path: hoohoo_web/dist/
+        name: dist-${{ matrix.project }}
+        path: ${{ matrix.project }}/dist/
 
   deploy:
     needs: build
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        project: [hoohoo_web, zigu_web]
 
     steps:
-    # 아티팩트로부터 dist 디렉터리 다운로드
-    - name: Download dist directory artifact
+    - name: Download dist for ${{ matrix.project }}
       uses: actions/download-artifact@v4
       with:
-        name: dist-directory
-        path: hoohoo_web/dist/
+        name: dist-${{ matrix.project }}
+        path: ${{ matrix.project }}/dist/
 
     - name: Configure AWS credentials
       uses: aws-actions/configure-aws-credentials@v1
@@ -56,11 +48,10 @@ jobs:
         aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
         aws-region: us-east-2
 
-    - name: Deploy to S3
+    - name: Deploy to S3 for ${{ matrix.project }}
       run: |
-        cd hoohoo_web/dist/  
-        aws s3 sync ./ s3://www.earthmera.com/ --delete --acl public-read
-      env:
-        AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
-        AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-        AWS_REGION: 'us-east-2'
+        if [ "${{ matrix.project }}" = "hoohoo_web" ]; then
+          aws s3 sync ${{ matrix.project }}/dist/ s3://www.earthmera.com/ --delete --acl public-read
+        else
+          aws s3 sync ${{ matrix.project }}/dist/ s3://www.zigu.my/ --delete --acl public-read
+        fi

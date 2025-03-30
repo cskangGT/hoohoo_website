@@ -1,11 +1,11 @@
 import i18next from 'i18next';
-import React, { useEffect, useState } from 'react';
-import { useLocation, useNavigate } from 'react-router-dom';
+import React, {useEffect, useState} from 'react';
+import {useLocation, useNavigate} from 'react-router-dom';
 import styled from 'styled-components';
-import { EcoActionData } from '../../../../public/Images/EcoActionData';
+import {EcoActionData} from '../../../../public/Images/EcoActionData';
 import useWindowResize from '../../../components/hooks/useWindowResize';
-import { BgImage, theme } from '../../../style';
-import { EcoActionMarqueeImageItem } from '../../Home/sections/HomeLandingEcoAction';
+import {BgImage, theme} from '../../../style';
+import {EcoActionMarqueeImageItem} from '../../Home/sections/HomeLandingEcoAction';
 import MediaModal from '../../Home/sections/MediaModal';
 const Container = styled.div`
   width: 100%;
@@ -114,7 +114,7 @@ function Testimonials() {
   const canComeBack = state?.canComeBack;
   const mixed = shuffleArray([...EcoActionData]);
 
-  const resizedWidth = useWindowResize({maxWidth: 1400});
+  const {width: resizedWidth} = useWindowResize({maxWidth: 1400});
   const localizedTexts: any = i18next.t('EcoActionTestimony', {
     returnObjects: true,
   });
@@ -163,13 +163,13 @@ function Testimonials() {
           </ImageCollage>
           <TopGradientOverlay />
           <BottomGradientOverlay />
-          {canComeBack && (
+          {/* {canComeBack && (
             <AbsCloseButtonContainer>
               <AbsCloseButton onClick={handleCloseButtonClick}>
                 {localizedTexts.backButtonText}
               </AbsCloseButton>
             </AbsCloseButtonContainer>
-          )}
+          )} */}
           <MediaModal
             isOpen={isMediaModalOpen}
             setIsOpen={setIsMediaModalOpen}
