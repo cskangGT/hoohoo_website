@@ -1,13 +1,13 @@
 import i18next from 'i18next';
-import React, {useState} from 'react';
-import {FaArrowLeft} from 'react-icons/fa';
-import {useNavigate} from 'react-router-dom';
+import React, { useState } from 'react';
+import { FaArrowLeft } from 'react-icons/fa';
+import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 import ChangeTemplateModal from '../../../components/Modal/ChangeTemplateModal';
 import Wrapper from '../../../components/Wrapper/Wrapper';
-import {useUserStore} from '../../../storage/userStore';
-import {theme} from '../../../style';
-import {SelectTemplateItem} from '../../Login/pages/SelectTemplate';
+import { useUserStore } from '../../../storage/userStore';
+import { theme } from '../../../style';
+import { SelectTemplateItem } from '../../Login/pages/SelectTemplate';
 const Container = styled.div`
   width: 100%;
   height: 100%;
@@ -202,11 +202,11 @@ function ProfileLayoutPage() {
   const handleSelectTemplate = (template: string) => {
     setSelectedTemplate(template);
     setIsSelected(true);
-    setIsChangeTemplateModalVisible(true);
+    
   };
-  const handleChangeTemplate = () => {
+  const handleShowModal = () => {
     if (selectedTemplate) {
-      navigate('/setup/profile');
+      setIsChangeTemplateModalVisible(true);
     }
   };
   return (
@@ -243,7 +243,7 @@ function ProfileLayoutPage() {
           <>
             <ContinueButtonContainer>
               <ContinueButton
-                onClick={handleChangeTemplate}
+                onClick={handleShowModal}
                 disabled={!selectedTemplate}>
                 {localizedTexts.change}
               </ContinueButton>

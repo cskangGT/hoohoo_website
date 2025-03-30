@@ -1,12 +1,12 @@
-import {CircularProgress} from '@mui/material';
+import { CircularProgress } from '@mui/material';
 import i18next from 'i18next';
-import React, {useState} from 'react';
-import {useNavigate} from 'react-router-dom';
-import {toast} from 'react-toastify';
+import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { toast } from 'react-toastify';
 import styled from 'styled-components';
-import {applyTemplate} from '../../api/jigulink/jigulink.api';
-import {useUserStore} from '../../storage/userStore';
-import {theme} from '../../style';
+import { applyTemplate } from '../../api/jigulink/jigulink.api';
+import { useUserStore } from '../../storage/userStore';
+import { theme } from '../../style';
 
 const ModalOverlay = styled.div`
   position: fixed;
