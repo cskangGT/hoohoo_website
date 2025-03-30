@@ -1,11 +1,11 @@
-import {faChevronLeft} from '@fortawesome/free-solid-svg-icons';
-import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
+import { faChevronLeft } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import i18next from 'i18next';
-import React, {useCallback, useEffect, useState} from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import styled from 'styled-components';
-import {theme} from '../../style';
-import {ModalBackground} from '../EMMedia/Blog/BlogModal';
-import BaseProgress, {ModalTitle} from './BaseProgress';
+import { theme } from '../../style';
+import { ModalBackground } from '../EMMedia/Blog/BlogModal';
+import BaseProgress, { ModalTitle } from './BaseProgress';
 import EmailProgress from './EmailProgress';
 import ReasonProgress from './ReasonProgress';
 import VerifyEmailProgress from './VerifyEmailProgress';
