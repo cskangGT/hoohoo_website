@@ -33,7 +33,7 @@ const ImageBox = styled.div`
   border-top-left-radius: 10px;
   border-bottom-left-radius: 10px;
   padding: ${theme.spacing.md};
-  background-color: ${theme.darkGray};
+  background-color: transparent;
   @media screen and (max-width: 1000px) {
     display: none;
   }
@@ -41,8 +41,8 @@ const ImageBox = styled.div`
 const Image = styled.img`
   width: 100%;
   height: 100%;
-  border-top-left-radius: 10px;
-  border-bottom-left-radius: 10px;
+  border-radius: 10px;
+
   object-fit: cover;
 `;
 const InnerBox = styled.div`
@@ -399,7 +399,7 @@ function PreSignup() {
     <Container>
       <LoginContainer>
         <ImageBox>
-          <Image src={'/Images/spaceImage.png'} />
+          <Image src={'/Images/earth_image.jpeg'} />
         </ImageBox>
         <ContentOuterBox>
           <InnerBox>

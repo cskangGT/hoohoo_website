@@ -27,6 +27,7 @@ import Login from './Pages/Login/pages/Login';
 import PreSignup from './Pages/Login/pages/PreSignup';
 import SelectGoal from './Pages/Login/pages/SelectGoal';
 import SelectPurpose from './Pages/Login/pages/SelectPurpose';
+import SelectTemplate from './Pages/Login/pages/SelectTemplate';
 import SetupProfile from './Pages/Login/pages/SetupProfile';
 import Signup from './Pages/Login/pages/Signup';
 import VerifyEmail from './Pages/Login/pages/VerifyEmail';
@@ -37,6 +38,7 @@ import Platform from './Pages/Partnership/B2C/Platform';
 import EMTicketeer from './Pages/Partnership/ticketeer/EMTicketeer';
 import Profile from './Pages/Profile/pages/Profile';
 import ProfileCreateWidgetPage from './Pages/Profile/pages/ProfileCreateWidgetPage';
+import ProfileLayoutPage from './Pages/Profile/pages/ProfileLayoutPage';
 import ProfileLinkPage from './Pages/Profile/pages/ProfileLinkPage';
 import ProfileSettingPage from './Pages/Profile/pages/ProfileSettingPage';
 import ProfileSyncFromAppPage from './Pages/Profile/pages/ProfileSyncFromAppPage';
@@ -214,6 +216,11 @@ const setupRoutes = [
         element: <SetupProfile />,
         errorElement: <ErrorComponent />,
       },
+      {
+        path: 'select-template',
+        element: <SelectTemplate />,
+        errorElement: <ErrorComponent />,
+      },
     ],
   },
 ];
@@ -247,6 +254,11 @@ export const noFrameRoutes = [
   {
     path: '/oauth/google',
     element: <GoogleCallback />,
+    errorElement: <ErrorComponent />,
+  },
+  {
+    path: '/zigu/:nameTag/settings/layout',
+    element: <ProfileLayoutPage />,
     errorElement: <ErrorComponent />,
   },
   {
