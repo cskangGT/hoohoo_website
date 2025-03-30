@@ -1,3 +1,4 @@
+import { PixelCrop } from "react-image-crop";
 import { useUserStore } from "../../../storage/userStore";
 import { getGridDimensions } from "../components/MainProfileGrid";
 import { ProfileWidgetItemSize } from "../types/WidgetItemType";
@@ -150,6 +151,7 @@ function getRelativeLuminance(hexColor: string): number {
 
 
 export function getTextColorWcag(bgColor: string): string {
+    if (bgColor === 'transparent') return '#ffffff'
     const bgLum = getRelativeLuminance(bgColor);
 
     // 흰색(#FFF)의 상대 명도: 1.0, 검정(#000)의 상대 명도: 0.0
@@ -174,4 +176,44 @@ export function getTextColorWcag(bgColor: string): string {
 
     // 둘 중 더 높은 대비를 주는 색상 선택
     return whiteContrast >= blackContrast ? '#FFFFFF' : '#000000';
+}
+export async function getCroppedImg(
+    image: HTMLImageElement,
+    crop: PixelCrop
+): Promise<File | null> {
+    const canvas = document.createElement('canvas');
+    const scaleX = image.naturalWidth / image.width;
+    const scaleY = image.naturalHeight / image.height;
+
+    // crop 크기에 따라 canvas 크기 설정
+    canvas.width = crop.width * scaleX;
+    canvas.height = crop.height * scaleY;
+
+    const ctx = canvas.getContext('2d');
+    if (!ctx) return null;
+
+    // 실제 crop 영역을 canvas에 그림
+    ctx.drawImage(
+        image,
+        crop.x * scaleX,
+        crop.y * scaleY,
+        crop.width * scaleX,
+        crop.height * scaleY,
+        0,
+        0,
+        crop.width * scaleX,
+        crop.height * scaleY
+    );
+
+    return new Promise<File | null>((resolve, reject) => {
+        canvas.toBlob((blob) => {
+            if (!blob) {
+                reject(new Error('Canvas is empty'));
+                return;
+            }
+            // blob을 File 형태로 변환
+            const file = new File([blob], 'cropped.png', { type: blob.type });
+            resolve(file);
+        }, 'image/png');
+    });
 }

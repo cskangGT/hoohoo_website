@@ -1,11 +1,11 @@
-import React, {useEffect, useState} from 'react';
+import React, { useEffect, useState } from 'react';
 
-import {CircularProgress} from '@mui/material';
+import { CircularProgress } from '@mui/material';
 import styled from 'styled-components';
 import i18next from '../../../lang/i18n';
-import {useUserStore} from '../../../storage/userStore';
-import {theme} from '../../../style';
-import {useProfile} from '../contexts/ProfileContext';
+import { useUserStore } from '../../../storage/userStore';
+import { theme } from '../../../style';
+import { useProfile } from '../contexts/ProfileContext';
 import {
   ProfileEMWidgetType,
   ProfileWidgetItemType,
@@ -48,7 +48,7 @@ const SyncedContainer = styled.div`
 
 const BlurredWidgetGrid = styled(WidgetGrid)`
   margin-top: 24px;
-  margin-bottom: 100px;
+  margin-bottom: 0px;
   gap: 16px;
 `;
 const CircularProgressContainer = styled.div`

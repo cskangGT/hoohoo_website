@@ -1,9 +1,9 @@
 import i18next from 'i18next';
 import React from 'react';
-import { FaArrowLeft } from 'react-icons/fa';
-import { useNavigate } from 'react-router-dom';
+import {FaArrowLeft} from 'react-icons/fa';
+import {useNavigate} from 'react-router-dom';
 import styled from 'styled-components';
-import { theme } from '../../style';
+import {theme} from '../../style';
 import useWindowResize from '../hooks/useWindowResize';
 
 interface ProgressBarProps {
@@ -21,7 +21,6 @@ const Container = styled.div`
   align-items: center;
   position: relative;
   height: 50px;
-  
 `;
 const ProgressBarContainer = styled.div<{
   height: string;
@@ -43,8 +42,7 @@ const BackButtonContainer = styled.div`
   width: 130px;
   height: 40px;
   background-color: transparent;
-  
-  
+
   margin-left: 30px;
   @media screen and (max-width: 600px) {
     width: 56px;
@@ -54,21 +52,20 @@ const BackButtonContainer = styled.div`
   }
 `;
 export const BackButton = styled.button`
-  
   width: 130px;
   height: 40px;
   background-color: transparent;
-border: none;
+  border: none;
   border-radius: 40px;
   margin-left: 30px;
   cursor: pointer;
   display: flex;
   justify-content: center;
   align-items: center;
-font-weight: 600;
-font-size: ${theme.fontSize.rg};
+  font-weight: 600;
+  font-size: ${theme.fontSize.rg};
   color: ${theme.inActiveGray};
-margin-top: 30px;
+  margin-top: 30px;
 `;
 export const BackButtonIcon = styled(FaArrowLeft)`
   padding: 20px;
@@ -117,7 +114,7 @@ function ProgressBar({
   progressColor = theme.green || '#8AE65C', // 이미지에 보이는 연두색
 }: ProgressBarProps) {
   // 진행률이 0-100 범위 내에 있도록 보장
-  const resizedWidth = useWindowResize();
+  const {width: resizedWidth} = useWindowResize();
   const localizedTexts: any = i18next.t('ProgressBar', {
     returnObjects: true,
   });
@@ -125,30 +122,33 @@ function ProgressBar({
   const navigate = useNavigate();
   const goBack = () => {
     setProgress(progress - 25);
-      navigate(-1);
-    
+    navigate(-1);
   };
   return (
     <Container>
-      {progress > 25 && (resizedWidth > 600 ? <BackButton onClick={goBack}>
-          {localizedTexts.back}
-        </BackButton> : 
-        
-          <BackButtonIcon onClick={goBack} size={16} />)
-        
-        }
+      {progress > 25 &&
+        (resizedWidth > 600 ? (
+          <BackButton onClick={goBack}>{localizedTexts.back}</BackButton>
+        ) : (
+          <BackButtonIcon onClick={goBack} size={16} />
+        ))}
       <ProgressBarContainer height={height} backgroundColor={backgroundColor}>
         <Progress width={clampedProgress} progressColor={progressColor} />
       </ProgressBarContainer>
-      {
-        progress === 75 ? (resizedWidth > 600 ? <BackButton onClick={() => navigate('/setup/profile')}>
-        {localizedTexts.skip}
-      </BackButton> : 
-      
-        <BackButtonIcon onClick={() => navigate('/setup/profile')} size={16} />) : 
+      {progress === 75 ? (
+        resizedWidth > 600 ? (
+          <BackButton onClick={() => navigate('/setup/profile')}>
+            {localizedTexts.skip}
+          </BackButton>
+        ) : (
+          <BackButtonIcon
+            onClick={() => navigate('/setup/profile')}
+            size={16}
+          />
+        )
+      ) : (
         progress > 25 && <BackButtonContainer />
-      
-      }
+      )}
     </Container>
   );
 }

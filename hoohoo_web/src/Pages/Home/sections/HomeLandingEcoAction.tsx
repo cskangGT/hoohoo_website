@@ -1,11 +1,11 @@
 import i18next from 'i18next';
-import React, { useMemo } from 'react';
+import React, {useMemo} from 'react';
 import Marquee from 'react-fast-marquee';
-import { useNavigate } from 'react-router-dom';
+import {useNavigate} from 'react-router-dom';
 import styled from 'styled-components';
-import { EcoActionData } from '../../../../public/Images/EcoActionData';
+import {EcoActionData} from '../../../../public/Images/EcoActionData';
 import useWindowResize from '../../../components/hooks/useWindowResize';
-import { theme } from '../../../style';
+import {theme} from '../../../style';
 const gap = 16;
 const numColumns = 9;
 const mediumNumColumns = 7;
@@ -30,7 +30,7 @@ const Container = styled.div`
   @media screen and (max-width: 600px) {
     margin-bottom: 50px;
 
-    /* min-height: ${window.innerHeight }px; */
+    /* min-height: ${window.innerHeight}px; */
   }
 `;
 const TopGradientOverlay = styled.div`
@@ -69,14 +69,17 @@ const TitleContainer = styled.div<{resizedWidth: number}>`
   display: flex;
 
   transform: translateY(0px);
-  
+
   padding-bottom: 80px;
-  padding-top: calc((${maxWidth}px - ${gap * (numColumns + 1)}px) / ${numColumns} * 5/4 * 2 + 16px + 80px);
-  
+  padding-top: calc(
+    (${props => props.resizedWidth}px - ${gap * (numColumns + 1)}px) /
+      ${numColumns} * 5 / 4 * 2 + 16px + 80px
+  );
 
   @media screen and (max-width: 550px) {
     padding-top: calc(
-      (${maxWidth}px - ${gap * (mobileNumColumns - 1)}px) / ${mobileNumColumns}* 5/4 * 2+ 16px + 80px
+      (${props => props.resizedWidth}px - ${gap * (mobileNumColumns - 1)}px) /
+        ${mobileNumColumns}* 5 / 4 * 2+ 16px + 80px
     );
   }
 `;
@@ -97,7 +100,6 @@ const Title = styled.h2`
     margin-bottom: 0px;
   }
 `;
-
 
 const Description = styled.p<{language: string}>`
   font-size: 1.25rem;
@@ -135,8 +137,6 @@ const Button = styled.button`
   }
 `;
 
-
-
 const ImageCollage = styled.div`
   display: flex;
   justify-content: flex-start;
@@ -163,9 +163,6 @@ const ImageColumn = styled.div<{isOdd: boolean}>`
   @media screen and (max-width: 500px) {
     transform: translateY(${props => (props.isOdd ? '0' : '-60px')});
   }
-  
-  
-  
 `;
 const ImageButton = styled.button`
   background-color: transparent;
@@ -289,6 +286,8 @@ export const EcoActionMarqueeImageItem = ({
   function handleMediaClick(media: MediaDataType) {
     openMediaModal(media);
   }
+  console.log('resizedWidth', resizedWidth);
+
   return isMarqueeActive ? (
     <MarqueeContainer resizedWidth={resizedWidth}>
       <Marquee
@@ -334,7 +333,7 @@ export const EcoActionMarqueeImageItem = ({
 };
 const HomeLandingEcoAction = () => {
   const navigate = useNavigate();
-  const resizedWidth = useWindowResize({maxWidth: 1400});
+  const {width: resizedWidth} = useWindowResize({maxWidth: 1400});
   const localizedTexts: any = i18next.t('EcoActionTestimony', {
     returnObjects: true,
   });

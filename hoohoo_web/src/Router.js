@@ -1,5 +1,5 @@
 import React from 'react';
-import {createBrowserRouter, Navigate} from 'react-router-dom';
+import { createBrowserRouter, Navigate } from 'react-router-dom';
 import {
   default as ErrorComponent,
   default as NotFound,
@@ -24,6 +24,7 @@ import AppleCallback from './Pages/Login/oauth/AppleCallback';
 import GoogleCallback from './Pages/Login/oauth/GoogleCallback';
 import KakaoCallback from './Pages/Login/oauth/KakaoCallback';
 import Login from './Pages/Login/pages/Login';
+import PlanPage from './Pages/Login/pages/PlanPage';
 import PreSignup from './Pages/Login/pages/PreSignup';
 import SelectGoal from './Pages/Login/pages/SelectGoal';
 import SelectPurpose from './Pages/Login/pages/SelectPurpose';
@@ -221,6 +222,11 @@ const setupRoutes = [
         element: <SelectTemplate />,
         errorElement: <ErrorComponent />,
       },
+      {
+        path: 'plan',
+        element: <PlanPage />,
+        errorElement: <ErrorComponent />,
+      },
     ],
   },
 ];
@@ -276,7 +282,7 @@ export const noFrameRoutes = [
         errorElement: <ErrorComponent />,
       },
       {
-        path: ':nameTag/create-widget',
+        path: ':nameTag/set-widget',
         element: <ProfileCreateWidgetPage />,
         errorElement: <ErrorComponent />,
       },

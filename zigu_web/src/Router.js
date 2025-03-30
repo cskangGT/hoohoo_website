@@ -133,7 +133,7 @@ export const noFrameRoutes = [
         errorElement: <ErrorComponent />,
       },
       {
-        path: ':nameTag/create-widget',
+        path: ':nameTag/set-widget',
         element: <ProfileCreateWidgetPage />,
         errorElement: <ErrorComponent />,
       },

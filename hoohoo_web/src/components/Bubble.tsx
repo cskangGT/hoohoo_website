@@ -1,13 +1,14 @@
 import i18next from 'i18next';
-import React, {useState} from 'react';
+import React, { useState } from 'react';
+import { IoClose } from "react-icons/io5";
 import styled from 'styled-components';
-import {theme} from '../style';
+import { theme } from '../style';
 const BubbleBox = styled.div<any>`
   cursor: pointer;
   z-index: 10000;
   color: ${theme.darkGray};
   padding-left: 20px;
-  padding-right: 30px;
+  padding-right: 20px;
   padding-top: 15px;
   padding-bottom: 15px;
   border-radius: 10px 10px;
@@ -29,20 +30,32 @@ const BubbleBox = styled.div<any>`
 const Inside = styled.div`
   left: 30px;
   display: flex;
+  align-items: center;
 `;
 const Image = styled.img`
-  width: 70px;
+  width: 50px;
+  @media screen and (max-width: 700px) {
+    width: auto;
+    height: 50px;
+  }
 `;
 const TextBox = styled.div`
   margin-left: 12px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  
+  justify-content: space-between;
+  
 `;
 const Text = styled.span`
-  font-size: 14px;
+  font-size: ${theme.fontSize.rg};
   color: ${theme.white};
-  line-height: 1.1;
+  line-height: 1.8;
   text-shadow: 0px 0px 3px rgba(0, 0, 0, 0.5);
   @media screen and (max-width: 700px) {
-    font-size: 0.7rem;
+    font-size: ${theme.fontSize.sm};
+    line-height: 1.4;
   }
 `;
 const CloseBox = styled.div`
@@ -50,10 +63,7 @@ const CloseBox = styled.div`
   top: 5px;
   right: 5px;
 `;
-const Close = styled.img`
-  width: 20px;
-  height: auto;
-`;
+
 
 type BubbleProps = {
   setIsBubble: React.Dispatch<React.SetStateAction<boolean>>;
@@ -81,7 +91,7 @@ const Bubble: React.FC<BubbleProps> = ({setIsBubble}) => {
         </TextBox>
       </Inside>
       <CloseBox onClick={handleClose}>
-        <Close src={data['close']} />
+        <IoClose size={20} color="white" />
       </CloseBox>
     </BubbleBox>
   );

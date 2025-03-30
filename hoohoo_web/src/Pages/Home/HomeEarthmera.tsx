@@ -1,11 +1,11 @@
 import i18next from 'i18next';
-import React, {useEffect, useRef, useState} from 'react';
-import {useLocation, useNavigate} from 'react-router-dom';
+import React, { useEffect, useRef, useState } from 'react';
+import { useLocation, useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 import FootContact from '../../components/Footer/FootContact';
-import {useLanguage} from '../../components/hooks/LanguageContext';
-import {BgImage, theme} from '../../style';
-import {ContentBox} from '../About/Vision/EarthMeraVision';
+import { useLanguage } from '../../components/hooks/LanguageContext';
+import { BgImage, theme } from '../../style';
+import { ContentBox } from '../About/Vision/EarthMeraVision';
 import HomeEcoProducts from './sections/HomeEcoProducts';
 import HomeEcoServices from './sections/HomeEcoServices';
 import HomeEnvImpact from './sections/HomeEnvImpact';
@@ -158,6 +158,7 @@ function HomeEarthmera() {
       </Wrap>
       <ContentBox></ContentBox>
       <hr style={{color: theme.darkGray, margin: 0, width: '100%'}} />
+      
       <Wrap>
         <FootContact />
       </Wrap>
