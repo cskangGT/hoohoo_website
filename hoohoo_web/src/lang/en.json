@@ -948,20 +948,20 @@
   "PartnershipCarbonTracking": {
     "title": "Track the CO₂ reductions<br />of your products",
     "description": "Register your products, and EarthMera AI will track the eco-friendly actions taken with them, providing you with accurate CO₂ reduction data.",
-    "buttonText": "Ask about<br />Category Registration",
+    "buttonText": "Category Registration<br />Inquiry",
     "image": "/Images/partnership_category.webp",
     "carbonImage": "/Images/partnership_carbon.png"
   },
   "PartnershipEcoBoard": {
     "title": "Boost your Brand<br />with Eco-Board",
     "description": "EcoBoard connects you with sustainable brands and eco-conscious organizations, offering easy access to information that inspires a greener lifestyle.",
-    "buttonText": "Ask about<br />Eco-Board",
+    "buttonText": "Eco-Board<br />Inquiry",
     "image": "/Images/partnership_ecoboard.webp"
   },
   "PartnershipShop": {
     "title": "Get Found by<br />Eco-Shoppers Nearby",
     "description": "List your zero-waste or vegan store on EarthMera and make it easy for eco-conscious shoppers to find you. Users can see your store's location nearby and connect with your sustainable brand, helping you grow your customer base and increase visibility.",
-    "buttonText": "Ask about<br />Nearby Stores",
+    "buttonText": "Nearby Stores<br />Inquiry",
     "image": "/Images/partnership_ecoshop.webp"
   },
   "TicketeerCarbon": {
@@ -971,7 +971,7 @@
   },
   "TicketeerIntro": {
     "header": "Turn your eco-events<br />into measurable impact",
-    "buttonText": "Ask about<br />Ticketeer",
+    "buttonText": "Ticketeer<br />Inquiry",
     "image": "/Images/ticketeer_intro.webp",
     "titleStar": "/Images/ticketeer_title_star.png"
   },
@@ -1114,13 +1114,13 @@
   "B2BEcoServices": {
     "title": "Track the Real Impact of<br />Your Eco-Service",
     "description": "EarthMera AI tracks user actions and calculates CO₂ reductions, helping eco-services showcase their real impact. Partner with us to demonstrate how your business contributes to a sustainable future and inspires meaningful change.",
-    "buttonText": "Ask about<br />Eco-Services",
+    "buttonText": "Eco-Services<br />Inquiry",
     "image": "/Images/partner_eco_service.webp"
   },
   "B2BEcoProducts": {
     "title": "Certify Eco-Products<br />with EarthMera",
     "description": "EarthMera is looking for partners to certify eco-friendly products. Once certified, these products are turned into collectible cards, making sustainability fun and engaging while enhancing your brand's credibility.",
-    "buttonText": "Ask about<br />Eco-Products",
+    "buttonText": "Eco-Products<br />Inquiry",
     "image": "/Images/partner_eco_product.webp"
   },
   "Login": {
@@ -1550,9 +1550,9 @@
     "perMonth": "per month",
     "perYear": "per year",
     "getStarted": "Get started",
-    "promoButton" : "Do you have a promo code?",
+    "promoButton": "Do you have a promo code?",
     "PromoCodeModal": {
-      "title" : "Have a promo code?",
+      "title": "Have a promo code?",
       "placeholder": "Enter your promo code",
       "apply": "Apply code",
       "cancel": "Cancel",

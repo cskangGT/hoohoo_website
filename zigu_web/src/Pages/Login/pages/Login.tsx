@@ -6,11 +6,11 @@ import {
   OutlinedInput,
 } from '@mui/material';
 import TextField from '@mui/material/TextField';
-import { useGoogleLogin } from '@react-oauth/google';
+import {useGoogleLogin} from '@react-oauth/google';
 import i18next from 'i18next';
-import React, { useEffect, useState } from 'react';
-import { IoEyeOffSharp, IoEyeSharp } from 'react-icons/io5';
-import { useNavigate } from 'react-router-dom';
+import React, {useEffect, useState} from 'react';
+import {IoEyeOffSharp, IoEyeSharp} from 'react-icons/io5';
+import {useNavigate} from 'react-router-dom';
 import styled from 'styled-components';
 
 import {
@@ -20,11 +20,11 @@ import {
   sendGoogleLogin,
   validateLogin,
 } from '../../../api/login/auth';
-import { useLanguage } from '../../../components/hooks/LanguageContext';
+import {useLanguage} from '../../../components/hooks/LanguageContext';
 import Wrapper from '../../../components/Wrapper/Wrapper';
-import { useUserStore } from '../../../storage/userStore';
-import { theme } from '../../../style';
-import { isValidEmail } from '../../../util/validation';
+import {useUserStore} from '../../../storage/userStore';
+import {theme} from '../../../style';
+import {isValidEmail} from '../../../util/validation';
 import EarthMeraLogo from '../components/EarthMeraLogo';
 import GoogleLogo from '../components/GoogleLogo';
 import LineDivider from '../components/LineDivider';
@@ -277,7 +277,7 @@ const Login = () => {
     (window as any)?.AppleID?.auth?.init({
       clientId: 'earthmera.web',
       scope: 'email',
-      redirectURI: `${redirectUri}/oauth/callback/apple`,
+      redirectURI: `${window.location.origin}/oauth/callback/apple`,
       state: '1234567890',
       nonce: '1234567890',
       usePopup: true,
