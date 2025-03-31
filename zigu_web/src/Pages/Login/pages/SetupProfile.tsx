@@ -1,24 +1,24 @@
-import {TextField} from '@mui/material';
+import { TextField } from '@mui/material';
 import CircularProgress from '@mui/material/CircularProgress';
 import i18next from 'i18next';
-import React, {useEffect, useRef, useState} from 'react';
-import {useNavigate} from 'react-router-dom';
-import {toast} from 'react-toastify';
+import React, { useEffect, useRef, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { toast } from 'react-toastify';
 import styled from 'styled-components';
-import {applyTemplate} from '../../../api/jigulink/jigulink.api';
-import {updateUserProfile} from '../../../api/jigulink/user.api';
-import {sendQuestionnaire} from '../../../api/login/signup.api';
+import { applyTemplate } from '../../../api/jigulink/jigulink.api';
+import { updateUserProfile } from '../../../api/jigulink/user.api';
+import { sendQuestionnaire } from '../../../api/login/signup.api';
 import Wrapper from '../../../components/Wrapper/Wrapper';
-import {useQuestionnaire} from '../../../context/QuestionnaireContext';
-import {useUserStore} from '../../../storage/userStore';
-import {theme} from '../../../style';
+import { useQuestionnaire } from '../../../context/QuestionnaireContext';
+import { useUserStore } from '../../../storage/userStore';
+import { theme } from '../../../style';
 import {
   checkAWSKey,
   compressImage,
   generateUniqueKey,
   uploadImageToS3,
 } from '../../../util/MediaUtil';
-import {PROFILE_PREFIX} from '../../../util/S3Config';
+import { PROFILE_PREFIX } from '../../../util/S3Config';
 const Container = styled.div`
   width: 100%;
   height: 100%;
@@ -220,7 +220,7 @@ function SetupProfile() {
           sessionStorage.removeItem('redirectAfterAuth');
           navigate(redirectAfterAuth, {replace: true});
         } else {
-          navigate(`/zigu/${user?.nameTag}`, {replace: true});
+          navigate(`/${user?.nameTag}`, {replace: true});
         }
       } else {
         alert(localizedTexts.errorText.error);

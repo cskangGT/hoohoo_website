@@ -1,12 +1,12 @@
-import {CircularProgress} from '@mui/material';
+import { CircularProgress } from '@mui/material';
 import i18next from 'i18next';
-import React, {useState} from 'react';
-import {useNavigate} from 'react-router-dom';
-import {toast} from 'react-toastify';
+import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { toast } from 'react-toastify';
 import styled from 'styled-components';
-import {syncEMUser} from '../../../api/jigulink/user.api';
-import {useUserStore} from '../../../storage/userStore';
-import {theme} from '../../../style';
+import { syncEMUser } from '../../../api/jigulink/user.api';
+import { useUserStore } from '../../../storage/userStore';
+import { theme } from '../../../style';
 type SyncValidAccessProps = {
   id: string;
   name: string;
@@ -131,7 +131,7 @@ function SyncValidAccess({id, name, profileImage}: SyncValidAccessProps) {
     if (response.result) {
       toast.success(localizedTexts.successToast);
       clearSessionStorage();
-      navigate(`/zigu/${user?.nameTag}`);
+      navigate(`/${user?.nameTag}`);
     } else {
       if (response.status === 400) {
         toast.error(localizedTexts.alreadySynced);
@@ -146,7 +146,7 @@ function SyncValidAccess({id, name, profileImage}: SyncValidAccessProps) {
   }
   const handleCancel = async () => {
     clearSessionStorage();
-    navigate(`/zigu/${user?.nameTag}`);
+    navigate(`/${user?.nameTag}`);
   };
 
   return (

@@ -23,7 +23,7 @@
       {
         "label": "What we do",
         "subItems": [
-          {"label": "EarthMera", "link": "/en/platform"},
+          {"label": "Social Platform", "link": "/en/platform"},
           {"label": "EM Ticketeer", "link": "/en/ticketeer"}
         ]
       },
@@ -624,10 +624,9 @@
     }
   },
   "bubble": {
-    "image": "/Images/dropb_logo.png",
-    "text_part1": "We are the creator of DropB",
-    "text_part2": "Do you want to tag your day? Try DropB!",
-    "close": "/Images/close_btn.png"
+    "image": "/Images/zigulink.png",
+    "text_part1": "Your true eco profile, in one simple link.",
+    "text_part2": "Start sharing your sustainable self with ZIGU 🌍"
   },
   "b2c": {
     "image": "/Images/b2c.png",
@@ -1167,7 +1166,7 @@
     "title": "Sign up to ZIGU",
     "description": "Share your eco-journey, inspire change, and connect with a like-minded community. 🌍",
     "linkTitle": "Claim your free Link in Bio!",
-    "link": ["earthmera.com/zigu/", "username"],
+    "link": ["zigu.my/", "username"],
     "next": "Next",
     "alreadyAccount": "Already have an account?  ",
     "signin": "Sign in",
@@ -1478,6 +1477,7 @@
       "selectColor": "Please fill a widget color"
     },
     "close": "Close",
+    "apply": "Apply",
     "save": "Save",
     "preview": "Widget Preview",
     "style": "Style",
@@ -1541,5 +1541,76 @@
     "successToast": "ZIGU synced successfully",
     "errorToast": "Failed to sync ZIGU",
     "question": ["Would you like to sync “", "” with EarthMera?"]
+  },
+  "PlanPage": {
+    "title": "We’ve got a plan<br />that’s perfect for you",
+    "monthly": "Monthly",
+    "annually": "Annually",
+    "featureTitle": "FEATURES",
+    "perMonth": "per month",
+    "perYear": "per year",
+    "getStarted": "Get started",
+    "promoButton": "Do you have a promo code?",
+    "PromoCodeModal": {
+      "title": "Have a promo code?",
+      "placeholder": "Enter your promo code",
+      "apply": "Apply code",
+      "cancel": "Cancel",
+      "successToast": "Promo code applied",
+      "errorToast": "Failed to apply promo code"
+    },
+    "zero": "$0",
+    "autopay": [
+      "$5.99 will be automatically charged starting from ",
+      "/",
+      "",
+      "."
+    ],
+    "appied": "Promo code applied!",
+    "plans": [
+      {
+        "name": "Basic plan",
+        "for": "For personal user",
+        "monthlyPrice": "$0.99",
+        "yearlyPrice": "$0.79",
+        "features": [
+          "Custom widget placement",
+          "Unlimited links",
+          "Multi-factor authentication",
+          "QR code generation",
+          "Cross-channel linking"
+        ]
+      },
+      {
+        "name": "Pro plan",
+        "for": "For creators and<br />small brands",
+        "monthlyPrice": "$7.99",
+        "yearlyPrice": "$6.99",
+        "isPopular": true,
+        "popularText": "Popular",
+        "discountMonthPrice": "$5.99",
+        "discountYearlyPrice": "$4.99",
+        "unlock": "Unlock all Basic plan",
+        "features": [
+          "Scheduled link widget",
+          "Button hover animations",
+          "Custom fonts & widget styling",
+          "Link click analytics"
+        ]
+      },
+      {
+        "name": "Premium plan",
+        "for": "For businesses and<br />growth focused teams",
+        "monthlyPrice": "$13.99",
+        "yearlyPrice": "$10.99",
+        "unlock": "Unlock all Pro plan",
+        "features": [
+          "Animated background themes",
+          "Custom widget placement",
+          "Visitor insights dashboard",
+          "SEO & Google Analytics integration"
+        ]
+      }
+    ]
   }
 }

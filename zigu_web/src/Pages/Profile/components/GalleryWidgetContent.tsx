@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import { ProfileWidgetItemSize } from '../types/WidgetItemType';
+import {ProfileWidgetItemSize} from '../types/WidgetItemType';
 type GalleryWidgetContentProps = {
   width: number;
   cellHeight: number;

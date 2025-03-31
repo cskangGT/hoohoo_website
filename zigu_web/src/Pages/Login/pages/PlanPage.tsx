@@ -1,11 +1,12 @@
 import i18next from 'i18next';
-import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import React, {useState} from 'react';
+import {useNavigate} from 'react-router-dom';
 import styled from 'styled-components';
 import PromoCodeModal from '../../../components/Modal/PromoCodeModal';
 import Wrapper from '../../../components/Wrapper/Wrapper';
-import { theme } from '../../../style';
-import { QuestionaireTitleText } from '../components/styles';
+import {useUserStore} from '../../../storage/userStore';
+import {theme} from '../../../style';
+import {QuestionaireTitleText} from '../components/styles';
 
 const Container = styled.div`
   width: 100%;
@@ -37,23 +38,29 @@ const PlanContainer = styled.div`
   flex-direction: row;
   justify-content: center;
   align-items: stretch;
-  gap: ${theme.spacing.md};
+  gap: ${theme.spacing['3xl']};
   margin: 50px 0px 80px 0px;
+  @media screen and (max-width: 1200px) {
+    gap: ${theme.spacing['xl']};
+  }
   @media screen and (max-width: 900px) {
     flex-direction: column;
+    justify-content: center;
+    align-items: center;
   }
 `;
 
 // 스위치 컨테이너
-const PlanSwitchContainer = styled.div`
+const PlanSwitchContainer = styled.div<{promoApplied: boolean}>`
   display: flex;
-  border: 1px solid black;
+  border: 1px solid
+    ${props => (props.promoApplied ? theme.gray : theme.darkGray)};
   border-radius: 14px;
   padding: 2px;
   margin: 40px 0;
 `;
 
-const SwitchButton = styled.button<{isActive: boolean}>`
+const SwitchButton = styled.button<{isActive: boolean; disable?: boolean}>`
   padding: 12px 24px;
   border-radius: 100px;
   border: none;
@@ -63,7 +70,7 @@ const SwitchButton = styled.button<{isActive: boolean}>`
   font-family: 'Fredoka';
   color: ${theme.darkGray};
   transition: all 0.3s ease;
-
+  opacity: ${({disable}) => (disable ? 0.2 : 1)};
   ${({isActive}) =>
     isActive
       ? `
@@ -78,7 +85,7 @@ const SwitchButton = styled.button<{isActive: boolean}>`
 `;
 
 // 플랜 카드 스타일
-const PlanCard = styled.div<{isPopular?: boolean}>`
+const PlanCard = styled.div<{isPopular?: boolean; promoApplied: boolean}>`
   position: relative;
   width: 300px;
   padding: 32px;
@@ -89,7 +96,7 @@ const PlanCard = styled.div<{isPopular?: boolean}>`
   display: flex;
   flex-direction: column;
   gap: ${theme.spacing.sm};
-
+  opacity: ${({promoApplied}) => (promoApplied ? 0.2 : 1)};
   overflow: hidden;
   ${({isPopular}) =>
     isPopular &&
@@ -105,7 +112,7 @@ const PlanCard = styled.div<{isPopular?: boolean}>`
       
       background: radial-gradient(
         circle at top right,
-        #92ff3feb 0%, #000000 30%
+        #92ff3f -20%, #000000 40%
       );
       pointer-events: none; // 내부 컨텐츠 클릭 가능하도록
       z-index: 0;
@@ -175,7 +182,7 @@ const UnlockText = styled.div<{isPopular?: boolean}>`
 const OriginalPrice = styled.span<{isPopular?: boolean}>`
   text-decoration: line-through;
   text-decoration-color: ${theme.inActiveGray};
-  
+
   font-size: ${theme.fontSize['4xl']};
   font-weight: 700;
   color: ${theme.inActiveGray};
@@ -185,7 +192,7 @@ const PriceContainer = styled.div`
   display: flex;
   align-items: center;
   gap: 10px;
-  margin: 10px 0;
+  margin: 0px 0;
 `;
 const PriceWrapper = styled.div`
   display: flex;
@@ -196,18 +203,43 @@ const PriceWrapper = styled.div`
 const PriceUnit = styled.span<{isPopular?: boolean}>`
   font-size: ${theme.fontSize['4xl']};
   font-weight: 700;
-  color: ${props => props.isPopular ? theme.white : theme.darkGray};
+  color: ${props => (props.isPopular ? theme.white : theme.darkGray)};
 `;
 const PriceValue = styled.span<{isPopular?: boolean}>`
   font-size: ${theme.fontSize['4xl']};
   font-weight: 700;
-  color: ${props => props.isPopular ? theme.white : theme.darkGray};
+  color: ${props => (props.isPopular ? theme.white : theme.darkGray)};
 `;
 const PricePeriod = styled.span<{isPopular?: boolean}>`
   font-size: ${theme.fontSize.lg};
   font-weight: 400;
-  color: ${props => props.isPopular ? 'rgba(255, 255, 255, 0.7)' : theme.inActiveGray};
+  color: ${props =>
+    props.isPopular ? 'rgba(255, 255, 255, 0.7)' : theme.inActiveGray};
   margin-left: 4px;
+`;
+const AppliedPriceContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 4px;
+`;
+const AppliedPriceView = styled.div`
+  display: flex;
+  align-items: center;
+  font-size: ${theme.fontSize['4xl']};
+  font-weight: 700;
+  column-gap: 20px;
+`;
+const AutoPayText = styled.span`
+  font-size: ${theme.fontSize.md};
+  font-weight: 400;
+  color: ${theme.white};
+`;
+const AppliedText = styled.div`
+  font-size: ${theme.fontSize.md};
+  font-weight: 400;
+  color: ${theme.mainNeon};
 `;
 const PopularTag = styled.div`
   background-color: ${theme.mainNeon};
@@ -300,11 +332,22 @@ function PlanPage() {
   const [billingCycle, setBillingCycle] = useState<'monthly' | 'annually'>(
     'monthly',
   );
-  const [isPromoCodeModalVisible, setIsPromoCodeModalVisible] = useState<boolean>(false);
+  const [isPromoCodeModalVisible, setIsPromoCodeModalVisible] =
+    useState<boolean>(false);
+  const {user} = useUserStore();
   const localizedTexts: any = i18next.t('PlanPage', {returnObjects: true});
   const navigate = useNavigate();
-
-  
+  const [promoApplied, setPromoApplied] = useState<boolean>(false);
+  function openPromoCodeModal() {
+    setIsPromoCodeModalVisible(true);
+  }
+  function setApplied() {
+    setPromoApplied(true);
+    setBillingCycle('monthly');
+  }
+  function sendToProfile() {
+    navigate(`/${user?.nameTag}`);
+  }
   return (
     <Container>
       <Wrapper>
@@ -315,86 +358,122 @@ function PlanPage() {
             }}
           />
 
-          <PlanSwitchContainer>
+          <PlanSwitchContainer promoApplied={promoApplied}>
             <SwitchButton
               isActive={billingCycle === 'monthly'}
+              disabled={promoApplied}
               onClick={() => setBillingCycle('monthly')}>
               {localizedTexts.monthly}
             </SwitchButton>
             <SwitchButton
               isActive={billingCycle === 'annually'}
+              disabled={promoApplied}
+              disable={promoApplied}
               onClick={() => setBillingCycle('annually')}>
               {localizedTexts.annually}
             </SwitchButton>
           </PlanSwitchContainer>
 
           <PlanContainer>
-            {localizedTexts.plans.map((plan: any, index: number) => (
-              <PlanCard key={plan.name} isPopular={plan.isPopular}>
-                <PlanTitleContainer>
-                  <PlanTitle isPopular={plan.isPopular}>{plan.name}</PlanTitle>
+            {localizedTexts.plans.map((plan: any, index: number) => {
+              const isApplied = promoApplied && index === 1;
+              return (
+                <PlanCard
+                  key={plan.name}
+                  isPopular={plan.isPopular}
+                  promoApplied={!promoApplied ? false : !isApplied}>
+                  <PlanTitleContainer>
+                    <PlanTitle isPopular={plan.isPopular}>
+                      {plan.name}
+                    </PlanTitle>
 
-                  {plan.isPopular && (
-                    <PopularTag>{plan.popularText}</PopularTag>
+                    {plan.isPopular && (
+                      <PopularTag>{plan.popularText}</PopularTag>
+                    )}
+                  </PlanTitleContainer>
+                  <ForText
+                    isPopular={plan.isPopular}
+                    dangerouslySetInnerHTML={{
+                      __html: plan.for,
+                    }}
+                  />
+                  <PriceContainer>
+                    {isApplied ? (
+                      <AppliedPriceContainer>
+                        <AppliedPriceView>
+                          <PriceValue isPopular={plan.isPopular}>
+                            {localizedTexts.zero}
+                          </PriceValue>
+                          <AutoPayText>
+                            {localizedTexts.autopay[0]}
+                            {new Date().getMonth() + 1}
+                            {localizedTexts.autopay[1]}
+                            {new Date().getDate()}
+                            {localizedTexts.autopay[2]}
+                            {localizedTexts.autopay[3]}
+                          </AutoPayText>
+                        </AppliedPriceView>
+                        <AppliedText>{localizedTexts.appied}</AppliedText>
+                      </AppliedPriceContainer>
+                    ) : (
+                      <>
+                        {plan.discountMonthPrice &&
+                          billingCycle === 'monthly' && (
+                            <OriginalPrice isPopular={plan.isPopular}>
+                              {plan.monthlyPrice}
+                            </OriginalPrice>
+                          )}
+                        {plan.discountYearlyPrice &&
+                          billingCycle === 'annually' && (
+                            <OriginalPrice isPopular={plan.isPopular}>
+                              {plan.yearlyPrice}
+                            </OriginalPrice>
+                          )}
+                        <PriceWrapper>
+                          <PriceValue isPopular={plan.isPopular}>
+                            {billingCycle === 'monthly'
+                              ? plan.discountMonthPrice || plan.monthlyPrice
+                              : plan.discountYearlyPrice || plan.yearlyPrice}
+                          </PriceValue>
+                          <PricePeriod isPopular={plan.isPopular}>
+                            /{localizedTexts.perMonth}
+                          </PricePeriod>
+                        </PriceWrapper>
+                      </>
+                    )}
+                  </PriceContainer>
+                  <SelectButton
+                    isPopular={plan.isPopular}
+                    disabled={!promoApplied ? false : !isApplied}
+                    onClick={promoApplied ? sendToProfile : openPromoCodeModal}>
+                    {localizedTexts.getStarted}
+                  </SelectButton>
+                  <PlanFeatureTitle isPopular={plan.isPopular}>
+                    {localizedTexts.featureTitle}
+                  </PlanFeatureTitle>
+                  {plan.unlock && (
+                    <UnlockText isPopular={plan.isPopular}>
+                      {plan.unlock}
+                    </UnlockText>
                   )}
-                </PlanTitleContainer>
-                <ForText
-                  isPopular={plan.isPopular}
-                  dangerouslySetInnerHTML={{
-                    __html: plan.for,
-                  }}
-                />
-                <PriceContainer>
-                  {plan.discountMonthPrice && billingCycle === 'monthly' && (
-                    <OriginalPrice isPopular={plan.isPopular}>
-                      {plan.monthlyPrice}
-                    </OriginalPrice>
-                  )}
-                  {plan.discountYearlyPrice && billingCycle === 'annually' && (
-                    <OriginalPrice isPopular={plan.isPopular}>
-                      {plan.yearlyPrice}
-                    </OriginalPrice>
-                  )}
-                  <PriceWrapper>
-                    
-                    <PriceValue isPopular={plan.isPopular}>
-                      {(plan.monthlyPrice)}
-                    </PriceValue>
-                    <PricePeriod isPopular={plan.isPopular}>
-                      /{localizedTexts.perMonth}
-                    </PricePeriod>
-                  </PriceWrapper>
-                </PriceContainer>
-                <SelectButton
-                  isPopular={plan.isPopular}
-                  onClick={() => navigate(`/signup?plan=${plan.id}`)}>
-                  {localizedTexts.getStarted}
-                </SelectButton>
-                <PlanFeatureTitle isPopular={plan.isPopular}>
-                  {localizedTexts.featureTitle}
-                </PlanFeatureTitle>
-                {plan.unlock && (
-                  <UnlockText isPopular={plan.isPopular}>
-                    {plan.unlock}
-                  </UnlockText>
-                )}
-                <PlanFeatures isPopular={plan.isPopular}>
-                  {plan.features.map((feature: string) => (
-                    <li key={feature}>{feature}</li>
-                  ))}
-                </PlanFeatures>
-              </PlanCard>
-            ))}
+                  <PlanFeatures isPopular={plan.isPopular}>
+                    {plan.features.map((feature: string) => (
+                      <li key={feature}>{feature}</li>
+                    ))}
+                  </PlanFeatures>
+                </PlanCard>
+              );
+            })}
           </PlanContainer>
-          <PromoButton onClick={() => setIsPromoCodeModalVisible(true)}>
+          <PromoButton onClick={openPromoCodeModal}>
             {localizedTexts.promoButton}
           </PromoButton>
-           
-            <PromoCodeModal
-              visible={isPromoCodeModalVisible}
-              onCancel={() => setIsPromoCodeModalVisible(false)}
-            />
-          
+
+          <PromoCodeModal
+            visible={isPromoCodeModalVisible}
+            onApply={setApplied}
+            onCancel={() => setIsPromoCodeModalVisible(false)}
+          />
         </InnerWrapper>
       </Wrapper>
     </Container>

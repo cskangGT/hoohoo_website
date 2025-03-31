@@ -43,7 +43,7 @@ function KakaoCallback() {
               sessionStorage.removeItem('redirectAfterAuth');
               navigate(redirectAfterAuth, {replace: true});
             } else {
-              navigate(`/zigu/${response.data.user.nameTag}`, {replace: true});
+              navigate(`/${response.data.user.nameTag}`, {replace: true});
             }
           }
         } else if (response.status === 409) {

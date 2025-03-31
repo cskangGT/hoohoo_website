@@ -1,12 +1,12 @@
-import { CircularProgress } from '@mui/material';
+import {CircularProgress} from '@mui/material';
 import i18next from 'i18next';
-import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-import { toast } from 'react-toastify';
+import React, {useState} from 'react';
+import {useNavigate} from 'react-router-dom';
+import {toast} from 'react-toastify';
 import styled from 'styled-components';
-import { applyTemplate } from '../../api/jigulink/jigulink.api';
-import { useUserStore } from '../../storage/userStore';
-import { theme } from '../../style';
+import {applyPromoCode} from '../../api/jigulink/jigulink.api';
+import {useUserStore} from '../../storage/userStore';
+import {theme} from '../../style';
 
 const ModalOverlay = styled.div`
   position: fixed;
@@ -34,23 +34,19 @@ const ModalContainer = styled.div`
 `;
 
 const Title = styled.h2`
-  font-size: ${theme.fontSize.lg};
+  font-size: ${theme.fontSize['3xl']};
   font-weight: 600;
-  color: ${theme.red};
+  color: black;
   margin-bottom: 16px;
 `;
 
-const Description = styled.p`
-  font-size: ${theme.fontSize.md};
-  color: ${theme.gray};
-  margin: 30px 0px;
-  line-height: 1.5;
-`;
-
-const SubDescription = styled.p`
-  font-size: ${theme.fontSize.rg};
-  color: ${theme.gray};
-  margin-bottom: 24px;
+const TextInput = styled.input`
+  width: calc(100% - ${theme.spacing.md} * 2);
+  padding: ${theme.spacing.md};
+  border-radius: 10px;
+  border: 1px solid ${theme.gray};
+  margin-bottom: ${theme.spacing.md};
+  margin-top: ${theme.spacing.md};
 `;
 
 const ButtonContainer = styled.div`
@@ -58,6 +54,7 @@ const ButtonContainer = styled.div`
   flex-direction: column;
   width: 100%;
   gap: 12px;
+  margin-top: ${theme.spacing.xl};
 `;
 
 const Button = styled.button<{isPrimary?: boolean}>`
@@ -74,7 +71,7 @@ const Button = styled.button<{isPrimary?: boolean}>`
   ${({isPrimary}) =>
     isPrimary
       ? `
-    background-color: ${theme.red};
+    background-color: black;
     color: ${theme.white};
   `
       : `
@@ -86,57 +83,59 @@ const Button = styled.button<{isPrimary?: boolean}>`
     opacity: 0.8;
   }
 `;
-
-interface ChangeTemplateModalProps {
-  isOpen: boolean;
-  selectedTemplate: string;
+type PromoCodeModalProps = {
+  visible: boolean;
   onCancel: () => void;
-}
-
-function ChangeTemplateModal({
-  isOpen,
-  selectedTemplate,
-  onCancel,
-}: ChangeTemplateModalProps) {
-  if (!isOpen) return null;
+  onApply: () => void;
+};
+function PromoCodeModal({visible, onCancel, onApply}: PromoCodeModalProps) {
+  if (!visible) return null;
   const [isLoading, setIsLoading] = useState(false);
-  const localizedTexts: any = i18next.t('ProfileLayoutPage', {
+  const [promoCode, setPromoCode] = useState('');
+  const localizedTexts: any = i18next.t('PlanPage', {
     returnObjects: true,
   });
   const {user} = useUserStore();
   const navigate = useNavigate();
   const handleChangeTemplate = async () => {
     setIsLoading(true);
-    const response = await applyTemplate(selectedTemplate);
+    const response = await applyPromoCode(promoCode);
     console.log(response);
     if (response.result) {
       onCancel();
-      navigate(`/${user?.nameTag}`);
+      toast.success(localizedTexts.PromoCodeModal.successToast);
+      onApply();
       setIsLoading(false);
     } else {
-      toast.error(localizedTexts.ConfirmModal.error);
+      toast.error(localizedTexts.PromoCodeModal.errorToast);
       setIsLoading(false);
     }
   };
   return (
     <ModalOverlay onClick={onCancel}>
       <ModalContainer onClick={e => e.stopPropagation()}>
-        <Title>{localizedTexts.ConfirmModal.title}</Title>
-        <Description
-          dangerouslySetInnerHTML={{
-            __html: localizedTexts.ConfirmModal.description,
-          }}
+        <Title>{localizedTexts.PromoCodeModal.title}</Title>
+        <TextInput
+          placeholder={localizedTexts.PromoCodeModal.placeholder}
+          value={promoCode}
+          onChange={e => setPromoCode(e.target.value)}
         />
 
         <ButtonContainer>
           <Button isPrimary onClick={handleChangeTemplate}>
-            {isLoading ? <CircularProgress /> : localizedTexts.ConfirmModal.yes}
+            {isLoading ? (
+              <CircularProgress />
+            ) : (
+              localizedTexts.PromoCodeModal.apply
+            )}
           </Button>
-          <Button onClick={onCancel}>{localizedTexts.ConfirmModal.no}</Button>
+          <Button onClick={onCancel}>
+            {localizedTexts.PromoCodeModal.cancel}
+          </Button>
         </ButtonContainer>
       </ModalContainer>
     </ModalOverlay>
   );
 }
 
-export default ChangeTemplateModal;
+export default PromoCodeModal;

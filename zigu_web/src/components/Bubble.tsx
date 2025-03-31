@@ -68,9 +68,11 @@ const Bubble: React.FC<BubbleProps> = ({setIsBubble}) => {
       setIsBubble(false);
     }, 500);
   };
-
+  const openZigu = () => {
+    window.open('https://zigu.my', '_blank');
+  };
   return (
-    <BubbleBox isFadingOut={isFadingOut}>
+    <BubbleBox isFadingOut={isFadingOut} onClick={openZigu}>
       <Inside>
         <Image src={data['image']} />
         <TextBox>

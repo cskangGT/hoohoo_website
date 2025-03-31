@@ -33,7 +33,7 @@ function TemplateWidgetContent({
 }: {
   widgetItem: ProfileWidgetItemType;
 }) {
-  const resizeWidth = useWindowResize({maxWidth: 600});
+  const {width: resizeWidth} = useWindowResize({maxWidth: 600});
   const localizedTexts: any = i18next.t('ProfileLinkPage', {
     returnObjects: true,
   });

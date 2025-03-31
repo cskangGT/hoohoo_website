@@ -1,7 +1,7 @@
-import React, {useEffect, useState} from 'react';
-import {useLocation, useNavigate} from 'react-router-dom';
-import {getAPIKey, sendGoogleLogin} from '../../../api/login/auth';
-import {useUserStore} from '../../../storage/userStore';
+import React, { useEffect, useState } from 'react';
+import { useLocation, useNavigate } from 'react-router-dom';
+import { getAPIKey, sendGoogleLogin } from '../../../api/login/auth';
+import { useUserStore } from '../../../storage/userStore';
 import OAuthCallback from './OAuthCallback';
 
 function GoogleCallback() {
@@ -32,7 +32,7 @@ function GoogleCallback() {
         if (response.data?.user?.isNeedsQuestionnaire) {
           navigate('/setup/select-goal', {replace: true});
         } else {
-          navigate(`/zigu/${response.data.user.nameTag}`, {replace: true});
+          navigate(`/${response.data.user.nameTag}`, {replace: true});
         }
       }
       setLoading(false);

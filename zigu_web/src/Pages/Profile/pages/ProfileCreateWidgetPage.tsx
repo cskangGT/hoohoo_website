@@ -5,7 +5,7 @@ import 'react-color-palette/css';
 import React, { useState } from 'react';
 import 'react-color-palette/css';
 import { FaChevronDown, FaChevronUp } from 'react-icons/fa';
-import { useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import styled from 'styled-components';
 import 'swiper/css';
@@ -16,19 +16,14 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import { createWidget } from '../../../api/jigulink/jigulink.api';
 import { useUserStore } from '../../../storage/userStore';
 import { theme } from '../../../style';
-import {
-  checkAWSKey,
-  compressImage,
-  generateUniqueKey,
-  uploadImageToS3,
-} from '../../../util/MediaUtil';
-import { WIDGET_PREFIX } from '../../../util/S3Config';
+import ImageCrop from '../components/ImageCrop';
 import TopHeaderBackButtonWrapperView from '../components/TopHeaderBackButtonWrapperView';
 import WidgetItem from '../components/WidgetItem';
 import { useProfile } from '../contexts/ProfileContext';
 import {
   ProfileEMWidgetType,
   ProfileWidgetItemSize,
+  ProfileWidgetItemType,
 } from '../types/WidgetItemType';
 import { EMWidgetImage, getEMWidgetData } from '../util/EMWidgetData';
 import { calculateNewWidgetCoordinate } from '../util/util';
@@ -153,7 +148,13 @@ const AssetIcon = styled.img`
   width: 20px;
   height: 20px;
 `;
-
+const PreviewContainer = styled.div`
+  width: 100%;
+  height: 30%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
 // 모달 오버레이 스타일
 const ModalOverlay = styled.div`
   position: fixed;
@@ -210,26 +211,45 @@ function ProfileCreateWidgetPage() {
   const localizedTexts: any = i18next.t('ProfileCreateWidgetPage', {
     returnObjects: true,
   });
-
+  const {state} = useLocation();
+  const isEditMode = state?.isEditMode;
   const {isSyncedWithEM, user, setMyWidgets, myWidgets} = useUserStore();
-  const {setCurrentWidgets, setOriginalWidgets} = useProfile();
+  const {
+    setCurrentWidgets,
+    setOriginalWidgets,
+    selectedItem,
+    setSelectedItem,
+    setIsEditingItem,
+  } = useProfile();
   const navigate = useNavigate();
 
-  const [selectedStyle, setSelectedStyle] =
-    useState<ProfileWidgetItemSize>('BIG');
+  const [selectedStyle, setSelectedStyle] = useState<ProfileWidgetItemSize>(
+    selectedItem?.sizeType || 'BIG',
+  );
 
-  const [selectedColor, setSelectedColor] = useState<string>('transparent');
-  const [hasBorder, setHasBorder] = useState<boolean>(false);
+  const [selectedColor, setSelectedColor] = useState<string>(
+    selectedItem?.bgColor || 'transparent',
+  );
+  const [hasBorder, setHasBorder] = useState<boolean>(
+    selectedItem?.hasBorder || false,
+  );
   const [isRainbow, setIsRainbow] = useState<boolean>(false);
   const [color, setColor] = useColor('rgba(0, 0, 0, 1)');
   const [showColorPicker, setShowColorPicker] = useState<boolean>(false);
-  const [isSelected, setIsSelected] = useState<boolean>(false);
-  const [image, setImage] = useState<string>('');
-  const [description, setDescription] = useState<string>('');
-  const [linkURL, setLinkURL] = useState<string>('');
+
+  const [isSelected, setIsSelected] = useState<boolean>(
+    !!selectedItem?.bgColor ? true : false,
+  );
+  const [image, setImage] = useState<string>(selectedItem?.bgImageUrl || '');
+  const [description, setDescription] = useState<string>(
+    selectedItem?.description || '',
+  );
+  const [linkURL, setLinkURL] = useState<string>(selectedItem?.linkUrl || '');
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const [selectedAsset, setSelectedAsset] =
-    useState<ProfileEMWidgetType | null>(null);
+    useState<ProfileEMWidgetType | null>(
+      selectedItem?.isEmWidget ? selectedItem?.emWidgetType || null : null,
+    );
 
   const styleOptions: {value: ProfileWidgetItemSize; label: string}[] = [
     {value: 'BIG', label: '큰 위젯'},
@@ -292,7 +312,36 @@ function ProfileCreateWidgetPage() {
       setSelectedColor(color);
     }
   }
+  const handleSaveEditWidget = async () => {
+    const widgetData = {
+      id: selectedItem?.id || 0,
+      sizeType: selectedItem?.sizeType,
+      bgType: image ? 'IMAGE' : 'COLOR',
+      bgColor: selectedColor,
+      bgImageUrl: image,
+      hasBorder: hasBorder,
+      linkUrl: linkURL,
+      description: description,
+      isTemp: false,
+      coordinate: selectedItem?.coordinate || {x: 0, y: 0},
+    } as ProfileWidgetItemType;
+    setCurrentWidgets((prev: ProfileWidgetItemType[]) =>
+      prev.map(widget => {
+        if (widget.id === selectedItem?.id) {
+          return widgetData as ProfileWidgetItemType;
+        }
+        return widget;
+      }),
+    );
 
+    setSelectedItem(null);
+    navigate('/' + user?.nameTag, {
+      replace: true,
+      state: {
+        keepEditing: true,
+      },
+    });
+  };
   const handleAddWidget = async () => {
     if (!isSelected) {
       toast.error(localizedTexts.toast.selectColor);
@@ -318,10 +367,28 @@ function ProfileCreateWidgetPage() {
     };
     const response = await createWidget(isEmWidget ? emWidgetData : widgetData);
     if (response.result) {
-      setMyWidgets([...myWidgets, {...response.data, coordinate: {x: newCoordinate.x, y: newCoordinate.y}}]);
-      setCurrentWidgets(prev => [...prev,  {...response.data, coordinate: {x: newCoordinate.x, y: newCoordinate.y}}]);
-      setOriginalWidgets(prev => [...prev,  {...response.data, coordinate: {x: newCoordinate.x, y: newCoordinate.y}}]);
-      navigate('/zigu/' + user?.nameTag, {
+      setMyWidgets([
+        ...myWidgets,
+        {
+          ...response.data,
+          coordinate: {x: newCoordinate.x, y: newCoordinate.y},
+        },
+      ]);
+      setCurrentWidgets(prev => [
+        ...prev,
+        {
+          ...response.data,
+          coordinate: {x: newCoordinate.x, y: newCoordinate.y},
+        },
+      ]);
+      setOriginalWidgets(prev => [
+        ...prev,
+        {
+          ...response.data,
+          coordinate: {x: newCoordinate.x, y: newCoordinate.y},
+        },
+      ]);
+      navigate('/' + user?.nameTag, {
         replace: true,
         state: {
           keepEditing: true,
@@ -345,37 +412,6 @@ function ProfileCreateWidgetPage() {
     e.preventDefault();
     setShowColorPicker(false);
   };
-  const handleProfileImageChange = async (
-    event: React.ChangeEvent<HTMLInputElement>,
-  ) => {
-    const file = event.target.files?.[0];
-    if (!file) return;
-
-    const compressedImage = await compressImage(file, 1080);
-    const uriKey = generateUniqueKey(WIDGET_PREFIX, 'png');
-    const {accessKey, keyId} = await checkAWSKey();
-    if (!accessKey || !keyId) {
-      toast.error(localizedTexts.toast.failedToUploadImage);
-      return;
-    } else {
-      const result = await uploadImageToS3(compressedImage, true, uriKey);
-
-      if (result) {
-        setSelectedColor('transparent');
-        console.log('result', result);
-        setIsSelected(true);
-        setImage(result);
-      }
-    }
-
-    // const compressedImage = await compressImage(file, 1080);
-    //   const uriKey = generateUniqueKey(PROFILE_PREFIX + `/`, 'png');
-    //   const result = await uploadImageToS3(compressedImage, true, uriKey);
-    //   console.log('result', result);
-    //   if (result) {
-    //     setProfileImage(result);
-    //   }
-  };
 
   const handleAssetSelect = (value: string) => {
     setIsSelected(true);
@@ -398,86 +434,151 @@ function ProfileCreateWidgetPage() {
         {/* 에셋 드롭다운 추가 */}
 
         {/* 스타일 섹션 */}
-        <SectionTitle>{localizedTexts.style}</SectionTitle>
-        <StyledSwiperContainer>
-          <StyledSwiper
-            modules={[Pagination, Navigation]}
-            spaceBetween={30}
-            slidesPerView={1}
-            pagination={{clickable: true}}
-            navigation={true}
-            onSlideChange={swiper => {
-              setSelectedStyle(styleOptions[swiper.activeIndex].value);
-            }}
-            initialSlide={styleOptions.findIndex(
-              option => option.value === selectedStyle,
-            )}>
-            {styleOptions.map(option => (
-              <SwiperSlide key={option.value}>
-                <ScaledWidgetContainer>
-                  <WidgetItem
-                    widget={{
-                      id: 0,
-                      sizeType: option.value,
-                      bgType: image ? 'IMAGE' : 'COLOR',
-                      bgColor: isSelected ? selectedColor : '#bcbcbccd',
-                      bgImageUrl: image,
-                      hasBorder: hasBorder,
-                      description: description,
-                      coordinate: {x: 0, y: 0},
-                      emWidgetType: selectedAsset as ProfileEMWidgetType,
-                      isEmWidget: !!selectedAsset,
-                      widgetData: {
-                        level: 4,
-                        numBadges: 2,
-                        numMedals: 3,
-                        equippedMedals: [
-                          {
-                            medalTitle: 'ECO_ACTION_TUMBLER',
-                            medalLevel: 2,
+        {isEditMode ? (
+          <PreviewContainer>
+            <WidgetItem
+              widget={{
+                id: 1,
+                sizeType: selectedStyle,
+                bgType: image ? 'IMAGE' : 'COLOR',
+                bgColor: isSelected ? selectedColor : '#bcbcbccd',
+                bgImageUrl: image,
+                hasBorder: hasBorder,
+                description: description,
+                coordinate: {x: 0, y: 0},
+                emWidgetType: selectedAsset as ProfileEMWidgetType,
+                isEmWidget: !!selectedAsset,
+                widgetData: {
+                  level: 4,
+                  numBadges: 2,
+                  numMedals: 3,
+                  equippedMedals: [
+                    {
+                      medalTitle: 'ECO_ACTION_TUMBLER',
+                      medalLevel: 2,
+                    },
+                    {
+                      medalTitle: 'ECO_ACTION_CARBON_REDUCTION',
+                      medalLevel: 3,
+                    },
+                    {
+                      medalTitle: 'REWARD_REDEEM_MEDAL',
+                      medalLevel: 4,
+                    },
+                  ],
+                  equippedBadge: 'LITTLE_BY_LITTLE',
+                  annualCarbonReduction: 1370,
+                  annualEcoActionCount: 100,
+                  treeEffect: 3,
+                  ecoActionCount: 700,
+                  userRank: 17,
+                  lastMonthRank: 18,
+                  higherRankInfo: {
+                    gap: 39,
+                    ecoActionCount: 739,
+                  },
+                  lowerRankInfo: {
+                    gap: 25,
+                    ecoActionCount: 675,
+                  },
+                  thumbnails: [
+                    'https://picsum.photos/200/300',
+                    'https://picsum.photos/200/300',
+                    'https://picsum.photos/200/300',
+                    'https://picsum.photos/200/300',
+                    'https://picsum.photos/200/300',
+                    'https://picsum.photos/200/300',
+                    'https://picsum.photos/200/300',
+                    'https://picsum.photos/200/300',
+                  ],
+                },
+              }}
+            />
+          </PreviewContainer>
+        ) : (
+          <>
+            <SectionTitle>{localizedTexts.style}</SectionTitle>
+            <StyledSwiperContainer>
+              <StyledSwiper
+                modules={[Pagination, Navigation]}
+                spaceBetween={30}
+                slidesPerView={1}
+                pagination={{clickable: true}}
+                navigation={true}
+                onSlideChange={swiper => {
+                  setSelectedStyle(styleOptions[swiper.activeIndex].value);
+                }}
+                initialSlide={styleOptions.findIndex(
+                  option => option.value === selectedStyle,
+                )}>
+                {styleOptions.map(option => (
+                  <SwiperSlide key={option.value}>
+                    <ScaledWidgetContainer>
+                      <WidgetItem
+                        widget={{
+                          id: 0,
+                          sizeType: option.value,
+                          bgType: image ? 'IMAGE' : 'COLOR',
+                          bgColor: isSelected ? selectedColor : '#bcbcbccd',
+                          bgImageUrl: image,
+                          hasBorder: hasBorder,
+                          description: description,
+                          coordinate: {x: 0, y: 0},
+                          emWidgetType: selectedAsset as ProfileEMWidgetType,
+                          isEmWidget: !!selectedAsset,
+                          widgetData: {
+                            level: 4,
+                            numBadges: 2,
+                            numMedals: 3,
+                            equippedMedals: [
+                              {
+                                medalTitle: 'ECO_ACTION_TUMBLER',
+                                medalLevel: 2,
+                              },
+                              {
+                                medalTitle: 'ECO_ACTION_CARBON_REDUCTION',
+                                medalLevel: 3,
+                              },
+                              {
+                                medalTitle: 'REWARD_REDEEM_MEDAL',
+                                medalLevel: 4,
+                              },
+                            ],
+                            equippedBadge: 'LITTLE_BY_LITTLE',
+                            annualCarbonReduction: 1370,
+                            annualEcoActionCount: 100,
+                            treeEffect: 3,
+                            ecoActionCount: 700,
+                            userRank: 17,
+                            lastMonthRank: 18,
+                            higherRankInfo: {
+                              gap: 39,
+                              ecoActionCount: 739,
+                            },
+                            lowerRankInfo: {
+                              gap: 25,
+                              ecoActionCount: 675,
+                            },
+                            thumbnails: [
+                              'https://picsum.photos/200/300',
+                              'https://picsum.photos/200/300',
+                              'https://picsum.photos/200/300',
+                              'https://picsum.photos/200/300',
+                              'https://picsum.photos/200/300',
+                              'https://picsum.photos/200/300',
+                              'https://picsum.photos/200/300',
+                              'https://picsum.photos/200/300',
+                            ],
                           },
-                          {
-                            medalTitle: 'ECO_ACTION_CARBON_REDUCTION',
-                            medalLevel: 3,
-                          },
-                          {
-                            medalTitle: 'REWARD_REDEEM_MEDAL',
-                            medalLevel: 4,
-                          },
-                        ],
-                        equippedBadge: 'LITTLE_BY_LITTLE',
-                        annualCarbonReduction: 1370,
-                        annualEcoActionCount: 100,
-                        treeEffect: 3,
-                        ecoActionCount: 700,
-                        userRank: 17,
-                        lastMonthRank: 18,
-                        higherRankInfo: {
-                          gap: 39,
-                          ecoActionCount: 739,
-                        },
-                        lowerRankInfo: {
-                          gap: 25,
-                          ecoActionCount: 675,
-                        },
-                        thumbnails: [
-                          'https://picsum.photos/200/300',
-                          'https://picsum.photos/200/300',
-                          'https://picsum.photos/200/300',
-                          'https://picsum.photos/200/300',
-                          'https://picsum.photos/200/300',
-                          'https://picsum.photos/200/300',
-                          'https://picsum.photos/200/300',
-                          'https://picsum.photos/200/300',
-                        ],
-                      },
-                    }}
-                  />
-                </ScaledWidgetContainer>
-              </SwiperSlide>
-            ))}
-          </StyledSwiper>
-        </StyledSwiperContainer>
+                        }}
+                      />
+                    </ScaledWidgetContainer>
+                  </SwiperSlide>
+                ))}
+              </StyledSwiper>
+            </StyledSwiperContainer>
+          </>
+        )}
 
         {/* 채우기 섹션 */}
         <SectionTitle>{localizedTexts.fill}</SectionTitle>
@@ -532,19 +633,12 @@ function ProfileCreateWidgetPage() {
             dashed
             isSelected={isSelected}
           />
-          <ImageButton
-            onClick={() =>
-              document.getElementById('widget_profileImageInput')?.click()
-            }>
-            <ProfileImageInput
-              type="file"
-              id="widget_profileImageInput"
-              accept="image/*"
-              multiple={false}
-              onChange={handleProfileImageChange}
-            />
-            <span>{localizedTexts.image}</span>
-          </ImageButton>
+          <ImageCrop
+            setSelectedColor={setSelectedColor}
+            setIsSelected={setIsSelected}
+            setImage={setImage}
+            sizeType={selectedStyle}
+          />
         </ColorOptions>
 
         <SectionTitle>{localizedTexts.url}</SectionTitle>
@@ -608,8 +702,10 @@ function ProfileCreateWidgetPage() {
           </>
         )}
 
-        <UploadButton onClick={handleAddWidget} disabled={!isSelected}>
-          {localizedTexts.button}
+        <UploadButton
+          onClick={isEditMode ? handleSaveEditWidget : handleAddWidget}
+          disabled={!isSelected}>
+          {isEditMode ? localizedTexts.save : localizedTexts.button}
         </UploadButton>
         {showColorPicker && (
           <ModalOverlay onClick={handleColorPickerClose}>
@@ -720,15 +816,6 @@ const ColorOption = styled.div<{
   opacity: ${props.selected ? '1' : '0.5'}`}
 `;
 
-const ImageButton = styled.button`
-  background-color: transparent;
-  border: 2px solid #ffffff;
-  border-radius: 20px;
-  color: white;
-  padding: 8px 20px;
-  cursor: pointer;
-`;
-
 const InputField = styled.input`
   width: calc(100% - ${theme.spacing.md} * 2);
   padding: ${theme.spacing.md};
@@ -755,7 +842,5 @@ const UploadButton = styled.button<{disabled?: boolean}>`
   margin-top: 20px;
   cursor: pointer;
 `;
-const ProfileImageInput = styled.input`
-  display: none;
-`;
+
 export default ProfileCreateWidgetPage;

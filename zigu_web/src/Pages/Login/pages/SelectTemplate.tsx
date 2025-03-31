@@ -1,10 +1,11 @@
 import i18next from 'i18next';
-import React, {useEffect, useState} from 'react';
-import {useNavigate} from 'react-router-dom';
+import React, { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 import Wrapper from '../../../components/Wrapper/Wrapper';
-import {useQuestionnaire} from '../../../context/QuestionnaireContext';
-import {theme} from '../../../style';
+import { useQuestionnaire } from '../../../context/QuestionnaireContext';
+import { theme } from '../../../style';
+import { QuestionaireDescriptionText, QuestionaireTitleText } from '../components/styles';
 const Container = styled.div`
   width: 100%;
   height: 100%;
@@ -44,19 +45,7 @@ const InnerWrapper = styled.div`
   align-items: center;
   position: relative;
 `;
-const TitleText = styled.h2`
-  font-size: ${theme.fontSize['3xl']};
-  font-weight: 600;
-  color: ${theme.darkGray};
-  text-align: center;
-`;
-const DescriptionText = styled.p`
-  font-size: ${theme.fontSize.md};
-  font-weight: 400;
-  color: ${theme.inActiveGray};
-  margin: ${theme.spacing['2xl']};
-  text-align: center;
-`;
+
 const TemplateContainer = styled.div`
   max-width: 1000px;
   width: 100%;
@@ -228,8 +217,8 @@ function SelectTemplate() {
     <Container>
       <Wrapper>
         <InnerWrapper>
-          <TitleText>{localizedTexts.title}</TitleText>
-          <DescriptionText
+          <QuestionaireTitleText>{localizedTexts.title}</QuestionaireTitleText>
+          <QuestionaireDescriptionText
             dangerouslySetInnerHTML={{
               __html: localizedTexts.description,
             }}

@@ -1,12 +1,12 @@
-import { CircularProgress } from '@mui/material';
-import { motion } from 'framer-motion';
+import {CircularProgress} from '@mui/material';
+import {motion} from 'framer-motion';
 import i18next from 'i18next';
-import React, { useEffect, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-import styled, { css } from 'styled-components';
-import { checkNameTag } from '../../../api/login/signup.api';
-import { useUserStore } from '../../../storage/userStore';
-import { theme } from '../../../style';
+import React, {useEffect, useState} from 'react';
+import {useNavigate} from 'react-router-dom';
+import styled, {css} from 'styled-components';
+import {checkNameTag} from '../../../api/login/signup.api';
+import {useUserStore} from '../../../storage/userStore';
+import {theme} from '../../../style';
 import EarthMeraLogo from '../components/EarthMeraLogo';
 
 const Container = styled.div`
@@ -280,15 +280,14 @@ const SignInText = styled.p`
   }
 `;
 const PowerByBox = styled.div`
-  width: 120px;
-  height: 100%;
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: center;
+  gap: ${theme.spacing.rg};
 `;
 const PowerByImage = styled.img`
-  width: 100%;
+  width: 120px;
   height: 100%;
   object-fit: contain;
   margin-top: ${theme.spacing['3xl']};
@@ -392,16 +391,19 @@ function PreSignup() {
     validateLink();
   };
   const handleTermsClick = () => {
-    navigate('/terms_of_use');
+    window.open('https://earthmera.com/terms_of_use', '_blank');
   };
   const handlePrivacyClick = () => {
-    navigate('/privacy');
+    window.open('https://earthmera.com/privacy', '_blank');
   };
   const handleSignInClick = () => {
     navigate('/login');
   };
   const handleLogoClick = () => {
     navigate(`/${language}`);
+  };
+  const handlePowerByClick = () => {
+    window.open('https://earthmera.com', '_blank');
   };
   return (
     <Container>
@@ -537,8 +539,8 @@ function PreSignup() {
                 {localizedTexts.signin}
               </SignInLink>
             </SignInText>
-<PowerByBox onClick={()=> window.open('https://www.earthmera.com', '_blank')}>
-            <PowerByImage src={'/Images/pow.png'} />
+            <PowerByBox onClick={handlePowerByClick}>
+              <PowerByImage src={'/Images/pow.png'} />
             </PowerByBox>
           </InnerBox>
         </ContentOuterBox>
