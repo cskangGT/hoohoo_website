@@ -165,6 +165,15 @@ function ProfileTopHeader({
       document.removeEventListener('click', handleClick);
     };
   }, [showTooltip]);
+
+  useEffect(() => {
+    if (showTooltip) {
+      navigate(location.pathname, {
+        replace: true,
+        state: {},
+      });
+    }
+  }, [showTooltip]);
   const iconSize = width > 500 ? 26 : 22;
   return (
     <>

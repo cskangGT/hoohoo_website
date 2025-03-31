@@ -1,7 +1,7 @@
-import React, { useEffect, useState } from 'react';
-import { useLocation, useNavigate } from 'react-router-dom';
-import { getAPIKey, sendGoogleLogin } from '../../../api/login/auth';
-import { useUserStore } from '../../../storage/userStore';
+import React, {useEffect, useState} from 'react';
+import {useLocation, useNavigate} from 'react-router-dom';
+import {sendGoogleLogin} from '../../../api/login/auth';
+import {useUserStore} from '../../../storage/userStore';
 import OAuthCallback from './OAuthCallback';
 
 function GoogleCallback() {
@@ -26,7 +26,7 @@ function GoogleCallback() {
       console.log('storedNameTag in Google', storedNameTag);
       const response = await sendGoogleLogin(code, storedNameTag || '');
       if (response.result) {
-        getAPIKey();
+        // getAPIKey();
 
         setUser(response.data.user);
         if (response.data?.user?.isNeedsQuestionnaire) {

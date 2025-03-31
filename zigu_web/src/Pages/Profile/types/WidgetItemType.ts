@@ -11,6 +11,7 @@ export type ProfileWidgetItemType = {
     isEmWidget?: boolean;
     emWidgetType?: ProfileEMWidgetType;
     isTemp?: boolean;
+    isExchangedWidget?: boolean;
     widgetData?: {
         level?: number;
         numBadges?: number;

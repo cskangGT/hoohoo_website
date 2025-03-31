@@ -11,7 +11,9 @@ export const updateUserProfile = async (data: { name?: string; profileImage?: st
         body.profileImage = data.profileImage;
     }
     try {
-        const response = await clientAxios.put('myProfile/web/profile/', body);
+        const response = await clientAxios.put('myProfile/web/profile/', body, {
+            withCredentials: true,
+        });
         return { result: true, data: response.data };
     } catch (error: any) {
         return { result: false, status: error?.response?.status };
@@ -19,7 +21,9 @@ export const updateUserProfile = async (data: { name?: string; profileImage?: st
 };
 export const getSyncUserId = async () => {
     try {
-        const response = await clientAxios.get('myProfile/web/userId/');
+        const response = await clientAxios.get('myProfile/web/userId/', {
+            withCredentials: true,
+        });
         return { result: true, data: response.data };
     } catch (error: any) {
         return { result: false, status: error?.response?.status };
@@ -30,6 +34,8 @@ export const syncEMUser = async (userId: string) => {
     try {
         const response = await clientAxios.post('myProfile/web/sync/', {
             appUserId: userId,
+        }, {
+            withCredentials: true,
         });
         return { result: true, data: response.data };
     } catch (error: any) {

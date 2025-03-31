@@ -165,14 +165,24 @@ function FixedBottomEditView() {
       setIsEditing(false);
       return;
     }
+    const changedWidgetArray = currentWidgets.filter(
+      (widget: ProfileWidgetItemType) => widget.isExchangedWidget === false,
+    );
     const updatedWidgets = currentWidgets.map(
-      (widget: ProfileWidgetItemType) => ({
-        ...widget,
-        coordinate: {
-          x: widget.coordinate.x * 3,
-          y: widget.coordinate.y,
-        },
-      }),
+      (widget: ProfileWidgetItemType) => {
+        // widget에서 필요한 속성들만 추출
+        const {id, isExchangedWidget, coordinate, ...restWidget} = widget;
+        console.log('isExchangedWidget', isExchangedWidget, id);
+
+        return {
+          ...restWidget,
+          ...(isExchangedWidget ? {} : {id}), // isExchangedWidget이 false일 때만 id 포함
+          coordinate: {
+            x: coordinate.x * 3,
+            y: coordinate.y,
+          },
+        };
+      },
     );
     console.log('updatedWidgets', updatedWidgets);
 
@@ -183,9 +193,42 @@ function FixedBottomEditView() {
       setDeletedWidgetItems([]);
 
       // update currentWidgets, myWidgets, originalWidgets
-      setCurrentWidgets(updatedData);
-      setMyWidgets(updatedData);
-      setOriginalWidgets(updatedData);
+      const matchedUpdateData = changedWidgetArray
+        .map(changedWidget => {
+          const matchedWidget = updatedData.find(
+            (updated: ProfileWidgetItemType) =>
+              updated.coordinate.x / 3 === changedWidget.coordinate.x &&
+              updated.coordinate.y === changedWidget.coordinate.y,
+          );
+          return matchedWidget
+            ? {...matchedWidget, coordinate: changedWidget.coordinate}
+            : null;
+        })
+        .filter(Boolean); // null 값 제거
+      console.log('matchedUpdateData', matchedUpdateData);
+
+      // 찾은 데이터로 currentWidgets 업데이트
+      const newCurrentWidgets = currentWidgets.map(widget => {
+        const matchedWidget = matchedUpdateData.find(
+          matched =>
+            matched.coordinate.x === widget.coordinate.x &&
+            matched.coordinate.y === widget.coordinate.y,
+        );
+
+        if (matchedWidget) {
+          return {
+            ...widget,
+            ...matchedWidget,
+          };
+        }
+
+        return widget;
+      });
+      console.log('newCurrentWidgets', newCurrentWidgets);
+
+      setCurrentWidgets(newCurrentWidgets);
+      setMyWidgets(newCurrentWidgets);
+      setOriginalWidgets(newCurrentWidgets);
 
       setIsEditing(false);
     } else {

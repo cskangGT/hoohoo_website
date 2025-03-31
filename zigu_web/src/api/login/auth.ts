@@ -157,7 +157,7 @@ export const logoutProfile = async () => {
 };
 export const getAPIKey = async () => {
     try {
-        const response = await clientAxios.get('myProfile/web/fetchAPIKey/', {
+        const response = await clientAxios.get(APIAddress + 'myProfile/web/fetchAPIKey/', {
             withCredentials: true,
         });
         console.log("response.data", response.data);
