@@ -73,20 +73,18 @@ export const signupProfile = async (
 export const sendQuestionnaire = async (questionnaireData: {
     questionType: string;
     questionResponse: string;
-}[], template: string) => {
+}[]) => {
     try {
         const data: {
             questionnaires: {
                 questionType: string;
                 questionResponse: string;
             }[];
-            template?: string;
+
         } = {
             questionnaires: questionnaireData,
         }
-        if (template) {
-            data.template = template;
-        }
+
         const response = await clientAxios.post(
             APIAddress + 'myProfile/web/questionnaire/',
             data,

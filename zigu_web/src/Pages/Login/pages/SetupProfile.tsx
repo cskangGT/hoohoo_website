@@ -193,7 +193,16 @@ function SetupProfile() {
   useEffect(() => {
     setProgress(100);
   }, []);
-
+  function handleRedirect() {
+    resetQuestionnaireData();
+    const redirectAfterAuth = sessionStorage.getItem('redirectAfterAuth');
+    if (redirectAfterAuth) {
+      sessionStorage.removeItem('redirectAfterAuth');
+      navigate(redirectAfterAuth, {replace: true});
+    } else {
+      navigate('/setup/plan', {replace: true});
+    }
+  }
   const handleSendQuestionnaire = async () => {
     const data = [
       {
@@ -208,20 +217,17 @@ function SetupProfile() {
       });
     });
     // const response = {result: true};
-    const response = await sendQuestionnaire(data, questionnaireData.template);
+    const response = await sendQuestionnaire(data);
     if (response.result) {
-      const res = await applyTemplate(questionnaireData.template);
-      if (res.result) {
-        resetQuestionnaireData();
-        const redirectAfterAuth = sessionStorage.getItem('redirectAfterAuth');
-        if (redirectAfterAuth) {
-          sessionStorage.removeItem('redirectAfterAuth');
-          navigate(redirectAfterAuth, {replace: true});
+      if (questionnaireData.template) {
+        const res = await applyTemplate(questionnaireData.template);
+        if (res.result) {
+          handleRedirect();
         } else {
-          navigate('/setup/plan', {replace: true});
+          alert(localizedTexts.errorText.error);
         }
       } else {
-        alert(localizedTexts.errorText.error);
+        handleRedirect();
       }
     } else {
       alert(localizedTexts.errorText.error);
