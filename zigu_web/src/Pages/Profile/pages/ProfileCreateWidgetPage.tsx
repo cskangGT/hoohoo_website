@@ -1,32 +1,32 @@
 import i18next from 'i18next';
-import { ColorPicker, IColor, useColor } from 'react-color-palette';
+import {ColorPicker, IColor, useColor} from 'react-color-palette';
 import 'react-color-palette/css';
 
-import React, { useState } from 'react';
+import React, {useState} from 'react';
 import 'react-color-palette/css';
-import { FaChevronDown, FaChevronUp } from 'react-icons/fa';
-import { useLocation, useNavigate } from 'react-router-dom';
-import { toast } from 'react-toastify';
+import {FaChevronDown, FaChevronUp} from 'react-icons/fa';
+import {useLocation, useNavigate} from 'react-router-dom';
+import {toast} from 'react-toastify';
 import styled from 'styled-components';
 import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
-import { Navigation, Pagination } from 'swiper/modules';
-import { Swiper, SwiperSlide } from 'swiper/react';
-import { createWidget } from '../../../api/jigulink/jigulink.api';
-import { useUserStore } from '../../../storage/userStore';
-import { theme } from '../../../style';
+import {Navigation, Pagination} from 'swiper/modules';
+import {Swiper, SwiperSlide} from 'swiper/react';
+import {createWidget} from '../../../api/jigulink/jigulink.api';
+import {useUserStore} from '../../../storage/userStore';
+import {theme} from '../../../style';
 import ImageCrop from '../components/ImageCrop';
 import TopHeaderBackButtonWrapperView from '../components/TopHeaderBackButtonWrapperView';
 import WidgetItem from '../components/WidgetItem';
-import { useProfile } from '../contexts/ProfileContext';
+import {useProfile} from '../contexts/ProfileContext';
 import {
   ProfileEMWidgetType,
   ProfileWidgetItemSize,
   ProfileWidgetItemType,
 } from '../types/WidgetItemType';
-import { EMWidgetImage, getEMWidgetData } from '../util/EMWidgetData';
-import { calculateNewWidgetCoordinate } from '../util/util';
+import {EMWidgetImage, getEMWidgetData} from '../util/EMWidgetData';
+import {calculateNewWidgetCoordinate} from '../util/util';
 
 const WIDTH = window.innerWidth > 600 ? 600 : window.innerWidth;
 const WIDGET_WIDTH = (WIDTH - 24 * 2 - 60 - 40) / 4;
@@ -325,10 +325,19 @@ function ProfileCreateWidgetPage() {
       isTemp: false,
       coordinate: selectedItem?.coordinate || {x: 0, y: 0},
     } as ProfileWidgetItemType;
+    const isEmWidget = !!selectedAsset;
+    const emwidget = {
+      id: selectedItem?.id || 0,
+      sizeType: selectedItem?.sizeType,
+      isEmWidget: isEmWidget,
+      emWidgetType: selectedAsset as ProfileEMWidgetType,
+      coordinate: selectedItem?.coordinate || {x: 0, y: 0},
+    } as ProfileWidgetItemType;
+
     setCurrentWidgets((prev: ProfileWidgetItemType[]) =>
       prev.map(widget => {
         if (widget.id === selectedItem?.id) {
-          return widgetData as ProfileWidgetItemType;
+          return isEmWidget ? emwidget : widgetData;
         }
         return widget;
       }),
@@ -635,6 +644,7 @@ function ProfileCreateWidgetPage() {
           />
           <ImageCrop
             setSelectedColor={setSelectedColor}
+            setSelectedAsset={setSelectedAsset}
             setIsSelected={setIsSelected}
             setImage={setImage}
             sizeType={selectedStyle}

@@ -1,13 +1,13 @@
 import i18next from 'i18next';
-import React, { useState } from 'react';
-import { FaArrowLeft } from 'react-icons/fa';
-import { useNavigate } from 'react-router-dom';
+import React, {useState} from 'react';
+import {FaArrowLeft} from 'react-icons/fa';
+import {useNavigate} from 'react-router-dom';
 import styled from 'styled-components';
 import ChangeTemplateModal from '../../../components/Modal/ChangeTemplateModal';
 import Wrapper from '../../../components/Wrapper/Wrapper';
-import { useUserStore } from '../../../storage/userStore';
-import { theme } from '../../../style';
-import { SelectTemplateItem } from '../../Login/pages/SelectTemplate';
+import {useUserStore} from '../../../storage/userStore';
+import {theme} from '../../../style';
+import {SelectTemplateItem} from '../../Login/pages/SelectTemplate';
 const Container = styled.div`
   width: 100%;
   height: 100%;
@@ -16,7 +16,7 @@ const Container = styled.div`
   align-items: flex-start;
   max-height: 100%;
   background-color: white !important;
-  margin-top: 60px;
+  margin-top: 20px;
 
   @media screen and (max-width: 900px) {
     height: 100%;
@@ -60,7 +60,7 @@ const DescriptionText = styled.p`
   font-size: ${theme.fontSize.md};
   font-weight: 400;
   color: ${theme.inActiveGray};
-  margin: ${theme.spacing['2xl']};
+  margin: ${theme.spacing.md} 0px ${theme.spacing['xl']} 0px;
   text-align: center;
 `;
 const TemplateContainer = styled.div`
@@ -202,7 +202,6 @@ function ProfileLayoutPage() {
   const handleSelectTemplate = (template: string) => {
     setSelectedTemplate(template);
     setIsSelected(true);
-    
   };
   const handleShowModal = () => {
     if (selectedTemplate) {

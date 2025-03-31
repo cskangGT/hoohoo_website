@@ -5,7 +5,10 @@ import {MdPhoto} from 'react-icons/md';
 import styled from 'styled-components';
 import useWindowResize from '../../../components/hooks/useWindowResize';
 import {theme} from '../../../style';
-import {ProfileWidgetItemType} from '../types/WidgetItemType';
+import {
+  ProfileEMWidgetType,
+  ProfileWidgetItemType,
+} from '../types/WidgetItemType';
 import {getTextColorWcag} from '../util/util';
 const TemplateWidgetContainer = styled.div`
   width: 100%;
@@ -38,24 +41,15 @@ function TemplateWidgetContent({
     returnObjects: true,
   });
   const {
-    id,
     sizeType,
-    type,
     bgType,
-    bgImageUrl,
+
     bgColor,
-    hasBorder,
-    description,
-    linkUrl,
-    isEmWidget,
     emWidgetType,
-    isTemp,
-    widgetData,
-    coordinate,
   } = widgetItem;
 
   const textColor = getTextColorWcag(bgColor || '');
-  if (isEmWidget) {
+  if (emWidgetType === ProfileEMWidgetType.Temp) {
     return (
       <TemplateWidgetContainer style={{color: textColor}}>
         {localizedTexts.widget.emwidget}

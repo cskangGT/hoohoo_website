@@ -14,7 +14,10 @@ import {
 } from '../../../util/MediaUtil';
 import {WIDGET_PREFIX} from '../../../util/S3Config';
 import {useProfile} from '../contexts/ProfileContext';
-import {ProfileWidgetItemSize} from '../types/WidgetItemType';
+import {
+  ProfileEMWidgetType,
+  ProfileWidgetItemSize,
+} from '../types/WidgetItemType';
 import {getCroppedImg} from '../util/util';
 const ModalOverlay = styled.div`
   position: fixed;
@@ -42,7 +45,7 @@ const ModalContainer = styled.div`
   width: auto;
   z-index: 1002;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-  gap: 20px;
+  gap: ${theme.spacing.xl};
   border-radius: 20px;
 
   .ReactCrop__crop-selection {
@@ -58,7 +61,7 @@ const ApplyButton = styled.button`
   background-color: ${theme.mainNeon};
   color: black;
   padding: 10px 20px;
-  border-radius: 5px;
+  border-radius: 10px;
   cursor: pointer;
 `;
 const ImageButton = styled.button`
@@ -77,14 +80,14 @@ type ImageCropProps = {
   setSelectedColor: (color: string) => void;
   setIsSelected: (isSelected: boolean) => void;
   setImage: (image: string) => void;
-
+  setSelectedAsset: (asset: ProfileEMWidgetType | null) => void;
   sizeType: ProfileWidgetItemSize;
 };
 function ImageCrop({
   setSelectedColor,
   setIsSelected,
   setImage,
-
+  setSelectedAsset,
   sizeType,
 }: ImageCropProps) {
   const localizedTexts: any = i18next.t('ProfileCreateWidgetPage', {
@@ -177,6 +180,7 @@ function ImageCrop({
       if (resultUrl) {
         setSelectedColor('transparent');
         setIsSelected(true);
+        setSelectedAsset(null);
         setImage(resultUrl);
         setShowImageCropper(false);
       }
@@ -227,7 +231,7 @@ function ImageCrop({
               />
             </ReactCrop>
             <ApplyButton onClick={handleCropApply}>
-              {localizedTexts.apply || '크롭 적용'}
+              {localizedTexts.apply}
             </ApplyButton>
           </ModalContainer>
         </ModalOverlay>

@@ -72,8 +72,10 @@ function ProfileLinkPage() {
   const localizedTexts: any = i18next.t('ProfileLinkPage', {
     returnObjects: true,
   });
+  const {state} = useLocation();
+  const showTooltip = state?.showTooltip;
 
-  const keepEditing = useLocation().state?.keepEditing;
+  const keepEditing = state?.keepEditing;
   const {user, isAuthenticated} = useUserStore();
   const {
     fetchUserProfile,
