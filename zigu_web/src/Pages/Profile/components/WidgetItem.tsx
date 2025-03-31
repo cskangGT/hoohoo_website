@@ -134,7 +134,7 @@ const WidgetAppNavImageText = styled.p<{
     props.smallImage ? theme.fontSize.lg : theme.fontSize.lg};
   letter-spacing: 0.05rem;
   color: ${theme.white};
-  font-weight: 600;
+  font-weight: 500;
   margin: 0px;
   ${props =>
     props.smallImage &&
@@ -154,7 +154,7 @@ const WidgetContent = styled.div<{
   padding: ${props => (props.$isEditMode ? '30px' : '10px')};
   width: calc(100% - ${props => (props.$isEditMode ? '60px' : '20px')});
   height: calc(100% - ${props => (props.$isEditMode ? '60px' : '20px')});
-
+  font-weight: 500;
   flex-direction: column;
   position: relative;
 
