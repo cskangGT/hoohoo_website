@@ -1,20 +1,20 @@
-import React, { useRef } from 'react';
-import { FaChevronRight } from 'react-icons/fa';
-import { useLocation, useNavigate } from 'react-router-dom';
-import { toast } from 'react-toastify';
+import React, {useRef} from 'react';
+import {FaChevronRight} from 'react-icons/fa';
+import {useLocation, useNavigate} from 'react-router-dom';
+import {toast} from 'react-toastify';
 import styled from 'styled-components';
-import { updateUserProfile } from '../../../api/jigulink/user.api';
-import { logoutProfile } from '../../../api/login/auth';
+import {updateUserProfile} from '../../../api/jigulink/user.api';
+import {logoutProfile} from '../../../api/login/auth';
 import i18next from '../../../lang/i18n';
-import { useUserStore } from '../../../storage/userStore';
-import { defaultProfileImage, theme } from '../../../style';
+import {useUserStore} from '../../../storage/userStore';
+import {defaultProfileImage, theme} from '../../../style';
 import {
   checkAWSKey,
   compressImage,
   generateUniqueKey,
   uploadImageToS3,
 } from '../../../util/MediaUtil';
-import { PROFILE_PREFIX } from '../../../util/S3Config';
+import {PROFILE_PREFIX} from '../../../util/S3Config';
 import TopHeaderBackButtonWrapperView from '../components/TopHeaderBackButtonWrapperView';
 const ProfileContainer = styled.div`
   display: flex;
@@ -35,7 +35,7 @@ const ProfileHeader = styled.div`
   flex-direction: row;
   align-items: center;
   padding: 30px 20px;
-
+  margin-bottom: 20px;
   column-gap: 30px;
   @media (max-width: 500px) {
     column-gap: 25px;
@@ -243,9 +243,7 @@ function ProfileSettingPage() {
           </MenuItem>
           <Divider />
           <MenuItem
-            onClick={() =>
-              navigate('/' + user?.nameTag + '/settings/sync')
-            }>
+            onClick={() => navigate('/' + user?.nameTag + '/settings/sync')}>
             <MenuText>{localizedTexts.syncEarthMeraID}</MenuText>
             <FaChevronRight size={20} color="#888" />
           </MenuItem>

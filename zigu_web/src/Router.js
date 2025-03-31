@@ -1,9 +1,7 @@
 import React from 'react';
 
-import { createBrowserRouter, Navigate } from 'react-router-dom';
-import {
-  default as ErrorComponent
-} from './components/ErrorComponent/ErrorComponent';
+import {createBrowserRouter, Navigate} from 'react-router-dom';
+import {default as ErrorComponent} from './components/ErrorComponent/ErrorComponent';
 import AppleCallback from './Pages/Login/oauth/AppleCallback';
 import GoogleCallback from './Pages/Login/oauth/GoogleCallback';
 import KakaoCallback from './Pages/Login/oauth/KakaoCallback';
@@ -25,8 +23,6 @@ import ProfileLinkPage from './Pages/Profile/pages/ProfileLinkPage';
 import ProfileSettingPage from './Pages/Profile/pages/ProfileSettingPage';
 import ProfileSyncFromAppPage from './Pages/Profile/pages/ProfileSyncFromAppPage';
 import ProfileSyncPage from './Pages/Profile/pages/ProfileSyncPage';
-
-
 
 // 회원가입 관련 라우트를 별도로 분리
 const signupRoutes = [
@@ -76,7 +72,7 @@ const setupRoutes = [
         path: 'plan',
         element: <PlanPage />,
         errorElement: <ErrorComponent />,
-      }
+      },
     ],
   },
 ];
@@ -92,7 +88,7 @@ export const noFrameRoutes = [
     element: <PreSignup />,
     errorElement: <ErrorComponent />,
   },
-  
+
   {
     path: '/oauth/kakao',
     element: <KakaoCallback />,
@@ -114,6 +110,11 @@ export const noFrameRoutes = [
     errorElement: <ErrorComponent />,
   },
   {
+    path: '/profile/sync-earthmera',
+    element: <ProfileSyncFromAppPage />,
+    errorElement: <ErrorComponent />,
+  },
+  {
     path: '/',
     element: <Profile />,
     errorElement: <ErrorComponent />,
@@ -130,27 +131,22 @@ export const noFrameRoutes = [
     errorElement: <ErrorComponent />,
     children: [
       {
-        index: true, 
+        index: true,
         element: <ProfileLinkPage />,
       },
       {
-        path: ':nameTag/settings',
+        path: 'settings',
         element: <ProfileSettingPage />,
         errorElement: <ErrorComponent />,
       },
       {
-        path: ':nameTag/set-widget',
+        path: 'set-widget',
         element: <ProfileCreateWidgetPage />,
         errorElement: <ErrorComponent />,
       },
       {
-        path: ':nameTag/settings/sync',
+        path: 'settings/sync',
         element: <ProfileSyncPage />,
-        errorElement: <ErrorComponent />,
-      },
-      {
-        path: ':nameTag/settings/sync-earthmera',
-        element: <ProfileSyncFromAppPage />,
         errorElement: <ErrorComponent />,
       },
     ],
@@ -163,7 +159,6 @@ const Router = createBrowserRouter([
 
   // 프레임 없는 경로들
   ...noFrameRoutes,
-  
 ]);
 
 export default Router;

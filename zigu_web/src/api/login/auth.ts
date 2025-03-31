@@ -1,4 +1,5 @@
 import axios from 'axios';
+import { useUserStore } from '../../storage/userStore';
 import { __DEV__, APIAddress } from '../../style';
 export const ServerAPIVersion = __DEV__ ? 'v1.7.2' : 'v1.7.2';
 export const clientAxios = axios.create({
@@ -16,10 +17,10 @@ clientAxios.interceptors.response.use(
         // 401 Unauthorized 에러 발생 시 (세션 만료)
         if (error.response && error.response.status === 401) {
             // 로컬 스토리지/세션 스토리지 클리어
-            // const logout = useUserStore.getState().logout;
-            // logout();
-            // localStorage.clear();
-            // sessionStorage.clear();
+            const logout = useUserStore.getState().logout;
+            logout();
+            localStorage.clear();
+            sessionStorage.clear();
 
             // 로그인 페이지로 리다이렉트
             window.location.href = '/login';
@@ -73,7 +74,7 @@ export const sendGoogleLogin = async (code: string, nameTag?: string) => {
             tokenData.nameTag = nameTag;
         }
         const response = await clientAxios.post(
-            APIAddress + 'myProfile/web/googleLogin/',
+            'myProfile/web/googleLogin/',
             tokenData,
         );
 
@@ -143,7 +144,9 @@ export const sendKakaoLogin = async (code: string, nameTag?: string) => {
 
 export const logoutProfile = async () => {
     try {
-        const response = await clientAxios.post('myProfile/web/logout/');
+        const response = await clientAxios.post('myProfile/web/logout/', {
+            withCredentials: true,
+        });
         if (response.status >= 200 && response.status < 300) {
             return { result: true };
         }

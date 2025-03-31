@@ -83,6 +83,8 @@ function ProfileLinkPage() {
     isMyLink,
     isEditingItem,
     isEditing,
+    profileError,
+
     setIsEditing,
   } = useProfile();
   const nameTag = useParams()?.nameTag;
@@ -111,13 +113,17 @@ function ProfileLinkPage() {
     <MobileViewFrame>
       <>
         <ProfileTopHeader isMyLink={isMyLink} nameTag={nameTag || ''} />
-        {noProfileData ? (
+        {noProfileData || profileError ? (
           <VacantContainer>
-            <VacantText>
-              {localizedTexts.noProfileData[0]}
-              {`"${nameTag}"`}
-              {localizedTexts.noProfileData[1]}
-            </VacantText>
+            {profileError ? (
+              <VacantText>{localizedTexts.profileError}</VacantText>
+            ) : (
+              <VacantText>
+                {localizedTexts.noProfileData[0]}
+                {`"${nameTag}"`}
+                {localizedTexts.noProfileData[1]}
+              </VacantText>
+            )}
           </VacantContainer>
         ) : (
           <ProfileContainer>

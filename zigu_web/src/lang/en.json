@@ -1164,7 +1164,7 @@
   },
   "PreSignup": {
     "title": "Sign up to ZIGU",
-    "description": "Share your eco-journey, inspire change, and connect with a like-minded community. 🌍",
+    "description": "Your eco-profile, made simple with ZIGU.<br />One link. Your sustainable identity!",
     "linkTitle": "Claim your free Link in Bio!",
     "link": ["zigu.my/", "username"],
     "next": "Next",
@@ -1228,7 +1228,7 @@
     "purposeList": [
       {
         "title": "Eco-commerce",
-        "description": "Selling sustainable products",
+        "description": "Sharing and Selling Sustainable Products",
         "image": "/Images/ecommerce.png",
         "value": "ECO-COMMERCE",
         "template": [
@@ -1440,6 +1440,7 @@
     "done": "Done",
     "syncedWithEM": "EarthMera synced!<br />Make your ZIGU stand out with EarthMera assets!",
     "noProfileData": ["", " Profile doesn't exist"],
+    "profileError": "Failed to load profile data",
     "copyMyLink": "Profile URL copied",
     "copyMyLinkButton": "Copy My URL",
     "loginButton": "Login",
@@ -1572,7 +1573,7 @@
         "name": "Basic plan",
         "for": "For personal user",
         "monthlyPrice": "$0.99",
-        "yearlyPrice": "$0.79",
+        "yearlyPrice": "$0.99",
         "features": [
           "Custom widget placement",
           "Unlimited links",
@@ -1590,7 +1591,7 @@
         "popularText": "Popular",
         "discountMonthPrice": "$5.99",
         "discountYearlyPrice": "$4.99",
-        "unlock": "Unlock all Basic plan",
+        "unlock": "Everything in Basic, with more",
         "features": [
           "Scheduled link widget",
           "Button hover animations",
@@ -1603,7 +1604,7 @@
         "for": "For businesses and<br />growth focused teams",
         "monthlyPrice": "$13.99",
         "yearlyPrice": "$10.99",
-        "unlock": "Unlock all Pro plan",
+        "unlock": "Everything in Pro, with more",
         "features": [
           "Animated background themes",
           "Custom widget placement",
