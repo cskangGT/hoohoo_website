@@ -114,7 +114,7 @@ function ProfileTopHeader({
   nameTag: string;
 }) {
   const {state} = useLocation();
-  const showTooltip = true; //state?.showTooltip;
+  const showTooltip = state?.showTooltip;
   const [isTooltipOpen, setIsTooltipOpen] = React.useState(showTooltip);
   const {width} = useWindowResize({maxWidth: 600});
   const {userData} = useProfile();
