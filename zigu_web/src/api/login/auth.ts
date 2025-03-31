@@ -1,6 +1,6 @@
 import axios from 'axios';
 import { __DEV__, APIAddress } from '../../style';
-export const ServerAPIVersion = __DEV__ ? 'v1.7.1' : 'v1.7.1';
+export const ServerAPIVersion = __DEV__ ? 'v1.7.2' : 'v1.7.2';
 export const clientAxios = axios.create({
     baseURL: APIAddress,
     withCredentials: true,
