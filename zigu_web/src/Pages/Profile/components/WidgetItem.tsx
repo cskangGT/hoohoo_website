@@ -4,6 +4,7 @@ import {FaPencil} from 'react-icons/fa6';
 import styled, {css} from 'styled-components';
 import {theme} from '../../../style';
 import {
+  EMWidgetData,
   ProfileEMWidgetType,
   ProfileWidgetItemSize,
   ProfileWidgetItemType,
@@ -316,8 +317,10 @@ const NavigateLink = (
 function EMWidgetContent({
   widgetItem,
   userInfo,
+  widgetData,
 }: {
   widgetItem: ProfileWidgetItemType;
+  widgetData: EMWidgetData;
   userInfo?: {userId: string; name: string; profileImage: string};
 }) {
   const emWidgetData = getEMWidgetData();
@@ -335,13 +338,9 @@ function EMWidgetContent({
         <CarbonWidgetContent
           width={ITEM_WIDTH}
           sizeType={widgetItem.sizeType}
-          annualEcoActionCount={
-            widgetItem.widgetData?.annualEcoActionCount || 0
-          }
-          annualCarbonReduction={
-            widgetItem.widgetData?.annualCarbonReduction || 0
-          }
-          treeEffect={widgetItem.widgetData?.treeEffect || 0}
+          annualEcoActionCount={widgetData?.annualEcoActionCount || 0}
+          annualCarbonReduction={widgetData?.annualCarbonReduction || 0}
+          treeEffect={widgetData?.treeEffect || 0}
         />
       </WidgetLink>
     );
@@ -352,11 +351,11 @@ function EMWidgetContent({
         <AchievementWidgetContent
           width={ITEM_WIDTH}
           sizeType={widgetItem.sizeType}
-          level={widgetItem.widgetData?.level || 0}
-          numBadges={widgetItem.widgetData?.numBadges || 0}
-          numMedals={widgetItem.widgetData?.numMedals || 0}
-          equippedMedals={widgetItem.widgetData?.equippedMedals || []}
-          equippedBadge={widgetItem.widgetData?.equippedBadge || ''}
+          level={widgetData?.level || 0}
+          numBadges={widgetData?.numBadges || 0}
+          numMedals={widgetData?.numMedals || 0}
+          equippedMedals={widgetData?.equippedMedals || []}
+          equippedBadge={widgetData?.equippedBadge || ''}
         />
       </WidgetLink>
     );
@@ -366,21 +365,21 @@ function EMWidgetContent({
         <LeaderboardWidgetContent
           width={ITEM_WIDTH}
           sizeType={widgetItem.sizeType}
-          ecoActionCount={widgetItem.widgetData?.ecoActionCount || 0}
+          ecoActionCount={widgetData?.ecoActionCount || 0}
           higherRankInfo={
-            widgetItem.widgetData?.higherRankInfo || {
+            widgetData?.higherRankInfo || {
               gap: 0,
               ecoActionCount: 0,
             }
           }
           lowerRankInfo={
-            widgetItem.widgetData?.lowerRankInfo || {
+            widgetData?.lowerRankInfo || {
               gap: 0,
               ecoActionCount: 0,
             }
           }
-          lastMonthRank={widgetItem.widgetData?.lastMonthRank || 0}
-          userRank={widgetItem.widgetData?.userRank || 0}
+          lastMonthRank={widgetData?.lastMonthRank || 0}
+          userRank={widgetData?.userRank || 0}
         />
       </WidgetLink>
     );
@@ -391,7 +390,7 @@ function EMWidgetContent({
           width={ITEM_WIDTH}
           cellHeight={ITEM_HEIGHT}
           sizeType={widgetItem.sizeType}
-          thumbnails={widgetItem.widgetData?.thumbnails || []}
+          thumbnails={widgetData?.thumbnails || []}
         />
       </WidgetLink>
     );
@@ -498,9 +497,11 @@ function WidgetItem({
       <WidgetTextContentContainer $isEditMode={isEditMode}>
         <WidgetTextContent
           style={{color: textColor}}
-          size={widgetItem.sizeType}>
-          {widgetItem.description}
-        </WidgetTextContent>
+          size={widgetItem.sizeType}
+          dangerouslySetInnerHTML={{
+            __html: widgetItem.description || '',
+          }}
+        />
       </WidgetTextContentContainer>
     );
 
@@ -519,7 +520,11 @@ function WidgetItem({
       }
       $isClickable={isClickable}>
       {widgetItem.isEmWidget && hasEMWidgetType ? (
-        <EMWidgetContent widgetItem={widgetItem} userInfo={userInfo} />
+        <EMWidgetContent
+          widgetItem={widgetItem}
+          userInfo={userInfo}
+          widgetData={widgetItem.widgetData || {}}
+        />
       ) : isClickable ? (
         <WidgetLink
           href={widgetItem.linkUrl}

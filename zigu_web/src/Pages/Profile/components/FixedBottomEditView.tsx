@@ -165,9 +165,7 @@ function FixedBottomEditView() {
       setIsEditing(false);
       return;
     }
-    const changedWidgetArray = currentWidgets.filter(
-      (widget: ProfileWidgetItemType) => widget.isExchangedWidget === false,
-    );
+
     const updatedWidgets = currentWidgets.map(
       (widget: ProfileWidgetItemType) => {
         // widget에서 필요한 속성들만 추출
@@ -193,42 +191,10 @@ function FixedBottomEditView() {
       setDeletedWidgetItems([]);
 
       // update currentWidgets, myWidgets, originalWidgets
-      const matchedUpdateData = changedWidgetArray
-        .map(changedWidget => {
-          const matchedWidget = updatedData.find(
-            (updated: ProfileWidgetItemType) =>
-              updated.coordinate.x / 3 === changedWidget.coordinate.x &&
-              updated.coordinate.y === changedWidget.coordinate.y,
-          );
-          return matchedWidget
-            ? {...matchedWidget, coordinate: changedWidget.coordinate}
-            : null;
-        })
-        .filter(Boolean); // null 값 제거
-      console.log('matchedUpdateData', matchedUpdateData);
 
-      // 찾은 데이터로 currentWidgets 업데이트
-      const newCurrentWidgets = currentWidgets.map(widget => {
-        const matchedWidget = matchedUpdateData.find(
-          matched =>
-            matched.coordinate.x === widget.coordinate.x &&
-            matched.coordinate.y === widget.coordinate.y,
-        );
-
-        if (matchedWidget) {
-          return {
-            ...widget,
-            ...matchedWidget,
-          };
-        }
-
-        return widget;
-      });
-      console.log('newCurrentWidgets', newCurrentWidgets);
-
-      setCurrentWidgets(newCurrentWidgets);
-      setMyWidgets(newCurrentWidgets);
-      setOriginalWidgets(newCurrentWidgets);
+      setCurrentWidgets(updatedData);
+      setMyWidgets(updatedData);
+      setOriginalWidgets(updatedData);
 
       setIsEditing(false);
     } else {
