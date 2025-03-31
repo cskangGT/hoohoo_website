@@ -1546,8 +1546,8 @@
       {
         "name": "베이직 플랜",
         "for": "개인 사용자용",
-        "monthlyPrice": "990원",
-        "yearlyPrice": "9,990원",
+        "monthlyPrice": "999원",
+        "yearlyPrice": "799원",
         "features": [
           "자유로운 위젯 배치",
           "무제한 링크 연결",
@@ -1559,12 +1559,12 @@
       {
         "name": "프로 플랜",
         "for": "크리에이터와 소규모<br />브랜드를 위한 플랜",
-        "monthlyPrice": "7,990원",
-        "yearlyPrice": "79,990원",
+        "monthlyPrice": "7,999원",
+        "yearlyPrice": "6,999원",
         "isPopular": true,
         "popularText": "추천",
-        "discountMonthPrice": "5,990원",
-        "discountYearlyPrice": "59,990원",
+        "discountMonthPrice": "5,999원",
+        "discountYearlyPrice": "4,999원",
         "unlock": "베이직 플랜 기능 전체 포함",
         "features": [
           "예약 링크 위젯",
@@ -1576,8 +1576,8 @@
       {
         "name": "프리미엄 플랜",
         "for": "상장세가 가파른 기업과<br />팀을 위한 플랜",
-        "monthlyPrice": "13,990원",
-        "yearlyPrice": "139,990원",
+        "monthlyPrice": "13,999원",
+        "yearlyPrice": "10,999원",
         "unlock": "프로 플랜 기능 전체 포함",
         "features": [
           "움직이는 배경 테마",

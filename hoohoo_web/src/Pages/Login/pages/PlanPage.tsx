@@ -358,12 +358,10 @@ function PlanPage() {
                   <PriceWrapper>
                     
                     <PriceValue isPopular={plan.isPopular}>
-                      {billingCycle === 'monthly'
-                        ? (plan.discountMonthPrice || plan.monthlyPrice)
-                        : (plan.discountYearlyPrice || plan.yearlyPrice)}
+                      {(plan.monthlyPrice)}
                     </PriceValue>
                     <PricePeriod isPopular={plan.isPopular}>
-                      /{billingCycle === 'monthly' ? localizedTexts.perMonth : localizedTexts.perYear}
+                      /{localizedTexts.perMonth}
                     </PricePeriod>
                   </PriceWrapper>
                 </PriceContainer>

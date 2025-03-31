@@ -279,6 +279,13 @@ const SignInText = styled.p`
     margin-top: ${theme.spacing.xl};
   }
 `;
+const PowerByBox = styled.div`
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: ${theme.spacing.rg};
+`;
 const PowerByImage = styled.img`
   width: 120px;
   height: 100%;
@@ -384,16 +391,19 @@ function PreSignup() {
     validateLink();
   };
   const handleTermsClick = () => {
-    navigate('/terms_of_use');
+    window.open('https://earthmera.com/terms_of_use', '_blank');
   };
   const handlePrivacyClick = () => {
-    navigate('/privacy');
+    window.open('https://earthmera.com/privacy', '_blank');
   };
   const handleSignInClick = () => {
     navigate('/login');
   };
   const handleLogoClick = () => {
     navigate(`/${language}`);
+  };
+  const handlePowerByClick = () => {
+    window.open('https://earthmera.com', '_blank');
   };
   return (
     <Container>
@@ -529,7 +539,9 @@ function PreSignup() {
                 {localizedTexts.signin}
               </SignInLink>
             </SignInText>
-            <PowerByImage src={'/Images/pow.png'} />
+            <PowerByBox onClick={handlePowerByClick}>
+              <PowerByImage src={'/Images/pow.png'} />
+            </PowerByBox>
           </InnerBox>
         </ContentOuterBox>
       </LoginContainer>

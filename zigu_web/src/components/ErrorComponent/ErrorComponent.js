@@ -115,7 +115,7 @@ function ErrorComponent() {
   return (
     <Container>
       <LogoContainer>
-        <Logo src="/Images/og_earthmera_logo.png" alt="EarthMera Logo" />
+        <Logo src="/Images/zigulink.png" alt="ZIGU Logo" />
       </LogoContainer>
 
       <ErrorTitle>{localizedTexts.title}</ErrorTitle>
