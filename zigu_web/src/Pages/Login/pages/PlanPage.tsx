@@ -216,6 +216,12 @@ const PricePeriod = styled.span<{isPopular?: boolean}>`
   color: ${props =>
     props.isPopular ? 'rgba(255, 255, 255, 0.7)' : theme.inActiveGray};
   margin-left: 4px;
+  @media screen and (max-width: 1200px) {
+    font-size: ${theme.fontSize.md};
+  }
+  @media screen and (max-width: 700px) {
+    font-size: ${theme.fontSize.rg};
+  }
 `;
 const AppliedPriceContainer = styled.div`
   display: flex;
@@ -338,7 +344,7 @@ function PlanPage() {
   const {user} = useUserStore();
   const localizedTexts: any = i18next.t('PlanPage', {returnObjects: true});
   const navigate = useNavigate();
-  const [promoApplied, setPromoApplied] = useState<boolean>(true);
+  const [promoApplied, setPromoApplied] = useState<boolean>(false);
   function openPromoCodeModal() {
     setIsPromoCodeModalVisible(true);
   }

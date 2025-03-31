@@ -187,8 +187,6 @@ export const ProfileProvider: React.FC<ProfileProviderProps> = ({
       }
     }
 
-    setNoProfileData(true);
-
     setIsLoading(false);
   };
 

@@ -1,13 +1,13 @@
 import i18next from 'i18next';
-import { LuCopy } from 'react-icons/lu';
+import {LuCopy} from 'react-icons/lu';
 
 import React from 'react';
-import { MdClose, MdOutlineIosShare } from 'react-icons/md';
-import { toast } from 'react-toastify';
+import {MdClose, MdOutlineIosShare} from 'react-icons/md';
+import {toast} from 'react-toastify';
 import styled from 'styled-components';
-import { theme } from '../../../style';
-import { myLink } from '../../../util/links';
-import { useProfile } from '../contexts/ProfileContext';
+import {theme} from '../../../style';
+import {myLink} from '../../../util/links';
+import {useProfile} from '../contexts/ProfileContext';
 
 const ShareModal = styled.div`
   position: fixed;
@@ -27,7 +27,7 @@ const ShareTitle = styled.div`
   color: ${theme.white};
   font-weight: 600;
   text-align: center;
-  margin-bottom: ${theme.spacing.lg};
+  margin-bottom: ${theme.spacing['2xl']};
 `;
 const NameText = styled.p`
   font-family: Inter;
@@ -111,7 +111,7 @@ const ModalOverlay = styled.div`
   left: 0;
   right: 0;
   bottom: 0;
-  background-color: rgba(0, 0, 0, 0.8);
+  background-color: rgba(0, 0, 0, 0.9);
   z-index: 999;
 `;
 
@@ -197,9 +197,7 @@ function ShareProfileModal({
                 {userData.name}
                 {localizedTexts.shareZIGU[1]}
               </ShareTitleText>
-              <ShareLinkText>
-                {'zigu.my/' + userData.nameTag}
-              </ShareLinkText>
+              <ShareLinkText>{'zigu.my/' + userData.nameTag}</ShareLinkText>
             </ShareTextContainer>
           </ShareProfileContentContainer>
           <ShareButtonContainer>
