@@ -7,12 +7,12 @@ import {
   TextField,
 } from '@mui/material';
 import i18next from 'i18next';
-import React, {useEffect, useState} from 'react';
+import React, { useEffect, useState } from 'react';
 
-import {useGoogleLogin} from '@react-oauth/google';
-import {FaCheckCircle} from 'react-icons/fa';
-import {IoEyeOffSharp, IoEyeSharp} from 'react-icons/io5';
-import {useLocation, useNavigate} from 'react-router-dom';
+import { useGoogleLogin } from '@react-oauth/google';
+import { FaCheckCircle } from 'react-icons/fa';
+import { IoEyeOffSharp, IoEyeSharp } from 'react-icons/io5';
+import { useLocation, useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 import {
   getAPIKey,
@@ -20,11 +20,11 @@ import {
   sendAppleLogin,
   sendGoogleLogin,
 } from '../../../api/login/auth';
-import {checkEmail} from '../../../api/login/signup.api';
-import {useSignup} from '../../../context/SignupContext';
-import {useUserStore} from '../../../storage/userStore';
-import {theme} from '../../../style';
-import {isValidEmail, isValidPassword} from '../../../util/validation';
+import { checkEmail } from '../../../api/login/signup.api';
+import { useSignup } from '../../../context/SignupContext';
+import { useUserStore } from '../../../storage/userStore';
+import { theme } from '../../../style';
+import { isValidEmail, isValidPassword } from '../../../util/validation';
 import EarthMeraLogo from '../components/EarthMeraLogo';
 import GoogleLogo from '../components/GoogleLogo';
 import LineDivider from '../components/LineDivider';
@@ -198,7 +198,7 @@ const Signup = () => {
         if (response.data?.user?.isNeedsQuestionnaire) {
           navigate('/setup/select-goal');
         } else {
-          navigate(`/zigu/${response.data.user.nameTag}`);
+          navigate(`/${response.data.user.nameTag}`);
         }
       } else {
         if (response.status === 409) {
@@ -243,7 +243,7 @@ const Signup = () => {
           if (response.data?.user?.isNeedsQuestionnaire) {
             navigate('/setup/select-goal', {replace: true});
           } else {
-            navigate(`/zigu/${response.data.user.nameTag}`, {replace: true});
+            navigate(`/${response.data.user.nameTag}`, {replace: true});
           }
         } else {
           if (response.status === 409) {

@@ -1,16 +1,15 @@
-import React, { useEffect } from 'react';
-import { useLocation, useNavigate, useParams } from 'react-router-dom';
+import React, {useEffect} from 'react';
+import {useLocation, useNavigate, useParams} from 'react-router-dom';
 import styled from 'styled-components';
 import useWindowResize from '../../../components/hooks/useWindowResize';
 import i18next from '../../../lang/i18n';
-import { useUserStore } from '../../../storage/userStore';
-import { defaultProfileImage, theme } from '../../../style';
+import {useUserStore} from '../../../storage/userStore';
+import {defaultProfileImage, theme} from '../../../style';
 import FixedBottomEditView from '../components/FixedBottomEditView';
 import MobileViewFrame from '../components/MobileViewFrame';
 import ProfileTopHeader from '../components/ProfileTopHeader';
 import ProfileWidgetGrid from '../components/ProfileWidgetGrid';
-import { useProfile } from '../contexts/ProfileContext';
-import ProfileEditWidgetPage from './ProfileEditWidgetPage';
+import {useProfile} from '../contexts/ProfileContext';
 
 export const PROFILE_SCREEN_WIDTH =
   window.innerWidth > 600 ? 600 : window.innerWidth;
@@ -73,6 +72,7 @@ function ProfileLinkPage() {
   const localizedTexts: any = i18next.t('ProfileLinkPage', {
     returnObjects: true,
   });
+
   const keepEditing = useLocation().state?.keepEditing;
   const {user, isAuthenticated} = useUserStore();
   const {
@@ -89,7 +89,7 @@ function ProfileLinkPage() {
   const navigate = useNavigate();
   console.log('user', user);
 
-  const resizedWidth = useWindowResize({
+  const {width: resizedWidth} = useWindowResize({
     maxWidth: 600,
   });
 
@@ -109,36 +109,32 @@ function ProfileLinkPage() {
 
   return (
     <MobileViewFrame>
-      {isEditingItem ? (
-        <ProfileEditWidgetPage />
-      ) : (
-        <>
-          <ProfileTopHeader isMyLink={isMyLink} nameTag={nameTag || ''} />
-          {noProfileData ? (
-            <VacantContainer>
-              <VacantText>
-                {localizedTexts.noProfileData[0]}
-                {`"${nameTag}"`}
-                {localizedTexts.noProfileData[1]}
-              </VacantText>
-            </VacantContainer>
-          ) : (
-            <ProfileContainer>
-              <Logo>
-                <ProfileImage
-                  src={userData.profileImage || defaultProfileImage}
-                  size={resizedWidth * 0.2}
-                />
-              </Logo>
-              <ProfileName>{userData.name}</ProfileName>
-              <ProfileTag>@{nameTag}</ProfileTag>
+      <>
+        <ProfileTopHeader isMyLink={isMyLink} nameTag={nameTag || ''} />
+        {noProfileData ? (
+          <VacantContainer>
+            <VacantText>
+              {localizedTexts.noProfileData[0]}
+              {`"${nameTag}"`}
+              {localizedTexts.noProfileData[1]}
+            </VacantText>
+          </VacantContainer>
+        ) : (
+          <ProfileContainer>
+            <Logo>
+              <ProfileImage
+                src={userData.profileImage || defaultProfileImage}
+                size={resizedWidth * 0.2}
+              />
+            </Logo>
+            <ProfileName>{userData.name}</ProfileName>
+            <ProfileTag>@{nameTag}</ProfileTag>
 
-              <ProfileWidgetGrid />
-            </ProfileContainer>
-          )}
-          {isMyLink && <FixedBottomEditView />}
-        </>
-      )}
+            <ProfileWidgetGrid />
+          </ProfileContainer>
+        )}
+        {isMyLink && <FixedBottomEditView />}
+      </>
     </MobileViewFrame>
   );
 }

@@ -5,6 +5,7 @@ import styled from 'styled-components';
 import Wrapper from '../../../components/Wrapper/Wrapper';
 import { useQuestionnaire } from '../../../context/QuestionnaireContext';
 import { theme } from '../../../style';
+import { QuestionaireDescriptionText, QuestionaireTitleText } from '../components/styles';
 const Container = styled.div`
   width: 100%;
   height: 100%;
@@ -222,8 +223,12 @@ function SelectGoal() {
     <Container>
       <Wrapper>
         <InnerWrapper>
-          <TitleText>{localizedTexts.title}</TitleText>
-          <DescriptionText>{localizedTexts.description}</DescriptionText>
+          <QuestionaireTitleText>{localizedTexts.title}</QuestionaireTitleText>
+          <QuestionaireDescriptionText
+            dangerouslySetInnerHTML={{
+              __html: localizedTexts.description,
+            }}
+          />
 
           <SelectGoalContainer>
             {localizedTexts.goals.map((goalItem: any) => (

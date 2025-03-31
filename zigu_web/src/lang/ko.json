@@ -23,7 +23,7 @@
       {
         "label": "우리가 하는 일",
         "subItems": [
-          {"label": "어스메라", "link": "/ko/platform"},
+          {"label": "소셜 플랫폼", "link": "/ko/platform"},
 
           {"label": "EM 티켓티어", "link": "/ko/ticketeer"}
         ]
@@ -603,10 +603,9 @@
     }
   },
   "bubble": {
-    "image": "/Images/dropb_logo.png",
-    "text_part1": "We are the creator of DropB",
-    "text_part2": "Do you want to tag your day? Try DropB!",
-    "close": "/Images/close_btn.png"
+    "image": "/Images/zigulink.png",
+    "text_part1": "나만의 찐! 환경 프로필, 단 하나의 링크에 담아보세요.",
+    "text_part2": "지구를 위한 당신의 이야기를, 지금 ZIGU에서 시작하세요! 🌱"
   },
   "b2c": {
     "image": "/Images/b2c.png",
@@ -1379,7 +1378,7 @@
     "title": "ZIGU 가입하기!",
     "description": "친환경 여정을 나누고, 변화를 만들어보세요.<br />환경을 생각하는 사람들과 함께할 수 있어요!",
     "linkTitle": "지금 무료로 바이오 링크 만들기!",
-    "link": ["earthmera.com/zigu/", "username"],
+    "link": ["zigu.my/", "username"],
     "next": "다음",
     "alreadyAccount": "이미 계정이 있으신가요?  ",
     "signin": "로그인하기",
@@ -1460,6 +1459,7 @@
       "failedToUploadImage": "이미지 업로드에 실패했어요. 다시 시도해주세요.",
       "selectColor": "색상을 선택해주세요."
     },
+    "apply": "적용하기",
     "close": "닫기",
     "image": "이미지",
     "preview": "위젯 미리보기",
@@ -1524,5 +1524,70 @@
     "successToast": "성공적으로 ZIGU와 연동되었어요.",
     "errorToast": "ZIGU와 연동에 실패했어요.",
     "question": ["“", "” 계정을 EarthMera와 연동하시겠어요?"]
+  },
+  "PlanPage": {
+    "title": "당신에게 꼭 맞는 플랜을 준비했어요",
+    "monthly": "월 결제",
+    "annually": "연 결제",
+    "featureTitle": "기능 살펴보기",
+    "perMonth": "월",
+    "promoButton": "프로모 코드가 있으신가요?",
+    "perYear": "연",
+    "getStarted": "시작하기",
+    "PromoCodeModal": {
+      "title": "프로모 코드가 있으신가요?",
+      "placeholder": "프로모 코드를 입력해주세요",
+      "apply": "코드 적용하기",
+      "cancel": "취소하기",
+      "successToast": "프로모 코드가 적용되었어요.",
+      "errorToast": "프로모 코드 적용에 실패했어요."
+    },
+    "zero": "0원",
+    "autopay": ["", "월 ", "일", "부터 5,999원이 자동으로 결제됩니다."],
+    "appied": "프로모 코드가 적용됐어요!",
+    "plans": [
+      {
+        "name": "베이직 플랜",
+        "for": "개인 사용자용",
+        "monthlyPrice": "999원",
+        "yearlyPrice": "799원",
+        "features": [
+          "자유로운 위젯 배치",
+          "무제한 링크 연결",
+          "다중 인증 로그인",
+          "QR 코드 생성",
+          "여러 채널 링크 연결"
+        ]
+      },
+      {
+        "name": "프로 플랜",
+        "for": "크리에이터와 소규모<br />브랜드를 위한 플랜",
+        "monthlyPrice": "7,999원",
+        "yearlyPrice": "6,999원",
+        "isPopular": true,
+        "popularText": "추천",
+        "discountMonthPrice": "5,999원",
+        "discountYearlyPrice": "4,999원",
+        "unlock": "베이직 플랜 기능 전체 포함",
+        "features": [
+          "예약 링크 위젯",
+          "버튼 호버 애니메이션",
+          "폰트 & 위젯 스타일 커스터마이징",
+          "링크 클릭 분석"
+        ]
+      },
+      {
+        "name": "프리미엄 플랜",
+        "for": "상장세가 가파른 기업과<br />팀을 위한 플랜",
+        "monthlyPrice": "13,999원",
+        "yearlyPrice": "10,999원",
+        "unlock": "프로 플랜 기능 전체 포함",
+        "features": [
+          "움직이는 배경 테마",
+          "방문자 인사이트 대시보드",
+          "SEO 및 Google Analytics 연동"
+        ]
+      }
+    ]
   }
 }

@@ -1,13 +1,13 @@
 import i18next from 'i18next';
 import React from 'react';
-import {FiLayout} from 'react-icons/fi';
-import {LuSettings} from 'react-icons/lu';
-import {RiShare2Line} from 'react-icons/ri';
-import {useNavigate} from 'react-router-dom';
+import { FiLayout } from 'react-icons/fi';
+import { LuSettings } from 'react-icons/lu';
+import { RiShare2Line } from 'react-icons/ri';
+import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
-import {useUserStore} from '../../../storage/userStore';
-import {theme} from '../../../style';
-import {useProfile} from '../contexts/ProfileContext';
+import { useUserStore } from '../../../storage/userStore';
+import { theme } from '../../../style';
+import { useProfile } from '../contexts/ProfileContext';
 import ShareProfileModal from './ShareProfileModal';
 const TopHeaderContainer = styled.div`
   width: calc(100% - ${theme.spacing.xm} * 2);
@@ -78,12 +78,12 @@ function ProfileTopHeader({
   const navigate = useNavigate();
 
   function handleSetting() {
-    navigate('/zigu/' + user?.nameTag + '/settings');
+    navigate('/' + user?.nameTag + '/settings');
   }
 
   function handleLogo() {
     if (isAuthenticated) {
-      const link = '/zigu/' + user?.nameTag;
+      const link = '/' + user?.nameTag;
       console.log('link', link);
 
       navigate(link);
@@ -95,7 +95,7 @@ function ProfileTopHeader({
     setIsShareModalOpen(true);
   }
   const handleLayout = () => {
-    navigate('/zigu/' + user?.nameTag + '/settings/layout');
+    navigate('/' + user?.nameTag + '/settings/layout');
   };
   function handleCloseModal() {
     setIsShareModalOpen(false);

@@ -71,12 +71,12 @@ const TitleContainer = styled.div<{resizedWidth: number}>`
   transform: translateY(0px);
   
   padding-bottom: 80px;
-  padding-top: calc((${maxWidth}px - ${gap * (numColumns + 1)}px) / ${numColumns} * 5/4 * 2 + 16px + 80px);
+  padding-top: calc((${props => props.resizedWidth}px - ${gap * (numColumns + 1)}px) / ${numColumns} * 5/4 * 2 + 16px + 80px);
   
 
   @media screen and (max-width: 550px) {
     padding-top: calc(
-      (${maxWidth}px - ${gap * (mobileNumColumns - 1)}px) / ${mobileNumColumns}* 5/4 * 2+ 16px + 80px
+      (${props => props.resizedWidth}px - ${gap * (mobileNumColumns - 1)}px) / ${mobileNumColumns}* 5/4 * 2+ 16px + 80px
     );
   }
 `;
@@ -334,7 +334,7 @@ export const EcoActionMarqueeImageItem = ({
 };
 const HomeLandingEcoAction = () => {
   const navigate = useNavigate();
-  const resizedWidth = useWindowResize({maxWidth: 1400});
+  const {width: resizedWidth} = useWindowResize({maxWidth: 1400});
   const localizedTexts: any = i18next.t('EcoActionTestimony', {
     returnObjects: true,
   });

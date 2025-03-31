@@ -198,7 +198,7 @@ function ShareProfileModal({
                 {localizedTexts.shareZIGU[1]}
               </ShareTitleText>
               <ShareLinkText>
-                {'earthmera.com/zigu/' + userData.nameTag}
+                {'zigu.my/' + userData.nameTag}
               </ShareLinkText>
             </ShareTextContainer>
           </ShareProfileContentContainer>

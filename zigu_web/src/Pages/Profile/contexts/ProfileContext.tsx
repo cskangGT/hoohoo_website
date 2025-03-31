@@ -5,6 +5,7 @@ import React, {
   useEffect,
   useState,
 } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { getUserLinkProfile } from '../../../api/jigulink/jigulink.api';
 import { useUserStore } from '../../../storage/userStore';
 import { ProfileWidgetItemType } from '../types/WidgetItemType';
@@ -68,6 +69,7 @@ type UserData = {
     userId: string;
     profileImage: string;
   };
+  
 };
 
 export const ProfileProvider: React.FC<ProfileProviderProps> = ({
@@ -95,6 +97,7 @@ export const ProfileProvider: React.FC<ProfileProviderProps> = ({
   const [deletedWidgetItems, setDeletedWidgetItems] = useState<
     ProfileWidgetItemType[]
   >([]);
+  const navigate = useNavigate();
   const [noProfileData, setNoProfileData] = useState<boolean>(false);
   const [isEditingItem, setIsEditingItem] = useState<boolean>(false);
   // 사용자 데이터
@@ -147,6 +150,9 @@ export const ProfileProvider: React.FC<ProfileProviderProps> = ({
         });
 
         if (user.nameTag === targetNameTag) {
+          if(!response.data.hasPlan) {
+            navigate('/setup/plan')
+          }
           setProfileImage(response.data.profileImage);
           response.data.linkedUserInfo &&
             setLinkedUserInfo({

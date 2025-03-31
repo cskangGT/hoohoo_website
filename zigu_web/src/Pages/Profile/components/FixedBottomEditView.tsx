@@ -146,14 +146,14 @@ function FixedBottomEditView() {
 
   function handleCreateWidget() {
     setMyWidgets(originalWidgets);
-    navigate('/zigu/' + userData?.nameTag + '/set-widget', {
+    navigate('/' + userData?.nameTag + '/set-widget', {
       state: {
         isEditMode: false,
       },
     });
   }
   function handleGoSync() {
-    navigate('/zigu/' + userData?.nameTag + '/settings/sync');
+    navigate('/' + userData?.nameTag + '/settings/sync');
   }
   const handleDone = async () => {
     if (deletedWidgetItems.length === 0 && currentWidgets.length === 0) {

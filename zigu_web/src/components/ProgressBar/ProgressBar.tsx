@@ -117,7 +117,7 @@ function ProgressBar({
   progressColor = theme.green || '#8AE65C', // 이미지에 보이는 연두색
 }: ProgressBarProps) {
   // 진행률이 0-100 범위 내에 있도록 보장
-  const resizedWidth = useWindowResize();
+  const {width: resizedWidth} = useWindowResize();
   const localizedTexts: any = i18next.t('ProgressBar', {
     returnObjects: true,
   });

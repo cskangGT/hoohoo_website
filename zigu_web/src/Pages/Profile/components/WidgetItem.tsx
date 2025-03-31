@@ -70,20 +70,20 @@ const WidgetItemContainer = styled.div<{
         return `
             width: ${ITEM_WIDTH}px;
             height: ${ITEM_HEIGHT}px;
-            border-radius: 30px;
+            border-radius: 10px;
           `;
       case 'LONG':
         return `
             width: ${LONG_ITEM_WIDTH}px;
             height: ${ITEM_HEIGHT}px;
-            border-radius: 30px;
+            border-radius: 10px;
             
           `;
       case 'BIG':
         return `
             width: ${ITEM_WIDTH}px;
             height: ${BIG_ITEM_HEIGHT}px;
-            border-radius: 30px;
+            border-radius: 10px;
           `;
 
       default:
@@ -159,7 +159,7 @@ const WidgetContent = styled.div<{
 
   color: ${props => props.textColor || 'white'};
   margin: auto;
-  border-radius: 30px;
+  border-radius: 10px;
 
   font-size: ${props =>
     props.size === 'BIG' ? theme.fontSize.lg : theme.fontSize.rg};
@@ -184,12 +184,15 @@ const WidgetTextContent = styled.p<{size: ProfileWidgetItemSize}>`
   word-break: break-word;
   text-overflow: ellipsis;
   white-space: normal;
-  font-size: ${theme.fontSize.md};
+  font-size: ${theme.fontSize.xl};
   -webkit-line-clamp: ${props => (props.size === 'BIG' ? 6 : 2)};
   -webkit-box-orient: vertical;
   @media screen and (max-width: 600px) {
-    font-size: ${theme.fontSize.rg};
+    font-size: ${theme.fontSize.lg};
     -webkit-line-clamp: ${props => (props.size === 'BIG' ? 5 : 1)};
+  }
+  @media (max-width: 400px) {
+    font-size: ${theme.fontSize.rg};
   }
 `;
 const WidgetImage = styled.img`
