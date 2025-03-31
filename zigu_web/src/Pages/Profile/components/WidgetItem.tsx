@@ -207,8 +207,9 @@ const WidgetImage = styled.img`
   object-fit: cover;
 `;
 
-const WidgetLink = styled.a`
+const WidgetLink = styled.a<{disabled?: boolean}>`
   text-decoration: none;
+  pointer-events: ${props => (props.disabled ? 'none' : 'auto')};
   color: inherit;
   width: 100%;
   height: 100%;
@@ -318,10 +319,12 @@ function EMWidgetContent({
   widgetItem,
   userInfo,
   widgetData,
+  isEditMode,
 }: {
   widgetItem: ProfileWidgetItemType;
   widgetData: EMWidgetData;
   userInfo?: {userId: string; name: string; profileImage: string};
+  isEditMode: boolean;
 }) {
   const emWidgetData = getEMWidgetData();
   const isSmallImage = widgetItem.sizeType !== 'BIG';
@@ -334,7 +337,11 @@ function EMWidgetContent({
 
   if (widgetItem.emWidgetType === ProfileEMWidgetType.CO2Saved) {
     return (
-      <WidgetLink href={link} target="_blank" rel="appopener">
+      <WidgetLink
+        href={link}
+        target="_blank"
+        rel="appopener"
+        disabled={isEditMode}>
         <CarbonWidgetContent
           width={ITEM_WIDTH}
           sizeType={widgetItem.sizeType}
@@ -347,7 +354,11 @@ function EMWidgetContent({
     // CO2Saved 위젯 구현
   } else if (widgetItem.emWidgetType === ProfileEMWidgetType.Achievement) {
     return (
-      <WidgetLink href={link} target="_blank" rel="appopener">
+      <WidgetLink
+        href={link}
+        target="_blank"
+        rel="appopener"
+        disabled={isEditMode}>
         <AchievementWidgetContent
           width={ITEM_WIDTH}
           sizeType={widgetItem.sizeType}
@@ -361,7 +372,11 @@ function EMWidgetContent({
     );
   } else if (widgetItem.emWidgetType === ProfileEMWidgetType.Leaderboard) {
     return (
-      <WidgetLink href={link} target="_blank" rel="appopener">
+      <WidgetLink
+        href={link}
+        target="_blank"
+        rel="appopener"
+        disabled={isEditMode}>
         <LeaderboardWidgetContent
           width={ITEM_WIDTH}
           sizeType={widgetItem.sizeType}
@@ -385,7 +400,11 @@ function EMWidgetContent({
     );
   } else if (widgetItem.emWidgetType === ProfileEMWidgetType.MyGallery) {
     return (
-      <WidgetLink href={link} target="_blank" rel="appopener">
+      <WidgetLink
+        href={link}
+        target="_blank"
+        rel="appopener"
+        disabled={isEditMode}>
         <GalleryWidgetContent
           width={ITEM_WIDTH}
           cellHeight={ITEM_HEIGHT}
@@ -396,7 +415,11 @@ function EMWidgetContent({
     );
   } else {
     return (
-      <WidgetLink href={link} target="_blank" rel="appopener">
+      <WidgetLink
+        href={link}
+        target="_blank"
+        rel="appopener"
+        disabled={isEditMode}>
         <WidgetAppNavImageContainer
           smallImage={isSmallImage}
           isLongItem={isLongItem}>
@@ -524,10 +547,12 @@ function WidgetItem({
           widgetItem={widgetItem}
           userInfo={userInfo}
           widgetData={widgetItem.widgetData || {}}
+          isEditMode={isEditMode}
         />
       ) : isClickable ? (
         <WidgetLink
           href={widgetItem.linkUrl}
+          disabled={isEditMode}
           target="_blank"
           rel="noopener noreferrer">
           {content}
