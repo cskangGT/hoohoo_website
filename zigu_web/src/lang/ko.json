@@ -1166,7 +1166,7 @@
     "purposeList": [
       {
         "title": "친환경 쇼핑몰 운영",
-        "description": "지속가능한 제품 판매",
+        "description": "지속가능한 제품 소개 및 판매",
         "image": "/Images/ecommerce.png",
         "value": "ECO-COMMERCE",
         "template": [
@@ -1214,7 +1214,7 @@
       },
       {
         "title": "그린 커뮤니티",
-        "description": "사람들에게 영감을 주고 환경 교육하기",
+        "description": "지속가능성을 위한 소통과 교육",
         "image": "/Images/community.png",
         "value": "GREEN_COMMUNITY",
         "template": [
@@ -1278,7 +1278,7 @@
       },
       {
         "title": "인플루언서",
-        "description": "영향력으로 친환경 알리기",
+        "description": "친환경 가치와 지속 가능성 알리기",
         "image": "/Images/influencer.png",
         "value": "INFLUENCER",
         "template": [
@@ -1376,7 +1376,7 @@
   },
   "PreSignup": {
     "title": "ZIGU 가입하기!",
-    "description": "친환경 여정을 나누고, 변화를 만들어보세요.<br />환경을 생각하는 사람들과 함께할 수 있어요!",
+    "description": "누구나 쉽게 만드는 나만의 환경 프로필, ZIGU<br />지속가능한 나를 보여주는 단 하나의 링크!",
     "linkTitle": "지금 무료로 바이오 링크 만들기!",
     "link": ["zigu.my/", "username"],
     "next": "다음",
@@ -1422,6 +1422,7 @@
     "customize": "링크, 색상, 모양까지 내 취향대로! ZIGU를 자유롭게 꾸며보세요.",
     "done": "완료",
     "noProfileData": ["", " 프로필이 존재하지 않아요."],
+    "profileError": "프로필 데이터를 불러오던 중 에러가 발생했어요.",
     "copyMyLink": "프로필의 URL이 복사되었어요.",
     "copyMyLinkButton": "URL 복사하기",
     "syncedWithEM": "EarthMera 계정이 연동되었어요!<br />어스메라 에셋으로 ZIGU를 더 멋지게 꾸며보세요!",
@@ -1531,29 +1532,30 @@
     "annually": "연 결제",
     "featureTitle": "기능 살펴보기",
     "perMonth": "월",
-    "promoButton": "프로모 코드가 있으신가요?",
+    "promoButton": "할인 코드가 있으신가요?",
     "perYear": "연",
     "getStarted": "시작하기",
     "PromoCodeModal": {
-      "title": "프로모 코드가 있으신가요?",
-      "placeholder": "프로모 코드를 입력해주세요",
+      "title": "할인 코드가 있으신가요?",
+      "placeholder": "할인 코드를 입력해주세요",
       "apply": "코드 적용하기",
       "cancel": "취소하기",
-      "successToast": "프로모 코드가 적용되었어요.",
-      "errorToast": "프로모 코드 적용에 실패했어요."
+      "successToast": "할인 코드가 적용되었어요.",
+      "errorToast": "할인 코드 적용에 실패했어요."
     },
     "zero": "0원",
     "autopay": ["", "월 ", "일", "부터 5,999원이 자동으로 결제됩니다."],
-    "appied": "프로모 코드가 적용됐어요!",
+    "appied": "할인 코드가 적용됐어요!",
     "plans": [
       {
         "name": "베이직 플랜",
         "for": "개인 사용자용",
-        "monthlyPrice": "1000원",
-        "yearlyPrice": "790원",
+        "monthlyPrice": "1,000원",
+        "yearlyPrice": "1,000원",
         "features": [
           "자유로운 위젯 배치",
           "무제한 링크 연결",
+          "무제한 위젯 생성",
           "다중 인증 로그인",
           "QR 코드 생성",
           "여러 채널 링크 연결"
@@ -1568,7 +1570,7 @@
         "popularText": "추천",
         "discountMonthPrice": "5,990원",
         "discountYearlyPrice": "4,990원",
-        "unlock": "베이직 플랜 기능 전체 포함",
+        "unlock": "모든 베이직 기능 그대로, 더 풍부하게",
         "features": [
           "예약 링크 위젯",
           "버튼 호버 애니메이션",
@@ -1581,7 +1583,7 @@
         "for": "상장세가 가파른 기업과<br />팀을 위한 플랜",
         "monthlyPrice": "13,990원",
         "yearlyPrice": "10,990원",
-        "unlock": "프로 플랜 기능 전체 포함",
+        "unlock": "모든 프로 기능 그대로, 더 풍부하게",
         "features": [
           "움직이는 배경 테마",
           "방문자 인사이트 대시보드",

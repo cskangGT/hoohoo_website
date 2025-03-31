@@ -18,7 +18,7 @@ i18n.use(initReactI18next).init({
   lng: sessionStorage.getItem('language'),
   debug: true,
   defaultNS: 'translation',
-  fallbackLng: 'ko',
+  fallbackLng: 'en',
   supportedLngs: ['en', 'ko'],
   ns: 'translation',
   keySeparator: false,

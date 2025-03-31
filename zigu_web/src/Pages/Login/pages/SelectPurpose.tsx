@@ -101,7 +101,7 @@ const IconImage = styled.img`
 
 const ItemTitle = styled.h3`
   font-size: ${theme.fontSize.xl};
-  font-weight: 500;
+  font-weight: 700;
   text-align: center;
   color: ${theme.darkGray};
   margin-bottom: ${theme.spacing.sm};
@@ -115,7 +115,7 @@ const ItemDescription = styled.p`
   font-size: ${theme.fontSize.md};
   color: ${theme.darkGray};
   text-align: center;
-  font-weight: 300;
+  font-weight: 400;
   margin: 0px;
   @media screen and (max-width: 600px) {
     font-size: ${theme.fontSize.sm};

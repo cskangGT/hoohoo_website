@@ -1,24 +1,24 @@
-import { TextField } from '@mui/material';
+import {TextField} from '@mui/material';
 import CircularProgress from '@mui/material/CircularProgress';
 import i18next from 'i18next';
-import React, { useEffect, useRef, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-import { toast } from 'react-toastify';
+import React, {useEffect, useRef, useState} from 'react';
+import {useNavigate} from 'react-router-dom';
+import {toast} from 'react-toastify';
 import styled from 'styled-components';
-import { applyTemplate } from '../../../api/jigulink/jigulink.api';
-import { updateUserProfile } from '../../../api/jigulink/user.api';
-import { sendQuestionnaire } from '../../../api/login/signup.api';
+import {applyTemplate} from '../../../api/jigulink/jigulink.api';
+import {updateUserProfile} from '../../../api/jigulink/user.api';
+import {sendQuestionnaire} from '../../../api/login/signup.api';
 import Wrapper from '../../../components/Wrapper/Wrapper';
-import { useQuestionnaire } from '../../../context/QuestionnaireContext';
-import { useUserStore } from '../../../storage/userStore';
-import { theme } from '../../../style';
+import {useQuestionnaire} from '../../../context/QuestionnaireContext';
+import {useUserStore} from '../../../storage/userStore';
+import {theme} from '../../../style';
 import {
   checkAWSKey,
   compressImage,
   generateUniqueKey,
   uploadImageToS3,
 } from '../../../util/MediaUtil';
-import { PROFILE_PREFIX } from '../../../util/S3Config';
+import {PROFILE_PREFIX} from '../../../util/S3Config';
 const Container = styled.div`
   width: 100%;
   height: 100%;
@@ -171,13 +171,11 @@ function SetupProfile() {
   const [profileImage, setProfileImage] = useState<string>('');
   const [hasError, setHasError] = useState<boolean>(false);
   const [name, setName] = useState<string>('');
-
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [error, setError] = useState<ErrorType>({
     alreadyExists: false,
     invalidLetters: false,
     startsEndsWithPeriod: false,
-
     limitExceeded: false,
   });
   const localizedTexts: any = i18next.t('SetupProfile', {
@@ -220,7 +218,7 @@ function SetupProfile() {
           sessionStorage.removeItem('redirectAfterAuth');
           navigate(redirectAfterAuth, {replace: true});
         } else {
-          navigate(`/${user?.nameTag}`, {replace: true});
+          navigate('/setup/plan', {replace: true});
         }
       } else {
         alert(localizedTexts.errorText.error);
@@ -350,7 +348,9 @@ function SetupProfile() {
             )}
           </ProfileNameContainer>
           <ContinueButtonContainer>
-            <ContinueButton onClick={handleSubmit} disabled={isLoading}>
+            <ContinueButton
+              onClick={handleSubmit}
+              disabled={isLoading || !(name.length > 2)}>
               {isLoading ? (
                 <CircularProgress size={25} />
               ) : (

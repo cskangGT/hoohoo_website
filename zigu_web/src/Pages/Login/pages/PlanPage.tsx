@@ -39,7 +39,7 @@ const PlanContainer = styled.div`
   justify-content: center;
   align-items: stretch;
   gap: ${theme.spacing['3xl']};
-  margin: 50px 0px 80px 0px;
+  margin: 0px 0px 40px 0px;
   @media screen and (max-width: 1200px) {
     gap: ${theme.spacing['xl']};
   }
@@ -96,7 +96,7 @@ const PlanCard = styled.div<{isPopular?: boolean; promoApplied: boolean}>`
   display: flex;
   flex-direction: column;
   gap: ${theme.spacing.sm};
-  opacity: ${({promoApplied}) => (promoApplied ? 0.2 : 1)};
+  opacity: ${({promoApplied}) => (promoApplied ? 0.6 : 1)};
   overflow: hidden;
   ${({isPopular}) =>
     isPopular &&
@@ -160,7 +160,7 @@ const ForText = styled.div<{isPopular?: boolean}>`
   font-size: ${theme.fontSize.lg};
   font-weight: 400;
   color: ${theme.inActiveGray};
-  height: 50px;
+  height: 58px;
   ${({isPopular}) =>
     isPopular &&
     `
@@ -288,16 +288,17 @@ const PlanFeatures = styled.ul<{isPopular?: boolean}>`
     }
   }
 `;
-const PromoButton = styled.button`
+const PromoButton = styled.button<{promoApplied: boolean}>`
   color: ${theme.inActiveGray};
   font-size: ${theme.fontSize.md};
   font-weight: 400;
   text-decoration: underline;
   text-decoration-color: ${theme.inActiveGray};
-  margin-bottom: ${theme.spacing.xl};
+  margin-bottom: ${theme.spacing['3xl']};
   cursor: pointer;
   background: none;
   border: none;
+  opacity: ${({promoApplied}) => (promoApplied ? 0.6 : 1)};
 `;
 const SelectButton = styled.button<{isPopular?: boolean}>`
   width: 100%;
@@ -337,7 +338,7 @@ function PlanPage() {
   const {user} = useUserStore();
   const localizedTexts: any = i18next.t('PlanPage', {returnObjects: true});
   const navigate = useNavigate();
-  const [promoApplied, setPromoApplied] = useState<boolean>(false);
+  const [promoApplied, setPromoApplied] = useState<boolean>(true);
   function openPromoCodeModal() {
     setIsPromoCodeModalVisible(true);
   }
@@ -465,7 +466,10 @@ function PlanPage() {
               );
             })}
           </PlanContainer>
-          <PromoButton onClick={openPromoCodeModal}>
+          <PromoButton
+            onClick={openPromoCodeModal}
+            disabled={promoApplied}
+            promoApplied={promoApplied}>
             {localizedTexts.promoButton}
           </PromoButton>
 

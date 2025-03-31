@@ -62,6 +62,7 @@ function ProfileSyncFromAppPage() {
   useEffect(() => {
     // URL에서 리다이렉트할 원래 경로와 ID 가져오기
     const params = new URLSearchParams(location.search);
+    console.log('location', location);
 
     const userId = params.get('id');
     const userName = params.get('name');
@@ -76,7 +77,7 @@ function ProfileSyncFromAppPage() {
     setSyncUserId(userId);
     setSyncUserName(decodeURIComponent(userName));
     setSyncUserProfileImage(decodeURIComponent(userProfileImage));
-    const redirectPath = `/profile/settings/sync-earthmera?id=${userId}&name=${
+    const redirectPath = `/profile/sync-earthmera?id=${userId}&name=${
       userName
     }&profileImage=${userProfileImage}`;
 

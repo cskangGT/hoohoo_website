@@ -1,11 +1,14 @@
 import i18next from 'i18next';
-import React, { useEffect, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import React, {useEffect, useState} from 'react';
+import {useNavigate} from 'react-router-dom';
 import styled from 'styled-components';
 import Wrapper from '../../../components/Wrapper/Wrapper';
-import { useQuestionnaire } from '../../../context/QuestionnaireContext';
-import { theme } from '../../../style';
-import { QuestionaireDescriptionText, QuestionaireTitleText } from '../components/styles';
+import {useQuestionnaire} from '../../../context/QuestionnaireContext';
+import {theme} from '../../../style';
+import {
+  QuestionaireDescriptionText,
+  QuestionaireTitleText,
+} from '../components/styles';
 const Container = styled.div`
   width: 100%;
   height: 100%;
@@ -129,7 +132,7 @@ const TemplateItemContainer = styled.div<{
   border-radius: 16px;
   overflow: hidden;
   transition: transform 0.2s ease-in-out;
-  opacity: ${props => (!props.isSelected ? 1 : props.selected ? 1 : 0.8)};
+  opacity: ${props => (!props.isSelected ? 1 : props.selected ? 1 : 0.6)};
   &:hover {
     transform: translateY(-5px);
   }
@@ -163,6 +166,7 @@ const SelectTemplateContainer = styled.div`
   @media (max-width: 550px) {
     grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
     gap: ${theme.spacing.sm};
+    row-gap: ${theme.spacing.lg};
   }
 `;
 

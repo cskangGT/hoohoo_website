@@ -5,10 +5,10 @@ import React, {
   useEffect,
   useState,
 } from 'react';
-import { useNavigate } from 'react-router-dom';
-import { getUserLinkProfile } from '../../../api/jigulink/jigulink.api';
-import { useUserStore } from '../../../storage/userStore';
-import { ProfileWidgetItemType } from '../types/WidgetItemType';
+import {useNavigate} from 'react-router-dom';
+import {getUserLinkProfile} from '../../../api/jigulink/jigulink.api';
+import {useUserStore} from '../../../storage/userStore';
+import {ProfileWidgetItemType} from '../types/WidgetItemType';
 
 // Context에서 제공할 값들의 타입 정의
 interface ProfileContextType {
@@ -19,6 +19,7 @@ interface ProfileContextType {
   deletedWidgetItems: ProfileWidgetItemType[];
   // 상태 플래그
   isEditing: boolean;
+  profileError: boolean;
   hasChanges: boolean;
   isLoading: boolean;
   noProfileData: boolean;
@@ -69,7 +70,6 @@ type UserData = {
     userId: string;
     profileImage: string;
   };
-  
 };
 
 export const ProfileProvider: React.FC<ProfileProviderProps> = ({
@@ -99,6 +99,7 @@ export const ProfileProvider: React.FC<ProfileProviderProps> = ({
   >([]);
   const navigate = useNavigate();
   const [noProfileData, setNoProfileData] = useState<boolean>(false);
+  const [profileError, setProfileError] = useState<boolean>(false);
   const [isEditingItem, setIsEditingItem] = useState<boolean>(false);
   // 사용자 데이터
   const [userData, setUserData] = useState<UserData>({
@@ -129,67 +130,66 @@ export const ProfileProvider: React.FC<ProfileProviderProps> = ({
       setFirstLoad(false);
     }
 
-    try {
-      if (!profileNameTag && !nameTag) {
-        setNoProfileData(true);
-        setIsLoading(false);
-        return;
-      }
-
-      const targetNameTag = profileNameTag || nameTag;
-      console.log('targetNameTag', targetNameTag);
-
-      const response = await getUserLinkProfile(targetNameTag!);
-
-      if (response.result) {
-        console.log('response.data', response.data);
-
-        setUserData({
-          ...response.data,
-          name: response.data.name ? response.data.name.split('#')[0] : '',
-        });
-
-        if (user.nameTag === targetNameTag) {
-          if(!response.data.hasPlan) {
-            navigate('/setup/plan')
-          }
-          setProfileImage(response.data.profileImage);
-          response.data.linkedUserInfo &&
-            setLinkedUserInfo({
-              userId: response.data.linkedUserInfo.userId,
-              name: response.data.linkedUserInfo.name,
-              profileImage: response.data.linkedUserInfo.profileImage,
-            });
-        }
-        if (response.data.widgets) {
-          const newWidgets = response.data.widgets.map(
-            (widget: ProfileWidgetItemType) => ({
-              ...widget,
-              coordinate: {
-                x: widget.coordinate?.x ? widget.coordinate.x / 3 : 0,
-                y: widget.coordinate?.y ? widget.coordinate.y : 0,
-              },
-            }),
-          );
-          console.log('newWidgets', newWidgets);
-
-          setOriginalWidgets(newWidgets);
-          setCurrentWidgets(newWidgets);
-          setLastSavedWidgets(newWidgets);
-        }
-
-        setNoProfileData(false);
-        
-      } else {
-        setNoProfileData(true);
-      }
-    } catch (err) {
+    if (!profileNameTag && !nameTag) {
       setNoProfileData(true);
-
-      console.error('프로필 데이터 로드 중 오류 발생:', err);
-    } finally {
       setIsLoading(false);
+      return;
     }
+
+    const targetNameTag = profileNameTag || nameTag;
+    console.log('targetNameTag', targetNameTag);
+
+    const response = await getUserLinkProfile(targetNameTag!);
+
+    if (response.result) {
+      console.log('response.data', response.data);
+
+      setUserData({
+        ...response.data,
+        name: response.data.name ? response.data.name.split('#')[0] : '',
+      });
+
+      if (user.nameTag === targetNameTag) {
+        if (!response.data.hasPlan) {
+          navigate('/setup/plan');
+        }
+        setProfileImage(response.data.profileImage);
+        response.data.linkedUserInfo &&
+          setLinkedUserInfo({
+            userId: response.data.linkedUserInfo.userId,
+            name: response.data.linkedUserInfo.name,
+            profileImage: response.data.linkedUserInfo.profileImage,
+          });
+      }
+      if (response.data.widgets) {
+        const newWidgets = response.data.widgets.map(
+          (widget: ProfileWidgetItemType) => ({
+            ...widget,
+            coordinate: {
+              x: widget.coordinate?.x ? widget.coordinate.x / 3 : 0,
+              y: widget.coordinate?.y ? widget.coordinate.y : 0,
+            },
+          }),
+        );
+        console.log('newWidgets', newWidgets);
+
+        setOriginalWidgets(newWidgets);
+        setCurrentWidgets(newWidgets);
+        setLastSavedWidgets(newWidgets);
+      }
+
+      setNoProfileData(false);
+    } else {
+      if (response.status === 404) {
+        setNoProfileData(true);
+      } else {
+        setProfileError(true);
+      }
+    }
+
+    setNoProfileData(true);
+
+    setIsLoading(false);
   };
 
   // 편집 모드 시작
@@ -217,6 +217,7 @@ export const ProfileProvider: React.FC<ProfileProviderProps> = ({
   // Context 값
   const value = {
     originalWidgets,
+    profileError,
     currentWidgets,
     lastSavedWidgets,
     isEditing,
