@@ -342,6 +342,7 @@ function PreSignup() {
   const validateLink = async () => {
     clearValidation();
     setIsLoading(true);
+
     const validCharsRegex = /^[a-zA-Z0-9_.]+$/;
     const startsWithSpecial = /^[.]|\.$/;
     if (link.length > 20 || link.length < 3) {

@@ -30,7 +30,7 @@ clientAxios.interceptors.response.use(
         return Promise.reject(error);
     }
 );
-export const redirectUri = __DEV__ ? 'https://localhost:3000' : 'https://www.zigu.my';
+export const redirectUri = window.location.origin;
 export const validateLogin = async (email: string, password: string) => {
     try {
         const response = await clientAxios.post(
