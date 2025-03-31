@@ -343,7 +343,7 @@ function PreSignup() {
     clearValidation();
     setIsLoading(true);
 
-    const validCharsRegex = /^[a-zA-Z0-9_.]+$/;
+    const validCharsRegex = /^[a-z0-9_.]+$/;
     const startsWithSpecial = /^[.]|\.$/;
     if (link.length > 20 || link.length < 3) {
       setError({...error, limitExceeded: true});

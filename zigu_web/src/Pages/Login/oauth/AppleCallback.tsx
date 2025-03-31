@@ -1,7 +1,7 @@
-import React, { useEffect, useState } from 'react';
-import { useLocation, useNavigate } from 'react-router-dom';
-import { getAPIKey, sendAppleLogin } from '../../../api/login/auth';
-import { useUserStore } from '../../../storage/userStore';
+import React, {useEffect, useState} from 'react';
+import {useLocation, useNavigate} from 'react-router-dom';
+import {sendAppleLogin} from '../../../api/login/auth';
+import {useUserStore} from '../../../storage/userStore';
 import OAuthCallback from './OAuthCallback';
 
 function AppleCallback() {
@@ -33,7 +33,7 @@ function AppleCallback() {
       if (response.result) {
         setUser(response.data.user);
         sessionStorage.removeItem('storedNameTag');
-        getAPIKey();
+        // getAPIKey();
         if (response.data?.user?.isNeedsQuestionnaire) {
           navigate('/setup/select-goal', {replace: true});
         } else {

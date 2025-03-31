@@ -1,18 +1,19 @@
-import React, { useState } from 'react';
+import React, {useState} from 'react';
 
-import { CircularProgress, TextField } from '@mui/material';
+import {CircularProgress, TextField} from '@mui/material';
 import i18next from 'i18next';
-import { useLocation, useNavigate } from 'react-router-dom';
+import {useLocation, useNavigate} from 'react-router-dom';
 import styled from 'styled-components';
+import {getAPIKey} from '../../../api/login/auth';
 import {
   checkEmail,
   sendVerifyEmailCode,
   signupProfile,
 } from '../../../api/login/signup.api';
 import Wrapper from '../../../components/Wrapper/Wrapper';
-import { useSignup } from '../../../context/SignupContext';
-import { useUserStore } from '../../../storage/userStore';
-import { theme } from '../../../style';
+import {useSignup} from '../../../context/SignupContext';
+import {useUserStore} from '../../../storage/userStore';
+import {theme} from '../../../style';
 const Container = styled.div`
   width: 100%;
   height: 100vh;
@@ -154,11 +155,18 @@ function VerifyEmail() {
 
       if (res.result) {
         // user 정보 저장
+        getAPIKey();
         setUser(res.data.user);
         if (res.data?.user?.isNeedsQuestionnaire) {
           navigate('/setup/select-goal');
         } else {
-          navigate(`/${res.data.user.nameTag}`);
+          const redirectAfterAuth = sessionStorage.getItem('redirectAfterAuth');
+          if (redirectAfterAuth) {
+            sessionStorage.removeItem('redirectAfterAuth');
+            navigate(redirectAfterAuth, {replace: true});
+          } else {
+            navigate(`/${res.data.user.nameTag}`, {replace: true});
+          }
         }
       }
     } else {

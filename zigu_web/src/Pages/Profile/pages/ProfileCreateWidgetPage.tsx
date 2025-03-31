@@ -314,23 +314,28 @@ function ProfileCreateWidgetPage() {
   }
   const handleSaveEditWidget = async () => {
     const widgetData = {
-      id: selectedItem?.id || 0,
+      id: selectedItem?.id,
       sizeType: selectedItem?.sizeType,
       bgType: image ? 'IMAGE' : 'COLOR',
       bgColor: selectedColor,
       bgImageUrl: image,
       hasBorder: hasBorder,
       linkUrl: linkURL,
+      isExchangedWidget: selectedItem?.isEmWidget !== false,
       description: description,
       isTemp: false,
       coordinate: selectedItem?.coordinate || {x: 0, y: 0},
     } as ProfileWidgetItemType;
+
     const isEmWidget = !!selectedAsset;
     const emwidget = {
-      id: selectedItem?.id || 0,
+      id: selectedItem?.id,
       sizeType: selectedItem?.sizeType,
-      isEmWidget: isEmWidget,
+      isEmWidget: true,
+      isExchangedWidget: selectedItem?.isEmWidget !== true,
       emWidgetType: selectedAsset as ProfileEMWidgetType,
+      isTemp: false,
+      widgetData: selectedItem?.widgetData,
       coordinate: selectedItem?.coordinate || {x: 0, y: 0},
     } as ProfileWidgetItemType;
 

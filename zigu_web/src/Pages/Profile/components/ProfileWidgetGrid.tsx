@@ -70,7 +70,7 @@ export const getAbEMWidget = (): ProfileWidgetItemType[] => {
       sizeType: 'BIG',
       bgType: 'COLOR',
       bgColor: 'transparent',
-      hasBorder: true,
+      hasBorder: false,
       description: '',
       coordinate: {x: 0, y: 0},
     },
@@ -89,7 +89,7 @@ export const getAbEMWidget = (): ProfileWidgetItemType[] => {
 
       bgType: 'COLOR',
       bgColor: 'transparent',
-      hasBorder: true,
+      hasBorder: false,
       coordinate: {x: 0, y: 0},
     },
     {
@@ -98,7 +98,7 @@ export const getAbEMWidget = (): ProfileWidgetItemType[] => {
 
       bgType: 'COLOR',
       bgColor: 'transparent',
-      hasBorder: true,
+      hasBorder: false,
       coordinate: {x: 0, y: 0},
     },
 

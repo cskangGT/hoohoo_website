@@ -11,34 +11,36 @@ export type ProfileWidgetItemType = {
     isEmWidget?: boolean;
     emWidgetType?: ProfileEMWidgetType;
     isTemp?: boolean;
-    widgetData?: {
-        level?: number;
-        numBadges?: number;
-        numMedals?: number;
-        equippedMedals?: MedalType[];
-        equippedBadge?: string;
-        annualEcoActionCount?: number;
-        annualCarbonReduction?: number;
-        treeEffect?: number;
-        userRank?: number;
-        lastMonthRank?: number;
-        higherRankInfo?: {
-            gap: number;
-            ecoActionCount: number;
-        };
-        lowerRankInfo?: {
-            gap: number;
-            ecoActionCount: number;
-        };
-        ecoActionCount?: number;
-
-        thumbnails?: string[];
-    };
+    isExchangedWidget?: boolean;
+    widgetData?: EMWidgetData;
     coordinate: {
         x: number;
         y: number;
     };
 };
+export type EMWidgetData = {
+    level?: number;
+    numBadges?: number;
+    numMedals?: number;
+    equippedMedals?: MedalType[];
+    equippedBadge?: string;
+    annualEcoActionCount?: number;
+    annualCarbonReduction?: number;
+    treeEffect?: number;
+    userRank?: number;
+    lastMonthRank?: number;
+    higherRankInfo?: {
+        gap: number;
+        ecoActionCount: number;
+    };
+    lowerRankInfo?: {
+        gap: number;
+        ecoActionCount: number;
+    };
+    ecoActionCount?: number;
+
+    thumbnails?: string[];
+}
 export type MedalType = {
     medalTitle: string;
     medalLevel: number;

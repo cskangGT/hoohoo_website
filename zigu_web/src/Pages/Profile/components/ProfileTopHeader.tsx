@@ -145,6 +145,7 @@ function ProfileTopHeader({
   }
   const handleLayout = () => {
     setIsTooltipOpen(false);
+
     navigate('/' + user?.nameTag + '/settings/layout');
   };
   function handleCloseModal() {
@@ -153,6 +154,10 @@ function ProfileTopHeader({
   useEffect(() => {
     const handleClick = () => {
       if (showTooltip) {
+        navigate(location.pathname, {
+          replace: true,
+          state: {},
+        });
         setIsTooltipOpen(false);
       }
     };
@@ -165,6 +170,7 @@ function ProfileTopHeader({
       document.removeEventListener('click', handleClick);
     };
   }, [showTooltip]);
+
   const iconSize = width > 500 ? 26 : 22;
   return (
     <>

@@ -165,14 +165,22 @@ function FixedBottomEditView() {
       setIsEditing(false);
       return;
     }
+
     const updatedWidgets = currentWidgets.map(
-      (widget: ProfileWidgetItemType) => ({
-        ...widget,
-        coordinate: {
-          x: widget.coordinate.x * 3,
-          y: widget.coordinate.y,
-        },
-      }),
+      (widget: ProfileWidgetItemType) => {
+        // widget에서 필요한 속성들만 추출
+        const {id, isExchangedWidget, coordinate, ...restWidget} = widget;
+        console.log('isExchangedWidget', isExchangedWidget, id);
+
+        return {
+          ...restWidget,
+          ...(isExchangedWidget ? {} : {id}), // isExchangedWidget이 false일 때만 id 포함
+          coordinate: {
+            x: coordinate.x * 3,
+            y: coordinate.y,
+          },
+        };
+      },
     );
     console.log('updatedWidgets', updatedWidgets);
 
@@ -183,6 +191,7 @@ function FixedBottomEditView() {
       setDeletedWidgetItems([]);
 
       // update currentWidgets, myWidgets, originalWidgets
+
       setCurrentWidgets(updatedData);
       setMyWidgets(updatedData);
       setOriginalWidgets(updatedData);

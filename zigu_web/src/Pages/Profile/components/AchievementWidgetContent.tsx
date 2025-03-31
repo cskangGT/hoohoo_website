@@ -252,12 +252,14 @@ function AchievementWidgetContent({
         <LevelText small>Lv.{level}</LevelText>
         <BadgesContainer small>
           <MedalContainer>
-            <BadgeIcon
-              width={width}
-              src={badgeList[equippedBadge].image}
-              small
-              active
-            />
+            {equippedBadge && (
+              <BadgeIcon
+                width={width}
+                src={badgeList[equippedBadge].image}
+                small
+                active
+              />
+            )}
           </MedalContainer>
           <MedalContainer>
             {equippedMedals.map((medal: MedalType) => (
@@ -278,11 +280,13 @@ function AchievementWidgetContent({
         <LevelText>Lv.{level}</LevelText>
         <BadgeSection>
           <MedalContainer>
-            <BadgeIcon
-              width={width}
-              src={badgeList[equippedBadge].image}
-              active
-            />
+            {equippedBadge && (
+              <BadgeIcon
+                width={width}
+                src={badgeList[equippedBadge].image}
+                active
+              />
+            )}
           </MedalContainer>
           <BadgeCountText>
             <BadgeLabel>{localizedTexts.badge}</BadgeLabel>
@@ -312,8 +316,15 @@ function AchievementWidgetContent({
       <AchievementBigContainer>
         <AchievementHeader>Level {level}</AchievementHeader>
         <BadgeBigSection>
-          <BadgeBigIcon width={width} src={badgeList[equippedBadge].image} />
-          <BadgeName>{badgeList[equippedBadge].title}</BadgeName>
+          {equippedBadge && (
+            <>
+              <BadgeBigIcon
+                width={width}
+                src={badgeList[equippedBadge].image}
+              />
+              <BadgeName>{badgeList[equippedBadge].title}</BadgeName>
+            </>
+          )}
         </BadgeBigSection>
         <MedalsBigSection>
           {equippedMedals.map((medal: MedalType) => (

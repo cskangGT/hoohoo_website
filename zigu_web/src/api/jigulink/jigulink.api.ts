@@ -55,7 +55,7 @@ export const deleteWidget = async (widgetId: number) => {
         return { result: false, status: error?.response?.status };
     }
 }
-export const updateWidgets = async (widgets: ProfileWidgetItemType[], deletedWidgetItems: ProfileWidgetItemType[]) => {
+export const updateWidgets = async (widgets: any[], deletedWidgetItems: ProfileWidgetItemType[]) => {
     try {
         const body = {
             widgets,
