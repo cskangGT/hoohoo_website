@@ -1,17 +1,17 @@
 import i18next from 'i18next';
 import React from 'react';
-import { FaCheck } from 'react-icons/fa6';
+import {FaCheck} from 'react-icons/fa6';
 
-import { FiEdit } from 'react-icons/fi';
-import { LuPlus } from 'react-icons/lu';
-import { useNavigate } from 'react-router-dom';
-import { toast } from 'react-toastify';
+import {FiEdit} from 'react-icons/fi';
+import {LuPlus} from 'react-icons/lu';
+import {useNavigate} from 'react-router-dom';
+import {toast} from 'react-toastify';
 import styled from 'styled-components';
-import { updateWidgets } from '../../../api/jigulink/jigulink.api';
-import { useUserStore } from '../../../storage/userStore';
-import { theme } from '../../../style';
-import { useProfile } from '../contexts/ProfileContext';
-import { ProfileWidgetItemType } from '../types/WidgetItemType';
+import {updateWidgets} from '../../../api/jigulink/jigulink.api';
+import {useUserStore} from '../../../storage/userStore';
+import {theme} from '../../../style';
+import {useProfile} from '../contexts/ProfileContext';
+import {ProfileWidgetItemType} from '../types/WidgetItemType';
 const Container = styled.div`
   position: absolute;
   bottom: 0px;
@@ -98,9 +98,9 @@ const ActionButton = styled.button<{$isDone?: boolean}>`
   background-color: ${props => (props.$isDone ? theme.white : theme.mainNeon)};
   color: ${theme.darkGray};
   padding: ${theme.spacing.sm} ${theme.spacing.md};
-  border-radius: 25px;
-  height: 50px;
-  width: 50px;
+  border-radius: 35px;
+  height: 70px;
+  width: 70px;
   border: none;
   cursor: pointer;
   display: flex;
@@ -111,8 +111,9 @@ const ActionButton = styled.button<{$isDone?: boolean}>`
   z-index: 103;
   @media (max-width: 600px) {
     height: 50px;
-    padding: ${theme.spacing.sm} 8px;
     width: 50px;
+    padding: ${theme.spacing.sm} 8px;
+
     border-radius: 25px;
   }
   @media (max-width: 400px) {
@@ -137,7 +138,7 @@ function FixedBottomEditView() {
     originalWidgets,
     deletedWidgetItems,
     isEditing,
-
+    setCurrentWidgets,
     setDeletedWidgetItems,
     setOriginalWidgets,
     isMyLink,
@@ -177,13 +178,18 @@ function FixedBottomEditView() {
 
     const response = await updateWidgets(updatedWidgets, deletedWidgetItems);
     if (response.result) {
-      toast.success('Successfully updated');
+      toast.success(localizedTexts.toast.updateSuccess);
+      const updatedData = response.data;
       setDeletedWidgetItems([]);
-      setMyWidgets(currentWidgets);
-      setOriginalWidgets(currentWidgets);
+
+      // update currentWidgets, myWidgets, originalWidgets
+      setCurrentWidgets(updatedData);
+      setMyWidgets(updatedData);
+      setOriginalWidgets(updatedData);
+
       setIsEditing(false);
     } else {
-      toast.error('Failed to update');
+      toast.error(localizedTexts.toast.failedToUpdate);
     }
   };
   const name = userData?.linkedUserInfo?.name?.split('#')[0];
@@ -195,16 +201,16 @@ function FixedBottomEditView() {
             <>
               <ActionButton $isDone onClick={handleDone}>
                 {/* {localizedTexts.done} */}
-                <FaCheck size={20} color={'black'} />
+                <FaCheck size={24} color={'black'} />
               </ActionButton>
               <ActionButton onClick={handleCreateWidget}>
-                <LuPlus size={20} color={'black'} />
+                <LuPlus size={30} color={'black'} />
               </ActionButton>
             </>
           ) : (
             <>
               <ActionButton onClick={startEditing}>
-                <FiEdit size={20} color={'black'} />
+                <FiEdit size={24} color={'black'} />
               </ActionButton>
             </>
           )}

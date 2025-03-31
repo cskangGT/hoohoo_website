@@ -59,7 +59,6 @@ export const updateWidgets = async (widgets: ProfileWidgetItemType[], deletedWid
     try {
         const body = {
             widgets,
-            deletedWidgetIds: deletedWidgetItems
         }
         const response = await clientAxios.put(APIAddress + `myProfile/web/widget/`, body, { withCredentials: true });
         return { result: true, data: response.data };

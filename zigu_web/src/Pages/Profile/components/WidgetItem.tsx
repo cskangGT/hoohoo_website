@@ -431,7 +431,8 @@ function WidgetItem({
   userInfo,
 }: WidgetItemProps) {
   const widgetItem = widget as ProfileWidgetItemType;
-  const isTemp = widgetItem.isTemp;
+  const isTemp =
+    widgetItem.isTemp || widgetItem.emWidgetType === ProfileEMWidgetType.Temp;
   const hasEMWidgetType =
     (widgetItem as ProfileWidgetItemType).isEmWidget &&
     !!(widgetItem as ProfileWidgetItemType).emWidgetType;

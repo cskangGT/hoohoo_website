@@ -2,7 +2,6 @@ export type ProfileWidget = Array<ProfileWidgetItemType>;
 export type ProfileWidgetItemType = {
     id: number;
     sizeType: ProfileWidgetItemSize;
-    type?: ProfileWidgetTypeEnum;
     bgType?: ProfileWidgetBgType;
     bgImageUrl?: string;
     bgColor?: string;
@@ -52,6 +51,7 @@ export enum ProfileEMWidgetType {
     MyStore = 'MY_STORE',
     CO2Saved = 'CO2_SAVED',
     MyGallery = 'MY_GALLERY',
+    Temp = 'TEMP',
 };
 export type ProfileWidgetBgType = 'IMAGE' | 'COLOR';
 export type ProfileWidgetItemSize = 'BIG' | 'SMALL' | 'LONG';

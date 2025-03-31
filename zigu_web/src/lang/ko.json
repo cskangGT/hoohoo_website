@@ -1419,6 +1419,8 @@
     "carbon": ["Carbon Saving ", "g"],
     "edit": "수정",
     "add": "추가",
+    "tooltip": "새로운 모습이 준비되셨나요?<br />템플릿을 다시 선택해보세요.",
+
     "customize": "링크, 색상, 모양까지 내 취향대로! ZIGU를 자유롭게 꾸며보세요.",
     "done": "완료",
     "noProfileData": ["", " 프로필이 존재하지 않아요."],
@@ -1438,6 +1440,10 @@
       "photo": "사진 위젯",
       "text": "텍스트 위젯",
       "emwidget": "어스메라 위젯"
+    },
+    "toast": {
+      "updateSuccess": "프로필 위젯이 업데이트되었어요.",
+      "failedToUpdate": "프로필 위젯 업데이트에 실패했어요. 다시 시도해주세요."
     }
   },
   "ProfileSettingPage": {

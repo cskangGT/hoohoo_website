@@ -42,7 +42,7 @@ const Title = styled.h2`
 
 const Description = styled.p`
   font-size: ${theme.fontSize.md};
-  color: ${theme.gray};
+  color: ${theme.inActiveGray};
   margin: 30px 0px;
   line-height: 1.5;
 `;

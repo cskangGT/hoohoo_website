@@ -1,15 +1,14 @@
-import React, { useEffect, useState } from 'react';
+import React, {useEffect, useState} from 'react';
 
-import { CircularProgress } from '@mui/material';
+import {CircularProgress} from '@mui/material';
 import styled from 'styled-components';
 import i18next from '../../../lang/i18n';
-import { useUserStore } from '../../../storage/userStore';
-import { theme } from '../../../style';
-import { useProfile } from '../contexts/ProfileContext';
+import {useUserStore} from '../../../storage/userStore';
+import {theme} from '../../../style';
+import {useProfile} from '../contexts/ProfileContext';
 import {
   ProfileEMWidgetType,
   ProfileWidgetItemType,
-  ProfileWidgetTypeEnum,
 } from '../types/WidgetItemType';
 import MainProfileGrid from './MainProfileGrid';
 import WidgetItem from './WidgetItem';
@@ -108,7 +107,7 @@ export const getAbEMWidget = (): ProfileWidgetItemType[] => {
       sizeType: 'BIG',
       bgType: 'COLOR',
       bgColor: 'transparent',
-      type: ProfileWidgetTypeEnum.AppRank,
+
       isEmWidget: true,
       emWidgetType: ProfileEMWidgetType.CO2Saved,
       widgetData: {
@@ -125,7 +124,7 @@ export const getAbEMWidget = (): ProfileWidgetItemType[] => {
       sizeType: 'BIG',
       bgType: 'COLOR',
       bgColor: 'transparent',
-      type: ProfileWidgetTypeEnum.AppRecycle,
+
       isEmWidget: true,
       emWidgetType: ProfileEMWidgetType.MyItems,
       hasBorder: false,
@@ -137,7 +136,7 @@ export const getAbEMWidget = (): ProfileWidgetItemType[] => {
       sizeType: 'BIG',
       bgType: 'COLOR',
       bgColor: 'transparent',
-      type: ProfileWidgetTypeEnum.AppGroup,
+
       isEmWidget: true,
       emWidgetType: ProfileEMWidgetType.Groups,
       hasBorder: false,
@@ -149,7 +148,6 @@ export const getAbEMWidget = (): ProfileWidgetItemType[] => {
       sizeType: 'BIG',
       bgType: 'COLOR',
       bgColor: 'transparent',
-      type: ProfileWidgetTypeEnum.AppShop,
       isEmWidget: true,
       emWidgetType: ProfileEMWidgetType.MyStore,
       hasBorder: false,

@@ -9,6 +9,7 @@ export const EMWidgetImage: Record<ProfileEMWidgetType, string> = {
     MY_STORE: '/Images/widget/emwidget_mystore.png',
     CO2_SAVED: '/Images/widget/emwidget_co2.png',
     MY_GALLERY: '/Images/widget/emwidget_gallery.png',
+    TEMP: '/Images/widget/emwidget_gallery.png',
 };
 const deeplink = 'https://earthmera.com/redirect?link=earthmera://';
 
