@@ -141,9 +141,7 @@ function ProfileTopHeader({
   function handleLogo() {
     if (isAuthenticated) {
       const link = '/' + user?.nameTag;
-      console.log('link', link);
-
-      navigate(link);
+      window.location.href = link;
     } else {
       navigate('/login');
     }
