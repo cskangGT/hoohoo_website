@@ -18,6 +18,7 @@ const Container = styled.div`
   left: 0;
   right: 0;
   display: flex;
+  height: 0px;
   width: 100%;
   z-index: 100;
   padding-bottom: env(safe-area-inset-bottom);
@@ -35,6 +36,9 @@ const FixedBottomEditViewContainer = styled.div`
     rgba(18, 18, 18, 1) 95%
   );
   z-index: 100;
+  position: absolute;
+  bottom: 0px;
+  right: 0px;
   display: flex;
   flex-direction: row;
   justify-content: flex-end;
