@@ -7,7 +7,6 @@ import React, {
 } from 'react';
 import {useNavigate} from 'react-router-dom';
 import {getUserLinkProfile} from '../../../api/jigulink/jigulink.api';
-import {getAPIKey} from '../../../api/login/auth';
 import {useUserStore} from '../../../storage/userStore';
 import {ProfileWidgetItemType} from '../types/WidgetItemType';
 
@@ -138,13 +137,12 @@ export const ProfileProvider: React.FC<ProfileProviderProps> = ({
     }
 
     const targetNameTag = profileNameTag || nameTag;
-    console.log('targetNameTag', targetNameTag);
 
     const response = await getUserLinkProfile(targetNameTag!);
 
     if (response.result) {
-      console.log('response.data', response.data);
-      getAPIKey();
+      // console.log('response.data', response.data);
+
       setUserData({
         ...response.data,
         name: response.data.name ? response.data.name.split('#')[0] : '',
