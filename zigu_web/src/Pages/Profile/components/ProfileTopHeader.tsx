@@ -146,9 +146,7 @@ function ProfileTopHeader({
       navigate('/login');
     }
   }
-  function handleDarkMode() {
-    setIsDarkMode(!isDarkMode);
-  }
+
   function handleShare() {
     setIsShareModalOpen(true);
   }
@@ -192,9 +190,6 @@ function ProfileTopHeader({
         <TopHeaderRight>
           {isMyLink ? (
             <>
-              {/* <IconButton onClick={handleDarkMode}>
-                <MdOutlineDarkMode size={iconSize} color={theme.white} />
-              </IconButton> */}
               <IconButton onClick={handlePreview}>
                 <IoEyeOutline size={iconSize} color={theme.white} />
               </IconButton>
