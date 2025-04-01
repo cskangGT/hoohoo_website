@@ -181,7 +181,7 @@ function ProfileTopHeader({
           </LogoButton>
         </TopHeaderLeft>
         <TopHeaderRight>
-          {isMyLink && (
+          {isMyLink ? (
             <>
               <IconButton onClick={handleLayout}>
                 {isTooltipOpen ? (
@@ -199,6 +199,10 @@ function ProfileTopHeader({
                 <LuSettings size={iconSize} color={theme.white} />
               </IconButton>
             </>
+          ) : (
+            <IconButton onClick={handleShare}>
+              <RiShare2Line size={iconSize} color={theme.white} />
+            </IconButton>
           )}
         </TopHeaderRight>
       </TopHeaderContainer>
