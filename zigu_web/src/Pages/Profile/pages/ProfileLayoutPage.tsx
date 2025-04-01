@@ -2,6 +2,9 @@ import i18next from 'i18next';
 import React, {useState} from 'react';
 import {FaArrowLeft} from 'react-icons/fa';
 import {useNavigate} from 'react-router-dom';
+import Slider from 'react-slick';
+import 'slick-carousel/slick/slick-theme.css';
+import 'slick-carousel/slick/slick.css';
 import styled from 'styled-components';
 import ChangeTemplateModal from '../../../components/Modal/ChangeTemplateModal';
 import Wrapper from '../../../components/Wrapper/Wrapper';
@@ -133,6 +136,128 @@ const ContinueButton = styled.button`
     cursor: not-allowed;
   }
 `;
+const SliderContainer = styled.div`
+  width: 100%;
+  max-width: 1400px;
+  position: relative;
+  margin-bottom: 120px;
+  padding: 0 ${theme.spacing.xl};
+
+  .slick-list {
+    margin: 0 -10px;
+  }
+
+  .slick-arrow {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    z-index: 1;
+    transition: all 0.2s ease-in-out;
+
+    &:hover {
+      &::after {
+        border-color: ${theme.darkGray};
+      }
+    }
+
+    &::before {
+      display: none;
+    }
+
+    &.slick-prev {
+      left: -25px;
+      &::after {
+        content: '';
+        width: 10px;
+        height: 10px;
+        position: absolute;
+        top: 50%;
+        left: 55%;
+        transform: translate(-50%, -50%) rotate(45deg);
+        border-left: 2px solid ${theme.darkGray};
+        border-bottom: 2px solid ${theme.darkGray};
+        transition: border-color 0.2s ease-in-out;
+      }
+    }
+
+    &.slick-next {
+      right: -25px;
+      &::after {
+        content: '';
+        width: 10px;
+        height: 10px;
+        position: absolute;
+        top: 50%;
+        left: 45%;
+        transform: translate(-50%, -50%) rotate(225deg);
+        border-left: 2px solid ${theme.darkGray};
+        border-bottom: 2px solid ${theme.darkGray};
+        transition: border-color 0.2s ease-in-out;
+      }
+    }
+  }
+
+  .slick-dots {
+    bottom: -30px;
+
+    li {
+      width: 8px;
+      height: 8px;
+      margin: 0 8px;
+
+      button {
+        width: 8px;
+        height: 8px;
+        padding: 0;
+
+        &::before {
+          width: 8px;
+          height: 8px;
+          position: absolute;
+          top: 0;
+          left: 0;
+          content: '';
+          background-color: ${theme.darkGray};
+          border-radius: 50%;
+          opacity: 0.3;
+        }
+      }
+
+      &.slick-active {
+        button::before {
+          opacity: 1;
+        }
+      }
+    }
+  }
+
+  @media screen and (max-width: 900px) {
+    .slick-prev {
+      left: -20px;
+    }
+
+    .slick-next {
+      right: -20px;
+    }
+  }
+`;
+
+const TemplateSlider = styled(Slider)`
+  .slick-track {
+    display: flex !important;
+    width: calc(100% - 20px);
+    margin: 20px 10px;
+    justify-content: center;
+  }
+
+  .slick-slide {
+    div {
+      display: flex;
+      width: calc(100% - 20px);
+      justify-content: center;
+    }
+  }
+`;
 
 const TemplateItemContainer = styled.div<{
   selected: boolean;
@@ -200,13 +325,42 @@ function ProfileLayoutPage() {
     useState<boolean>(false);
   const {user} = useUserStore();
   const handleSelectTemplate = (template: string) => {
-    setSelectedTemplate(template);
-    setIsSelected(true);
+    if (selectedTemplate === template) {
+      setSelectedTemplate('');
+      setIsSelected(false);
+    } else {
+      setSelectedTemplate(template);
+      setIsSelected(true);
+    }
   };
   const handleShowModal = () => {
     if (selectedTemplate) {
       setIsChangeTemplateModalVisible(true);
     }
+  };
+  const sliderSettings = {
+    dots: true,
+    infinite: false,
+    speed: 500,
+    slidesToShow: 4,
+    slidesToScroll: 4,
+    arrows: true,
+    responsive: [
+      {
+        breakpoint: 700,
+        settings: {
+          slidesToShow: 3,
+          slidesToScroll: 3,
+        },
+      },
+      {
+        breakpoint: 500,
+        settings: {
+          slidesToShow: 2,
+          slidesToScroll: 2,
+        },
+      },
+    ],
   };
   return (
     <Container>
@@ -222,8 +376,8 @@ function ProfileLayoutPage() {
             }}
           />
 
-          <TemplateContainer>
-            <SelectTemplateContainer>
+          <SliderContainer>
+            <TemplateSlider {...sliderSettings}>
               {utilTexts.Template.map(
                 (template: {value: string; image: string}) => (
                   <SelectTemplateItem
@@ -235,8 +389,8 @@ function ProfileLayoutPage() {
                   />
                 ),
               )}
-            </SelectTemplateContainer>
-          </TemplateContainer>
+            </TemplateSlider>
+          </SliderContainer>
         </InnerWrapper>
         {selectedTemplate && (
           <>

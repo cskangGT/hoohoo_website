@@ -32,7 +32,7 @@ module.exports = {
         test: /\.(png|webp|jpe?g|svg)$/,
         type: 'asset',
         generator: {
-          filename: '/Images/[name][hash][ext]',
+          filename: 'Images/[name][hash][ext]',
         },
       },
       {
@@ -60,9 +60,10 @@ module.exports = {
       templateParameters: {
         lang: 'en',
         title: 'EarthMera | Every eco-action, all here.',
-        description: 'Start your carbon-reducing journey today and make a real impact!',
-        ogLocale: 'en_US'
-      }
+        description:
+          'Start your carbon-reducing journey today and make a real impact!',
+        ogLocale: 'en_US',
+      },
     }),
     new HtmlWebpackPlugin({
       template: './public/index.html',
@@ -70,9 +71,10 @@ module.exports = {
       templateParameters: {
         lang: 'ko',
         title: 'EarthMera | 모든 친환경 활동, 여기 다 있습니다.',
-        description: '오늘부터 탄소 저감 여정을 시작하고 실질적인 변화를 만들어보세요!',
-        ogLocale: 'ko_KR'
-      }
+        description:
+          '오늘부터 탄소 저감 여정을 시작하고 실질적인 변화를 만들어보세요!',
+        ogLocale: 'ko_KR',
+      },
     }),
     new HtmlWebpackPlugin({
       template: './public/index.html',
@@ -80,9 +82,10 @@ module.exports = {
       templateParameters: {
         lang: 'en',
         title: 'EarthMera | Every eco-action, all here.',
-        description: 'Start your carbon-reducing journey today and make a real impact!',
-        ogLocale: 'en_US'
-      }
+        description:
+          'Start your carbon-reducing journey today and make a real impact!',
+        ogLocale: 'en_US',
+      },
     }),
     new CopyWebpackPlugin({
       patterns: [{from: './public/Images', to: 'Images'}],

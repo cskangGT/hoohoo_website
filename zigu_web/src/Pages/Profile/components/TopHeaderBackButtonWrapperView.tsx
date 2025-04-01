@@ -3,7 +3,6 @@ import {LuArrowLeft} from 'react-icons/lu';
 import {useNavigate} from 'react-router-dom';
 import styled from 'styled-components';
 import {theme} from '../../../style';
-import MobileViewFrame from './MobileViewFrame';
 const ProfileContainer = styled.div`
   display: flex;
   flex-direction: column;
@@ -34,7 +33,7 @@ function TopHeaderBackButtonWrapperView({
 }) {
   const navigate = useNavigate();
   return (
-    <MobileViewFrame>
+    <>
       <TopHeaderContainer>
         <TopHeaderLeft>
           <BackButton onClick={() => navigate(-1)}>
@@ -43,7 +42,7 @@ function TopHeaderBackButtonWrapperView({
         </TopHeaderLeft>
       </TopHeaderContainer>
       <ProfileContainer>{children}</ProfileContainer>
-    </MobileViewFrame>
+    </>
   );
 }
 

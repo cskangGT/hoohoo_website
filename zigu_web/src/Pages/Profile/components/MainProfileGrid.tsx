@@ -1,7 +1,7 @@
-import React, { useEffect, useMemo, useRef } from 'react';
-import RGL, { Layout, WidthProvider } from 'react-grid-layout';
-import { useNavigate } from 'react-router-dom';
-import { useProfile } from '../contexts/ProfileContext';
+import React, {useEffect, useMemo, useRef} from 'react';
+import RGL, {Layout, WidthProvider} from 'react-grid-layout';
+import {useNavigate} from 'react-router-dom';
+import {useProfile} from '../contexts/ProfileContext';
 import {
   ProfileWidgetItemSize,
   ProfileWidgetItemType,
@@ -78,6 +78,8 @@ export default function MainProfileGrid() {
     currentWidgets,
 
     setIsEditing,
+    firstLoad,
+    setShowSave,
     setCurrentWidgets,
     isEditing,
     isMyLink,
@@ -87,6 +89,7 @@ export default function MainProfileGrid() {
     userData,
   } = useProfile();
   const isInitialRenderRef = useRef(true);
+  const firstLoadRef = useRef(true);
 
   useEffect(() => {
     return () => {
@@ -116,7 +119,10 @@ export default function MainProfileGrid() {
   const handleLayoutChange = (currentLayout: Layout[]) => {
     if (!isEditing) return;
     console.log('Updated layout:', currentLayout);
-
+    if (!firstLoadRef.current) {
+      setShowSave(true);
+    }
+    firstLoadRef.current = false;
     // (A) currentLayout의 각 아이템 -> widgets의 item 매핑
     setCurrentWidgets(prevWidgets => {
       return prevWidgets.map(widget => {
@@ -139,8 +145,7 @@ export default function MainProfileGrid() {
   const onEditWidget = (item: ProfileWidgetItemType) => {
     setSelectedItem(item);
     setIsEditingItem(true);
-    console.log("userData?.nameTag", userData?.nameTag);
-    
+
     navigate('/' + userData?.nameTag + '/set-widget', {
       state: {
         isEditMode: true,

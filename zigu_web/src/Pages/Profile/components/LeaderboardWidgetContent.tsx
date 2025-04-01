@@ -132,7 +132,7 @@ const RankUp = styled.div<{big?: boolean}>`
   font-size: ${props => (props.big ? '18px' : '14px')};
   font-weight: bold;
   color: #fdb52f;
-
+  filter: drop-shadow(0 3px 4px rgba(0, 0, 0, 0.5));
   ${props =>
     props.big &&
     `
@@ -168,7 +168,7 @@ const RankDown = styled.div<{big?: boolean}>`
   font-size: ${props => (props.big ? '18px' : '14px')};
   font-weight: bold;
   color: #28afe2;
-
+  filter: drop-shadow(0 3px 4px rgba(0, 0, 0, 0.5));
   ${props =>
     props.big &&
     `
@@ -252,6 +252,7 @@ const CurrentRankSection = styled.div`
   align-items: center;
   justify-content: space-between;
   background-color: #38cf21;
+  filter: drop-shadow(0 3px 4px rgba(0, 0, 0, 0.5));
   border-radius: 8px;
   padding: 10px;
   width: calc(100% - 20px);
@@ -390,7 +391,7 @@ function LeaderboardWidgetContent({
     return (
       <LeaderboardContainer small>
         <RankNumberContainer>
-          <RankNumber>{userRank}</RankNumber>
+          <RankNumber>{userRank === 0 ? '-' : userRank}</RankNumber>
           <RankSuffix>{getOrdinalSuffix(userRank)}</RankSuffix>
         </RankNumberContainer>
         <ScoreContainer>
@@ -413,7 +414,7 @@ function LeaderboardWidgetContent({
     return (
       <LeaderboardContainer long>
         <RankNumberContainer>
-          <RankNumber>{userRank}</RankNumber>
+          <RankNumber>{userRank === 0 ? '-' : userRank}</RankNumber>
           <RankSuffix>{getOrdinalSuffix(userRank)}</RankSuffix>
         </RankNumberContainer>
         <PreviousRankText>
@@ -452,7 +453,7 @@ function LeaderboardWidgetContent({
 
         <CurrentRankSection>
           <RankNumberLarge>
-            {userRank}
+            {userRank === 0 ? '-' : userRank}
             <RankSuffixLarge>{getOrdinalSuffix(userRank)}</RankSuffixLarge>
           </RankNumberLarge>
           <VerticalView>

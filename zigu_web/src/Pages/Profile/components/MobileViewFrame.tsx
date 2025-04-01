@@ -1,10 +1,13 @@
-import React, { ReactNode } from 'react';
+import React, {ReactNode, useEffect, useRef} from 'react';
 import styled from 'styled-components';
+import {useProfile} from '../contexts/ProfileContext';
 
 interface MobileViewFrameProps {
   children: ReactNode;
   backgroundColor?: string;
   containerBackgroundColor?: string;
+  onScroll?: (event: Event) => void;
+  getMobileContentRef?: (ref: HTMLDivElement | null) => void;
 }
 
 const OuterContainer = styled.div`
@@ -25,7 +28,7 @@ const OuterContainer = styled.div`
   bottom: 0;
 `;
 
-const MobileContainer = styled.div`
+const MobileContainer = styled.div<{$isDarkMode: boolean}>`
   width: 100%;
   max-width: 600px;
   height: 100%;
@@ -35,7 +38,7 @@ const MobileContainer = styled.div`
   background-color: ${'#1e1e1e5f'};
   border-radius: 0;
   overflow: hidden;
-  box-shadow: 2px 10px 20px  rgba(0, 0, 0, 0.9);
+  box-shadow: 2px 10px 20px rgba(0, 0, 0, 0.9);
   position: relative;
   display: flex;
   flex-direction: column;
@@ -55,11 +58,42 @@ const MobileContent = styled.div`
   }
 `;
 
-function MobileViewFrame({children}: MobileViewFrameProps) {
+function MobileViewFrame({
+  children,
+  onScroll,
+  getMobileContentRef,
+}: MobileViewFrameProps) {
+  const {isDarkMode} = useProfile();
+  const contentRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    if (getMobileContentRef) {
+      getMobileContentRef(contentRef.current);
+    }
+  }, [getMobileContentRef]);
+
+  useEffect(() => {
+    const content = contentRef.current;
+    if (content && onScroll) {
+      content.addEventListener('scroll', onScroll);
+      return () => {
+        content.removeEventListener('scroll', onScroll);
+      };
+    }
+  }, [onScroll]);
+
+  const handleScroll = (e: React.UIEvent<HTMLDivElement>) => {
+    if (onScroll) {
+      onScroll(e as unknown as Event);
+    }
+  };
+
   return (
     <OuterContainer>
-      <MobileContainer>
-        <MobileContent>{children}</MobileContent>
+      <MobileContainer $isDarkMode={isDarkMode}>
+        <MobileContent ref={contentRef} onScroll={handleScroll}>
+          {children}
+        </MobileContent>
       </MobileContainer>
     </OuterContainer>
   );

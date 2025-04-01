@@ -220,6 +220,7 @@ function ProfileCreateWidgetPage() {
     selectedItem,
     setSelectedItem,
     setIsEditingItem,
+    setShowSave,
   } = useProfile();
   const navigate = useNavigate();
 
@@ -349,6 +350,7 @@ function ProfileCreateWidgetPage() {
     );
 
     setSelectedItem(null);
+    setShowSave(true);
     navigate('/' + user?.nameTag, {
       replace: true,
       state: {

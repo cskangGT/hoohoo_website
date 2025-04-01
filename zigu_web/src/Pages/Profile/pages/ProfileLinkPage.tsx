@@ -1,12 +1,11 @@
 import React, {useEffect} from 'react';
-import {useLocation, useNavigate, useParams} from 'react-router-dom';
+import {useLocation, useParams} from 'react-router-dom';
 import styled from 'styled-components';
 import useWindowResize from '../../../components/hooks/useWindowResize';
 import i18next from '../../../lang/i18n';
 import {useUserStore} from '../../../storage/userStore';
 import {defaultProfileImage, theme} from '../../../style';
 import FixedBottomEditView from '../components/FixedBottomEditView';
-import MobileViewFrame from '../components/MobileViewFrame';
 import ProfileTopHeader from '../components/ProfileTopHeader';
 import ProfileWidgetGrid from '../components/ProfileWidgetGrid';
 import {useProfile} from '../contexts/ProfileContext';
@@ -74,7 +73,6 @@ function ProfileLinkPage() {
   });
   const {state} = useLocation();
   const showTooltip = state?.showTooltip;
-
   const keepEditing = state?.keepEditing;
   const {user, isAuthenticated} = useUserStore();
   const {
@@ -90,8 +88,6 @@ function ProfileLinkPage() {
     setIsEditing,
   } = useProfile();
   const nameTag = useParams()?.nameTag;
-  const navigate = useNavigate();
-  console.log('user', user);
 
   const {width: resizedWidth} = useWindowResize({
     maxWidth: 600,
@@ -99,51 +95,45 @@ function ProfileLinkPage() {
 
   useEffect(() => {
     !keepEditing && fetchUserProfile(nameTag);
-  }, []);
+  }, [nameTag]);
 
   useEffect(() => {
     if (keepEditing) {
-      // state 사용 후 현재 URL로 state 없이 replace
-      navigate(location.pathname, {
-        replace: true,
-        state: {},
-      });
+      window.history.replaceState({}, '', location.pathname);
     }
   }, [keepEditing]);
 
   return (
-    <MobileViewFrame>
-      <>
-        <ProfileTopHeader isMyLink={isMyLink} nameTag={nameTag || ''} />
-        {noProfileData || profileError ? (
-          <VacantContainer>
-            {profileError ? (
-              <VacantText>{localizedTexts.profileError}</VacantText>
-            ) : (
-              <VacantText>
-                {localizedTexts.noProfileData[0]}
-                {`"${nameTag}"`}
-                {localizedTexts.noProfileData[1]}
-              </VacantText>
-            )}
-          </VacantContainer>
-        ) : (
-          <ProfileContainer>
-            <Logo>
-              <ProfileImage
-                src={userData.profileImage || defaultProfileImage}
-                size={resizedWidth * 0.2}
-              />
-            </Logo>
-            <ProfileName>{userData.name}</ProfileName>
-            <ProfileTag>@{nameTag}</ProfileTag>
+    <>
+      <ProfileTopHeader isMyLink={isMyLink} nameTag={nameTag || ''} />
+      {noProfileData || profileError ? (
+        <VacantContainer>
+          {profileError ? (
+            <VacantText>{localizedTexts.profileError}</VacantText>
+          ) : (
+            <VacantText>
+              {localizedTexts.noProfileData[0]}
+              {`"${nameTag}"`}
+              {localizedTexts.noProfileData[1]}
+            </VacantText>
+          )}
+        </VacantContainer>
+      ) : (
+        <ProfileContainer>
+          <Logo>
+            <ProfileImage
+              src={userData.profileImage || defaultProfileImage}
+              size={resizedWidth * 0.2}
+            />
+          </Logo>
+          <ProfileName>{userData.name}</ProfileName>
+          <ProfileTag>@{nameTag}</ProfileTag>
 
-            <ProfileWidgetGrid />
-          </ProfileContainer>
-        )}
-        {isMyLink && <FixedBottomEditView />}
-      </>
-    </MobileViewFrame>
+          <ProfileWidgetGrid />
+        </ProfileContainer>
+      )}
+      {isMyLink && <FixedBottomEditView />}
+    </>
   );
 }
 
