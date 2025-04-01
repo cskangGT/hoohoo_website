@@ -3,6 +3,7 @@ import React, {useEffect} from 'react';
 import {FiLayout} from 'react-icons/fi';
 import {IoEyeOutline} from 'react-icons/io5';
 import {LuSettings} from 'react-icons/lu';
+import {MdOutlineDarkMode} from 'react-icons/md';
 import {RiShare2Line} from 'react-icons/ri';
 import {useLocation, useNavigate} from 'react-router-dom';
 import styled from 'styled-components';
@@ -194,9 +195,9 @@ function ProfileTopHeader({
         <TopHeaderRight>
           {isMyLink ? (
             <>
-              {/* <IconButton onClick={handleDarkMode}>
+              <IconButton onClick={handleDarkMode}>
                 <MdOutlineDarkMode size={iconSize} color={theme.white} />
-              </IconButton> */}
+              </IconButton>
               <IconButton onClick={handlePreview}>
                 <IoEyeOutline size={iconSize} color={theme.white} />
               </IconButton>

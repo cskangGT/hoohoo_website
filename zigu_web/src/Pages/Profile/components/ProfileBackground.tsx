@@ -24,7 +24,7 @@ const ProfileContainer = styled.div<{$isDarkMode: boolean}>`
   right: 0;
   bottom: 0;
   width: 100%;
-  height: 100vh;
+
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -62,6 +62,8 @@ function ProfileBackground({children}: ProfileBackgroundProps) {
 
     const handleBackgroundScroll = () => {
       if (wrapper && mobileContentRef.current) {
+        console.log('mobileContentRef.current', mobileContentRef.current);
+
         mobileContentRef.current.scrollTop = wrapper.scrollTop;
       }
     };

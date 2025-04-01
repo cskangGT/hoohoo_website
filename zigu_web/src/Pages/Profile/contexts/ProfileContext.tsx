@@ -94,7 +94,7 @@ export const ProfileProvider: React.FC<ProfileProviderProps> = ({
   >([]);
 
   // 상태 플래그
-  const [isEditing, setIsEditing] = useState<boolean>(true);
+  const [isEditing, setIsEditing] = useState<boolean>(false);
   const [showSave, setShowSave] = useState<boolean>(false);
   const [hasChanges, setHasChanges] = useState<boolean>(false);
   const [firstLoad, setFirstLoad] = useState<boolean>(true);
@@ -127,7 +127,9 @@ export const ProfileProvider: React.FC<ProfileProviderProps> = ({
   // 사용자 인증 정보 변경 시 isMyLink 업데이트
   useEffect(() => {
     if (nameTag) {
-      setIsMyLink(user.nameTag === nameTag && isAuthenticated);
+      const isMyLink = user.nameTag === nameTag && isAuthenticated;
+      setIsMyLink(isMyLink);
+      setIsEditing(isMyLink);
     }
   }, [user, nameTag, isAuthenticated]);
 
