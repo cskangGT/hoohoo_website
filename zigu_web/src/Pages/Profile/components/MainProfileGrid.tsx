@@ -119,9 +119,7 @@ export default function MainProfileGrid() {
   const handleLayoutChange = (currentLayout: Layout[]) => {
     if (!isEditing) return;
     console.log('Updated layout:', currentLayout);
-    if (!firstLoadRef.current) {
-      setShowSave(true);
-    }
+
     firstLoadRef.current = false;
     // (A) currentLayout의 각 아이템 -> widgets의 item 매핑
     setCurrentWidgets(prevWidgets => {
@@ -166,6 +164,9 @@ export default function MainProfileGrid() {
       margin={[CONTAINER_GAP, CONTAINER_GAP]}
       onLayoutChange={handleLayoutChange}
       isDraggable={isEditing}
+      onDragStop={() => {
+        setShowSave(true);
+      }}
       isResizable={false}
       draggableCancel=".widget-button"
       compactType={'vertical'}

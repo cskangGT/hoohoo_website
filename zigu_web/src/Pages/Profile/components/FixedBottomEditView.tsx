@@ -93,7 +93,7 @@ const EMLogoImage = styled.img`
 `;
 
 const ActionButton = styled.button<{$isDone?: boolean}>`
-  background-color: ${props => (props.$isDone ? theme.white : theme.mainNeon)};
+  background-color: ${props => (props.$isDone ? theme.white : theme.white)};
   color: ${theme.darkGray};
   padding: ${theme.spacing.sm} ${theme.spacing.md};
   border-radius: 35px;
@@ -112,12 +112,13 @@ const ActionButton = styled.button<{$isDone?: boolean}>`
     height: 50px;
     width: 50px;
     padding: ${theme.spacing.sm} 8px;
-
+    font-size: ${theme.fontSize.md};
     border-radius: 25px;
   }
   @media (max-width: 400px) {
     height: 40px;
     padding: ${theme.spacing.sm} 4px;
+    font-size: ${theme.fontSize.rg};
     width: 40px;
     border-radius: 20px;
   }
@@ -131,8 +132,6 @@ function FixedBottomEditView() {
 
   const navigate = useNavigate();
   const {
-    startEditing,
-    setIsEditing,
     currentWidgets,
     originalWidgets,
     deletedWidgetItems,
@@ -171,7 +170,6 @@ function FixedBottomEditView() {
       (widget: ProfileWidgetItemType) => {
         // widget에서 필요한 속성들만 추출
         const {id, isExchangedWidget, coordinate, ...restWidget} = widget;
-        console.log('isExchangedWidget', isExchangedWidget, id);
 
         return {
           ...restWidget,
@@ -191,16 +189,17 @@ function FixedBottomEditView() {
       const updatedData = response.data;
       setDeletedWidgetItems([]);
 
+      setShowSave(false);
       // update currentWidgets, myWidgets, originalWidgets
 
       setCurrentWidgets(updatedData);
       setMyWidgets(updatedData);
       setOriginalWidgets(updatedData);
-      setShowSave(false);
     } else {
       toast.error(localizedTexts.toast.failedToUpdate);
     }
   };
+
   const name = userData?.linkedUserInfo?.name?.split('#')[0];
   return (
     <Container>

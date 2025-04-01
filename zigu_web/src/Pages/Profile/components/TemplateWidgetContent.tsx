@@ -1,6 +1,7 @@
 import i18next from 'i18next';
+import {MdAbc} from 'react-icons/md';
+
 import React from 'react';
-import {BsFileEarmarkTextFill} from 'react-icons/bs';
 import {MdPhoto} from 'react-icons/md';
 import styled from 'styled-components';
 import useWindowResize from '../../../components/hooks/useWindowResize';
@@ -30,7 +31,11 @@ const TemplateWidgetContainer = styled.div`
     font-size: ${theme.fontSize.rg};
   }
 `;
-
+const EMLogoImage = styled.img<{size: number}>`
+  width: ${({size}) => size}px;
+  height: ${({size}) => size}px;
+  opacity: 0.8;
+`;
 function TemplateWidgetContent({
   widgetItem,
 }: {
@@ -50,9 +55,14 @@ function TemplateWidgetContent({
 
   const textColor = getTextColorWcag(bgColor || '');
   if (emWidgetType === ProfileEMWidgetType.Temp) {
+    const logoSize =
+      sizeType === 'BIG' ? resizeWidth * 0.12 : resizeWidth * 0.05;
     return (
       <TemplateWidgetContainer style={{color: textColor}}>
-        {localizedTexts.widget.emwidget}
+        <EMLogoImage
+          src={'/Images/earthmera_logo_white_ver.png'}
+          size={logoSize}
+        />
       </TemplateWidgetContainer>
     );
   } else {
@@ -61,16 +71,11 @@ function TemplateWidgetContent({
         <TemplateWidgetContainer style={{color: textColor}}>
           {bgType === 'COLOR' ? (
             <>
-              <BsFileEarmarkTextFill
-                size={resizeWidth * 0.12}
-                color={textColor}
-              />
-              {localizedTexts.widget.text}
+              <MdAbc size={resizeWidth * 0.15} color={textColor} />
             </>
           ) : (
             <>
-              <MdPhoto size={resizeWidth * 0.12} color={textColor} />
-              {localizedTexts.widget.photo}
+              <MdPhoto size={resizeWidth * 0.15} color={textColor} />
             </>
           )}
         </TemplateWidgetContainer>
@@ -79,9 +84,11 @@ function TemplateWidgetContent({
 
     return (
       <TemplateWidgetContainer style={{color: textColor}}>
-        {bgType === 'COLOR'
-          ? localizedTexts.widget.text
-          : localizedTexts.widget.photo}
+        {bgType === 'COLOR' ? (
+          <MdAbc size={resizeWidth * 0.1} color={textColor} />
+        ) : (
+          <MdPhoto size={resizeWidth * 0.1} color={textColor} />
+        )}
       </TemplateWidgetContainer>
     );
   }

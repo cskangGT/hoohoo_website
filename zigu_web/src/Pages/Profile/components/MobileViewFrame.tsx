@@ -6,8 +6,6 @@ interface MobileViewFrameProps {
   children: ReactNode;
   backgroundColor?: string;
   containerBackgroundColor?: string;
-  onScroll?: (event: Event) => void;
-  getMobileContentRef?: (ref: HTMLDivElement | null) => void;
 }
 
 const OuterContainer = styled.div`
@@ -15,12 +13,14 @@ const OuterContainer = styled.div`
   height: 100%;
   display: flex;
   justify-content: center;
+
   align-items: center;
   background-color: transparent;
-
+  overflow-y: auto;
+  position: relative;
   padding: 0;
   margin: 0;
-  overflow: hidden;
+  /* overflow: hidden; */
   position: fixed;
   top: 0;
   left: 0;
@@ -58,42 +58,47 @@ const MobileContent = styled.div`
   }
 `;
 
-function MobileViewFrame({
-  children,
-  onScroll,
-  getMobileContentRef,
-}: MobileViewFrameProps) {
+function MobileViewFrame({children}: MobileViewFrameProps) {
   const {isDarkMode} = useProfile();
+  const outerRef = useRef<HTMLDivElement>(null);
   const contentRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    if (getMobileContentRef) {
-      getMobileContentRef(contentRef.current);
-    }
-  }, [getMobileContentRef]);
-
-  useEffect(() => {
+    const outer = outerRef.current;
     const content = contentRef.current;
-    if (content && onScroll) {
-      content.addEventListener('scroll', onScroll);
-      return () => {
-        content.removeEventListener('scroll', onScroll);
-      };
-    }
-  }, [onScroll]);
+    if (!outer || !content) return;
 
-  const handleScroll = (e: React.UIEvent<HTMLDivElement>) => {
-    if (onScroll) {
-      onScroll(e as unknown as Event);
-    }
-  };
+    // wheel 이벤트를 막고, 내부 scrollTop을 직접 조작
+    const onWheel = (e: WheelEvent) => {
+      e.preventDefault(); // 바깥 레이어의 기본 스크롤 방지
+      content.scrollTop += e.deltaY; // 내부 컨텐츠를 스크롤
+    };
+    let startY = 0;
+    const onTouchStart = (e: TouchEvent) => {
+      startY = e.touches[0].clientY;
+    };
+    const onTouchMove = (e: TouchEvent) => {
+      e.preventDefault();
+      const deltaY = startY - e.touches[0].clientY;
+      content.scrollTop += deltaY;
+      startY = e.touches[0].clientY;
+    };
+
+    outer.addEventListener('wheel', onWheel, {passive: false});
+    outer.addEventListener('touchstart', onTouchStart, {passive: false});
+    // outer.addEventListener('touchmove', onTouchMove, {passive: false});
+
+    return () => {
+      outer.removeEventListener('wheel', onWheel);
+      outer.removeEventListener('touchstart', onTouchStart);
+      // outer.removeEventListener('touchmove', onTouchMove);
+    };
+  }, []);
 
   return (
-    <OuterContainer>
+    <OuterContainer ref={outerRef}>
       <MobileContainer $isDarkMode={isDarkMode}>
-        <MobileContent ref={contentRef} onScroll={handleScroll}>
-          {children}
-        </MobileContent>
+        <MobileContent ref={contentRef}>{children}</MobileContent>
       </MobileContainer>
     </OuterContainer>
   );

@@ -11,6 +11,7 @@ import {
   ProfileWidgetItemType,
 } from '../types/WidgetItemType';
 import MainProfileGrid from './MainProfileGrid';
+import PowerByEM from './PowerByEM';
 import WidgetItem from './WidgetItem';
 import ZiguLinkToApp from './ZiguLinkToApp';
 
@@ -24,10 +25,10 @@ const WidgetGrid = styled.div`
   justify-content: space-between;
   position: relative;
 `;
-const Container = styled.div`
+const Container = styled.div<{isMyLink: boolean}>`
   width: 100%;
   position: relative;
-  margin-bottom: 100px;
+  margin-bottom: ${props => (props.isMyLink ? '100px' : '20px')};
 `;
 const BlurredContainer = styled.div`
   display: flex;
@@ -54,10 +55,11 @@ const CircularProgressContainer = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100%;
+  height: 300px;
   width: 100%;
   flex: 1;
 `;
+
 const WIDTH = window.innerWidth > 600 ? 600 : window.innerWidth;
 
 export const getAbEMWidget = (): ProfileWidgetItemType[] => {
@@ -169,7 +171,7 @@ function ProfileWidgetGrid() {
     setHasEMWidget(currentWidgets?.some(widget => widget.isEmWidget));
   }, [currentWidgets]);
   return (
-    <Container>
+    <Container isMyLink={isMyLink}>
       {isLoading ? (
         <CircularProgressContainer>
           <CircularProgress />
@@ -177,7 +179,7 @@ function ProfileWidgetGrid() {
       ) : (
         <>
           <MainProfileGrid />
-          {isMyLink && (
+          {isMyLink ? (
             <BlurredContainer>
               <>
                 {currentWidgets?.length === 0 && (
@@ -202,6 +204,8 @@ function ProfileWidgetGrid() {
                 )
               )}
             </BlurredContainer>
+          ) : (
+            <PowerByEM />
           )}
         </>
       )}
