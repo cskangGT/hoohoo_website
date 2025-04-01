@@ -1,8 +1,8 @@
 import i18next from 'i18next';
-import React, { useState } from 'react';
-import { IoClose } from "react-icons/io5";
+import React, {useState} from 'react';
+import {IoClose} from 'react-icons/io5';
 import styled from 'styled-components';
-import { theme } from '../style';
+import {theme} from '../style';
 const BubbleBox = styled.div<any>`
   cursor: pointer;
   z-index: 10000;
@@ -44,9 +44,8 @@ const TextBox = styled.div`
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  
+
   justify-content: space-between;
-  
 `;
 const Text = styled.span`
   font-size: ${theme.fontSize.rg};
@@ -64,7 +63,6 @@ const CloseBox = styled.div`
   right: 5px;
 `;
 
-
 type BubbleProps = {
   setIsBubble: React.Dispatch<React.SetStateAction<boolean>>;
 };
@@ -79,8 +77,11 @@ const Bubble: React.FC<BubbleProps> = ({setIsBubble}) => {
     }, 500);
   };
 
+  const handleClick = () => {
+    window.open('https://zigu.my', '_blank');
+  };
   return (
-    <BubbleBox isFadingOut={isFadingOut}>
+    <BubbleBox isFadingOut={isFadingOut} onClick={handleClick}>
       <Inside>
         <Image src={data['image']} />
         <TextBox>

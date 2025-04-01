@@ -23,9 +23,9 @@
       {
         "label": "우리가 하는 일",
         "subItems": [
-          {"label": "소셜 플랫폼", "link": "/ko/platform"},
-
-          {"label": "EM 티켓티어", "link": "/ko/ticketeer"}
+          {"label": "어스메라", "link": "/ko/platform"},
+          {"label": "EM 티켓티어", "link": "/ko/ticketeer"},
+          {"label": "ZIGU", "link": "https://zigu.my"}
         ]
       },
       {"label": "파트너십", "link": "/ko/partnership"},
@@ -1531,11 +1531,11 @@
     "annually": "연 결제",
     "featureTitle": "기능 살펴보기",
     "perMonth": "월",
-    "promoButton" : "프로모 코드가 있으신가요?",
+    "promoButton": "프로모 코드가 있으신가요?",
     "perYear": "연",
     "getStarted": "시작하기",
     "PromoCodeModal": {
-      "title" : "프로모 코드가 있으신가요?",
+      "title": "프로모 코드가 있으신가요?",
       "placeholder": "프로모 코드를 입력해주세요",
       "apply": "코드 적용하기",
       "cancel": "취소하기",

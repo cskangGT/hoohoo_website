@@ -23,8 +23,9 @@
       {
         "label": "What we do",
         "subItems": [
-          {"label": "Social Platform", "link": "/en/platform"},
-          {"label": "EM Ticketeer", "link": "/en/ticketeer"}
+          {"label": "EarthMera", "link": "/en/platform"},
+          {"label": "EM Ticketeer", "link": "/en/ticketeer"},
+          {"label": "ZIGU", "link": "https://zigu.my"}
         ]
       },
       {
