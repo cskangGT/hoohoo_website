@@ -11,7 +11,7 @@ const Container = styled.div`
   justify-content: center;
   align-items: center;
   background-color: #282828;
-
+  z-index: 9999;
   padding: ${theme.spacing.md} 0px;
 `;
 const ZIGU = styled.div`

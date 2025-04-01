@@ -71,11 +71,19 @@ function TemplateWidgetContent({
         <TemplateWidgetContainer style={{color: textColor}}>
           {bgType === 'COLOR' ? (
             <>
-              <MdAbc size={resizeWidth * 0.15} color={textColor} />
+              <MdAbc
+                size={resizeWidth * 0.15}
+                color={textColor}
+                style={{opacity: 0.4}}
+              />
             </>
           ) : (
             <>
-              <MdPhoto size={resizeWidth * 0.15} color={textColor} />
+              <MdPhoto
+                size={resizeWidth * 0.15}
+                style={{opacity: 0.4}}
+                color={textColor}
+              />
             </>
           )}
         </TemplateWidgetContainer>
@@ -85,9 +93,17 @@ function TemplateWidgetContent({
     return (
       <TemplateWidgetContainer style={{color: textColor}}>
         {bgType === 'COLOR' ? (
-          <MdAbc size={resizeWidth * 0.1} color={textColor} />
+          <MdAbc
+            size={resizeWidth * 0.1}
+            color={textColor}
+            style={{opacity: 0.4}}
+          />
         ) : (
-          <MdPhoto size={resizeWidth * 0.1} color={textColor} />
+          <MdPhoto
+            size={resizeWidth * 0.1}
+            color={textColor}
+            style={{opacity: 0.4}}
+          />
         )}
       </TemplateWidgetContainer>
     );

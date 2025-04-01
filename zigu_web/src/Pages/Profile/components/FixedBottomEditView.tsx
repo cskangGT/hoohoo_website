@@ -1,7 +1,9 @@
 import i18next from 'i18next';
 import React from 'react';
+import {MdOutlineLightMode} from 'react-icons/md';
 
 import {LuPlus} from 'react-icons/lu';
+import {MdOutlineDarkMode} from 'react-icons/md';
 import {useNavigate} from 'react-router-dom';
 import {toast} from 'react-toastify';
 import styled from 'styled-components';
@@ -96,9 +98,9 @@ const ActionButton = styled.button<{$isDone?: boolean}>`
   background-color: ${props => (props.$isDone ? theme.white : theme.white)};
   color: ${theme.darkGray};
   padding: ${theme.spacing.sm} ${theme.spacing.md};
-  border-radius: 35px;
-  height: 70px;
-  width: 70px;
+  border-radius: 30px;
+  height: 60px;
+  width: 60px;
   border: none;
   cursor: pointer;
   display: flex;
@@ -123,7 +125,11 @@ const ActionButton = styled.button<{$isDone?: boolean}>`
     border-radius: 20px;
   }
 `;
-
+const DarkModeButton = styled(ActionButton)<{$isDarkMode: boolean}>`
+  background-color: ${props =>
+    props.$isDarkMode ? theme.white : theme.darkGray};
+  color: ${props => (props.$isDarkMode ? theme.darkGray : theme.white)};
+`;
 function FixedBottomEditView() {
   const localizedTexts: any = i18next.t('ProfileLinkPage', {
     returnObjects: true,
@@ -133,6 +139,8 @@ function FixedBottomEditView() {
   const navigate = useNavigate();
   const {
     currentWidgets,
+    isDarkMode,
+    setIsDarkMode,
     originalWidgets,
     deletedWidgetItems,
     isEditing,
@@ -140,6 +148,7 @@ function FixedBottomEditView() {
     setDeletedWidgetItems,
     setOriginalWidgets,
     isMyLink,
+
     userData,
     showSave,
     setShowSave,
@@ -199,7 +208,9 @@ function FixedBottomEditView() {
       toast.error(localizedTexts.toast.failedToUpdate);
     }
   };
-
+  function handleDarkMode() {
+    setIsDarkMode(!isDarkMode);
+  }
   const name = userData?.linkedUserInfo?.name?.split('#')[0];
   return (
     <Container>
@@ -215,11 +226,18 @@ function FixedBottomEditView() {
               <ActionButton onClick={handleCreateWidget}>
                 <LuPlus size={30} color={'black'} />
               </ActionButton>
+              <DarkModeButton onClick={handleDarkMode} $isDarkMode={isDarkMode}>
+                {!isDarkMode ? (
+                  <MdOutlineDarkMode size={30} color={theme.white} />
+                ) : (
+                  <MdOutlineLightMode size={30} color={theme.darkGray} />
+                )}
+              </DarkModeButton>
             </>
           )}
         </ActionButtonContainer>
       </FixedBottomEditViewContainer>
-      {isMyLink && isSyncedWithEM && (
+      {isMyLink && isSyncedWithEM && isEditing && (
         <SyncTagView onClick={handleGoSync}>
           <SyncContent>
             {localizedTexts.synced[0]}

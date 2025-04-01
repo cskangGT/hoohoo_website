@@ -164,7 +164,7 @@ function ProfileWidgetGrid() {
     returnObjects: true,
   });
   const AbEMWidget = getAbEMWidget();
-  const {currentWidgets, isMyLink, isLoading} = useProfile();
+  const {currentWidgets, isMyLink, isLoading, isEditing} = useProfile();
   const {isSyncedWithEM} = useUserStore();
   const [hasEMWidget, setHasEMWidget] = useState(false);
   useEffect(() => {
@@ -192,17 +192,19 @@ function ProfileWidgetGrid() {
                   </BlurredWidgetGrid>
                 )}
               </>
-              {!isSyncedWithEM ? (
-                <ZiguLinkToApp />
-              ) : (
-                !hasEMWidget && (
-                  <SyncedContainer
-                    dangerouslySetInnerHTML={{
-                      __html: localizedTexts.syncedWithEM,
-                    }}
-                  />
-                )
-              )}
+              {isEditing &&
+                (!isSyncedWithEM ? (
+                  <ZiguLinkToApp />
+                ) : (
+                  !hasEMWidget && (
+                    <SyncedContainer
+                      dangerouslySetInnerHTML={{
+                        __html: localizedTexts.syncedWithEM,
+                      }}
+                    />
+                  )
+                ))}
+              {!isEditing && <PowerByEM />}
             </BlurredContainer>
           ) : (
             <PowerByEM />
