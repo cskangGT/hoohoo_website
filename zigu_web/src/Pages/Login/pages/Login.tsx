@@ -189,7 +189,7 @@ const Login = () => {
   });
   const {language} = useLanguage();
 
-  const {setUser, user} = useUserStore();
+  const {setUser, user, isAuthenticated} = useUserStore();
 
   const navigateNameTag = (nameTag: string) => {
     const redirectAfterAuth = sessionStorage.getItem('redirectAfterAuth');
@@ -201,12 +201,12 @@ const Login = () => {
     }
   };
   useEffect(() => {
-    if (user?.nameTag) {
+    if (user?.nameTag && isAuthenticated) {
       console.log('user', user);
 
       navigateNameTag(user.nameTag);
     }
-  }, []);
+  }, [user, isAuthenticated]);
   const navigate = useNavigate();
   const [email, setEmail] = useState<string>('');
   const [password, setPassword] = useState<string>('');
