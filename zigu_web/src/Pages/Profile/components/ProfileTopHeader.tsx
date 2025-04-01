@@ -141,9 +141,8 @@ function ProfileTopHeader({
   function handleLogo() {
     if (isAuthenticated) {
       const link = '/' + user?.nameTag;
-      console.log('link', link);
 
-      navigate(link);
+      navigate(link, {replace: true});
     } else {
       navigate('/login');
     }
