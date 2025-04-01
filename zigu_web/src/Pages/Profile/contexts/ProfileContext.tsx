@@ -22,8 +22,11 @@ interface ProfileContextType {
   profileError: boolean;
   hasChanges: boolean;
   isLoading: boolean;
+  firstLoad: boolean;
   noProfileData: boolean;
   isMyLink: boolean;
+  showSave: boolean;
+  isDarkMode: boolean;
   isEditingItem: boolean;
   selectedItem: ProfileWidgetItemType | null;
   // 사용자 데이터
@@ -32,7 +35,8 @@ interface ProfileContextType {
   // 액션 함수들
   setUserData: (userData: UserData) => void;
   startEditing: () => void;
-
+  setShowSave: React.Dispatch<React.SetStateAction<boolean>>;
+  setIsDarkMode: React.Dispatch<React.SetStateAction<boolean>>;
   setCurrentWidgets: React.Dispatch<
     React.SetStateAction<ProfileWidgetItemType[]>
   >;
@@ -41,11 +45,11 @@ interface ProfileContextType {
   >;
   updateWidgets: (updatedWidgets: ProfileWidgetItemType[]) => void;
   fetchUserProfile: (nameTag?: string) => Promise<void>;
-  setIsEditing: (isEditing: boolean) => void;
+  setIsEditing: React.Dispatch<React.SetStateAction<boolean>>;
   setDeletedWidgetItems: React.Dispatch<
     React.SetStateAction<ProfileWidgetItemType[]>
   >;
-  setIsEditingItem: (isEditingItem: boolean) => void;
+  setIsEditingItem: React.Dispatch<React.SetStateAction<boolean>>;
   setSelectedItem: (selectedItem: ProfileWidgetItemType | null) => void;
 }
 
@@ -90,7 +94,8 @@ export const ProfileProvider: React.FC<ProfileProviderProps> = ({
   >([]);
 
   // 상태 플래그
-  const [isEditing, setIsEditing] = useState<boolean>(false);
+  const [isEditing, setIsEditing] = useState<boolean>(true);
+  const [showSave, setShowSave] = useState<boolean>(false);
   const [hasChanges, setHasChanges] = useState<boolean>(false);
   const [firstLoad, setFirstLoad] = useState<boolean>(true);
   const [isLoading, setIsLoading] = useState<boolean>(false);
@@ -101,6 +106,10 @@ export const ProfileProvider: React.FC<ProfileProviderProps> = ({
   const [noProfileData, setNoProfileData] = useState<boolean>(false);
   const [profileError, setProfileError] = useState<boolean>(false);
   const [isEditingItem, setIsEditingItem] = useState<boolean>(false);
+
+  // design
+  const [isDarkMode, setIsDarkMode] = useState<boolean>(true);
+
   // 사용자 데이터
   const [userData, setUserData] = useState<UserData>({
     name: '',
@@ -124,10 +133,11 @@ export const ProfileProvider: React.FC<ProfileProviderProps> = ({
 
   // 사용자 프로필 데이터 가져오기
   const fetchUserProfile = async (profileNameTag?: string) => {
-    if (isEditing) return;
     if (firstLoad) {
       setIsLoading(true);
       setFirstLoad(false);
+    } else {
+      return;
     }
 
     if (!profileNameTag && !nameTag) {
@@ -219,6 +229,8 @@ export const ProfileProvider: React.FC<ProfileProviderProps> = ({
     lastSavedWidgets,
     isEditing,
     hasChanges,
+    showSave,
+    isDarkMode,
     isLoading,
     deletedWidgetItems,
     noProfileData,
@@ -226,8 +238,11 @@ export const ProfileProvider: React.FC<ProfileProviderProps> = ({
     userData,
     selectedItem,
     isEditingItem,
+    firstLoad,
     setUserData,
     setIsMyLink,
+    setShowSave,
+    setIsDarkMode,
     startEditing,
     setIsEditingItem,
     setCurrentWidgets,

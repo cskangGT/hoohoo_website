@@ -1,6 +1,7 @@
 import i18next from 'i18next';
 import React, {useEffect} from 'react';
 import {FiLayout} from 'react-icons/fi';
+import {IoEyeOutline} from 'react-icons/io5';
 import {LuSettings} from 'react-icons/lu';
 import {RiShare2Line} from 'react-icons/ri';
 import {useLocation, useNavigate} from 'react-router-dom';
@@ -117,7 +118,14 @@ function ProfileTopHeader({
   const showTooltip = state?.showTooltip;
   const [isTooltipOpen, setIsTooltipOpen] = React.useState(showTooltip);
   const {width} = useWindowResize({maxWidth: 600});
-  const {userData} = useProfile();
+  const {
+    setIsEditing,
+    isEditing,
+    setIsDarkMode,
+    isDarkMode,
+    showSave,
+    setShowSave,
+  } = useProfile();
   const [isShareModalOpen, setIsShareModalOpen] = React.useState(false);
   const localizedTexts: any = i18next.t('ProfileLinkPage', {
     returnObjects: true,
@@ -140,6 +148,9 @@ function ProfileTopHeader({
       navigate('/login');
     }
   }
+  function handleDarkMode() {
+    setIsDarkMode(!isDarkMode);
+  }
   function handleShare() {
     setIsShareModalOpen(true);
   }
@@ -151,13 +162,13 @@ function ProfileTopHeader({
   function handleCloseModal() {
     setIsShareModalOpen(false);
   }
+  function handlePreview() {
+    setIsEditing(!isEditing);
+  }
   useEffect(() => {
     const handleClick = () => {
       if (showTooltip) {
-        navigate(location.pathname, {
-          replace: true,
-          state: {},
-        });
+        window.history.replaceState({}, '', location.pathname);
         setIsTooltipOpen(false);
       }
     };
@@ -183,6 +194,12 @@ function ProfileTopHeader({
         <TopHeaderRight>
           {isMyLink ? (
             <>
+              {/* <IconButton onClick={handleDarkMode}>
+                <MdOutlineDarkMode size={iconSize} color={theme.white} />
+              </IconButton> */}
+              <IconButton onClick={handlePreview}>
+                <IoEyeOutline size={iconSize} color={theme.white} />
+              </IconButton>
               <IconButton onClick={handleLayout}>
                 {isTooltipOpen ? (
                   <CustomTooltip content={localizedTexts.tooltip}>

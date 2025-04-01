@@ -4,7 +4,7 @@ export const __DEV__ = window.location.hostname === 'localhost';
 
 export const APIAddress: string = __DEV__
   ? `https://dev.earthmera.com/`
-  : `https://app.zigu.my/`;
+  : `https://app.earthmera.com/`;
 
 export const slideInFromTop = keyframes`
   from {

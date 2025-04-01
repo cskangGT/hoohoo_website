@@ -1,7 +1,11 @@
 import i18next from 'i18next';
 import React, {useEffect, useState} from 'react';
 import {useNavigate} from 'react-router-dom';
+import Slider from 'react-slick';
+import 'slick-carousel/slick/slick-theme.css';
+import 'slick-carousel/slick/slick.css';
 import styled from 'styled-components';
+import useWindowResize from '../../../components/hooks/useWindowResize';
 import Wrapper from '../../../components/Wrapper/Wrapper';
 import {useQuestionnaire} from '../../../context/QuestionnaireContext';
 import {theme} from '../../../style';
@@ -125,9 +129,9 @@ const TemplateItemContainer = styled.div<{
   selected: boolean;
   isSelected: boolean;
 }>`
-  flex: 0 0 calc(25% - 20px); // 4개씩 보여주기 위해 25%로 설정
-  min-width: 180px; // 최소 너비 조정
-  max-width: 220px; // 최대 너비 조정
+  width: 100%;
+  max-width: 220px;
+  margin: 0 0px;
   cursor: pointer;
   border-radius: 16px;
   overflow: hidden;
@@ -135,11 +139,6 @@ const TemplateItemContainer = styled.div<{
   opacity: ${props => (!props.isSelected ? 1 : props.selected ? 1 : 0.6)};
   &:hover {
     transform: translateY(-5px);
-  }
-  @media (max-width: 550px) {
-    flex: 0 0 calc(50% - ${theme.spacing.md});
-    min-width: auto;
-    max-width: auto;
   }
 `;
 
@@ -150,23 +149,126 @@ const TemplateImage = styled.img`
   border-radius: 16px;
 `;
 
-const SelectTemplateContainer = styled.div`
+const SliderContainer = styled.div`
   width: 100%;
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-  gap: 25px;
+  max-width: 1400px;
+  position: relative;
+  margin-bottom: 120px;
+  padding: 0 ${theme.spacing.xl};
 
-  padding: ${theme.spacing.lg} 0;
-  /* overflow-y: auto; */
-  /* max-height: calc(100vh - 300px); */
-
-  @media (max-width: 1200px) {
-    justify-content: center; // 화면이 작아질 때는 중앙 정렬
+  .slick-list {
+    margin: 0 -10px;
   }
-  @media (max-width: 550px) {
-    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
-    gap: ${theme.spacing.sm};
-    row-gap: ${theme.spacing.lg};
+
+  .slick-arrow {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    z-index: 1;
+    transition: all 0.2s ease-in-out;
+
+    &:hover {
+      &::after {
+        border-color: ${theme.darkGray};
+      }
+    }
+
+    &::before {
+      display: none;
+    }
+
+    &.slick-prev {
+      left: -25px;
+      &::after {
+        content: '';
+        width: 10px;
+        height: 10px;
+        position: absolute;
+        top: 50%;
+        left: 55%;
+        transform: translate(-50%, -50%) rotate(45deg);
+        border-left: 2px solid ${theme.darkGray};
+        border-bottom: 2px solid ${theme.darkGray};
+        transition: border-color 0.2s ease-in-out;
+      }
+    }
+
+    &.slick-next {
+      right: -25px;
+      &::after {
+        content: '';
+        width: 10px;
+        height: 10px;
+        position: absolute;
+        top: 50%;
+        left: 45%;
+        transform: translate(-50%, -50%) rotate(225deg);
+        border-left: 2px solid ${theme.darkGray};
+        border-bottom: 2px solid ${theme.darkGray};
+        transition: border-color 0.2s ease-in-out;
+      }
+    }
+  }
+
+  .slick-dots {
+    bottom: -30px;
+
+    li {
+      width: 8px;
+      height: 8px;
+      margin: 0 8px;
+
+      button {
+        width: 8px;
+        height: 8px;
+        padding: 0;
+
+        &::before {
+          width: 8px;
+          height: 8px;
+          position: absolute;
+          top: 0;
+          left: 0;
+          content: '';
+          background-color: ${theme.darkGray};
+          border-radius: 50%;
+          opacity: 0.3;
+        }
+      }
+
+      &.slick-active {
+        button::before {
+          opacity: 1;
+        }
+      }
+    }
+  }
+
+  @media screen and (max-width: 900px) {
+    .slick-prev {
+      left: -20px;
+    }
+
+    .slick-next {
+      right: -20px;
+    }
+  }
+`;
+
+const TemplateSlider = styled(Slider)`
+  .slick-track {
+    display: flex !important;
+    width: calc(100% - 20px);
+    margin: 20px 10px;
+    justify-content: center;
+  }
+
+  .slick-slide {
+    div {
+      display: flex;
+      width: calc(100% - 20px);
+      justify-content: center;
+    }
   }
 `;
 
@@ -192,6 +294,7 @@ export function SelectTemplateItem({
 }
 
 function SelectTemplate() {
+  const {width} = useWindowResize({maxWidth: 1400});
   const localizedTexts: any = i18next.t('SelectTemplate', {
     returnObjects: true,
   });
@@ -204,8 +307,13 @@ function SelectTemplate() {
     setProgress(75);
   }, []);
   const handleSelectTemplate = (template: string) => {
-    setSelectedTemplate(template);
-    setIsSelected(true);
+    if (selectedTemplate === template) {
+      setSelectedTemplate('');
+      setIsSelected(false);
+    } else {
+      setSelectedTemplate(template);
+      setIsSelected(true);
+    }
   };
 
   const handleContinue = () => {
@@ -217,6 +325,32 @@ function SelectTemplate() {
       navigate('/setup/profile');
     }
   };
+
+  const sliderSettings = {
+    dots: true,
+    infinite: false,
+    speed: 500,
+    slidesToShow: 4,
+    slidesToScroll: 4,
+    arrows: true,
+    responsive: [
+      {
+        breakpoint: 700,
+        settings: {
+          slidesToShow: 3,
+          slidesToScroll: 3,
+        },
+      },
+      {
+        breakpoint: 500,
+        settings: {
+          slidesToShow: 2,
+          slidesToScroll: 2,
+        },
+      },
+    ],
+  };
+
   return (
     <Container>
       <Wrapper>
@@ -228,9 +362,9 @@ function SelectTemplate() {
             }}
           />
 
-          <TemplateContainer>
-            <SelectTemplateContainer>
-              {templateList.map((template: {value: string; image: string}) => (
+          <SliderContainer>
+            <TemplateSlider {...sliderSettings}>
+              {templateList.map(template => (
                 <SelectTemplateItem
                   key={template.value}
                   image={template.image}
@@ -239,8 +373,8 @@ function SelectTemplate() {
                   onClick={() => handleSelectTemplate(template.value)}
                 />
               ))}
-            </SelectTemplateContainer>
-          </TemplateContainer>
+            </TemplateSlider>
+          </SliderContainer>
 
           {selectedTemplate && (
             <ContinueButtonContainer>

@@ -1,8 +1,6 @@
 import i18next from 'i18next';
 import React from 'react';
-import {FaCheck} from 'react-icons/fa6';
 
-import {FiEdit} from 'react-icons/fi';
 import {LuPlus} from 'react-icons/lu';
 import {useNavigate} from 'react-router-dom';
 import {toast} from 'react-toastify';
@@ -108,6 +106,7 @@ const ActionButton = styled.button<{$isDone?: boolean}>`
   justify-content: center;
   gap: ${theme.spacing.sm};
   font-weight: bold;
+  font-size: ${theme.fontSize.lg};
   z-index: 103;
   @media (max-width: 600px) {
     height: 50px;
@@ -143,6 +142,8 @@ function FixedBottomEditView() {
     setOriginalWidgets,
     isMyLink,
     userData,
+    showSave,
+    setShowSave,
   } = useProfile();
 
   function handleCreateWidget() {
@@ -158,11 +159,11 @@ function FixedBottomEditView() {
   }
   const handleDone = async () => {
     if (deletedWidgetItems.length === 0 && currentWidgets.length === 0) {
-      setIsEditing(false);
+      setShowSave(false);
       return;
     }
     if (JSON.stringify(currentWidgets) === JSON.stringify(originalWidgets)) {
-      setIsEditing(false);
+      setShowSave(false);
       return;
     }
 
@@ -195,8 +196,7 @@ function FixedBottomEditView() {
       setCurrentWidgets(updatedData);
       setMyWidgets(updatedData);
       setOriginalWidgets(updatedData);
-
-      setIsEditing(false);
+      setShowSave(false);
     } else {
       toast.error(localizedTexts.toast.failedToUpdate);
     }
@@ -206,20 +206,15 @@ function FixedBottomEditView() {
     <Container>
       <FixedBottomEditViewContainer>
         <ActionButtonContainer>
-          {isEditing ? (
+          {isEditing && (
             <>
-              <ActionButton $isDone onClick={handleDone}>
-                {/* {localizedTexts.done} */}
-                <FaCheck size={24} color={'black'} />
-              </ActionButton>
+              {showSave && (
+                <ActionButton $isDone onClick={handleDone}>
+                  {localizedTexts.save}
+                </ActionButton>
+              )}
               <ActionButton onClick={handleCreateWidget}>
                 <LuPlus size={30} color={'black'} />
-              </ActionButton>
-            </>
-          ) : (
-            <>
-              <ActionButton onClick={startEditing}>
-                <FiEdit size={24} color={'black'} />
               </ActionButton>
             </>
           )}

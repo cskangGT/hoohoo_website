@@ -184,7 +184,6 @@ function ProfileSettingPage() {
     //     setProfileImage(result);
     //   }
   };
-  console.log('user', user);
 
   return (
     <TopHeaderBackButtonWrapperView>

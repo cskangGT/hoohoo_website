@@ -64,14 +64,17 @@ const MedalContainer = styled.div`
   align-items: center;
   background-color: #4d4d4d;
   border-radius: 12px;
-  gap: 2px;
+  gap: 8px;
   padding: 6px;
+  filter: drop-shadow(0 3px 4px rgba(0, 0, 0, 0.5));
   @media (max-width: 600px) {
     padding: 4px;
+    gap: 4px;
     border-radius: 8px;
   }
   @media (max-width: 500px) {
     padding: 2px;
+    gap: 2px;
     border-radius: 4px;
   }
 `;
@@ -90,12 +93,14 @@ const BadgeSection = styled.div`
   display: flex;
   align-items: center;
   gap: 8px;
+  filter: drop-shadow(0 3px 4px rgba(0, 0, 0, 0.5));
 `;
 
 const MedalSection = styled.div`
   display: flex;
   align-items: center;
   gap: 8px;
+  filter: drop-shadow(0 3px 4px rgba(0, 0, 0, 0.5));
 `;
 
 const MedalsRow = styled.div`
@@ -158,6 +163,7 @@ const BadgeBigSection = styled.div`
   display: flex;
   flex-direction: row;
   align-items: center;
+  filter: drop-shadow(0 3px 4px rgba(0, 0, 0, 0.5));
   justify-content: center;
   column-gap: 8px;
   background-color: #4d4d4d;
@@ -211,6 +217,7 @@ const MedalsBigSection = styled.div`
   justify-content: space-around;
   align-items: center;
   background-color: #4d4d4d;
+  filter: drop-shadow(0 3px 4px rgba(0, 0, 0, 0.5));
   border-radius: 12px;
   box-shadow: 0 0 10px 0 #383838;
   padding: 6px;

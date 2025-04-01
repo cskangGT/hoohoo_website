@@ -2,6 +2,7 @@ import React from 'react';
 import {FaTimes} from 'react-icons/fa';
 import {FaPencil} from 'react-icons/fa6';
 import styled, {css} from 'styled-components';
+import useWindowResize from '../../../components/hooks/useWindowResize';
 import {theme} from '../../../style';
 import {
   EMWidgetData,
@@ -150,20 +151,11 @@ const WidgetContent = styled.div<{
   size: ProfileWidgetItemSize;
   $isEditMode?: boolean;
 }>`
-  text-align: center;
-  padding: ${props => (props.$isEditMode ? '30px' : '10px')};
-  width: calc(100% - ${props => (props.$isEditMode ? '60px' : '20px')});
-  height: calc(100% - ${props => (props.$isEditMode ? '60px' : '20px')});
-  font-weight: 500;
-  flex-direction: column;
-  position: relative;
+  width: 100%;
+  height: 100%;
 
-  color: ${props => props.textColor || 'white'};
-  margin: auto;
   border-radius: 10px;
-
-  font-size: ${props =>
-    props.size === 'BIG' ? theme.fontSize.lg : theme.fontSize.rg};
+  position: relative;
   overflow: hidden;
 `;
 const WidgetTextContentContainer = styled.div<{
@@ -198,7 +190,7 @@ const WidgetTextContent = styled.p<{size: ProfileWidgetItemSize}>`
 `;
 const WidgetImage = styled.img`
   width: calc(100%);
-  height: calc(100%);
+  height: 100%;
   position: absolute;
   top: 0px;
   left: 0px;
@@ -237,7 +229,7 @@ const ItemHolderBox = styled.div`
   left: 10px;
   background-color: transparent;
 `;
-const EditBox = styled.div`
+const EditBox = styled.div<{resizedWidth: number}>`
   position: absolute;
   top: -4px;
   right: -4px;
@@ -245,7 +237,7 @@ const EditBox = styled.div`
   backdrop-filter: blur(4px);
   border-radius: 6px;
 
-  padding: 6px 6px;
+  padding: ${props => (props.resizedWidth > 400 ? '6px 6px' : '4px 4px')};
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -452,6 +444,9 @@ function WidgetItem({
   onEditWidget,
   userInfo,
 }: WidgetItemProps) {
+  const {width: resizedWidth} = useWindowResize({
+    maxWidth: 600,
+  });
   const widgetItem = widget as ProfileWidgetItemType;
   const isTemp =
     widgetItem.isTemp || widgetItem.emWidgetType === ProfileEMWidgetType.Temp;
@@ -486,16 +481,16 @@ function WidgetItem({
         $isClickable={false}>
         <TemplateWidgetContent widgetItem={widgetItem} />
         {isEditMode && (
-          <EditBox>
+          <EditBox resizedWidth={resizedWidth}>
             <EditButton className="widget-button" onClick={handleEditClick}>
-              <FaPencil size={14} color="white" />
+              <FaPencil size={resizedWidth > 400 ? 14 : 12} color="white" />
             </EditButton>
             <Divider />
 
             <DeleteButton
               className="widget-button"
               onClick={() => onDeleteWidget && onDeleteWidget(widgetItem)}>
-              <FaTimes size={16} color="white" />
+              <FaTimes size={resizedWidth > 400 ? 16 : 14} color="white" />
             </DeleteButton>
           </EditBox>
         )}
@@ -566,16 +561,16 @@ function WidgetItem({
           {/* <ItemHolderBox>
             <PiDotsSixVerticalBold size={20} color="white" />
           </ItemHolderBox> */}
-          <EditBox>
+          <EditBox resizedWidth={resizedWidth}>
             <EditButton className="widget-button" onClick={handleEditClick}>
-              <FaPencil size={14} color="white" />
+              <FaPencil size={resizedWidth > 400 ? 14 : 12} color="white" />
             </EditButton>
             <Divider />
 
             <DeleteButton
               className="widget-button"
               onClick={() => onDeleteWidget && onDeleteWidget(widgetItem)}>
-              <FaTimes size={16} color="white" />
+              <FaTimes size={resizedWidth > 400 ? 16 : 14} color="white" />
             </DeleteButton>
           </EditBox>
         </>
