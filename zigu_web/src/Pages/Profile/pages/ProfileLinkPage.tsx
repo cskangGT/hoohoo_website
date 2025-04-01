@@ -72,6 +72,7 @@ function ProfileLinkPage() {
     returnObjects: true,
   });
   const {state} = useLocation();
+  const location = useLocation();
   const showTooltip = state?.showTooltip;
   const keepEditing = state?.keepEditing;
   const {user, isAuthenticated} = useUserStore();
@@ -84,7 +85,6 @@ function ProfileLinkPage() {
     isEditingItem,
     isEditing,
     profileError,
-
     setIsEditing,
   } = useProfile();
   const nameTag = useParams()?.nameTag;
@@ -94,8 +94,12 @@ function ProfileLinkPage() {
   });
 
   useEffect(() => {
+    console.log('keepEditing', keepEditing);
+    console.log('location changed:', location.pathname);
+    console.log('nameTag:', nameTag);
+
     !keepEditing && fetchUserProfile(nameTag);
-  }, [nameTag]);
+  }, [nameTag, location.pathname]);
 
   useEffect(() => {
     if (keepEditing) {
