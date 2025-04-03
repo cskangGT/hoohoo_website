@@ -26,7 +26,7 @@ const Container = styled.div`
   display: flex;
   justify-content: center;
   align-items: flex-start;
-  max-height: 100%;
+
   background-color: white !important;
   scrollbar-width: none;
   margin-top: 60px;
@@ -36,6 +36,9 @@ const Container = styled.div`
     padding: ${theme.spacing.md};
     margin-top: 20px;
     width: calc(100% - ${theme.spacing.md} * 2);
+  }
+  @media screen and (max-width: 600px) {
+    margin-bottom: 100px;
   }
 `;
 const InnerWrapper = styled.div`
@@ -68,6 +71,9 @@ const ProfileImageContainer = styled.div`
   overflow: hidden;
   cursor: pointer;
   margin-bottom: ${theme.spacing['4xl']};
+  @media screen and (max-width: 500px) {
+    margin-bottom: ${theme.spacing['2xl']};
+  }
 `;
 const ProfileNameContainer = styled.div`
   display: flex;
@@ -281,7 +287,7 @@ function SetupProfile() {
     // 한국어, 영어, 숫자, 밑줄, 마침표만 허용하는 정규식
     const validCharsRegex = /^[a-zA-Z0-9가-힣ㄱ-ㅎㅏ-ㅣ_. ]+$/;
     const startsOrEndsWithSpecial = /^[ .]|[. ]$/;
-
+    handleSendQuestionnaire();
     console.log('name', name);
 
     if (name.length > 20 || name.length < 2) {
@@ -319,7 +325,7 @@ function SetupProfile() {
       };
       setUser(userData);
 
-      handleSendQuestionnaire();
+      // handleSendQuestionnaire();
     } else {
       alert(localizedTexts.errorText.error);
       setError({...error, serverError: true});
@@ -379,9 +385,7 @@ function SetupProfile() {
             )}
           </ProfileNameContainer>
           <ContinueButtonContainer>
-            <ContinueButton
-              onClick={handleSubmit}
-              disabled={isLoading || !(name.length > 2)}>
+            <ContinueButton onClick={handleSubmit} disabled={isLoading}>
               {isLoading ? (
                 <CircularProgress size={25} />
               ) : (

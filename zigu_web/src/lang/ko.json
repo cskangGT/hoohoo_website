@@ -1112,6 +1112,7 @@
     "email": "이메일",
     "password": "비밀번호",
     "login": "로그인",
+    "sessionExpired": "세션이 만료되었습니다. 다시 로그인해주세요.",
     "forgotPassword": "이메일이나 비밀번호를 잊으셨나요?",
     "continueWithGoogle": "Google 로그인",
     "continueWithApple": "Apple 로그인",

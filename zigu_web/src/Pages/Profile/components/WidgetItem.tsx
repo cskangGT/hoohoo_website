@@ -16,7 +16,6 @@ import AchievementWidgetContent from './AchievementWidgetContent';
 import CarbonWidgetContent from './CarbonWidgetContent';
 import GalleryWidgetContent from './GalleryWidgetContent';
 import LeaderboardWidgetContent from './LeaderboardWidgetContent';
-import TemplateWidgetContent from './TemplateWidgetContent';
 
 const WIDTH = window.innerWidth > 600 ? 600 : window.innerWidth;
 
@@ -463,40 +462,86 @@ function WidgetItem({
       onEditWidget(widgetItem);
     }
   };
+  const emWidgetData =
+    hasEMWidgetType && widgetItem.widgetData
+      ? widgetItem.widgetData
+      : {
+          level: 4,
+          numBadges: 2,
+          numMedals: 3,
+          equippedMedals: [
+            {
+              medalTitle: 'ECO_ACTION_TUMBLER',
+              medalLevel: 2,
+            },
+            {
+              medalTitle: 'ECO_ACTION_CARBON_REDUCTION',
+              medalLevel: 3,
+            },
+            {
+              medalTitle: 'REWARD_REDEEM_MEDAL',
+              medalLevel: 4,
+            },
+          ],
+          equippedBadge: 'LITTLE_BY_LITTLE',
+          annualCarbonReduction: 1370,
+          annualEcoActionCount: 100,
+          treeEffect: 3,
+          ecoActionCount: 700,
+          userRank: 17,
+          lastMonthRank: 18,
+          higherRankInfo: {
+            gap: 39,
+            ecoActionCount: 739,
+          },
+          lowerRankInfo: {
+            gap: 25,
+            ecoActionCount: 675,
+          },
+          thumbnails: [
+            'https://picsum.photos/200/300',
+            'https://picsum.photos/200/300',
+            'https://picsum.photos/200/300',
+            'https://picsum.photos/200/300',
+            'https://picsum.photos/200/300',
+            'https://picsum.photos/200/300',
+            'https://picsum.photos/200/300',
+            'https://picsum.photos/200/300',
+          ],
+        };
+  // if (isTemp && hasEMWidgetType) {
+  //   return (
+  //     <WidgetItemContainer
+  //       key={(widgetItem.isEmWidget ? 'em_' : 'custom_') + widgetItem.id}
+  //       $size={widgetItem.sizeType}
+  //       $isEditMode={isEditMode}
+  //       $hasBorder={widgetItem?.hasBorder}
+  //       $bgColor={
+  //         hasEMWidgetType
+  //           ? '#858585'
+  //           : widgetItem.bgType === 'COLOR'
+  //             ? widgetItem.bgColor
+  //             : '#858585'
+  //       }
+  //       $isClickable={false}>
+  //       <TemplateWidgetContent widgetItem={widgetItem} />
+  //       {isEditMode && (
+  //         <EditBox resizedWidth={resizedWidth}>
+  //           <EditButton className="widget-button" onClick={handleEditClick}>
+  //             <FaPencil size={resizedWidth > 400 ? 14 : 12} color="white" />
+  //           </EditButton>
+  //           <Divider />
 
-  if (isTemp && hasEMWidgetType) {
-    return (
-      <WidgetItemContainer
-        key={(widgetItem.isEmWidget ? 'em_' : 'custom_') + widgetItem.id}
-        $size={widgetItem.sizeType}
-        $isEditMode={isEditMode}
-        $hasBorder={widgetItem?.hasBorder}
-        $bgColor={
-          hasEMWidgetType
-            ? '#858585'
-            : widgetItem.bgType === 'COLOR'
-              ? widgetItem.bgColor
-              : '#858585'
-        }
-        $isClickable={false}>
-        <TemplateWidgetContent widgetItem={widgetItem} />
-        {isEditMode && (
-          <EditBox resizedWidth={resizedWidth}>
-            <EditButton className="widget-button" onClick={handleEditClick}>
-              <FaPencil size={resizedWidth > 400 ? 14 : 12} color="white" />
-            </EditButton>
-            <Divider />
-
-            <DeleteButton
-              className="widget-button"
-              onClick={() => onDeleteWidget && onDeleteWidget(widgetItem)}>
-              <FaTimes size={resizedWidth > 400 ? 16 : 14} color="white" />
-            </DeleteButton>
-          </EditBox>
-        )}
-      </WidgetItemContainer>
-    );
-  }
+  //           <DeleteButton
+  //             className="widget-button"
+  //             onClick={() => onDeleteWidget && onDeleteWidget(widgetItem)}>
+  //             <FaTimes size={resizedWidth > 400 ? 16 : 14} color="white" />
+  //           </DeleteButton>
+  //         </EditBox>
+  //       )}
+  //     </WidgetItemContainer>
+  //   );
+  // }
 
   const textColor =
     widgetItem.bgType === 'COLOR' && widgetItem.bgColor
@@ -541,7 +586,7 @@ function WidgetItem({
         <EMWidgetContent
           widgetItem={widgetItem}
           userInfo={userInfo}
-          widgetData={widgetItem.widgetData || {}}
+          widgetData={emWidgetData}
           isEditMode={isEditMode}
         />
       ) : isClickable ? (

@@ -1125,6 +1125,7 @@
   },
   "Login": {
     "title": "Welcome back!",
+    "sessionExpired": "Session expired. Please login again.",
     "new": "New to ZIGU? ",
     "signup": "Sign up",
     "email": "Email Address",

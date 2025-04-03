@@ -16,6 +16,7 @@ import {
 } from '../../../util/MediaUtil';
 import {PROFILE_PREFIX} from '../../../util/S3Config';
 import TopHeaderBackButtonWrapperView from '../components/TopHeaderBackButtonWrapperView';
+import {useProfile} from '../contexts/ProfileContext';
 const ProfileContainer = styled.div`
   display: flex;
   flex-direction: row;
@@ -135,7 +136,7 @@ function ProfileSettingPage() {
     returnObjects: true,
   });
   const {state} = useLocation();
-
+  const {} = useProfile();
   const fileInputRef = useRef<HTMLInputElement>(null);
   const {user, logout, isAuthenticated, setUser} = useUserStore();
 
@@ -146,6 +147,12 @@ function ProfileSettingPage() {
     if (response.result) {
       sessionStorage.clear();
       logout();
+      setUser({
+        username: '',
+        nameTag: '',
+        profileImage: '',
+      });
+
       navigate('/login');
     } else {
       toast.error(localizedTexts.toast.failLogout);

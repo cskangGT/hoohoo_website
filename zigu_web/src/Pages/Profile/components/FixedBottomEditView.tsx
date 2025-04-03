@@ -7,6 +7,7 @@ import {useNavigate} from 'react-router-dom';
 import {toast} from 'react-toastify';
 import styled from 'styled-components';
 import {updateWidgets} from '../../../api/jigulink/jigulink.api';
+import useWindowResize from '../../../components/hooks/useWindowResize';
 import {useUserStore} from '../../../storage/userStore';
 import {theme} from '../../../style';
 import {useProfile} from '../contexts/ProfileContext';
@@ -129,6 +130,9 @@ const ActionButton = styled.button<{$isDone?: boolean}>`
   }
 `;
 function FixedBottomEditView() {
+  const {width: resizedWidth} = useWindowResize({
+    maxWidth: 600,
+  });
   const localizedTexts: any = i18next.t('ProfileLinkPage', {
     returnObjects: true,
   });
@@ -224,12 +228,18 @@ function FixedBottomEditView() {
                 </ActionButton>
               }
               <ActionButton onClick={handleCreateWidget}>
-                <LuPlus size={30} color={'black'} />
+                <LuPlus
+                  size={resizedWidth > 600 ? 30 : resizedWidth > 500 ? 25 : 20}
+                  color={'black'}
+                />
               </ActionButton>
             </>
           ) : (
             <ActionButton onClick={startEditing}>
-              <FiEdit size={30} color={'black'} />
+              <FiEdit
+                size={resizedWidth > 600 ? 30 : resizedWidth > 500 ? 25 : 20}
+                color={'black'}
+              />
             </ActionButton>
           )}
         </ActionButtonContainer>

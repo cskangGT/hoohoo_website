@@ -12,13 +12,14 @@ import React, {useEffect, useState} from 'react';
 import {IoEyeOffSharp, IoEyeSharp} from 'react-icons/io5';
 import {useNavigate} from 'react-router-dom';
 import styled from 'styled-components';
-
 import {
   getAPIKey,
+  logoutProfile,
   redirectUri,
   sendAppleLogin,
   sendGoogleLogin,
   validateLogin,
+  validateSession,
 } from '../../../api/login/auth';
 import {useLanguage} from '../../../components/hooks/LanguageContext';
 import Wrapper from '../../../components/Wrapper/Wrapper';
@@ -200,13 +201,30 @@ const Login = () => {
       navigate(`/${nameTag}`, {replace: true});
     }
   };
+  const checkSession = async () => {
+    const response = await validateSession();
+    if (response.result) {
+      console.log('response.data', response.data);
+
+      setUser(response.data.user);
+      if (response.data?.user?.isNeedsQuestionnaire) {
+        navigate('/setup/select-goal');
+      } else {
+        navigateNameTag(response.data.user.nameTag);
+      }
+    } else {
+      logoutProfile();
+      // toast.error(localizedTexts.sessionExpired);
+    }
+  };
   useEffect(() => {
     if (user?.nameTag && isAuthenticated) {
       console.log('user', user);
-
       navigateNameTag(user.nameTag);
+    } else {
+      checkSession();
     }
-  }, [user, isAuthenticated]);
+  }, []);
   const navigate = useNavigate();
   const [email, setEmail] = useState<string>('');
   const [password, setPassword] = useState<string>('');
@@ -221,6 +239,8 @@ const Login = () => {
     onSuccess: async tokenResponse => {
       const response = await sendGoogleLogin(tokenResponse.code);
       if (response.result) {
+        checkSession();
+
         getAPIKey();
 
         setUser(response.data.user);
@@ -284,8 +304,7 @@ const Login = () => {
     });
     try {
       const res = await (window as any)?.AppleID?.auth?.signIn();
-      console.log(res);
-      console.log(res);
+
       if (res?.authorization?.id_token && res?.authorization?.code) {
         const response = await sendAppleLogin(
           res.authorization.code,
@@ -323,7 +342,14 @@ const Login = () => {
     window.location.href = link;
   };
   console.log('user', user);
+  async function handleLogout() {
+    const response = await logoutProfile();
+    console.log('response', response);
 
+    if (response.result) {
+    } else {
+    }
+  }
   return (
     <Container>
       <Wrapper>
@@ -401,6 +427,9 @@ const Login = () => {
                   <ErrorText>{localizedTexts.errorText.invalidEmail}</ErrorText>
                 )}
                 <LoginButton type="submit">{localizedTexts.login}</LoginButton>
+                <LoginButton onClick={handleLogout}>
+                  {localizedTexts.login}
+                </LoginButton>
                 <ForgotPassword>
                   <ForgotPasswordButton onClick={() => {}}>
                     {localizedTexts.forgotPassword}

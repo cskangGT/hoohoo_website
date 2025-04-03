@@ -53,6 +53,11 @@ export const getEMWidgetData = (): Record<string, { title: any; image: string; l
             title: localizedTexts.widgetList['MY_GALLERY'],
             link: deeplink + 'profile?initTab=2',
         },
+        [ProfileEMWidgetType.Temp]: {
+            image: EMWidgetImage.MY_GALLERY,
+            title: localizedTexts.widgetList['MY_GALLERY'],
+            link: deeplink + 'profile?initTab=2',
+        },
 
     }
 };
