@@ -1193,8 +1193,8 @@
     "invalidCode": "Invalid code. Please try again."
   },
   "SelectGoal": {
-    "title": "What’s your goal with ZIGU?",
-    "description": "Pick what fits you best, It’ll make your ZIGU even better!",
+    "title": "Which ZIGU style suits you best?",
+    "description": "Your choice helps ZIGU understand you better!",
     "continue": "Continue",
     "goals": [
       {
@@ -1396,6 +1396,7 @@
       "startsEndsWithPeriod": "Profile names cannot start or end with a period or space.",
       "limitExceeded": "Profile name must be between 2 and 20 characters."
     },
+    "failUploadImage": "Failed to upload profile image. Please try again.",
     "name": "Profile name"
   },
   "ProgressBar": {
@@ -1471,7 +1472,12 @@
     "syncEarthMeraID": "Sync EarthMera ID",
     "changeURL": "Change URL",
     "logout": "Log out",
-    "notSupported": "This feature is not supported yet."
+    "notSupported": "This feature is not supported yet.",
+    "toast": {
+      "success": "Profile updated successfully",
+      "failLogout": "Failed to logout",
+      "failUploadImage": "Failed to upload profile image"
+    }
   },
   "ProfileCreateWidgetPage": {
     "title": "Create your profile widget",

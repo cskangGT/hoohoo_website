@@ -66,9 +66,9 @@ export const updateWidgets = async (widgets: any[], deletedWidgetItems: ProfileW
         return { result: false, status: error?.response?.status };
     }
 };
-export const applyTemplate = async (template: string) => {
+export const applyTemplate = async (template: string, language: string) => {
     try {
-        const response = await clientAxios.post(APIAddress + `myProfile/web/template/`, { template, clearWidgets: true }, { withCredentials: true });
+        const response = await clientAxios.post(APIAddress + `myProfile/web/template/`, { template, clearWidgets: true, language }, { withCredentials: true });
         return { result: true, data: response.data };
     } catch (error: any) {
         return { result: false, status: error?.response?.status };

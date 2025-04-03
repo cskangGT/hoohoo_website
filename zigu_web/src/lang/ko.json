@@ -1135,8 +1135,8 @@
     "invalidCode": "올바르지 않은 코드입니다. 다시 시도해주세요."
   },
   "SelectGoal": {
-    "title": "ZIGU를 통해 어떤 걸 해보고 싶으신가요?",
-    "description": "당신에게 어울리는 항목을 선택해주세요. ZIGU가 당신을 더 잘 이해하는데 도움이 돼요!",
+    "title": "나한테 찰떡인 ZIGU, 골라볼까요?",
+    "description": "선택해주신 항목은 ZIGU가 당신을 이해하는 데 도움이 돼요!",
     "continue": "다음",
     "goals": [
       {
@@ -1341,6 +1341,7 @@
       "startsEndsWithPeriod": "이름은 마침표나 공백으로 시작하거나 끝날 수 없어요.",
       "limitExceeded": "이름은 2~20자 사이여야 해요."
     },
+    "failUploadImage": "이미지 업로드에 실패했어요. 다시 시도해주세요.",
     "name": "프로필 이름"
   },
   "KakaoCallback": {
@@ -1458,7 +1459,12 @@
     "syncEarthMeraID": "지구에서 어스메라 연동하기",
     "changeURL": "URL 변경",
     "logout": "로그아웃",
-    "notSupported": "이 기능은 아직 지원되지 않아요."
+    "notSupported": "이 기능은 아직 지원되지 않아요.",
+    "toast": {
+      "success": "프로필 업데이트에 성공했어요.",
+      "failLogout": "로그아웃에 실패했어요.",
+      "failUploadImage": "프로필 이미지 업로드에 실패했어요."
+    }
   },
   "ProfileCreateWidgetPage": {
     "title": "프로필 위젯 만들기",

@@ -1,5 +1,10 @@
-import React, { createContext, ReactNode, useContext, useEffect, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import React, {
+  createContext,
+  ReactNode,
+  useContext,
+  useEffect,
+  useState,
+} from 'react';
 import ProgressBar from '../components/ProgressBar/ProgressBar';
 
 export interface QuestionnaireData {
@@ -22,10 +27,12 @@ interface QuestionnaireContextType {
     value: string;
     image: string;
   }[];
-  updateTemplateList: (data: {
-    value: string;
-    image: string;
-  }[]) => void;
+  updateTemplateList: (
+    data: {
+      value: string;
+      image: string;
+    }[],
+  ) => void;
 }
 
 const initialQuestionnaireData: QuestionnaireData = {
@@ -45,41 +52,51 @@ const QuestionnaireContext = createContext<
 export const QuestionnaireProvider: React.FC<{children: ReactNode}> = ({
   children,
 }) => {
-  const navigate = useNavigate();
   const [questionnaireData, setQuestionnaireData] = useState<QuestionnaireData>(
     {
       ...initialQuestionnaireData,
       nameTag: sessionStorage.getItem('storedNameTag') || '',
     },
   );
-  const [templateList, setTemplateList] = useState<{
-    value: string;
-    image: string;
-  }[]>([]);
+  const [templateList, setTemplateList] = useState<
+    {
+      value: string;
+      image: string;
+    }[]
+  >([]);
   const [progress, setProgress] = useState<number>(0);
 
   const updateQuestionnaireData = (data: Partial<QuestionnaireData>) => {
-    setQuestionnaireData(prev => ({...prev, ...data}));
-    sessionStorage.setItem('questionnaireData', JSON.stringify(data));
+    setQuestionnaireData(prev => {
+      sessionStorage.setItem(
+        'questionnaireData',
+        JSON.stringify({...prev, ...data}),
+      );
+      return {...prev, ...data};
+    });
   };
 
   useEffect(() => {
     const list = JSON.parse(sessionStorage.getItem('templateList') || '[]');
-    console.log("list", list);
+    console.log('list', list);
     setTemplateList(list);
-    const questionnaireData = JSON.parse(sessionStorage.getItem('questionnaireData') || '{}');
-    setQuestionnaireData(questionnaireData);
+    const qData = JSON.parse(
+      sessionStorage.getItem('questionnaireData') || '{}',
+    );
+    console.log('questionnaireData', qData);
 
+    setQuestionnaireData(qData);
   }, []);
-  const updateTemplateList = (data: {
-    value: string;
-    image: string;
-  }[]) => {
-    console.log("data in updateTemplateList", data);
-    
+  const updateTemplateList = (
+    data: {
+      value: string;
+      image: string;
+    }[],
+  ) => {
+    console.log('data in updateTemplateList', data);
+
     setTemplateList(data);
     sessionStorage.setItem('templateList', JSON.stringify(data));
-
   };
   const resetQuestionnaireData = () => {
     setQuestionnaireData(initialQuestionnaireData);
@@ -99,8 +116,9 @@ export const QuestionnaireProvider: React.FC<{children: ReactNode}> = ({
         templateList,
         updateTemplateList,
       }}>
-      
-      {progress > 0 && <ProgressBar progress={progress} setProgress={setProgress} />}
+      {progress > 0 && (
+        <ProgressBar progress={progress} setProgress={setProgress} />
+      )}
       {children}
     </QuestionnaireContext.Provider>
   );

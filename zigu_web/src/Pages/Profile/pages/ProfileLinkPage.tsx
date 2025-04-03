@@ -73,7 +73,7 @@ function ProfileLinkPage() {
   });
   const {state} = useLocation();
   const location = useLocation();
-  const showTooltip = state?.showTooltip;
+  const stateIsEditing = state?.isEditing;
   const keepEditing = state?.keepEditing;
   const {user, isAuthenticated} = useUserStore();
   const {
@@ -92,7 +92,12 @@ function ProfileLinkPage() {
   const {width: resizedWidth} = useWindowResize({
     maxWidth: 600,
   });
-
+  useEffect(() => {
+    if (stateIsEditing) {
+      setIsEditing(true);
+      window.history.replaceState({}, '', location.pathname);
+    }
+  }, [stateIsEditing]);
   useEffect(() => {
     console.log('keepEditing', keepEditing);
     console.log('location changed:', location.pathname);

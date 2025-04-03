@@ -204,7 +204,6 @@ function ProfileWidgetGrid() {
                     />
                   )
                 ))}
-              {!isEditing && <PowerByEM />}
             </BlurredContainer>
           ) : (
             <PowerByEM />

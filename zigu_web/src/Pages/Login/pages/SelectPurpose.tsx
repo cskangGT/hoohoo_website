@@ -86,7 +86,11 @@ const ItemContainer = styled.div<{selected: boolean}>`
     min-width: 100px;
     gap: ${theme.spacing.rg};
   }
-
+  @media screen and (max-width: 500px) {
+    flex: 0 0 calc(40% - ${theme.spacing.rg});
+    min-width: auto;
+    gap: ${theme.spacing.rg};
+  }
   &:hover {
     transform: translateY(-5px);
     box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
@@ -219,7 +223,7 @@ function SelectPurpose() {
     updateQuestionnaireData({
       purposes: selectedPurpose.map(item => item.value),
     });
-    //selectedPurpose에서 template를 추출해서 넣어서 세팅
+    // selectedPurpose에서 template를 추출해서 넣어서 세팅
     const templateList = selectedPurpose.flatMap(item => {
       const templates =
         localizedTexts.purposeList.find(

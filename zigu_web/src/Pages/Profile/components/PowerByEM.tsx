@@ -27,14 +27,19 @@ const EmText = styled.span`
   font-size: ${theme.fontSize.rg};
   color: ${theme.inActiveGray};
   text-align: center;
+  text-decoration: underline;
+  text-decoration-color: ${theme.inActiveGray};
 `;
 function PowerByEM() {
+  function handleClick() {
+    window.open('https://earthmera.com/', '_blank');
+  }
   return (
     <Container>
       <ZIGU>
         Z<GreenText>I</GreenText>GU{' '}
       </ZIGU>
-      <EmText> by EarthMera</EmText>
+      <EmText onClick={handleClick}> by EarthMera Co.</EmText>
     </Container>
   );
 }

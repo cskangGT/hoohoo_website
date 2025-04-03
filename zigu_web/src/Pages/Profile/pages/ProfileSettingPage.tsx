@@ -148,7 +148,7 @@ function ProfileSettingPage() {
       logout();
       navigate('/login');
     } else {
-      toast.error('Failed to logout');
+      toast.error(localizedTexts.toast.failLogout);
     }
   };
   const handleProfileImageChange = async (
@@ -161,7 +161,7 @@ function ProfileSettingPage() {
     const uriKey = generateUniqueKey(PROFILE_PREFIX, 'png');
     const {accessKey, keyId} = await checkAWSKey();
     if (!accessKey || !keyId) {
-      toast.error('Failed to upload image');
+      toast.error(localizedTexts.toast.failUploadImage);
       return;
     } else {
       const result = await uploadImageToS3(compressedImage, true, uriKey);

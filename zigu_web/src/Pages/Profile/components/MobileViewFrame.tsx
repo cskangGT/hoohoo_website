@@ -1,5 +1,7 @@
 import React, {ReactNode, useEffect, useRef} from 'react';
+import {MdOutlineDarkMode, MdOutlineLightMode} from 'react-icons/md';
 import styled from 'styled-components';
+import {theme} from '../../../style';
 import {useProfile} from '../contexts/ProfileContext';
 
 interface MobileViewFrameProps {
@@ -46,7 +48,46 @@ const MobileContainer = styled.div<{$isDarkMode: boolean}>`
   /* border-left: 1px solid #333333;
   border-right: 1px solid #333333; */
 `;
+const DarkModeButton = styled.button<{$isDarkMode: boolean}>`
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  z-index: 100;
+  background-color: ${props =>
+    props.$isDarkMode ? theme.white : theme.darkGray};
+  color: ${props => (props.$isDarkMode ? theme.darkGray : theme.white)};
+  border: none;
+  cursor: pointer;
 
+  padding: ${theme.spacing.sm} ${theme.spacing.md};
+  border-radius: 30px;
+  height: 60px;
+  width: 60px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: ${theme.spacing.sm};
+
+  z-index: 103;
+  @media (max-width: 760px) {
+    display: none;
+  }
+  @media (max-width: 600px) {
+    height: 50px;
+    width: 50px;
+    padding: ${theme.spacing.sm} 8px;
+    font-size: ${theme.fontSize.md};
+    border-radius: 25px;
+  }
+  @media (max-width: 400px) {
+    height: 40px;
+    padding: ${theme.spacing.sm} 4px;
+    font-size: ${theme.fontSize.rg};
+    width: 40px;
+    border-radius: 20px;
+  }
+`;
 const MobileContent = styled.div`
   flex: 1;
   overflow-y: auto;
@@ -59,10 +100,13 @@ const MobileContent = styled.div`
 `;
 
 function MobileViewFrame({children}: MobileViewFrameProps) {
-  const {isDarkMode} = useProfile();
+  const {isDarkMode, setIsDarkMode} = useProfile();
   const outerRef = useRef<HTMLDivElement>(null);
   const contentRef = useRef<HTMLDivElement>(null);
 
+  function handleDarkMode() {
+    setIsDarkMode(!isDarkMode);
+  }
   useEffect(() => {
     const outer = outerRef.current;
     const content = contentRef.current;
@@ -100,6 +144,13 @@ function MobileViewFrame({children}: MobileViewFrameProps) {
       <MobileContainer $isDarkMode={isDarkMode}>
         <MobileContent ref={contentRef}>{children}</MobileContent>
       </MobileContainer>
+      <DarkModeButton onClick={handleDarkMode} $isDarkMode={isDarkMode}>
+        {!isDarkMode ? (
+          <MdOutlineDarkMode size={30} color={theme.white} />
+        ) : (
+          <MdOutlineLightMode size={30} color={theme.darkGray} />
+        )}
+      </DarkModeButton>
     </OuterContainer>
   );
 }

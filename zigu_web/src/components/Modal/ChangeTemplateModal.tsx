@@ -5,6 +5,7 @@ import {useNavigate} from 'react-router-dom';
 import {toast} from 'react-toastify';
 import styled from 'styled-components';
 import {applyTemplate} from '../../api/jigulink/jigulink.api';
+import i18n from '../../lang/i18n';
 import {useUserStore} from '../../storage/userStore';
 import {theme} from '../../style';
 
@@ -104,14 +105,15 @@ function ChangeTemplateModal({
     returnObjects: true,
   });
   const {user} = useUserStore();
+
   const navigate = useNavigate();
   const handleChangeTemplate = async () => {
     setIsLoading(true);
-    const response = await applyTemplate(selectedTemplate);
+    const response = await applyTemplate(selectedTemplate, i18n.language);
     console.log(response);
     if (response.result) {
       onCancel();
-      navigate(`/${user?.nameTag}`);
+      navigate(`/${user?.nameTag}`, {state: {isEditing: true}});
       setIsLoading(false);
     } else {
       toast.error(localizedTexts.ConfirmModal.error);

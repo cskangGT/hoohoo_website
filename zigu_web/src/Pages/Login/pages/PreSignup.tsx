@@ -57,6 +57,9 @@ const InnerBox = styled.div`
   @media screen and (max-width: 600px) {
     align-items: center;
   }
+  @media screen and (max-width: 500px) {
+    margin: 30px 0px;
+  }
 `;
 const ContentOuterBox = styled.div`
   /* width: calc(50% - ${theme.spacing.xl} * 2); */
@@ -91,6 +94,19 @@ const ContentOuterBox = styled.div`
     display: block;
     width: calc(100% - 48px);
     padding: 20px 24px;
+  }
+  @media screen and (max-width: 500px) {
+    display: block;
+    width: calc(100% - 30px);
+    min-width: auto;
+
+    padding: 20px 15px;
+  }
+  @media screen and (max-width: 400px) {
+    display: block;
+    width: calc(100% - 20px);
+    min-width: auto;
+    padding: 20px 10px;
   }
 `;
 const TitleText = styled.h2<{language: string}>`
@@ -144,6 +160,12 @@ const DescriptionText = styled.div`
   @media screen and (max-width: 600px) {
     text-align: center;
   }
+  @media screen and (max-width: 500px) {
+    font-size: ${theme.fontSize.md};
+  }
+  @media screen and (max-width: 400px) {
+    font-size: ${theme.fontSize.rg};
+  }
 `;
 
 const LinkTitleText = styled.div`
@@ -153,6 +175,9 @@ const LinkTitleText = styled.div`
   color: ${theme.darkGray};
   @media screen and (max-width: 600px) {
     text-align: center;
+  }
+  @media screen and (max-width: 500px) {
+    font-size: ${theme.fontSize.md};
   }
 `;
 const LoginButton = styled.button`
@@ -174,6 +199,10 @@ const LogoBox = styled.button`
   background-color: transparent;
   border: none;
   cursor: pointer;
+
+  @media screen and (max-width: 500px) {
+    margin-top: ${theme.spacing.xl};
+  }
 `;
 const LinkContainer = styled.div`
   display: flex;

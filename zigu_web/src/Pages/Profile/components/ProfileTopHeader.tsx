@@ -1,7 +1,6 @@
 import i18next from 'i18next';
 import React, {useEffect} from 'react';
 import {FiLayout} from 'react-icons/fi';
-import {IoEyeOutline} from 'react-icons/io5';
 import {LuSettings} from 'react-icons/lu';
 import {RiShare2Line} from 'react-icons/ri';
 import {useLocation, useNavigate} from 'react-router-dom';
@@ -190,9 +189,6 @@ function ProfileTopHeader({
         <TopHeaderRight>
           {isMyLink ? (
             <>
-              <IconButton onClick={handlePreview}>
-                <IoEyeOutline size={iconSize} color={theme.white} />
-              </IconButton>
               <IconButton onClick={handleLayout}>
                 {isTooltipOpen ? (
                   <CustomTooltip content={localizedTexts.tooltip}>

@@ -1,9 +1,8 @@
 import i18next from 'i18next';
 import React from 'react';
-import {MdOutlineLightMode} from 'react-icons/md';
+import {FiEdit} from 'react-icons/fi';
 
 import {LuPlus} from 'react-icons/lu';
-import {MdOutlineDarkMode} from 'react-icons/md';
 import {useNavigate} from 'react-router-dom';
 import {toast} from 'react-toastify';
 import styled from 'styled-components';
@@ -129,11 +128,6 @@ const ActionButton = styled.button<{$isDone?: boolean}>`
     border-radius: 20px;
   }
 `;
-const DarkModeButton = styled(ActionButton)<{$isDarkMode: boolean}>`
-  background-color: ${props =>
-    props.$isDarkMode ? theme.white : theme.darkGray};
-  color: ${props => (props.$isDarkMode ? theme.darkGray : theme.white)};
-`;
 function FixedBottomEditView() {
   const localizedTexts: any = i18next.t('ProfileLinkPage', {
     returnObjects: true,
@@ -148,9 +142,11 @@ function FixedBottomEditView() {
     originalWidgets,
     deletedWidgetItems,
     isEditing,
+    setIsEditing,
     setCurrentWidgets,
     setDeletedWidgetItems,
     setOriginalWidgets,
+    startEditing,
     isMyLink,
 
     userData,
@@ -171,11 +167,11 @@ function FixedBottomEditView() {
   }
   const handleDone = async () => {
     if (deletedWidgetItems.length === 0 && currentWidgets.length === 0) {
-      setShowSave(false);
+      setIsEditing(false);
       return;
     }
     if (JSON.stringify(currentWidgets) === JSON.stringify(originalWidgets)) {
-      setShowSave(false);
+      setIsEditing(false);
       return;
     }
 
@@ -202,7 +198,7 @@ function FixedBottomEditView() {
       const updatedData = response.data;
       setDeletedWidgetItems([]);
 
-      setShowSave(false);
+      setIsEditing(false);
       // update currentWidgets, myWidgets, originalWidgets
 
       setCurrentWidgets(updatedData);
@@ -220,28 +216,25 @@ function FixedBottomEditView() {
     <Container>
       <FixedBottomEditViewContainer>
         <ActionButtonContainer>
-          {isEditing && (
+          {isEditing ? (
             <>
-              {showSave && (
+              {
                 <ActionButton $isDone onClick={handleDone}>
                   {localizedTexts.save}
                 </ActionButton>
-              )}
+              }
               <ActionButton onClick={handleCreateWidget}>
                 <LuPlus size={30} color={'black'} />
               </ActionButton>
-              <DarkModeButton onClick={handleDarkMode} $isDarkMode={isDarkMode}>
-                {!isDarkMode ? (
-                  <MdOutlineDarkMode size={30} color={theme.white} />
-                ) : (
-                  <MdOutlineLightMode size={30} color={theme.darkGray} />
-                )}
-              </DarkModeButton>
             </>
+          ) : (
+            <ActionButton onClick={startEditing}>
+              <FiEdit size={30} color={'black'} />
+            </ActionButton>
           )}
         </ActionButtonContainer>
       </FixedBottomEditViewContainer>
-      {isMyLink && isSyncedWithEM && isEditing && (
+      {isMyLink && isSyncedWithEM && (
         <SyncTagView onClick={handleGoSync}>
           <SyncContent>
             {localizedTexts.synced[0]}

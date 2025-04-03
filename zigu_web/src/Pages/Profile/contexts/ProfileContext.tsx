@@ -129,7 +129,6 @@ export const ProfileProvider: React.FC<ProfileProviderProps> = ({
     if (nameTag) {
       const isMyLink = user.nameTag === nameTag && isAuthenticated;
       setIsMyLink(isMyLink);
-      setIsEditing(isMyLink);
     }
   }, [user, nameTag, isAuthenticated]);
 
