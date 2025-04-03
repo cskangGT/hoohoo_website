@@ -161,7 +161,7 @@ export const sendKakaoLogin = async (code: string, nameTag?: string) => {
 
 export const logoutProfile = async () => {
     try {
-        const response = await clientAxios.post('myProfile/web/logout/', {}, {
+        const response = await axios.post(APIAddress + 'myProfile/web/logout/', {}, {
             withCredentials: true,
         });
         if (response.status >= 200 && response.status < 300) {
