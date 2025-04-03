@@ -239,8 +239,6 @@ const Login = () => {
     onSuccess: async tokenResponse => {
       const response = await sendGoogleLogin(tokenResponse.code);
       if (response.result) {
-        checkSession();
-
         getAPIKey();
 
         setUser(response.data.user);
@@ -341,15 +339,7 @@ const Login = () => {
 
     window.location.href = link;
   };
-  console.log('user', user);
-  async function handleLogout() {
-    const response = await logoutProfile();
-    console.log('response', response);
 
-    if (response.result) {
-    } else {
-    }
-  }
   return (
     <Container>
       <Wrapper>
@@ -427,9 +417,7 @@ const Login = () => {
                   <ErrorText>{localizedTexts.errorText.invalidEmail}</ErrorText>
                 )}
                 <LoginButton type="submit">{localizedTexts.login}</LoginButton>
-                <LoginButton onClick={handleLogout}>
-                  {localizedTexts.login}
-                </LoginButton>
+
                 <ForgotPassword>
                   <ForgotPasswordButton onClick={() => {}}>
                     {localizedTexts.forgotPassword}
