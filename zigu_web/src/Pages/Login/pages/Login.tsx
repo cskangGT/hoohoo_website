@@ -14,7 +14,6 @@ import {useNavigate} from 'react-router-dom';
 import styled from 'styled-components';
 import {
   getAPIKey,
-  logoutProfile,
   redirectUri,
   sendAppleLogin,
   sendGoogleLogin,
@@ -213,7 +212,7 @@ const Login = () => {
         navigateNameTag(response.data.user.nameTag);
       }
     } else {
-      logoutProfile();
+      // logoutProfile();
       // toast.error(localizedTexts.sessionExpired);
     }
   };
