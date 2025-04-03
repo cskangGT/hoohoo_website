@@ -10,6 +10,7 @@ import {updateUserProfile} from '../../../api/jigulink/user.api';
 import {sendQuestionnaire} from '../../../api/login/signup.api';
 import Wrapper from '../../../components/Wrapper/Wrapper';
 import {useQuestionnaire} from '../../../context/QuestionnaireContext';
+import i18n from '../../../lang/i18n';
 import {useUserStore} from '../../../storage/userStore';
 import {theme} from '../../../style';
 import {
@@ -43,6 +44,10 @@ const InnerWrapper = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
+
+  @media screen and (max-width: 500px) {
+    margin-bottom: 130px;
+  }
 `;
 const TitleText = styled.h2`
   font-size: ${theme.fontSize['3xl']};
@@ -161,6 +166,7 @@ interface ErrorType {
   invalidLetters: boolean;
   startsEndsWithPeriod: boolean;
   limitExceeded: boolean;
+  serverError: boolean;
 }
 function SetupProfile() {
   const {user, setUser} = useUserStore();
@@ -177,6 +183,7 @@ function SetupProfile() {
     invalidLetters: false,
     startsEndsWithPeriod: false,
     limitExceeded: false,
+    serverError: false,
   });
   const localizedTexts: any = i18next.t('SetupProfile', {
     returnObjects: true,
@@ -188,11 +195,13 @@ function SetupProfile() {
       invalidLetters: false,
       startsEndsWithPeriod: false,
       limitExceeded: false,
+      serverError: false,
     });
   }
   useEffect(() => {
     setProgress(100);
   }, []);
+
   function handleRedirect() {
     resetQuestionnaireData();
     const redirectAfterAuth = sessionStorage.getItem('redirectAfterAuth');
@@ -203,6 +212,7 @@ function SetupProfile() {
       navigate('/setup/plan', {replace: true});
     }
   }
+
   const handleSendQuestionnaire = async () => {
     const data = [
       {
@@ -220,17 +230,28 @@ function SetupProfile() {
     const response = await sendQuestionnaire(data);
     if (response.result) {
       if (questionnaireData.template) {
-        const res = await applyTemplate(questionnaireData.template);
+        const res = await applyTemplate(
+          questionnaireData.template,
+          i18n.language,
+        );
         if (res.result) {
           handleRedirect();
         } else {
           alert(localizedTexts.errorText.error);
+          setError({...error, serverError: true});
+          setHasError(true);
+          setIsLoading(false);
+          return;
         }
       } else {
         handleRedirect();
       }
     } else {
       alert(localizedTexts.errorText.error);
+      setError({...error, serverError: true});
+      setHasError(true);
+      setIsLoading(false);
+      return;
     }
   };
   const handleImageChange = async (
@@ -248,7 +269,7 @@ function SetupProfile() {
           setProfileImage(result);
         }
       } else {
-        toast.error('Failed to upload image');
+        toast.error(localizedTexts.failUploadImage);
         return;
       }
     }
@@ -298,10 +319,12 @@ function SetupProfile() {
       };
       setUser(userData);
 
-      setHasError(true);
       handleSendQuestionnaire();
     } else {
       alert(localizedTexts.errorText.error);
+      setError({...error, serverError: true});
+      setHasError(true);
+      setIsLoading(false);
     }
     setIsLoading(false);
   };
@@ -349,7 +372,9 @@ function SetupProfile() {
                       ? localizedTexts.errorText.startsEndsWithPeriod
                       : error.limitExceeded
                         ? localizedTexts.errorText.limitExceeded
-                        : ''}
+                        : error.serverError
+                          ? localizedTexts.errorText.error
+                          : ''}
               </ErrorText>
             )}
           </ProfileNameContainer>

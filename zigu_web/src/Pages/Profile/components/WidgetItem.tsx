@@ -464,7 +464,7 @@ function WidgetItem({
     }
   };
 
-  if (isTemp) {
+  if (isTemp && hasEMWidgetType) {
     return (
       <WidgetItemContainer
         key={(widgetItem.isEmWidget ? 'em_' : 'custom_') + widgetItem.id}
