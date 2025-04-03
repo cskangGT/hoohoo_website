@@ -23,10 +23,15 @@ const ZIGU = styled.div`
 const GreenText = styled.span`
   color: ${theme.mainNeon};
 `;
+const ByText = styled.span`
+  font-size: ${theme.fontSize.rg};
+  color: ${theme.inActiveGray};
+  padding-right: 4px;
+`;
 const EmText = styled.span`
   font-size: ${theme.fontSize.rg};
   color: ${theme.inActiveGray};
-  text-align: center;
+
   text-decoration: underline;
   text-decoration-color: ${theme.inActiveGray};
 `;
@@ -38,8 +43,8 @@ function PowerByEM() {
     <Container>
       <ZIGU>
         Z<GreenText>I</GreenText>GU{' '}
-      </ZIGU>
-      <EmText onClick={handleClick}> by EarthMera Co.</EmText>
+      </ZIGU>{' '}
+      <ByText>by </ByText> <EmText onClick={handleClick}> EarthMera Co.</EmText>
     </Container>
   );
 }
