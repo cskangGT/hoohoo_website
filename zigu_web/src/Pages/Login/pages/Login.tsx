@@ -239,6 +239,7 @@ const Login = () => {
       const response = await sendGoogleLogin(tokenResponse.code);
       if (response.result) {
         getAPIKey();
+        console.log('response.data', response.data);
 
         setUser(response.data.user);
         if (response.data?.user?.isNeedsQuestionnaire) {

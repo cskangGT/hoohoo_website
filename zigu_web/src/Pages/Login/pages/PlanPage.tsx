@@ -344,7 +344,7 @@ function PlanPage() {
   const {user} = useUserStore();
   const localizedTexts: any = i18next.t('PlanPage', {returnObjects: true});
   const navigate = useNavigate();
-  const [promoApplied, setPromoApplied] = useState<boolean>(false);
+  const [promoApplied, setPromoApplied] = useState<boolean>(true);
   function openPromoCodeModal() {
     setIsPromoCodeModalVisible(true);
   }
@@ -353,7 +353,7 @@ function PlanPage() {
     setBillingCycle('monthly');
   }
   function sendToProfile() {
-    navigate(`/${user?.nameTag}`, {state: {showTooltip: true}});
+    navigate(`/${user?.nameTag}`, {state: {showTooltip: true, paidPlan: true}});
   }
   return (
     <Container>

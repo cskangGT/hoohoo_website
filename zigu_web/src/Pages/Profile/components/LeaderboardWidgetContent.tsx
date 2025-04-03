@@ -4,25 +4,25 @@ import styled from 'styled-components';
 import {theme} from '../../../style';
 import {ProfileWidgetItemSize} from '../types/WidgetItemType';
 import {getOrdinalSuffix} from '../util/util';
-const LeaderboardContainer = styled.div<{small?: boolean; long?: boolean}>`
+const LeaderboardContainer = styled.div<{$small?: boolean; $long?: boolean}>`
   display: flex;
   align-items: center;
   font-family: Inter;
-  width: calc(100% - ${props => (props.small ? '24px' : '32px')});
-  height: calc(100% - ${props => (props.small ? '16px' : '20px')});
+  width: calc(100% - ${props => (props.$small ? '24px' : '32px')});
+  height: calc(100% - ${props => (props.$small ? '16px' : '20px')});
 
   border-radius: 12px;
-  padding: ${props => (props.small ? '8px 12px' : '10px 16px')};
+  padding: ${props => (props.$small ? '8px 12px' : '10px 16px')};
 
   ${props =>
-    props.long &&
+    props.$long &&
     `
     gap: 12px;
     justify-content: space-between;
   `}
 
   ${props =>
-    props.small &&
+    props.$small &&
     `
     justify-content: space-between;
   `}
@@ -80,9 +80,9 @@ const RankSuffix = styled.span`
   }
 `;
 
-const ScoreContainer = styled.div<{large?: boolean}>`
+const ScoreContainer = styled.div<{$large?: boolean}>`
   ${props =>
-    props.large &&
+    props.$large &&
     `
     margin-left: auto;
     margin-right: 16px;
@@ -101,14 +101,14 @@ const Score = styled.span`
   }
 `;
 
-const RankChangesContainer = styled.div<{horizontal?: boolean}>`
+const RankChangesContainer = styled.div<{$horizontal?: boolean}>`
   display: flex;
-  flex-direction: ${props => (props.horizontal ? 'row' : 'column')};
+  flex-direction: ${props => (props.$horizontal ? 'row' : 'column')};
   gap: 4px;
   margin-right: 16px;
 
   ${props =>
-    props.horizontal &&
+    props.$horizontal &&
     `
     gap: 12px;
   `}
@@ -125,16 +125,16 @@ const VerticalView = styled.div`
   align-items: flex-end;
   gap: 4px;
 `;
-const RankUp = styled.div<{big?: boolean}>`
+const RankUp = styled.div<{$big?: boolean}>`
   display: flex;
   align-items: center;
   gap: 4px;
-  font-size: ${props => (props.big ? '18px' : '14px')};
+  font-size: ${props => (props.$big ? '18px' : '14px')};
   font-weight: bold;
   color: #fdb52f;
   filter: drop-shadow(0 3px 4px rgba(0, 0, 0, 0.5));
   ${props =>
-    props.big &&
+    props.$big &&
     `
     background-color: rgba(253, 181, 47, 0.2);
     padding: 10px;
@@ -145,7 +145,7 @@ const RankUp = styled.div<{big?: boolean}>`
   @media (max-width: 600px) {
     font-size: ${theme.fontSize.rg};
     ${props =>
-      props.big &&
+      props.$big &&
       `
         padding: 6px 10px;
       `}
@@ -154,23 +154,23 @@ const RankUp = styled.div<{big?: boolean}>`
     font-size: ${theme.fontSize.sm};
 
     ${props =>
-      props.big &&
+      props.$big &&
       `
         padding: 6px 10px;
       `}
   }
 `;
 
-const RankDown = styled.div<{big?: boolean}>`
+const RankDown = styled.div<{$big?: boolean}>`
   display: flex;
   align-items: center;
   gap: 4px;
-  font-size: ${props => (props.big ? '18px' : '14px')};
+  font-size: ${props => (props.$big ? '18px' : '14px')};
   font-weight: bold;
   color: #28afe2;
   filter: drop-shadow(0 3px 4px rgba(0, 0, 0, 0.5));
   ${props =>
-    props.big &&
+    props.$big &&
     `
     background-color: #28b0e287;
     padding: 10px;
@@ -181,7 +181,7 @@ const RankDown = styled.div<{big?: boolean}>`
   @media (max-width: 600px) {
     font-size: ${theme.fontSize.rg};
     ${props =>
-      props.big &&
+      props.$big &&
       `
         padding: 6px 10px;
       `}
@@ -189,7 +189,7 @@ const RankDown = styled.div<{big?: boolean}>`
   @media (max-width: 400px) {
     font-size: ${theme.fontSize.sm};
     ${props =>
-      props.big &&
+      props.$big &&
       `
         padding: 6px 10px;
       `}
@@ -389,7 +389,7 @@ function LeaderboardWidgetContent({
   if (sizeType === 'SMALL') {
     // 작은 사이즈 (왼쪽 이미지)
     return (
-      <LeaderboardContainer small>
+      <LeaderboardContainer $small={true}>
         <RankNumberContainer>
           <RankNumber>{userRank === 0 ? '-' : userRank}</RankNumber>
           <RankSuffix>{getOrdinalSuffix(userRank)}</RankSuffix>
@@ -412,7 +412,7 @@ function LeaderboardWidgetContent({
   } else if (sizeType === 'LONG') {
     // 긴 사이즈 (중간 이미지)
     return (
-      <LeaderboardContainer long>
+      <LeaderboardContainer $long={true}>
         <RankNumberContainer>
           <RankNumber>{userRank === 0 ? '-' : userRank}</RankNumber>
           <RankSuffix>{getOrdinalSuffix(userRank)}</RankSuffix>
@@ -422,10 +422,10 @@ function LeaderboardWidgetContent({
           <span>{lastMonthRank}</span>
           {getOrdinalSuffix(lastMonthRank)}
         </PreviousRankText>
-        <ScoreContainer large>
+        <ScoreContainer $large={true}>
           <Score>{ecoActionCount}</Score>
         </ScoreContainer>
-        <RankChangesContainer horizontal>
+        <RankChangesContainer $horizontal={true}>
           <RankUp>
             <TriangleUp />
             <span>{higherRankInfo.gap}</span>
@@ -442,7 +442,7 @@ function LeaderboardWidgetContent({
     return (
       <LeaderboardBigContainer>
         <UpDownSection>
-          <RankUp big>
+          <RankUp $big={true}>
             <ArrowContainer>
               <TriangleUp />
               <span>{higherRankInfo.gap}</span>
@@ -467,7 +467,7 @@ function LeaderboardWidgetContent({
         </CurrentRankSection>
 
         <UpDownSection>
-          <RankDown big>
+          <RankDown $big={true}>
             <ArrowContainer>
               <TriangleDown />
               <span>{lowerRankInfo.gap}</span>

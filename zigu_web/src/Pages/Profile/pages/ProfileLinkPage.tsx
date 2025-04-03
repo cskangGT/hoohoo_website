@@ -88,6 +88,16 @@ function ProfileLinkPage() {
     setIsEditing,
   } = useProfile();
   const nameTag = useParams()?.nameTag;
+  console.log(
+    'first',
+    noProfileData,
+    userData,
+    currentWidgets,
+    isMyLink,
+    isEditingItem,
+    isEditing,
+    profileError,
+  );
 
   const {width: resizedWidth} = useWindowResize({
     maxWidth: 600,

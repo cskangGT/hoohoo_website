@@ -75,6 +75,8 @@ export const sendQuestionnaire = async (questionnaireData: {
     questionResponse: string;
 }[]) => {
     try {
+        console.log("questionnaireData in sendQuestionnaire", questionnaireData);
+
         const data: {
             questionnaires: {
                 questionType: string;
