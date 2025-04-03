@@ -204,12 +204,13 @@ const Login = () => {
     const response = await validateSession();
     if (response.result) {
       console.log('response.data', response.data);
-
-      setUser(response.data.user);
-      if (response.data?.user?.isNeedsQuestionnaire) {
-        navigate('/setup/select-goal');
-      } else {
-        navigateNameTag(response.data.user.nameTag);
+      if (response.data.user?.nameTag) {
+        setUser(response.data.user);
+        if (response.data?.user?.isNeedsQuestionnaire) {
+          navigate('/setup/select-goal');
+        } else {
+          navigateNameTag(response.data.user.nameTag);
+        }
       }
     } else {
       // logoutProfile();

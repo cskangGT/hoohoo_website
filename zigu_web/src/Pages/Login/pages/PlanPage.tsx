@@ -344,7 +344,7 @@ function PlanPage() {
   const {user} = useUserStore();
   const localizedTexts: any = i18next.t('PlanPage', {returnObjects: true});
   const navigate = useNavigate();
-  const [promoApplied, setPromoApplied] = useState<boolean>(true);
+  const [promoApplied, setPromoApplied] = useState<boolean>(false);
   function openPromoCodeModal() {
     setIsPromoCodeModalVisible(true);
   }

@@ -215,7 +215,7 @@ export const logoutProfile = async () => {
 export const getAPIKey = async () => {
     try {
         const response = await clientAxios.get(APIAddress + 'myProfile/web/fetchAPIKey/',);
-        console.log("response.data", response.data);
+
 
         if (response.status >= 200 && response.status < 300) {
             if (response.data.data) {

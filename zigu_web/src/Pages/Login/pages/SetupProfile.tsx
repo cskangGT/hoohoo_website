@@ -287,7 +287,7 @@ function SetupProfile() {
     // 한국어, 영어, 숫자, 밑줄, 마침표만 허용하는 정규식
     const validCharsRegex = /^[a-zA-Z0-9가-힣ㄱ-ㅎㅏ-ㅣ_. ]+$/;
     const startsOrEndsWithSpecial = /^[ .]|[. ]$/;
-    handleSendQuestionnaire();
+
     console.log('name', name);
 
     if (name.length > 20 || name.length < 2) {
@@ -325,7 +325,7 @@ function SetupProfile() {
       };
       setUser(userData);
 
-      // handleSendQuestionnaire();
+      handleSendQuestionnaire();
     } else {
       alert(localizedTexts.errorText.error);
       setError({...error, serverError: true});
