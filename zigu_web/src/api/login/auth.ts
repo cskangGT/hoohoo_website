@@ -53,6 +53,9 @@ export const validateLogin = async (email: string, password: string) => {
         const response = await clientAxios.post(
             APIAddress + 'myProfile/web/login/',
             { email, password },
+            {
+                withCredentials: true
+            }
         );
         if (response.status >= 200 && response.status < 300) {
             return { data: response.data, result: true };
@@ -93,6 +96,9 @@ export const sendGoogleLogin = async (code: string, nameTag?: string) => {
         const response = await axios.post(
             APIAddress + 'myProfile/web/googleLogin/',
             tokenData,
+            {
+                withCredentials: true
+            }
         );
 
         return { result: true, data: response.data };
@@ -113,6 +119,9 @@ export const sendAppleLogin = async (code: string, idToken: string, nameTag?: st
         const response = await axios.post(
             APIAddress + 'myProfile/web/appleLogin/',
             tokenData,
+            {
+                withCredentials: true
+            }
         );
         console.log('response', response);
         return { result: true, data: response.data };
@@ -149,6 +158,9 @@ export const sendKakaoLogin = async (code: string, nameTag?: string) => {
         const response = await axios.post(
             APIAddress + 'myProfile/web/kakaoLogin/',
             tokenData,
+            {
+                withCredentials: true
+            }
         );
 
         return { result: true, data: response.data };
@@ -172,12 +184,38 @@ export const logoutProfile = async () => {
         return { result: false, status: e?.response?.status };
     }
 };
+// export const getAPIKey = async () => {
+//     try {
+//         const response = await fetch(APIAddress + 'myProfile/web/fetchAPIKey/', {
+//             method: 'GET',
+//             credentials: 'include',
+//             headers: {
+//                 'Content-Type': 'application/json',
+//             },
+//         });
+//         console.log("response", response);
+
+
+//         if (response.status >= 200 && response.status < 300) {
+//             const responseData = await response.json();
+//             if (responseData.data) {
+//                 for (const item of responseData.data) {
+//                     const key = item.serviceName;
+//                     const value = item.APIKey;
+//                     sessionStorage.setItem(key, value);
+//                 }
+//             }
+//             return { result: true, data: responseData.data };
+//         }
+//         return { result: false, status: response.status };
+//     } catch (e: any) {
+//         return { result: false, status: e?.response?.status };
+//     }
+// };
 export const getAPIKey = async () => {
     try {
-        const response = await clientAxios.get(APIAddress + 'myProfile/web/fetchAPIKey/', {
-            withCredentials: true,
-        });
-        console.log("response.data", response.data);
+        const response = await clientAxios.get(APIAddress + 'myProfile/web/fetchAPIKey/',);
+
 
         if (response.status >= 200 && response.status < 300) {
             if (response.data.data) {

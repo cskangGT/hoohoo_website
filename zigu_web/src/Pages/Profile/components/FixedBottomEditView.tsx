@@ -212,9 +212,7 @@ function FixedBottomEditView() {
       toast.error(localizedTexts.toast.failedToUpdate);
     }
   };
-  function handleDarkMode() {
-    setIsDarkMode(!isDarkMode);
-  }
+
   const name = userData?.linkedUserInfo?.name?.split('#')[0];
   return (
     <Container>

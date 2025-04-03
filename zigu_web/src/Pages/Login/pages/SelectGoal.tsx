@@ -1,11 +1,14 @@
 import i18next from 'i18next';
-import React, { useEffect, useState } from 'react';
-import { useLocation, useNavigate } from 'react-router-dom';
+import React, {useEffect, useState} from 'react';
+import {useLocation, useNavigate} from 'react-router-dom';
 import styled from 'styled-components';
 import Wrapper from '../../../components/Wrapper/Wrapper';
-import { useQuestionnaire } from '../../../context/QuestionnaireContext';
-import { theme } from '../../../style';
-import { QuestionaireDescriptionText, QuestionaireTitleText } from '../components/styles';
+import {useQuestionnaire} from '../../../context/QuestionnaireContext';
+import {theme} from '../../../style';
+import {
+  QuestionaireDescriptionText,
+  QuestionaireTitleText,
+} from '../components/styles';
 const Container = styled.div`
   width: 100%;
   height: 100%;
@@ -15,7 +18,7 @@ const Container = styled.div`
   max-height: 100%;
   background-color: white !important;
   margin-top: 60px;
-  
+
   @media screen and (max-width: 900px) {
     height: 100%;
     padding: ${theme.spacing.md};
@@ -114,6 +117,7 @@ const ItemTitle = styled.h3`
   font-size: ${theme.fontSize.lg};
   font-weight: 600;
   color: ${theme.darkGray};
+  height: 50px;
   margin-bottom: ${theme.spacing.sm};
 `;
 

@@ -21,10 +21,10 @@ module.exports = smp.wrap(
       compress: true,
       https: {
         key: fs.readFileSync(
-          path.resolve(__dirname, '../ssl/localhost+2-key.pem'),
+          path.resolve(__dirname, '../ssl/web.earthmera.com+3-key.pem'),
         ),
         cert: fs.readFileSync(
-          path.resolve(__dirname, '../ssl/localhost+2.pem'),
+          path.resolve(__dirname, '../ssl/web.earthmera.com+3.pem'),
         ),
       },
       historyApiFallback: {
@@ -37,9 +37,10 @@ module.exports = smp.wrap(
       hot: true,
 
       allowedHosts: 'all',
-      host: '0.0.0.0',
+      host: 'web.earthmera.com',
       open: true,
-      port: 3000,
+      port: 443,
+
       static: {
         directory: path.join(__dirname, '../dist'),
       },

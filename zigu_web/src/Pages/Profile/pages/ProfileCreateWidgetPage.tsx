@@ -219,7 +219,7 @@ function ProfileCreateWidgetPage() {
     setOriginalWidgets,
     selectedItem,
     setSelectedItem,
-    setIsEditingItem,
+
     setShowSave,
   } = useProfile();
   const navigate = useNavigate();

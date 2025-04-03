@@ -5,7 +5,7 @@ import React, {
   useEffect,
   useState,
 } from 'react';
-import {useNavigate} from 'react-router-dom';
+import {useLocation, useNavigate} from 'react-router-dom';
 import {getUserLinkProfile} from '../../../api/jigulink/jigulink.api';
 import {useUserStore} from '../../../storage/userStore';
 import {ProfileWidgetItemType} from '../types/WidgetItemType';
@@ -83,6 +83,9 @@ export const ProfileProvider: React.FC<ProfileProviderProps> = ({
   console.log('nameTag', nameTag);
 
   // 위젯 데이터 상태
+  const {state} = useLocation();
+  const paidPlan = state?.paidPlan;
+
   const [originalWidgets, setOriginalWidgets] = useState<
     ProfileWidgetItemType[]
   >([]);
@@ -127,8 +130,8 @@ export const ProfileProvider: React.FC<ProfileProviderProps> = ({
   // 사용자 인증 정보 변경 시 isMyLink 업데이트
   useEffect(() => {
     if (nameTag) {
-      const isMyLink = user.nameTag === nameTag && isAuthenticated;
-      setIsMyLink(isMyLink);
+      const mine = user.nameTag === nameTag && isAuthenticated;
+      setIsMyLink(mine);
     }
   }, [user, nameTag, isAuthenticated]);
 
@@ -160,7 +163,8 @@ export const ProfileProvider: React.FC<ProfileProviderProps> = ({
       });
 
       if (user.nameTag === targetNameTag) {
-        if (!response.data.hasPlan) {
+        if (!response.data.hasPlan && !paidPlan) {
+          // if just paid or has plan before, stay on the page
           navigate('/setup/plan');
         }
         setProfileImage(response.data.profileImage);

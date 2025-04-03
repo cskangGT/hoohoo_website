@@ -64,22 +64,40 @@ const TitleContainer = styled.div<{resizedWidth: number}>`
   align-items: center;
   justify-content: center;
   z-index: 3;
-
   transition: all 0.8s ease-in-out;
-  display: flex;
-
   transform: translateY(0px);
-
   padding-bottom: 80px;
-  padding-top: calc(
-    (${props => props.resizedWidth}px - ${gap * (numColumns + 1)}px) /
-      ${numColumns} * 5 / 4 * 2 + 16px + 80px
-  );
 
+  // desktop 버전 수정
+  padding-top: calc(
+    (
+        (${props => props.resizedWidth}px - ${gap * (numColumns + 1)}px) /
+          ${numColumns} * 5 / 4 * 2
+      ) + 120px
+  );
+  @media screen and (max-width: 1000px) {
+    padding-top: calc(
+      (
+          (${props => props.resizedWidth}px - ${gap * (mediumNumColumns + 1)}px) /
+            ${mediumNumColumns} * 5 / 4 * 2
+        ) + 96px
+    );
+  }
+  @media screen and (max-width: 800px) {
+    padding-top: calc(
+      (
+          (${props => props.resizedWidth}px - ${gap * (smallNumColumns + 1)}px) /
+            ${smallNumColumns} * 5 / 4 * 2
+        ) + 96px
+    );
+  }
+  // mobile 버전 수정
   @media screen and (max-width: 550px) {
     padding-top: calc(
-      (${props => props.resizedWidth}px - ${gap * (mobileNumColumns - 1)}px) /
-        ${mobileNumColumns}* 5 / 4 * 2+ 16px + 80px
+      (
+          (${props => props.resizedWidth}px - ${gap * (mobileNumColumns - 1)}px) /
+            ${mobileNumColumns} * 5 / 4 * 2
+        ) + 96px
     );
   }
 `;
@@ -286,7 +304,6 @@ export const EcoActionMarqueeImageItem = ({
   function handleMediaClick(media: MediaDataType) {
     openMediaModal(media);
   }
-  console.log('resizedWidth', resizedWidth);
 
   return isMarqueeActive ? (
     <MarqueeContainer resizedWidth={resizedWidth}>
@@ -353,6 +370,7 @@ const HomeLandingEcoAction = () => {
       count: columnImages.length, // 열당 이미지 수
     };
   });
+  console.log('resizedWidth', resizedWidth);
 
   const handleButtonClick = () => {
     navigate(`/${i18next.language}/testimonials`, {state: {canComeBack: true}});
@@ -369,6 +387,8 @@ const HomeLandingEcoAction = () => {
       };
     });
   }, [columns, columnCounts]);
+
+  console.log('resizedWidth', resizedWidth);
 
   return (
     <>

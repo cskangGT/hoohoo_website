@@ -60,9 +60,9 @@ const DarkModeButton = styled.button<{$isDarkMode: boolean}>`
   cursor: pointer;
 
   padding: ${theme.spacing.sm} ${theme.spacing.md};
-  border-radius: 30px;
-  height: 60px;
-  width: 60px;
+  border-radius: 25px;
+  height: 50px;
+  width: 50px;
 
   display: flex;
   align-items: center;

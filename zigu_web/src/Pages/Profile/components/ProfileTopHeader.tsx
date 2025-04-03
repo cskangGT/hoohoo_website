@@ -115,8 +115,11 @@ function ProfileTopHeader({
 }) {
   const {state} = useLocation();
   const showTooltip = state?.showTooltip;
-  const [isTooltipOpen, setIsTooltipOpen] = React.useState(showTooltip);
+  const [isTooltipOpen, setIsTooltipOpen] = React.useState(state?.showTooltip);
+  const tooltipTimeoutRef = React.useRef<NodeJS.Timeout>();
+  const layoutButtonRef = React.useRef<HTMLButtonElement>(null);
   const {width} = useWindowResize({maxWidth: 600});
+
   const {
     setIsEditing,
     isEditing,
@@ -132,6 +135,37 @@ function ProfileTopHeader({
 
   const {user, isAuthenticated} = useUserStore();
   const navigate = useNavigate();
+
+  useEffect(() => {
+    if (showTooltip) {
+      tooltipTimeoutRef.current = setTimeout(() => {
+        setIsTooltipOpen(false);
+        window.history.replaceState({}, '', location.pathname);
+      }, 5000);
+
+      const handleClickOutside = (event: MouseEvent) => {
+        if (
+          layoutButtonRef.current &&
+          !layoutButtonRef.current.contains(event.target as Node)
+        ) {
+          setIsTooltipOpen(false);
+          window.history.replaceState({}, '', location.pathname);
+        }
+      };
+
+      const timeoutId = setTimeout(() => {
+        document.addEventListener('click', handleClickOutside);
+      }, 100);
+
+      return () => {
+        if (tooltipTimeoutRef.current) {
+          clearTimeout(tooltipTimeoutRef.current);
+        }
+        clearTimeout(timeoutId);
+        document.removeEventListener('click', handleClickOutside);
+      };
+    }
+  }, [showTooltip]);
 
   function handleSetting() {
     navigate('/' + user?.nameTag + '/settings');
@@ -149,33 +183,20 @@ function ProfileTopHeader({
   function handleShare() {
     setIsShareModalOpen(true);
   }
+
   const handleLayout = () => {
     setIsTooltipOpen(false);
-
+    window.history.replaceState({}, '', location.pathname);
     navigate('/' + user?.nameTag + '/settings/layout');
   };
+
   function handleCloseModal() {
     setIsShareModalOpen(false);
   }
+
   function handlePreview() {
     setIsEditing(!isEditing);
   }
-  useEffect(() => {
-    const handleClick = () => {
-      if (showTooltip) {
-        window.history.replaceState({}, '', location.pathname);
-        setIsTooltipOpen(false);
-      }
-    };
-
-    // 전체 document에 클릭 이벤트 리스너 추가
-    document.addEventListener('click', handleClick);
-
-    // 컴포넌트 언마운트 시 이벤트 리스너 제거
-    return () => {
-      document.removeEventListener('click', handleClick);
-    };
-  }, [showTooltip]);
 
   const iconSize = width > 500 ? 26 : 22;
   return (
@@ -183,13 +204,13 @@ function ProfileTopHeader({
       <TopHeaderContainer>
         <TopHeaderLeft>
           <LogoButton onClick={handleLogo}>
-            <LogoImage src={'/Images/zigulink.png'} />
+            <LogoImage src={'/Images/G9.png'} />
           </LogoButton>
         </TopHeaderLeft>
         <TopHeaderRight>
           {isMyLink ? (
             <>
-              <IconButton onClick={handleLayout}>
+              <IconButton ref={layoutButtonRef} onClick={handleLayout}>
                 {isTooltipOpen ? (
                   <CustomTooltip content={localizedTexts.tooltip}>
                     <FiLayout size={iconSize} color={theme.white} />

@@ -353,7 +353,7 @@ function PlanPage() {
     setBillingCycle('monthly');
   }
   function sendToProfile() {
-    navigate(`/${user?.nameTag}`, {state: {showTooltip: true}});
+    navigate(`/${user?.nameTag}`, {state: {showTooltip: true, paidPlan: true}});
   }
   return (
     <Container>

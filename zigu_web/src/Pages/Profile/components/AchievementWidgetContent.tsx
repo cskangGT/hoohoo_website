@@ -4,23 +4,23 @@ import styled from 'styled-components';
 import {theme} from '../../../style';
 import {MedalType, ProfileWidgetItemSize} from '../types/WidgetItemType';
 import {getBadgeList, getMedalList} from '../util/EMWidgetData';
-const AchievementContainer = styled.div<{small?: boolean; long?: boolean}>`
+const AchievementContainer = styled.div<{$small?: boolean; $long?: boolean}>`
   display: flex;
-  width: calc(100% - ${props => (props.small ? '12px' : '32px')});
-  height: calc(100% - ${props => (props.small ? '8px' : '24px')});
+  width: calc(100% - ${props => (props.$small ? '12px' : '32px')});
+  height: calc(100% - ${props => (props.$small ? '8px' : '24px')});
 
   border-radius: 12px;
-  padding: ${props => (props.small ? '4px 6px' : '12px 16px')};
+  padding: ${props => (props.$small ? '4px 6px' : '12px 16px')};
   align-items: center;
 
   ${props =>
-    props.long &&
+    props.$long &&
     `
     justify-content: space-between;
   `}
 
   ${props =>
-    props.small &&
+    props.$small &&
     `
     flex-direction: row;
     justify-content: flex-start;
@@ -37,14 +37,14 @@ const AchievementBigContainer = styled.div`
   padding: 16px;
 `;
 
-const LevelText = styled.div<{small?: boolean}>`
+const LevelText = styled.div<{$small?: boolean}>`
   font-size: ${props =>
-    props.small ? theme.fontSize.xl : theme.fontSize['2xl']};
+    props.$small ? theme.fontSize.xl : theme.fontSize['2xl']};
   font-weight: 600;
   padding-left: 10px;
   font-family: Inter;
   color: #ffffff;
-  margin-right: ${props => (props.small ? '10px' : '0')};
+  margin-right: ${props => (props.$small ? '10px' : '0')};
   @media (max-width: 600px) {
     font-size: ${theme.fontSize.lg};
   }
@@ -53,10 +53,10 @@ const LevelText = styled.div<{small?: boolean}>`
   }
 `;
 
-const BadgesContainer = styled.div<{small?: boolean}>`
+const BadgesContainer = styled.div<{$small?: boolean}>`
   display: flex;
   align-items: center;
-  gap: ${props => (props.small ? '4px' : '8px')};
+  gap: ${props => (props.$small ? '4px' : '8px')};
 `;
 const MedalContainer = styled.div`
   display: flex;
@@ -79,9 +79,9 @@ const MedalContainer = styled.div`
   }
 `;
 const BadgeIcon = styled.img<{
-  small?: boolean;
+  $small?: boolean;
   width: number;
-  active?: boolean;
+  $active?: boolean;
 }>`
   filter: drop-shadow(0 3px 4px rgba(0, 0, 0, 0.5));
 
@@ -255,25 +255,26 @@ function AchievementWidgetContent({
   if (sizeType === 'SMALL') {
     // 작은 사이즈 (왼쪽 이미지)
     return (
-      <AchievementContainer small>
-        <LevelText small>Lv.{level}</LevelText>
-        <BadgesContainer small>
+      <AchievementContainer $small>
+        <LevelText $small>Lv.{level}</LevelText>
+        <BadgesContainer $small>
           <MedalContainer>
             {equippedBadge && (
               <BadgeIcon
                 width={width}
                 src={badgeList[equippedBadge].image}
-                small
-                active
+                $small
+                $active
               />
             )}
           </MedalContainer>
           <MedalContainer>
             {equippedMedals.map((medal: MedalType) => (
               <BadgeIcon
+                key={medal.medalTitle}
                 width={width}
                 src={medalList[medal.medalTitle].image[medal.medalLevel]}
-                small
+                $small
               />
             ))}
           </MedalContainer>
@@ -283,7 +284,7 @@ function AchievementWidgetContent({
   } else if (sizeType === 'LONG') {
     // 긴 사이즈 (중간 이미지들)
     return (
-      <AchievementContainer long>
+      <AchievementContainer $long>
         <LevelText>Lv.{level}</LevelText>
         <BadgeSection>
           <MedalContainer>
@@ -291,7 +292,7 @@ function AchievementWidgetContent({
               <BadgeIcon
                 width={width}
                 src={badgeList[equippedBadge].image}
-                active
+                $active
               />
             )}
           </MedalContainer>
@@ -304,9 +305,10 @@ function AchievementWidgetContent({
           <MedalsRow>
             {equippedMedals.map((medal: MedalType) => (
               <BadgeIcon
+                key={medal.medalTitle}
                 width={width}
                 src={medalList[medal.medalTitle].image[medal.medalLevel]}
-                small
+                $small
               />
             ))}
           </MedalsRow>
@@ -336,6 +338,7 @@ function AchievementWidgetContent({
         <MedalsBigSection>
           {equippedMedals.map((medal: MedalType) => (
             <BadgeBigIcon
+              key={medal.medalTitle}
               width={width}
               src={medalList[medal.medalTitle].image[medal.medalLevel]}
             />

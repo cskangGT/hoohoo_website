@@ -1,6 +1,6 @@
 import React, {useRef} from 'react';
 import {FaChevronRight} from 'react-icons/fa';
-import {useLocation, useNavigate} from 'react-router-dom';
+import {useNavigate} from 'react-router-dom';
 import {toast} from 'react-toastify';
 import styled from 'styled-components';
 import {updateUserProfile} from '../../../api/jigulink/user.api';
@@ -135,8 +135,8 @@ function ProfileSettingPage() {
   const localizedTexts: any = i18next.t('ProfileSettingPage', {
     returnObjects: true,
   });
-  const {state} = useLocation();
-  const {} = useProfile();
+
+  const {setUserData} = useProfile();
   const fileInputRef = useRef<HTMLInputElement>(null);
   const {user, logout, isAuthenticated, setUser} = useUserStore();
 
@@ -147,10 +147,11 @@ function ProfileSettingPage() {
     if (response.result) {
       sessionStorage.clear();
       logout();
-      setUser({
-        username: '',
+      setUserData({
+        name: '',
         nameTag: '',
         profileImage: '',
+        bio: '',
       });
 
       navigate('/login');

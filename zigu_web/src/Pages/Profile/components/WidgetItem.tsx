@@ -93,24 +93,24 @@ const WidgetItemContainer = styled.div<{
   }}
 `;
 const WidgetAppNavImage = styled.img<{
-  smallImage: boolean;
-  isLongItem: boolean;
+  $smallImage: boolean;
+  $isLongItem: boolean;
 }>`
   width: ${props =>
-    props.smallImage ? ITEM_HEIGHT * 0.6 : ITEM_WIDTH * 0.55}px;
+    props.$smallImage ? ITEM_HEIGHT * 0.6 : ITEM_WIDTH * 0.55}px;
   height: ${props =>
-    props.smallImage ? ITEM_HEIGHT * 0.6 : ITEM_WIDTH * 0.55}px;
+    props.$smallImage ? ITEM_HEIGHT * 0.6 : ITEM_WIDTH * 0.55}px;
   object-fit: contain;
   ${props =>
-    props.isLongItem &&
+    props.$isLongItem &&
     css`
       position: absolute;
       left: ${theme.spacing.lg};
     `}
 `;
 const WidgetAppNavImageContainer = styled.div<{
-  smallImage: boolean;
-  isLongItem: boolean;
+  $smallImage: boolean;
+  $isLongItem: boolean;
 }>`
   width: 100%;
   height: 100%;
@@ -118,27 +118,27 @@ const WidgetAppNavImageContainer = styled.div<{
   display: flex;
   align-items: center;
   justify-content: ${props =>
-    !props.isLongItem && props.smallImage ? 'flex-start' : 'center'};
+    !props.$isLongItem && props.$smallImage ? 'flex-start' : 'center'};
   gap: ${theme.spacing.rg};
-  flex-direction: ${props => (props.smallImage ? 'row' : 'column')};
+  flex-direction: ${props => (props.$smallImage ? 'row' : 'column')};
   margin-left: ${props =>
-    !props.isLongItem && props.smallImage ? theme.spacing.lg : '0px'};
+    !props.$isLongItem && props.$smallImage ? theme.spacing.lg : '0px'};
 `;
 
 const WidgetAppNavImageText = styled.p<{
-  smallImage: boolean;
-  isLongItem: boolean;
+  $smallImage: boolean;
+  $isLongItem: boolean;
 }>`
   text-align: center;
   font-size: ${props =>
-    props.smallImage ? theme.fontSize.lg : theme.fontSize.lg};
+    props.$smallImage ? theme.fontSize.lg : theme.fontSize.lg};
   letter-spacing: 0.05rem;
   color: ${theme.white};
   font-weight: 500;
   margin: 0px;
   ${props =>
-    props.smallImage &&
-    !props.isLongItem &&
+    props.$smallImage &&
+    !props.$isLongItem &&
     css`
       width: calc(100% - ${theme.spacing.lg});
       padding-right: ${theme.spacing.lg};
@@ -412,19 +412,19 @@ function EMWidgetContent({
         rel="appopener"
         disabled={isEditMode}>
         <WidgetAppNavImageContainer
-          smallImage={isSmallImage}
-          isLongItem={isLongItem}>
+          $smallImage={isSmallImage}
+          $isLongItem={isLongItem}>
           <WidgetAppNavImage
-            smallImage={isSmallImage}
-            isLongItem={isLongItem}
+            $smallImage={isSmallImage}
+            $isLongItem={isLongItem}
             src={
               emWidgetData[widgetItem?.emWidgetType as ProfileEMWidgetType]
                 .image
             }
           />
           <WidgetAppNavImageText
-            smallImage={isSmallImage}
-            isLongItem={isLongItem}>
+            $smallImage={isSmallImage}
+            $isLongItem={isLongItem}>
             {
               emWidgetData[widgetItem?.emWidgetType as ProfileEMWidgetType]
                 .title
