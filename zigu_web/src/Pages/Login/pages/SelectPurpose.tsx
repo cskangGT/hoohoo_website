@@ -105,7 +105,7 @@ const IconImage = styled.img`
 
 const ItemTitle = styled.h3`
   font-size: ${theme.fontSize.xl};
-  font-weight: 700;
+  font-weight: 600;
   text-align: center;
   color: ${theme.darkGray};
   margin-bottom: ${theme.spacing.sm};

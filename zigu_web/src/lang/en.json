@@ -1164,7 +1164,11 @@
     }
   },
   "PreSignup": {
-    "title": "Sign up to ZIGU",
+    "languageKO": "한국어",
+    "ko": "KO",
+    "en": "EN",
+    "languageEN": "English",
+    "title": "Sign up for ZIGU",
     "description": "Your eco-profile, made simple with ZIGU.<br />One link. Your sustainable identity!",
     "linkTitle": "Claim your free Link in Bio!",
     "link": ["zigu.my/", "username"],
@@ -1195,7 +1199,7 @@
   },
   "SelectGoal": {
     "title": "Which ZIGU style suits you best?",
-    "description": "Your choice helps ZIGU understand you better!",
+    "description": "Your choice helps ZIGU get to know you better!",
     "continue": "Continue",
     "goals": [
       {
@@ -1221,7 +1225,7 @@
 
   "SelectPurpose": {
     "title": "How do you want to use ZIGU?",
-    "description": "Pick what fits you best, It’ll make your ZIGU even better!<br />Select all that apply.",
+    "description": "Choose what fits you best, It'll help make your ZIGU experience even better!<br />Select all that apply.",
     "continue": "Continue",
     "errorText": {
       "purposeNotSelected": "Purpose is not selected"
@@ -1245,7 +1249,7 @@
       },
       {
         "title": "Green Lifestyle",
-        "description": "Sharing my sustainability lifestyle",
+        "description": "Sharing my sustainable lifestyle",
         "image": "/Images/personal.png",
         "value": "GREEN_LIFESTYLE",
         "template": [
@@ -1369,17 +1373,17 @@
   },
   "SelectTemplate": {
     "title": "Select your template",
-    "description": "Find the style that fits your story. You can always fill in the details later.",
+    "description": "Find a style that matches your story. You can always edit the details later.",
     "continue": "Continue",
     "skip": "Skip"
   },
   "ProfileLayoutPage": {
     "title": "Pick a template you like",
-    "description": "Switching templates will remove all your current widgets.",
+    "description": "If you switch templates, all your current widgets will be removed.",
     "change": "Change template",
     "ConfirmModal": {
       "title": "Are you sure?",
-      "description": "Switching templates will remove<br />all your current widgets.<br />This action can’t be undone.",
+      "description": "If you switch templates,<br />all your current widgets will be removed.<br />This action can’t be undone.",
       "yes": "Yes, switch template",
       "no": "No, keep current one"
     }
@@ -1388,7 +1392,7 @@
     "title": "Set up your awesome profile!",
     "button": "Perfect!",
     "placeholder": "Enter your profile name",
-    "description": "For the best look, we recommend a 600x600 size image!",
+    "description": "For the best appearance, we recommend using a 600x600 image!",
     "errorText": {
       "error": "An error occurred. Please try again.",
       "enterProfile": "Please enter your profile name.",
@@ -1425,20 +1429,13 @@
     "kakao": "Kakao",
     "apple": "Apple"
   },
-  "EcoActionTestimony": {
-    "tag": "Testimonials",
-    "title": "See our impact,<br />shape the future🚀",
 
-    "description": "10,000+ eco-actions happen every day.<br />Join the movement",
-    "buttonText": "Explore Eco-Actions",
-    "backButtonText": "Go back"
-  },
   "ProfileLinkPage": {
     "carbon": ["Carbon Saving ", "g"],
     "edit": "Edit",
     "add": "Add",
 
-    "customize": "Customize your profile freely with your favorite link, colors, and shapes,make it truly yours!",
+    "customize": "Make your profile your own with a custom link, colors, and shapes.",
     "done": "Done",
     "save": "Save",
     "tooltip": "Ready for a new look?<br />Choose your template again.",
@@ -1488,7 +1485,7 @@
       "success": "Profile widget added",
       "error": "Failed to add profile widget",
       "failedToUploadImage": "Failed to upload image",
-      "selectColor": "Please fill a widget color"
+      "selectColor": "Please select a widget's background color"
     },
     "close": "Close",
     "apply": "Apply",
@@ -1496,13 +1493,13 @@
     "preview": "Widget Preview",
     "style": "Style",
     "image": "Image",
-    "fill": "Fill",
+    "fill": "Background",
     "url": "URL",
     "text": "Text",
     "placeholder": {
       "url": "https://",
       "text": "Please enter the widget text",
-      "image": "If you add an image, the text can't be displayed.",
+      "image": "If you add an image, text can't be displayed.",
       "asset": "Select an asset"
     },
     "asset": "EarthMera Asset",

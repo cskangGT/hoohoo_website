@@ -36,6 +36,7 @@ const EMLogoImage = styled.img<{size: number}>`
   height: ${({size}) => size}px;
   opacity: 0.8;
 `;
+
 function TemplateWidgetContent({
   widgetItem,
 }: {

@@ -86,7 +86,6 @@ export const sendGoogleLogin = async (code: string, nameTag?: string) => {
                 }
             }
         );
-        console.log("tokenResponse", tokenResponse?.data);
         const tokenData: any = {
             access: tokenResponse?.data?.access_token,
         };

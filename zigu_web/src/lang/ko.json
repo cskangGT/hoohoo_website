@@ -1380,6 +1380,10 @@
     }
   },
   "PreSignup": {
+    "languageKO": "한국어",
+    "ko": "한",
+    "en": "영",
+    "languageEN": "English",
     "title": "ZIGU 가입하기!",
     "description": "누구나 쉽게 만드는 나만의 환경 프로필, ZIGU<br />지속가능한 나를 보여주는 단 하나의 링크!",
     "linkTitle": "지금 무료로 바이오 링크 만들기!",
