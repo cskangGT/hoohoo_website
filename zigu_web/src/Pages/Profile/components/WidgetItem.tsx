@@ -16,7 +16,6 @@ import AchievementWidgetContent from './AchievementWidgetContent';
 import CarbonWidgetContent from './CarbonWidgetContent';
 import GalleryWidgetContent from './GalleryWidgetContent';
 import LeaderboardWidgetContent from './LeaderboardWidgetContent';
-import TemplateWidgetContent from './TemplateWidgetContent';
 
 const WIDTH = window.innerWidth > 600 ? 600 : window.innerWidth;
 
@@ -312,18 +311,21 @@ function EMWidgetContent({
   userInfo,
   widgetData,
   isEditMode,
+  hasEMWidgetButNoData,
 }: {
   widgetItem: ProfileWidgetItemType;
   widgetData: EMWidgetData;
   userInfo?: {userId: string; name: string; profileImage: string};
   isEditMode: boolean;
+  hasEMWidgetButNoData: boolean | undefined;
 }) {
   const emWidgetData = getEMWidgetData();
   const isSmallImage = widgetItem.sizeType !== 'BIG';
   const isLongItem = widgetItem.sizeType === 'LONG';
 
-  const link =
-    userInfo && widgetItem.emWidgetType
+  const link = hasEMWidgetButNoData
+    ? ''
+    : userInfo && widgetItem.emWidgetType
       ? NavigateLink(widgetItem.emWidgetType as ProfileEMWidgetType, userInfo)
       : '';
 
@@ -455,7 +457,7 @@ function WidgetItem({
     !!(widgetItem as ProfileWidgetItemType).emWidgetType;
   const hasLink = !!widgetItem?.linkUrl;
   const isClickable = isEditMode ? false : hasLink || hasEMWidgetType;
-
+  const hasEMWidgetButNoData = hasEMWidgetType && !widgetItem.widgetData;
   const handleEditClick = (e: React.MouseEvent) => {
     e.stopPropagation();
 
@@ -510,41 +512,40 @@ function WidgetItem({
             'https://picsum.photos/200/300',
           ],
         };
-  console.log('isTemp', isTemp);
 
-  if (isTemp) {
-    return (
-      <WidgetItemContainer
-        key={(widgetItem.isEmWidget ? 'em_' : 'custom_') + widgetItem.id}
-        $size={widgetItem.sizeType}
-        $isEditMode={isEditMode}
-        $hasBorder={widgetItem?.hasBorder}
-        $bgColor={
-          hasEMWidgetType
-            ? '#858585'
-            : widgetItem.bgType === 'COLOR'
-              ? widgetItem.bgColor
-              : '#858585'
-        }
-        $isClickable={false}>
-        <TemplateWidgetContent widgetItem={widgetItem} />
-        {isEditMode && (
-          <EditBox resizedWidth={resizedWidth}>
-            <EditButton className="widget-button" onClick={handleEditClick}>
-              <FaPencil size={resizedWidth > 400 ? 14 : 12} color="white" />
-            </EditButton>
-            <Divider />
+  // if (isTemp) {
+  //   return (
+  //     <WidgetItemContainer
+  //       key={(widgetItem.isEmWidget ? 'em_' : 'custom_') + widgetItem.id}
+  //       $size={widgetItem.sizeType}
+  //       $isEditMode={isEditMode}
+  //       $hasBorder={widgetItem?.hasBorder}
+  //       $bgColor={
+  //         hasEMWidgetType
+  //           ? '#858585'
+  //           : widgetItem.bgType === 'COLOR'
+  //             ? widgetItem.bgColor
+  //             : '#858585'
+  //       }
+  //       $isClickable={false}>
+  //       <TemplateWidgetContent widgetItem={widgetItem} />
+  //       {isEditMode && (
+  //         <EditBox resizedWidth={resizedWidth}>
+  //           <EditButton className="widget-button" onClick={handleEditClick}>
+  //             <FaPencil size={resizedWidth > 400 ? 14 : 12} color="white" />
+  //           </EditButton>
+  //           <Divider />
 
-            <DeleteButton
-              className="widget-button"
-              onClick={() => onDeleteWidget && onDeleteWidget(widgetItem)}>
-              <FaTimes size={resizedWidth > 400 ? 16 : 14} color="white" />
-            </DeleteButton>
-          </EditBox>
-        )}
-      </WidgetItemContainer>
-    );
-  }
+  //           <DeleteButton
+  //             className="widget-button"
+  //             onClick={() => onDeleteWidget && onDeleteWidget(widgetItem)}>
+  //             <FaTimes size={resizedWidth > 400 ? 16 : 14} color="white" />
+  //           </DeleteButton>
+  //         </EditBox>
+  //       )}
+  //     </WidgetItemContainer>
+  //   );
+  // }
 
   const textColor =
     widgetItem.bgType === 'COLOR' && widgetItem.bgColor
@@ -591,6 +592,7 @@ function WidgetItem({
           userInfo={userInfo}
           widgetData={emWidgetData}
           isEditMode={isEditMode}
+          hasEMWidgetButNoData={hasEMWidgetButNoData}
         />
       ) : isClickable ? (
         <WidgetLink

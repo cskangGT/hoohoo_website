@@ -15,7 +15,7 @@ const resources = {
 
 i18n.use(initReactI18next).init({
   resources,
-  lng: sessionStorage.getItem('language'),
+  lng: localStorage.getItem('language'),
   debug: true,
   defaultNS: 'translation',
   fallbackLng: 'ko',
@@ -32,7 +32,7 @@ i18n.use(initReactI18next).init({
 
 i18n.on('languageChanged', language => {
   console.log('languageChanged', language);
-  sessionStorage.setItem('language', language);
+  localStorage.setItem('language', language);
 });
 
 export default i18n;

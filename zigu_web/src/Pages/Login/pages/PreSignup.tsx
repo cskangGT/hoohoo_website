@@ -512,10 +512,13 @@ function PreSignup() {
   const handleKoreanClick = () => {
     i18next.changeLanguage('ko');
     setLanguage('ko');
+    localStorage.setItem('language', 'ko');
   };
   const handleEnglishClick = () => {
     i18next.changeLanguage('en');
+
     setLanguage('en');
+    localStorage.setItem('language', 'en');
   };
 
   return (

@@ -20,7 +20,7 @@ clientAxios.interceptors.response.use(
             logoutProfile();
             const logout = useUserStore.getState().logout;
             logout();
-            localStorage.clear();
+
             sessionStorage.clear();
 
             // 로그인 페이지로 리다이렉트
