@@ -70,7 +70,8 @@ type BubbleProps = {
 const Bubble: React.FC<BubbleProps> = ({setIsBubble}) => {
   const data: any = i18next.t('bubble', {returnObjects: true});
   const [isFadingOut, setIsFadingOut] = useState<boolean>(false);
-  const handleClose = () => {
+  const handleClose = (e: React.MouseEvent) => {
+    e.stopPropagation();
     setIsFadingOut(true);
     setTimeout(() => {
       setIsBubble(false);

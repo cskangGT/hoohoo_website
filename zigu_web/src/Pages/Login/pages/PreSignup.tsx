@@ -5,6 +5,7 @@ import React, {useEffect, useState} from 'react';
 import {useNavigate} from 'react-router-dom';
 import styled, {css} from 'styled-components';
 import {checkNameTag} from '../../../api/login/signup.api';
+import useWindowResize from '../../../components/hooks/useWindowResize';
 import {useUserStore} from '../../../storage/userStore';
 import {theme} from '../../../style';
 import EarthMeraLogo from '../components/EarthMeraLogo';
@@ -26,6 +27,7 @@ const LoginContainer = styled.div`
   justify-content: center;
   align-items: center;
 `;
+
 const ImageBox = styled.div`
   height: calc(100% - ${theme.spacing.md} * 2);
 
@@ -38,6 +40,72 @@ const ImageBox = styled.div`
     display: none;
   }
 `;
+
+const UpperBox = styled.div`
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+`;
+
+const LanguageBox = styled.div`
+  display: flex;
+  flex-direction: row;
+
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  top: ${theme.spacing.lg};
+  right: ${theme.spacing.lg};
+  column-gap: ${theme.spacing.sm};
+  @media screen and (max-width: 1000px) {
+    position: relative;
+    justify-content: flex-end;
+    top: 0px;
+    width: 100%;
+
+    right: 0px;
+  }
+  @media screen and (max-width: 600px) {
+    position: relative;
+    justify-content: flex-end;
+    top: 0px;
+    margin-top: 70px;
+    width: 100%;
+
+    right: 0px;
+  }
+  @media screen and (max-width: 500px) {
+    position: relative;
+    justify-content: flex-end;
+    top: 40px;
+    width: 100%;
+    /* left: 0px; */
+    right: 0px;
+  }
+`;
+const LanguageButton = styled.button<{isActive: boolean}>`
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  font-size: ${theme.fontSize.rg};
+  border: 1px solid
+    ${props => (!props.isActive ? 'transparent' : theme.darkGray)};
+  font-weight: 600;
+  color: ${props => (!props.isActive ? theme.gray : theme.darkGray)};
+  padding: ${theme.spacing.sm} ${theme.spacing.xl};
+  border-radius: 12px;
+
+  @media screen and (max-width: 600px) {
+    padding: ${theme.spacing.sm} ${theme.spacing.rg};
+  }
+  @media screen and (max-width: 500px) {
+    padding: ${theme.spacing.sm} ${theme.spacing.rg};
+    font-size: ${theme.fontSize.sm};
+    font-weight: 500;
+  }
+`;
 const Image = styled.img`
   width: 100%;
   height: 100%;
@@ -45,6 +113,7 @@ const Image = styled.img`
 
   object-fit: cover;
 `;
+
 const InnerBox = styled.div`
   width: 100%;
 
@@ -54,6 +123,7 @@ const InnerBox = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: flex-start;
+
   @media screen and (max-width: 600px) {
     align-items: center;
   }
@@ -61,6 +131,7 @@ const InnerBox = styled.div`
     margin: 30px 0px;
   }
 `;
+
 const ContentOuterBox = styled.div`
   /* width: calc(50% - ${theme.spacing.xl} * 2); */
   width: calc(60% - 200px);
@@ -68,6 +139,7 @@ const ContentOuterBox = styled.div`
   /* padding: ${theme.spacing.xl}; */
   display: flex;
   flex-direction: column;
+  position: relative;
   justify-content: center;
   align-items: flex-end;
   max-width: 400px;
@@ -338,7 +410,9 @@ interface ErrorType {
 }
 function PreSignup() {
   const navigate = useNavigate();
-  const language = i18next.language;
+  const {width} = useWindowResize({maxWidth: 1400});
+  const [language, setLanguage] = useState<string>(i18next.language);
+  const [isMobile, setIsMobile] = useState<boolean>(false);
   const localizedTexts: any = i18next.t('PreSignup', {
     returnObjects: true,
   });
@@ -350,9 +424,7 @@ function PreSignup() {
     limitExceeded: false,
   });
   const {user} = useUserStore();
-  useEffect(() => {
-    console.log('user', user);
-  }, [user]);
+
   const [hasError, setHasError] = useState<boolean>(false);
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [isLinkValid, setIsLinkValid] = useState<boolean>(false);
@@ -417,6 +489,10 @@ function PreSignup() {
       sessionStorage.removeItem('storedNameTag');
     }
   }, []);
+
+  useEffect(() => {
+    setIsMobile(width < 600);
+  }, [width]);
   const handleNextClick = () => {
     validateLink();
   };
@@ -433,6 +509,18 @@ function PreSignup() {
   const handlePowerByClick = () => {
     window.open('https://earthmera.com', '_blank');
   };
+  const handleKoreanClick = () => {
+    i18next.changeLanguage('ko');
+    setLanguage('ko');
+    localStorage.setItem('language', 'ko');
+  };
+  const handleEnglishClick = () => {
+    i18next.changeLanguage('en');
+
+    setLanguage('en');
+    localStorage.setItem('language', 'en');
+  };
+
   return (
     <Container>
       <LoginContainer>
@@ -440,6 +528,18 @@ function PreSignup() {
           <Image src={'/Images/earth_image.jpeg'} />
         </ImageBox>
         <ContentOuterBox>
+          <LanguageBox>
+            <LanguageButton
+              isActive={language === 'ko'}
+              onClick={handleKoreanClick}>
+              {localizedTexts.languageKO}
+            </LanguageButton>
+            <LanguageButton
+              isActive={language === 'en'}
+              onClick={handleEnglishClick}>
+              {localizedTexts.languageEN}
+            </LanguageButton>
+          </LanguageBox>
           <InnerBox>
             <LogoBox onClick={handleLogoClick}>
               <EarthMeraLogo size={100} />

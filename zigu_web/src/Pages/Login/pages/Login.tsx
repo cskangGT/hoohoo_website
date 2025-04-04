@@ -203,7 +203,6 @@ const Login = () => {
   const checkSession = async () => {
     const response = await validateSession();
     if (response.result) {
-      console.log('response.data', response.data);
       if (response.data.user?.nameTag) {
         setUser(response.data.user);
         if (response.data?.user?.isNeedsQuestionnaire) {
@@ -240,7 +239,6 @@ const Login = () => {
       const response = await sendGoogleLogin(tokenResponse.code);
       if (response.result) {
         getAPIKey();
-        console.log('response.data', response.data);
 
         setUser(response.data.user);
         if (response.data?.user?.isNeedsQuestionnaire) {
@@ -309,7 +307,7 @@ const Login = () => {
           res.authorization.code,
           res.authorization.id_token,
         );
-        console.log('response', response);
+
         if (response.result) {
           setUser(response.data.user);
           getAPIKey();
@@ -357,115 +355,114 @@ const Login = () => {
                   {localizedTexts.signup}
                 </SignupText>
               </NewUserText>
-              <form onSubmit={handleLogin}>
-                <TextFieldContainer>
-                  <TextField
-                    label={localizedTexts.email}
-                    type="text"
-                    value={email}
-                    onChange={e => setEmail(e.target.value)}
-                    sx={{
-                      '& .MuiOutlinedInput-root': {
-                        borderRadius: '8px',
-                      },
-                    }}
+
+              <TextFieldContainer>
+                <TextField
+                  label={localizedTexts.email}
+                  type="text"
+                  value={email}
+                  onChange={e => setEmail(e.target.value)}
+                  sx={{
+                    '& .MuiOutlinedInput-root': {
+                      borderRadius: '8px',
+                    },
+                  }}
+                />
+                <FormControl
+                  sx={{
+                    width: '100%',
+                    '& .MuiOutlinedInput-root': {
+                      borderRadius: '8px',
+                    },
+                  }}
+                  variant="outlined">
+                  <InputLabel htmlFor="outlined-adornment-password">
+                    {localizedTexts.password}
+                  </InputLabel>
+                  <OutlinedInput
+                    id="outlined-adornment-password"
+                    label={localizedTexts.password}
+                    type={showPassword ? 'text' : 'password'}
+                    endAdornment={
+                      <InputAdornment position="end">
+                        <IconButton
+                          aria-label={
+                            showPassword
+                              ? 'hide the password'
+                              : 'display the password'
+                          }
+                          onClick={() => setShowPassword(!showPassword)}
+                          edge="end">
+                          {showPassword ? (
+                            <IoEyeOffSharp size={20} color={theme.gray} />
+                          ) : (
+                            <IoEyeSharp size={20} color={theme.gray} />
+                          )}
+                        </IconButton>
+                      </InputAdornment>
+                    }
+                    value={password}
+                    onChange={e => setPassword(e.target.value)}
+                    required
                   />
-                  <FormControl
-                    sx={{
-                      width: '100%',
-                      '& .MuiOutlinedInput-root': {
-                        borderRadius: '8px',
-                      },
-                    }}
-                    variant="outlined">
-                    <InputLabel htmlFor="outlined-adornment-password">
-                      {localizedTexts.password}
-                    </InputLabel>
-                    <OutlinedInput
-                      id="outlined-adornment-password"
-                      label={localizedTexts.password}
-                      type={showPassword ? 'text' : 'password'}
-                      endAdornment={
-                        <InputAdornment position="end">
-                          <IconButton
-                            aria-label={
-                              showPassword
-                                ? 'hide the password'
-                                : 'display the password'
-                            }
-                            onClick={() => setShowPassword(!showPassword)}
-                            edge="end">
-                            {showPassword ? (
-                              <IoEyeOffSharp size={20} color={theme.gray} />
-                            ) : (
-                              <IoEyeSharp size={20} color={theme.gray} />
-                            )}
-                          </IconButton>
-                        </InputAdornment>
-                      }
-                      value={password}
-                      onChange={e => setPassword(e.target.value)}
-                      required
-                    />
-                  </FormControl>
-                </TextFieldContainer>
-                {error.wrongPassword && (
-                  <ErrorText>
-                    {localizedTexts.errorText.wrongPassword}
-                  </ErrorText>
-                )}
-                {error.invalidEmail && (
-                  <ErrorText>{localizedTexts.errorText.invalidEmail}</ErrorText>
-                )}
-                <LoginButton type="submit">{localizedTexts.login}</LoginButton>
+                </FormControl>
+              </TextFieldContainer>
+              {error.wrongPassword && (
+                <ErrorText>{localizedTexts.errorText.wrongPassword}</ErrorText>
+              )}
+              {error.invalidEmail && (
+                <ErrorText>{localizedTexts.errorText.invalidEmail}</ErrorText>
+              )}
+              <LoginButton onClick={handleLogin}>
+                {localizedTexts.login}
+              </LoginButton>
 
-                <ForgotPassword>
-                  <ForgotPasswordButton onClick={() => {}}>
-                    {localizedTexts.forgotPassword}
-                  </ForgotPasswordButton>
-                </ForgotPassword>
-                <LineDivider text={'or'} />
+              <ForgotPassword>
+                <ForgotPasswordButton onClick={() => {}}>
+                  {localizedTexts.forgotPassword}
+                </ForgotPasswordButton>
+              </ForgotPassword>
+              <LineDivider text={'or'} />
 
-                <SocialLoginContainer>
-                  <SocialButton onClick={handleGoogleLogin}>
-                    <GoogleLogo text={localizedTexts.continueWithGoogle} />
-                  </SocialButton>
+              <SocialLoginContainer>
+                <SocialButton onClick={handleGoogleLogin}>
+                  <GoogleLogo text={localizedTexts.continueWithGoogle} />
+                </SocialButton>
 
-                  <SocialButton onClick={handleAppleLogin}>
-                    <SocialInnerBox>
-                      <svg
-                        width="24"
-                        height="24"
-                        viewBox="0 0 24 24"
-                        style={{marginRight: '8px'}}>
-                        <path
-                          d="M17.0349 11.0001C17.0202 9.41394 17.7569 8.19144 19.2429 7.27227C18.3509 5.95394 16.9569 5.23644 15.0969 5.12727C13.3329 5.02060 11.3969 6.18727 10.7969 6.18727C10.1569 6.18727 8.39694 5.18227 7.01694 5.18227C4.40694 5.22227 1.60694 7.28394 1.60694 11.4826C1.60694 12.6973 1.81694 13.9533 2.23694 15.2479C2.79694 16.9733 4.91694 21.0493 7.13694 20.9826C8.23694 20.9533 9.01694 20.1626 10.4969 20.1626C11.9369 20.1626 12.6569 20.9826 13.8969 20.9826C16.1369 20.9493 18.0569 17.2733 18.5769 15.5426C15.5169 14.0826 17.0349 11.0706 17.0349 11.0001V11.0001ZM14.3369 3.81394C15.5969 2.31394 15.4769 0.946602 15.4569 0.466602C14.3169 0.526602 13.0169 1.17227 12.2369 2.01394C11.3769 2.92227 10.8969 4.04227 10.9769 5.12727C12.2169 5.21394 13.3369 4.97227 14.3369 3.81394Z"
-                          fill="#000000"
-                        />
-                      </svg>
-                      <span>{localizedTexts.continueWithApple}</span>
-                    </SocialInnerBox>
-                  </SocialButton>
+                <SocialButton onClick={handleAppleLogin}>
+                  <SocialInnerBox>
+                    <svg
+                      width="24"
+                      height="24"
+                      viewBox="0 0 24 24"
+                      style={{marginRight: '8px'}}>
+                      <path
+                        d="M17.0349 11.0001C17.0202 9.41394 17.7569 8.19144 19.2429 7.27227C18.3509 5.95394 16.9569 5.23644 15.0969 5.12727C13.3329 5.02060 11.3969 6.18727 10.7969 6.18727C10.1569 6.18727 8.39694 5.18227 7.01694 5.18227C4.40694 5.22227 1.60694 7.28394 1.60694 11.4826C1.60694 12.6973 1.81694 13.9533 2.23694 15.2479C2.79694 16.9733 4.91694 21.0493 7.13694 20.9826C8.23694 20.9533 9.01694 20.1626 10.4969 20.1626C11.9369 20.1626 12.6569 20.9826 13.8969 20.9826C16.1369 20.9493 18.0569 17.2733 18.5769 15.5426C15.5169 14.0826 17.0349 11.0706 17.0349 11.0001V11.0001ZM14.3369 3.81394C15.5969 2.31394 15.4769 0.946602 15.4569 0.466602C14.3169 0.526602 13.0169 1.17227 12.2369 2.01394C11.3769 2.92227 10.8969 4.04227 10.9769 5.12727C12.2169 5.21394 13.3369 4.97227 14.3369 3.81394Z"
+                        fill="#000000"
+                      />
+                    </svg>
+                    <span>{localizedTexts.continueWithApple}</span>
+                  </SocialInnerBox>
+                </SocialButton>
 
-                  <KakaoButton onClick={handleKakaoLogin}>
-                    <SocialInnerBox>
-                      <svg
-                        width="24"
-                        height="24"
-                        viewBox="0 0 24 24"
-                        style={{marginRight: '8px'}}>
-                        <path
-                          fillRule="evenodd"
-                          clipRule="evenodd"
-                          d="M12 2.272C6.26 2.272 1.5 6.074 1.5 10.714c0 2.967 1.964 5.568 4.91 7.025-.213.786-.784 2.842-.897 3.285-.141.554.203.548.427.398.175-.118 2.79-1.89 3.91-2.657.706.101 1.426.153 2.15.153 5.74 0 10.5-3.802 10.5-8.204 0-4.64-4.76-8.442-10.5-8.442"
-                          fill="#000000"
-                        />
-                      </svg>
-                      <span>{localizedTexts.continueWithKakao}</span>
-                    </SocialInnerBox>
-                  </KakaoButton>
-                </SocialLoginContainer>
-              </form>
+                <KakaoButton onClick={handleKakaoLogin}>
+                  <SocialInnerBox>
+                    <svg
+                      width="24"
+                      height="24"
+                      viewBox="0 0 24 24"
+                      style={{marginRight: '8px'}}>
+                      <path
+                        fillRule="evenodd"
+                        clipRule="evenodd"
+                        d="M12 2.272C6.26 2.272 1.5 6.074 1.5 10.714c0 2.967 1.964 5.568 4.91 7.025-.213.786-.784 2.842-.897 3.285-.141.554.203.548.427.398.175-.118 2.79-1.89 3.91-2.657.706.101 1.426.153 2.15.153 5.74 0 10.5-3.802 10.5-8.204 0-4.64-4.76-8.442-10.5-8.442"
+                        fill="#000000"
+                      />
+                    </svg>
+                    <span>{localizedTexts.continueWithKakao}</span>
+                  </SocialInnerBox>
+                </KakaoButton>
+              </SocialLoginContainer>
             </InnerBox>
           </LoginWrapperBox>
         </LoginContainer>

@@ -117,8 +117,11 @@ const ItemTitle = styled.h3`
   font-size: ${theme.fontSize.lg};
   font-weight: 600;
   color: ${theme.darkGray};
-  height: 50px;
+
   margin-bottom: ${theme.spacing.sm};
+  @media screen and (max-width: 1000px) {
+    height: 50px;
+  }
 `;
 
 const ItemDescription = styled.p`

@@ -311,18 +311,21 @@ function EMWidgetContent({
   userInfo,
   widgetData,
   isEditMode,
+  hasEMWidgetButNoData,
 }: {
   widgetItem: ProfileWidgetItemType;
   widgetData: EMWidgetData;
   userInfo?: {userId: string; name: string; profileImage: string};
   isEditMode: boolean;
+  hasEMWidgetButNoData: boolean | undefined;
 }) {
   const emWidgetData = getEMWidgetData();
   const isSmallImage = widgetItem.sizeType !== 'BIG';
   const isLongItem = widgetItem.sizeType === 'LONG';
 
-  const link =
-    userInfo && widgetItem.emWidgetType
+  const link = hasEMWidgetButNoData
+    ? ''
+    : userInfo && widgetItem.emWidgetType
       ? NavigateLink(widgetItem.emWidgetType as ProfileEMWidgetType, userInfo)
       : '';
 
@@ -454,7 +457,7 @@ function WidgetItem({
     !!(widgetItem as ProfileWidgetItemType).emWidgetType;
   const hasLink = !!widgetItem?.linkUrl;
   const isClickable = isEditMode ? false : hasLink || hasEMWidgetType;
-
+  const hasEMWidgetButNoData = hasEMWidgetType && !widgetItem.widgetData;
   const handleEditClick = (e: React.MouseEvent) => {
     e.stopPropagation();
 
@@ -509,7 +512,8 @@ function WidgetItem({
             'https://picsum.photos/200/300',
           ],
         };
-  // if (isTemp && hasEMWidgetType) {
+
+  // if (isTemp) {
   //   return (
   //     <WidgetItemContainer
   //       key={(widgetItem.isEmWidget ? 'em_' : 'custom_') + widgetItem.id}
@@ -588,6 +592,7 @@ function WidgetItem({
           userInfo={userInfo}
           widgetData={emWidgetData}
           isEditMode={isEditMode}
+          hasEMWidgetButNoData={hasEMWidgetButNoData}
         />
       ) : isClickable ? (
         <WidgetLink
