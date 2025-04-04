@@ -429,9 +429,7 @@ function PreSignup() {
   const handleSignInClick = () => {
     navigate('/login');
   };
-  const handleLogoClick = () => {
-    navigate(`/${language}`);
-  };
+  const handleLogoClick = () => {};
   const handlePowerByClick = () => {
     window.open('https://earthmera.com', '_blank');
   };

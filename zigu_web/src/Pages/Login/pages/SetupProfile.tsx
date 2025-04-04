@@ -70,9 +70,13 @@ const ProfileImageContainer = styled.div`
 
   overflow: hidden;
   cursor: pointer;
+  margin: 0 auto;
   margin-bottom: ${theme.spacing['4xl']};
-  @media screen and (max-width: 500px) {
+  @media screen and (max-width: 700px) {
     margin-bottom: ${theme.spacing['2xl']};
+  }
+  @media screen and (max-width: 600px) {
+    margin: ${theme.spacing.sm} 0px;
   }
 `;
 const ProfileNameContainer = styled.div`
@@ -92,6 +96,9 @@ const ProfileNameText = styled.p`
   color: ${theme.inActiveGray};
   margin: ${theme.spacing.lg} 0px;
   text-align: left;
+  @media screen and (max-width: 700px) {
+    margin: ${theme.spacing.md} 0px;
+  }
 `;
 const ProfileImageInput = styled.input`
   display: none;
@@ -113,6 +120,12 @@ const DescriptionText = styled.p`
   color: ${theme.inActiveGray};
   margin: ${theme.spacing['2xl']};
   text-align: center;
+  @media screen and (max-width: 700px) {
+    margin: ${theme.spacing.xl} ${theme.spacing['2xl']};
+  }
+  @media screen and (max-width: 400px) {
+    margin: ${theme.spacing.lg} ${theme.spacing['2xl']};
+  }
 `;
 
 const ContinueButtonContainer = styled.div`
