@@ -345,12 +345,18 @@ function PlanPage() {
   const localizedTexts: any = i18next.t('PlanPage', {returnObjects: true});
   const navigate = useNavigate();
   const [promoApplied, setPromoApplied] = useState<boolean>(false);
+
   function openPromoCodeModal() {
     setIsPromoCodeModalVisible(true);
   }
   function setApplied() {
     setPromoApplied(true);
     setBillingCycle('monthly');
+    const planCards = document.querySelectorAll('.PlanCard');
+
+    if (planCards.length > 1) {
+      planCards[1].scrollIntoView({behavior: 'smooth'});
+    }
   }
   function sendToProfile() {
     navigate(`/${user?.nameTag}`, {state: {showTooltip: true, paidPlan: true}});
@@ -387,6 +393,7 @@ function PlanPage() {
               return (
                 <PlanCard
                   key={plan.name}
+                  className="PlanCard"
                   isPopular={plan.isPopular}
                   promoApplied={!promoApplied ? false : !isApplied}>
                   <PlanTitleContainer>

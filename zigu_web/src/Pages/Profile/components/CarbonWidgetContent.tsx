@@ -5,30 +5,30 @@ import {theme} from '../../../style';
 import {ProfileWidgetItemSize} from '../types/WidgetItemType';
 import {getEMWidgetData} from '../util/EMWidgetData';
 
-const CO2Container = styled.div<{small?: boolean; long?: boolean}>`
+const CO2Container = styled.div<{$small?: boolean; $long?: boolean}>`
   display: flex;
   align-items: center;
   width: 100%;
   height: 100%;
   padding: ${props =>
-    props.small ? `0 ${theme.spacing.xl}` : `0 ${theme.spacing.xl}`};
+    props.$small ? `0 ${theme.spacing.xl}` : `0 ${theme.spacing.xl}`};
 
   border-radius: 12px;
   position: relative;
 
   ${props =>
-    props.long &&
+    props.$long &&
     `
     justify-content: flex-start;
   `}
 
   @media (max-width: 500px) {
     padding: ${props =>
-      props.small ? `0 ${theme.spacing.md}` : `0 ${theme.spacing.lg}`};
+      props.$small ? `0 ${theme.spacing.md}` : `0 ${theme.spacing.lg}`};
   }
   @media (max-width: 400px) {
     padding: ${props =>
-      props.small ? `0 ${theme.spacing.md}` : `0 ${theme.spacing.lg}`};
+      props.$small ? `0 ${theme.spacing.md}` : `0 ${theme.spacing.lg}`};
   }
 `;
 
@@ -77,7 +77,7 @@ const CO2Title = styled.div`
   }
 `;
 
-const FootprintIcon = styled.img<{small?: boolean}>`
+const FootprintIcon = styled.img<{$small?: boolean}>`
   height: 30px;
   margin-right: 10px;
   object-fit: contain;
@@ -99,17 +99,25 @@ const CO2ValueContainer = styled.div`
 
   margin-left: 16px;
   align-items: baseline;
+  text-align: right;
   font-family: Inter;
+  min-width: 100px;
+
+  justify-content: flex-end;
   @media (max-width: 500px) {
     margin-left: 8px;
+    min-width: 80px;
+    justify-content: flex-end;
   }
   @media (max-width: 400px) {
     margin-left: 4px;
+    min-width: 70px;
+    justify-content: flex-end;
   }
 `;
 
-const CO2Value = styled.div<{small?: boolean}>`
-  font-size: ${props => (props.small ? theme.fontSize.xl : theme.fontSize.xl)};
+const CO2Value = styled.div<{$small?: boolean}>`
+  font-size: ${props => (props.$small ? theme.fontSize.xl : theme.fontSize.xl)};
   line-height: 1.2;
   font-weight: bold;
   color: ${theme.white};
@@ -117,12 +125,12 @@ const CO2Value = styled.div<{small?: boolean}>`
     font-size: ${theme.fontSize.lg};
   }
   @media (max-width: 400px) {
-    font-size: ${theme.fontSize.md};
+    font-size: ${theme.fontSize.rg};
   }
 `;
 
-const CO2Unit = styled.div<{small?: boolean}>`
-  font-size: ${props => (props.small ? theme.fontSize.md : theme.fontSize.md)};
+const CO2Unit = styled.div<{$small?: boolean}>`
+  font-size: ${props => (props.$small ? theme.fontSize.md : theme.fontSize.md)};
   color: ${theme.white};
   line-height: 1.2;
   margin-left: 4px;
@@ -131,7 +139,7 @@ const CO2Unit = styled.div<{small?: boolean}>`
     margin-left: 2px;
   }
   @media (max-width: 400px) {
-    font-size: ${theme.fontSize.md};
+    font-size: ${theme.fontSize.rg};
     margin-left: 2px;
   }
 `;
@@ -223,18 +231,18 @@ function CarbonWidgetContent({
   if (sizeType === 'SMALL') {
     // 작은 사이즈 (왼쪽 이미지)
     return (
-      <CO2Container small>
-        <FootprintIcon small src={'/Images/footprint.png'} />
+      <CO2Container $small>
+        <FootprintIcon $small src={'/Images/footprint.png'} />
         <CO2ValueContainer>
-          <CO2Value small> {annualCarbonReduction / 1000}</CO2Value>
-          <CO2Unit small>{localizedTexts.annualCabonReduction[1]}</CO2Unit>
+          <CO2Value $small> {annualCarbonReduction / 1000}</CO2Value>
+          <CO2Unit $small>{localizedTexts.annualCabonReduction[1]}</CO2Unit>
         </CO2ValueContainer>
       </CO2Container>
     );
   } else if (sizeType === 'LONG') {
     // 긴 사이즈 (중간 이미지들)
     return (
-      <CO2Container long>
+      <CO2Container $long>
         <FootprintIcon src={'/Images/footprint.png'} />
         <CO2ValueContainer>
           <CO2Value>{annualCarbonReduction / 1000}</CO2Value>

@@ -8,9 +8,9 @@ type GalleryWidgetContentProps = {
   thumbnails: string[];
 };
 const GalleryContainer = styled.div<{
-  big?: boolean;
-  long?: boolean;
-  small?: boolean;
+  $big?: boolean;
+  $long?: boolean;
+  $small?: boolean;
 }>`
   width: calc(100% - 24px);
   height: calc(100% - 24px);
@@ -28,21 +28,21 @@ const GalleryContainer = styled.div<{
     width: calc(100% - 12px);
     height: calc(100% - 12px);
     ${props =>
-      props.big &&
+      props.$big &&
       `
       padding: 8px;
       width: calc(100% - 16px);
       height: calc(100% - 16px);
     `}
     ${props =>
-      props.long &&
+      props.$long &&
       `
       padding: 4px;
       width: calc(100% - 8px);
       height: calc(100% - 8px);
     `}
     ${props =>
-      props.small &&
+      props.$small &&
       `
       padding: 4px;
       width: calc(100% - 8px);
@@ -51,21 +51,21 @@ const GalleryContainer = styled.div<{
   }
 `;
 
-const GalleryGrid = styled.div<{big?: boolean; long?: boolean}>`
+const GalleryGrid = styled.div<{$big?: boolean; $long?: boolean}>`
   display: grid;
   width: 100%;
   height: 100%;
   gap: 8px;
 
   ${props =>
-    props.big &&
+    props.$big &&
     `
     grid-template-columns: repeat(2, 1fr);
     grid-template-rows: repeat(2, 1fr);
   `}
 
   ${props =>
-    props.long &&
+    props.$long &&
     `
     display: flex;
     flex-direction: row;
@@ -99,10 +99,10 @@ const GalleryScroll = styled.div`
 `;
 
 const GalleryImageWrapper = styled.div<{
-  small?: boolean;
-  tiny?: boolean;
+  $small?: boolean;
+  $tiny?: boolean;
   width: number;
-  numColumns: number;
+
   cellHeight: number;
 }>`
   position: relative;
@@ -110,7 +110,7 @@ const GalleryImageWrapper = styled.div<{
 
   border-radius: 16px;
   ${props =>
-    props.small &&
+    props.$small &&
     `
     width: 100%;
     aspect-ratio: 1/1;
@@ -118,7 +118,7 @@ const GalleryImageWrapper = styled.div<{
   `}
 
   ${props =>
-    props.tiny &&
+    props.$tiny &&
     `
     flex: 0 0 auto;
     border-radius: 12px;
@@ -129,7 +129,7 @@ const GalleryImageWrapper = styled.div<{
   @media (max-width: 600px) {
     border-radius: 15px;
     ${props =>
-      props.tiny &&
+      props.$tiny &&
       `
     
     width: ${props.cellHeight - 16}px;
@@ -139,7 +139,7 @@ const GalleryImageWrapper = styled.div<{
   @media (max-width: 400px) {
     border-radius: 12px;
     ${props =>
-      props.tiny &&
+      props.$tiny &&
       `
     
     width: ${props.cellHeight - 8}px;
@@ -168,15 +168,14 @@ function GalleryWidgetContent({
   if (sizeType === 'BIG') {
     // 큰 사이즈 (상단 이미지) - 4개 이미지를 2x2 그리드로 표시
     return (
-      <GalleryContainer big>
-        <GalleryGrid big>
+      <GalleryContainer $big>
+        <GalleryGrid $big>
           {thumbnails
             .slice(0, Math.min(4, thumbnails.length))
             .map((img, index) => (
               <GalleryImageWrapper
                 key={index}
                 width={width}
-                numColumns={2}
                 cellHeight={cellHeight}>
                 <GalleryImage src={img} alt={`Gallery ${index + 1}`} />
               </GalleryImageWrapper>
@@ -187,16 +186,15 @@ function GalleryWidgetContent({
   } else if (sizeType === 'LONG') {
     // 긴 사이즈 (중간 이미지) - 4개 이미지를 가로로 배치
     return (
-      <GalleryContainer long>
-        <GalleryGrid long>
+      <GalleryContainer $long>
+        <GalleryGrid $long>
           {thumbnails
             .slice(0, Math.min(8, thumbnails.length))
             .map((img, index) => (
               <GalleryImageWrapper
                 key={index}
-                tiny
+                $tiny
                 width={width}
-                numColumns={8}
                 cellHeight={cellHeight}>
                 <GalleryImage src={img} alt={`Gallery ${index + 1}`} />
               </GalleryImageWrapper>
@@ -207,16 +205,15 @@ function GalleryWidgetContent({
   } else {
     // 작은 사이즈 (하단 이미지) - 갤러리 효과로 이미지 나열
     return (
-      <GalleryContainer small>
+      <GalleryContainer $small={true}>
         <GalleryScroll>
           {thumbnails
             .slice(0, Math.min(4, thumbnails.length))
             .map((img, index) => (
               <GalleryImageWrapper
                 key={index}
-                tiny
+                $tiny={true}
                 width={width}
-                numColumns={8}
                 cellHeight={cellHeight}>
                 <GalleryImage src={img} alt={`Gallery ${index + 1}`} />
               </GalleryImageWrapper>

@@ -8,6 +8,7 @@ interface UserData {
     email?: string;
     nameTag: string;
     profileImage?: string;
+    hasPlan: boolean;
 }
 
 interface LinkedUserInfo {
@@ -20,6 +21,7 @@ interface UserState {
     user: UserData;
     linkedUserInfo: LinkedUserInfo;
     myWidgets: ProfileWidgetItemType[];
+
     isAuthenticated: boolean;
     isSyncedWithEM: boolean;
     setUser: (user: UserData) => void;
@@ -34,7 +36,7 @@ const initialUser: UserData = {
     email: '',
     nameTag: '',
     profileImage: '',
-
+    hasPlan: false,
 };
 export const useUserStore = create<UserState>()(
     persist(

@@ -139,6 +139,7 @@ const LogoBox = styled.div`
   width: 100%;
   align-items: center;
 `;
+const LogoButton = styled.div``;
 const LoginButton = styled.button`
   width: 100%;
   padding: ${theme.spacing.md};
@@ -211,14 +212,16 @@ const Login = () => {
           navigateNameTag(response.data.user.nameTag);
         }
       }
-    } else {
-      // logoutProfile();
-      // toast.error(localizedTexts.sessionExpired);
     }
+    // else {
+    //   logoutProfile();
+    //   // toast.error(localizedTexts.sessionExpired);
+    // }
   };
   useEffect(() => {
     if (user?.nameTag && isAuthenticated) {
       console.log('user', user);
+      // checkSession();
       navigateNameTag(user.nameTag);
     } else {
       checkSession();
@@ -265,6 +268,7 @@ const Login = () => {
     // 로그인 로직 구현
 
     if (email.length === 0 || password.length === 0) {
+      setError({...error, invalidEmail: true});
       return;
     }
     if (!isValidEmail(email)) {
@@ -345,8 +349,10 @@ const Login = () => {
         <LoginContainer>
           <LoginWrapperBox>
             <InnerBox>
-              <LogoBox onClick={() => navigate('/')}>
-                <EarthMeraLogo size={70} />
+              <LogoBox>
+                <LogoButton onClick={() => navigate('/')}>
+                  <EarthMeraLogo size={70} />
+                </LogoButton>
               </LogoBox>
               <TitleText language={language}>{localizedTexts.title}</TitleText>
               <NewUserText language={language}>
@@ -417,11 +423,11 @@ const Login = () => {
                 {localizedTexts.login}
               </LoginButton>
 
-              <ForgotPassword>
+              {/* <ForgotPassword>
                 <ForgotPasswordButton onClick={() => {}}>
                   {localizedTexts.forgotPassword}
                 </ForgotPasswordButton>
-              </ForgotPassword>
+              </ForgotPassword> */}
               <LineDivider text={'or'} />
 
               <SocialLoginContainer>

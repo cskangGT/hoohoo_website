@@ -61,7 +61,7 @@ const ItemContainer = styled.div<{selected: boolean}>`
   justify-content: flex-start;
   align-items: center;
   border-radius: 16px;
-  border: ${props => (props.selected ? '2px' : '1px')} solid
+  border: ${props => (props.selected ? '2px' : '2px')} solid
     ${props => (props.selected ? theme.darkGray : theme.gray)};
   overflow: hidden;
   background-color: #efefef;
@@ -87,8 +87,13 @@ const ItemContainer = styled.div<{selected: boolean}>`
     gap: ${theme.spacing.rg};
   }
   @media screen and (max-width: 500px) {
-    flex: 0 0 calc(40% - ${theme.spacing.rg});
-    min-width: auto;
+    flex: 0 0 calc(35% - ${theme.spacing.sm});
+    max-width: 200px;
+    gap: ${theme.spacing.rg};
+  }
+  @media screen and (max-width: 350px) {
+    flex: 0 0 calc(60% - ${theme.spacing.sm});
+    max-width: 200px;
     gap: ${theme.spacing.rg};
   }
   &:hover {

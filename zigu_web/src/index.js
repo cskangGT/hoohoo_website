@@ -1,15 +1,14 @@
-import { GoogleOAuthProvider } from '@react-oauth/google';
+import {GoogleOAuthProvider} from '@react-oauth/google';
 import React from 'react';
-import { CookiesProvider } from 'react-cookie';
+import {CookiesProvider} from 'react-cookie';
 import ReactDOM from 'react-dom/client';
-import { HelmetProvider } from 'react-helmet-async';
-import { RouterProvider } from 'react-router-dom';
-import { ToastContainer } from 'react-toastify';
+import {HelmetProvider} from 'react-helmet-async';
+import {RouterProvider} from 'react-router-dom';
+import {ToastContainer} from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import { createGlobalStyle } from 'styled-components';
+import {createGlobalStyle} from 'styled-components';
 import HakgyoansimDunggeunmisoTTFBold from '../public/fonts/HakgyoansimDunggeunmisoTTFB.ttf';
 import HakgyoansimDunggeunmisoTTFRegular from '../public/fonts/HakgyoansimDunggeunmisoTTFR.ttf';
-import HaloDek from '../public/fonts/HaloDek.ttf';
 import NanumHumanTTfBold from '../public/fonts/NanumHumanBold.ttf';
 import NanumHumanTTfLight from '../public/fonts/NanumHumanLight.ttf';
 import NanumHumanTTfRegular from '../public/fonts/NanumHumanRegular.ttf';
@@ -22,7 +21,7 @@ import YanoljaYacheBWoff2 from '../public/fonts/YanoljaYacheB.woff2';
 import YanoljaYacheTtf from '../public/fonts/YanoljaYacheR.ttf';
 import YanoljaYacheWoff from '../public/fonts/YanoljaYacheR.woff';
 import YanoljaYacheWoff2 from '../public/fonts/YanoljaYacheR.woff2';
-import { LanguageProvider } from './components/hooks/LanguageContext';
+import {LanguageProvider} from './components/hooks/LanguageContext';
 import './lang/i18n';
 import Router from './Router';
 
@@ -84,10 +83,7 @@ const GlobalStyle = createGlobalStyle`
         src: url(${TmoneyRoundWindExtraBold}) format('truetype');
         font-weight: 800;  // ExtraBold 웨이트 지정
       }
-      @font-face {
-        font-family: 'HaloDek';
-        src: url(${HaloDek}) format('truetype');
-      }
+     
       @font-face {
         font-family: 'yg-jalnan';
         src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_four@1.2/JalnanOTF00.woff') format('woff');

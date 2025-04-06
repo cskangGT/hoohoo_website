@@ -228,7 +228,11 @@ function SetupProfile() {
       sessionStorage.removeItem('redirectAfterAuth');
       navigate(redirectAfterAuth, {replace: true});
     } else {
-      navigate('/setup/plan', {replace: true});
+      if (user?.hasPlan) {
+        navigate(`/${user?.nameTag}`, {replace: true});
+      } else {
+        navigate('/setup/plan', {replace: true});
+      }
     }
   }
 
@@ -335,6 +339,7 @@ function SetupProfile() {
         profileImage: profileImage,
         nameTag: user?.nameTag || '',
         email: user?.email || '',
+        hasPlan: user?.hasPlan || false,
       };
       setUser(userData);
 

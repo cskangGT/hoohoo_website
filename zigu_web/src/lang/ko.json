@@ -89,6 +89,7 @@
       "sentToast": "코드를 재전송했습니다.",
       "info": "이메일을 확인하시고 코드를 입력해주세요.",
       "resend": "재전송",
+      "resent": "코드를 재전송했습니다.",
       "delete": "삭제"
     },
     "DeleteConfirmModal": {
@@ -1133,7 +1134,8 @@
     "placeholder": "코드 입력하기",
     "resend": "다시 보내기",
     "continue": "계정 생성하기",
-    "invalidCode": "올바르지 않은 코드입니다. 다시 시도해주세요."
+    "invalidCode": "올바르지 않은 코드입니다. 다시 시도해주세요.",
+    "resent": "코드를 재전송했어요."
   },
   "SelectGoal": {
     "title": "나한테 찰떡인 ZIGU, 골라볼까요?",
@@ -1461,7 +1463,7 @@
     "changeProfilePicture": "프로필 사진 변경",
     "changeProfileName": "프로필 이름 변경",
     "changePassword": "비밀번호 변경",
-    "syncEarthMeraID": "지구에서 어스메라 연동하기",
+    "syncEarthMeraID": "어스메라 계정 연동하기",
     "changeURL": "URL 변경",
     "logout": "로그아웃",
     "notSupported": "이 기능은 아직 지원되지 않아요.",
@@ -1538,6 +1540,7 @@
       "description": "잠시만 기다려주세요",
       "button": "로그인 페이지로 돌아가기"
     },
+    "notValidAccess": "올바르지 않은 접근입니다. ID가 필요합니다.",
     "alreadySynced": "이미 연동된 계정이에요.",
     "title": "EarthMera와 ZIGU 연동하기",
     "description": "EarthMera 계정을 연동하면 당신의 환경 임팩트를 더 잘 나타낼 수 있는 바이오 링크를 만들 수 있어요!",

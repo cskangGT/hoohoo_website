@@ -1194,6 +1194,7 @@
     "description": ["We Sent a temporary sign up code to ", "."],
     "placeholder": "Enter code",
     "resend": "Resend code",
+    "resent": "Code resent!",
     "continue": "Continue",
     "invalidCode": "Invalid code. Please try again."
   },
@@ -1467,7 +1468,7 @@
     "changeProfilePicture": "Change Profile Picture",
     "changeProfileName": "Change Profile Name",
     "changePassword": "Change Password",
-    "syncEarthMeraID": "Sync EarthMera ID",
+    "syncEarthMeraID": "Sync EarthMera account",
     "changeURL": "Change URL",
     "logout": "Log out",
     "notSupported": "This feature is not supported yet.",
@@ -1544,6 +1545,7 @@
       "description": "Please wait for seconds",
       "button": "Go back to Login"
     },
+    "notValidAccess": "Invalid access. ID is required.",
     "alreadySynced": "This account is already synced with EarthMera.",
     "title": "Sync ZIGU to EarthMera app",
     "description": "Sync your EarthMera account to create a more powerful bio link that highlights your eco impact!",
@@ -1617,7 +1619,6 @@
         "unlock": "Everything in Pro, with more",
         "features": [
           "Animated background themes",
-          "Custom widget placement",
           "Visitor insights dashboard",
           "SEO & Google Analytics integration"
         ]
