@@ -30,7 +30,6 @@ function KakaoCallback() {
         console.log('response', response);
 
         if (response.result) {
-          // getAPIKey();
           getAPIKey();
           setUser(response?.data?.user);
           sessionStorage.removeItem('storedNameTag');

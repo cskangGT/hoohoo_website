@@ -412,7 +412,7 @@ function PreSignup() {
   const navigate = useNavigate();
   const {width} = useWindowResize({maxWidth: 1400});
   const [language, setLanguage] = useState<string>(i18next.language);
-  const [isMobile, setIsMobile] = useState<boolean>(false);
+
   const localizedTexts: any = i18next.t('PreSignup', {
     returnObjects: true,
   });
@@ -490,9 +490,6 @@ function PreSignup() {
     }
   }, []);
 
-  useEffect(() => {
-    setIsMobile(width < 600);
-  }, [width]);
   const handleNextClick = () => {
     validateLink();
   };

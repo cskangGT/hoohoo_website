@@ -1,6 +1,6 @@
 import React from 'react';
 
-import {createBrowserRouter, Navigate} from 'react-router-dom';
+import {createBrowserRouter} from 'react-router-dom';
 import {default as ErrorComponent} from './components/ErrorComponent/ErrorComponent';
 import AppleCallback from './Pages/Login/oauth/AppleCallback';
 import GoogleCallback from './Pages/Login/oauth/GoogleCallback';
@@ -113,17 +113,6 @@ export const noFrameRoutes = [
     path: '/profile/sync-earthmera',
     element: <ProfileSyncFromAppPage />,
     errorElement: <ErrorComponent />,
-  },
-  {
-    path: '/',
-    element: <Profile />,
-    errorElement: <ErrorComponent />,
-    children: [
-      {
-        index: true,
-        element: <Navigate to="/pre-signup" replace />,
-      },
-    ],
   },
   {
     path: '/:nameTag',

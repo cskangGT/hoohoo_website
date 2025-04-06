@@ -450,14 +450,13 @@ function WidgetItem({
     maxWidth: 600,
   });
   const widgetItem = widget as ProfileWidgetItemType;
-  const isTemp =
-    widgetItem.isTemp || widgetItem.emWidgetType === ProfileEMWidgetType.Temp;
+  const isTemp = widgetItem.isTemp;
   const hasEMWidgetType =
     (widgetItem as ProfileWidgetItemType).isEmWidget &&
     !!(widgetItem as ProfileWidgetItemType).emWidgetType;
   const hasLink = !!widgetItem?.linkUrl;
   const isClickable = isEditMode ? false : hasLink || hasEMWidgetType;
-  const hasEMWidgetButNoData = hasEMWidgetType && !widgetItem.widgetData;
+  const hasEMWidgetButNoData = hasEMWidgetType && isTemp;
   const handleEditClick = (e: React.MouseEvent) => {
     e.stopPropagation();
 
@@ -465,54 +464,52 @@ function WidgetItem({
       onEditWidget(widgetItem);
     }
   };
+  const initialEMWidgetData = {
+    level: 4,
+    numBadges: 2,
+    numMedals: 3,
+    equippedMedals: [
+      {
+        medalTitle: 'ECO_ACTION_TUMBLER',
+        medalLevel: 2,
+      },
+      {
+        medalTitle: 'ECO_ACTION_CARBON_REDUCTION',
+        medalLevel: 3,
+      },
+      {
+        medalTitle: 'REWARD_REDEEM_MEDAL',
+        medalLevel: 4,
+      },
+    ],
+    equippedBadge: 'LITTLE_BY_LITTLE',
+    annualCarbonReduction: 1370,
+    annualEcoActionCount: 100,
+    treeEffect: 3,
+    ecoActionCount: 700,
+    userRank: 17,
+    lastMonthRank: 18,
+    higherRankInfo: {
+      gap: 39,
+      ecoActionCount: 739,
+    },
+    lowerRankInfo: {
+      gap: 25,
+      ecoActionCount: 675,
+    },
+    thumbnails: [
+      'https://picsum.photos/200/300',
+      'https://picsum.photos/200/300',
+      'https://picsum.photos/200/300',
+      'https://picsum.photos/200/300',
+      'https://picsum.photos/200/300',
+      'https://picsum.photos/200/300',
+      'https://picsum.photos/200/300',
+      'https://picsum.photos/200/300',
+    ],
+  };
   const emWidgetData =
-    hasEMWidgetType && widgetItem.widgetData
-      ? widgetItem.widgetData
-      : {
-          level: 4,
-          numBadges: 2,
-          numMedals: 3,
-          equippedMedals: [
-            {
-              medalTitle: 'ECO_ACTION_TUMBLER',
-              medalLevel: 2,
-            },
-            {
-              medalTitle: 'ECO_ACTION_CARBON_REDUCTION',
-              medalLevel: 3,
-            },
-            {
-              medalTitle: 'REWARD_REDEEM_MEDAL',
-              medalLevel: 4,
-            },
-          ],
-          equippedBadge: 'LITTLE_BY_LITTLE',
-          annualCarbonReduction: 1370,
-          annualEcoActionCount: 100,
-          treeEffect: 3,
-          ecoActionCount: 700,
-          userRank: 17,
-          lastMonthRank: 18,
-          higherRankInfo: {
-            gap: 39,
-            ecoActionCount: 739,
-          },
-          lowerRankInfo: {
-            gap: 25,
-            ecoActionCount: 675,
-          },
-          thumbnails: [
-            'https://picsum.photos/200/300',
-            'https://picsum.photos/200/300',
-            'https://picsum.photos/200/300',
-            'https://picsum.photos/200/300',
-            'https://picsum.photos/200/300',
-            'https://picsum.photos/200/300',
-            'https://picsum.photos/200/300',
-            'https://picsum.photos/200/300',
-          ],
-        };
-
+    hasEMWidgetType && isTemp ? initialEMWidgetData : widgetItem.widgetData;
   // if (isTemp) {
   //   return (
   //     <WidgetItemContainer
@@ -590,7 +587,7 @@ function WidgetItem({
         <EMWidgetContent
           widgetItem={widgetItem}
           userInfo={userInfo}
-          widgetData={emWidgetData}
+          widgetData={emWidgetData as EMWidgetData}
           isEditMode={isEditMode}
           hasEMWidgetButNoData={hasEMWidgetButNoData}
         />
@@ -613,14 +610,14 @@ function WidgetItem({
           </ItemHolderBox> */}
           <EditBox resizedWidth={resizedWidth}>
             <EditButton className="widget-button" onClick={handleEditClick}>
-              <FaPencil size={resizedWidth > 400 ? 14 : 12} color="white" />
+              <FaPencil size={resizedWidth > 400 ? 14 : 12} color={textColor} />
             </EditButton>
             <Divider />
 
             <DeleteButton
               className="widget-button"
               onClick={() => onDeleteWidget && onDeleteWidget(widgetItem)}>
-              <FaTimes size={resizedWidth > 400 ? 16 : 14} color="white" />
+              <FaTimes size={resizedWidth > 400 ? 16 : 14} color={textColor} />
             </DeleteButton>
           </EditBox>
         </>

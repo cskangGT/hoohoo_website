@@ -14,7 +14,6 @@ function AppleCallback() {
   const code = queryParams.get('code');
   const state = queryParams.get('state');
 
-  const hashParams = new URLSearchParams(location.hash.replace('#', ''));
   const idToken = queryParams.get('id_token');
 
   useEffect(() => {

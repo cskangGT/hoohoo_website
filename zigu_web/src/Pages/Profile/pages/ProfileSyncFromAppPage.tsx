@@ -70,7 +70,7 @@ function ProfileSyncFromAppPage() {
     console.log('userId', userId);
 
     if (!userId || !userName || !userProfileImage) {
-      setError('올바르지 않은 접근입니다. ID가 필요합니다.');
+      setError(localizedTexts.notValidAccess);
       setIsLoading(false);
       return;
     }
