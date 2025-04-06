@@ -1,6 +1,6 @@
 import React from 'react';
 
-import {createBrowserRouter} from 'react-router-dom';
+import {createBrowserRouter, Navigate} from 'react-router-dom';
 import {default as ErrorComponent} from './components/ErrorComponent/ErrorComponent';
 import AppleCallback from './Pages/Login/oauth/AppleCallback';
 import GoogleCallback from './Pages/Login/oauth/GoogleCallback';
@@ -84,11 +84,21 @@ export const noFrameRoutes = [
     errorElement: <ErrorComponent />,
   },
   {
-    path: '/pre-signup',
+    path: '/',
+    element: <Profile />,
+    errorElement: <ErrorComponent />,
+    children: [
+      {
+        index: true,
+        element: <Navigate to="/pre-signup" replace />,
+      },
+    ],
+  },
+  {
+    path: 'pre-signup',
     element: <PreSignup />,
     errorElement: <ErrorComponent />,
   },
-
   {
     path: '/oauth/kakao',
     element: <KakaoCallback />,
