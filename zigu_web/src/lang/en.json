@@ -1125,7 +1125,7 @@
   },
   "Login": {
     "title": "Welcome back!",
-    "sessionExpired": "Session expired. Please login again.",
+    "sessionExpired": "For security reasons, you have been automatically logged out. Please log in again.",
     "new": "New to ZIGU? ",
     "signup": "Sign up",
     "email": "Email Address",
@@ -1471,10 +1471,12 @@
     "syncEarthMeraID": "Sync EarthMera account",
     "changeURL": "Change URL",
     "logout": "Log out",
+
     "notSupported": "This feature is not supported yet.",
     "toast": {
       "success": "Profile updated successfully",
       "failLogout": "Failed to logout",
+      "logoutSuccess": "Successfully logged out",
       "failUploadImage": "Failed to upload profile image"
     }
   },

@@ -153,7 +153,7 @@ function ProfileSettingPage() {
         profileImage: '',
         bio: '',
       });
-
+      toast.success(localizedTexts.toast.logoutSuccess);
       navigate('/login');
     } else {
       toast.error(localizedTexts.toast.failLogout);

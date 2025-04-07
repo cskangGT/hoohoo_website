@@ -1113,7 +1113,7 @@
     "email": "이메일",
     "password": "비밀번호",
     "login": "로그인",
-    "sessionExpired": "세션이 만료되었습니다. 다시 로그인해주세요.",
+    "sessionExpired": "보안을 위해 자동 로그아웃되었습니다. 다시 로그인해 주세요.",
     "forgotPassword": "이메일이나 비밀번호를 잊으셨나요?",
     "continueWithGoogle": "Google 로그인",
     "continueWithApple": "Apple 로그인",
@@ -1470,6 +1470,7 @@
     "toast": {
       "success": "프로필 업데이트에 성공했어요.",
       "failLogout": "로그아웃에 실패했어요.",
+      "logoutSuccess": "성공적으로 로그아웃 되었습니다.",
       "failUploadImage": "프로필 이미지 업로드에 실패했어요."
     }
   },
