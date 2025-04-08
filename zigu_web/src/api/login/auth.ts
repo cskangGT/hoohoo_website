@@ -3,7 +3,7 @@ import i18next from 'i18next';
 import { toast } from 'react-toastify';
 import { useUserStore } from '../../storage/userStore';
 import { __DEV__, APIAddress } from '../../style';
-export const ServerAPIVersion = __DEV__ ? 'v1.7.4' : 'v1.7.3';
+export const ServerAPIVersion = __DEV__ ? 'v1.7.4' : 'v1.7.4';
 export const clientAxios = axios.create({
     baseURL: APIAddress,
     withCredentials: true,

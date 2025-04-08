@@ -79,7 +79,6 @@ const MobileQRCodeText = styled.p`
 `;
 function ProfileSyncPage() {
   const {linkedUserInfo, isSyncedWithEM} = useUserStore();
-  console.log('isSyncedWithEM', isSyncedWithEM);
 
   return (
     <TopHeaderBackButtonWrapperView>

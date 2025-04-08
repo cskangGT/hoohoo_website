@@ -176,11 +176,10 @@ export function getTextColorWcag(bgColor: string, isDarkMode: boolean): string {
 
     // 둘 중 더 높은 대비를 주는 색상 선택
     return whiteContrast >= blackContrast
-        ? (isDarkMode ? '#FFFFFF' : '#000000')
-        : isDarkMode
-            ? '#000000'
-            : '#FFFFFF';
+        ? '#FFFFFF'
+        : '#000000';
 }
+
 export async function getCroppedImg(
     image: HTMLImageElement,
     crop: PixelCrop

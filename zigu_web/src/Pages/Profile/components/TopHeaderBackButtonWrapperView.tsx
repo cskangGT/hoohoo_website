@@ -3,6 +3,7 @@ import {LuArrowLeft} from 'react-icons/lu';
 import {useNavigate} from 'react-router-dom';
 import styled from 'styled-components';
 import {theme} from '../../../style';
+import {useProfile} from '../contexts/ProfileContext';
 const ProfileContainer = styled.div`
   display: flex;
   flex-direction: column;
@@ -32,12 +33,16 @@ function TopHeaderBackButtonWrapperView({
   children: React.ReactNode;
 }) {
   const navigate = useNavigate();
+  const {isDarkMode} = useProfile();
   return (
     <>
       <TopHeaderContainer>
         <TopHeaderLeft>
           <BackButton onClick={() => navigate(-1)}>
-            <LuArrowLeft size={22} color={theme.white} />
+            <LuArrowLeft
+              size={22}
+              color={isDarkMode ? theme.white : theme.black}
+            />
           </BackButton>
         </TopHeaderLeft>
       </TopHeaderContainer>

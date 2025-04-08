@@ -5,6 +5,7 @@ import styled from 'styled-components';
 import {getSyncUserId} from '../../../api/jigulink/user.api';
 import {useUserStore} from '../../../storage/userStore';
 import {defaultProfileImage, theme} from '../../../style';
+import {useProfile} from '../contexts/ProfileContext';
 
 const ProfileHeader = styled.div`
   display: flex;
@@ -35,16 +36,16 @@ const ProfileNameContainer = styled.div`
   row-gap: 6px;
   justify-content: center;
 `;
-const ProfileName = styled.h2`
+const ProfileName = styled.h2<{$isDarkMode: boolean}>`
   font-size: ${theme.fontSize.xl};
   font-weight: 600;
   font-family: Inter;
-
+  color: ${props => (props.$isDarkMode ? theme.white : theme.black)};
   margin: 0;
 `;
 
-const ProfileTag = styled.p`
-  color: #888;
+const ProfileTag = styled.p<{$isDarkMode: boolean}>`
+  color: ${props => (props.$isDarkMode ? theme.white : theme.black)};
   font-size: ${theme.fontSize.rg};
 
   font-family: Inter;
@@ -58,35 +59,26 @@ const QRCodeBox = styled.div`
   align-items: center;
   justify-content: center;
 `;
-const QRCodeText = styled.p`
+const QRCodeText = styled.p<{$isDarkMode: boolean}>`
   font-size: ${theme.fontSize.lg};
   font-family: Inter;
   width: 100%;
-  color: ${theme.white};
+  color: ${props => (props.$isDarkMode ? theme.white : theme.black)};
   opacity: 0.8;
   text-align: center;
   line-height: 2;
 `;
-const MobileQRCodeText = styled.p`
-  font-size: ${theme.fontSize.lg};
-  font-family: Inter;
-  color: ${theme.white};
-  opacity: 0.8;
-  text-align: center;
-  line-height: 1.5;
-  cursor: pointer;
-  text-decoration: underline;
-`;
-const SyncButton = styled.button`
+
+const SyncButton = styled.button<{$isDarkMode: boolean}>`
   background-color: transparent;
-  border: 1px solid ${theme.white};
+  border: 1px solid ${props => (props.$isDarkMode ? theme.white : theme.black)};
 
   border-radius: 20px;
   padding: ${theme.spacing.lg} ${theme.spacing.xl};
   font-size: ${theme.fontSize.lg};
   font-family: Inter;
 
-  color: ${theme.white};
+  color: ${props => (props.$isDarkMode ? theme.white : theme.black)};
   cursor: pointer;
   margin-bottom: ${theme.spacing['3xl']};
 `;
@@ -94,6 +86,7 @@ function GoSyncView() {
   const localizedTexts: any = i18next.t('ProfileSyncPage', {
     returnObjects: true,
   });
+  const {isDarkMode} = useProfile();
   const {user, linkedUserInfo} = useUserStore();
   const [deepLinkUrl, setDeepLinkUrl] = useState<string>('');
   const [isMobile, setIsMobile] = useState<boolean>(false);
@@ -125,8 +118,8 @@ function GoSyncView() {
       <ProfileHeader>
         <ProfileImage src={user.profileImage || defaultProfileImage} />
         <ProfileNameContainer>
-          <ProfileName>{user?.username}</ProfileName>
-          <ProfileTag>@{user?.nameTag}</ProfileTag>
+          <ProfileName $isDarkMode={isDarkMode}>{user?.username}</ProfileName>
+          <ProfileTag $isDarkMode={isDarkMode}>@{user?.nameTag}</ProfileTag>
         </ProfileNameContainer>
       </ProfileHeader>
       {deepLinkUrl &&
@@ -142,12 +135,15 @@ function GoSyncView() {
             }
           </QRCodeBox>
         ) : (
-          <SyncButton onClick={() => window.open(deepLinkUrl, '_blank')}>
+          <SyncButton
+            $isDarkMode={isDarkMode}
+            onClick={() => window.open(deepLinkUrl, '_blank')}>
             {localizedTexts.button}
           </SyncButton>
         ))}
 
       <QRCodeText
+        $isDarkMode={isDarkMode}
         dangerouslySetInnerHTML={{
           __html: localizedTexts.description,
         }}

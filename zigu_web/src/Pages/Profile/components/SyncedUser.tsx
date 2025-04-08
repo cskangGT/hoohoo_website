@@ -2,6 +2,7 @@ import i18next from 'i18next';
 import React from 'react';
 import styled from 'styled-components';
 import {theme} from '../../../style';
+import {useProfile} from '../contexts/ProfileContext';
 
 interface LinkedUserInfoProps {
   linkedUserInfo: {
@@ -17,10 +18,10 @@ const Container = styled.div`
   border-radius: 8px;
 `;
 
-const Title = styled.h2`
+const Title = styled.h2<{$isDarkMode: boolean}>`
   font-size: ${theme.fontSize.lg};
   font-weight: 500;
-  color: #ffffff;
+  color: ${props => (props.$isDarkMode ? theme.white : theme.black)};
   margin: 0 0 24px 0;
   font-family: Inter;
 `;
@@ -31,12 +32,11 @@ const UserContainer = styled.div`
   gap: 16px;
 `;
 
-const ProfileImageContainer = styled.div`
+const ProfileImageContainer = styled.div<{$isDarkMode: boolean}>`
   width: 80px;
   height: 80px;
   border-radius: 50%;
   overflow: hidden;
-  border: 2px solid #333333;
 `;
 
 const ProfileImage = styled.img`
@@ -51,17 +51,12 @@ const UserInfoContainer = styled.div`
   justify-content: center;
 `;
 
-const UserName = styled.div`
+const UserName = styled.div<{$isDarkMode: boolean}>`
   font-size: ${theme.fontSize.xl};
   font-family: Inter;
   font-weight: 500;
-  color: #ffffff;
+  color: ${props => (props.$isDarkMode ? theme.white : theme.black)};
   margin-bottom: 4px;
-`;
-
-const UserId = styled.div`
-  font-size: 18px;
-  color: #777777;
 `;
 
 function SyncedUser({linkedUserInfo}: LinkedUserInfoProps) {
@@ -69,17 +64,17 @@ function SyncedUser({linkedUserInfo}: LinkedUserInfoProps) {
   const localizedTexts: any = i18next.t('ProfileSyncPage', {
     returnObjects: true,
   });
-  console.log('linkedUserInfo', linkedUserInfo);
+  const {isDarkMode} = useProfile();
 
   return (
     <Container>
-      <Title>{localizedTexts.title}</Title>
+      <Title $isDarkMode={isDarkMode}>{localizedTexts.title}</Title>
       <UserContainer>
-        <ProfileImageContainer>
+        <ProfileImageContainer $isDarkMode={isDarkMode}>
           <ProfileImage src={profileImage} alt={`${name}'s profile`} />
         </ProfileImageContainer>
         <UserInfoContainer>
-          <UserName>{name}</UserName>
+          <UserName $isDarkMode={isDarkMode}>{name}</UserName>
         </UserInfoContainer>
       </UserContainer>
     </Container>

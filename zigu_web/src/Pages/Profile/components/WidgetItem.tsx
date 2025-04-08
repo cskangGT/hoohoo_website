@@ -44,6 +44,7 @@ const BIG_ITEM_HEIGHT = ITEM_WIDTH; //adding border width
 const WidgetItemContainer = styled.div<{
   $size: ProfileWidgetItemSize;
   $bgColor?: string;
+
   $hasBorder?: boolean;
   $isClickable?: boolean;
   $isEditMode?: boolean;
@@ -59,7 +60,7 @@ const WidgetItemContainer = styled.div<{
     props.$isEmWidget
       ? props.$isDarkMode
         ? '#383838'
-        : '#5f5f5f'
+        : '#737373'
       : props.$bgColor === 'transparent'
         ? 'transparent'
         : props.$bgColor};
@@ -613,7 +614,7 @@ function WidgetItem({
           ? '#383838'
           : widgetItem.bgType === 'COLOR'
             ? widgetItem.bgColor
-            : 'transparent'
+            : ''
       }
       $isClickable={isClickable}>
       {widgetItem.isEmWidget && hasEMWidgetType ? (

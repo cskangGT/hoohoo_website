@@ -58,16 +58,16 @@ const ProfileNameContainer = styled.div`
   align-items: flex-start;
   justify-content: center;
 `;
-const ProfileName = styled.h2`
+const ProfileName = styled.h2<{$isDarkMode: boolean}>`
   font-size: ${theme.fontSize.xl};
   font-weight: 600;
   font-family: Inter;
-
+  color: ${props => (props.$isDarkMode ? theme.white : theme.black)};
   margin: 0;
 `;
 
-const ProfileTag = styled.p`
-  color: #888;
+const ProfileTag = styled.p<{$isDarkMode: boolean}>`
+  color: ${props => (props.$isDarkMode ? '#888' : '#5d5d5d')};
   font-size: ${theme.fontSize.rg};
 
   font-family: Inter;
@@ -83,11 +83,11 @@ const ButtonGroup = styled.div`
   padding: 0 20px;
 `;
 
-const ProfileButton = styled.button<{inactive?: boolean}>`
+const ProfileButton = styled.button<{inactive?: boolean; $isDarkMode: boolean}>`
   flex: 1;
-  border: 1px solid ${theme.white};
+  border: 1px solid ${props => (props.$isDarkMode ? theme.white : theme.black)};
   background-color: transparent;
-  color: ${theme.white};
+  color: ${props => (props.$isDarkMode ? theme.white : theme.black)};
   border-radius: 8px;
   padding: 12px;
 
@@ -120,9 +120,10 @@ const MenuItem = styled.div<{disabled?: boolean}>`
 const ProfileImageInput = styled.input`
   display: none;
 `;
-const MenuText = styled.span`
+const MenuText = styled.span<{$isDarkMode: boolean}>`
   font-size: ${theme.fontSize.md};
   font-family: Inter;
+  color: ${props => (props.$isDarkMode ? theme.white : theme.black)};
 `;
 
 const LogoutButton = styled.div`
@@ -136,7 +137,7 @@ function ProfileSettingPage() {
     returnObjects: true,
   });
 
-  const {setUserData} = useProfile();
+  const {setUserData, isDarkMode} = useProfile();
   const fileInputRef = useRef<HTMLInputElement>(null);
   const {user, logout, isAuthenticated, setUser} = useUserStore();
 
@@ -199,13 +200,13 @@ function ProfileSettingPage() {
         <ProfileHeader>
           <ProfileImage src={user.profileImage || defaultProfileImage} />
           <ProfileNameContainer>
-            <ProfileName>{user?.username}</ProfileName>
-            <ProfileTag>@{user?.nameTag}</ProfileTag>
+            <ProfileName $isDarkMode={isDarkMode}>{user?.username}</ProfileName>
+            <ProfileTag $isDarkMode={isDarkMode}>@{user?.nameTag}</ProfileTag>
           </ProfileNameContainer>
         </ProfileHeader>
 
         <ButtonGroup>
-          <ProfileButton inactive={false}>
+          <ProfileButton $isDarkMode={isDarkMode} inactive={false}>
             <ProfileImageInput
               type="file"
               id="setting_profileImageInput"
@@ -222,6 +223,7 @@ function ProfileSettingPage() {
           </ProfileButton>
 
           <ProfileButton
+            $isDarkMode={isDarkMode}
             onClick={() => {
               toast.info(localizedTexts.notSupported);
             }}
@@ -236,8 +238,10 @@ function ProfileSettingPage() {
               toast.info(localizedTexts.notSupported);
             }}
             disabled={true}>
-            <MenuText>{localizedTexts.changeURL}</MenuText>
-            <FaChevronRight size={20} color="#888" />
+            <MenuText $isDarkMode={isDarkMode}>
+              {localizedTexts.changeURL}
+            </MenuText>
+            <FaChevronRight size={20} color={isDarkMode ? '#888' : '#5d5d5d'} />
           </MenuItem>
           <Divider />
           <MenuItem
@@ -245,20 +249,24 @@ function ProfileSettingPage() {
               toast.info(localizedTexts.notSupported);
             }}
             disabled={true}>
-            <MenuText>{localizedTexts.changePassword}</MenuText>
-            <FaChevronRight size={20} color="#888" />
+            <MenuText $isDarkMode={isDarkMode}>
+              {localizedTexts.changePassword}
+            </MenuText>
+            <FaChevronRight size={20} color={isDarkMode ? '#888' : '#5d5d5d'} />
           </MenuItem>
           <Divider />
           <MenuItem
             onClick={() => navigate('/' + user?.nameTag + '/settings/sync')}>
-            <MenuText>{localizedTexts.syncEarthMeraID}</MenuText>
-            <FaChevronRight size={20} color="#888" />
+            <MenuText $isDarkMode={isDarkMode}>
+              {localizedTexts.syncEarthMeraID}
+            </MenuText>
+            <FaChevronRight size={20} color={isDarkMode ? '#888' : '#5d5d5d'} />
           </MenuItem>
           <Divider />
         </MenuList>
 
         <LogoutButton onClick={handleLogout}>
-          <MenuText>{localizedTexts.logout}</MenuText>
+          <MenuText $isDarkMode={isDarkMode}>{localizedTexts.logout}</MenuText>
         </LogoutButton>
         <Divider />
       </SettingsContainer>
