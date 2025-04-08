@@ -1392,7 +1392,7 @@
   "SetupProfile": {
     "title": "Set up your awesome profile!",
     "button": "Perfect!",
-    "placeholder": "Enter your profile name",
+    "placeholder": "Enter your profile name (2 characters or more)",
     "description": "For the best appearance, we recommend using a 600x600 image!",
     "errorText": {
       "error": "An error occurred. Please try again.",

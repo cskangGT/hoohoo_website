@@ -1334,7 +1334,7 @@
   "SetupProfile": {
     "title": "멋진 프로필을 설정해보세요!",
     "button": "완벽해요!",
-    "placeholder": "프로필 이름 입력해주세요",
+    "placeholder": "2글자 이상의 프로필 이름을 입력해주세요",
     "description": "더 예쁘게 보이려면 600x600 사이즈 이미지를 추천드려요!",
     "errorText": {
       "error": "오류가 발생했어요. 다시 시도해주세요.",

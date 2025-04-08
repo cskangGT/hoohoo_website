@@ -13,7 +13,7 @@ import HaloDek from '../public/fonts/HaloDek.ttf';
 import NanumHumanTTfBold from '../public/fonts/NanumHumanBold.ttf';
 import NanumHumanTTfLight from '../public/fonts/NanumHumanLight.ttf';
 import NanumHumanTTfRegular from '../public/fonts/NanumHumanRegular.ttf';
-import RixYeoljeongdoR from '../public/fonts/RixYeoljeongdoRegular.ttf';
+import ONEMobilePOP from '../public/fonts/ONEMobilePOP.ttf';
 import TmoneyRoundWindExtraBold from '../public/fonts/TmoneyRoundWindExtraBold.ttf';
 import TmoneyRoundWindRegular from '../public/fonts/TmoneyRoundWindRegular.ttf';
 import YanoljaYacheBTtf from '../public/fonts/YanoljaYacheB.ttf';
@@ -39,10 +39,7 @@ const GlobalStyle = createGlobalStyle`
          url(${YanoljaYacheBWoff2}) format('woff2'),
          
     }
-    @font-face {
-      font-family: 'RixYeoljeongdoR';
-      src: url(${RixYeoljeongdoR}) format('truetype');
-    }
+   
     @font-face {
         font-family: 'Nanum Human';
         src: 
@@ -73,6 +70,10 @@ const GlobalStyle = createGlobalStyle`
 
       
     } */
+      @font-face {
+        font-family: 'ONEMobilePOP';
+        src: url(${ONEMobilePOP}) format('truetype');
+      }
       @font-face {
         font-family: 'TmoneyRoundWind';
         src: url(${TmoneyRoundWindRegular}) format('truetype');

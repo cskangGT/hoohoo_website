@@ -108,7 +108,7 @@ const Title = styled.h2`
   margin-top: 20px;
   text-align: center;
   font-weight: bold;
-  font-family: 'HaloDek';
+  font-family: 'Fredoka';
   letter-spacing: 0.15em;
   @media screen and (max-width: 850px) {
     font-size: 2rem;
