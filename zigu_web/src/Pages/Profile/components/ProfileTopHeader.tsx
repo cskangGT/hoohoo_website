@@ -216,19 +216,31 @@ function ProfileTopHeader({
                     <FiLayout size={iconSize} color={theme.white} />
                   </CustomTooltip>
                 ) : (
-                  <FiLayout size={iconSize} color={theme.white} />
+                  <FiLayout
+                    size={iconSize}
+                    color={isDarkMode ? theme.white : theme.darkGray}
+                  />
                 )}
               </IconButton>
               <IconButton onClick={handleShare}>
-                <RiShare2Line size={iconSize} color={theme.white} />
+                <RiShare2Line
+                  size={iconSize}
+                  color={isDarkMode ? theme.white : theme.darkGray}
+                />
               </IconButton>
               <IconButton onClick={handleSetting}>
-                <LuSettings size={iconSize} color={theme.white} />
+                <LuSettings
+                  size={iconSize}
+                  color={isDarkMode ? theme.white : theme.darkGray}
+                />
               </IconButton>
             </>
           ) : (
             <IconButton onClick={handleShare}>
-              <RiShare2Line size={iconSize} color={theme.white} />
+              <RiShare2Line
+                size={iconSize}
+                color={isDarkMode ? theme.white : theme.darkGray}
+              />
             </IconButton>
           )}
         </TopHeaderRight>

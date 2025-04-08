@@ -30,7 +30,7 @@ const ProfileContainer = styled.div<{$isDarkMode: boolean}>`
               rgba(255, 255, 255, 0.5),
               rgba(255, 255, 255, 0.7)
             ),
-            url('/Images/profile_background.jpeg');
+            url('/Images/profile_white_background.jpg');
         `}
 `;
 
