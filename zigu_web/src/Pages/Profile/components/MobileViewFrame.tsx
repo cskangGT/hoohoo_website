@@ -106,6 +106,7 @@ function MobileViewFrame({children}: MobileViewFrameProps) {
 
   function handleDarkMode() {
     setIsDarkMode(!isDarkMode);
+    localStorage.setItem('isDarkMode', !isDarkMode ? 'true' : 'false');
   }
   useEffect(() => {
     const outer = outerRef.current;

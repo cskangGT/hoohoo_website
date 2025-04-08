@@ -30,6 +30,7 @@ export const theme: {
   subNeon: string;
   white: string;
   darkGray: string;
+  black: string;
   whiteGreen: string;
   darkSky: string;
   darkWhite: string;
@@ -75,7 +76,7 @@ export const theme: {
   darkGray: '#1e1e1e',
   whiteGreen: '#E5FFD4',
   darkSky: '#191F28',
-
+  black: '#000000',
   darkWhite: '#EBEBEB',
   gray: '#C4C1C1',
   inActiveGray: '#6e6d7a',

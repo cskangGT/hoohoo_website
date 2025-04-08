@@ -1,12 +1,10 @@
 import {logEvent} from 'firebase/analytics';
 import React, {useEffect} from 'react';
 import {Outlet, useLocation, useNavigate} from 'react-router-dom';
-
 import {analytics} from './\bfirebase';
 import Frame from './components/Frame';
 import HrefLangMeta from './HrefLangMeta';
 import i18n from './lang/i18n';
-import {noFrameRoutes} from './Router';
 
 function usePageTracking() {
   const location = useLocation();
@@ -27,9 +25,6 @@ function Root() {
     const pathParts = location.pathname.split('/');
     const currentLang = pathParts[1];
 
-    if (noFrameRoutes.some(route => location.pathname.startsWith(route.path))) {
-      return;
-    }
     console.log('currentLang', currentLang);
 
     if (!['ko', 'en'].includes(currentLang)) {

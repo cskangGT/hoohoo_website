@@ -6,6 +6,7 @@ import {MdPhoto} from 'react-icons/md';
 import styled from 'styled-components';
 import useWindowResize from '../../../components/hooks/useWindowResize';
 import {theme} from '../../../style';
+import {useProfile} from '../contexts/ProfileContext';
 import {
   ProfileEMWidgetType,
   ProfileWidgetItemType,
@@ -42,6 +43,7 @@ function TemplateWidgetContent({
 }: {
   widgetItem: ProfileWidgetItemType;
 }) {
+  const {isDarkMode} = useProfile();
   const {width: resizeWidth} = useWindowResize({maxWidth: 600});
   const localizedTexts: any = i18next.t('ProfileLinkPage', {
     returnObjects: true,
@@ -54,7 +56,7 @@ function TemplateWidgetContent({
     emWidgetType,
   } = widgetItem;
 
-  const textColor = getTextColorWcag(bgColor || '');
+  const textColor = getTextColorWcag(bgColor || '', isDarkMode);
   if (emWidgetType === ProfileEMWidgetType.Temp) {
     const logoSize =
       sizeType === 'BIG' ? resizeWidth * 0.12 : resizeWidth * 0.05;

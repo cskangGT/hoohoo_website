@@ -21,7 +21,7 @@ const changeWidth = 1400;
 const LogoText = styled.span<{language: string}>`
   padding-left: 10px;
   font-family: ${props =>
-    props.language === 'ko' ? 'TmoneyRoundWind' : 'Fredoka'};
+    props.language === 'ko' ? 'ONEMobilePOP' : 'Fredoka'};
   font-weight: 500;
   color: ${theme.darkGray};
   font-size: ${theme.fontSize['2xl']};

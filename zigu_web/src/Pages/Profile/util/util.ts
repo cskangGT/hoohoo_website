@@ -150,8 +150,8 @@ function getRelativeLuminance(hexColor: string): number {
 }
 
 
-export function getTextColorWcag(bgColor: string): string {
-    if (bgColor === 'transparent') return '#ffffff'
+export function getTextColorWcag(bgColor: string, isDarkMode: boolean): string {
+    if (bgColor === 'transparent') return isDarkMode ? '#ffffff' : '#000000';
     const bgLum = getRelativeLuminance(bgColor);
 
     // 흰색(#FFF)의 상대 명도: 1.0, 검정(#000)의 상대 명도: 0.0
@@ -175,8 +175,11 @@ export function getTextColorWcag(bgColor: string): string {
             : (blackLum + 0.05) / (bgLum + 0.05);
 
     // 둘 중 더 높은 대비를 주는 색상 선택
-    return whiteContrast >= blackContrast ? '#FFFFFF' : '#000000';
+    return whiteContrast >= blackContrast
+        ? '#FFFFFF'
+        : '#000000';
 }
+
 export async function getCroppedImg(
     image: HTMLImageElement,
     crop: PixelCrop

@@ -25,7 +25,7 @@
         "subItems": [
           {"label": "어스메라", "link": "/ko/platform"},
           {"label": "EM 티켓티어", "link": "/ko/ticketeer"},
-          {"label": "ZIGU", "link": "https://zigu.my"}
+          {"label": "ZIGU", "link": "/zigu"}
         ]
       },
       {"label": "파트너십", "link": "/ko/partnership"},

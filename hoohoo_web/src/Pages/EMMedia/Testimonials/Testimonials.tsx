@@ -1,5 +1,5 @@
 import i18next from 'i18next';
-import React, {useEffect, useState} from 'react';
+import React, {useEffect, useMemo, useState} from 'react';
 import {useLocation, useNavigate} from 'react-router-dom';
 import styled from 'styled-components';
 import {EcoActionData} from '../../../../public/Images/EcoActionData';
@@ -112,26 +112,29 @@ function Testimonials() {
   const navigate = useNavigate();
   const {state} = useLocation();
   const canComeBack = state?.canComeBack;
-  const mixed = shuffleArray([...EcoActionData]);
+  const mixed = useMemo(() => shuffleArray([...EcoActionData]), []);
 
   const {width: resizedWidth} = useWindowResize({maxWidth: 1400});
   const localizedTexts: any = i18next.t('EcoActionTestimony', {
     returnObjects: true,
   });
   const columnCounts = [3, 3, 2, 2, 2, 2, 2, 3, 3];
-  const columns = columnCounts.map((_, colIndex) => {
-    const startIndex = colIndex * 6; // 각 열마다 3개씩 건너뛰기
-    const columnImages = [
-      ...mixed.slice(startIndex, startIndex + 6),
-      ...mixed.slice(startIndex, startIndex + 6),
-    ];
+  const columns = useMemo(() => {
+    return columnCounts.map((_, colIndex) => {
+      const startIndex = colIndex * 6; // 각 열마다 3개씩 건너뛰기
+      const columnImages = [
+        ...mixed.slice(startIndex, startIndex + 6),
+        ...mixed.slice(startIndex, startIndex + 6),
+      ];
 
-    return {
-      images: columnImages,
-      isOdd: colIndex % 2 === 0,
-      count: columnImages.length,
-    };
-  });
+      return {
+        images: columnImages,
+        isOdd: colIndex % 2 === 0,
+        count: columnImages.length,
+      };
+    });
+  }, [mixed]);
+
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);

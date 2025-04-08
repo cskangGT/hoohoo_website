@@ -128,7 +128,12 @@ export const ProfileProvider: React.FC<ProfileProviderProps> = ({
     useUserStore();
   const [validatedMyToken, setValidatedMyToken] = useState<boolean>(false);
   const [isMyLink, setIsMyLink] = useState<boolean>(false);
-
+  useEffect(() => {
+    const darkMode = localStorage.getItem('isDarkMode');
+    if (darkMode) {
+      setIsDarkMode(darkMode === 'true');
+    }
+  }, []);
   // 사용자 인증 정보 변경 시 isMyLink 업데이트
   useEffect(() => {
     if (nameTag) {

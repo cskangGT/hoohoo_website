@@ -25,7 +25,7 @@
         "subItems": [
           {"label": "EarthMera", "link": "/en/platform"},
           {"label": "EM Ticketeer", "link": "/en/ticketeer"},
-          {"label": "ZIGU", "link": "https://zigu.my"}
+          {"label": "ZIGU", "link": "/zigu"}
         ]
       },
       {

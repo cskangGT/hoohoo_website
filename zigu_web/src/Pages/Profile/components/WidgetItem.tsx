@@ -5,6 +5,7 @@ import styled, {css} from 'styled-components';
 import {countWidgetStat} from '../../../api/jigulink/jigulink.api';
 import useWindowResize from '../../../components/hooks/useWindowResize';
 import {theme} from '../../../style';
+import {useProfile} from '../contexts/ProfileContext';
 import {
   EMWidgetData,
   ProfileEMWidgetType,
@@ -43,9 +44,12 @@ const BIG_ITEM_HEIGHT = ITEM_WIDTH; //adding border width
 const WidgetItemContainer = styled.div<{
   $size: ProfileWidgetItemSize;
   $bgColor?: string;
+
   $hasBorder?: boolean;
   $isClickable?: boolean;
   $isEditMode?: boolean;
+  $isDarkMode?: boolean;
+  $isEmWidget?: boolean;
 }>`
   border-radius: 15px;
   display: flex;
@@ -53,10 +57,19 @@ const WidgetItemContainer = styled.div<{
   justify-content: center;
   position: relative;
   background-color: ${props =>
-    props.$bgColor === 'transparent' ? theme.darkGray : props.$bgColor};
+    props.$isEmWidget
+      ? props.$isDarkMode
+        ? '#383838'
+        : '#737373'
+      : props.$bgColor === 'transparent'
+        ? 'transparent'
+        : props.$bgColor};
   border: ${props =>
     props.$hasBorder ? `1px solid ${theme.mainNeon}` : '0px solid transparent'};
-  box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.5);
+  box-shadow: ${props =>
+    props.$bgColor === 'transparent'
+      ? '0 0 0px 0 '
+      : '0 0 10px 0 rgba(0, 0, 0, 0.5)'};
   ${props =>
     props.$isClickable &&
     css`
@@ -466,6 +479,7 @@ function WidgetItem({
   const {width: resizedWidth} = useWindowResize({
     maxWidth: 600,
   });
+  const {isDarkMode} = useProfile();
   const widgetItem = widget as ProfileWidgetItemType;
   const isTemp = widgetItem.isTemp;
   const hasEMWidgetType =
@@ -564,7 +578,7 @@ function WidgetItem({
 
   const textColor =
     widgetItem.bgType === 'COLOR' && widgetItem.bgColor
-      ? getTextColorWcag(widgetItem.bgColor)
+      ? getTextColorWcag(widgetItem.bgColor, isDarkMode)
       : 'white';
 
   const content =
@@ -592,13 +606,15 @@ function WidgetItem({
       key={(widgetItem.isEmWidget ? 'em_' : 'custom_') + widgetItem.id}
       $size={widgetItem.sizeType}
       $isEditMode={isEditMode}
+      $isDarkMode={isDarkMode}
+      $isEmWidget={widgetItem.isEmWidget}
       $hasBorder={widgetItem?.hasBorder}
       $bgColor={
         hasEMWidgetType
           ? '#383838'
           : widgetItem.bgType === 'COLOR'
             ? widgetItem.bgColor
-            : 'transparent'
+            : ''
       }
       $isClickable={isClickable}>
       {widgetItem.isEmWidget && hasEMWidgetType ? (

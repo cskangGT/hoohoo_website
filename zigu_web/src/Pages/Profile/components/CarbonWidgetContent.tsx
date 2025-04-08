@@ -2,6 +2,7 @@ import i18next from 'i18next';
 import React from 'react';
 import styled from 'styled-components';
 import {theme} from '../../../style';
+import {useProfile} from '../contexts/ProfileContext';
 import {ProfileWidgetItemSize} from '../types/WidgetItemType';
 import {getEMWidgetData} from '../util/EMWidgetData';
 
@@ -102,25 +103,26 @@ const CO2ValueContainer = styled.div`
   text-align: right;
   font-family: Inter;
   min-width: 100px;
+  flex: 1;
 
-  justify-content: flex-end;
+  justify-content: center;
   @media (max-width: 500px) {
     margin-left: 8px;
     min-width: 80px;
-    justify-content: flex-end;
+    justify-content: center;
   }
   @media (max-width: 400px) {
     margin-left: 4px;
     min-width: 70px;
-    justify-content: flex-end;
+    justify-content: center;
   }
 `;
 
-const CO2Value = styled.div<{$small?: boolean}>`
+const CO2Value = styled.div<{$small?: boolean; $isDarkMode?: boolean}>`
   font-size: ${props => (props.$small ? theme.fontSize.xl : theme.fontSize.xl)};
   line-height: 1.2;
   font-weight: bold;
-  color: ${theme.white};
+  color: ${props => (props.$isDarkMode ? theme.white : theme.black)};
   @media (max-width: 500px) {
     font-size: ${theme.fontSize.lg};
   }
@@ -129,9 +131,9 @@ const CO2Value = styled.div<{$small?: boolean}>`
   }
 `;
 
-const CO2Unit = styled.div<{$small?: boolean}>`
+const CO2Unit = styled.div<{$small?: boolean; $isDarkMode?: boolean}>`
   font-size: ${props => (props.$small ? theme.fontSize.md : theme.fontSize.md)};
-  color: ${theme.white};
+  color: ${props => (props.$isDarkMode ? theme.white : theme.black)};
   line-height: 1.2;
   margin-left: 4px;
   @media (max-width: 500px) {
@@ -144,9 +146,9 @@ const CO2Unit = styled.div<{$small?: boolean}>`
   }
 `;
 
-const CO2Text = styled.div`
+const CO2Text = styled.div<{$isDarkMode?: boolean}>`
   font-size: ${theme.fontSize.md};
-  color: ${theme.mainNeon};
+  color: ${props => theme.mainNeon};
   margin-left: auto;
 `;
 
@@ -175,10 +177,10 @@ const CO2BigValueContainer = styled.div`
   margin-bottom: 4px;
 `;
 
-const CO2BigValue = styled.div`
+const CO2BigValue = styled.div<{$isDarkMode?: boolean}>`
   font-size: ${theme.spacing['3xl']};
   font-weight: 500;
-  color: #ffffff;
+  color: ${props => (props.$isDarkMode ? theme.white : theme.darkGray)};
   @media (max-width: 500px) {
     font-size: ${theme.fontSize['2xl']};
   }
@@ -187,9 +189,9 @@ const CO2BigValue = styled.div`
   }
 `;
 
-const CO2BigUnit = styled.div`
+const CO2BigUnit = styled.div<{$isDarkMode?: boolean}>`
   font-size: ${theme.fontSize.lg};
-  color: ${theme.white};
+  color: ${props => (props.$isDarkMode ? theme.white : theme.darkGray)};
   margin-left: 8px;
   @media (max-width: 500px) {
     font-size: ${theme.fontSize.md};
@@ -199,9 +201,9 @@ const CO2BigUnit = styled.div`
   }
 `;
 
-const CO2SubText = styled.div`
+const CO2SubText = styled.div<{$isDarkMode?: boolean}>`
   font-size: ${theme.fontSize.md};
-  color: ${theme.white};
+  color: ${props => (props.$isDarkMode ? theme.white : theme.darkGray)};
   @media (max-width: 500px) {
     font-size: ${theme.fontSize.rg};
   }
@@ -227,6 +229,7 @@ function CarbonWidgetContent({
   const localizedTexts: any = i18next.t('CarbonWidgetContent', {
     returnObjects: true,
   });
+  const {isDarkMode} = useProfile();
   const emWidgetData = getEMWidgetData();
   if (sizeType === 'SMALL') {
     // 작은 사이즈 (왼쪽 이미지)
@@ -234,8 +237,13 @@ function CarbonWidgetContent({
       <CO2Container $small>
         <FootprintIcon $small src={'/Images/footprint.png'} />
         <CO2ValueContainer>
-          <CO2Value $small> {annualCarbonReduction / 1000}</CO2Value>
-          <CO2Unit $small>{localizedTexts.annualCabonReduction[1]}</CO2Unit>
+          <CO2Value $small $isDarkMode={true}>
+            {' '}
+            {annualCarbonReduction / 1000}
+          </CO2Value>
+          <CO2Unit $small $isDarkMode={true}>
+            {localizedTexts.annualCabonReduction[1]}
+          </CO2Unit>
         </CO2ValueContainer>
       </CO2Container>
     );
@@ -245,10 +253,12 @@ function CarbonWidgetContent({
       <CO2Container $long>
         <FootprintIcon src={'/Images/footprint.png'} />
         <CO2ValueContainer>
-          <CO2Value>{annualCarbonReduction / 1000}</CO2Value>
-          <CO2Unit>{localizedTexts.annualCabonReduction[1]}</CO2Unit>
+          <CO2Value $isDarkMode={true}>{annualCarbonReduction / 1000}</CO2Value>
+          <CO2Unit $isDarkMode={true}>
+            {localizedTexts.annualCabonReduction[1]}
+          </CO2Unit>
         </CO2ValueContainer>
-        <CO2Text>
+        <CO2Text $isDarkMode={true}>
           {localizedTexts.treeEffect[0]} {treeEffect}{' '}
           {localizedTexts.treeEffect[1]}
         </CO2Text>
@@ -275,10 +285,16 @@ function CarbonWidgetContent({
         </>
         <SavedContainer>
           <CO2BigValueContainer>
-            <CO2BigValue>{annualCarbonReduction / 1000}</CO2BigValue>
-            <CO2BigUnit>{localizedTexts.annualCabonReduction[1]}</CO2BigUnit>
+            <CO2BigValue $isDarkMode={true}>
+              {annualCarbonReduction / 1000}
+            </CO2BigValue>
+            <CO2BigUnit $isDarkMode={true}>
+              {localizedTexts.annualCabonReduction[1]}
+            </CO2BigUnit>
           </CO2BigValueContainer>
-          <CO2SubText>{localizedTexts.annualCabonReduction[0]}</CO2SubText>
+          <CO2SubText $isDarkMode={true}>
+            {localizedTexts.annualCabonReduction[0]}
+          </CO2SubText>
         </SavedContainer>
       </CO2BigContainer>
     );

@@ -33,11 +33,12 @@ const Logo = styled.div`
   margin-bottom: 10px;
 `;
 
-const ProfileName = styled.h1`
+const ProfileName = styled.h1<{$isDarkMode: boolean}>`
   font-size: ${theme.fontSize.xl};
   font-family: Inter;
   font-weight: 600;
   margin: 5px 0;
+  color: ${props => (props.$isDarkMode ? theme.white : '#000000')};
 `;
 const VacantContainer = styled.div`
   width: 100%;
@@ -54,17 +55,13 @@ const VacantText = styled.p`
   margin: 0 20px;
   line-height: 1.5;
 `;
-const ProfileTag = styled.p`
-  color: #888;
+
+const ProfileTag = styled.p<{$isDarkMode: boolean}>`
+  color: ${props => (props.$isDarkMode ? '#888' : '#5d5d5d')};
   font-size: ${theme.fontSize.md};
   font-family: Inter;
   margin: 5px 0 15px 0;
   margin-bottom: ${theme.spacing.xl};
-`;
-
-const CarbonSaving = styled.p`
-  color: #4cd964;
-  margin: 5px 0 25px 0;
 `;
 
 function ProfileLinkPage() {
@@ -82,8 +79,9 @@ function ProfileLinkPage() {
     userData,
     currentWidgets,
     isMyLink,
-    isEditingItem,
+
     isEditing,
+    isDarkMode,
     profileError,
     setIsEditing,
   } = useProfile();
@@ -135,8 +133,8 @@ function ProfileLinkPage() {
               size={resizedWidth * 0.2}
             />
           </Logo>
-          <ProfileName>{userData.name}</ProfileName>
-          <ProfileTag>@{nameTag}</ProfileTag>
+          <ProfileName $isDarkMode={isDarkMode}>{userData.name}</ProfileName>
+          <ProfileTag $isDarkMode={isDarkMode}>@{nameTag}</ProfileTag>
 
           <ProfileWidgetGrid />
         </ProfileContainer>
