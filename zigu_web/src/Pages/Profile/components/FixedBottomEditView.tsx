@@ -1,8 +1,8 @@
 import i18next from 'i18next';
 import React from 'react';
 import {FiEdit} from 'react-icons/fi';
-
 import {LuPlus} from 'react-icons/lu';
+import {MdOutlineDarkMode, MdOutlineLightMode} from 'react-icons/md';
 import {useNavigate} from 'react-router-dom';
 import {toast} from 'react-toastify';
 import styled from 'styled-components';
@@ -129,6 +129,18 @@ const ActionButton = styled.button<{$isDone?: boolean}>`
     border-radius: 20px;
   }
 `;
+
+const DarkModeButton = styled(ActionButton)<{$isDarkMode: boolean}>`
+  background-color: ${props =>
+    props.$isDarkMode ? theme.white : theme.darkGray};
+  color: ${props => (props.$isDarkMode ? theme.darkGray : theme.white)};
+  border: none;
+  cursor: pointer;
+  display: none;
+  @media (max-width: 750px) {
+    display: block;
+  }
+`;
 function FixedBottomEditView() {
   const {width: resizedWidth} = useWindowResize({
     maxWidth: 600,
@@ -212,7 +224,10 @@ function FixedBottomEditView() {
       toast.error(localizedTexts.toast.failedToUpdate);
     }
   };
-
+  function handleDarkMode() {
+    setIsDarkMode(!isDarkMode);
+    localStorage.setItem('isDarkMode', !isDarkMode ? 'true' : 'false');
+  }
   const name = userData?.linkedUserInfo?.name?.split('#')[0];
   return (
     <Container>
@@ -233,12 +248,32 @@ function FixedBottomEditView() {
               </ActionButton>
             </>
           ) : (
-            <ActionButton onClick={startEditing}>
-              <FiEdit
-                size={resizedWidth > 600 ? 30 : resizedWidth > 500 ? 25 : 20}
-                color={'black'}
-              />
-            </ActionButton>
+            <>
+              <ActionButton onClick={startEditing}>
+                <FiEdit
+                  size={resizedWidth > 600 ? 30 : resizedWidth > 500 ? 25 : 20}
+                  color={'black'}
+                />
+              </ActionButton>
+
+              <DarkModeButton onClick={handleDarkMode} $isDarkMode={isDarkMode}>
+                {!isDarkMode ? (
+                  <MdOutlineDarkMode
+                    size={
+                      resizedWidth > 600 ? 30 : resizedWidth > 500 ? 25 : 20
+                    }
+                    color={theme.white}
+                  />
+                ) : (
+                  <MdOutlineLightMode
+                    size={
+                      resizedWidth > 600 ? 30 : resizedWidth > 500 ? 25 : 20
+                    }
+                    color={theme.darkGray}
+                  />
+                )}
+              </DarkModeButton>
+            </>
           )}
         </ActionButtonContainer>
       </FixedBottomEditViewContainer>
