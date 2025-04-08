@@ -92,3 +92,16 @@ export const applyPromoCode = async (promoCode: string) => {
         return { result: false, status: error?.response?.status };
     }
 }
+export const countWidgetStat = async (widgetId: number, isEmWidget: boolean | undefined) => {
+    try {
+        const body = {
+            widgetId,
+            isEmWidget: isEmWidget ? true : false,
+        }
+        const response = await clientAxios.post(APIAddress + `myProfile/web/widgetStat/`,
+            body, { withCredentials: true });
+        return { result: true, data: response.data };
+    } catch (error: any) {
+        return { result: false, status: error?.response?.status };
+    }
+}

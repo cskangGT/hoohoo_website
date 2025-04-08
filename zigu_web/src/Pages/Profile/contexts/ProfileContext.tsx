@@ -7,6 +7,7 @@ import React, {
 } from 'react';
 import {useLocation, useNavigate} from 'react-router-dom';
 import {getUserLinkProfile} from '../../../api/jigulink/jigulink.api';
+import {validateSession} from '../../../api/login/auth';
 import {useUserStore} from '../../../storage/userStore';
 import {ProfileWidgetItemType} from '../types/WidgetItemType';
 
@@ -123,17 +124,18 @@ export const ProfileProvider: React.FC<ProfileProviderProps> = ({
   const [selectedItem, setSelectedItem] =
     useState<ProfileWidgetItemType | null>(null);
   // 로그인 사용자 인증 정보
-  const {user, isAuthenticated, setLinkedUserInfo, setProfileImage} =
+  const {user, isAuthenticated, setLinkedUserInfo, setProfileImage, setUser} =
     useUserStore();
+  const [validatedMyToken, setValidatedMyToken] = useState<boolean>(false);
   const [isMyLink, setIsMyLink] = useState<boolean>(false);
 
   // 사용자 인증 정보 변경 시 isMyLink 업데이트
   useEffect(() => {
     if (nameTag) {
-      const mine = user.nameTag === nameTag && isAuthenticated;
+      const mine = user.nameTag === nameTag && validatedMyToken;
       setIsMyLink(mine);
     }
-  }, [user, nameTag, isAuthenticated]);
+  }, [user, nameTag, validatedMyToken]);
 
   // 사용자 프로필 데이터 가져오기
   const fetchUserProfile = async (profileNameTag?: string) => {
@@ -163,17 +165,29 @@ export const ProfileProvider: React.FC<ProfileProviderProps> = ({
       });
 
       if (user.nameTag === targetNameTag) {
-        if (!response.data.hasPlan && !paidPlan) {
-          // if just paid or has plan before, stay on the page
-          navigate('/setup/plan');
-        }
-        setProfileImage(response.data.profileImage);
-        response.data.linkedUserInfo &&
-          setLinkedUserInfo({
-            userId: response.data.linkedUserInfo.userId,
-            name: response.data.linkedUserInfo.name,
-            profileImage: response.data.linkedUserInfo.profileImage,
+        const res = await validateSession();
+
+        if (res.result) {
+          setValidatedMyToken(true);
+          if (!response.data.hasPlan && !paidPlan) {
+            // if just paid or has plan before, stay on the page
+            navigate('/setup/plan');
+          }
+          setProfileImage(response.data.profileImage);
+          response.data.linkedUserInfo &&
+            setLinkedUserInfo({
+              userId: response.data.linkedUserInfo.userId,
+              name: response.data.linkedUserInfo.name,
+              profileImage: response.data.linkedUserInfo.profileImage,
+            });
+        } else {
+          setUser({
+            username: '',
+            nameTag: '',
+            profileImage: '',
+            hasPlan: false,
           });
+        }
       }
       if (response.data.widgets) {
         const newWidgets = response.data.widgets.map(

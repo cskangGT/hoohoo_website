@@ -204,7 +204,7 @@ const Signup = () => {
         if (response.status === 409) {
           alert(localizedTexts.errorText.alreadyAccount);
           sessionStorage.removeItem('storedNameTag');
-          navigate('/pre-signup');
+          navigate('/login');
         } else {
           alert(localizedTexts.errorText.errorOccured);
           sessionStorage.removeItem('storedNameTag');

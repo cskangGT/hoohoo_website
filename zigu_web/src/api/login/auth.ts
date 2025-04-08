@@ -1,7 +1,9 @@
 import axios from 'axios';
+import i18next from 'i18next';
+import { toast } from 'react-toastify';
 import { useUserStore } from '../../storage/userStore';
 import { __DEV__, APIAddress } from '../../style';
-export const ServerAPIVersion = __DEV__ ? 'v1.7.3' : 'v1.7.3';
+export const ServerAPIVersion = __DEV__ ? 'v1.7.4' : 'v1.7.4';
 export const clientAxios = axios.create({
     baseURL: APIAddress,
     withCredentials: true,
@@ -14,6 +16,9 @@ clientAxios.interceptors.response.use(
         return response;
     },
     async (error) => {
+        const localizedTexts: any = i18next.t('Login', {
+            returnObjects: true,
+        });
         // 401 Unauthorized 에러 발생 시 (세션 만료)
         if (error.response && error.response.status === 401) {
             // 로컬 스토리지/세션 스토리지 클리어
@@ -21,6 +26,7 @@ clientAxios.interceptors.response.use(
             const logout = useUserStore.getState().logout;
             logout();
 
+            toast.info(localizedTexts.sessionExpired);
             sessionStorage.clear();
 
             // 로그인 페이지로 리다이렉트
@@ -35,10 +41,9 @@ export const redirectUri = window.location.origin;
 
 export const validateSession = async () => {
     try {
-        const response = await axios.post(
+        const response = await axios.get(
             APIAddress +
             'myProfile/web/userValidation/',
-            {},
             { withCredentials: true }
         );
         return { result: true, data: response.data };

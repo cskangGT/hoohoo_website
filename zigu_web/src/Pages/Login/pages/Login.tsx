@@ -190,7 +190,7 @@ const Login = () => {
   });
   const {language} = useLanguage();
 
-  const {setUser, user, isAuthenticated} = useUserStore();
+  const {setUser} = useUserStore();
 
   const navigateNameTag = (nameTag: string) => {
     const redirectAfterAuth = sessionStorage.getItem('redirectAfterAuth');
@@ -212,20 +212,18 @@ const Login = () => {
           navigateNameTag(response.data.user.nameTag);
         }
       }
-    }
-    // else {
-    //   logoutProfile();
-    //   // toast.error(localizedTexts.sessionExpired);
-    // }
-  };
-  useEffect(() => {
-    if (user?.nameTag && isAuthenticated) {
-      console.log('user', user);
-      // checkSession();
-      navigateNameTag(user.nameTag);
     } else {
-      checkSession();
+      setUser({
+        username: '',
+        nameTag: '',
+        profileImage: '',
+        hasPlan: false,
+      });
     }
+  };
+
+  useEffect(() => {
+    checkSession();
   }, []);
   const navigate = useNavigate();
   const [email, setEmail] = useState<string>('');

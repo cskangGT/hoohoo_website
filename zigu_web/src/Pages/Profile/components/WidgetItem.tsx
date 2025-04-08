@@ -2,6 +2,7 @@ import React from 'react';
 import {FaTimes} from 'react-icons/fa';
 import {FaPencil} from 'react-icons/fa6';
 import styled, {css} from 'styled-components';
+import {countWidgetStat} from '../../../api/jigulink/jigulink.api';
 import useWindowResize from '../../../components/hooks/useWindowResize';
 import {theme} from '../../../style';
 import {
@@ -54,7 +55,8 @@ const WidgetItemContainer = styled.div<{
   background-color: ${props =>
     props.$bgColor === 'transparent' ? theme.darkGray : props.$bgColor};
   border: ${props =>
-    props.$hasBorder ? `1px solid ${theme.mainNeon}` : '1px solid transparent'};
+    props.$hasBorder ? `1px solid ${theme.mainNeon}` : '0px solid transparent'};
+  box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.5);
   ${props =>
     props.$isClickable &&
     css`
@@ -335,6 +337,9 @@ function EMWidgetContent({
         href={link}
         target="_blank"
         rel="appopener"
+        onClick={() => {
+          countWidgetStat(widgetItem.id, true);
+        }}
         disabled={isEditMode}>
         <CarbonWidgetContent
           width={ITEM_WIDTH}
@@ -350,6 +355,9 @@ function EMWidgetContent({
     return (
       <WidgetLink
         href={link}
+        onClick={() => {
+          countWidgetStat(widgetItem.id, true);
+        }}
         target="_blank"
         rel="appopener"
         disabled={isEditMode}>
@@ -370,6 +378,9 @@ function EMWidgetContent({
         href={link}
         target="_blank"
         rel="appopener"
+        onClick={() => {
+          countWidgetStat(widgetItem.id, true);
+        }}
         disabled={isEditMode}>
         <LeaderboardWidgetContent
           width={ITEM_WIDTH}
@@ -398,6 +409,9 @@ function EMWidgetContent({
         href={link}
         target="_blank"
         rel="appopener"
+        onClick={() => {
+          countWidgetStat(widgetItem.id, true);
+        }}
         disabled={isEditMode}>
         <GalleryWidgetContent
           width={ITEM_WIDTH}
@@ -412,6 +426,9 @@ function EMWidgetContent({
       <WidgetLink
         href={link}
         target="_blank"
+        onClick={() => {
+          countWidgetStat(widgetItem.id, true);
+        }}
         rel="appopener"
         disabled={isEditMode}>
         <WidgetAppNavImageContainer
@@ -595,6 +612,9 @@ function WidgetItem({
       ) : isClickable ? (
         <WidgetLink
           href={widgetItem.linkUrl}
+          onClick={() => {
+            countWidgetStat(widgetItem.id, widgetItem.isEmWidget);
+          }}
           disabled={isEditMode}
           target="_blank"
           rel="noopener noreferrer">
