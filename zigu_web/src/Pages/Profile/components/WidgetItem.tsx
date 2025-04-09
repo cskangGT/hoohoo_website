@@ -4,6 +4,7 @@ import {FaPencil} from 'react-icons/fa6';
 import styled, {css} from 'styled-components';
 import {countWidgetStat} from '../../../api/jigulink/jigulink.api';
 import useWindowResize from '../../../components/hooks/useWindowResize';
+import {useUserStore} from '../../../storage/userStore';
 import {theme} from '../../../style';
 import {useProfile} from '../contexts/ProfileContext';
 import {
@@ -335,11 +336,14 @@ function EMWidgetContent({
   hasEMWidgetButNoData: boolean | undefined;
 }) {
   const emWidgetData = getEMWidgetData();
+  const {isMyLink, userData} = useProfile();
   const isSmallImage = widgetItem.sizeType !== 'BIG';
   const isLongItem = widgetItem.sizeType === 'LONG';
 
   const link = hasEMWidgetButNoData
-    ? ''
+    ? isMyLink
+      ? `/${userData?.nameTag}/settings/sync`
+      : undefined
     : userInfo && widgetItem.emWidgetType
       ? NavigateLink(widgetItem.emWidgetType as ProfileEMWidgetType, userInfo)
       : '';
@@ -479,6 +483,7 @@ function WidgetItem({
   const {width: resizedWidth} = useWindowResize({
     maxWidth: 600,
   });
+  const {isSyncedWithEM} = useUserStore();
   const {isDarkMode} = useProfile();
   const widgetItem = widget as ProfileWidgetItemType;
   const isTemp = widgetItem.isTemp;
@@ -487,7 +492,9 @@ function WidgetItem({
     !!(widgetItem as ProfileWidgetItemType).emWidgetType;
   const hasLink = !!widgetItem?.linkUrl;
   const isClickable = isEditMode ? false : hasLink || hasEMWidgetType;
-  const hasEMWidgetButNoData = hasEMWidgetType && isTemp;
+  const hasEMWidgetButNoData = isSyncedWithEM
+    ? false
+    : hasEMWidgetType && isTemp;
   const handleEditClick = (e: React.MouseEvent) => {
     e.stopPropagation();
 
@@ -540,7 +547,9 @@ function WidgetItem({
     ],
   };
   const emWidgetData =
-    hasEMWidgetType && isTemp ? initialEMWidgetData : widgetItem.widgetData;
+    hasEMWidgetType && isTemp && !isSyncedWithEM
+      ? initialEMWidgetData
+      : widgetItem.widgetData;
 
   // if (isTemp) {
   //   return (

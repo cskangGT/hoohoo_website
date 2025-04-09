@@ -83,7 +83,10 @@ const ButtonGroup = styled.div`
   padding: 0 20px;
 `;
 
-const ProfileButton = styled.button<{inactive?: boolean; $isDarkMode: boolean}>`
+const ProfileButton = styled.button<{
+  $inactive?: boolean;
+  $isDarkMode: boolean;
+}>`
   flex: 1;
   border: 1px solid ${props => (props.$isDarkMode ? theme.white : theme.black)};
   background-color: transparent;
@@ -94,7 +97,7 @@ const ProfileButton = styled.button<{inactive?: boolean; $isDarkMode: boolean}>`
   cursor: pointer;
   font-family: Inter;
   font-size: ${theme.fontSize.md};
-  opacity: ${props => (props.inactive ? 0.5 : 1)};
+  opacity: ${props => (props.$inactive ? 0.5 : 1)};
 `;
 const Divider = styled.div`
   width: calc(100% - 40px);
@@ -206,7 +209,7 @@ function ProfileSettingPage() {
         </ProfileHeader>
 
         <ButtonGroup>
-          <ProfileButton $isDarkMode={isDarkMode} inactive={false}>
+          <ProfileButton $isDarkMode={isDarkMode} $inactive={false}>
             <ProfileImageInput
               type="file"
               id="setting_profileImageInput"
@@ -227,7 +230,7 @@ function ProfileSettingPage() {
             onClick={() => {
               toast.info(localizedTexts.notSupported);
             }}
-            inactive={true}>
+            $inactive={true}>
             {localizedTexts.changeProfileName}
           </ProfileButton>
         </ButtonGroup>
