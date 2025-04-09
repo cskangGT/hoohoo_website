@@ -213,7 +213,10 @@ function ProfileTopHeader({
               <IconButton ref={layoutButtonRef} onClick={handleLayout}>
                 {isTooltipOpen ? (
                   <CustomTooltip content={localizedTexts.tooltip}>
-                    <FiLayout size={iconSize} color={theme.white} />
+                    <FiLayout
+                      size={iconSize}
+                      color={isDarkMode ? theme.white : theme.darkGray}
+                    />
                   </CustomTooltip>
                 ) : (
                   <FiLayout

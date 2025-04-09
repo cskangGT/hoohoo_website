@@ -31,7 +31,7 @@ const ByText = styled.span`
 const EmText = styled.span`
   font-size: ${theme.fontSize.rg};
   color: ${theme.inActiveGray};
-
+  cursor: pointer;
   text-decoration: underline;
   text-decoration-color: ${theme.inActiveGray};
 `;

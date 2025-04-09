@@ -17,6 +17,7 @@ import NewsPage from './Pages/EMMedia/News/NewsPage';
 import Testimonials from './Pages/EMMedia/Testimonials/Testimonials';
 import HomeEarthmera from './Pages/Home/HomeEarthmera';
 import SupportingPage from './Pages/Info/Contact/SupportingPage';
+import RedirectPage from './Pages/Info/Redirection/RedirectPage';
 import Privacy from './Pages/Legal/Privacy';
 import TandC from './Pages/Legal/T&C';
 import Partnership from './Pages/Partnership/B2B/Partnership';
@@ -157,7 +158,15 @@ const baseRoutes = [
   },
 ];
 
+const noFrameRoutes = [
+  {
+    path: '/redirect',
+    element: <RedirectPage />,
+    errorElement: <ErrorComponent />,
+  },
+];
 const Router = createBrowserRouter([
+  ...noFrameRoutes,
   {
     path: '/',
     element: <Root />,
