@@ -34,7 +34,7 @@ interface ProfileContextType {
   userData: UserData;
 
   // 액션 함수들
-  setUserData: (userData: UserData) => void;
+  setUserData: React.Dispatch<React.SetStateAction<UserData>>;
   startEditing: () => void;
   setShowSave: React.Dispatch<React.SetStateAction<boolean>>;
   setIsDarkMode: React.Dispatch<React.SetStateAction<boolean>>;
@@ -137,6 +137,8 @@ export const ProfileProvider: React.FC<ProfileProviderProps> = ({
   // 사용자 인증 정보 변경 시 isMyLink 업데이트
   useEffect(() => {
     if (nameTag) {
+      console.log('user', user);
+
       const mine = user.nameTag === nameTag && validatedMyToken;
       setIsMyLink(mine);
     }
@@ -168,6 +170,8 @@ export const ProfileProvider: React.FC<ProfileProviderProps> = ({
         ...response.data,
         name: response.data.name ? response.data.name.split('#')[0] : '',
       });
+      console.log('targetNameTag', targetNameTag);
+      console.log('user.nameTag', user.nameTag);
 
       if (user.nameTag === targetNameTag) {
         const res = await validateSession();
@@ -236,15 +240,6 @@ export const ProfileProvider: React.FC<ProfileProviderProps> = ({
     setHasChanges(true);
   };
 
-  // 위젯 데이터 초기화
-  const resetWidgets = () => {
-    setCurrentWidgets([]);
-    setOriginalWidgets([]);
-    setLastSavedWidgets([]);
-    setIsEditing(false);
-    setHasChanges(false);
-  };
-
   // Context 값
   const value = {
     originalWidgets,
@@ -272,7 +267,7 @@ export const ProfileProvider: React.FC<ProfileProviderProps> = ({
     setCurrentWidgets,
     setOriginalWidgets,
     updateWidgets,
-    resetWidgets,
+
     fetchUserProfile,
     setIsEditing,
     setDeletedWidgetItems,
