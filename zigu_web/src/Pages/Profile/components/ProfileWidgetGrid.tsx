@@ -34,7 +34,7 @@ const BlurredContainer = styled.div`
   display: flex;
   flex-direction: column;
 `;
-const SyncedContainer = styled.div`
+const SyncedContainer = styled.div<{$isDarkMode: boolean}>`
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -43,7 +43,7 @@ const SyncedContainer = styled.div`
   text-align: center;
   font-size: ${theme.fontSize.md};
   font-weight: 400;
-  color: ${theme.gray};
+  color: ${props => (props.$isDarkMode ? theme.gray : theme.darkGray)};
 `;
 
 const BlurredWidgetGrid = styled(WidgetGrid)`
@@ -164,7 +164,7 @@ function ProfileWidgetGrid() {
     returnObjects: true,
   });
   const AbEMWidget = getAbEMWidget();
-  const {currentWidgets, isMyLink, isLoading, isEditing} = useProfile();
+  const {currentWidgets, isMyLink, isLoading, isDarkMode} = useProfile();
   const {isSyncedWithEM} = useUserStore();
   const [hasEMWidget, setHasEMWidget] = useState(false);
   useEffect(() => {
@@ -192,18 +192,18 @@ function ProfileWidgetGrid() {
                   </BlurredWidgetGrid>
                 )}
               </>
-              {isEditing &&
-                (!isSyncedWithEM ? (
-                  <ZiguLinkToApp />
-                ) : (
-                  !hasEMWidget && (
-                    <SyncedContainer
-                      dangerouslySetInnerHTML={{
-                        __html: localizedTexts.syncedWithEM,
-                      }}
-                    />
-                  )
-                ))}
+              {!isSyncedWithEM ? (
+                <ZiguLinkToApp />
+              ) : (
+                !hasEMWidget && (
+                  <SyncedContainer
+                    $isDarkMode={isDarkMode}
+                    dangerouslySetInnerHTML={{
+                      __html: localizedTexts.syncedWithEM,
+                    }}
+                  />
+                )
+              )}
             </BlurredContainer>
           ) : (
             <PowerByEM />

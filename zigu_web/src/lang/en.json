@@ -1485,8 +1485,8 @@
     "button": "Add",
     "description": "Choose your favorite style and color, and create your profile widget!",
     "toast": {
-      "success": "Profile widget added",
-      "error": "Failed to add profile widget",
+      "success": "Successfully added new widget",
+      "error": "Failed to create new widget. Please try again.",
       "failedToUploadImage": "Failed to upload image",
       "selectColor": "Please select a widget's background color"
     },

@@ -1,7 +1,6 @@
 import { PixelCrop } from "react-image-crop";
-import { useUserStore } from "../../../storage/userStore";
 import { getGridDimensions } from "../components/MainProfileGrid";
-import { ProfileWidgetItemSize } from "../types/WidgetItemType";
+import { ProfileWidgetItemSize, ProfileWidgetItemType } from "../types/WidgetItemType";
 
 /**
  * 2컬럼 그리드에서,
@@ -12,22 +11,23 @@ import { ProfileWidgetItemSize } from "../types/WidgetItemType";
  * 만약 클러스터 내(예: 최근 3행)에서 빈 칸이 있으면 그 중 가장 위쪽에 배치하도록 한다.
  */
 export function calculateNewWidgetCoordinate(
-    newWidgetSize: ProfileWidgetItemSize
+    newWidgetSize: ProfileWidgetItemSize,
+    originalWidgets: ProfileWidgetItemType[]
 ): { x: number; y: number } {
-    const { myWidgets } = useUserStore.getState();
+    // const { myWidgets } = useUserStore.getState();
     const GRID_COLS = 2;
 
     // 새 위젯의 크기 (예: SMALL: {w:1, h:1}, LONG: {w:2, h:1}, BIG: {w:1, h:3})
     const { w, h } = getGridDimensions(newWidgetSize);
 
     // 위젯이 하나도 없으면 (0,0)에 배치
-    if (!myWidgets || myWidgets.length === 0) {
+    if (!originalWidgets || originalWidgets.length === 0) {
         return { x: 0, y: 0 };
     }
 
     // 1) 기존 위젯들이 차지하는 최대 y (즉, 아래쪽 끝) 구하기
     let maxY = 0;
-    myWidgets.forEach(widget => {
+    originalWidgets.forEach(widget => {
         const widgetDim = getGridDimensions(widget.sizeType);
         const wy = widget.coordinate?.y ?? 0;
         maxY = Math.max(maxY, wy + widgetDim.h);
@@ -41,7 +41,7 @@ export function calculateNewWidgetCoordinate(
     }
 
     // 3) 기존 위젯들이 차지하는 영역을 표시
-    myWidgets.forEach(widget => {
+    originalWidgets.forEach(widget => {
         const wd = getGridDimensions(widget.sizeType);
         const x = widget.coordinate?.x ?? 0;
         const y = widget.coordinate?.y ?? 0;
@@ -101,6 +101,9 @@ export function calculateNewWidgetCoordinate(
     }
     return { x: 0, y: maxY };
 }
+
+
+
 export function getOrdinalSuffix(number: number): string {
 
 

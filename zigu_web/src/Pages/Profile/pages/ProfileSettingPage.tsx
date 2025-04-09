@@ -183,6 +183,7 @@ function ProfileSettingPage() {
           profileImage: result,
         });
         if (response.result) {
+          setUserData(prev => ({...prev, profileImage: result}));
           setUser({...user, profileImage: result});
         }
       }

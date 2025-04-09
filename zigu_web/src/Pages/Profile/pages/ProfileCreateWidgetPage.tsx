@@ -186,11 +186,7 @@ const ModalContainer = styled.div`
     box-shadow: none !important;
   }
 `;
-const CloseButton = styled.div`
-  position: absolute;
-  top: 10px;
-  right: 10px;
-`;
+
 const ApplyButton = styled.button`
   background-color: ${theme.white};
   margin-top: ${theme.spacing.md};
@@ -211,6 +207,7 @@ function ProfileCreateWidgetPage() {
   const localizedTexts: any = i18next.t('ProfileCreateWidgetPage', {
     returnObjects: true,
   });
+  const {isDarkMode} = useProfile();
   const {state} = useLocation();
   const isEditMode = state?.isEditMode;
   const {isSyncedWithEM, user, setMyWidgets, myWidgets} = useUserStore();
@@ -219,7 +216,7 @@ function ProfileCreateWidgetPage() {
     setOriginalWidgets,
     selectedItem,
     setSelectedItem,
-
+    originalWidgets,
     setShowSave,
   } = useProfile();
   const navigate = useNavigate();
@@ -363,7 +360,13 @@ function ProfileCreateWidgetPage() {
       toast.error(localizedTexts.toast.selectColor);
       return;
     }
-    const newCoordinate = calculateNewWidgetCoordinate(selectedStyle);
+    // TODO : 위젯 placement 조정 검사필요
+    const newCoordinate = calculateNewWidgetCoordinate(
+      selectedStyle,
+      originalWidgets,
+    );
+    console.log('newCoordinate', newCoordinate);
+
     const isEmWidget = !!selectedAsset;
     const emWidgetData = {
       sizeType: selectedStyle,
@@ -383,6 +386,7 @@ function ProfileCreateWidgetPage() {
     };
     const response = await createWidget(isEmWidget ? emWidgetData : widgetData);
     if (response.result) {
+      toast.success(localizedTexts.toast.success);
       setMyWidgets([
         ...myWidgets,
         {
@@ -410,6 +414,8 @@ function ProfileCreateWidgetPage() {
           keepEditing: true,
         },
       });
+    } else {
+      toast.error(localizedTexts.toast.error);
     }
   };
 
@@ -662,6 +668,7 @@ function ProfileCreateWidgetPage() {
         <InputField
           placeholder="https://"
           value={linkURL}
+          $isDarkMode={isDarkMode}
           disabled={!!selectedAsset}
           onBlur={handleLinkURLBlur}
           onChange={e => setLinkURL(e.target.value)}
@@ -669,6 +676,7 @@ function ProfileCreateWidgetPage() {
 
         <SectionTitle inActive={!!image}>{localizedTexts.text}</SectionTitle>
         <InputField
+          $isDarkMode={isDarkMode}
           placeholder={
             !!image
               ? localizedTexts.placeholder.image
@@ -833,13 +841,13 @@ const ColorOption = styled.div<{
   opacity: ${props.selected ? '1' : '0.5'}`}
 `;
 
-const InputField = styled.input`
+const InputField = styled.input<{$isDarkMode: boolean}>`
   width: calc(100% - ${theme.spacing.md} * 2);
   padding: ${theme.spacing.md};
   border-radius: 10px;
   border: 1px solid #555;
   background-color: transparent;
-  color: white;
+  color: ${props => (props.$isDarkMode ? theme.white : theme.black)};
   font-size: ${theme.fontSize.md};
   &:focus {
     outline: none;

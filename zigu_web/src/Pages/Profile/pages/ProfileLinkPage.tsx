@@ -4,8 +4,9 @@ import styled from 'styled-components';
 import useWindowResize from '../../../components/hooks/useWindowResize';
 import i18next from '../../../lang/i18n';
 import {useUserStore} from '../../../storage/userStore';
-import {defaultProfileImage, theme} from '../../../style';
+import {theme} from '../../../style';
 import FixedBottomEditView from '../components/FixedBottomEditView';
+import ProfileImageInProfile from '../components/ProfileImageInProfile';
 import ProfileTopHeader from '../components/ProfileTopHeader';
 import ProfileWidgetGrid from '../components/ProfileWidgetGrid';
 import {useProfile} from '../contexts/ProfileContext';
@@ -23,12 +24,6 @@ const ProfileContainer = styled.div`
   position: relative;
 `;
 
-const ProfileImage = styled.img<{size?: number}>`
-  width: ${props => props.size || 100}px;
-  height: ${props => props.size || 100}px;
-  border-radius: 50%;
-  object-fit: cover;
-`;
 const Logo = styled.div`
   margin-bottom: 10px;
 `;
@@ -46,6 +41,15 @@ const VacantContainer = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+`;
+const ProfileImageContainer = styled.div`
+  margin-bottom: 10px;
+`;
+const ProfileImage = styled.img<{size?: number}>`
+  width: ${props => props.size || 100}px;
+  height: ${props => props.size || 100}px;
+  border-radius: 50%;
+  object-fit: cover;
 `;
 const VacantText = styled.p`
   color: ${theme.white};
@@ -102,13 +106,10 @@ function ProfileLinkPage() {
     console.log('nameTag:', nameTag);
 
     !keepEditing && fetchUserProfile(nameTag);
-  }, [nameTag, location.pathname]);
-
-  useEffect(() => {
     if (keepEditing) {
       window.history.replaceState({}, '', location.pathname);
     }
-  }, [keepEditing]);
+  }, [nameTag, location.pathname]);
 
   return (
     <>
@@ -127,12 +128,17 @@ function ProfileLinkPage() {
         </VacantContainer>
       ) : (
         <ProfileContainer>
-          <Logo>
-            <ProfileImage
-              src={userData.profileImage || defaultProfileImage}
-              size={resizedWidth * 0.2}
-            />
-          </Logo>
+          {isMyLink ? (
+            <ProfileImageInProfile resizedWidth={resizedWidth} />
+          ) : (
+            <ProfileImageContainer>
+              <ProfileImage
+                src={userData.profileImage}
+                size={resizedWidth * 0.2}
+              />
+            </ProfileImageContainer>
+          )}
+
           <ProfileName $isDarkMode={isDarkMode}>{userData.name}</ProfileName>
           <ProfileTag $isDarkMode={isDarkMode}>@{nameTag}</ProfileTag>
 

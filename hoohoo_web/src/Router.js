@@ -164,6 +164,11 @@ const noFrameRoutes = [
     element: <RedirectPage />,
     errorElement: <ErrorComponent />,
   },
+  {
+    path: '/zigu',
+    element: <ZiguPage />,
+    errorElement: <ErrorComponent />,
+  },
 ];
 const Router = createBrowserRouter([
   ...noFrameRoutes,
@@ -175,11 +180,7 @@ const Router = createBrowserRouter([
         path: '',
         element: <Navigate to="/en" replace />,
       },
-      {
-        path: '/zigu',
-        element: <ZiguPage />,
-        errorElement: <ErrorComponent />,
-      },
+
       {
         path: '/privacy',
         element: <Privacy />,
