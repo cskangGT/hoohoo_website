@@ -1471,7 +1471,8 @@
       "success": "프로필 업데이트에 성공했어요.",
       "failLogout": "로그아웃에 실패했어요.",
       "logoutSuccess": "성공적으로 로그아웃 되었습니다.",
-      "failUploadImage": "프로필 이미지 업로드에 실패했어요."
+      "failUploadImage": "프로필 이미지 업로드에 실패했어요.",
+      "invalidURL": "유효하지 않은 URL입니다. 다시 확인해주세요."
     }
   },
   "ProfileCreateWidgetPage": {

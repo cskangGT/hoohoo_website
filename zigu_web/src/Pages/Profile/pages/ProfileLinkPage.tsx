@@ -3,7 +3,6 @@ import {useLocation, useParams} from 'react-router-dom';
 import styled from 'styled-components';
 import useWindowResize from '../../../components/hooks/useWindowResize';
 import i18next from '../../../lang/i18n';
-import {useUserStore} from '../../../storage/userStore';
 import {theme} from '../../../style';
 import FixedBottomEditView from '../components/FixedBottomEditView';
 import ProfileImageInProfile from '../components/ProfileImageInProfile';
@@ -76,15 +75,12 @@ function ProfileLinkPage() {
   const location = useLocation();
   const stateIsEditing = state?.isEditing;
   const keepEditing = state?.keepEditing;
-  const {user, isAuthenticated} = useUserStore();
+
   const {
     fetchUserProfile,
     noProfileData,
     userData,
-    currentWidgets,
     isMyLink,
-
-    isEditing,
     isDarkMode,
     profileError,
     setIsEditing,

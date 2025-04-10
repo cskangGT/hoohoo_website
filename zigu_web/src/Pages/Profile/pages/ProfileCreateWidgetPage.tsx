@@ -2,7 +2,7 @@ import i18next from 'i18next';
 import {ColorPicker, IColor, useColor} from 'react-color-palette';
 import 'react-color-palette/css';
 
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import 'react-color-palette/css';
 import {FaChevronDown, FaChevronUp} from 'react-icons/fa';
 import {useLocation, useNavigate} from 'react-router-dom';
@@ -16,11 +16,13 @@ import {Swiper, SwiperSlide} from 'swiper/react';
 import {createWidget} from '../../../api/jigulink/jigulink.api';
 import {useUserStore} from '../../../storage/userStore';
 import {theme} from '../../../style';
+import {isValidURL} from '../../../util/validation';
 import ImageCrop from '../components/ImageCrop';
 import TopHeaderBackButtonWrapperView from '../components/TopHeaderBackButtonWrapperView';
 import WidgetItem from '../components/WidgetItem';
 import {useProfile} from '../contexts/ProfileContext';
 import {
+  EMWidgetData,
   ProfileEMWidgetType,
   ProfileWidgetItemSize,
   ProfileWidgetItemType,
@@ -311,6 +313,12 @@ function ProfileCreateWidgetPage() {
     }
   }
   const handleSaveEditWidget = async () => {
+    console.log('linkURL', linkURL);
+
+    if (!isValidURL(linkURL)) {
+      toast.error(localizedTexts.toast.invalidURL);
+      return;
+    }
     const widgetData = {
       id: selectedItem?.id,
       sizeType: selectedItem?.sizeType,
@@ -355,9 +363,19 @@ function ProfileCreateWidgetPage() {
       },
     });
   };
+  useEffect(() => {
+    return () => {
+      setSelectedItem(null);
+    };
+  }, []);
   const handleAddWidget = async () => {
     if (!isSelected) {
       toast.error(localizedTexts.toast.selectColor);
+      return;
+    }
+
+    if (!isValidURL(linkURL)) {
+      toast.error(localizedTexts.toast.invalidURL);
       return;
     }
     // TODO : 위젯 placement 조정 검사필요
@@ -449,7 +467,50 @@ function ProfileCreateWidgetPage() {
       setLinkURL('https://' + linkURL);
     }
   };
-
+  const mockWidgetData: EMWidgetData = {
+    level: 4,
+    numBadges: 2,
+    numMedals: 3,
+    equippedMedals: [
+      {
+        medalTitle: 'ECO_ACTION_TUMBLER',
+        medalLevel: 2,
+      },
+      {
+        medalTitle: 'ECO_ACTION_CARBON_REDUCTION',
+        medalLevel: 3,
+      },
+      {
+        medalTitle: 'REWARD_REDEEM_MEDAL',
+        medalLevel: 4,
+      },
+    ],
+    equippedBadge: 'LITTLE_BY_LITTLE',
+    annualCarbonReduction: 1370,
+    annualEcoActionCount: 100,
+    treeEffect: 3,
+    ecoActionCount: 700,
+    userRank: 17,
+    lastMonthRank: 18,
+    higherRankInfo: {
+      gap: 39,
+      ecoActionCount: 739,
+    },
+    lowerRankInfo: {
+      gap: 25,
+      ecoActionCount: 675,
+    },
+    thumbnails: [
+      'https://picsum.photos/200/300?random=1',
+      'https://picsum.photos/200/300?random=2',
+      'https://picsum.photos/200/300?random=3',
+      'https://picsum.photos/200/300?random=4',
+      'https://picsum.photos/200/300?random=5',
+      'https://picsum.photos/200/300?random=6',
+      'https://picsum.photos/200/300?random=7',
+      'https://picsum.photos/200/300?random=8',
+    ],
+  };
   return (
     <TopHeaderBackButtonWrapperView>
       <Container>
@@ -459,6 +520,7 @@ function ProfileCreateWidgetPage() {
         {isEditMode ? (
           <PreviewContainer>
             <WidgetItem
+              isPreview={true}
               widget={{
                 id: 1,
                 sizeType: selectedStyle,
@@ -470,50 +532,7 @@ function ProfileCreateWidgetPage() {
                 coordinate: {x: 0, y: 0},
                 emWidgetType: selectedAsset as ProfileEMWidgetType,
                 isEmWidget: !!selectedAsset,
-                widgetData: {
-                  level: 4,
-                  numBadges: 2,
-                  numMedals: 3,
-                  equippedMedals: [
-                    {
-                      medalTitle: 'ECO_ACTION_TUMBLER',
-                      medalLevel: 2,
-                    },
-                    {
-                      medalTitle: 'ECO_ACTION_CARBON_REDUCTION',
-                      medalLevel: 3,
-                    },
-                    {
-                      medalTitle: 'REWARD_REDEEM_MEDAL',
-                      medalLevel: 4,
-                    },
-                  ],
-                  equippedBadge: 'LITTLE_BY_LITTLE',
-                  annualCarbonReduction: 1370,
-                  annualEcoActionCount: 100,
-                  treeEffect: 3,
-                  ecoActionCount: 700,
-                  userRank: 17,
-                  lastMonthRank: 18,
-                  higherRankInfo: {
-                    gap: 39,
-                    ecoActionCount: 739,
-                  },
-                  lowerRankInfo: {
-                    gap: 25,
-                    ecoActionCount: 675,
-                  },
-                  thumbnails: [
-                    'https://picsum.photos/200/300',
-                    'https://picsum.photos/200/300',
-                    'https://picsum.photos/200/300',
-                    'https://picsum.photos/200/300',
-                    'https://picsum.photos/200/300',
-                    'https://picsum.photos/200/300',
-                    'https://picsum.photos/200/300',
-                    'https://picsum.photos/200/300',
-                  ],
-                },
+                widgetData: mockWidgetData,
               }}
             />
           </PreviewContainer>
@@ -537,6 +556,7 @@ function ProfileCreateWidgetPage() {
                   <SwiperSlide key={option.value}>
                     <ScaledWidgetContainer>
                       <WidgetItem
+                        isPreview={true}
                         widget={{
                           id: 0,
                           sizeType: option.value,
@@ -548,50 +568,7 @@ function ProfileCreateWidgetPage() {
                           coordinate: {x: 0, y: 0},
                           emWidgetType: selectedAsset as ProfileEMWidgetType,
                           isEmWidget: !!selectedAsset,
-                          widgetData: {
-                            level: 4,
-                            numBadges: 2,
-                            numMedals: 3,
-                            equippedMedals: [
-                              {
-                                medalTitle: 'ECO_ACTION_TUMBLER',
-                                medalLevel: 2,
-                              },
-                              {
-                                medalTitle: 'ECO_ACTION_CARBON_REDUCTION',
-                                medalLevel: 3,
-                              },
-                              {
-                                medalTitle: 'REWARD_REDEEM_MEDAL',
-                                medalLevel: 4,
-                              },
-                            ],
-                            equippedBadge: 'LITTLE_BY_LITTLE',
-                            annualCarbonReduction: 1370,
-                            annualEcoActionCount: 100,
-                            treeEffect: 3,
-                            ecoActionCount: 700,
-                            userRank: 17,
-                            lastMonthRank: 18,
-                            higherRankInfo: {
-                              gap: 39,
-                              ecoActionCount: 739,
-                            },
-                            lowerRankInfo: {
-                              gap: 25,
-                              ecoActionCount: 675,
-                            },
-                            thumbnails: [
-                              'https://picsum.photos/200/300',
-                              'https://picsum.photos/200/300',
-                              'https://picsum.photos/200/300',
-                              'https://picsum.photos/200/300',
-                              'https://picsum.photos/200/300',
-                              'https://picsum.photos/200/300',
-                              'https://picsum.photos/200/300',
-                              'https://picsum.photos/200/300',
-                            ],
-                          },
+                          widgetData: mockWidgetData,
                         }}
                       />
                     </ScaledWidgetContainer>

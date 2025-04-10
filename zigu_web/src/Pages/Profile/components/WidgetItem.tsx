@@ -279,6 +279,7 @@ const DeleteButton = styled.button`
 type WidgetItemProps = {
   widget: ProfileWidgetItemType | ProfileWidgetItemType[];
   isEditMode?: boolean;
+  isPreview?: boolean;
   onDeleteWidget?: (item: ProfileWidgetItemType) => void;
   onEditWidget?: (item: ProfileWidgetItemType) => void;
   userInfo?: {
@@ -328,25 +329,29 @@ function EMWidgetContent({
   widgetData,
   isEditMode,
   hasEMWidgetButNoData,
+  isPreview,
 }: {
   widgetItem: ProfileWidgetItemType;
   widgetData: EMWidgetData;
   userInfo?: {userId: string; name: string; profileImage: string};
   isEditMode: boolean;
   hasEMWidgetButNoData: boolean | undefined;
+  isPreview: boolean;
 }) {
   const emWidgetData = getEMWidgetData();
   const {isMyLink, userData} = useProfile();
   const isSmallImage = widgetItem.sizeType !== 'BIG';
   const isLongItem = widgetItem.sizeType === 'LONG';
 
-  const link = hasEMWidgetButNoData
-    ? isMyLink
-      ? `/${userData?.nameTag}/settings/sync`
-      : undefined
-    : userInfo && widgetItem.emWidgetType
-      ? NavigateLink(widgetItem.emWidgetType as ProfileEMWidgetType, userInfo)
-      : '';
+  const link = isPreview
+    ? undefined
+    : hasEMWidgetButNoData
+      ? isMyLink
+        ? `/${userData?.nameTag}/settings/sync`
+        : undefined
+      : userInfo && widgetItem.emWidgetType
+        ? NavigateLink(widgetItem.emWidgetType as ProfileEMWidgetType, userInfo)
+        : '';
 
   if (widgetItem.emWidgetType === ProfileEMWidgetType.CO2Saved) {
     return (
@@ -357,7 +362,7 @@ function EMWidgetContent({
         onClick={() => {
           countWidgetStat(widgetItem.id, true);
         }}
-        disabled={isEditMode}>
+        disabled={isEditMode || isPreview}>
         <CarbonWidgetContent
           width={ITEM_WIDTH}
           sizeType={widgetItem.sizeType}
@@ -377,7 +382,7 @@ function EMWidgetContent({
         }}
         target="_blank"
         rel="appopener"
-        disabled={isEditMode}>
+        disabled={isEditMode || isPreview}>
         <AchievementWidgetContent
           width={ITEM_WIDTH}
           sizeType={widgetItem.sizeType}
@@ -398,7 +403,7 @@ function EMWidgetContent({
         onClick={() => {
           countWidgetStat(widgetItem.id, true);
         }}
-        disabled={isEditMode}>
+        disabled={isEditMode || isPreview}>
         <LeaderboardWidgetContent
           width={ITEM_WIDTH}
           sizeType={widgetItem.sizeType}
@@ -429,7 +434,7 @@ function EMWidgetContent({
         onClick={() => {
           countWidgetStat(widgetItem.id, true);
         }}
-        disabled={isEditMode}>
+        disabled={isEditMode || isPreview}>
         <GalleryWidgetContent
           width={ITEM_WIDTH}
           cellHeight={ITEM_HEIGHT}
@@ -447,7 +452,7 @@ function EMWidgetContent({
           countWidgetStat(widgetItem.id, true);
         }}
         rel="appopener"
-        disabled={isEditMode}>
+        disabled={isEditMode || isPreview}>
         <WidgetAppNavImageContainer
           $smallImage={isSmallImage}
           $isLongItem={isLongItem}>
@@ -479,6 +484,7 @@ function WidgetItem({
   onDeleteWidget,
   onEditWidget,
   userInfo,
+  isPreview = false,
 }: WidgetItemProps) {
   const {width: resizedWidth} = useWindowResize({
     maxWidth: 600,
@@ -491,7 +497,11 @@ function WidgetItem({
     (widgetItem as ProfileWidgetItemType).isEmWidget &&
     !!(widgetItem as ProfileWidgetItemType).emWidgetType;
   const hasLink = !!widgetItem?.linkUrl;
-  const isClickable = isEditMode ? false : hasLink || hasEMWidgetType;
+  const isClickable = !isPreview
+    ? isEditMode
+      ? false
+      : hasLink || hasEMWidgetType
+    : false;
   const hasEMWidgetButNoData = isSyncedWithEM
     ? false
     : hasEMWidgetType && isTemp;
@@ -588,7 +598,9 @@ function WidgetItem({
   const textColor =
     widgetItem.bgType === 'COLOR' && widgetItem.bgColor
       ? getTextColorWcag(widgetItem.bgColor, isDarkMode)
-      : 'white';
+      : isDarkMode
+        ? 'white'
+        : 'black';
 
   const content =
     widgetItem.bgType === 'IMAGE' ? (
@@ -632,6 +644,7 @@ function WidgetItem({
           userInfo={userInfo}
           widgetData={emWidgetData as EMWidgetData}
           isEditMode={isEditMode}
+          isPreview={isPreview}
           hasEMWidgetButNoData={hasEMWidgetButNoData}
         />
       ) : isClickable ? (
@@ -649,7 +662,7 @@ function WidgetItem({
         content
       )}
 
-      {isEditMode && (
+      {!isPreview && isEditMode && (
         <>
           {/* <ItemHolderBox>
             <PiDotsSixVerticalBold size={20} color="white" />
