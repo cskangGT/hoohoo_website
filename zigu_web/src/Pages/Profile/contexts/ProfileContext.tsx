@@ -30,6 +30,7 @@ interface ProfileContextType {
   isDarkMode: boolean;
   isEditingItem: boolean;
   selectedItem: ProfileWidgetItemType | null;
+  hasSynced: boolean;
   // 사용자 데이터
   userData: UserData;
 
@@ -106,6 +107,8 @@ export const ProfileProvider: React.FC<ProfileProviderProps> = ({
   const [deletedWidgetItems, setDeletedWidgetItems] = useState<
     ProfileWidgetItemType[]
   >([]);
+  const [hasSynced, setHasSynced] = useState<boolean>(false);
+
   const navigate = useNavigate();
   const [noProfileData, setNoProfileData] = useState<boolean>(false);
   const [profileError, setProfileError] = useState<boolean>(false);
@@ -209,7 +212,7 @@ export const ProfileProvider: React.FC<ProfileProviderProps> = ({
           }),
         );
         console.log('newWidgets', newWidgets);
-
+        setHasSynced(!!response.data?.linkedUserInfo?.userId);
         setOriginalWidgets(newWidgets);
         setCurrentWidgets(newWidgets);
         setLastSavedWidgets(newWidgets);
@@ -252,6 +255,7 @@ export const ProfileProvider: React.FC<ProfileProviderProps> = ({
     isDarkMode,
     isLoading,
     deletedWidgetItems,
+    hasSynced,
     noProfileData,
     isMyLink,
     userData,

@@ -2,7 +2,7 @@ import i18next from 'i18next';
 import {ColorPicker, IColor, useColor} from 'react-color-palette';
 import 'react-color-palette/css';
 
-import React, {useEffect, useState} from 'react';
+import React, {useEffect, useLayoutEffect, useState} from 'react';
 import 'react-color-palette/css';
 import {FaChevronDown, FaChevronUp} from 'react-icons/fa';
 import {useLocation, useNavigate} from 'react-router-dom';
@@ -295,7 +295,9 @@ function ProfileCreateWidgetPage() {
       label: localizedTexts.widgetList['MY_GALLERY'],
     },
   ];
-
+  useLayoutEffect(() => {
+    window.scrollTo(0, 0);
+  });
   function handleColorClick(color: string) {
     setIsSelected(true);
     setImage('');

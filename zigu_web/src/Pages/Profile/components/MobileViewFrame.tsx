@@ -1,5 +1,6 @@
-import React, {ReactNode, useEffect, useRef} from 'react';
+import React, {forwardRef, ReactNode, useEffect, useRef} from 'react';
 import {MdOutlineDarkMode, MdOutlineLightMode} from 'react-icons/md';
+import {useLocation} from 'react-router-dom';
 import styled from 'styled-components';
 import {theme} from '../../../style';
 import {useProfile} from '../contexts/ProfileContext';
@@ -8,6 +9,10 @@ interface MobileViewFrameProps {
   children: ReactNode;
   backgroundColor?: string;
   containerBackgroundColor?: string;
+}
+
+export interface MobileViewFrameRef {
+  scrollToTop: () => void;
 }
 
 const OuterContainer = styled.div`
@@ -99,61 +104,81 @@ const MobileContent = styled.div`
   }
 `;
 
-function MobileViewFrame({children}: MobileViewFrameProps) {
-  const {isDarkMode, setIsDarkMode} = useProfile();
-  const outerRef = useRef<HTMLDivElement>(null);
-  const contentRef = useRef<HTMLDivElement>(null);
+const MobileViewFrame = forwardRef<MobileViewFrameRef, MobileViewFrameProps>(
+  ({children}, ref) => {
+    const {isDarkMode, setIsDarkMode} = useProfile();
+    const outerRef = useRef<HTMLDivElement>(null);
+    const contentRef = useRef<HTMLDivElement>(null);
 
-  function handleDarkMode() {
-    setIsDarkMode(!isDarkMode);
-    localStorage.setItem('isDarkMode', !isDarkMode ? 'true' : 'false');
-  }
-  useEffect(() => {
-    const outer = outerRef.current;
-    const content = contentRef.current;
-    if (!outer || !content) return;
+    const location = useLocation();
 
-    // wheel 이벤트를 막고, 내부 scrollTop을 직접 조작
-    const onWheel = (e: WheelEvent) => {
-      e.preventDefault(); // 바깥 레이어의 기본 스크롤 방지
-      content.scrollTop += e.deltaY; // 내부 컨텐츠를 스크롤
-    };
-    let startY = 0;
-    const onTouchStart = (e: TouchEvent) => {
-      startY = e.touches[0].clientY;
-    };
-    const onTouchMove = (e: TouchEvent) => {
-      e.preventDefault();
-      const deltaY = startY - e.touches[0].clientY;
-      content.scrollTop += deltaY;
-      startY = e.touches[0].clientY;
+    // 스크롤을 맨 위로 올리는 함수
+    const scrollToTop = () => {
+      if (contentRef.current) {
+        console.log('스크롤을 맨 위로 이동시킵니다.');
+        setTimeout(() => {
+          if (contentRef.current) {
+            contentRef.current.scrollTop = 0;
+          }
+        }, 200);
+      }
     };
 
-    outer.addEventListener('wheel', onWheel, {passive: false});
-    outer.addEventListener('touchstart', onTouchStart, {passive: false});
-    // outer.addEventListener('touchmove', onTouchMove, {passive: false});
+    // 경로 변경 시 스크롤 위치를 맨 위로 이동
+    useEffect(() => {
+      scrollToTop();
+    }, [location.pathname]);
+    function handleDarkMode() {
+      setIsDarkMode(!isDarkMode);
+      localStorage.setItem('isDarkMode', !isDarkMode ? 'true' : 'false');
+    }
+    useEffect(() => {
+      const outer = outerRef.current;
+      const content = contentRef.current;
+      if (!outer || !content) return;
 
-    return () => {
-      outer.removeEventListener('wheel', onWheel);
-      outer.removeEventListener('touchstart', onTouchStart);
-      // outer.removeEventListener('touchmove', onTouchMove);
-    };
-  }, []);
+      // wheel 이벤트를 막고, 내부 scrollTop을 직접 조작
+      const onWheel = (e: WheelEvent) => {
+        e.preventDefault(); // 바깥 레이어의 기본 스크롤 방지
+        content.scrollTop += e.deltaY; // 내부 컨텐츠를 스크롤
+      };
+      let startY = 0;
+      const onTouchStart = (e: TouchEvent) => {
+        startY = e.touches[0].clientY;
+      };
+      const onTouchMove = (e: TouchEvent) => {
+        e.preventDefault();
+        const deltaY = startY - e.touches[0].clientY;
+        content.scrollTop += deltaY;
+        startY = e.touches[0].clientY;
+      };
 
-  return (
-    <OuterContainer ref={outerRef}>
-      <MobileContainer $isDarkMode={isDarkMode}>
-        <MobileContent ref={contentRef}>{children}</MobileContent>
-      </MobileContainer>
-      <DarkModeButton onClick={handleDarkMode} $isDarkMode={isDarkMode}>
-        {!isDarkMode ? (
-          <MdOutlineDarkMode size={30} color={theme.white} />
-        ) : (
-          <MdOutlineLightMode size={30} color={theme.darkGray} />
-        )}
-      </DarkModeButton>
-    </OuterContainer>
-  );
-}
+      outer.addEventListener('wheel', onWheel, {passive: false});
+      outer.addEventListener('touchstart', onTouchStart, {passive: false});
+      // outer.addEventListener('touchmove', onTouchMove, {passive: false});
+
+      return () => {
+        outer.removeEventListener('wheel', onWheel);
+        outer.removeEventListener('touchstart', onTouchStart);
+        // outer.removeEventListener('touchmove', onTouchMove);
+      };
+    }, []);
+
+    return (
+      <OuterContainer ref={outerRef}>
+        <MobileContainer $isDarkMode={isDarkMode}>
+          <MobileContent ref={contentRef}>{children}</MobileContent>
+        </MobileContainer>
+        <DarkModeButton onClick={handleDarkMode} $isDarkMode={isDarkMode}>
+          {!isDarkMode ? (
+            <MdOutlineDarkMode size={30} color={theme.white} />
+          ) : (
+            <MdOutlineLightMode size={30} color={theme.darkGray} />
+          )}
+        </DarkModeButton>
+      </OuterContainer>
+    );
+  },
+);
 
 export default MobileViewFrame;

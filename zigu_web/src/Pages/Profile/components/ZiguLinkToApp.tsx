@@ -2,17 +2,22 @@ import i18next from 'i18next';
 import React, {useEffect, useState} from 'react';
 import styled from 'styled-components';
 import {getSyncUserId} from '../../../api/jigulink/user.api';
+import useWindowResize from '../../../components/hooks/useWindowResize';
 import {useUserStore} from '../../../storage/userStore';
 import {theme} from '../../../style';
 import {getAbEMWidget} from './ProfileWidgetGrid';
 import WidgetItem from './WidgetItem';
-const BlurredWidgetGrid = styled.div`
+const BlurredWidgetGrid = styled.div<{
+  rowItemGap?: number;
+  colItemGap?: number;
+}>`
   margin-top: 24px;
   margin-bottom: 100px;
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  gap: 16px;
+  column-gap: ${props => props.colItemGap || 16}px;
+  row-gap: ${props => props.rowItemGap || 16}px;
   width: 100%;
 
   justify-content: space-between;
@@ -67,6 +72,9 @@ function ZiguLinkToApp() {
   const localizedTexts: any = i18next.t('ProfileLinkPage', {
     returnObjects: true,
   });
+  const {colItemGap, rowItemGap} = useWindowResize({
+    maxWidth: 600,
+  });
   const AbEMWidget = getAbEMWidget();
   const {user} = useUserStore();
   const [deepLinkUrl, setDeepLinkUrl] = useState<string>('');
@@ -87,7 +95,7 @@ function ZiguLinkToApp() {
     window.open(deepLinkUrl, '_blank');
   }
   return (
-    <BlurredWidgetGrid>
+    <BlurredWidgetGrid rowItemGap={rowItemGap} colItemGap={colItemGap}>
       {AbEMWidget.slice(4).map(widget => (
         <WidgetItem key={widget.id} widget={widget} />
       ))}

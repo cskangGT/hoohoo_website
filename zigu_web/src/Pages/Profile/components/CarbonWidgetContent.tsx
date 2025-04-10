@@ -74,7 +74,7 @@ const CO2Title = styled.div`
     font-size: ${theme.fontSize.md};
   }
   @media (max-width: 400px) {
-    font-size: ${theme.fontSize.md};
+    font-size: ${theme.fontSize.rg};
   }
 `;
 
