@@ -1488,7 +1488,8 @@
       "success": "Successfully added new widget",
       "error": "Failed to create new widget. Please try again.",
       "failedToUploadImage": "Failed to upload image",
-      "selectColor": "Please select a widget's background color"
+      "selectColor": "Please select a widget's background color",
+      "invalidURL": "Invalid URL. Please enter a valid URL."
     },
     "close": "Close",
     "apply": "Apply",
