@@ -29,6 +29,7 @@ interface UserState {
     setMyWidgets: (widgets: ProfileWidgetItemType[]) => void;
     setLinkedUserInfo: (linkedUserInfo: LinkedUserInfo) => void;
     setProfileImage: (profileImage: string) => void;
+    clearUser: () => void;
 }
 
 const initialUser: UserData = {
@@ -61,6 +62,17 @@ export const useUserStore = create<UserState>()(
                 },
                 isAuthenticated: true,
 
+            }),
+            clearUser: () => set({
+                user: initialUser,
+                linkedUserInfo: {
+                    userId: '',
+                    name: '',
+                    profileImage: ''
+                },
+                myWidgets: [],
+                isAuthenticated: false,
+                isSyncedWithEM: false,
             }),
             setProfileImage: (profileImage: string) => set((state) => ({
                 user: {

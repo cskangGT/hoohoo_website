@@ -40,9 +40,11 @@ const ProfileHeader = styled.div`
   column-gap: 30px;
   @media (max-width: 500px) {
     column-gap: 25px;
+    padding: 30px 10px;
   }
   @media (max-width: 400px) {
     column-gap: 20px;
+    padding: 30px 10px;
   }
 `;
 
@@ -81,6 +83,14 @@ const ButtonGroup = styled.div`
 
   width: calc(100% - 40px);
   padding: 0 20px;
+  @media (max-width: 500px) {
+    padding: 0 10px;
+    width: calc(100% - 20px);
+  }
+  @media (max-width: 400px) {
+    padding: 0 10px;
+    width: calc(100% - 20px);
+  }
 `;
 
 const ProfileButton = styled.button<{
@@ -98,12 +108,26 @@ const ProfileButton = styled.button<{
   font-family: Inter;
   font-size: ${theme.fontSize.md};
   opacity: ${props => (props.$inactive ? 0.5 : 1)};
+  @media (max-width: 500px) {
+    font-size: ${theme.fontSize.rg};
+  }
+  @media (max-width: 400px) {
+    font-size: ${theme.fontSize.sm};
+  }
 `;
 const Divider = styled.div`
   width: calc(100% - 40px);
   height: 1px;
   background-color: #333;
   margin: 0px 20px;
+  @media (max-width: 500px) {
+    width: calc(100% - 20px);
+    margin: 0px 10px;
+  }
+  @media (max-width: 400px) {
+    width: calc(100% - 20px);
+    margin: 0px 10px;
+  }
 `;
 const MenuList = styled.div`
   display: flex;
@@ -119,6 +143,12 @@ const MenuItem = styled.div<{disabled?: boolean}>`
   padding: 20px;
   opacity: ${props => (props.disabled ? 0.5 : 1)};
   cursor: pointer;
+  @media (max-width: 500px) {
+    padding: 20px 10px;
+  }
+  @media (max-width: 400px) {
+    padding: 20px 10px;
+  }
 `;
 const ProfileImageInput = styled.input`
   display: none;
@@ -134,6 +164,12 @@ const LogoutButton = styled.div`
   color: ${theme.white};
 
   cursor: pointer;
+  @media (max-width: 500px) {
+    padding: 20px 10px;
+  }
+  @media (max-width: 400px) {
+    padding: 20px 10px;
+  }
 `;
 function ProfileSettingPage() {
   const localizedTexts: any = i18next.t('ProfileSettingPage', {

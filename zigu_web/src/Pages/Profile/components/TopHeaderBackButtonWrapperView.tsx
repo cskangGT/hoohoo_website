@@ -1,6 +1,6 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import {LuArrowLeft} from 'react-icons/lu';
-import {useNavigate} from 'react-router-dom';
+import {useLocation, useNavigate} from 'react-router-dom';
 import styled from 'styled-components';
 import {theme} from '../../../style';
 import {useProfile} from '../contexts/ProfileContext';
@@ -33,12 +33,23 @@ function TopHeaderBackButtonWrapperView({
   children: React.ReactNode;
 }) {
   const navigate = useNavigate();
+  const location = useLocation();
   const {isDarkMode} = useProfile();
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [location]);
+
+  const handleBack = () => {
+    window.scrollTo(0, 0);
+    navigate(-1);
+  };
+
   return (
     <>
       <TopHeaderContainer>
         <TopHeaderLeft>
-          <BackButton onClick={() => navigate(-1)}>
+          <BackButton onClick={handleBack}>
             <LuArrowLeft
               size={22}
               color={isDarkMode ? theme.white : theme.black}

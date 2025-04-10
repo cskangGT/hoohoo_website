@@ -2,7 +2,8 @@ import { useEffect, useState } from 'react';
 
 interface LayoutCalculation {
     width: number;
-    containerGap: number;
+    rowItemGap: number;
+    colItemGap: number;
     paddingWidth: number;
     cellContainerWidth: number;
     cellSize: number;
@@ -17,18 +18,24 @@ interface UseWindowResizeOptions {
 }
 
 const calculateLayout = (width: number): LayoutCalculation => {
-    const CONTAINER_GAP = 24;
-    const PADDING_WIDTH = width * 0.06;
+    const paddingFactor = width > 500 ? 0.1 : 0.08;
+    const ROW_ITEM_GAP = width > 500 ? 24 : 16;
+    const COL_ITEM_GAP = width > 500 ? 20 : 12;
+    const PADDING_WIDTH = width * paddingFactor;
+
+
     const CELL_CONTAINER_WIDTH = width - 2 * PADDING_WIDTH - 4;
-    const CELL_SIZE = ((CELL_CONTAINER_WIDTH - CONTAINER_GAP) / 2 - CONTAINER_GAP * 2) / 3;
-    const ITEM_WIDTH = CELL_SIZE * 3 + CONTAINER_GAP * 2;
+    const CELL_SIZE = ((CELL_CONTAINER_WIDTH - COL_ITEM_GAP) / 2 - ROW_ITEM_GAP * 2) / 3;
+    const ITEM_WIDTH = CELL_SIZE * 3 + ROW_ITEM_GAP * 2;
     const ITEM_HEIGHT = CELL_SIZE - 2;
     const LONG_ITEM_WIDTH = CELL_CONTAINER_WIDTH;
     const BIG_ITEM_HEIGHT = ITEM_WIDTH;
 
     return {
         width,
-        containerGap: CONTAINER_GAP,
+
+        rowItemGap: ROW_ITEM_GAP,
+        colItemGap: COL_ITEM_GAP,
         paddingWidth: PADDING_WIDTH,
         cellContainerWidth: CELL_CONTAINER_WIDTH,
         cellSize: CELL_SIZE,

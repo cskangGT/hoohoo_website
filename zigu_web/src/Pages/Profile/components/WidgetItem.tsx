@@ -4,7 +4,6 @@ import {FaPencil} from 'react-icons/fa6';
 import styled, {css} from 'styled-components';
 import {countWidgetStat} from '../../../api/jigulink/jigulink.api';
 import useWindowResize from '../../../components/hooks/useWindowResize';
-import {useUserStore} from '../../../storage/userStore';
 import {theme} from '../../../style';
 import {useProfile} from '../contexts/ProfileContext';
 import {
@@ -32,15 +31,18 @@ const WIDTH = window.innerWidth > 600 ? 600 : window.innerWidth;
 // };
 
 // Grid Layout
-const CONTAINER_GAP = 24;
-const PADDING_WIDTH = WIDTH * 0.06;
+const paddingFactor = WIDTH > 500 ? 0.1 : 0.08;
+const ROW_ITEM_GAP = WIDTH > 500 ? 24 : 16;
+const COL_ITEM_GAP = WIDTH > 500 ? 20 : 12;
+const PADDING_WIDTH = WIDTH * paddingFactor;
+
 const CELL_CONTAINER_WIDTH = WIDTH - 2 * PADDING_WIDTH - 4;
 const CELL_SIZE =
-  ((CELL_CONTAINER_WIDTH - CONTAINER_GAP) / 2 - CONTAINER_GAP * 2) / 3;
-const ITEM_WIDTH = CELL_SIZE * 3 + CONTAINER_GAP * 2;
+  ((CELL_CONTAINER_WIDTH - COL_ITEM_GAP) / 2 - ROW_ITEM_GAP * 2) / 3;
+const ITEM_WIDTH = CELL_SIZE * 3 + ROW_ITEM_GAP * 2;
 const ITEM_HEIGHT = CELL_SIZE - 2;
 const LONG_ITEM_WIDTH = CELL_CONTAINER_WIDTH;
-const BIG_ITEM_HEIGHT = ITEM_WIDTH; //adding border width
+const BIG_ITEM_HEIGHT = ITEM_WIDTH;
 
 const WidgetItemContainer = styled.div<{
   $size: ProfileWidgetItemSize;
@@ -352,7 +354,9 @@ function EMWidgetContent({
       : userInfo && widgetItem.emWidgetType
         ? NavigateLink(widgetItem.emWidgetType as ProfileEMWidgetType, userInfo)
         : '';
-
+  const {itemWidth, itemHeight} = useWindowResize({
+    maxWidth: 600,
+  });
   if (widgetItem.emWidgetType === ProfileEMWidgetType.CO2Saved) {
     return (
       <WidgetLink
@@ -364,7 +368,7 @@ function EMWidgetContent({
         }}
         disabled={isEditMode || isPreview}>
         <CarbonWidgetContent
-          width={ITEM_WIDTH}
+          width={itemWidth}
           sizeType={widgetItem.sizeType}
           annualEcoActionCount={widgetData?.annualEcoActionCount || 0}
           annualCarbonReduction={widgetData?.annualCarbonReduction || 0}
@@ -384,7 +388,7 @@ function EMWidgetContent({
         rel="appopener"
         disabled={isEditMode || isPreview}>
         <AchievementWidgetContent
-          width={ITEM_WIDTH}
+          width={itemWidth}
           sizeType={widgetItem.sizeType}
           level={widgetData?.level || 0}
           numBadges={widgetData?.numBadges || 0}
@@ -405,7 +409,7 @@ function EMWidgetContent({
         }}
         disabled={isEditMode || isPreview}>
         <LeaderboardWidgetContent
-          width={ITEM_WIDTH}
+          width={itemWidth}
           sizeType={widgetItem.sizeType}
           ecoActionCount={widgetData?.ecoActionCount || 0}
           higherRankInfo={
@@ -436,8 +440,8 @@ function EMWidgetContent({
         }}
         disabled={isEditMode || isPreview}>
         <GalleryWidgetContent
-          width={ITEM_WIDTH}
-          cellHeight={ITEM_HEIGHT}
+          width={itemWidth}
+          cellHeight={itemHeight}
           sizeType={widgetItem.sizeType}
           thumbnails={widgetData?.thumbnails || []}
         />
@@ -489,22 +493,20 @@ function WidgetItem({
   const {width: resizedWidth} = useWindowResize({
     maxWidth: 600,
   });
-  const {isSyncedWithEM} = useUserStore();
-  const {isDarkMode} = useProfile();
+  const {isDarkMode, isMyLink, hasSynced} = useProfile();
   const widgetItem = widget as ProfileWidgetItemType;
   const isTemp = widgetItem.isTemp;
   const hasEMWidgetType =
     (widgetItem as ProfileWidgetItemType).isEmWidget &&
     !!(widgetItem as ProfileWidgetItemType).emWidgetType;
   const hasLink = !!widgetItem?.linkUrl;
+
   const isClickable = !isPreview
     ? isEditMode
       ? false
       : hasLink || hasEMWidgetType
     : false;
-  const hasEMWidgetButNoData = isSyncedWithEM
-    ? false
-    : hasEMWidgetType && isTemp;
+  const hasEMWidgetButNoData = hasSynced ? false : hasEMWidgetType && isTemp;
   const handleEditClick = (e: React.MouseEvent) => {
     e.stopPropagation();
 
@@ -557,7 +559,7 @@ function WidgetItem({
     ],
   };
   const emWidgetData =
-    hasEMWidgetType && isTemp && !isSyncedWithEM
+    hasEMWidgetType && isTemp && !hasSynced
       ? initialEMWidgetData
       : widgetItem.widgetData;
 
@@ -662,7 +664,7 @@ function WidgetItem({
         content
       )}
 
-      {!isPreview && isEditMode && (
+      {isMyLink && !isPreview && isEditMode && (
         <>
           {/* <ItemHolderBox>
             <PiDotsSixVerticalBold size={20} color="white" />

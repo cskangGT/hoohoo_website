@@ -1,6 +1,8 @@
-import React, {useEffect, useMemo, useRef} from 'react';
+import React, {useEffect, useMemo, useRef, useState} from 'react';
 import RGL, {Layout, WidthProvider} from 'react-grid-layout';
 import {useNavigate} from 'react-router-dom';
+import {useLongPress} from '../../../components/hooks/useLongPress';
+import useWindowResize from '../../../components/hooks/useWindowResize';
 import {useProfile} from '../contexts/ProfileContext';
 import {
   ProfileWidgetItemSize,
@@ -10,10 +12,6 @@ import WidgetItem from './WidgetItem';
 
 // react-grid-layout에 width 자동 적용
 const ReactGridLayout = WidthProvider(RGL);
-const WIDTH = window.innerWidth > 600 ? 600 : window.innerWidth;
-const CONTAINER_GAP = 24;
-const PADDING_WIDTH = WIDTH * 0.06;
-const CELL_CONTAINER_WIDTH = WIDTH - 2 * PADDING_WIDTH - 4;
 
 // 그리드 설정
 const GRID_COLS = 2;
@@ -74,6 +72,11 @@ function makeLayoutItem(
 
 export default function MainProfileGrid() {
   const navigate = useNavigate();
+
+  const {rowItemGap, colItemGap, cellSize, cellContainerWidth, paddingWidth} =
+    useWindowResize({
+      maxWidth: 600,
+    });
   const {
     currentWidgets,
 
@@ -90,6 +93,9 @@ export default function MainProfileGrid() {
   } = useProfile();
   const isInitialRenderRef = useRef(true);
   const firstLoadRef = useRef(true);
+
+  // 드래그 가능한 위젯을 추적하는 상태
+  const [draggableWidget, setDraggableWidget] = useState<string | null>(null);
 
   useEffect(() => {
     return () => {
@@ -150,7 +156,6 @@ export default function MainProfileGrid() {
       },
     });
   };
-  const cellSize = (CELL_CONTAINER_WIDTH - (6 - 1) * CONTAINER_GAP) / 6;
 
   const rowHeight = cellSize;
 
@@ -160,13 +165,10 @@ export default function MainProfileGrid() {
       cols={GRID_COLS}
       rowHeight={rowHeight}
       containerPadding={[0, 0]}
-      width={CELL_CONTAINER_WIDTH + 2 * PADDING_WIDTH}
-      margin={[CONTAINER_GAP, CONTAINER_GAP]}
+      width={cellContainerWidth * 2 + paddingWidth}
+      margin={[colItemGap, rowItemGap]}
       onLayoutChange={handleLayoutChange}
-      isDraggable={isEditing}
-      onDragStop={() => {
-        setShowSave(true);
-      }}
+      isDraggable={isEditing && !!draggableWidget}
       isResizable={false}
       draggableCancel=".widget-button"
       compactType={'vertical'}
@@ -176,10 +178,20 @@ export default function MainProfileGrid() {
           (widgetItem.isEmWidget ? 'em_' : 'custom_') + widgetItem.id,
         );
 
+        const {pressing, handlers} = useLongPress(() => {
+          if (isEditing) {
+            setDraggableWidget(keyStr);
+          }
+        });
+
         return (
           <div
             key={keyStr}
-            style={{width: '100%', height: '100%', boxSizing: 'border-box'}}>
+            style={{
+              width: '100%',
+              height: '100%',
+              boxSizing: 'border-box',
+            }}>
             <WidgetItem
               widget={widgetItem}
               isEditMode={isEditing}

@@ -13,11 +13,11 @@ import {useProfile} from '../contexts/ProfileContext';
 export const PROFILE_SCREEN_WIDTH =
   window.innerWidth > 600 ? 600 : window.innerWidth;
 export const PADDING_WIDTH = PROFILE_SCREEN_WIDTH * 0.06;
-const ProfileContainer = styled.div`
+const ProfileContainer = styled.div<{paddingWidth?: number}>`
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 20px ${PADDING_WIDTH}px;
+  padding: 20px ${props => props.paddingWidth || PADDING_WIDTH}px;
   margin-bottom: 60px;
   color: ${theme.white};
   position: relative;
@@ -87,7 +87,7 @@ function ProfileLinkPage() {
   } = useProfile();
   const nameTag = useParams()?.nameTag;
 
-  const {width: resizedWidth} = useWindowResize({
+  const {width: resizedWidth, paddingWidth} = useWindowResize({
     maxWidth: 600,
   });
   useEffect(() => {
@@ -123,7 +123,7 @@ function ProfileLinkPage() {
           )}
         </VacantContainer>
       ) : (
-        <ProfileContainer>
+        <ProfileContainer paddingWidth={paddingWidth}>
           {isMyLink ? (
             <ProfileImageInProfile resizedWidth={resizedWidth} />
           ) : (
