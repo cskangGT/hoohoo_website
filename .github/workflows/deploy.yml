@@ -1,4 +1,3 @@
-
 name: CI/CD Pipeline
 
 on:
@@ -10,7 +9,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        project: [hoohoo_web, zigu_web]
+        project: [hoohoo_web]
 
     steps:
     - uses: actions/checkout@v4
@@ -32,7 +31,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        project: [hoohoo_web, zigu_web]
+        project: [hoohoo_web]
 
     steps:
     - name: Download dist for ${{ matrix.project }}
@@ -48,10 +47,6 @@ jobs:
         aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
         aws-region: us-east-2
 
-    - name: Deploy to S3 for ${{ matrix.project }}
+    - name: Deploy to S3
       run: |
-        if [ "${{ matrix.project }}" = "hoohoo_web" ]; then
-          aws s3 sync ${{ matrix.project }}/dist/ s3://www.earthmera.com/ --delete --acl public-read
-        else
-          aws s3 sync ${{ matrix.project }}/dist/ s3://www.zigu.my/ --delete --acl public-read
-        fi
+        aws s3 sync ${{ matrix.project }}/dist/ s3://www.earthmera.com/ --delete --acl public-read

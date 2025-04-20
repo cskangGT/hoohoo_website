@@ -1,11 +1,11 @@
 import i18next from 'i18next';
-import React, {useMemo} from 'react';
+import React, { useMemo } from 'react';
 import Marquee from 'react-fast-marquee';
-import {useNavigate} from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
-import {EcoActionData} from '../../../../public/Images/EcoActionData';
+import { EcoActionData } from '../../../../public/Images/EcoActionData';
 import useWindowResize from '../../../components/hooks/useWindowResize';
-import {theme} from '../../../style';
+import { theme } from '../../../style';
 const gap = 16;
 const numColumns = 9;
 const mediumNumColumns = 7;
@@ -101,15 +101,15 @@ const TitleContainer = styled.div<{resizedWidth: number}>`
     );
   }
 `;
-const Title = styled.h2`
+const Title = styled.h1`
   font-size: 2.5rem;
   font-weight: bold;
   margin-bottom: 10px;
   margin-top: 20px;
   text-align: center;
-  font-weight: bold;
-  font-family: 'Fredoka';
-  letter-spacing: 0.15em;
+  font-family: Fredoka;
+  white-space: pre-line;
+  letter-spacing: 0.1em;
   @media screen and (max-width: 850px) {
     font-size: 2rem;
   }
@@ -124,6 +124,7 @@ const Description = styled.p<{language: string}>`
   text-align: center;
   margin: 3rem 10px;
   max-width: 800px;
+  white-space: pre-line;
   line-height: 1.75;
   font-family: ${props =>
     props.language === 'ko' ? 'HakgyoansimDunggeunmiso' : 'Fredoka'};
@@ -348,6 +349,10 @@ export const EcoActionMarqueeImageItem = ({
     </ImageColumn>
   );
 };
+const FormattedTitle = (title: string) => {
+
+  return title.replace(/<br\s*\/?>/gi, '\n').replace(/<[^>]*>/g, '');
+};
 const HomeLandingEcoAction = () => {
   const navigate = useNavigate();
   const {width: resizedWidth} = useWindowResize({maxWidth: 1400});
@@ -411,12 +416,13 @@ const HomeLandingEcoAction = () => {
         <TitleContainer resizedWidth={resizedWidth}>
           {/* <TestimonialTag>{localizedTexts.tag}</TestimonialTag> */}
 
-          <Title dangerouslySetInnerHTML={{__html: localizedTexts.title}} />
+          <Title>{localizedTexts.title}</Title>
 
           <Description
             language={i18next.language}
-            dangerouslySetInnerHTML={{__html: localizedTexts.description}}
-          />
+            >
+              {localizedTexts.description}
+            </Description>
 
           <Button onClick={handleButtonClick}>
             {localizedTexts.buttonText}
