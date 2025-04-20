@@ -972,7 +972,7 @@
   },
   "TicketeerIntro": {
     "header": "Turn your eco-events<br />into measurable impact",
-    "buttonText": "Ticketeer<br />Inquiry",
+    "buttonText": "Ticketeer Inquiry",
     "image": "/Images/ticketeer_intro.webp",
     "titleStar": "/Images/ticketeer_title_star.png"
   },
@@ -1426,9 +1426,9 @@
   },
   "EcoActionTestimony": {
     "tag": "Testimonials",
-    "title": "See our impact,<br />shape the future🚀",
+    "title": "See our impact,\nshape the future🚀",
 
-    "description": "10,000+ eco-actions happen every day.<br />Join the movement",
+    "description": "10,000+ eco-actions happen every day.\nJoin the movement",
     "buttonText": "Explore Eco-Actions",
     "backButtonText": "Go back"
   },

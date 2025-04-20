@@ -1,12 +1,12 @@
-import {faBars, faCaretDown} from '@fortawesome/free-solid-svg-icons';
-import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
+import { faBars, faCaretDown } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import i18next from 'i18next';
-import React, {useEffect, useState} from 'react';
-import {useTranslation} from 'react-i18next';
-import {useLocation, useNavigate} from 'react-router-dom';
+import React, { useEffect, useState } from 'react';
+import { useTranslation } from 'react-i18next';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
-import {theme} from '../../style';
-import {useLanguage} from '../hooks/LanguageContext';
+import { theme } from '../../style';
+import { useLanguage } from '../hooks/LanguageContext';
 const Logo = styled.button`
   padding: 15px;
   font-size: 25px;
@@ -170,7 +170,7 @@ const NavMenuList = styled.li`
     width: calc(100% - 30px);
   }
 `;
-const NavLink = styled.a`
+const NavLink = styled(Link)`
   text-decoration: none;
   color: ${theme.darkGray};
   font-size: ${theme.fontSize.md};
@@ -315,11 +315,14 @@ const LanguageOutBox = styled.div`
     display: block;
   }
 `;
-const SubNavLink = styled.a`
+const SubNavLink = styled(Link)`
   text-decoration: none;
   color: ${theme.darkGray};
   display: flex;
+  padding-bottom: 5px;
+  padding-right: 5px;
   padding-left: 10px;
+  
   text-align: center;
 
   cursor: pointer;
@@ -484,7 +487,7 @@ function Nav() {
                     className="NavLink"
                     id={item.link}
                     key={i}
-                    href={item.link}>
+                    to={item.link || '#'}>
                     {item.label}
                     <FontAwesomeIcon icon={faCaretDown} className="fa-caret" />
                   </NavLink>
@@ -496,7 +499,7 @@ function Nav() {
                         <NavSubList key={subIndex}>
                           <SubNavLink
                             key={subIndex + 'subLink'}
-                            href={subItem.link ? subItem.link : ''}
+                            to={ subItem.link || '#'}
                             onClick={() => {
                               isOpen && setIsOpen(false);
                             }}>
@@ -516,7 +519,7 @@ function Nav() {
                     className="NavLink"
                     id={item.link + 'NavLink' + i}
                     key={i}
-                    href={item.link ? item.link : undefined}
+                    to={item.link ||'#'}
                     onClick={e => {
                       if (item.email) {
                         // window.location.href = 'mailto:support@earthmera.com';
