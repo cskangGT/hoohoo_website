@@ -56,11 +56,9 @@ function B2BEcoProducts() {
             dangerouslySetInnerHTML={{__html: data.description}}
           />
           <ButtonBox>
-            <HomeTransitionButton
-              onClick={handleEmailClick}
-              dangerouslySetInnerHTML={{
-                __html: data.buttonText,
-              }}></HomeTransitionButton>
+            <HomeTransitionButton onClick={handleEmailClick}>
+              {data.buttonText}
+            </HomeTransitionButton>
           </ButtonBox>
         </PartnershipLeftBox>
         <PartnershipRightBox>

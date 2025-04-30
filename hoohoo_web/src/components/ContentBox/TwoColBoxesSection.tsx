@@ -1,10 +1,10 @@
 import React from 'react';
 import styled from 'styled-components';
-import { theme } from '../../style';
-import { useLanguage } from '../hooks/LanguageContext';
+import {theme} from '../../style';
+import {useLanguage} from '../hooks/LanguageContext';
 import LinedHeader from './LinedHeader';
 export const Container = styled.div`
-  width: calc(100% );
+  width: calc(100%);
   display: flex;
   margin: 100px 0px;
   justify-content: flex-start;
@@ -71,7 +71,8 @@ export const Header = styled.h2`
 `;
 export const Desc = styled.p<{language?: string}>`
   font-size: ${props => (props.language === 'ko' ? '1.15rem' : '1.3rem')};
-  font-family: ${props => (props.language === 'ko' ? 'TmoneyRoundWind' : 'Fredoka')};
+  font-family: ${props =>
+    props.language === 'ko' ? 'TmoneyRoundWind' : 'Fredoka'};
   line-height: 1.5;
   width: 100%;
   color: ${theme.darkGray};
@@ -162,7 +163,9 @@ export default function TwoColBoxesSection(props: Props) {
             style={props.headerStyle}
             data={{header: props.data.header, lineImage: props.data.lineImage}}
           />
-          <Desc style={props.descStyle} language={language}>{props.data.content}</Desc>
+          <Desc style={props.descStyle} language={language}>
+            {props.data.content}
+          </Desc>
         </RightBox>
       </HorizonContainer>
     </Container>

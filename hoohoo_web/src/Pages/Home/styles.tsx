@@ -27,13 +27,14 @@ export const PartnerButton = styled.a`
 export const HomeTransitionButton = styled(PartnerButton)`
   /* font-family: 'Yanolga Yachae'; */
   font-weight: 400;
-  background-color: #00bf63;
+  background-color: #36b864;
   color: white;
   font-size: 1.4rem;
 
   /* height: 60px; */
   width: 240px;
   align-items: center;
+  white-space: pre-line;
   justify-content: center;
   line-height: 1.2;
   text-align: center;

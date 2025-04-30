@@ -22,6 +22,7 @@ import Privacy from './Pages/Legal/Privacy';
 import TandC from './Pages/Legal/T&C';
 import Partnership from './Pages/Partnership/B2B/Partnership';
 import Platform from './Pages/Partnership/B2C/Platform';
+import EMCorp from './Pages/Partnership/corp/EMCorp';
 import EMTicketeer from './Pages/Partnership/ticketeer/EMTicketeer';
 import ZiguPage from './Pages/Partnership/ZiguPage';
 import Root from './Root';
@@ -154,6 +155,11 @@ const baseRoutes = [
   {
     path: '/testimonials',
     element: <Testimonials />,
+    errorElement: <ErrorComponent />,
+  },
+  {
+    path: '/corp',
+    element: <EMCorp />,
     errorElement: <ErrorComponent />,
   },
 ];
