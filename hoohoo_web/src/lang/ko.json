@@ -25,7 +25,8 @@
         "subItems": [
           {"label": "어스메라", "link": "/ko/platform"},
           {"label": "EM 티켓티어", "link": "/ko/ticketeer"},
-          {"label": "ZIGU", "link": "/zigu"}
+          {"label": "ZIGU", "link": "/zigu"},
+          {"label": "EM Corperate", "link": "/ko/corp"}
         ]
       },
       {"label": "파트너십", "link": "/ko/partnership"},
@@ -1102,7 +1103,7 @@
   "B2BEcoProducts": {
     "title": "EarthMera와 함께<br />친환경 제품을 검증해보세요",
     "description": "EarthMera와 함께 친환경 제품을 검증할 파트너를 찾고 있어요! 검증된 제품은 EarthMera의 특별한 친환경 카드로 제작되어, 사용자는 지속 가능성 여정을더 즐겁게 이어갈 수 있고, 파트너는 브랜드 신뢰도를 자연스럽게 높일 수 있습니다.",
-    "buttonText": "친환경 제품<br />협업 문의하기",
+    "buttonText": "친환경 제품\n협업 문의하기",
     "image": "/Images/partner_eco_product.webp"
   },
   "Login": {
@@ -1415,175 +1416,77 @@
     "buttonText": "친환경 행동 보러가기",
     "backButtonText": "뒤로 가기"
   },
-  "ProfileLinkPage": {
-    "carbon": ["Carbon Saving ", "g"],
-    "edit": "수정",
-    "add": "추가",
-    "customize": "링크, 색상, 모양까지 내 취향대로! ZIGU를 자유롭게 꾸며보세요.",
-    "done": "완료",
-    "noProfileData": ["", " 프로필이 존재하지 않아요."],
-    "copyMyLink": "프로필의 URL이 복사되었어요.",
-    "copyMyLinkButton": "URL 복사하기",
-    "syncedWithEM": "EarthMera 계정이 연동되었어요!<br />어스메라 에셋으로 ZIGU를 더 멋지게 꾸며보세요!",
-    "loginButton": "로그인",
-    "suggestSync": "EarthMera를 연동하고<br />다양한 에셋을 사용해보세요!",
-    "openEarthMeraApp": "EarthMera 앱 열기",
-    "synced": [" ", " 연동되었어요"],
-    "shareZIGU": ["ZIGU에서 ", "를 만나보세요"],
-    "share": "ZIGU 공유하기",
-    "copyLink": "링크 복사하기",
-    "shareTitle": "공유하기",
-    "widget": {
-      "photo": "사진 위젯",
-      "text": "텍스트 위젯",
-      "emwidget": "어스메라 위젯"
-    }
-  },
-  "ProfileSettingPage": {
-    "title": "프로필 설정",
-    "changeProfilePicture": "프로필 사진 변경",
-    "changeProfileName": "프로필 이름 변경",
-    "changePassword": "비밀번호 변경",
-    "syncEarthMeraID": "지구에서 어스메라 연동하기",
-    "changeURL": "URL 변경",
-    "logout": "로그아웃",
-    "notSupported": "이 기능은 아직 지원되지 않아요."
-  },
-  "ProfileCreateWidgetPage": {
-    "title": "프로필 위젯 만들기",
-    "button": "추가",
-    "description": "원하는 스타일과 색상을 선택하고, 프로필 위젯을 만들어보세요!",
-    "toast": {
-      "success": "프로필 위젯이 추가되었어요.",
-      "error": "프로필 위젯 추가에 문제가 생겼어요. 다시 시도해주세요.",
-      "failedToUploadImage": "이미지 업로드에 실패했어요. 다시 시도해주세요.",
-      "selectColor": "색상을 선택해주세요."
-    },
-    "apply": "적용하기",
-    "close": "닫기",
-    "image": "이미지",
-    "preview": "위젯 미리보기",
-    "style": "스타일",
-    "fill": "채우기",
-    "url": "URL",
-    "text": "텍스트",
-    "save": "저장하기",
-    "placeholder": {
-      "url": "https://",
-      "text": "텍스트를 입력해주세요.",
-      "image": "이미지를 추가하면 텍스트를 표시할 수 없어요.",
-      "asset": "에셋을 선택해주세요."
-    },
-    "asset": "EarthMera 에셋",
-    "widgetList": {
-      "LEADERBOARD": "리더보드",
-      "MY_ITEMS": "내 아이템",
-      "ACHIEVEMENT": "업적",
-      "GROUPS": "그룹",
-      "MY_STORE": "내 스토어",
-      "CO2_SAVED": "CO₂ 저감량",
-      "MY_GALLERY": "내 갤러리"
-    }
-  },
-  "CarbonWidgetContent": {
-    "ecoActionCount": ["에코액션 ", "회"],
-    "annualCabonReduction": ["총 탄소저감량", "kg CO₂"],
-    "treeEffect": ["나무를 ", " 그루 심었어요"]
-  },
-  "LeaderboardWidgetContent": {
-    "lastMonthRank": ["지난 달 순위 ", ""]
-  },
-  "AchievementWidgetContent": {
-    "badge": "배지",
-    "medal": "메달"
-  },
-  "ProfileSyncPage": {
-    "title": "연동된 계정",
-    "button": "EarthMera와 연동하기",
-    "description": "어스메라 계정을 연동하면 CO₂ 저감량,<br />그룹, 배지, 메달로 더 다채로운 바이오 링크를<br />만들 수 있어요.",
 
-    "synced": ["연동된 계정", ""]
-  },
   "ErrorComponent": {
     "title": "페이지를 찾을 수 없어요",
     "description": "요청하신 페이지가 존재하지 않거나,<br />이동되었거나, 일시적으로 사용할 수 없습니다.",
     "button": "돌아가기",
     "button2": "홈으로 가기"
   },
-  "ProfileSyncFromAppPage": {
-    "loading": {
-      "title": "EarthMera와 연동중...",
-      "description": "잠시만 기다려주세요",
-      "button": "로그인 페이지로 돌아가기"
-    },
-    "alreadySynced": "이미 연동된 계정이에요.",
-    "title": "EarthMera와 ZIGU 연동하기",
-    "description": "EarthMera 계정을 연동하면 당신의 환경 임팩트를 더 잘 나타낼 수 있는 바이오 링크를 만들 수 있어요!",
-    "button": "연동하기",
-    "cancel": "취소하기",
-    "successToast": "성공적으로 ZIGU와 연동되었어요.",
-    "errorToast": "ZIGU와 연동에 실패했어요.",
-    "question": ["“", "” 계정을 EarthMera와 연동하시겠어요?"]
+  "CorpIntro": {
+    "title": "우리 팀, 얼마나 탄소를 줄였을까?\nCO₂ 저감량 추적으로 시작하는\n친환경 기업 문화",
+    "button": "EM Corperate 문의하기"
   },
-  "PlanPage": {
-    "title": "당신에게 꼭 맞는 플랜을 준비했어요",
-    "monthly": "월 결제",
-    "annually": "연 결제",
-    "featureTitle": "기능 살펴보기",
-    "perMonth": "월",
-    "promoButton": "프로모 코드가 있으신가요?",
-    "perYear": "연",
-    "getStarted": "시작하기",
-    "PromoCodeModal": {
-      "title": "프로모 코드가 있으신가요?",
-      "placeholder": "프로모 코드를 입력해주세요",
-      "apply": "코드 적용하기",
-      "cancel": "취소하기",
-      "successToast": "프로모 코드가 적용되었어요.",
-      "errorToast": "프로모 코드 적용에 실패했어요."
-    },
-    "plans": [
+  "EMCorpSolution": {
+    "title": "똑똑하고 재미있게!\nCO₂ 저감 효과까지 확실한\nESG 프로그램\n—지금 바로 시작해 보세요",
+    "tag": "합리적인 지속가능성 솔루션",
+    "description": "당신의 팀이 직접 참여하는 데이터 기반 친환경 미션, 측정 가능한 CO₂ 저감 효과까지!\n간편하게 시작하고, 쉽게 운영하며, 회사에 딱 맞게 설계됩니다."
+  },
+  "SmartSustainability": {
+    "title": "똑똑하게 실천하는 지속가능성",
+
+    "description": "지속가능한 변화를 고민하는 모든 팀과 기업에게\n실천은 물론, 결과까지 보여주고 싶다면, EarthMera가 정답입니다.",
+    "items": [
       {
-        "name": "베이직 플랜",
-        "for": "개인 사용자용",
-        "monthlyPrice": "999원",
-        "yearlyPrice": "799원",
-        "features": [
-          "자유로운 위젯 배치",
-          "무제한 링크 연결",
-          "다중 인증 로그인",
-          "QR 코드 생성",
-          "여러 채널 링크 연결"
-        ]
+        "title": "ESG 중심 기업을 위한 솔루션",
+        "image": "/Images/em_corp_3p_1.jpeg",
+        "description": "실제 CO₂ 저감량을 추적하고, 팀의 ESG 참여도를 높여보세요."
       },
       {
-        "name": "프로 플랜",
-        "for": "크리에이터와 소규모<br />브랜드를 위한 플랜",
-        "monthlyPrice": "7,999원",
-        "yearlyPrice": "6,999원",
-        "isPopular": true,
-        "popularText": "추천",
-        "discountMonthPrice": "5,999원",
-        "discountYearlyPrice": "4,999원",
-        "unlock": "베이직 플랜 기능 전체 포함",
-        "features": [
-          "예약 링크 위젯",
-          "버튼 호버 애니메이션",
-          "폰트 & 위젯 스타일 커스터마이징",
-          "링크 클릭 분석"
-        ]
+        "title": "더 친환경적인 팀을 위한 솔루션",
+        "image": "/Images/em_corp_3p_2.jpeg",
+        "description": "일상의 행동으로 이어지는 친환경 미션으로 팀을 변화시켜보세요."
       },
       {
-        "name": "프리미엄 플랜",
-        "for": "상장세가 가파른 기업과<br />팀을 위한 플랜",
-        "monthlyPrice": "13,999원",
-        "yearlyPrice": "10,999원",
-        "unlock": "프로 플랜 기능 전체 포함",
-        "features": [
-          "움직이는 배경 테마",
-          "방문자 인사이트 대시보드",
-          "SEO 및 Google Analytics 연동"
-        ]
+        "title": "지속가능한 브랜드를 위한 솔루션",
+        "image": "/Images/em_corp_3p_3.jpeg",
+        "description": "눈에 보이는 데이터로 신뢰받는 친환경 캠페인을 운영하세요."
+      }
+    ]
+  },
+  "CorpOurFeatures": {
+    "tag": "기능을 소개합니다",
+    "title": "쉽고 재미있게\n실천하는 친환경!",
+    "items": [
+      {
+        "title": "부서별 관리",
+        "image": "/Images/corp_4p_1.png",
+        "description": "조직 구조에 맞춰 팀과 부서를 쉽게 구성하고 관리하세요."
+      },
+      {
+        "title": "리더보드",
+        "image": "/Images/corp_4p_2.png",
+        "description": "개인과 팀별 실시간 순위 확인!\n누가 얼마나 CO₂를 줄였는지 한눈에 보여줍니다."
+      },
+      {
+        "title": "다양한 친환경 미션",
+        "image": "/Images/corp_4p_3.png",
+        "description": "직원들이 재미있게 참여할 수 있는 친환경 미션! 작은 실천이 모이면 큰 변화로 이어집니다."
+      },
+      {
+        "title": "실시간 CO₂ 추적",
+        "image": "/Images/corp_4p_4.png",
+        "description": "미션을 완료하면\n내가 줄인 CO₂양을 바로 확인할 수 있어요."
+      },
+      {
+        "title": "종합 리포트",
+        "image": "/Images/corp_4p_5.png",
+        "description": "우리 팀 전체의 친환경 성과를\n한눈에 보는 종합 리포트 제공!"
+      },
+      {
+        "title": "리워드 시스템",
+        "image": "/Images/corp_4p_6.png",
+        "description": "참여율을 높이는 다양한 보상까지! 작은 실천에 대한 보람을 선물하세요."
       }
     ]
   }
