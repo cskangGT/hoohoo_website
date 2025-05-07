@@ -1,10 +1,10 @@
 import i18next from 'i18next';
 import React from 'react';
 import styled from 'styled-components';
-import {useLanguage} from '../../../../components/hooks/LanguageContext';
-import {slideInFromTop, theme} from '../../../../style';
-import {logButtonEvent, PageName} from '../../../../util/firebase_custom_event';
-import {HomeTransitionButton} from '../../../Home/styles';
+import { useLanguage } from '../../../../components/hooks/LanguageContext';
+import { slideInFromTop, theme } from '../../../../style';
+import { logButtonEvent, PageName } from '../../../../util/firebase_custom_event';
+import { HomeTransitionButton } from '../../../Home/styles';
 const Container = styled.div`
   animation: ${slideInFromTop} 0.7s ease-out forwards;
   display: flex;
