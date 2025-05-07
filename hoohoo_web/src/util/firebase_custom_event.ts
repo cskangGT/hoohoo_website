@@ -7,6 +7,7 @@ export const PageName = {
     partnership: 'partnership',
     platform: 'platform',
     ticketeer: 'ticketeer',
+    corp: 'corp',
     dropb: 'dropb',
     climate_card: 'climate_card',
     admin: 'admin',
