@@ -462,7 +462,7 @@ function Nav() {
     }, 300);
   };
   return (
-    <Bar style={{top: !hide ? '0' : '-100%'}}>
+    <Bar style={{top: !hide ? '0' : '-100%'}} aria-label="Main Navigation Bar">
       <Logo key="logo_link" onClick={handleLogoClick}>
         <HeaderLogo key="logo" src={logo.image} />
         <LogoText key="earthmera" language={language}>
