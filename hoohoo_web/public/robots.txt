@@ -6,7 +6,7 @@ Disallow: /en/terms_of_use
 Disallow: /ko/privacy
 Disallow: /ko/terms_of_use
 
-# Bingbot
+
 User-agent: Bingbot
 Allow: /
 Disallow: /en/privacy
@@ -14,9 +14,15 @@ Disallow: /en/terms_of_use
 Disallow: /ko/privacy
 Disallow: /ko/terms_of_use
 
+
 # 모든 크롤러 공통
 User-agent: *
 Allow: /
+Disallow: /en/privacy
+Disallow: /en/terms_of_use
+Disallow: /ko/privacy
+Disallow: /ko/terms_of_use
+
 # 다국어 Sitemap 등록
 Sitemap: https://www.earthmera.com/sitemap.xml
 
