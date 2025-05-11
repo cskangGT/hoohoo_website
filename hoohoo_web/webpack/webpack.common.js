@@ -17,6 +17,16 @@ module.exports = {
     extensions: ['.js', '.jsx', '.ts', '.tsx'],
   },
   devServer: {
+    historyApiFallback: {
+      rewrites: [
+        // /ko/* 은 무조건 ko/index.html 로
+        { from: /^\/ko($|\/)/, to: '/ko/index.html' },
+        // /en/* 은 en/index.html 로
+        { from: /^\/en($|\/)/, to: '/en/index.html' },
+        // 나머지 → 기본 index.html
+        { from: /./, to: '/index.html' },
+      ],
+    },
     compress: true,
     historyApiFallback: true,
     hot: true,
@@ -25,6 +35,7 @@ module.exports = {
     static: {
       directory: path.join(__dirname, './dist'),
     },
+    
   },
   module: {
     rules: [
@@ -85,7 +96,11 @@ module.exports = {
       }
     }),
     new CopyWebpackPlugin({
-      patterns: [{from: './public/Images', to: 'Images'}],
+      patterns: [
+        { from: './public/Images', to: 'Images' },
+        { from: './public/robots.txt', to: '' },
+        { from: './public/sitemap.xml', to: '' },
+      ],
     }),
     new ProgressPlugin(true),
     new Dotenv({

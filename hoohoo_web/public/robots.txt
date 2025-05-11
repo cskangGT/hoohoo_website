@@ -6,7 +6,7 @@ Disallow: /en/terms_of_use
 Disallow: /ko/privacy
 Disallow: /ko/terms_of_use
 
-# Bingbot
+
 User-agent: Bingbot
 Allow: /
 Disallow: /en/privacy
@@ -14,7 +14,6 @@ Disallow: /en/terms_of_use
 Disallow: /ko/privacy
 Disallow: /ko/terms_of_use
 
-User-agent: Yeti
 
 # 모든 크롤러 공통
 User-agent: *
