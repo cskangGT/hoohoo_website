@@ -6,7 +6,7 @@ const Container = styled.div`
   width: calc(100%);
   display: flex;
   margin: 100px 0px;
-  height: 150vh;
+  height: 120vh;
   justify-content: flex-start;
   flex-direction: column;
   align-items: center;
@@ -16,7 +16,7 @@ const Container = styled.div`
   padding-bottom: 20px;
   @media screen and (max-width: 800px) {
     margin: 20px auto;
-    height: 150vh;
+    height: 120vh;
   }
 `;
 const GreenBackground = styled.div`
