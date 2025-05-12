@@ -79,14 +79,23 @@ module.exports = merge(common, {
   },
   plugins: [
     // 1) 언어별 index.html 생성
-    ...Object.entries(metas).map(([key, meta]) =>
-      new HtmlWebpackPlugin({
-        template: path.resolve(__dirname, '../public/index.html'),
-        filename: key === 'en' ? 'index.html' : `${key}/index.html`,
-        templateParameters: meta,
-        inject: 'body',
-      })
-    ),
+    new HtmlWebpackPlugin({ 
+      filename: 'index.html', 
+      template: path.resolve(__dirname, '../public/index.html'),
+      templateParameters: metas.en 
+    }),
+    // /en/index.html
+    new HtmlWebpackPlugin({ 
+      filename: 'en/index.html', 
+      template: path.resolve(__dirname, '../public/index.html'),
+      templateParameters: metas.en 
+    }),
+    // /ko/index.html
+    new HtmlWebpackPlugin({ 
+      filename: 'ko/index.html', 
+      template: path.resolve(__dirname, '../public/index.html'),
+      templateParameters: metas.ko 
+    }),
 
     // 2) public 폴더의 나머지(static assets) 복사
     new CopyWebpackPlugin({
@@ -96,7 +105,9 @@ module.exports = merge(common, {
           to: path.resolve(__dirname, '../dist'),
           globOptions: {
             ignore: [
-              '**/index.html',      // HTML은 위에서 처리했으니 제외
+              '**/index.html',
+              '**/en/**',
+              '**/ko/**'
             ],
           },
         },
