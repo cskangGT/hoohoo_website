@@ -1,5 +1,5 @@
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const CopyWebpackPlugin = require('copy-webpack-plugin');
+
 const ProgressPlugin = require('progress-webpack-plugin');
 const Dotenv = require('dotenv-webpack');
 const path = require('path');
@@ -94,13 +94,6 @@ module.exports = {
         description: 'Start your carbon-reducing journey today and make a real impact!',
         ogLocale: 'en_US'
       }
-    }),
-    new CopyWebpackPlugin({
-      patterns: [
-        { from: './public/Images', to: 'Images' },
-        { from: './public/robots.txt', to: '' },
-        { from: './public/sitemap.xml', to: '' },
-      ],
     }),
     new ProgressPlugin(true),
     new Dotenv({

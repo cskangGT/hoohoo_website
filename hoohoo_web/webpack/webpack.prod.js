@@ -100,6 +100,9 @@ module.exports = merge(common, {
             ],
           },
         },
+        { from: './public/Images', to: 'Images' },
+        { from: './public/robots.txt', to: '' },
+        { from: './public/sitemap.xml', to: '' },
       ],
     }),
 
