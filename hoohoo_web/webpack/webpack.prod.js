@@ -79,24 +79,62 @@ module.exports = merge(common, {
   },
   plugins: [
     // 1) 언어별 index.html 생성
-    new HtmlWebpackPlugin({ 
-      filename: 'index.html', 
-      template: path.resolve(__dirname, '../public/index.html'),
-      templateParameters: metas.en 
+    // new HtmlWebpackPlugin({ 
+    //   filename: 'index.html', 
+    //   template: path.resolve(__dirname, '../public/index.html'),
+    //   templateParameters: metas.en 
+    // }),
+    // // /en/index.html
+    // new HtmlWebpackPlugin({ 
+    //   filename: 'en/index.html', 
+    //   template: path.resolve(__dirname, '../public/index.html'),
+    //   templateParameters: metas.en 
+    // }),
+    // // /ko/index.html
+    // new HtmlWebpackPlugin({ 
+    //   filename: 'ko/index.html', 
+    //   template: path.resolve(__dirname, '../public/index.html'),
+    //   templateParameters: metas.ko 
+    // }),
+    new HtmlWebpackPlugin({
+      template: './public/index.html',
+      filename: 'en/index.html',
+      templateParameters: {
+        lang: 'en',
+        title: 'EarthMera | Every eco-action, all here.',
+        description: 'Start your carbon-reducing journey today and make a real impact!',
+        ogLocale: 'en_US',
+        ogImage: 'https://www.earthmera.com/Images/opengraph_image.png',
+        ogUrl: 'https://www.earthmera.com/en/',
+        ogSiteName: 'EarthMera'
+      }
     }),
-    // /en/index.html
-    new HtmlWebpackPlugin({ 
-      filename: 'en/index.html', 
-      template: path.resolve(__dirname, '../public/index.html'),
-      templateParameters: metas.en 
+    new HtmlWebpackPlugin({
+      template: './public/index.html',
+      filename: 'ko/index.html',
+      templateParameters: {
+        lang: 'ko',
+        title: '어스메라 | 지구를 지키는 행동, 모두 이곳에서',
+        description: '지금 바로 CO₂ 저감 여정을 시작하고, 의미 있는 변화를 만들어보세요.',
+        ogLocale: 'ko_KR',
+        ogImage: 'https://www.earthmera.com/Images/opengraph_image.png',
+        ogUrl: 'https://www.earthmera.com/ko/',
+        ogSiteName: '어스메라'
+      }
     }),
-    // /ko/index.html
-    new HtmlWebpackPlugin({ 
-      filename: 'ko/index.html', 
-      template: path.resolve(__dirname, '../public/index.html'),
-      templateParameters: metas.ko 
+    new HtmlWebpackPlugin({
+      template: './public/index.html',
+      filename: 'index.html',
+      templateParameters: {
+        lang: 'en',
+        title: 'EarthMera | Every eco-action, all here.',
+        description: 'Start your carbon-reducing journey today and make a real impact!',
+        ogLocale: 'en_US',
+        ogImage: 'https://www.earthmera.com/Images/opengraph_image.png',
+        ogUrl: 'https://www.earthmera.com/en/',
+        ogSiteName: 'EarthMera'
+      }
     }),
-
     // 2) public 폴더의 나머지(static assets) 복사
     new CopyWebpackPlugin({
       patterns: [
