@@ -1,5 +1,5 @@
 import React from 'react';
-import {createBrowserRouter, Navigate} from 'react-router-dom';
+import { createBrowserRouter, Navigate } from 'react-router-dom';
 import {
   default as ErrorComponent,
   default as NotFound,
@@ -28,6 +28,7 @@ import ZiguPage from './Pages/Partnership/ZiguPage';
 import Root from './Root';
 
 const createLocalizedRoutes = routes => {
+  
   return routes
     .map(route => [
       {
