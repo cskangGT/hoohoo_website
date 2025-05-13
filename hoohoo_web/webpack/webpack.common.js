@@ -19,11 +19,8 @@ module.exports = {
   devServer: {
     historyApiFallback: {
       rewrites: [
-        // /ko/* 은 무조건 ko/index.html 로
         { from: /^\/ko($|\/)/, to: '/ko/index.html' },
-        // /en/* 은 en/index.html 로
         { from: /^\/en($|\/)/, to: '/en/index.html' },
-        // 나머지 → 기본 index.html
         { from: /./, to: '/index.html' },
       ],
     },

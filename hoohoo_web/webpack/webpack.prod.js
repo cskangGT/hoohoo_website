@@ -127,12 +127,12 @@ module.exports = merge(common, {
       filename: 'index.html',
       templateParameters: {
         lang: 'en',
-        title: 'EarthMera | Every eco-action, all here.',
-        description: 'Start your carbon-reducing journey today and make a real impact!',
-        ogLocale: 'en_US',
+        title: '어스메라 | 지구를 지키는 행동, 모두 이곳에서',
+        description: '지금 바로 CO₂ 저감 여정을 시작하고, 의미 있는 변화를 만들어보세요.',
+        ogLocale: 'ko_KR',
         ogImage: 'https://www.earthmera.com/Images/opengraph_image.png',
-        ogUrl: 'https://www.earthmera.com/en/',
-        ogSiteName: 'EarthMera'
+        ogUrl: 'https://www.earthmera.com/ko/',
+        ogSiteName: '어스메라'
       }
     }),
     // 2) public 폴더의 나머지(static assets) 복사

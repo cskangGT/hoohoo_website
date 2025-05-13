@@ -1,7 +1,7 @@
-import {logEvent} from 'firebase/analytics';
-import React, {useEffect} from 'react';
-import {Outlet, useLocation, useNavigate} from 'react-router-dom';
-import {analytics} from './\bfirebase';
+import { logEvent } from 'firebase/analytics';
+import React, { useEffect } from 'react';
+import { Outlet, useLocation, useNavigate } from 'react-router-dom';
+import { analytics } from './\bfirebase';
 import Frame from './components/Frame';
 import HrefLangMeta from './HrefLangMeta';
 import i18n from './lang/i18n';
@@ -28,7 +28,7 @@ function Root() {
     console.log('currentLang', currentLang);
 
     if (!['ko', 'en'].includes(currentLang)) {
-      const newPath = `/en${location.pathname}`;
+      const newPath = `/ko${location.pathname}`;
 
       navigate(newPath, {replace: true});
     } else {
