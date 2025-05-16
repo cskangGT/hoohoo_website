@@ -9,21 +9,7 @@ const path = require('path');
 const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin');
 
 dotenv.config({path: path.join(__dirname, '../.env')});
-const metas = {
-  en: {
-    lang: 'en',
-    title: 'EarthMera | Every eco-action, all here.',
-    description: 'Start your carbon-reducing journey today and make a real impact!',
-    ogLocale: 'en_US',
-    // (필요하면 og:image 등도 추가)
-  },
-  ko: {
-    lang: 'ko',
-    title: 'EarthMera | 모든 친환경 활동, 여기 다 있습니다.',
-    description: '오늘부터 탄소 저감 여정을 시작하고 실질적인 변화를 만들어보세요!',
-    ogLocale: 'ko_KR',
-  },
-};
+
 module.exports = merge(common, {
   mode: 'production',
   devtool: false,
@@ -126,7 +112,7 @@ module.exports = merge(common, {
       template: './public/index.html',
       filename: 'index.html',
       templateParameters: {
-        lang: 'en',
+        lang: 'ko',
         title: '어스메라 | 지구를 지키는 행동, 모두 이곳에서',
         description: '지금 바로 CO₂ 저감 여정을 시작하고, 의미 있는 변화를 만들어보세요.',
         ogLocale: 'ko_KR',
