@@ -97,10 +97,10 @@ module.exports = smp.wrap(
         template: './public/index.html',
         filename: 'index.html',
         templateParameters: {
-          lang: 'en',
-          title: 'EarthMera | Every eco-action, all here.',
-          description: 'Start your carbon-reducing journey today and make a real impact!',
-          ogLocale: 'en_US'
+          lang: 'ko',
+          title: '어스메라 | 지구를 지키는 행동, 모두 이곳에서',
+          description: '지금 바로 CO₂ 저감 여정을 시작하고, 의미 있는 변화를 만들어보세요.',
+          ogLocale: 'ko_KR'
         }
       }),
       new CopyWebpackPlugin({

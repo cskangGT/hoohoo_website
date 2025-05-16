@@ -4,7 +4,6 @@ import {
   default as ErrorComponent,
   default as NotFound,
 } from './components/ErrorComponent/ErrorComponent';
-import SEOHelmet from './components/SEOHelmet';
 import i18n from './lang/i18n';
 import OurTeam from './Pages/About/OurTeam/OurTeam';
 import EarthMeraVision from './Pages/About/Vision/EarthMeraVision';
@@ -35,7 +34,7 @@ const createLocalizedRoutes = routes => {
         path: `/ko${route.path}`,
         element: (
           <>
-            <SEOHelmet language="ko" />
+            
             {route.element}
           </>
         ),
@@ -52,7 +51,6 @@ const createLocalizedRoutes = routes => {
         path: `/en${route.path}`,
         element: (
           <>
-            <SEOHelmet language="en" />
             {route.element}
           </>
         ),
