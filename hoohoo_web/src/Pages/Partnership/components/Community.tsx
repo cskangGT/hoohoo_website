@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, {useEffect, useState} from 'react';
 import styled from 'styled-components';
 import LinedHeader from '../../../components/ContentBox/LinedHeader';
 import {
@@ -9,8 +9,8 @@ import {
   LeftBox,
   RightBox,
 } from '../../../components/ContentBox/TwoColBoxesSection';
-import { useLanguage } from '../../../components/hooks/LanguageContext';
-import { theme } from '../../../style';
+import {useLanguage} from '../../../components/hooks/LanguageContext';
+import {theme} from '../../../style';
 const MidTitle = styled(Desc)`
   font-weight: 700;
   font-size: 1.3rem;
@@ -70,9 +70,9 @@ export default function Community(props: Props) {
             style={{color: theme.darkGray, textAlign: isLargeScreen && 'left'}}
           />
           {props.data.midcontent && (
-            <Desc dangerouslySetInnerHTML={{__html: props.data.midcontent}} language={language} />
+            <Desc language={language}>{props.data.midcontent}</Desc>
           )}
-          <Desc dangerouslySetInnerHTML={{__html: props.data.content}} language={language} />
+          <Desc language={language}>{props.data.content}</Desc>
         </RightBox>
         <LeftBox>
           {props.imageComponent ? (

@@ -152,11 +152,8 @@ function HomeLandingSection() {
       <Container>
         <LeftBox>
           <HeaderBox>
-            <TitleText
-              language={language}
-              dangerouslySetInnerHTML={{__html: data.title}}
-            />
-            <Desc dangerouslySetInnerHTML={{__html: data.content}} />
+            <TitleText language={language}>{data.title}</TitleText>
+            <Desc>{data.content}</Desc>
           </HeaderBox>
 
           <DownloadButtons pageName={PageName.home} />

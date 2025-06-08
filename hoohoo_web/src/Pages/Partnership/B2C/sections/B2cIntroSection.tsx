@@ -1,10 +1,10 @@
 import i18next from 'i18next';
-import React, { useEffect, useState } from 'react';
+import React, {useEffect, useState} from 'react';
 import styled from 'styled-components';
-import { useLanguage } from '../../../../components/hooks/LanguageContext';
+import {useLanguage} from '../../../../components/hooks/LanguageContext';
 import Wrapper from '../../../../components/Wrapper/Wrapper';
-import { slideInFromTop, theme } from '../../../../style';
-import { PageName } from '../../../../util/firebase_custom_event';
+import {slideInFromTop, theme} from '../../../../style';
+import {PageName} from '../../../../util/firebase_custom_event';
 import DownloadButtons from '../../../Home/DownloadButtons';
 const Container = styled.section`
   width: 100%;
@@ -74,7 +74,8 @@ const Header = styled.h2<{language: string}>`
   line-height: 1.5;
   text-align: center;
   color: ${theme.white};
-  font-family: ${props => (props.language === 'ko' ? 'TmoneyRoundWind' : 'Fredoka')};
+  font-family: ${props =>
+    props.language === 'ko' ? 'TmoneyRoundWind' : 'Fredoka'};
   font-weight: 600;
   @media screen and (max-width: 1200px) {
   }
@@ -110,11 +111,8 @@ export default function B2cIntroSection() {
       <Background backgroundImage={data.bgImage}>
         <Wrapper>
           <InnerContainer>
-            <Header
-              language={language}
-              dangerouslySetInnerHTML={{__html: data.title}}
-            />
-            <ContentText dangerouslySetInnerHTML={{__html: data.content}} />
+            <Header language={language}>{data.title}</Header>
+            <ContentText>{data.content}</ContentText>
             <DownloadButtons pageName={PageName.platform} />
           </InnerContainer>
         </Wrapper>

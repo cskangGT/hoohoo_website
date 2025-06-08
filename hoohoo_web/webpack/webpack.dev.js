@@ -1,3 +1,7 @@
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
+const ProgressPlugin = require('progress-webpack-plugin');
+const Dotenv = require('dotenv-webpack');
 const webpack = require('webpack');
 const dotenv = require('dotenv');
 const {merge} = require('webpack-merge');
@@ -79,9 +83,13 @@ module.exports = smp.wrap(
         templateParameters: {
           lang: 'en',
           title: 'EarthMera | Every eco-action, all here.',
-          description: 'Start your carbon-reducing journey today and make a real impact!',
-          ogLocale: 'en_US'
-        }
+          description:
+            'Start your carbon-reducing journey today and make a real impact!',
+          ogLocale: 'en_US',
+          ogImage: 'https://www.earthmera.com/Images/opengraph_image.png',
+          ogUrl: 'https://www.earthmera.com/en/',
+          ogSiteName: 'EarthMera',
+        },
       }),
       new HtmlWebpackPlugin({
         template: './public/index.html',
@@ -89,9 +97,13 @@ module.exports = smp.wrap(
         templateParameters: {
           lang: 'ko',
           title: '어스메라 | 지구를 지키는 행동, 모두 이곳에서',
-          description: '지금 바로 CO₂ 저감 여정을 시작하고, 의미 있는 변화를 만들어보세요.',
-          ogLocale: 'ko_KR'
-        }
+          description:
+            '지금 바로 CO₂ 저감 여정을 시작하고, 의미 있는 변화를 만들어보세요.',
+          ogLocale: 'ko_KR',
+          ogImage: 'https://www.earthmera.com/Images/opengraph_image.png',
+          ogUrl: 'https://www.earthmera.com/ko/',
+          ogSiteName: '어스메라',
+        },
       }),
       new HtmlWebpackPlugin({
         template: './public/index.html',
@@ -99,15 +111,19 @@ module.exports = smp.wrap(
         templateParameters: {
           lang: 'ko',
           title: '어스메라 | 지구를 지키는 행동, 모두 이곳에서',
-          description: '지금 바로 CO₂ 저감 여정을 시작하고, 의미 있는 변화를 만들어보세요.',
-          ogLocale: 'ko_KR'
-        }
+          description:
+            '지금 바로 CO₂ 저감 여정을 시작하고, 의미 있는 변화를 만들어보세요.',
+          ogLocale: 'ko_KR',
+          ogImage: 'https://www.earthmera.com/Images/opengraph_image.png',
+          ogUrl: 'https://www.earthmera.com/ko/',
+          ogSiteName: '어스메라',
+        },
       }),
       new CopyWebpackPlugin({
         patterns: [
-          { from: './public/Images', to: 'Images' },
-          { from: './public/robots.txt', to: '' },
-          { from: './public/sitemap.xml', to: '' },
+          {from: './public/Images', to: 'Images'},
+          {from: './public/robots.txt', to: ''},
+          {from: './public/sitemap.xml', to: ''},
         ],
       }),
       new ProgressPlugin(true),
@@ -120,6 +136,5 @@ module.exports = smp.wrap(
         name: entrypoint => `runtime-${entrypoint.name}`,
       },
     },
-    plugins: [],
   }),
 );

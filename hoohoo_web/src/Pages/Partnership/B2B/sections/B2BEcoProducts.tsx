@@ -30,33 +30,23 @@ function B2BEcoProducts() {
   const data: any = i18next.t('B2BEcoProducts', {returnObjects: true});
 
   const {language} = useLanguage();
-  const handleEmailClick = (e: React.MouseEvent) => {
-    e.preventDefault();
-    const emailAddress = 'support@earthmera.com';
-    window.location.href = `mailto:${emailAddress}`;
+  const handleEmailClick = () => {
     logButtonEvent('ask_partnership in B2BEcoProducts', PageName.partnership);
-    // 폴백(fallback) 처리
-    setTimeout(() => {
-      window.open(
-        `https://mail.google.com/mail/?view=cm&fs=1&to=${emailAddress}`,
-        '_blank',
-      );
-    }, 300);
   };
   return (
     <PartnershipContainer>
       <PartnershipInnerContainer>
         <PartnershipLeftBox>
-          <PartnershipTitleText
-            language={language}
-            dangerouslySetInnerHTML={{__html: data.title}}
-          />
-          <PartnershipDescText
-            language={language}
-            dangerouslySetInnerHTML={{__html: data.description}}
-          />
+          <PartnershipTitleText language={language}>
+            {data.title}
+          </PartnershipTitleText>
+          <PartnershipDescText language={language}>
+            {data.description}
+          </PartnershipDescText>
           <ButtonBox>
-            <HomeTransitionButton onClick={handleEmailClick}>
+            <HomeTransitionButton
+              href={`/${i18next.language}/business_support?type=ecoProduct`}
+              onClick={handleEmailClick}>
               {data.buttonText}
             </HomeTransitionButton>
           </ButtonBox>

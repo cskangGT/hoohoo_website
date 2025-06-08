@@ -7,7 +7,7 @@ import {
   LeftBox,
   RightBox,
 } from '../../../components/ContentBox/TwoColBoxesSection';
-import { slideInFromTop, theme } from '../../../style';
+import {slideInFromTop, theme} from '../../../style';
 
 const Container = styled.div`
   width: 100%;
@@ -59,7 +59,7 @@ export default function Heros() {
         <Image src={data.image} />
       </LeftCell>
       <RightCell>
-        <Header dangerouslySetInnerHTML={{__html: data.header}} />
+        <Header>{data.header}</Header>
         <ContentText>{data.content}</ContentText>
       </RightCell>
     </Container>

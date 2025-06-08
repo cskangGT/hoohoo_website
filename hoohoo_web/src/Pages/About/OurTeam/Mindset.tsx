@@ -1,10 +1,10 @@
 import i18next from 'i18next';
-import React, { useEffect, useState } from 'react';
+import React, {useEffect, useState} from 'react';
 import styled from 'styled-components';
 import LinedHeader from '../../../components/ContentBox/LinedHeader';
-import { useLanguage } from '../../../components/hooks/LanguageContext';
-import { theme } from '../../../style';
-import { ContentBox } from './Strength';
+import {useLanguage} from '../../../components/hooks/LanguageContext';
+import {theme} from '../../../style';
+import {ContentBox} from './Strength';
 
 const ItemBox = styled.div`
   align-items: center;
@@ -48,7 +48,8 @@ const TitleContainer = styled.div`
 `;
 const ActName = styled.h3<{language: string}>`
   font-size: 3rem;
-  font-family: ${props => (props.language === 'ko' ? 'TmoneyRoundWind' : 'Fredoka')};
+  font-family: ${props =>
+    props.language === 'ko' ? 'TmoneyRoundWind' : 'Fredoka'};
   font-weight: 600;
   line-height: 1;
   margin-top: 30px;
@@ -103,7 +104,7 @@ export default function Mindset() {
             <TitleContainer>
               <ActName language={language}>{item.title}</ActName>
             </TitleContainer>
-            <ActDesc dangerouslySetInnerHTML={{__html: item.content}} />
+            <ActDesc>{item.content}</ActDesc>
           </EachBox>
         ))}
       </ItemBox>

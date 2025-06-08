@@ -1,7 +1,7 @@
 import i18next from 'i18next';
 import React from 'react';
 import styled from 'styled-components';
-import { Header } from '../../../components/ContentBox/TwoColBoxesSection';
+import {Header} from '../../../components/ContentBox/TwoColBoxesSection';
 import Wrapper from '../../../components/Wrapper/Wrapper';
 export const VerticalSection = styled.section`
   width: 100%;
@@ -47,10 +47,10 @@ export default function IdealCustomer() {
   return (
     <Wrapper>
       <VerticalSection>
-        <SectionHeader dangerouslySetInnerHTML={{__html: data.header}} />
+        <SectionHeader>{data.header}</SectionHeader>
         <Image src={data.img} />
         <SubHeader>{data.subheader}</SubHeader>
-        <Content dangerouslySetInnerHTML={{__html: data.content}} />
+        <Content>{data.content}</Content>
       </VerticalSection>
     </Wrapper>
   );

@@ -1,11 +1,11 @@
 import i18next from 'i18next';
-import React, { useEffect, useState } from 'react';
+import React, {useEffect, useState} from 'react';
 import styled from 'styled-components';
 import Wrapper from '../../../../components/Wrapper/Wrapper';
-import { theme } from '../../../../style';
-import { logButtonEvent, PageName } from '../../../../util/firebase_custom_event';
-import { Bg } from '../../../About/Vision/sections/VisionIntro';
-import { HomeTransitionButton } from '../../../Home/styles';
+import {theme} from '../../../../style';
+import {logButtonEvent, PageName} from '../../../../util/firebase_custom_event';
+import {Bg} from '../../../About/Vision/sections/VisionIntro';
+import {HomeTransitionButton} from '../../../Home/styles';
 const BackgroundImage = styled(Bg)`
   margin: 80px 0;
   height: 700px;
@@ -66,24 +66,19 @@ export default function CorpIntro() {
     window.addEventListener('resize', handleResize);
     return () => window.removeEventListener('resize', handleResize);
   }, []);
-  const handleEmailClick = (e: React.MouseEvent) => {
-    e.preventDefault();
-    const emailAddress = 'support@earthmera.com';
-    window.location.href = `mailto:${emailAddress}`;
+  const handleEmailClick = () => {
     logButtonEvent('ask_partnership in CorpIntro', PageName.corp);
-    setTimeout(() => {
-      window.open(
-        `https://mail.google.com/mail/?view=cm&fs=1&to=${emailAddress}`,
-        '_blank',
-      );
-    }, 300);
   };
   return (
     <BackgroundImage image="/Images/em_corp1p_bg.jpeg">
       <Wrapper>
         <IntroHeaderTextContainer>
           <Header>{localizedText.title}</Header>
-          <CorpButton onClick={handleEmailClick}>{localizedText.button}</CorpButton>
+          <CorpButton
+            href={`/${i18next.language}/business_support?type=emCorporate`}
+            onClick={handleEmailClick}>
+            {localizedText.button}
+          </CorpButton>
         </IntroHeaderTextContainer>
       </Wrapper>
     </BackgroundImage>

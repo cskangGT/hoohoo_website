@@ -212,10 +212,8 @@ function ValueCard({data}: CardProps) {
       <IconBox>
         <IconImage src={data.icon} />
       </IconBox>
-      <CardHeader dangerouslySetInnerHTML={{__html: data.title}}></CardHeader>
-      <CardDesc
-        language={language}
-        dangerouslySetInnerHTML={{__html: data.description}}></CardDesc>
+      <CardHeader>{data.title}</CardHeader>
+      <CardDesc language={language}>{data.description}</CardDesc>
     </CardContainer>
   );
 }

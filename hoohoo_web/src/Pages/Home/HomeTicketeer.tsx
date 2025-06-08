@@ -1,10 +1,10 @@
 import React from 'react';
-import { useNavigate } from 'react-router-dom';
+import {useNavigate} from 'react-router-dom';
 import styled from 'styled-components';
-import { useLanguage } from '../../components/hooks/LanguageContext';
+import {useLanguage} from '../../components/hooks/LanguageContext';
 import Wrapper from '../../components/Wrapper/Wrapper';
-import { ButtonBox, HeaderText, UpperTitle } from './sections/HomeEnvImpact';
-import { HomeTransitionButton } from './styles';
+import {ButtonBox, HeaderText, UpperTitle} from './sections/HomeEnvImpact';
+import {HomeTransitionButton} from './styles';
 const Container = styled.section`
   width: 100%;
   background-color: transparent;
@@ -110,7 +110,7 @@ export default function HomeTicketeer() {
           <InnerContainer>
             <LeftBox>
               <UpperTitle>{data.uptitle}</UpperTitle>
-              <HeaderText dangerouslySetInnerHTML={{__html: data.title}} />
+              <HeaderText>{data.title}</HeaderText>
               <ButtonBox>
                 <HomeTransitionButton onClick={goTicketeer}>
                   {data.buttonText}

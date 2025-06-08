@@ -1,6 +1,6 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, {useEffect, useRef, useState} from 'react';
 import styled from 'styled-components';
-import { useLanguage } from '../hooks/LanguageContext';
+import {useLanguage} from '../hooks/LanguageContext';
 const HeaderContainer = styled.div`
   display: inline-block;
   margin-bottom: 30px;
@@ -15,7 +15,9 @@ const Header = styled.h2<{language: string}>`
   font-size: ${props => (props.language === 'ko' ? '2.25rem' : '2.5rem')};
   line-height: 1.1;
   text-align: left;
-  font-family: ${props => (props.language === 'ko' ? 'TmoneyRoundWind' : 'Fredoka')};
+  white-space: pre-line;
+  font-family: ${props =>
+    props.language === 'ko' ? 'TmoneyRoundWind' : 'Fredoka'};
   font-weight: 600;
   @media screen and (max-width: 1100px) {
     text-align: center;
@@ -65,9 +67,9 @@ export default function LinedHeader(props: Props) {
       <Header
         language={language}
         ref={headerRef}
-        style={{color: props.color && props.color, ...props.style}}
-        dangerouslySetInnerHTML={{__html: props.data.header}}
-      />
+        style={{color: props.color && props.color, ...props.style}}>
+        {props.data.header}
+      </Header>
       <Line src={props.data.lineImage} dynamicWidth={headerWidth} />
     </HeaderContainer>
   );

@@ -119,9 +119,7 @@ function ErrorComponent() {
       </LogoContainer>
 
       <ErrorTitle>{localizedTexts.title}</ErrorTitle>
-      <ErrorMessage
-        dangerouslySetInnerHTML={{__html: localizedTexts.description}}
-      />
+      <ErrorMessage>{localizedTexts.description}</ErrorMessage>
 
       <ButtonContainer>
         <OutlineButton onClick={goBack}>{localizedTexts.button}</OutlineButton>

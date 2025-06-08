@@ -1,10 +1,10 @@
 import i18next from 'i18next';
 import React from 'react';
 import styled from 'styled-components';
-import { useLanguage } from '../../../../components/hooks/LanguageContext';
-import { slideInFromTop, theme } from '../../../../style';
-import { logButtonEvent, PageName } from '../../../../util/firebase_custom_event';
-import { HomeTransitionButton } from '../../../Home/styles';
+import {useLanguage} from '../../../../components/hooks/LanguageContext';
+import {slideInFromTop, theme} from '../../../../style';
+import {logButtonEvent, PageName} from '../../../../util/firebase_custom_event';
+import {HomeTransitionButton} from '../../../Home/styles';
 const Container = styled.div`
   animation: ${slideInFromTop} 0.7s ease-out forwards;
   display: flex;
@@ -32,6 +32,7 @@ const Header = styled.h2<{language: string}>`
     props.language === 'ko' ? 'TmoneyRoundWind' : 'Fredoka'};
   font-weight: 600;
   margin-bottom: 15px;
+  white-space: pre-line;
   @media screen and (max-width: 1000px) {
     font-size: 2.3rem;
     text-align: center;
@@ -127,33 +128,22 @@ const Image = styled.img`
 function TicketeerIntro() {
   const data: any = i18next.t('TicketeerIntro', {returnObjects: true});
   const {language} = useLanguage();
-  const handleEmailClick = (e: React.MouseEvent) => {
-    e.preventDefault();
-    const emailAddress = 'support@earthmera.com';
-    window.location.href = `mailto:${emailAddress}`;
+  const handleEmailClick = () => {
     logButtonEvent('ask_partnership in TicketeerIntro', PageName.ticketeer);
-    setTimeout(() => {
-      window.open(
-        `https://mail.google.com/mail/?view=cm&fs=1&to=${emailAddress}`,
-        '_blank',
-      );
-    }, 300);
   };
   return (
     <Container>
       <LeftBox>
         <HeaderBox>
-          <Header
-            language={language}
-            dangerouslySetInnerHTML={{__html: data.header}}
-          />
+          <Header language={language}>{data.header}</Header>
           <StarImage src={data.titleStar} />
         </HeaderBox>
 
         <HomeTransitionButton
-          onClick={handleEmailClick}
-          dangerouslySetInnerHTML={{__html: data.buttonText}}
-        />
+          href={`/${language}/business_support?type=ticketeer`}
+          onClick={handleEmailClick}>
+          {data.buttonText}
+        </HomeTransitionButton>
       </LeftBox>
       <RightBox>
         <Image src={data.image} />

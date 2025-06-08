@@ -111,6 +111,7 @@ export const HeaderText = styled.h2`
   line-height: 1.5;
   color: ${theme.white};
   font-weight: 400;
+  white-space: pre-line;
   @media screen and (max-width: 850px) {
     text-align: center;
     font-size: 1.2rem;
@@ -141,7 +142,7 @@ export default function HomeEnvImpact() {
           <InnerContainer>
             <LeftBox>
               <UpperTitle>{data.uptitle}</UpperTitle>
-              <HeaderText dangerouslySetInnerHTML={{__html: data.title}} />
+              <HeaderText>{data.title}</HeaderText>
               <ButtonBox>
                 <HomeTransitionButton onClick={goPlatform}>
                   {data.buttonText}
