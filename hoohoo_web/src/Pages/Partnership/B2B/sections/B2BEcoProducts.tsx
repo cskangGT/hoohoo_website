@@ -45,7 +45,7 @@ function B2BEcoProducts() {
           </PartnershipDescText>
           <ButtonBox>
             <HomeTransitionButton
-              href={`/${i18next.language}/business_support?type=ecoProduct`}
+              href={`/${i18next.language}/business_support?product=earthmera&type=ecoProduct`}
               onClick={handleEmailClick}>
               {data.buttonText}
             </HomeTransitionButton>

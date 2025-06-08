@@ -75,7 +75,7 @@ export default function CorpIntro() {
         <IntroHeaderTextContainer>
           <Header>{localizedText.title}</Header>
           <CorpButton
-            href={`/${i18next.language}/business_support?type=emCorporate`}
+            href={`/${i18next.language}/business_support?product=emCorporate`}
             onClick={handleEmailClick}>
             {localizedText.button}
           </CorpButton>

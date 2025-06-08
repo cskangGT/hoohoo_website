@@ -14,7 +14,7 @@ import {
   Typography,
 } from '@mui/material';
 import i18next from 'i18next';
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import {Controller, SubmitHandler, useForm} from 'react-hook-form';
 import {useSearchParams} from 'react-router-dom';
 import styled from 'styled-components';
@@ -27,25 +27,38 @@ const Title = styled.h1`
   margin-bottom: 20px;
 `;
 
-const inquiryOptions = [
+const inquiryOptions = {
+  ticketeer: ['partnership', 'advertisement'],
+  earthmera: [
+    'ecoProduct',
+    'ecoService',
+    'ecoBoard',
+    'partnership',
+    'categoryRegistration',
+    'nearbyStore',
+  ],
+  emCorporate: ['partnership', 'advertisement'],
+  zigu: ['partnership', 'advertisement'],
+};
+
+const productOptions = [
   'ticketeer',
-  'ecoProduct',
-  'ecoService',
+  'earthmera',
   'emCorporate',
   'zigu',
-  'earthmeraAd',
-  'earthmeraPartnership',
 ] as const;
-
-type InquiryOption = (typeof inquiryOptions)[number];
+type ProductOption = (typeof productOptions)[number];
+type InquiryOption = keyof typeof inquiryOptions;
 
 interface BusinessInquiryFormData {
   type: InquiryOption;
+  product: ProductOption;
   email: string;
   linkedin?: string;
   company: string;
   title: string;
   message: string;
+  name: string;
 }
 
 export const BusinessInquiryForm: React.FC = () => {
@@ -54,19 +67,25 @@ export const BusinessInquiryForm: React.FC = () => {
   });
   const [searchParams] = useSearchParams();
   const typeParam = searchParams.get('type') as InquiryOption | null;
-
+  const productParam = searchParams.get('product') as ProductOption | null;
+  console.log('typeParam', typeParam);
+  console.log('productParam', productParam);
   const {
     control,
     handleSubmit,
     reset,
+    watch,
+    setValue,
     formState: {errors, isValid},
   } = useForm<BusinessInquiryFormData>({
     mode: 'onChange',
     defaultValues: {
       type: typeParam || ('' as InquiryOption),
+      product: productParam || ('' as ProductOption),
       email: '',
       linkedin: '',
       company: '',
+      name: '',
       title: '',
       message: '',
     },
@@ -78,19 +97,32 @@ export const BusinessInquiryForm: React.FC = () => {
     message: string;
   }>({open: false, severity: 'success', message: ''});
 
+  const selectedProduct = watch('product');
+
+  // product가 변경될 때 type을 초기화
+  useEffect(() => {
+    if (selectedProduct === productParam) {
+      setValue('type', typeParam || ('' as InquiryOption));
+    } else {
+      setValue('type', '' as InquiryOption);
+    }
+  }, [selectedProduct, productParam, setValue]);
+
   const onSubmit: SubmitHandler<BusinessInquiryFormData> = async data => {
     setIsLoading(true);
 
     try {
       // EmailJS 템플릿 파라미터
       const templateParams = {
+        product: data.product,
         inquiry_type: localizedTexts.inquiryOptions[data.type],
         user_email: data.email,
+        user_name: data.name,
         user_linkedin: data.linkedin || 'N/A',
         company_name: data.company,
         job_title: data.title,
         message: data.message,
-        reply_to: data.email,
+        reply_to: data.name,
       };
 
       // EmailJS로 이메일 전송
@@ -140,17 +172,16 @@ export const BusinessInquiryForm: React.FC = () => {
       }}
       noValidate>
       <Title>{localizedTexts.title}</Title>
-
-      {/* 1. Inquiry Type */}
-      <FormControl error={!!errors.type} variant="outlined">
+      {/* Product */}
+      <FormControl error={!!errors.product} variant="outlined">
         <Typography variant="subtitle1" gutterBottom>
-          {localizedTexts.subtitle.type} *
+          {localizedTexts.subtitle.product} *
         </Typography>
 
         <Controller
-          name="type"
+          name="product"
           control={control}
-          rules={{required: localizedTexts.pleaseEnter.type}}
+          rules={{required: localizedTexts.pleaseEnter.product}}
           render={({field}) => (
             <Select
               {...field}
@@ -162,19 +193,89 @@ export const BusinessInquiryForm: React.FC = () => {
                 disableScrollLock: true,
               }}>
               <MenuItem disabled value="">
-                <em>{localizedTexts.placeholder.type}</em>
+                <em>{localizedTexts.placeholder.product}</em>
               </MenuItem>
-              {inquiryOptions.map(opt => (
+              {productOptions.map(opt => (
                 <MenuItem key={opt} value={opt}>
-                  {localizedTexts.inquiryOptions[opt]}
+                  {localizedTexts.productOptions[opt]}
                 </MenuItem>
               ))}
             </Select>
           )}
         />
-        <FormHelperText>{errors.type?.message}</FormHelperText>
+        <FormHelperText>{errors.product?.message}</FormHelperText>
       </FormControl>
+      {/* 1. Inquiry Type */}
+      {selectedProduct && (
+        <FormControl error={!!errors.type} variant="outlined">
+          <Typography variant="subtitle1" gutterBottom>
+            {localizedTexts.subtitle.type} *
+          </Typography>
 
+          <Controller
+            name="type"
+            control={control}
+            rules={{required: localizedTexts.pleaseEnter.type}}
+            render={({field}) => (
+              <Select
+                {...field}
+                input={<OutlinedInput />}
+                value={field.value}
+                variant="outlined"
+                displayEmpty
+                MenuProps={{
+                  disableScrollLock: true,
+                }}>
+                <MenuItem disabled value="">
+                  <em>{localizedTexts.placeholder.type}</em>
+                </MenuItem>
+                {inquiryOptions[selectedProduct]?.map(opt => (
+                  <MenuItem key={opt} value={opt}>
+                    {localizedTexts.inquiryOptions[opt]}
+                  </MenuItem>
+                ))}
+              </Select>
+            )}
+          />
+          <FormHelperText>{errors.type?.message}</FormHelperText>
+        </FormControl>
+      )}
+      <Typography variant="subtitle1" sx={{marginTop: 2}}>
+        {localizedTexts.subtitle.company} *
+      </Typography>
+      <Controller
+        name="company"
+        control={control}
+        rules={{required: localizedTexts.pleaseEnter.company}}
+        render={({field}) => (
+          <TextField
+            {...field}
+            placeholder={localizedTexts.placeholder.company}
+            required
+            error={!!errors.company}
+            helperText={errors.company?.message}
+            fullWidth
+          />
+        )}
+      />
+      <Typography variant="subtitle1" sx={{marginTop: 2}}>
+        {localizedTexts.subtitle.name} *
+      </Typography>
+      <Controller
+        name="name"
+        control={control}
+        rules={{required: localizedTexts.pleaseEnter.name}}
+        render={({field}) => (
+          <TextField
+            {...field}
+            placeholder={localizedTexts.placeholder.name}
+            required
+            error={!!errors.name}
+            helperText={errors.name?.message}
+            fullWidth
+          />
+        )}
+      />
       {/* 2. Email */}
       <Typography variant="subtitle1" sx={{marginTop: 2}}>
         {localizedTexts.subtitle.email} *
@@ -201,7 +302,6 @@ export const BusinessInquiryForm: React.FC = () => {
           />
         )}
       />
-
       {/* 3. LinkedIn (optional) */}
       <Typography variant="subtitle1" sx={{marginTop: 2}}>
         {localizedTexts.subtitle.linkedin}
@@ -217,26 +317,7 @@ export const BusinessInquiryForm: React.FC = () => {
           />
         )}
       />
-
       {/* 4. Company Name */}
-      <Typography variant="subtitle1" sx={{marginTop: 2}}>
-        {localizedTexts.subtitle.company} *
-      </Typography>
-      <Controller
-        name="company"
-        control={control}
-        rules={{required: localizedTexts.pleaseEnter.company}}
-        render={({field}) => (
-          <TextField
-            {...field}
-            placeholder={localizedTexts.placeholder.company}
-            required
-            error={!!errors.company}
-            helperText={errors.company?.message}
-            fullWidth
-          />
-        )}
-      />
 
       {/* 5. Job Title */}
       <Typography variant="subtitle1" sx={{marginTop: 2}}>
@@ -257,7 +338,6 @@ export const BusinessInquiryForm: React.FC = () => {
           />
         )}
       />
-
       {/* 6. Message */}
       <Typography variant="subtitle1" sx={{marginTop: 2}}>
         {localizedTexts.subtitle.message} *
@@ -280,7 +360,6 @@ export const BusinessInquiryForm: React.FC = () => {
           />
         )}
       />
-
       {/* Send 버튼 */}
       <Button
         type="submit"
@@ -306,7 +385,6 @@ export const BusinessInquiryForm: React.FC = () => {
         }>
         {isLoading ? localizedTexts.sending : localizedTexts.send}
       </Button>
-
       {/* 알림 */}
       <Snackbar
         open={alert.open}

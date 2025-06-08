@@ -4,7 +4,7 @@ import {useLocation, useNavigate} from 'react-router-dom';
 import styled from 'styled-components';
 import {EcoActionData} from '../../../../public/Images/EcoActionData';
 import useWindowResize from '../../../components/hooks/useWindowResize';
-import {BgImage, theme} from '../../../style';
+import {theme} from '../../../style';
 import {EcoActionMarqueeImageItem} from '../../Home/sections/HomeLandingEcoAction';
 import MediaModal from '../../Home/sections/MediaModal';
 const Container = styled.div`
@@ -50,12 +50,12 @@ const BottomGradientOverlay = styled.div`
     bottom: -2px;
   }
 `;
-const IntroContentBox = styled.div`
+const IntroContentBox = styled.div<{noMarginTop?: boolean}>`
   padding-top: 20px;
   justify-content: center;
   width: 100%;
   display: flex;
-  margin-top: 80px;
+  margin-top: ${props => (props.noMarginTop ? '40px' : '80px')};
   overflow: hidden;
   -webkit-overflow-scrolling: touch;
 `;
@@ -103,7 +103,7 @@ const shuffleArray = (array: any[]) => {
   }
   return newArray;
 };
-function Testimonials() {
+function Testimonials({noMarginTop = false}: {noMarginTop?: boolean}) {
   const [isExpanded, setIsExpanded] = useState(false);
   const [isMediaModalOpen, setIsMediaModalOpen] = useState(false);
   const [selectedMedia, setSelectedMedia] = useState<MediaDataType | null>(
@@ -148,39 +148,37 @@ function Testimonials() {
     navigate(-1);
   };
   return (
-    <BgImage>
-      <IntroContentBox>
-        <Container>
-          <ImageCollage>
-            {columns.map((column, colIndex) => (
-              <EcoActionMarqueeImageItem
-                key={colIndex}
-                openMediaModal={openMediaModal}
-                colIndex={colIndex}
-                isMarqueeActive={true}
-                isOdd={column.isOdd}
-                column={column}
-                resizedWidth={resizedWidth}
-              />
-            ))}
-          </ImageCollage>
-          <TopGradientOverlay />
-          <BottomGradientOverlay />
-          {/* {canComeBack && (
+    <IntroContentBox noMarginTop={noMarginTop}>
+      <Container>
+        <ImageCollage>
+          {columns.map((column, colIndex) => (
+            <EcoActionMarqueeImageItem
+              key={colIndex}
+              openMediaModal={openMediaModal}
+              colIndex={colIndex}
+              isMarqueeActive={true}
+              isOdd={column.isOdd}
+              column={column}
+              resizedWidth={resizedWidth}
+            />
+          ))}
+        </ImageCollage>
+        <TopGradientOverlay />
+        <BottomGradientOverlay />
+        {/* {canComeBack && (
             <AbsCloseButtonContainer>
               <AbsCloseButton onClick={handleCloseButtonClick}>
                 {localizedTexts.backButtonText}
               </AbsCloseButton>
             </AbsCloseButtonContainer>
           )} */}
-          <MediaModal
-            isOpen={isMediaModalOpen}
-            setIsOpen={setIsMediaModalOpen}
-            selectedMedia={selectedMedia}
-          />
-        </Container>
-      </IntroContentBox>
-    </BgImage>
+        <MediaModal
+          isOpen={isMediaModalOpen}
+          setIsOpen={setIsMediaModalOpen}
+          selectedMedia={selectedMedia}
+        />
+      </Container>
+    </IntroContentBox>
   );
 }
 

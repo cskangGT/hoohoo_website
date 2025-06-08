@@ -1,10 +1,10 @@
-import { faChevronLeft } from '@fortawesome/free-solid-svg-icons';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import React, { useEffect } from 'react';
-import { useLocation } from 'react-router-dom';
+import {faChevronLeft} from '@fortawesome/free-solid-svg-icons';
+import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
+import React, {useEffect} from 'react';
+import {useLocation, useNavigate} from 'react-router-dom';
 import styled from 'styled-components';
 import Wrapper from '../../../components/Wrapper/Wrapper';
-import { theme } from '../../../style';
+import {theme} from '../../../style';
 const Background = styled.div`
   width: 100%;
   height: 100%;
@@ -80,9 +80,13 @@ const ContentBlock = styled.div`
   display: flex;
   flex-direction: column;
 `;
-const Back = styled.a`
+const Back = styled.button`
   position: absolute;
   left: 15px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
 `;
 
 function Content({text}: ContentProps) {
@@ -97,18 +101,25 @@ function Content({text}: ContentProps) {
   }
 }
 function BlogDetail() {
+  const navigate = useNavigate();
+
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
   const location = useLocation();
   const data: BlogData = location.state.blogData;
+
+  const handleGoBack = () => {
+    navigate(-1);
+  };
+
   return (
     <Background>
       <Wrapper>
         <Container>
           <ContentBox>
             <CategoryBox>
-              <Back href="/climate_card">
+              <Back onClick={handleGoBack}>
                 <FontAwesomeIcon
                   icon={faChevronLeft}
                   color="white"

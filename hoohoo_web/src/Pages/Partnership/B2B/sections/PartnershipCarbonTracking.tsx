@@ -147,7 +147,7 @@ function PartnershipCarbonTracking() {
             <ButtonBox>
               <HomeTransitionButton
                 onClick={handleEmailClick}
-                href={`/${i18next.language}/business_support?type=earthmeraPartnership`}>
+                href={`/${i18next.language}/business_support?product=earthmera&type=categoryRegistration`}>
                 {data.buttonText}
               </HomeTransitionButton>
             </ButtonBox>

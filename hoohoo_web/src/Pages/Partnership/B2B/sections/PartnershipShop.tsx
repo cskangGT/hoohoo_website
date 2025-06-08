@@ -45,7 +45,7 @@ function PartnershipShop() {
             <ButtonBox>
               <HomeTransitionButton
                 onClick={handleEmailClick}
-                href={`/${i18next.language}/business_support?type=earthmeraPartnership`}>
+                href={`/${i18next.language}/business_support?product=earthmera&type=nearbyStore`}>
                 {data.buttonText}
               </HomeTransitionButton>
             </ButtonBox>

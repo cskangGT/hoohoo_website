@@ -11,8 +11,11 @@ import AdminLogin from './Pages/Admin/AdminLogin';
 import MainDropB from './Pages/DropB/MainDropB';
 import Blog from './Pages/EMMedia/Blog/Blog';
 import BlogDetail from './Pages/EMMedia/Blog/BlogDetail';
+import EMMediaContentsPage from './Pages/EMMedia/EMMediaContentsPage';
+import NewsPage from './Pages/EMMedia/News/NewsContents';
 import NewsDetailPage from './Pages/EMMedia/News/NewsDetailPage';
-import NewsPage from './Pages/EMMedia/News/NewsPage';
+import CoverDetailPage from './Pages/EMMedia/PressCover/CoverDetailPage';
+import PressCoverPage from './Pages/EMMedia/PressCover/PressCoverPage';
 import Testimonials from './Pages/EMMedia/Testimonials/Testimonials';
 import HomeEarthmera from './Pages/Home/HomeEarthmera';
 import RedirectPage from './Pages/Info/Redirection/RedirectPage';
@@ -122,6 +125,16 @@ const baseRoutes = [
     element: <NewsDetailPage />,
     errorElement: <ErrorComponent />,
   },
+  {
+    path: '/contents',
+    element: <EMMediaContentsPage />,
+    errorElement: <ErrorComponent />,
+  },
+  {
+    path: '/press_cover',
+    element: <PressCoverPage />,
+    errorElement: <ErrorComponent />,
+  },
   // {
   //   path: '/contact',
   //   element: <ContactPage />,
@@ -150,6 +163,11 @@ const baseRoutes = [
   {
     path: '/testimonials',
     element: <Testimonials />,
+    errorElement: <ErrorComponent />,
+  },
+  {
+    path: '/cover_detail/:id',
+    element: <CoverDetailPage />,
     errorElement: <ErrorComponent />,
   },
   {
