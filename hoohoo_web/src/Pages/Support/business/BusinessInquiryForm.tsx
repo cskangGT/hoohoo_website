@@ -136,7 +136,7 @@ export const BusinessInquiryForm: React.FC = () => {
         p: 3,
         display: 'flex',
         flexDirection: 'column',
-        gap: 2,
+        gap: 1,
       }}
       noValidate>
       <Title>{localizedTexts.title}</Title>
@@ -176,7 +176,7 @@ export const BusinessInquiryForm: React.FC = () => {
       </FormControl>
 
       {/* 2. Email */}
-      <Typography variant="subtitle1" sx={{marginTop: 1}}>
+      <Typography variant="subtitle1" sx={{marginTop: 2}}>
         {localizedTexts.subtitle.email} *
       </Typography>
       <Controller
@@ -203,7 +203,7 @@ export const BusinessInquiryForm: React.FC = () => {
       />
 
       {/* 3. LinkedIn (optional) */}
-      <Typography variant="subtitle1" sx={{marginTop: 1}}>
+      <Typography variant="subtitle1" sx={{marginTop: 2}}>
         {localizedTexts.subtitle.linkedin}
       </Typography>
       <Controller
@@ -219,7 +219,7 @@ export const BusinessInquiryForm: React.FC = () => {
       />
 
       {/* 4. Company Name */}
-      <Typography variant="subtitle1" sx={{marginTop: 1}}>
+      <Typography variant="subtitle1" sx={{marginTop: 2}}>
         {localizedTexts.subtitle.company} *
       </Typography>
       <Controller
@@ -239,7 +239,7 @@ export const BusinessInquiryForm: React.FC = () => {
       />
 
       {/* 5. Job Title */}
-      <Typography variant="subtitle1" sx={{marginTop: 1}}>
+      <Typography variant="subtitle1" sx={{marginTop: 2}}>
         {localizedTexts.subtitle.job} *
       </Typography>
       <Controller
@@ -259,7 +259,7 @@ export const BusinessInquiryForm: React.FC = () => {
       />
 
       {/* 6. Message */}
-      <Typography variant="subtitle1" sx={{marginTop: 1}}>
+      <Typography variant="subtitle1" sx={{marginTop: 2}}>
         {localizedTexts.subtitle.message} *
       </Typography>
       <Controller
@@ -286,8 +286,18 @@ export const BusinessInquiryForm: React.FC = () => {
         type="submit"
         style={
           isValid && !isLoading
-            ? {backgroundColor: theme.mainNeon, color: 'black', opacity: 1}
-            : {backgroundColor: theme.gray, color: 'white', opacity: 0.5}
+            ? {
+                backgroundColor: theme.mainNeon,
+                color: 'black',
+                opacity: 1,
+                marginTop: 10,
+              }
+            : {
+                backgroundColor: theme.gray,
+                color: 'white',
+                opacity: 0.5,
+                marginTop: 10,
+              }
         }
         size="large"
         disabled={!isValid || isLoading}

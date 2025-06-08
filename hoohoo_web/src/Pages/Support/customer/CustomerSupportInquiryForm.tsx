@@ -118,7 +118,7 @@ export const CustomerSupportInquiryForm: React.FC = () => {
     <Box
       component="form"
       onSubmit={handleSubmit(onSubmit)}
-      sx={{mx: 'auto', p: 3, display: 'flex', flexDirection: 'column', gap: 2}}
+      sx={{mx: 'auto', p: 3, display: 'flex', flexDirection: 'column', gap: 1}}
       noValidate>
       <Title>{localized.title}</Title>
 
@@ -155,7 +155,7 @@ export const CustomerSupportInquiryForm: React.FC = () => {
 
       {/* 2. 서비스 */}
       <FormControl error={!!errors.service} variant="outlined">
-        <Typography variant="subtitle1" gutterBottom sx={{marginTop: 1}}>
+        <Typography variant="subtitle1" gutterBottom sx={{marginTop: 2}}>
           {localized.subtitle.service} *
         </Typography>
         <Controller
@@ -185,7 +185,7 @@ export const CustomerSupportInquiryForm: React.FC = () => {
       </FormControl>
 
       {/* 3. 이메일 */}
-      <Typography variant="subtitle1" sx={{marginTop: 1}}>
+      <Typography variant="subtitle1" sx={{marginTop: 2}}>
         {localized.subtitle.email} *
       </Typography>
       <Controller
@@ -211,7 +211,7 @@ export const CustomerSupportInquiryForm: React.FC = () => {
       />
 
       {/* 4. 설명 */}
-      <Typography variant="subtitle1" sx={{marginTop: 1}}>
+      <Typography variant="subtitle1" sx={{marginTop: 2}}>
         {localized.subtitle.message} *
       </Typography>
       <Controller
@@ -237,8 +237,18 @@ export const CustomerSupportInquiryForm: React.FC = () => {
         disabled={!isValid || isLoading}
         style={
           isValid && !isLoading
-            ? {backgroundColor: theme.mainNeon, color: 'black', opacity: 1}
-            : {backgroundColor: theme.gray, color: 'white', opacity: 0.5}
+            ? {
+                backgroundColor: theme.mainNeon,
+                color: 'black',
+                opacity: 1,
+                marginTop: 10,
+              }
+            : {
+                backgroundColor: theme.gray,
+                color: 'white',
+                opacity: 0.5,
+                marginTop: 10,
+              }
         }
         startIcon={
           isLoading ? <CircularProgress size={20} color="inherit" /> : null
