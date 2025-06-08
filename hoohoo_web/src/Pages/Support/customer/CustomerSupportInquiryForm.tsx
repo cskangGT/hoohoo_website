@@ -155,7 +155,7 @@ export const CustomerSupportInquiryForm: React.FC = () => {
 
       {/* 2. 서비스 */}
       <FormControl error={!!errors.service} variant="outlined">
-        <Typography variant="subtitle1" gutterBottom>
+        <Typography variant="subtitle1" gutterBottom sx={{marginTop: 1}}>
           {localized.subtitle.service} *
         </Typography>
         <Controller
@@ -185,7 +185,7 @@ export const CustomerSupportInquiryForm: React.FC = () => {
       </FormControl>
 
       {/* 3. 이메일 */}
-      <Typography variant="subtitle1" gutterBottom>
+      <Typography variant="subtitle1" sx={{marginTop: 1}}>
         {localized.subtitle.email} *
       </Typography>
       <Controller
@@ -211,7 +211,7 @@ export const CustomerSupportInquiryForm: React.FC = () => {
       />
 
       {/* 4. 설명 */}
-      <Typography variant="subtitle1" gutterBottom>
+      <Typography variant="subtitle1" sx={{marginTop: 1}}>
         {localized.subtitle.message} *
       </Typography>
       <Controller

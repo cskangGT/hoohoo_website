@@ -176,7 +176,7 @@ export const BusinessInquiryForm: React.FC = () => {
       </FormControl>
 
       {/* 2. Email */}
-      <Typography variant="subtitle1">
+      <Typography variant="subtitle1" sx={{marginTop: 1}}>
         {localizedTexts.subtitle.email} *
       </Typography>
       <Controller
@@ -203,7 +203,7 @@ export const BusinessInquiryForm: React.FC = () => {
       />
 
       {/* 3. LinkedIn (optional) */}
-      <Typography variant="subtitle1">
+      <Typography variant="subtitle1" sx={{marginTop: 1}}>
         {localizedTexts.subtitle.linkedin}
       </Typography>
       <Controller
@@ -219,7 +219,7 @@ export const BusinessInquiryForm: React.FC = () => {
       />
 
       {/* 4. Company Name */}
-      <Typography variant="subtitle1">
+      <Typography variant="subtitle1" sx={{marginTop: 1}}>
         {localizedTexts.subtitle.company} *
       </Typography>
       <Controller
@@ -239,7 +239,7 @@ export const BusinessInquiryForm: React.FC = () => {
       />
 
       {/* 5. Job Title */}
-      <Typography variant="subtitle1">
+      <Typography variant="subtitle1" sx={{marginTop: 1}}>
         {localizedTexts.subtitle.job} *
       </Typography>
       <Controller
@@ -259,7 +259,7 @@ export const BusinessInquiryForm: React.FC = () => {
       />
 
       {/* 6. Message */}
-      <Typography variant="subtitle1">
+      <Typography variant="subtitle1" sx={{marginTop: 1}}>
         {localizedTexts.subtitle.message} *
       </Typography>
       <Controller
