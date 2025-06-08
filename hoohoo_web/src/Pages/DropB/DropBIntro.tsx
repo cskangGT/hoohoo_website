@@ -1,9 +1,9 @@
 import i18next from 'i18next';
-import React, { useEffect, useState } from 'react';
-import { useSwipeable } from 'react-swipeable';
+import React, {useEffect, useState} from 'react';
+import {useSwipeable} from 'react-swipeable';
 import styled from 'styled-components';
 import Slider from '../../components/ContentBox/Slider';
-import { slideInFromTop, theme } from '../../style';
+import {slideInFromTop, theme} from '../../style';
 
 const SectionContainer = styled.section`
   animation: ${slideInFromTop} 0.7s ease-out forwards;
@@ -142,9 +142,7 @@ const SlideContent: React.FC<{
       <IntroText>
         <IntroTitle>DropB</IntroTitle>
         <FirstDesc>{data[imagePath].firstDesc}</FirstDesc>
-        <SecondDesc
-          dangerouslySetInnerHTML={{__html: data[imagePath].secondDesc}}
-        />
+        <SecondDesc>{data[imagePath].secondDesc}</SecondDesc>
       </IntroText>
       {imagePath === 'Images/1__.svg' ? (
         <RightImage src={imagePath} alt="앱 소개 이미지" draggable="false" />

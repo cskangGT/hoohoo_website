@@ -1,10 +1,10 @@
 import i18next from 'i18next';
 import React from 'react';
-import { useNavigate } from 'react-router-dom';
-import { useLanguage } from '../../../../components/hooks/LanguageContext';
-import { logButtonEvent, PageName } from '../../../../util/firebase_custom_event';
-import { HomeTransitionButton } from '../../../Home/styles';
-import { ButtonBox } from '../PhotoVideoes';
+import {useNavigate} from 'react-router-dom';
+import {useLanguage} from '../../../../components/hooks/LanguageContext';
+import {logButtonEvent, PageName} from '../../../../util/firebase_custom_event';
+import {HomeTransitionButton} from '../../../Home/styles';
+import {ButtonBox} from '../PhotoVideoes';
 import {
   PartnershipContainer,
   PartnershipDescText,
@@ -20,34 +20,25 @@ function B2BEcoServices() {
   const data: any = i18next.t('B2BEcoServices', {returnObjects: true});
 
   const {language} = useLanguage();
-  const handleEmailClick = (e: React.MouseEvent) => {
-    e.preventDefault();
-    const emailAddress = 'support@earthmera.com';
-    window.location.href = `mailto:${emailAddress}`;
-    logButtonEvent('ask_partnership in B2BEcoServices', PageName.partnership)
-    // 폴백(fallback) 처리
-    setTimeout(() => {
-      window.open(`https://mail.google.com/mail/?view=cm&fs=1&to=${emailAddress}`, '_blank');
-    }, 300);
+  const handleEmailClick = () => {
+    logButtonEvent('ask_partnership in B2BEcoServices', PageName.partnership);
   };
   return (
     <PartnershipContainer>
       <PartnershipInnerContainer>
         <PartnershipLeftBox>
-          <PartnershipTitleText
-            language={language}
-            dangerouslySetInnerHTML={{__html: data.title}}
-          />
-          <PartnershipDescText
-            language={language}
-            dangerouslySetInnerHTML={{__html: data.description}}
-          />
+          <PartnershipTitleText language={language}>
+            {data.title}
+          </PartnershipTitleText>
+          <PartnershipDescText language={language}>
+            {data.description}
+          </PartnershipDescText>
           <ButtonBox>
             <HomeTransitionButton
-              onClick={handleEmailClick}
-              dangerouslySetInnerHTML={{
-                __html: data.buttonText,
-              }}></HomeTransitionButton>
+              href={`/${i18next.language}/business_support?type=ecoService`}
+              onClick={handleEmailClick}>
+              {data.buttonText}
+            </HomeTransitionButton>
           </ButtonBox>
         </PartnershipLeftBox>
         <PartnershipRightBox>

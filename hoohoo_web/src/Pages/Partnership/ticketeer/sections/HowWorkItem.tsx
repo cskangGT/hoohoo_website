@@ -173,7 +173,7 @@ function HowWorkItem({data, index}: HowWorkItemProps) {
           </ImageBox>
         )}
         <Subtitle>{data.subtitle}</Subtitle>
-        <Description dangerouslySetInnerHTML={{__html: data.description}} />
+        <Description>{data.description}</Description>
       </Content>
     </Container>
   );

@@ -46,25 +46,19 @@ const LinktoEmail = styled.a`
   }
 `;
 export default function FootContact() {
-  const handleEmailClick = (e: React.MouseEvent) => {
-    e.preventDefault();
-    const emailAddress = 'support@earthmera.com';
-    window.location.href = `mailto:${emailAddress}`;
+  const handleEmailClick = () => {
     logButtonEvent('contact_us', PageName.home);
     // 폴백(fallback) 처리
-    setTimeout(() => {
-      window.open(
-        `https://mail.google.com/mail/?view=cm&fs=1&to=${emailAddress}`,
-        '_blank',
-      );
-    }, 300);
   };
   const data: any = i18next.t('footcontact', {returnObjects: true});
   return (
     <ContactBox id="contact" key="contact">
       <ContactColumnBox>
         <ContactText>{data.title}</ContactText>
-        <LinktoEmail onClick={handleEmailClick} data-l10n-id="footer_contactus">
+        <LinktoEmail
+          href={`/${i18next.language}/business_support`}
+          onClick={handleEmailClick}
+          data-l10n-id="footer_contactus">
           {data.button}
         </LinktoEmail>
       </ContactColumnBox>

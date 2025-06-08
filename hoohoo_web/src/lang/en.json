@@ -42,8 +42,11 @@
         ]
       },
       {
-        "label": "Contact",
-        "email": "mailto:support@earthmera.com"
+        "label": "Support",
+        "subItems": [
+          {"label": "Business Inquiry", "link": "/en/business_support"},
+          {"label": "Customer Support", "link": "/en/support"}
+        ]
       }
     ]
   },
@@ -116,136 +119,13 @@
       "manage": "Manage Account"
     }
   },
-  "Util": {
-    "UserBadgeType": {
-      "LITTLE_BY_LITTLE": "티끌 모아 태산",
-      "EARLY_HERO": "Early Hero",
-      "PEOPLE_CARE_ENV": "환생사",
-      "STUDENT_CLIMATE_ACTION": "대기행",
-      "FIRST_GREEN_LEAVES": "시작이 반이다",
-      "GREEN_SPARKS_FLY": "초록물결",
-      "ANYWHERE_GREEN": "어디서든 친환경",
-      "LINK_BETWEEN_US": "너와 나의 연결고리",
-      "LOCAL_ECO_ADVOCATE": "동네 환경 지킴이",
-      "PURSUING_GREENER_TOMORROW": "내일을 푸르게",
-      "WALKING_ON_EGGSHELLS": "살얼음 위를 걷기",
-      "MAY_EARTHMERA_BE_WITH_YOU": "EarthMera 기운이 당신과 함께",
-      "NO_PLANET_FOR_OLD_WAYS": "옛 방식을 버리고",
-      "BITE_THE_BULLET": "개천에서 용난다",
-      "BEYOND_WORLD": "세계를 넘어",
-      "FEEL_THE_TAILWIND": "순풍을 느껴라",
-      "I_LOVE_EM": "I ♥ EM",
-      "IN_HARMONY_WITH_NATURE": "자연과의 조화",
-      "EARTH_HERO": "EarthHero"
-    },
-    "AchievementType": {
-      "ECO_ACTION_TUMBLER": "일회용 컵 종결자",
-      "ECO_ACTION_CAFE_REUSABLE_CUP": "카페 머그 스타",
-      "ECO_ACTION_ECO_FRIENDLY_PRODUCTS": "친환경 소비자",
-      "ECO_ACTION_DISPOSING_TRASH": "쓰레기 덩크왕",
-      "ECO_ACTION_RECYCLING": "재활용의 귀재",
-      "ECO_ACTION_TRANSPORTATION": "에코 라이더",
-      "ECO_ACTION_EM_BAG": "EM Bag 히어로",
-      "ECO_ACTION_SUSTAINABLE_STRAW": "빨대 지킴이",
-      "ECO_ACTION_LABEL_OFF": "라벨제거 리더",
-      "ECO_ACTION_REUSABLE_CONTAINER": "용기있는 자",
-      "ECO_ACTION_ECO_BAG": "에코백 러버",
-      "ECO_ACTION_REUSE": "분리배출의 달인",
-      "ECO_ACTION_NO_LEFTOVERS": "Zero Waste Hero",
-      "GROUP_CHALLENGE_REWARD_MEDAL": "무한도전인",
-      "GROUP_EVENT_REWARD_MEDAL": "이벤트 전문가",
-      "ECO_ACTION_CARBON_REDUCTION": "CO₂ 다이어터",
-      "GROUP_PLOGGING_ECO_PLOGGER": "친환경 플로거",
-      "REWARD_REDEEM_MEDAL": "보물 사냥꾼",
-      "EM_POST_UPLOAD_MEDAL": "친환경 인플루언서"
-    },
-    "Template": [
-      {
-        "value": "ECO-COMMERCE_1",
-        "image": "/Images/templates/EC_en_1.jpeg"
-      },
-      {
-        "value": "ECO-COMMERCE_2",
-        "image": "/Images/templates/EC_en_2.jpeg"
-      },
 
-      {
-        "value": "GREEN_LIFESTYLE_1",
-        "image": "/Images/templates/GL_en_1.jpeg"
-      },
-      {
-        "value": "GREEN_LIFESTYLE_2",
-        "image": "/Images/templates/GL_en_2.jpeg"
-      },
-
-      {
-        "value": "ECO_PORTFOLIO_1",
-        "image": "/Images/templates/EP_en_1.jpeg"
-      },
-      {
-        "value": "ECO_PORTFOLIO_2",
-        "image": "/Images/templates/EP_en_2.jpeg"
-      },
-
-      {
-        "value": "GREEN_COMMUNITY_1",
-        "image": "/Images/templates/GC_en_1.jpeg"
-      },
-      {
-        "value": "GREEN_COMMUNITY_2",
-        "image": "/Images/templates/GC_en_2.jpeg"
-      },
-
-      {
-        "value": "ECO_BUSINESS_CARD_1",
-        "image": "/Images/templates/EBC_en_1.jpeg"
-      },
-      {
-        "value": "ECO_BUSINESS_CARD_2",
-        "image": "/Images/templates/EBC_en_2.jpeg"
-      },
-
-      {
-        "value": "SUSTAINABLE_AFFILIATE_1",
-        "image": "/Images/templates/SA_en_1.jpeg"
-      },
-      {
-        "value": "SUSTAINABLE_AFFILIATE_2",
-        "image": "/Images/templates/SA_en_2.jpeg"
-      },
-
-      {
-        "value": "ECO_EVENT_1",
-        "image": "/Images/templates/EE_en_1.jpeg"
-      },
-      {
-        "value": "ECO_EVENT_2",
-        "image": "/Images/templates/EE_en_2.jpeg"
-      },
-      {
-        "value": "INFLUENCER_1",
-        "image": "/Images/templates/IN_en_1.jpeg"
-      },
-      {
-        "value": "INFLUENCER_2",
-        "image": "/Images/templates/IN_en_2.jpeg"
-      },
-      {
-        "value": "FREESTYLE_1",
-        "image": "/Images/templates/FREE_en_1.jpeg"
-      },
-      {
-        "value": "FREESTYLE_2",
-        "image": "/Images/templates/FREE_en_2.jpeg"
-      }
-    ]
-  },
   "footcontact": {
     "title": "Interested in partnering with us or have any questions?",
     "button": "Contact Us"
   },
   "idealcustomer": {
-    "header": "What if every ad viewer was your ideal customer?<br />How thrilling!",
+    "header": "What if every ad viewer was your ideal customer?\nHow thrilling!",
     "img": "/Images/contact2pImg.png",
     "subheader": "Clear platform vision, quick fulfillment of your needs.",
     "content": "EarthMera offers highly effective mobile-optimized advertising targeting precise consumer segments within the rapidly growing environmental market."
@@ -263,7 +143,7 @@
     "slides": {
       "/Images/earth.png": {
         "firstDesc": "Capture and be rewarded",
-        "secondDesc": "Click your shutters,<br />Build earth's shelter, <br />Get points and become wealthier.",
+        "secondDesc": "Click your shutters,\nBuild earth's shelter, \nGet points and become wealthier.",
         "button": "Learn More"
       },
       "/Images/Banner.png": {
@@ -271,15 +151,15 @@
       },
       "/Images/preview.png": {
         "firstDesc": "Empower your green journey",
-        "secondDesc": "Take steps for a greener future,<br /> Celebrate eco-milestones with us,<br /> Earn rewards for helping the Earth.",
+        "secondDesc": "Take steps for a greener future,\n Celebrate eco-milestones with us,\n Earn rewards for helping the Earth.",
         "button": "Learn More"
       }
     }
   },
   "EcoActionCategories": {
     "header": "Eco-action categories",
-    "content": "Choose an eco-action, capture it. <br />Got more ideas? <br /> Try 'suggest a category'!",
-    "bgImage": "/Images/home2bg.jpeg",
+    "content": "Choose an eco-action, capture it. \nGot more ideas? \n Try 'suggest a category'!",
+    "bgImage": "/Images/home2bg.webp",
     "image": "/Images/eco_action_categories.png",
     "highlight": "suggest a category",
     "highlightComponent": "<span class='highlight'>suggest a category</span>"
@@ -297,10 +177,10 @@
     "/Images/13.jpeg"
   ],
   "em_team_Intro": {
-    "header": "Introducing <br />Team EarthMera"
+    "header": "Introducing \nTeam EarthMera"
   },
   "strength": {
-    "header": "Achieve growth,<br />united in<br />Collaboration's strength",
+    "header": "Achieve growth,\nunited in\nCollaboration's strength",
     "items": [
       {
         "title": "Unity",
@@ -317,7 +197,7 @@
     ]
   },
   "mindset": {
-    "header": "Where growth thrives, <br />powered by mindset!",
+    "header": "Where growth thrives, \npowered by mindset!",
     "items": [
       {
         "title": "Humbleness",
@@ -337,42 +217,42 @@
     {
       "photoPath": "/Images/profile_sung.jpeg",
       "name": "Sung Kang",
-      "role": "CEO / Founder <br /> Full-Stack Engineer",
+      "role": "CEO / Founder \n Full-Stack Engineer",
       "contact": "mailto:support@earthmera.com",
       "url": "https://www.linkedin.com/in/sungcoding/"
     },
     {
       "photoPath": "/Images/profile_jisan.jpeg",
       "name": "Jisan Park",
-      "role": "SWE<br />Front-End Engineer",
+      "role": "SWE\nFront-End Engineer",
       "contact": "mailto:jisanpark94@gmail.com",
       "url": "https://www.linkedin.com/in/jisanpark5309/"
     },
     {
       "photoPath": "/Images/profile_jeongwon.jpg",
       "name": "Jeongwon Park",
-      "role": "SWE<br />ML Engineer",
+      "role": "SWE\nML Engineer",
       "contact": "mailto:support@earthmera.com",
       "url": "https://www.linkedin.com/in/jwpark44/"
     },
     {
       "photoPath": "/Images/profile_jimmy.jpeg",
       "name": "Jimmy Sim",
-      "role": "UI / UX<br />Content Designer",
+      "role": "UI / UX\nContent Designer",
       "contact": "mailto:support@earthmera.com",
       "url": "https://www.linkedin.com/in/jimmysim93/"
     },
     {
       "photoPath": "/Images/profile_daniel.jpeg",
       "name": "Chuljin Park",
-      "role": "SWE<br />Back-End Engineer",
+      "role": "SWE\nBack-End Engineer",
       "contact": "mailto:support@earthmera.com",
       "url": "https://www.linkedin.com/in/daniel-park-33b0632b1/"
     },
     {
       "photoPath": "/Images/profile_minjun.png",
       "name": "Minjun Kim",
-      "role": "ML Team<br />ML Intern",
+      "role": "ML Team\nML Intern",
       "contact": "mailto:support@earthmera.com",
       "url": "https://www.linkedin.com/in/minjunnkim/"
     }
@@ -384,7 +264,7 @@
       "Users": {
         "header": "Users",
         "imagePath": "/Images/user1.png",
-        "description": "Every click with EarthMera amplifies your contribution to our planet. Capture your eco-actions, earn rewards, and join a community that’s reshaping the world. With every action you take, you’re not just securing points for yourself but ensuring a greener future for the next generation."
+        "description": "Every click with EarthMera amplifies your contribution to our planet. Capture your eco-actions, earn rewards, and join a community that's reshaping the world. With every action you take, you're not just securing points for yourself but ensuring a greener future for the next generation."
       },
       "Partners": {
         "header": "Partners",
@@ -468,7 +348,7 @@
   },
   "b2bvideo": {
     "video": "/Images/Earthmera.mp4",
-    "header": "EarthMera <br /> gives you wings.",
+    "header": "EarthMera \n gives you wings.",
     "content": "Ready to make a strong ESG statement?",
     "button": "Get Started"
   },
@@ -557,7 +437,7 @@
   },
   "partnerModal": {
     "header": "Unlock the power of user loyalty to boost Eco-Action.",
-    "rich": "EarthMera is committed to protecting and respecting your privacy, and we’ll only use your personal information to administer your account and to provide the products and services you requested from us. From time to time, we would like to contact you about our products and services, as well as other content that may be of interest to you. If you consent to us contacting you for this purpose, please tick below to say how you would like us to contact you:",
+    "rich": "EarthMera is committed to protecting and respecting your privacy, and we'll only use your personal information to administer your account and to provide the products and services you requested from us. From time to time, we would like to contact you about our products and services, as well as other content that may be of interest to you. If you consent to us contacting you for this purpose, please tick below to say how you would like us to contact you:",
     "rich1": "You may unsubscribe from these communications at any time. For more information on how to unsubscribe, our privacy practices, and how we are committed to protecting and respecting your privacy, please review our ",
     "rich2": "By clicking submit below, you consent to allow EarthMera to store and process the personal information submitted above to provide you the content requested."
   },
@@ -656,7 +536,7 @@
     "button": "Submit"
   },
   "platform1p": {
-    "header": "The best<br /> eco-friendly platform",
+    "header": "The best\n eco-friendly platform",
     "lineImage": "/Images/platform1pline.png",
     "image": "/Images/platform1pimage.png",
     "content": "This app lets you earn points for eco-friendly photos, exchange them for rewards, and promotes eco-conscious behavior and community."
@@ -689,7 +569,7 @@
     "bgImage": "/Images/platform2bg.jpeg"
   },
   "Badges": {
-    "header": "Make Eco-Actions more fun with<br />bages & medals.",
+    "header": "Make Eco-Actions more fun with\nbages & medals.",
     "content": "Each time you complete an Eco-Action, you earn experience points to level up and receive level badges. You can also unlock different medals for various Eco-Actions.",
     "image": "/Images/badges_medals.png"
   },
@@ -705,13 +585,13 @@
     "image": "/Images/yourimpact.png"
   },
   "B2CEcoProducts": {
-    "header": "Collect Your<br />Eco-Products",
+    "header": "Collect Your\nEco-Products",
     "content": "Turn your eco-friendly products into fun collectible cards. Each card shows how your products make an impact. Enjoy the excitement of building your unique collection!",
     "image": "/Images/platform_eco_product.webp"
   },
   "B2CEcoServices": {
     "header": "Explore Eco-Services",
-    "content": "Explore eco-friendly services you might not have known about and see how easy it is to make your daily life more sustainable.<br />Start using these services today and track your CO₂ reduction in real-time as you take steps toward a greener future!",
+    "content": "Explore eco-friendly services you might not have known about and see how easy it is to make your daily life more sustainable.\nStart using these services today and track your CO₂ reduction in real-time as you take steps toward a greener future!",
     "image": "/Images/platform_eco_service.webp"
   },
   "offer": {
@@ -736,18 +616,18 @@
   },
   "community": [
     {
-      "header": "Enjoy events and<br />challenges with<br />your group.",
-      "content": "Join schools, companies, or local communities for eco-actions through groups!<br /><br />Create AI-powered challenges for daily eco-missions or host events to take action together at specific locations.<br /><br />Stay connected with group chats and posts to share and inspire!",
+      "header": "Enjoy events and\nchallenges with\nyour group.",
+      "content": "Join schools, companies, or local communities for eco-actions through groups!\n\nCreate AI-powered challenges for daily eco-missions or host events to take action together at specific locations.\n\nStay connected with group chats and posts to share and inspire!",
       "image": "/Images/platform_group.png"
     },
     {
-      "header": "Group Plogging:<br />Stay Healthy,<br />Save the Planet!",
-      "content": "Start a plogging event with your group and make it even more meaningful with our biodegradable EM Bag, which helps track the impact of the trash you collect.<br /><br />Take on fun missions like snapping before-and-after photos or selfies with your EM Bag while making a positive impact on the environment! ",
+      "header": "Group Plogging:\nStay Healthy,\nSave the Planet!",
+      "content": "Start a plogging event with your group and make it even more meaningful with our biodegradable EM Bag, which helps track the impact of the trash you collect.\n\nTake on fun missions like snapping before-and-after photos or selfies with your EM Bag while making a positive impact on the environment! ",
       "image": "/Images/platform_health.png"
     },
     {
-      "header": "Share your<br />sustainable lifestyle.",
-      "content": "EM People and EM Heroes are EarthMera's dedicated posting spaces!<br /><br />EM People is a platform where you can freely share eco-friendly ideas and posts, inspiring sustainable lifestyles.<br /><br />EM Heroes showcases completed eco-actions, allowing you to post your achievements and see how others are making an impact.",
+      "header": "Share your\nsustainable lifestyle.",
+      "content": "EM People and EM Heroes are EarthMera's dedicated posting spaces!\n\nEM People is a platform where you can freely share eco-friendly ideas and posts, inspiring sustainable lifestyles.\n\nEM Heroes showcases completed eco-actions, allowing you to post your achievements and see how others are making an impact.",
       "image": "/Images/platform_em_people.png"
     }
   ],
@@ -770,7 +650,7 @@
     "image": "/Images/partnership_circles.png"
   },
   "usingb2c": {
-    "header": "How EarthMera <br /> does it?",
+    "header": "How EarthMera \n does it?",
     "content": "Our platform enhances users' ability to engage in eco-friendly actions and, through the data accumulated from user eco-actions, we can measure the ESG compliance level of the product.",
     "image": "/Images/b2b5pimage.png",
     "midcontent": "Using Platform Model"
@@ -784,7 +664,7 @@
     "image": "/Images/esg1pimage.png"
   },
   "diff": {
-    "header": "The difference between regular<br /> and bio-based bags.",
+    "header": "The difference between regular\n and bio-based bags.",
     "items": [
       {
         "image": "/Images/diff1.png",
@@ -805,16 +685,16 @@
   },
   "bio-based": {
     "image": "/Images/esg2pbg.png",
-    "header": "We produce<br /> bio-based<br /> plastic bags.",
-    "content": "EarthMera's BioBag not only enhances<br />EarthMera AI's object detection rate<br /> but also serves as an eco-friendly <br /> alternative to plastic bags <br />that are currently banned in many countries."
+    "header": "We produce\n bio-based\n plastic bags.",
+    "content": "EarthMera's BioBag not only enhances\nEarthMera AI's object detection rate\n but also serves as an eco-friendly \n alternative to plastic bags \nthat are currently banned in many countries."
   },
   "bag": {
-    "header": "Choose a greener tomorrow <br />with our bio-based plastic bags.",
+    "header": "Choose a greener tomorrow \nwith our bio-based plastic bags.",
     "image": "/Images/Bag.png"
   },
   "biowork": {
     "image": "/Images/esg4pimg.png",
-    "header": "How does EarthMera<br /> bio-bag work?",
+    "header": "How does EarthMera\n bio-bag work?",
     "content": "Embedded with a QR code, the EarthMera Bio-bag offers an enhanced AI detection capability that quantifies the bag's contents precisely. This feature ensures not only greater accuracy but also detailed insights into the bag's fill level."
   },
   "esgIntro": {
@@ -826,13 +706,13 @@
       "/Images/esg1plogo3.png",
       "/Images/esg1plogo4.png"
     ],
-    "header": "Introduce EarthMera <br /> bio-bag"
+    "header": "Introduce EarthMera \n bio-bag"
   },
   "VisionIntro": {
     "image": "/Images/vision_intro.png",
     "smallImage": "/Images/vision_intro_small.png",
-    "header": "Awareness into Action,<br />Action into Lasting Habits.",
-    "content": "Awareness is everywhere—action isn’t. We use technology to bridge the gap, turning eco-awareness into sustainable action."
+    "header": "Awareness into Action,\nAction into Lasting Habits.",
+    "content": "Awareness is everywhere—action isn't. We use technology to bridge the gap, turning eco-awareness into sustainable action."
   },
   "NewsContent": {
     "writer": "Author",
@@ -879,107 +759,107 @@
     "image": "/Images/vision4pimg.png"
   },
   "ticket": {
-    "header": "Use bio-bags for<br />ticket-selling<br />entertainment",
+    "header": "Use bio-bags for\nticket-selling\nentertainment",
     "image": "/Images/ticketSellingImg.png",
-    "midcontent": "Encourage attendee cleanup<br />in entertainment spaces.",
+    "midcontent": "Encourage attendee cleanup\nin entertainment spaces.",
     "content": "Utilize individual ticket codes as participant IDs. Distribute eco-bags before the festival, incentivize waste collection during the event, and reward verification. Encourage all attendees to pick up litter, ensuring a cleaner festival. Maximize efficiency and cleanliness at your event."
   },
   "B2cIntroSection": {
-    "title": "Track every CO₂-reducing action<br />with EarthMera",
+    "title": "Track every CO₂-reducing action\nwith EarthMera",
     "bgImage": "/Images/platform_bg.png",
     "overlay": "/Images/platform_bg_overlay.png",
     "content": "Your eco-friendly journey starts now",
     "image": "/Images/platform1Image.png"
   },
   "HomePlatformGroup": {
-    "title": "Create a group and enjoy<br />challenges and events together,<br />AI missions make it easy and fun!",
+    "title": "Create a group and enjoy\nchallenges and events together,\nAI missions make it easy and fun!",
     "uptitle": "For EarthMera Users",
     "buttonText": "Check our platform",
-    "bgImage": "/Images/home2bg.jpeg",
-    "image": "/Images/home_platform_group.png"
+    "bgImage": "/Images/home2bg.webp",
+    "image": "/Images/home_platform_group.webp"
   },
   "HomePlatformShare": {
-    "title": "Share your eco-friendly actions<br />or ideas with others!",
+    "title": "Share your eco-friendly actions\nor ideas with others!",
     "uptitle": "For EarthMera Users",
     "buttonText": "Check our platform",
-    "bgImage": "/Images/home2bg.jpeg",
-    "image": "/Images/home_platform_share.png"
+    "bgImage": "/Images/home2bg.webp",
+    "image": "/Images/home_platform_share.webp"
   },
   "HomePartners": {
     "title": "Partners",
     "description": "EarthMera, in collaboration with diverse partners, is shaping new possibilities for a sustainable future."
   },
   "HomePartnership": {
-    "bgImage": "/Images/home2bg.jpeg",
+    "bgImage": "/Images/home2bg.webp",
     "uptitle": "For EarthMera Partners",
     "title": "Discover EarthMera's partnership services now!",
     "cardBackground": "/Images/card_background.png",
     "cards": [
       {
         "title": "Catrgory Registration",
-        "description": "Want to know your products'<br />real-world CO₂ cuts?",
+        "description": "Want to know your products'\nreal-world CO₂ cuts?",
         "icon": "/Images/partners_card_co2.png"
       },
       {
         "title": "Eco-Products",
-        "description": "Strengthen your brand and<br />lead the way in sustainability.",
+        "description": "Strengthen your brand and\nlead the way in sustainability.",
         "icon": "/Images/partners_card_eco_product.png"
       },
       {
         "title": "Eco-Services",
-        "description": "Turn actions into impact.<br />See how your users reduce<br />CO₂ with your service.",
+        "description": "Turn actions into impact.\nSee how your users reduce\nCO₂ with your service.",
         "icon": "/Images/partners_card_eco_service.png"
       },
       {
         "title": "Eco-Board",
-        "description": "Effortlessly connect<br />with eco-conscious individuals<br />on EarthMera.",
+        "description": "Effortlessly connect\nwith eco-conscious individuals\non EarthMera.",
         "icon": "/Images/partners_card_ecoboard.png"
       },
       {
         "title": "Near Stores",
-        "description": "Reach nearby users and make<br />your store their go-to choice!",
+        "description": "Reach nearby users and make\nyour store their go-to choice!",
         "icon": "/Images/partners_card_stores.png"
       },
       {
         "title": "Ticketeer",
-        "description": "Turn your eco-events<br />into measurable impact.",
+        "description": "Turn your eco-events\ninto measurable impact.",
         "icon": "/Images/partners_card_ticketeer.png"
       }
     ]
   },
   "PartnershipCarbonTracking": {
-    "title": "Track the CO₂ reductions<br />of your products",
+    "title": "Track the CO₂ reductions\nof your products",
     "description": "Register your products, and EarthMera AI will track the eco-friendly actions taken with them, providing you with accurate CO₂ reduction data.",
-    "buttonText": "Category Registration<br />Inquiry",
+    "buttonText": "Category Registration\nInquiry",
     "image": "/Images/partnership_category.webp",
     "carbonImage": "/Images/partnership_carbon.png"
   },
   "PartnershipEcoBoard": {
-    "title": "Boost your Brand<br />with Eco-Board",
+    "title": "Boost your Brand\nwith Eco-Board",
     "description": "EcoBoard connects you with sustainable brands and eco-conscious organizations, offering easy access to information that inspires a greener lifestyle.",
-    "buttonText": "Eco-Board<br />Inquiry",
+    "buttonText": "Eco-Board\nInquiry",
     "image": "/Images/partnership_ecoboard.webp"
   },
   "PartnershipShop": {
-    "title": "Get Found by<br />Eco-Shoppers Nearby",
+    "title": "Get Found by\nEco-Shoppers Nearby",
     "description": "List your zero-waste or vegan store on EarthMera and make it easy for eco-conscious shoppers to find you. Users can see your store's location nearby and connect with your sustainable brand, helping you grow your customer base and increase visibility.",
-    "buttonText": "Nearby Stores<br />Inquiry",
+    "buttonText": "Nearby Stores\nInquiry",
     "image": "/Images/partnership_ecoshop.webp"
   },
   "TicketeerCarbon": {
-    "header": "Track CO₂ Reduction<br />at Any Ticketed Event",
+    "header": "Track CO₂ Reduction\nat Any Ticketed Event",
     "content": "Ticketeer tracks real-time CO₂ reduction as participants complete eco-missions at sustainability-focused events like music festivals, low-carbon concerts, plogging, and zero-waste parties. It also aggregates environmental data, offering valuable insights for event performance, promotion, and marketing.",
     "image": "/Images/ticketeer_carbontracking.png"
   },
   "TicketeerIntro": {
-    "header": "Turn your eco-events<br />into measurable impact",
+    "header": "Turn your eco-events\ninto measurable impact",
     "buttonText": "Ticketeer Inquiry",
     "image": "/Images/ticketeer_intro.webp",
     "titleStar": "/Images/ticketeer_title_star.png"
   },
   "TicketeerSteps": {
     "header": {
-      "text": "Make Eco-Events More<br />Fun and ",
+      "text": "Make Eco-Events More\nFun and ",
       "highlight": "Meaningful!",
       "deco": "/Images/ticketeer_step_deco.png",
       "underline": "/Images/ticketeer_step_underline.png"
@@ -1080,8 +960,8 @@
     "content": "Together, We Make a Greener Future!"
   },
   "HomeLandingSection": {
-    "title": "Every action to<br />Protect the planet<br />All in one place",
-    "content": "Start your carbon-reducing journey today<br />and make a real impact!",
+    "title": "Every action to\nProtect the planet\nAll in one place",
+    "content": "Start your carbon-reducing journey today\nand make a real impact!",
     "image": "/Images/home_intro.png",
     "opengraph": {
       "siteName": "EarthMera",
@@ -1093,338 +973,39 @@
     }
   },
   "HomeEnvImpact": {
-    "title": "Capture, Reward<br />and Track your<br />environmental impact",
+    "title": "Capture, Reward\nand Track your\nenvironmental impact",
     "uptitle": "For EarthMera Users",
     "buttonText": "Check our platform",
-    "bgImage": "/Images/home2bg.jpeg",
+    "bgImage": "/Images/home2bg.webp",
     "image": "/Images/home2Screen.webp"
   },
   "HomeEcoProducts": {
-    "title": "Verify your<br />eco-products and<br />build your unique collection!",
+    "title": "Verify your\neco-products and\nbuild your unique collection!",
     "uptitle": "For EarthMera Users",
     "buttonText": "Check our platform",
-    "bgImage": "/Images/home2bg.jpeg",
-    "image": "/Images/home_eco_product.png"
+    "bgImage": "/Images/home2bg.webp",
+    "image": "/Images/home_eco_product.webp"
   },
   "HomeEcoServices": {
-    "title": "Use your favorite Eco-Services<br />and see how much CO₂ you're<br />reducing along the way!",
+    "title": "Use your favorite Eco-Services\nand see how much CO₂ you're\nreducing along the way!",
     "uptitle": "For EarthMera Users",
     "buttonText": "Check our platform",
-    "bgImage": "/Images/home2bg.jpeg",
+    "bgImage": "/Images/home2bg.webp",
     "image": "/Images/home_eco_service.webp"
   },
   "B2BEcoServices": {
-    "title": "Track the Real Impact of<br />Your Eco-Service",
+    "title": "Track the Real Impact of\nYour Eco-Service",
     "description": "EarthMera AI tracks user actions and calculates CO₂ reductions, helping eco-services showcase their real impact. Partner with us to demonstrate how your business contributes to a sustainable future and inspires meaningful change.",
-    "buttonText": "Eco-Services<br />Inquiry",
+    "buttonText": "Eco-Services\nInquiry",
     "image": "/Images/partner_eco_service.webp"
   },
   "B2BEcoProducts": {
-    "title": "Certify Eco-Products<br />with EarthMera",
+    "title": "Certify Eco-Products\nwith EarthMera",
     "description": "EarthMera is looking for partners to certify eco-friendly products. Once certified, these products are turned into collectible cards, making sustainability fun and engaging while enhancing your brand's credibility.",
     "buttonText": "Eco-Products\nInquiry",
     "image": "/Images/partner_eco_product.webp"
   },
-  "Login": {
-    "title": "Welcome back!",
-    "new": "New to ZIGU? ",
-    "signup": "Sign up",
-    "email": "Email Address",
-    "password": "Password",
-    "login": "Sign in",
-    "forgotPassword": "Forgot password or email?",
-    "continueWithGoogle": "Continue with Google",
-    "continueWithApple": "Continue with Apple",
-    "continueWithKakao": "Continue with Kakao",
-    "errorText": {
-      "invalidEmail": "Invalid email. Please double-check your email.",
-      "noAccount": "No account found for this email. Please sign up first.",
-      "wrongPassword": "Wrong password. Please try again.",
-      "anotherMethod": "Please try another method to login.",
-      "errorOccured": "An error occurred. Please try again."
-    }
-  },
-  "Signup": {
-    "title": "Let's create an account",
-    "email": "Email address",
-    "password": "Password",
-    "signupLiner": "Sign up with",
-    "linkAvailable": ["", " is available!"],
-    "emailLiner": "Or with email",
-    "signupWithGoogle": "Sign up with Google",
-    "signupWithApple": "Sign up with Apple",
-    "signupWithKakao": "Sign up with Kakao",
-    "continue": "Continue",
-    "errorText": {
-      "alreadyExists": "This email is already in use. Please try another one.",
-      "alreadyAccount": "This email is already in use.",
-      "invalidEmail": "Invalid email. Please double-check your email.",
-      "invalidPassword": "Password must be 8-15 characters long, include uppercase and lowercase letters, numbers, and special characters.",
-      "linkNotfound": "The link is not found. Please try again.",
-      "errorOccured": "An error occurred. Please try again."
-    }
-  },
-  "PreSignup": {
-    "title": "Sign up to ZIGU",
-    "description": "Share your eco-journey, inspire change, and connect with a like-minded community. 🌍",
-    "linkTitle": "Claim your free Link in Bio!",
-    "link": ["earthmera.com/zigu/", "username"],
-    "next": "Next",
-    "alreadyAccount": "Already have an account?  ",
-    "signin": "Sign in",
-    "guideText": [
-      "By continuing, you agree to our ",
-      " and acknowledge that you understand the ",
-      "."
-    ],
-    "errorText": {
-      "alreadyExists": "This link is already taken. Please try another one.",
-      "invalidLetters": "Usernames can only include alphabet letters, numbers, underscores ( _ ) and periods ( . )",
-      "startsEndsWithPeriod": "Usernames cannot start and end with a period.",
-      "limitExceeded": "Usernames must be between 3 and 20 characters"
-    },
-    "terms": "Terms of Service",
-    "privacy": "Privacy Policy"
-  },
-  "VerifyEmail": {
-    "title": "Enter your code",
-    "description": ["We Sent a temporary sign up code to ", "."],
-    "placeholder": "Enter code",
-    "resend": "Resend code",
-    "continue": "Continue",
-    "invalidCode": "Invalid code. Please try again."
-  },
-  "SelectGoal": {
-    "title": "What’s your goal with ZIGU?",
-    "description": "Pick what fits you best, It’ll make your ZIGU even better!",
-    "continue": "Continue",
-    "goals": [
-      {
-        "title": "The legit eco expert!",
-        "description": "You’re a true sustainability pro,<br />leading the way with real expertise. 🌿",
-        "image": "/Images/q_influencer.jpeg",
-        "value": "INFLUENCER"
-      },
-      {
-        "title": "The GOAT of green business!",
-        "description": "Leading the eco industry and<br />making a real impact. 💼",
-        "image": "/Images/q_business.jpeg",
-        "value": "BUSINESS"
-      },
-      {
-        "title": "The eco-conscious user!",
-        "description": "You care about the planet and make eco-friendly choices every day. 🌱",
-        "image": "/Images/q_personal.jpeg",
-        "value": "PERSONAL"
-      }
-    ]
-  },
 
-  "SelectPurpose": {
-    "title": "How do you want to use ZIGU?",
-    "description": "Pick what fits you best, It’ll make your ZIGU even better!<br />Select all that apply.",
-    "continue": "Continue",
-    "errorText": {
-      "purposeNotSelected": "Purpose is not selected"
-    },
-    "purposeList": [
-      {
-        "title": "Eco-commerce",
-        "description": "Selling sustainable products",
-        "image": "/Images/ecommerce.png",
-        "value": "ECO-COMMERCE",
-        "template": [
-          {
-            "value": "ECO-COMMERCE_1",
-            "image": "/Images/templates/EC_en_1.jpeg"
-          },
-          {
-            "value": "ECO-COMMERCE_2",
-            "image": "/Images/templates/EC_en_2.jpeg"
-          }
-        ]
-      },
-      {
-        "title": "Green Lifestyle",
-        "description": "Sharing my sustainability lifestyle",
-        "image": "/Images/personal.png",
-        "value": "GREEN_LIFESTYLE",
-        "template": [
-          {
-            "value": "GREEN_LIFESTYLE_1",
-            "image": "/Images/templates/GL_en_1.jpeg"
-          },
-          {
-            "value": "GREEN_LIFESTYLE_2",
-            "image": "/Images/templates/GL_en_2.jpeg"
-          }
-        ]
-      },
-      {
-        "title": "Eco Portfolio",
-        "description": "Showcasing my environmental projects",
-        "image": "/Images/portfolio.png",
-        "value": "ECO_PORTFOLIO",
-        "template": [
-          {
-            "value": "ECO_PORTFOLIO_1",
-            "image": "/Images/templates/EP_en_1.jpeg"
-          },
-          {
-            "value": "ECO_PORTFOLIO_2",
-            "image": "/Images/templates/EP_en_2.jpeg"
-          }
-        ]
-      },
-      {
-        "title": "Green Community",
-        "description": "Inspiring and educating others",
-        "image": "/Images/community.png",
-        "value": "GREEN_COMMUNITY",
-        "template": [
-          {
-            "value": "GREEN_COMMUNITY_1",
-            "image": "/Images/templates/GC_en_1.jpeg"
-          },
-          {
-            "value": "GREEN_COMMUNITY_2",
-            "image": "/Images/templates/GC_en_2.jpeg"
-          }
-        ]
-      },
-      {
-        "title": "Eco Business Card",
-        "description": "Showcasing my eco-focused profile",
-        "image": "/Images/card.png",
-        "value": "ECO_BUSINESS_CARD",
-        "template": [
-          {
-            "value": "ECO_BUSINESS_CARD_1",
-            "image": "/Images/templates/EBC_en_1.jpeg"
-          },
-          {
-            "value": "ECO_BUSINESS_CARD_2",
-            "image": "/Images/templates/EBC_en_2.jpeg"
-          }
-        ]
-      },
-      {
-        "title": "Sustainable Affiliate",
-        "description": "Promoting eco products or services",
-        "image": "/Images/affiliate.png",
-        "value": "SUSTAINABLE_AFFILIATE",
-        "template": [
-          {
-            "value": "SUSTAINABLE_AFFILIATE_1",
-            "image": "/Images/templates/SA_en_1.jpeg"
-          },
-          {
-            "value": "SUSTAINABLE_AFFILIATE_2",
-            "image": "/Images/templates/SA_en_2.jpeg"
-          }
-        ]
-      },
-      {
-        "title": "Eco Events",
-        "description": "Hosting or promoting eco-events",
-        "image": "/Images/event.png",
-        "value": "ECO_EVENT",
-        "template": [
-          {
-            "value": "ECO_EVENT_1",
-            "image": "/Images/templates/EE_en_1.jpeg"
-          },
-          {
-            "value": "ECO_EVENT_2",
-            "image": "/Images/templates/EE_en_2.jpeg"
-          }
-        ]
-      },
-      {
-        "title": "Influencer",
-        "description": "Spreading sustainability",
-        "image": "/Images/influencer.png",
-        "value": "INFLUENCER",
-        "template": [
-          {
-            "value": "INFLUENCER_1",
-            "image": "/Images/templates/IN_en_1.jpeg"
-          },
-          {
-            "value": "INFLUENCER_2",
-            "image": "/Images/templates/IN_en_2.jpeg"
-          }
-        ]
-      }
-    ],
-    "freeStyle": [
-      {
-        "value": "FREESTYLE_1",
-        "image": "/Images/templates/FREE_en_1.jpeg"
-      },
-      {
-        "value": "FREESTYLE_2",
-        "image": "/Images/templates/FREE_en_2.jpeg"
-      }
-    ]
-  },
-  "SelectTemplate": {
-    "title": "Select your template",
-    "description": "Find the style that fits your story. You can always fill in the details later.",
-    "continue": "Continue",
-    "skip": "Skip"
-  },
-  "ProfileLayoutPage": {
-    "title": "Pick a template you like",
-    "description": "Switching templates will remove all your current widgets.",
-    "change": "Change template",
-    "ConfirmModal": {
-      "title": "Are you sure?",
-      "description": "Switching templates will remove<br />all your current widgets.<br />This action can’t be undone.",
-      "yes": "Yes, switch template",
-      "no": "No, keep current one"
-    }
-  },
-  "SetupProfile": {
-    "title": "Set up your awesome profile!",
-    "button": "Perfect!",
-    "placeholder": "Enter your profile name",
-    "description": "For the best look, we recommend a 600x600 size image!",
-    "errorText": {
-      "error": "An error occurred. Please try again.",
-      "enterProfile": "Please enter your profile name.",
-      "alreadyExists": "This profile name is already taken. Please try another one.",
-      "invalidLetters": "Profile names can only include English letters, Korean characters, numbers, underscores ( _ ) and periods ( . ).",
-      "startsEndsWithPeriod": "Profile names cannot start or end with a period or space.",
-      "limitExceeded": "Profile name must be between 2 and 20 characters."
-    },
-    "name": "Profile name"
-  },
-  "ProgressBar": {
-    "back": "Back",
-    "skip": "Skip"
-  },
-  "KakaoCallback": {
-    "hasAccount": "This email is already in use.",
-    "anotherMethod": "Please try another method to login.",
-    "error": "An error occurred. Please try again."
-  },
-  "APIErrorCase": {
-    "error": {
-      "errorTitle": "Error",
-      "GeneralErrorText": "An error occurred.\nPlease try again."
-    }
-  },
-  "OAuthCallback": {
-    "title": ["Logging in with", ""],
-    "message": "Please wait for seconds",
-    "retryButton": "Back to Login Page",
-    "errorTitle": "Error",
-    "errorMessage": "An error occurred. Please try again.",
-    "loadingTitle": "Back to Login Page",
-    "kakao": "Kakao",
-    "apple": "Apple"
-  },
   "EcoActionTestimony": {
     "tag": "Testimonials",
     "title": "See our impact,\nshape the future🚀",
@@ -1435,7 +1016,7 @@
   },
   "ErrorComponent": {
     "title": "Page not found",
-    "description": "The page you are looking for does not exist.<br />Please check the URL or try again.",
+    "description": "The page you are looking for does not exist.\nPlease check the URL or try again.",
     "button": "Go back",
     "button2": "Home page"
   },
@@ -1497,7 +1078,7 @@
       {
         "title": "Impact Dashboard",
         "image": "/Images/corp_4p_5.png",
-        "description": "See the full picture of your team’s green efforts, all in one dashboard."
+        "description": "See the full picture of your team's green efforts, all in one dashboard."
       },
       {
         "title": "Rewards",
@@ -1505,5 +1086,96 @@
         "description": "Customize a variety of rewards to boost motivation and keep your team engaged."
       }
     ]
+  },
+  "BusinessInquiryForm": {
+    "title": "Business Inquiry",
+    "type": "Type",
+    "email": "Email",
+    "company": "Company Name",
+    "message": "Message",
+    "subtitle": {
+      "type": "Please select a detail category",
+      "email": "What is your work email?",
+      "company": "What is the name of your company?",
+      "linkedin": "What is your LinkedIn?",
+      "job": "What is your job title?",
+      "message": "Please describe your inquiry"
+    },
+    "placeholder": {
+      "type": "Select",
+      "email": "example@company.com",
+      "company": "",
+      "linkedin": "https://www.linkedin.com/in/…",
+      "job": "e.g. Marketing Manager",
+      "message": "Enter your message"
+    },
+    "inquiryOptions": {
+      "ticketeer": "Ticketeer Partnership",
+      "ecoProduct": "Eco Product Inquiry",
+      "ecoService": "Eco Service Inquiry",
+      "emCorporate": "EM Corporate Solution Inquiry",
+      "zigu": "ZIGU Partnership Inquiry",
+      "earthmeraAd": "EarthMera Advertising Inquiry",
+      "earthmeraPartnership": "EarthMera Partnership Inquiry"
+    },
+    "required": "This field is required",
+    "pleaseEnter": {
+      "type": "Please select a detail category",
+      "email": "Please enter your work email",
+      "company": "Please enter your company name",
+      "job": "Please enter your job title",
+      "message": "Please enter your message"
+    },
+    "invalid": {
+      "email": "Invalid email address"
+    },
+    "send": "Send",
+    "sending": "Sending...",
+    "alert": {
+      "success": "Your inquiry has been sent successfully!",
+      "error": "Failed to send inquiry. Please try again."
+    }
+  },
+  "CustomerSupportInquiryForm": {
+    "title": "Customer Support Inquiry",
+    "subtitle": {
+      "type": "What is your inquiry about?",
+      "service": "Which service are you using?",
+      "email": "What is your registered email?",
+      "message": "Please describe your issue"
+    },
+    "placeholder": {
+      "type": "Select a category",
+      "service": "Select a service",
+      "email": "Enter your email",
+      "message": "Enter details here"
+    },
+    "options": {
+      "type": {
+        "compensation": "Reward & Code Inquiry",
+        "account": "Account & Login Issues",
+        "bugReport": "Bug Report",
+        "featureFeedback": "Feature Request & Feedback",
+        "other": "Other"
+      },
+      "service": {
+        "zigu": "ZIGU",
+        "ticketeer": "Ticketeer",
+        "earthmeraApp": "EarthMera"
+      }
+    },
+    "errors": {
+      "type": "Please select an inquiry type.",
+      "service": "Please select a service.",
+      "email": "Email is required.",
+      "invalidEmail": "Please enter a valid email address.",
+      "message": "Please enter a description of your issue."
+    },
+    "alert": {
+      "success": "Your inquiry has been sent successfully!",
+      "error": "Failed to send inquiry. Please try again."
+    },
+    "sending": "Sending...",
+    "send": "Send"
   }
 }

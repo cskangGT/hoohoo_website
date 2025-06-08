@@ -1,5 +1,5 @@
 import React from 'react';
-import { createBrowserRouter, Navigate } from 'react-router-dom';
+import {createBrowserRouter, Navigate} from 'react-router-dom';
 import {
   default as ErrorComponent,
   default as NotFound,
@@ -15,7 +15,6 @@ import NewsDetailPage from './Pages/EMMedia/News/NewsDetailPage';
 import NewsPage from './Pages/EMMedia/News/NewsPage';
 import Testimonials from './Pages/EMMedia/Testimonials/Testimonials';
 import HomeEarthmera from './Pages/Home/HomeEarthmera';
-import SupportingPage from './Pages/Info/Contact/SupportingPage';
 import RedirectPage from './Pages/Info/Redirection/RedirectPage';
 import Privacy from './Pages/Legal/Privacy';
 import TandC from './Pages/Legal/T&C';
@@ -24,40 +23,32 @@ import Platform from './Pages/Partnership/B2C/Platform';
 import EMCorp from './Pages/Partnership/corp/EMCorp';
 import EMTicketeer from './Pages/Partnership/ticketeer/EMTicketeer';
 import ZiguPage from './Pages/Partnership/ZiguPage';
+import BusinessSupportPage from './Pages/Support/business/BusinessSupportPage';
+import CustomerSupportPage from './Pages/Support/customer/CustomerSupportPage';
 import Root from './Root';
 
 const createLocalizedRoutes = routes => {
-  
   return routes
     .map(route => [
       {
         path: `/ko${route.path}`,
-        element: (
-          <>
-            
-            {route.element}
-          </>
-        ),
+        element: <>{route.element}</>,
         errorElement: route.errorElement,
         loader: ({params}) => {
           // i18n 언어 설정을 한국어로 변경
-
           i18n.changeLanguage('ko');
-
+          document.title = '어스메라 | 지구를 지키는 행동, 모두 이곳에서';
           return null;
         },
       },
       {
         path: `/en${route.path}`,
-        element: (
-          <>
-            {route.element}
-          </>
-        ),
+        element: <>{route.element}</>,
         errorElement: route.errorElement,
         loader: ({params}) => {
           // i18n 언어 설정을 영어로 변경
           i18n.changeLanguage('en');
+          document.title = 'EarthMera | Every eco-action, all here.';
           return null;
         },
       },
@@ -138,7 +129,12 @@ const baseRoutes = [
   // },
   {
     path: '/support',
-    element: <SupportingPage />,
+    element: <CustomerSupportPage />,
+    errorElement: <ErrorComponent />,
+  },
+  {
+    path: '/business_support',
+    element: <BusinessSupportPage />,
     errorElement: <ErrorComponent />,
   },
   {

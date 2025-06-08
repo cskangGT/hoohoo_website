@@ -1,10 +1,10 @@
 import React from 'react';
 import styled from 'styled-components';
-import { Header } from '../../../components/ContentBox/TwoColBoxesSection';
+import {Header} from '../../../components/ContentBox/TwoColBoxesSection';
 import Wrapper from '../../../components/Wrapper/Wrapper';
-import { theme } from '../../../style';
-import { BackgroundImage } from '../../About/OurTeam/TeamIntro';
-import { VerticalSection } from './IdealCustomer';
+import {theme} from '../../../style';
+import {BackgroundImage} from '../../About/OurTeam/TeamIntro';
+import {VerticalSection} from './IdealCustomer';
 const SectionHeader = styled(Header)`
   text-align: center;
   line-height: 1.5;
@@ -48,17 +48,20 @@ export default function Green() {
     e.preventDefault();
     const emailAddress = 'support@earthmera.com';
     window.location.href = `mailto:${emailAddress}`;
-    
+
     // 폴백(fallback) 처리
     setTimeout(() => {
-      window.open(`https://mail.google.com/mail/?view=cm&fs=1&to=${emailAddress}`, '_blank');
+      window.open(
+        `https://mail.google.com/mail/?view=cm&fs=1&to=${emailAddress}`,
+        '_blank',
+      );
     }, 300);
   };
   return (
     <Bg image={data.bgImage}>
       <Wrapper>
         <VerticalSection>
-          <SectionHeader dangerouslySetInnerHTML={{__html: data.header}} />
+          <SectionHeader>{data.header}</SectionHeader>
           <SubHeader>{data.subheader}</SubHeader>
           <Button onClick={handleEmailClick}>{data.button}</Button>
         </VerticalSection>

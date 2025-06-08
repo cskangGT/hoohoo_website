@@ -81,6 +81,7 @@ export const Desc = styled.p<{language?: string}>`
   text-align: left;
   z-index: 10;
   word-break: keep-all;
+  white-space: pre-line;
   @media screen and (max-width: 1000px) {
     margin: 20px 0;
     width: 100%;

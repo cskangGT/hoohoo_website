@@ -1,9 +1,9 @@
 import i18next from 'i18next';
-import React, { useEffect, useRef, useState } from 'react';
+import React, {useEffect, useRef, useState} from 'react';
 
 import styled from 'styled-components';
-import { useLanguage } from '../../../../components/hooks/LanguageContext';
-import { theme } from '../../../../style';
+import {useLanguage} from '../../../../components/hooks/LanguageContext';
+import {theme} from '../../../../style';
 const ContentBox = styled.div`
   display: flex;
   flex-direction: column;
@@ -21,7 +21,7 @@ const ImageBox = styled.div`
   grid-template-rows: auto;
   grid-template-columns: 1fr 1fr 1fr;
   display: grid;
-  
+
   @media screen and (max-width: 1000px) {
     height: auto;
     grid-template-columns: auto;
@@ -181,7 +181,7 @@ function TicketeerSteps() {
       <HeaderBox>
         <Decoration src={data.header.deco} alt="decoration" />
         <Header language={language}>
-          <span dangerouslySetInnerHTML={{__html: data.header.text}} />
+          <span>{data.header.text}</span>
           <Highlight ref={highlightRef}>
             {data.header.highlight}
             <Underline
@@ -198,10 +198,7 @@ function TicketeerSteps() {
             <Image src={item.imagePath} key={index + 'img'} />
             <TextBox>
               <ActName>{item.head}</ActName>
-              <ActDesc
-                language={language}
-                dangerouslySetInnerHTML={{__html: item.desc}}
-              />
+              <ActDesc language={language}>{item.desc}</ActDesc>
             </TextBox>
           </EachBox>
         ))}

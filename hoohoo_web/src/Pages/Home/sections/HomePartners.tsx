@@ -85,7 +85,7 @@ const HomePartners = () => {
     <Container>
       <TitleBox>
         <PartnerText>{data.title}</PartnerText>
-        <DescriptionText dangerouslySetInnerHTML={{__html: data.description}} />
+        <DescriptionText>{data.description}</DescriptionText>
       </TitleBox>
       <GridBox>
         {allLogos.map((item, index) => (

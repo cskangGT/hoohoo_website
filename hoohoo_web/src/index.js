@@ -107,6 +107,10 @@ const GlobalStyle = createGlobalStyle`
       user-select: auto;
       -webkit-user-select: auto;
       -webkit-text-fill-color: unset;
+      /* white-space: pre-line; */
+    }
+    p, h1, h2, h3, h4, h5, h6, span, div {
+      white-space: pre-line;
     }
     html {
       overflow-x: hidden;

@@ -1,12 +1,12 @@
 import i18next from 'i18next';
 import React from 'react';
-import { useNavigate } from 'react-router-dom';
+import {useNavigate} from 'react-router-dom';
 import styled from 'styled-components';
+import {useLanguage} from '../../../components/hooks/LanguageContext';
 import Wrapper from '../../../components/Wrapper/Wrapper';
-import { logButtonEvent, PageName } from '../../../util/firebase_custom_event';
-import { HomeTransitionButton } from '../styles';
-import { ButtonBox, HeaderText, UpperTitle } from './HomeEnvImpact';
-import { useLanguage } from '../../../components/hooks/LanguageContext';
+import {logButtonEvent, PageName} from '../../../util/firebase_custom_event';
+import {HomeTransitionButton} from '../styles';
+import {ButtonBox, HeaderText, UpperTitle} from './HomeEnvImpact';
 const Container = styled.section`
   width: 100%;
   background-color: transparent;
@@ -113,7 +113,7 @@ const HomeEcoProducts = () => {
           <InnerContainer>
             <LeftBox>
               <UpperTitle>{data.uptitle}</UpperTitle>
-              <HeaderText dangerouslySetInnerHTML={{__html: data.title}} />
+              <HeaderText>{data.title}</HeaderText>
               <ButtonBox>
                 <HomeTransitionButton onClick={goPlatform}>
                   {data.buttonText}

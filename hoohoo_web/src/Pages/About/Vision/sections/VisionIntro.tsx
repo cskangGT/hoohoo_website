@@ -126,14 +126,11 @@ export default function VisionIntro() {
   }, []);
   return (
     <Container>
-      <Header
-        dangerouslySetInnerHTML={{__html: data.header}}
-        language={language}
-      />
+      <Header language={language}>{data.header}</Header>
       <ImageBox>
         <Image src={isMobile ? data.smallImage : data.image} />
       </ImageBox>
-      <ContentText dangerouslySetInnerHTML={{__html: data.content}} />
+      <ContentText>{data.content}</ContentText>
     </Container>
   );
 }

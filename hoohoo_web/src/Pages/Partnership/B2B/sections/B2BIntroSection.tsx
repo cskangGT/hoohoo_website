@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import Wrapper from '../../../../components/Wrapper/Wrapper';
 import i18next from '../../../../lang/i18n';
-import { slideInFromTop } from '../../../../style';
+import {slideInFromTop} from '../../../../style';
 
 // 공통적으로 사용될 스타일 변수들을 정의합니다.
 const colors = {
@@ -73,7 +73,6 @@ const CircleImage = styled.img`
   @media (max-width: 600px) {
     width: 100%;
     height: auto;
-    
   }
 `;
 const Circle = styled.div`
@@ -231,7 +230,8 @@ const GreenLine = styled.div`
 const ShowcaseText = styled.span<{language: string}>`
   font-size: 2.5rem;
   color: #028d47;
-  font-family: ${props => (props.language === 'ko' ? 'Black Han Sans' : 'Fredoka')};
+  font-family: ${props =>
+    props.language === 'ko' ? 'Black Han Sans' : 'Fredoka'};
   z-index: 3;
   line-height: 1.2;
   @media (max-width: 1200px) {
@@ -262,29 +262,6 @@ export default function B2BIntroSection() {
           <ShowcaseText language={language}>{data.showcase}</ShowcaseText>
           <CircleBox>
             <CircleImage src={data.image} />
-            {/* <Circle color={colors.yellow}>
-              <SecondCircle color={colors.yellow}>
-                <BoxInSecondCircle>
-                  <TextInFirstCircle
-                    dangerouslySetInnerHTML={{__html: 'green<br />business'}}
-                  />
-                </BoxInSecondCircle>
-              </SecondCircle>
-            </Circle>
-            <Circle color={colors.pink}>
-              <SecondCircle color={colors.pink}>
-                <BoxInCircle>
-                  <SecondTextInFirstCircle
-                    dangerouslySetInnerHTML={{__html: 'where'}}
-                  />
-                  <TextInSecondCircle
-                    dangerouslySetInnerHTML={{
-                      __html: 'green users<br />gather.',
-                    }}
-                  />
-                </BoxInCircle>
-              </SecondCircle>
-            </Circle> */}
           </CircleBox>
         </InnerContainer>
       </Wrapper>

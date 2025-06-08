@@ -7,7 +7,7 @@ import {
   LeftBox,
   RightBox,
 } from '../../../components/ContentBox/TwoColBoxesSection';
-import { slideInFromTop, theme } from '../../../style';
+import {slideInFromTop, theme} from '../../../style';
 
 const Container = styled.div`
   width: 100%;
@@ -88,7 +88,7 @@ export default function FutureModel() {
   const data: any = i18next.t('futureModel', {returnObjects: true});
   return (
     <Container>
-      <Header dangerouslySetInnerHTML={{__html: data.header}} />
+      <Header>{data.header}</Header>
       <Title>{data.sub}</Title>
 
       <ContentText>{data.subcontent}</ContentText>

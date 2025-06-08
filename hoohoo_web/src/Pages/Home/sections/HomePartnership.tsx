@@ -95,8 +95,8 @@ function HomePartnership() {
       <Background backgroundImage={data.bgImage}>
         <Wrapper>
           <HeaderBox>
-            <UpperTitle dangerouslySetInnerHTML={{__html: data.uptitle}} />
-            <HeaderText dangerouslySetInnerHTML={{__html: data.title}} />
+            <UpperTitle>{data.uptitle}</UpperTitle>
+            <HeaderText>{data.title}</HeaderText>
           </HeaderBox>
         </Wrapper>
         <CardBox>
@@ -183,8 +183,8 @@ const IconImage = styled.img`
 function PartnersCard({data}: CardProps) {
   return (
     <CardContainer backgroundImage={'/Images/card_background.png'}>
-      <CardHeader dangerouslySetInnerHTML={{__html: data.title}}></CardHeader>
-      <CardDesc dangerouslySetInnerHTML={{__html: data.description}}></CardDesc>
+      <CardHeader>{data.title}</CardHeader>
+      <CardDesc>{data.description}</CardDesc>
       <IconImage src={data.icon} />
     </CardContainer>
   );

@@ -8,7 +8,7 @@ import {
   RightBox,
 } from '../../../components/ContentBox/TwoColBoxesSection';
 import Wrapper from '../../../components/Wrapper/Wrapper';
-import { theme } from '../../../style';
+import {theme} from '../../../style';
 const Bg = styled.div`
   width: calc(100%);
   display: flex;
@@ -68,7 +68,7 @@ export default function IntroApp() {
             <Image src={data.image} />
           </LeftCell>
           <RightBox>
-            <Header dangerouslySetInnerHTML={{__html: data.header}} />
+            <Header>{data.header}</Header>
             <Line />
             <ContentText>{data.content}</ContentText>
           </RightBox>
