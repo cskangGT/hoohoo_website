@@ -1,11 +1,11 @@
 import i18next from 'i18next';
-import React, { useMemo } from 'react';
+import React, {useMemo} from 'react';
 import Marquee from 'react-fast-marquee';
-import { useNavigate } from 'react-router-dom';
+import {useNavigate} from 'react-router-dom';
 import styled from 'styled-components';
-import { EcoActionData } from '../../../../public/Images/EcoActionData';
+import {EcoActionData} from '../../../../public/Images/EcoActionData';
 import useWindowResize from '../../../components/hooks/useWindowResize';
-import { theme } from '../../../style';
+import {theme} from '../../../style';
 const gap = 16;
 const numColumns = 9;
 const mediumNumColumns = 7;
@@ -349,10 +349,7 @@ export const EcoActionMarqueeImageItem = ({
     </ImageColumn>
   );
 };
-const FormattedTitle = (title: string) => {
 
-  return title.replace(/<br\s*\/?>/gi, '\n').replace(/<[^>]*>/g, '');
-};
 const HomeLandingEcoAction = () => {
   const navigate = useNavigate();
   const {width: resizedWidth} = useWindowResize({maxWidth: 1400});
@@ -375,10 +372,11 @@ const HomeLandingEcoAction = () => {
       count: columnImages.length, // 열당 이미지 수
     };
   });
-  console.log('resizedWidth', resizedWidth);
 
   const handleButtonClick = () => {
-    navigate(`/${i18next.language}/testimonials`, {state: {canComeBack: true}});
+    navigate(`/${i18next.language}/contents?category=ECO_ACTIONS`, {
+      state: {canComeBack: true},
+    });
   };
 
   const visibleColumns = useMemo(() => {
@@ -418,11 +416,9 @@ const HomeLandingEcoAction = () => {
 
           <Title>{localizedTexts.title}</Title>
 
-          <Description
-            language={i18next.language}
-            >
-              {localizedTexts.description}
-            </Description>
+          <Description language={i18next.language}>
+            {localizedTexts.description}
+          </Description>
 
           <Button onClick={handleButtonClick}>
             {localizedTexts.buttonText}

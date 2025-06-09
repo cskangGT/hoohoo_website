@@ -1,5 +1,5 @@
 import { PressCoverPostType } from "./PressCoverType";
-export const presscoverData = [
+export const presscoverDataKO = [
   {
     "idx": 10,
     "title": "한국 고등학생들이 보는 AI 교과서에 EarthMera가 인공지능에 도전하는 사람들로 인터뷰에 실려",
@@ -37,7 +37,44 @@ export const presscoverData = [
     "type": PressCoverPostType.NEWS
   },
 ]
-
+export const presscoverDataEN = [
+  {
+    "idx": 10,
+    "title": "EarthMera featured in Korean high school AI textbook, interviewed as AI pioneers",
+    "url": "https://earthmera.com/cover_detail/10",
+    "uploadAt": "2025-06-07",
+    "thumbnailImage": "/Images/press_cover_10.webp",
+    "linkedInUrl": "https://www.linkedin.com/feed/update/urn:li:activity:7337207986072813568",
+    "type": PressCoverPostType.INTERVIEW
+  },
+  {
+    "idx": 1,
+    "title": "EarthMera provides eco‑friendly event service ‘Ticketeer’ at UKIS 2025",
+    "url": "https://news.mt.co.kr/mtview.php?no=2025050815575443839",
+    "uploadAt": "2025-05-08",
+    "thumbnailImage": "https://thumb.mt.co.kr/06/2025/05/2025050815575443839_1.jpg/dims/optimize/",
+    "linkedInUrl": "https://www.linkedin.com/feed/update/urn:li:activity:7337216671373254657",
+    "type": PressCoverPostType.NEWS
+  },
+  {
+    "idx": 2,
+    "title": "EarthMera launches ‘ZIGU’, an environmental portfolio link service",
+    "url": "https://news.mt.co.kr/mtview.php?no=2025042815125068187",
+    "uploadAt": "2025-04-29",
+    "linkedInUrl": "https://www.linkedin.com/feed/update/urn:li:activity:7323555906829316096",
+    "thumbnailImage": "https://thumb.mt.co.kr/06/2025/04/2025042815125068187_1.jpg/dims/optimize/",
+    "type": PressCoverPostType.NEWS
+  },
+  {
+    "idx": 6,
+    "title": "EarthMera, an eco‑action platform, selected as a ‘Top Startup’",
+    "url": "https://news.mt.co.kr/mtview.php?no=2025041417083152522",
+    "uploadAt": "2025-04-14",
+    "linkedInUrl": "https://www.linkedin.com/feed/update/urn:li:activity:7323555362777788416",
+    "thumbnailImage": "https://thumb.mt.co.kr/06/2025/04/2025041417083152522_1.jpg/dims/optimize/",
+    "type": PressCoverPostType.NEWS
+  },
+];
 
 export const coverDetailDataEN = {
 

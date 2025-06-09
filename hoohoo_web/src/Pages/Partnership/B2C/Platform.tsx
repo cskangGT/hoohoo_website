@@ -82,9 +82,18 @@ function Platform() {
     window.scrollTo(0, 0);
   }, []);
   useEffect(() => {
-    if (location.hash === '#action' && sectionRef.current) {
-      sectionRef.current.scrollIntoView({behavior: 'smooth'});
+    const hash = location.hash;
+
+    if (hash) {
+      const element = document.querySelector(hash);
+      if (element) {
+        element.scrollIntoView({behavior: 'smooth', block: 'start'});
+      }
     }
+
+    // if (location.hash === '#action' && sectionRef.current) {
+    //   sectionRef.current.scrollIntoView({behavior: 'smooth'});
+    // }
   }, [location]);
   const data: any = i18next.t('community', {returnObjects: true});
 
@@ -100,30 +109,30 @@ function Platform() {
         <ProgressContentBox ref={sectionRef} id="action">
           <EcoActionProcess />
         </ProgressContentBox>
-        <ContentBox>
+        <ContentBox id="eco-action-categories">
           <EcoActionCategories></EcoActionCategories>
         </ContentBox>
         <Wrapper>
-          <ShortContentBox>
+          <ShortContentBox id="badges">
             <Badges />
           </ShortContentBox>
           {/* <NoHeight>
                     <CategorySection />
                 </NoHeight> */}
-          <ShortContentBox>
+          <ShortContentBox id="eco-impact">
             <YourImpactSection />
           </ShortContentBox>
-          <ShortContentBox>
+          <ShortContentBox id="eco-products">
             <B2CEcoProducts />
           </ShortContentBox>
-          <ShortContentBox>
+          <ShortContentBox id="eco-services">
             <B2CEcoServices />
           </ShortContentBox>
 
-          <ShortContentBox>
+          <ShortContentBox id="rewards">
             <Rewards />
           </ShortContentBox>
-          <ShortContentBox>
+          <ShortContentBox id="group-activity">
             <Community
               data={data[0]}
               index={0}
@@ -131,10 +140,10 @@ function Platform() {
               imageHeight={600}
             />
           </ShortContentBox>
-          <ShortContentBox>
+          <ShortContentBox id="health">
             <HealthSection />
           </ShortContentBox>
-          <ShortContentBox>
+          <ShortContentBox id="share-your-action">
             <LifeStyleSection />
           </ShortContentBox>
           {/* {data.map((item: any, index: number) => (

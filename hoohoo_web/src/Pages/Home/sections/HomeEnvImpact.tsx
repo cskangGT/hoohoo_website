@@ -133,7 +133,7 @@ export default function HomeEnvImpact() {
   const data: any = i18next.t('HomeEnvImpact', {returnObjects: true});
   function goPlatform() {
     logButtonEvent('go_platform in HomeEnvImpact', PageName.home);
-    navigate(`/${language}/platform`);
+    navigate(`/${language}/platform#eco-impact`);
   }
   return (
     <Container>

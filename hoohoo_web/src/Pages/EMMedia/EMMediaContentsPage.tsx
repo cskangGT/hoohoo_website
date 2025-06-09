@@ -1,4 +1,5 @@
 import React, {useEffect, useMemo, useState} from 'react';
+import {useLocation} from 'react-router-dom';
 import styled from 'styled-components';
 import FootContact from '../../components/Footer/FootContact';
 import {useLanguage} from '../../components/hooks/LanguageContext';
@@ -189,7 +190,16 @@ function EMMediaContentsPage() {
   const [selectedCategory, setSelectedCategory] = useState<string>(
     EMMediaContentsCategory.ECO_JOURNAL.value,
   );
-
+  const location = useLocation();
+  useEffect(() => {
+    const searchParams = new URLSearchParams(location.search);
+    if (searchParams.get('category')) {
+      setSelectedCategory(
+        searchParams.get('category') ||
+          EMMediaContentsCategory.ECO_JOURNAL.value,
+      );
+    }
+  }, [location]);
   const {language} = useLanguage();
 
   useEffect(() => {

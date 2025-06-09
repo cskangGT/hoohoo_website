@@ -5,7 +5,7 @@ import {useLanguage} from '../../../components/hooks/LanguageContext';
 import Wrapper from '../../../components/Wrapper/Wrapper';
 import {BgImage, theme} from '../../../style';
 import PressCoverCardItem from './PressCoverCardItem';
-import {presscoverData} from './presscoverData';
+import {presscoverDataEN, presscoverDataKO} from './presscoverData';
 import {PressCoverPostTypeList, PressCoverType} from './PressCoverType';
 const Container = styled.div`
   width: calc(100% - 30px);
@@ -199,11 +199,16 @@ function PressCoverPage() {
   const {language} = useLanguage();
   const [fetchedList, setFetchedList] = useState<PressCoverType[]>([]);
   useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+  useEffect(() => {
     if (selectedCategory === PressCoverPostTypeList.ALL.value) {
-      setFetchedList(presscoverData);
+      setFetchedList(language === 'ko' ? presscoverDataKO : presscoverDataEN);
     } else {
       setFetchedList(
-        presscoverData.filter(item => item.type === selectedCategory),
+        (language === 'ko' ? presscoverDataKO : presscoverDataEN).filter(
+          item => item.type === selectedCategory,
+        ),
       );
     }
   }, [selectedCategory]);

@@ -123,11 +123,12 @@ const Text = styled.p`
   word-break: keep-all;
   color: #444;
 `;
-const ListItem = styled.li`
+const ListItem = styled.p`
   font-size: 1rem;
   line-height: 1.6;
   margin-bottom: 0.9375rem;
-  word-break: keep-all;
+  white-space: normal;
+  overflow-wrap: anywhere;
   color: #444;
 `;
 type Props = {
