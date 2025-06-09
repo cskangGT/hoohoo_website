@@ -7,48 +7,70 @@ export type NewsDataType = {
     thumbnailImage?: string | null;
     description?: string | null;
 };
-export const NewsCategory = {
-    ALL: {
+export const EMMediaContentsCategory = {
+    ECO_JOURNAL: {
+        text: {
+            ko: "에코 저널",
+            en: "Eco Journal"
+        },
+        value: "ECO_JOURNAL"
+    },
+    LINKEDIN_POSTS: {
+        text: {
+            ko: "게시글",
+            en: "Posts"
+        },
+        value: "LINKEDIN_POSTS"
+    },
+    CLIMATE_CARD: {
+        text: {
+            ko: "기후 카드",
+            en: "Climate Cards"
+        },
+        value: "CLIMATE_CARD"
+    },
+    ECO_ACTIONS: {
+        text: {
+            ko: "에코액션",
+            en: "Eco-Actions"
+        },
+        value: "ECO_ACTIONS"
+    }
+
+}
+export const HansaengsaNewsCategoryList = [
+    {
         text: {
             ko: "모두 보기",
             en: "View All"
         },
         value: "ALL"
     },
-    HWANSAENGSA: {
-        text: {
-            ko: "환생사(환경을 생각하는 사람들)",
-            en: "The Environmental People"
-        },
-        value: "HWANSAENGSA"
-    },
-}
-export const HansaengsaNewsCategoryList = [
     {
         text: {
-            ko: "기후 뉴스",
-            en: "Climate News"
+            ko: "기후",
+            en: "Climate"
         },
         value: "climatenews"
     },
     {
         text: {
-            ko: "환경 오염 뉴스",
-            en: "Pollution News"
+            ko: "환경오염",
+            en: "Pollution"
         },
         value: "pllutionnews"
     },
     {
         text: {
-            ko: "사회 뉴스",
-            en: "Social News"
+            ko: "사회",
+            en: "Social"
         },
         value: "socialnews"
     },
     {
         text: {
-            ko: "지속가능 기술 뉴스",
-            en: "Sustainable Technology News"
+            ko: "기술",
+            en: "Technology"
         },
         value: "technicalnews"
     },

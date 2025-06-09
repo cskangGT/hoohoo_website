@@ -38,7 +38,7 @@ function PartnershipEcoBoard() {
           </PartnershipDescText>
           <ButtonBox>
             <HomeTransitionButton
-              href={`/${i18next.language}/business_support?type=earthmeraAd`}
+              href={`/${i18next.language}/business_support?product=earthmera&type=ecoBoard`}
               onClick={handleEmailClick}>
               {data.buttonText}
             </HomeTransitionButton>

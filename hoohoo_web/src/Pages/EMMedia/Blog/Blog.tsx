@@ -8,10 +8,8 @@ import {
   BlogDataType,
 } from '../../../components/Blog/BlogCategory';
 import PageNav from '../../../components/Blog/PageNav';
-import FootContact from '../../../components/Footer/FootContact';
 import {useLanguage} from '../../../components/hooks/LanguageContext';
-import Wrapper from '../../../components/Wrapper/Wrapper';
-import {BgImage, theme} from '../../../style';
+import {theme} from '../../../style';
 import BlogModal from './BlogModal';
 const Container = styled.div`
   width: calc(100% - 30px);
@@ -34,7 +32,7 @@ const SlickBar = styled.div`
   margin: 0;
   padding: 0;
   width: 100%;
-  margin-top: 20px;
+  margin-top: 5px;
 `;
 
 const ScrollContainer = styled.div`
@@ -210,32 +208,29 @@ function Blog() {
   const {language} = useLanguage();
   return (
     <>
-      <BgImage>
-        <Wrapper>
-          <Container>
-            <ContentBox>
-              <SlickBar>
-                <ScrollContainer>
-                  {Object.values(BlogCategory).map(
-                    (
-                      item: {
-                        value: string;
-                        text: any;
-                      },
-                      index: number,
-                    ) => (
-                      <Outline
-                        key={index}
-                        op={item.value}
-                        selectedCategory={selectedCategory}
-                        onClick={() => handleSelectCategory(item.value)}>
-                        <OutlineText key={index + 'text'}>
-                          {language === 'ko' ? item.text.ko : item.text.en}
-                        </OutlineText>
-                      </Outline>
-                    ),
-                  )}
-                  {/* {logIn && (
+      <ContentBox>
+        <SlickBar>
+          <ScrollContainer>
+            {Object.values(BlogCategory).map(
+              (
+                item: {
+                  value: string;
+                  text: any;
+                },
+                index: number,
+              ) => (
+                <Outline
+                  key={index}
+                  op={item.value}
+                  selectedCategory={selectedCategory}
+                  onClick={() => handleSelectCategory(item.value)}>
+                  <OutlineText key={index + 'text'}>
+                    {language === 'ko' ? item.text.ko : item.text.en}
+                  </OutlineText>
+                </Outline>
+              ),
+            )}
+            {/* {logIn && (
                     <NewBlogBtn onClick={handleOpen}>
                       <FontAwesomeIcon
                         icon={faPlus}
@@ -245,45 +240,40 @@ function Blog() {
                     </NewBlogBtn>
                   )} */}
 
-                  {isOpen && (
-                    <BlogModal
-                      isOpen={isOpen}
-                      setIsOpen={setIsOpen}
-                      selectedBlog={selectedBlog}
-                    />
-                  )}
-                </ScrollContainer>
-              </SlickBar>
-              <GuideBox>
-                <GuideText>{data.guideText}</GuideText>
-              </GuideBox>
-              {fetchedList.length === 0 ? (
-                <Text style={{minHeight: 400}}>No blog found</Text>
-              ) : (
-                <>
-                  <Grid>
-                    {' '}
-                    {fetchedList.map((item, index) => (
-                      <BlogCard
-                        key={index}
-                        data={item}
-                        setSelectedBlog={setSelectedBlog}
-                        handleOpen={handleOpen}></BlogCard>
-                    ))}
-                  </Grid>
-                  <PageNav
-                    pages={Math.ceil(numTotalData / OFFSET)}
-                    currentPage={currentPage}
-                    changePage={changePage}
-                  />
-                </>
-              )}
-            </ContentBox>
-          </Container>
-        </Wrapper>
-      </BgImage>
-      <hr style={{color: theme.darkGray, margin: 0}} />
-      <FootContact />
+            {isOpen && (
+              <BlogModal
+                isOpen={isOpen}
+                setIsOpen={setIsOpen}
+                selectedBlog={selectedBlog}
+              />
+            )}
+          </ScrollContainer>
+        </SlickBar>
+        <GuideBox>
+          <GuideText>{data.guideText}</GuideText>
+        </GuideBox>
+        {fetchedList.length === 0 ? (
+          <Text style={{minHeight: 400}}>No blog found</Text>
+        ) : (
+          <>
+            <Grid>
+              {' '}
+              {fetchedList.map((item, index) => (
+                <BlogCard
+                  key={index}
+                  data={item}
+                  setSelectedBlog={setSelectedBlog}
+                  handleOpen={handleOpen}></BlogCard>
+              ))}
+            </Grid>
+            <PageNav
+              pages={Math.ceil(numTotalData / OFFSET)}
+              currentPage={currentPage}
+              changePage={changePage}
+            />
+          </>
+        )}
+      </ContentBox>
     </>
   );
 }

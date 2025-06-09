@@ -140,7 +140,7 @@ function TicketeerIntro() {
         </HeaderBox>
 
         <HomeTransitionButton
-          href={`/${language}/business_support?type=ticketeer`}
+          href={`/${language}/business_support?product=ticketeer`}
           onClick={handleEmailClick}>
           {data.buttonText}
         </HomeTransitionButton>

@@ -26,7 +26,7 @@
           {"label": "EarthMera", "link": "/en/platform"},
           {"label": "EM Ticketeer", "link": "/en/ticketeer"},
           {"label": "ZIGU", "link": "/zigu"},
-          {"label": "EM Corperate", "link": "/en/corp"}
+          {"label": "EM Corporate", "link": "/en/corp"}
         ]
       },
       {
@@ -36,9 +36,8 @@
       {
         "label": "EM Media",
         "subItems": [
-          {"label": "News", "link": "/en/news"},
-          {"label": "Climate Cards", "link": "/en/climate_card"},
-          {"label": "Testimonials", "link": "/en/testimonials"}
+          {"label": "Press Coverage", "link": "/en/press_cover"},
+          {"label": "Contents", "link": "/en/contents"}
         ]
       },
       {
@@ -1022,7 +1021,7 @@
   },
   "CorpIntro": {
     "title": "Track eco-impact,\nFuel a greener\ncompany culture",
-    "button": "Ask about EM Corperate"
+    "button": "Ask about EM Corporate"
   },
   "EMCorpSolution": {
     "title": "Smart, Engaging, and\nTrackable ESG Programs\n—Made Easy",
@@ -1094,7 +1093,9 @@
     "company": "Company Name",
     "message": "Message",
     "subtitle": {
-      "type": "Please select a detail category",
+      "product": "Please select a product",
+      "name": "Please enter your name",
+      "type": "What is your inquiry purpose?",
       "email": "What is your work email?",
       "company": "What is the name of your company?",
       "linkedin": "What is your LinkedIn?",
@@ -1102,25 +1103,35 @@
       "message": "Please describe your inquiry"
     },
     "placeholder": {
-      "type": "Select",
+      "product": "Select",
+      "name": "Enter your name",
+      "type": "Select a inquiry",
       "email": "example@company.com",
       "company": "",
       "linkedin": "https://www.linkedin.com/in/…",
       "job": "e.g. Marketing Manager",
       "message": "Enter your message"
     },
+    "productOptions": {
+      "ticketeer": "Ticketeer",
+      "earthmera": "EarthMera",
+      "emCorporate": "EM Corporate",
+      "zigu": "ZIGU"
+    },
     "inquiryOptions": {
-      "ticketeer": "Ticketeer Partnership",
+      "partnership": "Partnership Inquiry",
+      "advertisement": "Advertising Inquiry",
+      "ecoBoard": "Eco Board Inquiry",
+      "categoryRegistration": "Category Registration Inquiry",
+      "nearbyStore": "Nearby Store Inquiry",
       "ecoProduct": "Eco Product Inquiry",
-      "ecoService": "Eco Service Inquiry",
-      "emCorporate": "EM Corporate Solution Inquiry",
-      "zigu": "ZIGU Partnership Inquiry",
-      "earthmeraAd": "EarthMera Advertising Inquiry",
-      "earthmeraPartnership": "EarthMera Partnership Inquiry"
+      "ecoService": "Eco Service Inquiry"
     },
     "required": "This field is required",
     "pleaseEnter": {
-      "type": "Please select a detail category",
+      "product": "Please select a product",
+      "name": "Please enter your name",
+      "type": "Please select the purpose of your inquiry",
       "email": "Please enter your work email",
       "company": "Please enter your company name",
       "job": "Please enter your job title",
@@ -1177,5 +1188,8 @@
     },
     "sending": "Sending...",
     "send": "Send"
+  },
+  "PressCoverCardItem": {
+    "linkedIn": "View on EarthMera’s LinkedIn"
   }
 }

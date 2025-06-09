@@ -1,20 +1,17 @@
 import React, {useEffect, useState} from 'react';
 import styled from 'styled-components';
-import {getNewsList} from '../../../api/news.api';
 import FootContact from '../../../components/Footer/FootContact';
 import {useLanguage} from '../../../components/hooks/LanguageContext';
 import Wrapper from '../../../components/Wrapper/Wrapper';
 import {BgImage, theme} from '../../../style';
-import NewsCard from './NewsCard';
-import {
-  HansaengsaNewsCategoryList,
-  NewsCategory,
-  NewsDataType,
-} from './NewsType';
+import PressCoverCardItem from './PressCoverCardItem';
+import {presscoverData} from './presscoverData';
+import {PressCoverPostTypeList, PressCoverType} from './PressCoverType';
 const Container = styled.div`
   width: calc(100% - 30px);
   display: flex;
   margin: 0px auto;
+
   justify-content: flex-start;
   align-items: center;
   position: relative;
@@ -29,12 +26,21 @@ const ContentBox = styled.div`
   justify-content: center;
   margin-top: 20px;
 `;
+const CardContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  width: 100%;
+  justify-content: center;
+  row-gap: 16px;
+`;
 const SlickBar = styled.div`
   margin: 0;
   padding: 0;
   width: 100%;
 
   margin-top: 5px;
+  margin-bottom: 20px;
 `;
 
 const ScrollContainer = styled.div`
@@ -54,7 +60,7 @@ const ScrollContainer = styled.div`
   align-items: center;
   @media screen and (max-width: 700px) {
     margin-bottom: 0;
-    justify-content: space-between;
+    justify-content: flex-start;
     overflow-x: scroll;
     white-space: nowrap;
     user-select: none;
@@ -185,63 +191,22 @@ const LoadingSpinner = styled.div`
     }
   }
 `;
-const Text = styled.span`
-  color: ${theme.darkGray};
-  display: flex;
-  width: calc(100% - 60px);
-  margin: 20px 30px;
-  justify-content: center;
-  align-items: center;
-  align-items: center;
-`;
 
-function NewsPage() {
-  const [currentPage, setCurrentPage] = useState<number>(1);
-  const [selectedCategory, setSelectedCategory] = useState<string>('ALL');
-  const [selectedSubCategory, setSelectedSubCategory] = useState<string>('');
-  const [fetchedList, setFetchedList] = useState<NewsDataType[]>([]);
-  const [selectedNews, setSelectedNews] = useState<NewsDataType | undefined>();
-  const [numTotalData, setNumTotalData] = useState<number>(1);
-  const [isLoading, setIsLoading] = useState<boolean>(false);
-  const [lastKey, setLastKey] = useState<string | undefined>('');
+function PressCoverPage() {
+  const [selectedCategory, setSelectedCategory] = useState<string>(
+    PressCoverPostTypeList.ALL.value,
+  );
   const {language} = useLanguage();
-  const fetchData = async (key: string, category?: string) => {
-    setIsLoading(true);
-    const response = await getNewsList(language, key, category);
-    console.log('response', response);
-
-    if (response.data) {
-      setFetchedList(response.data.items);
-      setLastKey(response.data.lastEvaluatedKey);
+  const [fetchedList, setFetchedList] = useState<PressCoverType[]>([]);
+  useEffect(() => {
+    if (selectedCategory === PressCoverPostTypeList.ALL.value) {
+      setFetchedList(presscoverData);
+    } else {
+      setFetchedList(
+        presscoverData.filter(item => item.type === selectedCategory),
+      );
     }
-    setIsLoading(false);
-  };
-  const changePage = (num: number) => {
-    setCurrentPage(num);
-    fetchData(lastKey ?? '', selectedCategory);
-  };
-
-  const handleSelectCategory = (category: string) => {
-    setSelectedCategory(category);
-    setCurrentPage(1);
-    setSelectedSubCategory('');
-    setLastKey('');
-    fetchData('', '');
-  };
-  const handleSelectSubCategory = (category: string) => {
-    setSelectedSubCategory(category);
-    setCurrentPage(1);
-    setLastKey('');
-    fetchData('', category);
-  };
-  useEffect(() => {
-    fetchData('', '');
-  }, []);
-
-  useEffect(() => {
-    window.scrollTo(0, 0);
-  }, []);
-
+  }, [selectedCategory]);
   return (
     <>
       <BgImage bgcolor="white">
@@ -250,7 +215,7 @@ function NewsPage() {
             <ContentBox>
               <SlickBar>
                 <ScrollContainer>
-                  {Object.values(NewsCategory).map(
+                  {Object.values(PressCoverPostTypeList).map(
                     (
                       item: {
                         value: string;
@@ -265,82 +230,21 @@ function NewsPage() {
                         key={index}
                         op={item.value}
                         selectedCategory={selectedCategory}
-                        onClick={() => handleSelectCategory(item.value)}>
+                        onClick={() => setSelectedCategory(item.value)}>
                         <OutlineText key={index + 'text'}>
                           {language === 'ko' ? item.text.ko : item.text.en}
                         </OutlineText>
-                        {/* {selectedCategory === item.value && <Line />} */}
                       </Outline>
                     ),
                   )}
-                  {/* {logIn && (
-                      <NewBlogBtn onClick={handleOpen}>
-                        <FontAwesomeIcon
-                          icon={faPlus}
-                          style={{paddingRight: 10}}
-                        />
-                        New Blog
-                      </NewBlogBtn>
-                    )} */}
                 </ScrollContainer>
               </SlickBar>
-              <SlickBar>
-                <ScrollContainer>
-                  {Object.values(HansaengsaNewsCategoryList).map(
-                    (
-                      item: {
-                        value: string;
-                        text: {
-                          ko: string;
-                          en: string;
-                        };
-                      },
-                      index: number,
-                    ) => (
-                      <SubOutline
-                        key={index}
-                        op={item.value}
-                        selectedCategory={selectedSubCategory}
-                        onClick={() => handleSelectSubCategory(item.value)}>
-                        <SubOutlineText key={index + 'outlineText'}>
-                          {language === 'ko' ? item.text.ko : item.text.en}
-                        </SubOutlineText>
-                      </SubOutline>
-                    ),
-                  )}
-                  {/* {logIn && (
-                      <NewBlogBtn onClick={handleOpen}>
-                        <FontAwesomeIcon
-                          icon={faPlus}
-                          style={{paddingRight: 10}}
-                        />
-                        New Blog
-                      </NewBlogBtn>
-                    )} */}
-                </ScrollContainer>
-              </SlickBar>
-              {isLoading ? (
-                <LoadingContainer>
-                  <LoadingSpinner />
-                </LoadingContainer>
-              ) : fetchedList.length === 0 ? (
-                <Text style={{minHeight: 400}}>
-                  {language === 'ko' ? '아직 뉴스가 없습니다.' : 'No news yet.'}
-                </Text>
-              ) : (
-                <>
-                  <Grid>
-                    {fetchedList.map((item, index) => (
-                      <NewsCard key={item.idx} item={item} />
-                    ))}
-                  </Grid>
-                  {/* <PageNav
-                    pages={Math.ceil(numTotalData / OFFSET)}
-                    currentPage={currentPage}
-                    changePage={changePage}
-                  /> */}
-                </>
-              )}
+
+              <CardContainer>
+                {fetchedList.map(item => (
+                  <PressCoverCardItem key={item.idx} item={item} />
+                ))}
+              </CardContainer>
             </ContentBox>
           </Container>
         </Wrapper>
@@ -351,4 +255,4 @@ function NewsPage() {
   );
 }
 
-export default NewsPage;
+export default PressCoverPage;
