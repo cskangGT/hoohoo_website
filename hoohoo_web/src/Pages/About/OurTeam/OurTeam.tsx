@@ -1,12 +1,11 @@
-import React, { useEffect } from 'react';
+import React, {useEffect} from 'react';
 import styled from 'styled-components';
 import Wrapper from '../../../components/Wrapper/Wrapper';
-import { BgImage, theme } from '../../../style';
+import {BgImage, theme} from '../../../style';
 import Gallery from './Gallery';
 import Mindset from './Mindset';
 import Strength from './Strength';
 import TeamIntro from './TeamIntro';
-import TeamProfiles from './TeamProfiles';
 
 import FootContact from '../../../components/Footer/FootContact';
 const ContentBox = styled.section`
@@ -45,9 +44,9 @@ function OurTeam() {
         </BgImage>
 
         <Wrapper>
-          <ContentBox>
+          {/* <ContentBox>
             <TeamProfiles />
-          </ContentBox>
+          </ContentBox> */}
           <ContentBox>
             <Gallery />
           </ContentBox>
