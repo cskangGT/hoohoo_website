@@ -101,7 +101,8 @@ const HomeEcoServices = () => {
   const data: any = i18next.t('HomeEcoServices', {returnObjects: true});
   function goPlatform() {
     logButtonEvent('go_platform in HomeEcoServices', PageName.home);
-    navigate(`/${language}/platform`);
+
+    navigate(`/${language}/platform#eco-services`);
   }
   return (
     <Container>

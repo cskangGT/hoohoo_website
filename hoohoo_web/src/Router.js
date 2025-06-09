@@ -16,7 +16,6 @@ import NewsPage from './Pages/EMMedia/News/NewsContents';
 import NewsDetailPage from './Pages/EMMedia/News/NewsDetailPage';
 import CoverDetailPage from './Pages/EMMedia/PressCover/CoverDetailPage';
 import PressCoverPage from './Pages/EMMedia/PressCover/PressCoverPage';
-import Testimonials from './Pages/EMMedia/Testimonials/Testimonials';
 import HomeEarthmera from './Pages/Home/HomeEarthmera';
 import RedirectPage from './Pages/Info/Redirection/RedirectPage';
 import Privacy from './Pages/Legal/Privacy';
@@ -160,11 +159,7 @@ const baseRoutes = [
     element: <TandC />,
     errorElement: <ErrorComponent />,
   },
-  {
-    path: '/testimonials',
-    element: <Testimonials />,
-    errorElement: <ErrorComponent />,
-  },
+
   {
     path: '/cover_detail/:id',
     element: <CoverDetailPage />,

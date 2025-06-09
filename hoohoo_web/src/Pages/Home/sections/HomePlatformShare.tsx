@@ -94,7 +94,7 @@ function HomePlatformShare() {
   const data: any = i18next.t('HomePlatformShare', {returnObjects: true});
   function goPlatform() {
     logButtonEvent('go_platform in HomePlatformShare', PageName.home);
-    navigate(`/${language}/platform`);
+    navigate(`/${language}/platform#share-your-action`);
   }
   return (
     <Container>

@@ -94,7 +94,7 @@ function HomePlatformGroup() {
   const data: any = i18next.t('HomePlatformGroup', {returnObjects: true});
   function goPlatform() {
     logButtonEvent('go_platform in HomePlatformGroup', PageName.home);
-    navigate(`/${language}/platform`);
+    navigate(`/${language}/platform#group-activity`);
   }
   return (
     <Container>
