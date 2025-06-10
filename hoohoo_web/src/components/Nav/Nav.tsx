@@ -1,12 +1,12 @@
-import { faBars, faCaretDown } from '@fortawesome/free-solid-svg-icons';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import {faBars, faCaretDown} from '@fortawesome/free-solid-svg-icons';
+import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import i18next from 'i18next';
-import React, { useEffect, useState } from 'react';
-import { useTranslation } from 'react-i18next';
-import { Link, useLocation, useNavigate } from 'react-router-dom';
+import React, {useEffect, useState} from 'react';
+import {useTranslation} from 'react-i18next';
+import {Link, useLocation, useNavigate} from 'react-router-dom';
 import styled from 'styled-components';
-import { theme } from '../../style';
-import { useLanguage } from '../hooks/LanguageContext';
+import {theme} from '../../style';
+import {useLanguage} from '../hooks/LanguageContext';
 const Logo = styled.button`
   padding: 15px;
   font-size: 25px;
@@ -322,7 +322,7 @@ const SubNavLink = styled(Link)`
   padding-bottom: 5px;
   padding-right: 5px;
   padding-left: 10px;
-  
+
   text-align: center;
 
   cursor: pointer;
@@ -427,6 +427,7 @@ function Nav() {
       window.removeEventListener('resize', handleResize);
     };
   }, []);
+
   const handleLogoClick = () => {
     if (
       window.location.pathname === '/ko' ||
@@ -499,7 +500,7 @@ function Nav() {
                         <NavSubList key={subIndex}>
                           <SubNavLink
                             key={subIndex + 'subLink'}
-                            to={ subItem.link || '#'}
+                            to={subItem.link || '#'}
                             onClick={() => {
                               isOpen && setIsOpen(false);
                             }}>
@@ -519,14 +520,15 @@ function Nav() {
                     className="NavLink"
                     id={item.link + 'NavLink' + i}
                     key={i}
-                    to={item.link ||'#'}
+                    to={item.link || '#'}
                     onClick={e => {
-                      if (item.email) {
-                        // window.location.href = 'mailto:support@earthmera.com';
-                        handleEmailClick(e);
-                      } else {
-                        isOpen && setIsOpen(false);
-                      }
+                      isOpen && setIsOpen(false);
+                      setTimeout(() => {
+                        window.scrollTo({
+                          top: 0,
+                          behavior: 'smooth',
+                        });
+                      }, 200);
                     }}>
                     {item.label}
                   </NavLink>
