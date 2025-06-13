@@ -2,10 +2,10 @@ import { PressCoverPostType } from "./PressCoverType";
 export const presscoverDataKO = [
   {
     "idx": 10,
-    "title": "한국 고등학생들이 보는 AI 교과서에 EarthMera가 인공지능에 도전하는 사람들로 인터뷰에 실려",
-    "url": "https://earthmera.com/cover_detail/10",
-    "uploadAt": "2025-06-07",
-    "thumbnailImage": "/Images/press_cover_10.webp",
+    "title": "AI 친환경 플랫폼 '어스메라', AI 스타트업 사례로 교과서에 소개",
+    "url": "https://news.mt.co.kr/mtview.php?no=2025061018295283430",
+    "uploadAt": "2025-06-12",
+    "thumbnailImage": "https://thumb.mt.co.kr/06/2025/06/2025061018295283430_1.jpg/dims/optimize/",
     "linkedInUrl": "https://www.linkedin.com/feed/update/urn:li:activity:7337207986072813568",
     "type": PressCoverPostType.INTERVIEW
   },
@@ -40,10 +40,10 @@ export const presscoverDataKO = [
 export const presscoverDataEN = [
   {
     "idx": 10,
-    "title": "EarthMera featured in Korean high school AI textbook, interviewed as AI pioneers",
-    "url": "https://earthmera.com/cover_detail/10",
-    "uploadAt": "2025-06-07",
-    "thumbnailImage": "/Images/press_cover_10.webp",
+    "title": "Eco-friendly AI platform ‘EarthMera’ featured in textbooks as an AI startup case study.",
+    "url": "https://news.mt.co.kr/mtview.php?no=2025061018295283430",
+    "uploadAt": "2025-06-12",
+    "thumbnailImage": "https://thumb.mt.co.kr/06/2025/06/2025061018295283430_1.jpg/dims/optimize/",
     "linkedInUrl": "https://www.linkedin.com/feed/update/urn:li:activity:7337207986072813568",
     "type": PressCoverPostType.INTERVIEW
   },
