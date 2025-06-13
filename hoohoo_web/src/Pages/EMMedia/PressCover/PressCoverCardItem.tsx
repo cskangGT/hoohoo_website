@@ -172,11 +172,7 @@ function PressCoverCardItem({item}: {item: PressCoverType}) {
   const navigate = useNavigate();
   const handleCardClick = () => {
     if (item.url) {
-      if (item.idx === 10) {
-        navigate(`/${i18next.language}/cover_detail/${item.idx}`);
-      } else {
-        window.open(item.url, '_blank');
-      }
+      window.open(item.url, '_blank');
     }
   };
 
