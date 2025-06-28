@@ -1191,5 +1191,58 @@
   },
   "PressCoverCardItem": {
     "linkedIn": "View on EarthMera’s LinkedIn"
+  },
+  "SeeTTHistory": {
+    "title": "See Ticketeer in Action",
+    "marqueeList": [
+      {
+        "description": "An unforgettable zero-waste party with 300 guests, featuring cocktails, a DJ, crafts, and magic at Nine Tree Parnas II in Myeongdong.",
+        "image": "/Images/ticketeer_album/1.webp"
+      },
+      {
+        "description": "Custom reusable cups and eco-bags matched the event’s concept and boosted sustainability.",
+        "image": "/Images/ticketeer_album/2.webp"
+      },
+      {
+        "description": "A magic trick with every cocktail order added surprise and fun.",
+        "image": "/Images/ticketeer_album/3.webp"
+      },
+      {
+        "description": "There was a DJ playing live on the rooftop.",
+        "image": "/Images/ticketeer_album/4.webp"
+      },
+      {
+        "description": "Custom missions and matching recycling bins were introduced for the zero-waste party.",
+        "image": "/Images/ticketeer_album/5.webp"
+      },
+      {
+        "description": "Sustainable can be stylish. Everyone used reusable cups only.",
+        "image": "/Images/ticketeer_album/6.webp"
+      },
+      {
+        "description": "A two-day climate conference with over 200 university students, held at Seoul Youth Hostel!",
+        "image": "/Images/ticketeer_album/7.webp"
+      },
+      {
+        "description": "Group photo missions help build team spirit.\nFun and creative missions can be customized for each event!",
+        "image": "/Images/ticketeer_album/8.webp"
+      },
+      {
+        "description": "During the conference, all participants used tumblers for drinks as part of the mission.",
+        "image": "/Images/ticketeer_album/9.webp"
+      },
+      {
+        "description": "Participants took before-and-after meal photos to complete the no-food-waste mission.",
+        "image": "/Images/ticketeer_album/10.webp"
+      },
+      {
+        "description": "Participants chose stairs over elevators for a health and eco-friendly mission.",
+        "image": "/Images/ticketeer_album/11.webp"
+      },
+      {
+        "description": "Participants joined a plogging activity, picking up litter while enjoying a walk.",
+        "image": "/Images/ticketeer_album/12.webp"
+      }
+    ]
   }
 }
