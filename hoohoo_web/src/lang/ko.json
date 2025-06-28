@@ -1201,5 +1201,58 @@
   },
   "PressCoverCardItem": {
     "linkedIn": "EarthMera의 LinkedIn에서 보기"
+  },
+  "SeeTTHistory": {
+    "title": "티켓티어가 함께한 순간들",
+    "marqueeList": [
+      {
+        "description": "300명이 함께한 잊지 못할 제로 웨이스트 파티!\n칵테일, DJ, 크래프트, 마술이 어우러졌으며,\n명동 나인트리 파르나스 II에서 열렸습니다.",
+        "image": "/Images/ticketeer_album/1.webp"
+      },
+      {
+        "description": "이벤트 컨셉에 맞춰 제작된 리유저블 컵과 에코백으로, \n브랜딩과 지속가능성을 동시에 높였어요.",
+        "image": "/Images/ticketeer_album/2.webp"
+      },
+      {
+        "description": "칵테일을 주문할 때마다 마술사가 멋진 마술을\n선보였어요.",
+        "image": "/Images/ticketeer_album/3.webp"
+      },
+      {
+        "description": "루프탑에서는 DJ가 밤새 분위기를 끌어올렸어요.",
+        "image": "/Images/ticketeer_album/4.webp"
+      },
+      {
+        "description": "제로웨이스트 파티에 맞춰 커스터마이징된 미션과 전용\n쓰레기통을 현장에 도입했어요.",
+        "image": "/Images/ticketeer_album/5.webp"
+      },
+      {
+        "description": "친환경 파티도 이렇게 힙하게! 모두가 재활용 컵만\n사용했어요.",
+        "image": "/Images/ticketeer_album/6.webp"
+      },
+      {
+        "description": "200여 명의 대학생이 모인 1박 2일간의 환경 컨퍼런스,\n서울 국제청소년센터 유스호스텔에서 진행됐어요!",
+        "image": "/Images/ticketeer_album/7.webp"
+      },
+      {
+        "description": "단체 사진 미션은 단합을 위한 활동 중 하나예요. 이벤트\n성격에 맞춰 다양한 미션을 재치 있게 커스터마이징할 수 있어요!",
+        "image": "/Images/ticketeer_album/8.webp"
+      },
+      {
+        "description": "컨퍼런스 기간 동안 모든 참가자들이 텀블러로 음료를\n마셨고, 이를 미션으로도 진행했어요.",
+        "image": "/Images/ticketeer_album/9.webp"
+      },
+      {
+        "description": "식사 전후 사진을 찍으며 음식물 남기지 않기 미션도\n함께 진행했어요.",
+        "image": "/Images/ticketeer_album/10.webp"
+      },
+      {
+        "description": "건강과 환경을 위해 엘리베이터 대신 계단을 이용하는\n미션도 진행했어요.",
+        "image": "/Images/ticketeer_album/11.webp"
+      },
+      {
+        "description": "참가자들이 함께 플로깅을 하며, 걷기와 환경 보호\n동시에 실천했어요.",
+        "image": "/Images/ticketeer_album/12.webp"
+      }
+    ]
   }
 }

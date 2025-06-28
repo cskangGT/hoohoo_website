@@ -53,12 +53,14 @@ export const RightBox = styled.div`
     text-align: center;
   }
 `;
-export const Header = styled.h2`
+export const Header = styled.h2<{language?: string}>`
   padding: 30px 0;
   font-size: 2.5rem;
   line-height: 1.2;
   width: 100%;
   color: ${theme.darkGray};
+  font-family: ${props =>
+    props.language === 'ko' ? 'TmoneyRoundWind' : 'Fredoka'};
   text-align: left;
   @media screen and (max-width: 1000px) {
     font-size: 2.3rem;
@@ -67,6 +69,14 @@ export const Header = styled.h2`
   @media screen and (max-width: 500px) {
     text-align: center;
     font-size: 2.1rem;
+  }
+  @media screen and (max-width: 400px) {
+    text-align: center;
+    font-size: 1.8rem;
+  }
+  @media screen and (max-width: 360px) {
+    text-align: center;
+    font-size: 1.5rem;
   }
 `;
 export const Desc = styled.p<{language?: string}>`

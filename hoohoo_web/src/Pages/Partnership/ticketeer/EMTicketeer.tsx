@@ -1,10 +1,11 @@
-import React, { useEffect } from 'react';
+import React, {useEffect} from 'react';
 import styled from 'styled-components';
 import FootContact from '../../../components/Footer/FootContact';
 import Wrapper from '../../../components/Wrapper/Wrapper';
-import { BgImage, slideInFromTop, theme } from '../../../style';
+import {BgImage, slideInFromTop, theme} from '../../../style';
 
 import HowDoesItWork from './sections/HowDoesItWork';
+import SeeTTHistory from './sections/SeeTTHistory';
 import TicketeerCarbon from './sections/TicketeerCarbon';
 import TicketeerIntro from './sections/TicketeerIntro';
 import TicketeerSteps from './sections/TicketeerSteps';
@@ -54,6 +55,9 @@ export default function EMTicketeer() {
           <HowDoesItWork />
         </NoHeight>
       </Wrapper>
+      <NoHeight>
+        <SeeTTHistory />
+      </NoHeight>
       <hr style={{color: theme.darkGray, margin: 0}} />
       <FootContact />
     </BgImage>
